@@ -1,0 +1,778 @@
+/**
+ * E-learning Course Content Styling
+ * 
+ * Styling voor alle cursus-, module- en leselementen van het e-learning platform
+ */
+
+/* Voorkom dubbele weergave van cursusmetadata */
+.course-meta-container {
+    display: flex !important;
+    justify-content: space-between !important;
+    flex-wrap: wrap !important;
+    margin: 1rem 0 2rem !important;
+    gap: 1rem !important;
+    flex-direction: row !important; /* Override de column uit style-fix.css */
+    background-color: #f8f9fa !important; /* Lichtgrijze achtergrond voor betere leesbaarheid */
+    padding: 1.25rem !important; /* Voeg padding toe voor betere leesbaarheid */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important; /* Subtiele schaduw voor diepte */
+    border-radius: 8px !important; /* Afgeronde hoeken */
+    border-left: 4px solid #5852f2 !important; /* Accentkleur aan de linkerkant */
+}
+
+/* Verbeterde stijlen voor de tags-container en course-details voor betere toegankelijkheid */
+.course-meta-container .tags-container {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 0.5rem !important;
+    align-items: center !important;
+}
+
+.course-meta-container .course-details {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 1rem !important;
+}
+
+/* Zorg voor beter contrast en leesbaarheid in de tags */
+.course-meta-container .tag {
+    font-size: 0.9rem !important;
+    padding: 0.4rem 0.8rem !important;
+    border-radius: 20px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+}
+
+/* Verbeterde stijlen voor course-duration en course-by voor betere toegankelijkheid */
+.course-meta-container .course-duration,
+.course-meta-container .course-by {
+    display: flex !important;
+    align-items: center !important;
+    font-size: 0.95rem !important;
+    color: #4b5563 !important;
+}
+
+.course-meta-container .course-duration svg,
+.course-meta-container .course-by svg {
+    margin-right: 0.5rem !important;
+    flex-shrink: 0 !important;
+}
+
+/* Responsive aanpassingen voor mobiele weergave */
+@media (max-width: 768px) {
+    .course-meta-container {
+        flex-direction: column !important;
+    }
+    
+    .course-meta-container .course-details {
+        margin-top: 0.75rem !important;
+    }
+}
+
+/* Algemene variabelen */
+:root {
+    --primary-color: #4A6DE5;
+    --primary-dark: #3A5BD0;
+    --primary-light: #6988FF;
+    --secondary-color: #F58A07;
+    --secondary-dark: #D67600;
+    --text-dark: #2A3342;
+    --text-medium: #556987;
+    --text-light: #8896AB;
+    --bg-light: #F8FAFC;
+    --bg-medium: #F1F5F9;
+    --bg-dark: #E2E8F0;
+    --success-color: #10B981;
+    --warning-color: #F59E0B;
+    --error-color: #EF4444;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+/* Cursuspagina Container */
+.course-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+    font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text-dark);
+}
+
+/* Cursusheader */
+.course-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--bg-dark);
+}
+
+.course-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.course-meta {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.course-level, .course-duration {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    color: var(--text-medium);
+}
+
+.course-level::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-right: 0.5rem;
+    background-color: var(--primary-light);
+    border-radius: 50%;
+}
+
+.course-duration::before {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 0.5rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23556987'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z' /%3E%3C/svg%3E");
+    background-size: contain;
+}
+
+.course-author {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.author-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 0.75rem;
+    object-fit: cover;
+}
+
+.course-progress {
+    margin-top: 1rem;
+}
+
+.progress-bar {
+    height: 8px;
+    background-color: var(--bg-medium);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: var(--success-color);
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+.progress-text {
+    font-size: 0.875rem;
+    color: var(--text-medium);
+}
+
+/* Module Accordions */
+.course-modules {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.module-accordion {
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.module-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    background-color: white;
+    border-bottom: 1px solid transparent;
+    transition: var(--transition);
+}
+
+.module-accordion.expanded .module-header {
+    border-bottom-color: var(--bg-dark);
+}
+
+.module-header h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0;
+    flex-grow: 1;
+}
+
+.module-meta {
+    margin-right: 1rem;
+    font-size: 0.875rem;
+    color: var(--text-medium);
+}
+
+.toggle-module {
+    background: none;
+    border: none;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-medium);
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.toggle-module:hover {
+    color: var(--primary-color);
+}
+
+.icon-expanded, .icon-collapsed {
+    transition: var(--transition);
+}
+
+.module-accordion:not(.expanded) .icon-expanded {
+    display: none;
+}
+
+.module-accordion.expanded .icon-collapsed {
+    display: none;
+}
+
+.module-lessons {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.module-accordion.expanded .module-lessons {
+    max-height: 1000px; /* Grote waarde zodat alle inhoud zichtbaar wordt */
+}
+
+/* Lessenlijst */
+.lesson-item {
+    border-bottom: 1px solid var(--bg-medium);
+    transition: var(--transition);
+}
+
+.lesson-item:last-child {
+    border-bottom: none;
+}
+
+.lesson-item.completed {
+    background-color: rgba(16, 185, 129, 0.05);
+}
+
+.lesson-item.current {
+    background-color: rgba(74, 109, 229, 0.05);
+    border-left: 3px solid var(--primary-color);
+}
+
+.lesson-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    color: var(--text-dark);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.lesson-link:hover {
+    background-color: var(--bg-light);
+}
+
+.lesson-title {
+    font-weight: 500;
+    flex-grow: 1;
+}
+
+.lesson-duration {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    margin-left: 1rem;
+}
+
+.completion-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    background-color: var(--success-color);
+    color: white;
+    font-size: 0.75rem;
+    border-radius: 50%;
+    margin-left: 0.75rem;
+}
+
+/* Lesinhoud Container */
+.lesson-content-container {
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+.loading-lesson {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    color: var(--text-medium);
+}
+
+.loading-lesson::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 0.75rem;
+    border: 2px solid var(--primary-light);
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.lesson-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--bg-dark);
+}
+
+.lesson-header h2 {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Content Items Styling */
+.lesson-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.content-item {
+    width: 100%;
+}
+
+.text-content {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-dark);
+}
+
+.text-content p {
+    margin-bottom: 1.5rem;
+}
+
+.text-content h3 {
+    font-size: 1.5rem;
+    margin: 2rem 0 1rem;
+}
+
+.text-content ul, .text-content ol {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.text-content li {
+    margin-bottom: 0.5rem;
+}
+
+.image-content {
+    width: 100%;
+    margin: 0;
+}
+
+.image-content img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+}
+
+.image-content figcaption {
+    margin-top: 0.75rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-medium);
+}
+
+.video-content {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+}
+
+.video-content iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Quiz Styling */
+.quiz-container {
+    background-color: var(--bg-light);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin: 2rem 0;
+}
+
+.quiz-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.quiz-question {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.quiz-question h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.quiz-option {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background-color: white;
+    border: 1px solid var(--bg-dark);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.quiz-option:hover {
+    background-color: var(--bg-medium);
+}
+
+.quiz-option input[type="radio"] {
+    margin-right: 0.75rem;
+}
+
+.submit-quiz-btn {
+    align-self: flex-start;
+    margin-top: 1rem;
+}
+
+/* Quiz Resultaten */
+.quiz-results {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.quiz-score {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+    background-color: var(--bg-light);
+    border-radius: var(--border-radius);
+    text-align: center;
+}
+
+.score-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+}
+
+.score-circle.pass {
+    background-color: var(--success-color);
+}
+
+.score-circle.fail {
+    background-color: var(--error-color);
+}
+
+.score-message {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.questions-feedback {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.question-feedback {
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    border-left: 4px solid;
+}
+
+.question-feedback.correct {
+    background-color: rgba(16, 185, 129, 0.1);
+    border-left-color: var(--success-color);
+}
+
+.question-feedback.incorrect {
+    background-color: rgba(239, 68, 68, 0.1);
+    border-left-color: var(--error-color);
+}
+
+.question-feedback h4 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.question-feedback p {
+    margin-bottom: 0.75rem;
+}
+
+.retry-quiz-btn {
+    align-self: flex-start;
+    margin-top: 1rem;
+}
+
+/* Notities Sectie */
+.lesson-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--bg-dark);
+}
+
+.notes-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.notes-section h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.notes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.note-item {
+    padding: 1.25rem;
+    background-color: var(--bg-light);
+    border-radius: var(--border-radius);
+    border-left: 3px solid var(--primary-color);
+}
+
+.note-text {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+}
+
+.note-meta {
+    font-size: 0.8rem;
+    color: var(--text-light);
+}
+
+.no-notes {
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+.add-note-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.add-note-form textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 1rem;
+    border: 1px solid var(--bg-dark);
+    border-radius: var(--border-radius);
+    font-family: inherit;
+    font-size: 1rem;
+    resize: vertical;
+    transition: var(--transition);
+}
+
+.add-note-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 2px rgba(74, 109, 229, 0.2);
+}
+
+.save-note-btn {
+    align-self: flex-start;
+}
+
+/* Navigatie Knoppen */
+.lesson-navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.prev-lesson-btn, .next-lesson-btn, .complete-lesson-btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.prev-lesson-btn {
+    background-color: var(--bg-medium);
+    color: var(--text-medium);
+    border: none;
+}
+
+.prev-lesson-btn:hover {
+    background-color: var(--bg-dark);
+}
+
+.next-lesson-btn, .complete-lesson-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+}
+
+.next-lesson-btn:hover, .complete-lesson-btn:hover {
+    background-color: var(--primary-dark);
+}
+
+/* Cursus Voltooid Bericht */
+.course-completion-message {
+    text-align: center;
+    padding: 3rem 2rem;
+    margin-top: 2rem;
+    background-color: rgba(16, 185, 129, 0.1);
+    border-radius: var(--border-radius);
+}
+
+.course-completion-message h2 {
+    font-size: 2rem;
+    color: var(--success-color);
+    margin-bottom: 1rem;
+}
+
+.course-completion-message p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.get-certificate-btn {
+    display: inline-block;
+    padding: 0.875rem 2rem;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.get-certificate-btn:hover {
+    background-color: var(--secondary-dark);
+}
+
+/* Responsieve aanpassingen */
+@media (max-width: 768px) {
+    .course-header h1 {
+        font-size: 2rem;
+    }
+    
+    .lesson-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .lesson-content-container {
+        padding: 1.5rem;
+    }
+    
+    .video-content {
+        height: 250px;
+    }
+    
+    .lesson-navigation-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .prev-lesson-btn, .next-lesson-btn, .complete-lesson-btn {
+        width: 100%;
+    }
+    
+    .score-circle {
+        width: 100px;
+        height: 100px;
+        font-size: 1.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .course-meta {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    .module-header {
+        padding: 1rem;
+    }
+    
+    .lesson-link {
+        padding: 0.875rem 1rem;
+    }
+    
+    .video-content {
+        height: 200px;
+    }
+} 

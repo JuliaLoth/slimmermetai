@@ -1,0 +1,234 @@
+{
+  "courses": [
+    {
+      "id": "ai-basics",
+      "title": "AI Basics",
+      "description": "Introductie tot de basisprincipes van kunstmatige intelligentie.",
+      "thumbnail": "/images/ai-basics.svg",
+      "level": "Beginner",
+      "duration": "3 uur",
+      "price": 49.99,
+      "author": {
+        "name": "Julia Smit",
+        "avatar": "/images/Profiel foto Julia.svg",
+        "bio": "AI specialist en trainer"
+      },
+      "modules": [
+        {
+          "id": "module-1",
+          "title": "Introductie tot AI",
+          "description": "Leer de basisconcepten van AI en machine learning.",
+          "order": 1,
+          "lessons": [
+            {
+              "id": "lesson-1-1",
+              "title": "Wat is AI?",
+              "duration": "20 minuten",
+              "order": 1,
+              "content": [
+                {
+                  "type": "text",
+                  "data": "Kunstmatige intelligentie (AI) is het vermogen van een digitale computer of computergestuurde robot om taken uit te voeren die normaal gesproken intelligent menselijk denken vereisen."
+                },
+                {
+                  "type": "image",
+                  "data": {
+                    "src": "/e-learning/images/ai-overview.jpg",
+                    "alt": "AI Overview",
+                    "caption": "Overzicht van AI en machine learning concepten"
+                  }
+                },
+                {
+                  "type": "video",
+                  "data": {
+                    "src": "https://www.youtube.com/embed/XdKzUbAiswE",
+                    "title": "Introductie tot AI"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "lesson-1-2",
+              "title": "Geschiedenis van AI",
+              "duration": "25 minuten",
+              "order": 2,
+              "content": [
+                {
+                  "type": "text",
+                  "data": "De geschiedenis van AI is een fascinerende reis die begint in de jaren 1950 en zich ontwikkelt tot op de dag van vandaag."
+                },
+                {
+                  "type": "image",
+                  "data": {
+                    "src": "/e-learning/images/ai-timeline.jpg",
+                    "alt": "AI Timeline",
+                    "caption": "Tijdlijn van belangrijke AI-ontwikkelingen"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "lesson-1-3",
+              "title": "Quiz: AI Basics",
+              "duration": "15 minuten",
+              "order": 3,
+              "content": [
+                {
+                  "type": "quiz",
+                  "data": {
+                    "questions": [
+                      {
+                        "id": "q1",
+                        "question": "Wat is kunstmatige intelligentie?",
+                        "options": [
+                          "Het vermogen van een machine om enkel berekeningen uit te voeren",
+                          "Het vermogen van een computer om mensachtig intelligent gedrag te vertonen",
+                          "Een methode om computers sneller te maken",
+                          "Een robot die menselijke taken kan overnemen"
+                        ],
+                        "correctAnswer": 1,
+                        "explanation": "AI verwijst naar het vermogen van machines om taken uit te voeren die normaal menselijke intelligentie vereisen."
+                      },
+                      {
+                        "id": "q2",
+                        "question": "Wanneer begon het veld van AI ongeveer?",
+                        "options": [
+                          "Jaren 1920",
+                          "Jaren 1950",
+                          "Jaren 1980",
+                          "Jaren 2000"
+                        ],
+                        "correctAnswer": 1,
+                        "explanation": "AI als formeel onderzoeksgebied begon in de jaren 1950 met de Dartmouth Conference in 1956."
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "module-2",
+          "title": "Machine Learning Basics",
+          "description": "Begrijp de fundamenten van machine learning en hoe het werkt.",
+          "order": 2,
+          "lessons": [
+            {
+              "id": "lesson-2-1",
+              "title": "Wat is Machine Learning?",
+              "duration": "30 minuten",
+              "order": 1,
+              "content": [
+                {
+                  "type": "text",
+                  "data": "Machine learning is een subveld van AI dat computers in staat stelt om te leren zonder expliciet geprogrammeerd te worden."
+                },
+                {
+                  "type": "image",
+                  "data": {
+                    "src": "/e-learning/images/machine-learning.jpg",
+                    "alt": "Machine Learning",
+                    "caption": "Hoe machine learning werkt"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prompt-engineering",
+      "title": "Prompt Engineering",
+      "description": "Leer effectieve prompts schrijven voor AI tools en generatieve AI.",
+      "thumbnail": "/images/prompt-engineering.svg",
+      "level": "Gevorderd",
+      "duration": "4 uur",
+      "price": 69.99,
+      "author": {
+        "name": "Julia Smit",
+        "avatar": "/images/Profiel foto Julia.svg",
+        "bio": "AI specialist en trainer"
+      },
+      "modules": [
+        {
+          "id": "module-1",
+          "title": "Introductie tot Prompt Engineering",
+          "description": "Begrijp wat prompt engineering is en waarom het belangrijk is.",
+          "order": 1,
+          "lessons": [
+            {
+              "id": "lesson-1-1",
+              "title": "Wat is Prompt Engineering?",
+              "duration": "20 minuten",
+              "order": 1,
+              "content": [
+                {
+                  "type": "text",
+                  "data": "Prompt engineering is de kunst van het effectief communiceren met AI-systemen om de gewenste output te krijgen."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "users": [
+    {
+      "id": "user123",
+      "email": "gebruiker@voorbeeld.nl",
+      "firstName": "Jan",
+      "lastName": "Jansen",
+      "purchasedCourses": ["ai-basics", "prompt-engineering"],
+      "progress": {
+        "ai-basics": {
+          "completed": ["lesson-1-1", "lesson-1-2"],
+          "current": "lesson-1-3",
+          "quizResults": {
+            "lesson-1-3": {
+              "score": 80,
+              "completed": true,
+              "lastAttempt": "2025-03-20T14:30:45Z",
+              "answers": {
+                "q1": 1,
+                "q2": 1
+              }
+            }
+          },
+          "overallProgress": 35,
+          "lastAccessed": "2025-03-20T15:45:22Z"
+        },
+        "prompt-engineering": {
+          "completed": [],
+          "current": "lesson-1-1",
+          "quizResults": {},
+          "overallProgress": 10,
+          "lastAccessed": "2025-03-19T09:12:33Z"
+        }
+      },
+      "notes": {
+        "ai-basics": {
+          "lesson-1-1": [
+            {
+              "text": "AI heeft verschillende toepassingen in verschillende industrieën",
+              "timestamp": "2025-03-18T11:24:15Z"
+            }
+          ]
+        }
+      },
+      "certificates": [
+        {
+          "courseId": "ai-basics",
+          "issueDate": "2025-03-21",
+          "certificateUrl": "/certificates/user123-ai-basics.pdf"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "version": "1.0",
+    "lastUpdated": "2025-03-20"
+  }
+} 
