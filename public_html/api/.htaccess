@@ -1,0 +1,27 @@
+# SlimmerMetAI API configuratie
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /api/
+    
+    # Sta directe toegang toe tot bestanden (geen routing voor bestaande bestanden)
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule ^ - [L]
+    
+    # Routing voor API endpoints (alleen indien nodig)
+    # RewriteRule ^(.*)$ index.php [QSA,L]
+</IfModule>
+
+# CORS headers voor API toegang
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+    Header set Access-Control-Allow-Headers "Content-Type, Authorization"
+    Header set Access-Control-Max-Age "3600"
+    
+    # Security headers
+    Header set X-Content-Type-Options "nosniff"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # Content Security Policy met frame-ancestors
+    Header set Content-Security-Policy "default-src 'self'; frame-ancestors 'self';"
+</IfModule> 

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Betaling Succesvol - Slimmer met AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .success-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            text-align: center;
+            background-color: #f8f9fa;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background-color: #4CAF50;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .success-icon svg {
+            width: 50px;
+            height: 50px;
+            fill: white;
+        }
+        
+        .success-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #4CAF50;
+        }
+        
+        .btn-primary {
+            background-color: #4361ee;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 0.25rem;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-block;
+            margin-top: 1.5rem;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="success-container">
+            <div class="success-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                </svg>
+            </div>
+            <h1 class="success-title">Betaling Succesvol!</h1>
+            <p>Bedankt voor je aankoop bij Slimmer met AI!</p>
+            <p>Je bestelling is ontvangen en wordt nu verwerkt.</p>
+            <p>Je ontvangt binnen enkele minuten een bevestigingsmail met alle details.</p>
+            <p><strong>Belangrijk:</strong> Als je geen e-mail ontvangt, controleer dan je spam/ongewenste e-mail map.</p>
+            
+            <a href="/" class="btn-primary">Terug naar Home</a>
+        </div>
+    </div>
+    
+    <script>
+        // Reset winkelwagen
+        document.addEventListener('DOMContentLoaded', function() {
+            // Wacht even om de pagina te laten laden
+            setTimeout(function() {
+                // Controleer of we de winkelwagen objecten hebben
+                if (typeof Cart !== 'undefined') {
+                    Cart.resetCart(false);
+                    console.log('Winkelwagen is gereset na succesvolle betaling');
+                }
+                
+                // Controleer of we de notification functie hebben
+                if (typeof showNotification === 'function') {
+                    showNotification('Je betaling is succesvol verwerkt!', 'success');
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html> 

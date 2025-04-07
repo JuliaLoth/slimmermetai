@@ -1,0 +1,34 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+    <!-- Achtergrond -->
+    <rect width="400" height="300" fill="#f8f9fa" rx="8" ry="8"/>
+    
+    <!-- App interface achtergrond -->
+    <rect x="20" y="20" width="360" height="260" fill="#ffffff" rx="6" ry="6" stroke="#e0e0e0" stroke-width="2"/>
+    
+    <!-- Header -->
+    <rect x="20" y="20" width="360" height="40" fill="#5852f2" rx="6" ry="6"/>
+    <rect x="40" y="40" width="180" height="10" fill="white" rx="2" ry="2"/>
+    
+    <!-- Content sectie -->
+    <rect x="40" y="80" width="320" height="180" fill="#ffffff" rx="4" ry="4" stroke="#eeeeee" stroke-width="1"/>
+    
+    <!-- Audiogolf visualisatie -->
+    <rect x="60" y="100" width="280" height="40" fill="#f5f5ff" rx="4" ry="4"/>
+    <path d="M70,120 Q75,110 80,120 Q85,130 90,120 Q95,110 100,120 Q105,130 110,120 Q115,110 120,120 Q125,130 130,120 Q135,110 140,120 Q145,130 150,120 Q155,110 160,120" stroke="#5852f2" stroke-width="2" fill="none"/>
+    <path d="M170,120 Q175,105 180,120 Q185,135 190,120 Q195,105 200,120 Q205,135 210,120 Q215,105 220,120 Q225,135 230,120 Q235,105 240,120 Q245,135 250,120 Q255,105 260,120" stroke="#5852f2" stroke-width="2" fill="none"/>
+    <path d="M270,120 Q275,110 280,120 Q285,130 290,120 Q295,110 300,120 Q305,130 310,120 Q315,110 320,120 Q325,130 330,120" stroke="#5852f2" stroke-width="2" fill="none"/>
+    
+    <!-- Tekst samenvatting -->
+    <rect x="60" y="165" width="100" height="10" fill="#333333" rx="2" ry="2"/>
+    <rect x="60" y="180" width="280" height="1" fill="#eeeeee"/>
+    
+    <!-- Actiepunten -->
+    <rect x="60" y="195" width="10" height="10" fill="#5852f2" rx="2" ry="2"/>
+    <rect x="80" y="199" width="200" height="6" fill="#333333" rx="1" ry="1"/>
+    
+    <rect x="60" y="215" width="10" height="10" fill="#5852f2" rx="2" ry="2"/>
+    <rect x="80" y="219" width="180" height="6" fill="#333333" rx="1" ry="1"/>
+    
+    <rect x="60" y="235" width="10" height="10" fill="#5852f2" rx="2" ry="2"/>
+    <rect x="80" y="239" width="220" height="6" fill="#333333" rx="1" ry="1"/>
+</svg> 

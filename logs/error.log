@@ -1,0 +1,188 @@
+[2025-04-07 10:06:19] [ERROR] [::1] [/] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 10:06:19] [ERROR] [::1] [/] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 10:06:36] [ERROR] [::1] [/winkelwagen.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 10:06:36] [ERROR] [::1] [/winkelwagen.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 11:06:43] [ERROR] [::1] [/winkelwagen.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 11:06:43] [ERROR] [::1] [/winkelwagen.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 11:06:52] [ERROR] [::1] [/index.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 11:06:52] [ERROR] [::1] [/index.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 11:18:46] [ERROR] [::1] [/] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 11:18:46] [ERROR] [::1] [/] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 11:43:56] [ERROR] [::1] [/] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 11:43:57] [ERROR] [::1] [/] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 11:44:16] [ERROR] [::1] [/] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 11:44:16] [ERROR] [::1] [/] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 11:52:13] [ERROR] [::1] [/] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 11:52:13] [ERROR] [::1] [/] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 11:52:51] [ERROR] [::1] [/tools.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 11:52:51] [ERROR] [::1] [/tools.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 11:53:18] [ERROR] [::1] [/] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 11:53:18] [ERROR] [::1] [/] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 11:53:37] [ERROR] [::1] [/index.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 11:53:37] [ERROR] [::1] [/index.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 11:53:41] [ERROR] [::1] [/index.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 11:53:41] [ERROR] [::1] [/index.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 14:16:23] [ERROR] [::1] [/index.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 14:16:23] [ERROR] [::1] [/index.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 16:22:03] [ERROR] [::1] [/index.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 16:22:03] [ERROR] [::1] [/index.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 16:22:11] [ERROR] [::1] [/index.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 16:22:11] [ERROR] [::1] [/index.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 16:22:24] [ERROR] [::1] [/tools.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 16:22:24] [ERROR] [::1] [/tools.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 16:22:32] [ERROR] [::1] [/index.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 16:22:32] [ERROR] [::1] [/index.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 16:23:09] [ERROR] [::1] [/index.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 16:23:09] [ERROR] [::1] [/index.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 16:38:55] [ERROR] [::1] [/index.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 16:38:55] [ERROR] [::1] [/index.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 16:39:40] [ERROR] [::1] [/index.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 16:39:40] [ERROR] [::1] [/index.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 16:40:53] [ERROR] [::1] [/index.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 16:40:53] [ERROR] [::1] [/index.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 16:43:02] [ERROR] [::1] [/index.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 16:43:02] [ERROR] [::1] [/index.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 16:43:16] [ERROR] [::1] [/index.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 16:43:16] [ERROR] [::1] [/index.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 16:44:36] [ERROR] [::1] [/] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 16:44:36] [ERROR] [::1] [/] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 16:45:47] [ERROR] [::1] [/] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 16:45:47] [ERROR] [::1] [/] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 16:49:20] [ERROR] [::1] [/] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 16:49:20] [ERROR] [::1] [/] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 16:49:24] [ERROR] [::1] [/] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 16:49:24] [ERROR] [::1] [/] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 16:49:35] [ERROR] [::1] [/tools.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 16:49:35] [ERROR] [::1] [/tools.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 16:49:39] [ERROR] [::1] [/tools.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 16:49:39] [ERROR] [::1] [/tools.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 17:02:04] [ERROR] [::1] [/tools.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 17:02:04] [ERROR] [::1] [/tools.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 17:02:14] [ERROR] [::1] [/index.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 17:02:14] [ERROR] [::1] [/index.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 17:04:32] [ERROR] [::1] [/index.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 17:04:32] [ERROR] [::1] [/index.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 17:04:46] [ERROR] [::1] [/tools.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 17:04:46] [ERROR] [::1] [/tools.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 17:04:54] [ERROR] [::1] [/tools.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 17:04:54] [ERROR] [::1] [/tools.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 17:07:15] [ERROR] [::1] [/tools.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 17:07:15] [ERROR] [::1] [/tools.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 17:12:01] [ERROR] [::1] [/tools.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 17:12:01] [ERROR] [::1] [/tools.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 17:12:13] [ERROR] [::1] [/winkelwagen.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 17:12:13] [ERROR] [::1] [/winkelwagen.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 17:12:22] [ERROR] [::1] [/tools.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 17:12:22] [ERROR] [::1] [/tools.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 18:08:15] [ERROR] [::1] [/] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 18:08:15] [ERROR] [::1] [/] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 18:10:46] [ERROR] [::1] [/tools.php?id=email-assistant] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 18:10:46] [ERROR] [::1] [/tools.php?id=email-assistant] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 18:11:12] [ERROR] [::1] [/] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 18:11:12] [ERROR] [::1] [/] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 18:11:21] [ERROR] [::1] [/tools.php?id=email-assistant] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 18:11:21] [ERROR] [::1] [/tools.php?id=email-assistant] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 18:11:38] [ERROR] [::1] [/tools.php?id=email-assistant] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 18:11:38] [ERROR] [::1] [/tools.php?id=email-assistant] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 18:18:28] [ERROR] [::1] [/tools.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 18:18:28] [ERROR] [::1] [/tools.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 18:24:20] [ERROR] [::1] [/index.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 18:24:20] [ERROR] [::1] [/index.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 18:24:56] [ERROR] [::1] [/tools.php?id=email-assistant] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 18:24:56] [ERROR] [::1] [/tools.php?id=email-assistant] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 18:27:24] [ERROR] [::1] [/tools.php?id=email-assistant] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 18:27:24] [ERROR] [::1] [/tools.php?id=email-assistant] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 18:27:44] [ERROR] [::1] [/index] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 18:27:44] [ERROR] [::1] [/index] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 18:29:18] [ERROR] [::1] [/] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 18:29:18] [ERROR] [::1] [/] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 18:30:51] [ERROR] [::1] [/] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 18:30:51] [ERROR] [::1] [/] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 18:31:04] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 18:31:04] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 18:31:04] [ERROR] [::1] [/login.php] Constant PUBLIC_INCLUDES already defined {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":5,"type":"WARNING"}
+[2025-04-07 18:31:20] [ERROR] [::1] [/index.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 18:31:20] [ERROR] [::1] [/index.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 18:31:25] [ERROR] [::1] [/tools.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 18:31:25] [ERROR] [::1] [/tools.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 18:31:25] [ERROR] [::1] [/tools.php] require_once(C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai.com\public_html/../components/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\tools.php","line":152,"type":"WARNING"}
+[2025-04-07 18:31:25] [ERROR] [::1] [/tools.php] Failed opening required 'C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai.com\public_html/../components/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\tools.php","line":152,"trace":"#0 {main}"}
+[2025-04-07 18:31:33] [ERROR] [::1] [/winkelwagen.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 18:31:33] [ERROR] [::1] [/winkelwagen.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 18:31:33] [ERROR] [::1] [/winkelwagen.php] require_once(C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai.com\public_html/../components/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\winkelwagen.php","line":85,"type":"WARNING"}
+[2025-04-07 18:31:33] [ERROR] [::1] [/winkelwagen.php] Failed opening required 'C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai.com\public_html/../components/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\winkelwagen.php","line":85,"trace":"#0 {main}"}
+[2025-04-07 18:31:37] [ERROR] [::1] [/winkelwagen.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 18:31:37] [ERROR] [::1] [/winkelwagen.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 18:31:37] [ERROR] [::1] [/winkelwagen.php] require_once(C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai.com\public_html/../components/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\winkelwagen.php","line":85,"type":"WARNING"}
+[2025-04-07 18:31:37] [ERROR] [::1] [/winkelwagen.php] Failed opening required 'C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai.com\public_html/../components/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\winkelwagen.php","line":85,"trace":"#0 {main}"}
+[2025-04-07 18:31:44] [ERROR] [::1] [/tools.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 18:31:44] [ERROR] [::1] [/tools.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 18:31:44] [ERROR] [::1] [/tools.php] require_once(C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai.com\public_html/../components/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\tools.php","line":152,"type":"WARNING"}
+[2025-04-07 18:31:44] [ERROR] [::1] [/tools.php] Failed opening required 'C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai.com\public_html/../components/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\tools.php","line":152,"trace":"#0 {main}"}
+[2025-04-07 18:31:50] [ERROR] [::1] [/winkelwagen.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 18:31:50] [ERROR] [::1] [/winkelwagen.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 18:31:50] [ERROR] [::1] [/winkelwagen.php] require_once(C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai.com\public_html/../components/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\winkelwagen.php","line":85,"type":"WARNING"}
+[2025-04-07 18:31:50] [ERROR] [::1] [/winkelwagen.php] Failed opening required 'C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai.com\public_html/../components/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\winkelwagen.php","line":85,"trace":"#0 {main}"}
+[2025-04-07 18:32:16] [ERROR] [::1] [/index] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 18:32:16] [ERROR] [::1] [/index] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 18:32:27] [ERROR] [::1] [/tools.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 18:32:27] [ERROR] [::1] [/tools.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 18:32:27] [ERROR] [::1] [/tools.php] require_once(C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai.com\public_html/../components/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\tools.php","line":152,"type":"WARNING"}
+[2025-04-07 18:32:27] [ERROR] [::1] [/tools.php] Failed opening required 'C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai.com\public_html/../components/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\tools.php","line":152,"trace":"#0 {main}"}
+[2025-04-07 18:33:13] [ERROR] [::1] [/tools.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 18:33:13] [ERROR] [::1] [/tools.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 18:33:13] [ERROR] [::1] [/tools.php] require_once(C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai.com\public_html/../components/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\tools.php","line":152,"type":"WARNING"}
+[2025-04-07 18:33:13] [ERROR] [::1] [/tools.php] Failed opening required 'C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai.com\public_html/../components/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\tools.php","line":152,"trace":"#0 {main}"}
+[2025-04-07 18:34:22] [ERROR] [::1] [/tools.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 18:34:22] [ERROR] [::1] [/tools.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 18:34:43] [ERROR] [::1] [/winkelwagen.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 18:34:43] [ERROR] [::1] [/winkelwagen.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 18:34:43] [ERROR] [::1] [/winkelwagen.php] require_once(C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai.com\public_html/../components/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\winkelwagen.php","line":85,"type":"WARNING"}
+[2025-04-07 18:34:43] [ERROR] [::1] [/winkelwagen.php] Failed opening required 'C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai.com\public_html/../components/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\winkelwagen.php","line":85,"trace":"#0 {main}"}
+[2025-04-07 18:35:41] [ERROR] [::1] [/tools.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 18:35:41] [ERROR] [::1] [/tools.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 18:36:59] [ERROR] [::1] [/tools.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 18:36:59] [ERROR] [::1] [/tools.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 18:37:15] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 18:37:15] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 18:37:15] [ERROR] [::1] [/login.php] Constant PUBLIC_INCLUDES already defined {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":5,"type":"WARNING"}
+[2025-04-07 18:37:19] [ERROR] [::1] [/index.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 18:37:19] [ERROR] [::1] [/index.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 18:37:32] [ERROR] [::1] [/tools.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 18:37:32] [ERROR] [::1] [/tools.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 18:38:40] [ERROR] [::1] [/index.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 18:38:40] [ERROR] [::1] [/index.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 18:38:48] [ERROR] [::1] [/tools.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 18:38:48] [ERROR] [::1] [/tools.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 18:39:01] [ERROR] [::1] [/winkelwagen.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 18:39:01] [ERROR] [::1] [/winkelwagen.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 18:39:01] [ERROR] [::1] [/winkelwagen.php] require_once(C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai.com\public_html/../components/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\winkelwagen.php","line":85,"type":"WARNING"}
+[2025-04-07 18:39:01] [ERROR] [::1] [/winkelwagen.php] Failed opening required 'C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai.com\public_html/../components/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\winkelwagen.php","line":85,"trace":"#0 {main}"}
+[2025-04-07 18:40:55] [ERROR] [::1] [/] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 18:40:55] [ERROR] [::1] [/] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 18:41:01] [ERROR] [::1] [/over-mij.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 18:41:01] [ERROR] [::1] [/over-mij.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 18:41:14] [ERROR] [::1] [/winkelwagen.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 18:41:14] [ERROR] [::1] [/winkelwagen.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 18:41:14] [ERROR] [::1] [/winkelwagen.php] require_once(C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai.com\public_html/../components/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\winkelwagen.php","line":85,"type":"WARNING"}
+[2025-04-07 18:41:14] [ERROR] [::1] [/winkelwagen.php] Failed opening required 'C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai.com\public_html/../components/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\winkelwagen.php","line":85,"trace":"#0 {main}"}
+[2025-04-07 18:43:31] [ERROR] [::1] [/nieuws.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 18:43:31] [ERROR] [::1] [/nieuws.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 18:45:02] [ERROR] [::1] [/winkelwagen.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 18:45:02] [ERROR] [::1] [/winkelwagen.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 18:45:09] [ERROR] [::1] [/tools.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 18:45:09] [ERROR] [::1] [/tools.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 18:45:16] [ERROR] [::1] [/winkelwagen.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 18:45:16] [ERROR] [::1] [/winkelwagen.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 18:47:58] [ERROR] [::1] [/tools.php?id=email-assistant] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 18:47:58] [ERROR] [::1] [/tools.php?id=email-assistant] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 18:48:06] [ERROR] [::1] [/winkelwagen.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 18:48:06] [ERROR] [::1] [/winkelwagen.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 18:48:21] [ERROR] [::1] [/tools.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 18:48:21] [ERROR] [::1] [/tools.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 18:48:50] [ERROR] [::1] [/winkelwagen.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 18:48:50] [ERROR] [::1] [/winkelwagen.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 18:49:27] [ERROR] [::1] [/tools.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 18:49:27] [ERROR] [::1] [/tools.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 18:49:34] [ERROR] [::1] [/winkelwagen.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 18:49:34] [ERROR] [::1] [/winkelwagen.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}

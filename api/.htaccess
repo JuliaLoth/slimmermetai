@@ -1,0 +1,68 @@
+# API .htaccess - SlimmerMetAI.com
+# Zorgt voor clean URLs, CORS headers en beveiligingsopties
+
+# Schakel directory listing uit
+Options -Indexes
+
+# Schakel MultiViews uit om verwarring met bestandsnamen te voorkomen
+Options -MultiViews
+
+# Zet de rewrite engine aan
+RewriteEngine On
+RewriteBase /api/
+
+# Zorg ervoor dat we directe bestandsverzoeken doorlaten
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
+# CORS headers instellen
+<IfModule mod_headers.c>
+    # Sta alleen specifieke origins toe (aanpassen op basis van je frontend URL)
+    SetEnvIf Origin "^(https://(www\.)?slimmermetai\.com|http://localhost:3000)$" ALLOWED_ORIGIN=$0
+    Header set Access-Control-Allow-Origin %{ALLOWED_ORIGIN}e env=ALLOWED_ORIGIN
+    Header set Access-Control-Allow-Credentials "true"
+    Header set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+    Header set Access-Control-Allow-Headers "Authorization, Content-Type, X-CSRF-Token"
+    Header set Access-Control-Max-Age "3600"
+    
+    # Behandel OPTIONS request voor CORS preflight
+    RewriteCond %{REQUEST_METHOD} OPTIONS
+    RewriteRule ^(.*)$ $1 [R=200,L]
+</IfModule>
+
+# Beveiliging headers
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    
+    # Content Security Policy voor Stripe met frame-ancestors toegevoegd
+    Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://js.stripe.com; connect-src 'self' https://api.stripe.com; frame-src 'self' https://js.stripe.com; frame-ancestors 'self'"
+</IfModule>
+
+# Herken JSON- en vorm-gegevens in POST-verzoeken
+<IfModule mod_headers.c>
+    RewriteCond %{HTTP:Content-Type} ^application/json
+    RewriteRule .* - [E=HTTP_CONTENT_TYPE:application/json]
+    
+    RewriteCond %{HTTP:Content-Type} ^application/x-www-form-urlencoded
+    RewriteRule .* - [E=HTTP_CONTENT_TYPE:application/x-www-form-urlencoded]
+</IfModule>
+
+# Auth endpoints
+RewriteRule ^auth/login/?$ auth/login.php [L,QSA]
+RewriteRule ^auth/register/?$ auth/register.php [L,QSA]
+RewriteRule ^auth/logout/?$ auth/logout.php [L,QSA]
+RewriteRule ^auth/refresh-token/?$ auth/refresh-token.php [L,QSA]
+RewriteRule ^auth/forgot-password/?$ auth/forgot-password.php [L,QSA]
+RewriteRule ^auth/reset-password/?$ auth/reset-password.php [L,QSA]
+RewriteRule ^auth/verify-email/?$ auth/verify-email.php [L,QSA]
+RewriteRule ^auth/me/?$ auth/me.php [L,QSA]
+
+# Users endpoints
+RewriteRule ^users/profile/?$ users/profile.php [L,QSA]
+RewriteRule ^users/password/?$ users/password.php [L,QSA]
+
+# Stuur 404 bij niet-bestaande API endpoints
+RewriteRule ^ - [R=404,L] 

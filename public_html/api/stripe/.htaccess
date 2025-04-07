@@ -1,0 +1,38 @@
+# Stripe API configuratie
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /api/stripe/
+    
+    # Sta directe toegang toe tot bestanden (geen routing voor bestaande bestanden)
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule ^ - [L]
+    
+    # Route alles naar index.php als het bestand niet bestaat
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>
+
+# CORS headers voor API toegang
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+    Header set Access-Control-Allow-Headers "Content-Type, Authorization"
+    Header set Access-Control-Max-Age "3600"
+</IfModule>
+
+# Zorg ervoor dat PHP bestanden correct worden verwerkt
+<FilesMatch "\.php$">
+    # Forceer behandeling als PHP script
+    SetHandler application/x-httpd-php
+</FilesMatch>
+
+# Voorkom caching van API responses
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault "access"
+</IfModule>
+
+# Voorkom dat de browser de response als HTML interpreteert
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+</IfModule> 

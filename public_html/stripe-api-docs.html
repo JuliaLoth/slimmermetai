@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stripe API Documentatie - Slimmer met AI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #2563eb;
+        }
+        pre, code {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            overflow: auto;
+            font-family: 'Courier New', monospace;
+        }
+        code {
+            padding: 2px 5px;
+            border-radius: 3px;
+            background-color: #f0f0f0;
+        }
+        .method {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fafafa;
+        }
+        .method h3 {
+            margin-top: 0;
+        }
+        .alert {
+            padding: 15px;
+            background-color: #ffecec;
+            border-left: 5px solid #f44336;
+            margin-bottom: 15px;
+        }
+        .success {
+            padding: 15px;
+            background-color: #e6ffe6;
+            border-left: 5px solid #4CAF50;
+            margin-bottom: 15px;
+        }
+        .note {
+            padding: 15px;
+            background-color: #e6f7ff;
+            border-left: 5px solid #2196F3;
+            margin-bottom: 15px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Stripe API Documentatie</h1>
+    <p>Deze documentatie beschrijft verschillende manieren om de Stripe API te benaderen binnen het Slimmer met AI platform.</p>
+    
+    <div class="alert">
+        <strong>Let op:</strong> We hebben problemen geconstateerd met directe toegang tot de API via het pad <code>/api/stripe</code>. 
+        Gebruik daarom altijd de aanbevolen proxy scripts of de JavaScript helper functies die hieronder worden beschreven.
+    </div>
+    
+    <h2>API Toegangsmethoden</h2>
+    <p>Er zijn verschillende manieren om de Stripe API te benaderen, afhankelijk van je specifieke behoeften:</p>
+    
+    <div class="method">
+        <h3>1. Proxy Scripts (Aanbevolen)</h3>
+        <p>De meest betrouwbare manier om de API te benaderen is via de proxy scripts in de hoofdmap:</p>
+        <ul>
+            <li><code>/stripe-config.php</code> - Voor het ophalen van de Stripe configuratie</li>
+            <li><code>/stripe-checkout-session.php</code> - Voor het aanmaken van een checkout sessie</li>
+        </ul>
+        <div class="success">
+            Deze methode is het meest betrouwbaar en omzeilt potentiële toegangsproblemen met de directe API paden.
+        </div>
+        
+        <h4>Voorbeeld (JavaScript):</h4>
+        <pre>// Ophalen van Stripe configuratie
+fetch('/stripe-config.php')
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('Fout:', error));
+
+// Aanmaken van checkout sessie
+const checkoutData = {
+  line_items: [
+    {
+      price_data: {
+        currency: 'eur',
+        product_data: {
+          name: 'Test Product',
+          description: 'Test beschrijving'
+        },
+        unit_amount: 1000 // 10.00 EUR
+      },
+      quantity: 1
+    }
+  ],
+  mode: 'payment',
+  success_url: window.location.origin + '/betaling-succes.php',
+  cancel_url: window.location.origin + '/winkelwagen.php'
+};
+
+fetch('/stripe-checkout-session.php', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(checkoutData)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('Fout:', error));</pre>
+    </div>
+    
+    <div class="method">
+        <h3>2. JavaScript Helper Functies</h3>
+        <p>Voor eenvoudig gebruik hebben we JavaScript helper functies beschikbaar die de proxy scripts aanroepen:</p>
+        <div class="note">
+            Voeg het bestand <code>/js/stripe-api.js</code> toe aan je pagina om deze functies te gebruiken.
+        </div>
+        
+        <h4>Voorbeeld:</h4>
+        <pre>&lt;script src="/js/stripe-api.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  // Ophalen van Stripe configuratie
+  getStripeConfig()
+    .then(config => {
+      console.log('Stripe configuratie:', config);
+      // Initialiseer Stripe met de publishableKey
+      const stripe = Stripe(config.publishableKey);
+    })
+    .catch(error => console.error('Fout:', error));
+  
+  // Aanmaken van checkout sessie
+  const checkoutData = {
+    line_items: [
+      {
+        price_data: {
+          currency: 'eur',
+          product_data: {
+            name: 'Test Product',
+            description: 'Test beschrijving'
+          },
+          unit_amount: 1000 // 10.00 EUR
+        },
+        quantity: 1
+      }
+    ],
+    mode: 'payment',
+    success_url: window.location.origin + '/betaling-succes.php',
+    cancel_url: window.location.origin + '/winkelwagen.php'
+  };
+  
+  createStripeCheckoutSession(checkoutData)
+    .then(session => {
+      console.log('Checkout sessie:', session);
+      // Redirect naar Stripe checkout
+      stripe.redirectToCheckout({ sessionId: session.id });
+    })
+    .catch(error => console.error('Fout:', error));
+&lt;/script&gt;</pre>
+    </div>
+    
+    <div class="method">
+        <h3>3. API Proxy</h3>
+        <p>Voor geavanceerde use-cases of als alternatief is er een API proxy beschikbaar:</p>
+        <ul>
+            <li><code>/api-proxy.php?endpoint=stripe</code> - Voor algemene Stripe API informatie</li>
+            <li><code>/api-proxy.php?endpoint=stripe_config</code> - Voor Stripe configuratie</li>
+            <li><code>/api-proxy.php?endpoint=stripe_test</code> - Voor het testen van de API verbinding</li>
+        </ul>
+        
+        <h4>Voorbeeld:</h4>
+        <pre>// Ophalen van Stripe configuratie via de API proxy
+fetch('/api-proxy.php?endpoint=stripe_config')
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('Fout:', error));</pre>
+    </div>
+    
+    <div class="method">
+        <h3>4. Directe API Toegang (Niet Aanbevolen)</h3>
+        <p>Directe toegang tot de API endpoints is mogelijk, maar kan problemen veroorzaken met toegangsrechten:</p>
+        
+        <div class="alert">
+            <strong>Waarschuwing:</strong> Directe API toegang kan toegangsfouten veroorzaken. 
+            Gebruik bij voorkeur een van de bovenstaande methoden.
+        </div>
+        
+        <table>
+            <tr>
+                <th>Endpoint</th>
+                <th>Beschrijving</th>
+                <th>Toegangsstatus</th>
+            </tr>
+            <tr>
+                <td><code>/api/</code></td>
+                <td>API index met informatie over beschikbare endpoints</td>
+                <td>Mogelijk geblokkeerd</td>
+            </tr>
+            <tr>
+                <td><code>/api/stripe/</code></td>
+                <td>Stripe API index</td>
+                <td>Mogelijk geblokkeerd</td>
+            </tr>
+            <tr>
+                <td><code>/api/stripe/config.php</code></td>
+                <td>Stripe configuratie</td>
+                <td>Mogelijk geblokkeerd</td>
+            </tr>
+            <tr>
+                <td><code>/api/stripe/direct-test.php</code></td>
+                <td>Test endpoint dat toegang zou moeten hebben</td>
+                <td>Test dit endpoint</td>
+            </tr>
+        </table>
+    </div>
+    
+    <h2>Testpagina's</h2>
+    <p>Om de API functionaliteit te testen, kunt u de volgende testpagina's gebruiken:</p>
+    <ul>
+        <li><a href="/stripe-test.html">Stripe Test</a> - Test de proxy scripts</li>
+        <li><a href="/api-path-test.html">API Pad Test</a> - Test verschillende API toegangsmethoden</li>
+    </ul>
+    
+    <h2>Troubleshooting</h2>
+    <div class="note">
+        <p>Als je problemen ondervindt met de API toegang, probeer dan het volgende:</p>
+        <ol>
+            <li>Gebruik altijd de proxy scripts in de hoofdmap</li>
+            <li>Controleer de browser console voor eventuele foutmeldingen</li>
+            <li>Controleer of je de juiste URL gebruikt</li>
+            <li>Probeer een van de testpagina's om te zien welke methode werkt</li>
+            <li>Als je een HTML response krijgt met "Toegang geweigerd", gebruik dan een van de alternatieve methoden</li>
+        </ol>
+    </div>
+
+    <footer style="margin-top: 50px; border-top: 1px solid #ddd; padding-top: 20px; color: #777;">
+        <p>Slimmer met AI - Stripe API Documentatie | Laatst bijgewerkt: <?php echo date('d-m-Y'); ?></p>
+    </footer>
+</body>
+</html> 

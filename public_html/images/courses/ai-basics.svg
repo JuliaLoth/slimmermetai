@@ -1,0 +1,49 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+    <!-- Achtergrond -->
+    <rect width="400" height="300" fill="#f8f9fa" rx="8" ry="8"/>
+    
+    <!-- Hersenen (abstracte AI-weergave) -->
+    <circle cx="200" cy="150" r="100" fill="#f5f5ff" stroke="#e0e0e0" stroke-width="2"/>
+    
+    <!-- Hersencircuits (lijnen die een neuraal netwerk voorstellen) -->
+    <line x1="140" y1="110" x2="180" y2="90" stroke="#5852f2" stroke-width="2"/>
+    <line x1="140" y1="110" x2="160" y2="140" stroke="#5852f2" stroke-width="2"/>
+    <line x1="140" y1="110" x2="120" y2="150" stroke="#5852f2" stroke-width="2"/>
+    
+    <line x1="260" y1="110" x2="220" y2="90" stroke="#5852f2" stroke-width="2"/>
+    <line x1="260" y1="110" x2="240" y2="140" stroke="#5852f2" stroke-width="2"/>
+    <line x1="260" y1="110" x2="280" y2="150" stroke="#5852f2" stroke-width="2"/>
+    
+    <line x1="180" y1="90" x2="220" y2="90" stroke="#5852f2" stroke-width="2"/>
+    <line x1="160" y1="140" x2="240" y2="140" stroke="#5852f2" stroke-width="2"/>
+    <line x1="120" y1="150" x2="280" y2="150" stroke="#5852f2" stroke-width="2"/>
+    
+    <line x1="160" y1="200" x2="120" y2="150" stroke="#5852f2" stroke-width="2"/>
+    <line x1="160" y1="200" x2="200" y2="230" stroke="#5852f2" stroke-width="2"/>
+    
+    <line x1="240" y1="200" x2="280" y2="150" stroke="#5852f2" stroke-width="2"/>
+    <line x1="240" y1="200" x2="200" y2="230" stroke="#5852f2" stroke-width="2"/>
+    
+    <!-- Knooppunten (neuronen) -->
+    <circle cx="140" cy="110" r="6" fill="#5852f2"/>
+    <circle cx="180" cy="90" r="6" fill="#5852f2"/>
+    <circle cx="220" cy="90" r="6" fill="#5852f2"/>
+    <circle cx="260" cy="110" r="6" fill="#5852f2"/>
+    
+    <circle cx="160" cy="140" r="6" fill="#5852f2"/>
+    <circle cx="240" cy="140" r="6" fill="#5852f2"/>
+    
+    <circle cx="120" cy="150" r="6" fill="#5852f2"/>
+    <circle cx="280" cy="150" r="6" fill="#5852f2"/>
+    
+    <circle cx="160" cy="200" r="6" fill="#5852f2"/>
+    <circle cx="240" cy="200" r="6" fill="#5852f2"/>
+    
+    <circle cx="200" cy="230" r="6" fill="#5852f2"/>
+    
+    <!-- Centrale hersenkern -->
+    <circle cx="200" cy="150" r="15" fill="#ffffff" stroke="#5852f2" stroke-width="3"/>
+    
+    <!-- Visuele indicatie voor "AI Basics" zonder tekst -->
+    <rect x="100" y="50" width="200" height="30" rx="15" ry="15" fill="#5852f2"/>
+</svg> 
