@@ -188,3 +188,471 @@
 [2025-04-07 18:49:34] [ERROR] [::1] [/winkelwagen.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
 [2025-04-07 19:51:08] [ERROR] [::1] [/winkelwagen.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
 [2025-04-07 19:51:08] [ERROR] [::1] [/winkelwagen.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 20:31:06] [ERROR] [::1] [/winkelwagen.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 20:31:06] [ERROR] [::1] [/winkelwagen.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 20:31:10] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 20:31:10] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 20:31:10] [ERROR] [::1] [/login.php] Constant PUBLIC_INCLUDES already defined {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":5,"type":"WARNING"}
+[2025-04-07 20:33:56] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 20:33:56] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 20:33:56] [ERROR] [::1] [/login.php] Constant PUBLIC_INCLUDES already defined {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":5,"type":"WARNING"}
+[2025-04-07 20:34:00] [ERROR] [::1] [/over-mij.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 20:34:00] [ERROR] [::1] [/over-mij.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 20:34:13] [ERROR] [::1] [/winkelwagen.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 20:34:13] [ERROR] [::1] [/winkelwagen.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 20:34:20] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 20:34:20] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 20:34:20] [ERROR] [::1] [/login.php] Constant PUBLIC_INCLUDES already defined {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":5,"type":"WARNING"}
+[2025-04-07 20:40:07] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 20:40:07] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 20:40:07] [ERROR] [::1] [/login.php] Constant PUBLIC_INCLUDES already defined {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":5,"type":"WARNING"}
+[2025-04-07 20:40:14] [ERROR] [::1] [/tools.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 20:40:14] [ERROR] [::1] [/tools.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 20:41:29] [ERROR] [::1] [/tools.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 20:41:29] [ERROR] [::1] [/tools.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 20:42:23] [ERROR] [::1] [/tools.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 20:42:23] [ERROR] [::1] [/tools.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 20:43:17] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 20:43:17] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 20:43:17] [ERROR] [::1] [/login.php] Constant PUBLIC_INCLUDES already defined {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":5,"type":"WARNING"}
+[2025-04-07 20:43:50] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 20:43:50] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 20:43:50] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":160,"type":"WARNING"}
+[2025-04-07 20:43:50] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":160,"trace":"#0 {main}"}
+[2025-04-07 20:43:58] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 20:43:58] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 20:43:58] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":160,"type":"WARNING"}
+[2025-04-07 20:43:58] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":160,"trace":"#0 {main}"}
+[2025-04-07 20:44:04] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 20:44:04] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 20:44:04] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":160,"type":"WARNING"}
+[2025-04-07 20:44:04] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":160,"trace":"#0 {main}"}
+[2025-04-07 20:44:15] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 20:44:15] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 20:44:15] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":160,"type":"WARNING"}
+[2025-04-07 20:44:15] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":160,"trace":"#0 {main}"}
+[2025-04-07 20:44:48] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 20:44:48] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 20:44:48] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":160,"type":"WARNING"}
+[2025-04-07 20:44:48] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":160,"trace":"#0 {main}"}
+[2025-04-07 20:49:59] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 20:49:59] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 20:49:59] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":169,"type":"WARNING"}
+[2025-04-07 20:49:59] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":169,"trace":"#0 {main}"}
+[2025-04-07 20:50:39] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 20:50:39] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 20:50:39] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":169,"type":"WARNING"}
+[2025-04-07 20:50:39] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":169,"trace":"#0 {main}"}
+[2025-04-07 20:54:51] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 20:54:51] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 20:54:51] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":169,"type":"WARNING"}
+[2025-04-07 20:54:51] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":169,"trace":"#0 {main}"}
+[2025-04-07 20:55:56] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 20:55:56] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 20:55:56] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":151,"type":"WARNING"}
+[2025-04-07 20:55:56] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":151,"trace":"#0 {main}"}
+[2025-04-07 20:56:24] [ERROR] [::1] [/] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 20:56:24] [ERROR] [::1] [/] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 20:56:31] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 20:56:31] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 20:56:31] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":151,"type":"WARNING"}
+[2025-04-07 20:56:31] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":151,"trace":"#0 {main}"}
+[2025-04-07 20:57:53] [ERROR] [::1] [/register.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 20:57:53] [ERROR] [::1] [/register.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 20:57:53] [ERROR] [::1] [/register.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\register.php","line":136,"type":"WARNING"}
+[2025-04-07 20:57:53] [ERROR] [::1] [/register.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\register.php","line":136,"trace":"#0 {main}"}
+[2025-04-07 20:58:43] [ERROR] [::1] [/register.php?csrf_token=c61f3458145471f4bd88c2c6cc01b1cc&firstName=Julia&lastName=Loth&email=julia%40loth.nl&password=3553julia&confirmPassword=3553julia&termsAgreement=on] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 20:58:43] [ERROR] [::1] [/register.php?csrf_token=c61f3458145471f4bd88c2c6cc01b1cc&firstName=Julia&lastName=Loth&email=julia%40loth.nl&password=3553julia&confirmPassword=3553julia&termsAgreement=on] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 20:58:43] [ERROR] [::1] [/register.php?csrf_token=c61f3458145471f4bd88c2c6cc01b1cc&firstName=Julia&lastName=Loth&email=julia%40loth.nl&password=3553julia&confirmPassword=3553julia&termsAgreement=on] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\register.php","line":136,"type":"WARNING"}
+[2025-04-07 20:58:43] [ERROR] [::1] [/register.php?csrf_token=c61f3458145471f4bd88c2c6cc01b1cc&firstName=Julia&lastName=Loth&email=julia%40loth.nl&password=3553julia&confirmPassword=3553julia&termsAgreement=on] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\register.php","line":136,"trace":"#0 {main}"}
+[2025-04-07 21:00:21] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:00:21] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:00:22] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":151,"type":"WARNING"}
+[2025-04-07 21:00:22] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":151,"trace":"#0 {main}"}
+[2025-04-07 21:02:30] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:02:30] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:02:30] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":151,"type":"WARNING"}
+[2025-04-07 21:02:30] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":151,"trace":"#0 {main}"}
+[2025-04-07 21:02:38] [ERROR] [::1] [/register.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:02:38] [ERROR] [::1] [/register.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:02:38] [ERROR] [::1] [/register.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\register.php","line":136,"type":"WARNING"}
+[2025-04-07 21:02:38] [ERROR] [::1] [/register.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\register.php","line":136,"trace":"#0 {main}"}
+[2025-04-07 21:02:59] [ERROR] [::1] [/index.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:02:59] [ERROR] [::1] [/index.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:04:04] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:04:04] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:04:04] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":151,"type":"WARNING"}
+[2025-04-07 21:04:04] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":151,"trace":"#0 {main}"}
+[2025-04-07 21:04:29] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:04:29] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:04:29] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":151,"type":"WARNING"}
+[2025-04-07 21:04:29] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":151,"trace":"#0 {main}"}
+[2025-04-07 21:05:50] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:05:50] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:05:50] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":151,"type":"WARNING"}
+[2025-04-07 21:05:50] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":151,"trace":"#0 {main}"}
+[2025-04-07 21:10:37] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:10:37] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:10:37] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":150,"type":"WARNING"}
+[2025-04-07 21:10:37] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":150,"trace":"#0 {main}"}
+[2025-04-07 21:10:43] [ERROR] [::1] [/register.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:10:43] [ERROR] [::1] [/register.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:10:43] [ERROR] [::1] [/register.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\register.php","line":116,"type":"WARNING"}
+[2025-04-07 21:10:43] [ERROR] [::1] [/register.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\register.php","line":116,"trace":"#0 {main}"}
+[2025-04-07 21:14:27] [ERROR] [::1] [/register.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:14:27] [ERROR] [::1] [/register.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:14:27] [ERROR] [::1] [/register.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\register.php","line":131,"type":"WARNING"}
+[2025-04-07 21:14:27] [ERROR] [::1] [/register.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\register.php","line":131,"trace":"#0 {main}"}
+[2025-04-07 21:14:45] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:14:45] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:14:49] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:14:49] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:14:49] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"type":"WARNING"}
+[2025-04-07 21:14:49] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"trace":"#0 {main}"}
+[2025-04-07 21:17:10] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:17:10] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:17:10] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"type":"WARNING"}
+[2025-04-07 21:17:10] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"trace":"#0 {main}"}
+[2025-04-07 21:18:35] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:18:35] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:18:35] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"type":"WARNING"}
+[2025-04-07 21:18:35] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"trace":"#0 {main}"}
+[2025-04-07 21:18:57] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:18:57] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:18:57] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"type":"WARNING"}
+[2025-04-07 21:18:57] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"trace":"#0 {main}"}
+[2025-04-07 21:19:13] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:19:13] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:19:13] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"type":"WARNING"}
+[2025-04-07 21:19:13] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"trace":"#0 {main}"}
+[2025-04-07 21:19:21] [ERROR] [::1] [/register.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:19:21] [ERROR] [::1] [/register.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:19:21] [ERROR] [::1] [/register.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\register.php","line":131,"type":"WARNING"}
+[2025-04-07 21:19:21] [ERROR] [::1] [/register.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\register.php","line":131,"trace":"#0 {main}"}
+[2025-04-07 21:19:44] [ERROR] [::1] [/] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:19:44] [ERROR] [::1] [/] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:19:50] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:19:50] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:19:50] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"type":"WARNING"}
+[2025-04-07 21:19:50] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"trace":"#0 {main}"}
+[2025-04-07 21:21:50] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:21:50] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:21:50] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"type":"WARNING"}
+[2025-04-07 21:21:50] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"trace":"#0 {main}"}
+[2025-04-07 21:22:04] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:22:04] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:22:04] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"type":"WARNING"}
+[2025-04-07 21:22:04] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"trace":"#0 {main}"}
+[2025-04-07 21:23:53] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:23:53] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:23:53] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"type":"WARNING"}
+[2025-04-07 21:23:53] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"trace":"#0 {main}"}
+[2025-04-07 21:25:12] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:25:12] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:25:12] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"type":"WARNING"}
+[2025-04-07 21:25:12] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"trace":"#0 {main}"}
+[2025-04-07 21:25:46] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:25:46] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:25:46] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"type":"WARNING"}
+[2025-04-07 21:25:46] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"trace":"#0 {main}"}
+[2025-04-07 21:26:17] [ERROR] [::1] [/login] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:26:17] [ERROR] [::1] [/login] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:26:24] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:26:24] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:26:24] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"type":"WARNING"}
+[2025-04-07 21:26:24] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"trace":"#0 {main}"}
+[2025-04-07 21:27:21] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:27:21] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:27:21] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"type":"WARNING"}
+[2025-04-07 21:27:21] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"trace":"#0 {main}"}
+[2025-04-07 21:29:10] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:29:10] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:29:10] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"type":"WARNING"}
+[2025-04-07 21:29:10] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"trace":"#0 {main}"}
+[2025-04-07 21:29:30] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:29:30] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:29:30] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"type":"WARNING"}
+[2025-04-07 21:29:30] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"trace":"#0 {main}"}
+[2025-04-07 21:29:56] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:29:56] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:29:56] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"type":"WARNING"}
+[2025-04-07 21:29:56] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"trace":"#0 {main}"}
+[2025-04-07 21:30:42] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:30:42] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:30:42] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"type":"WARNING"}
+[2025-04-07 21:30:42] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"trace":"#0 {main}"}
+[2025-04-07 21:35:17] [ERROR] [::1] [/index.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:35:17] [ERROR] [::1] [/index.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:35:35] [ERROR] [::1] [/index.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:35:35] [ERROR] [::1] [/index.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:36:03] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:36:03] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:36:03] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"type":"WARNING"}
+[2025-04-07 21:36:03] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"trace":"#0 {main}"}
+[2025-04-07 21:38:33] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:38:33] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:38:33] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"type":"WARNING"}
+[2025-04-07 21:38:33] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"trace":"#0 {main}"}
+[2025-04-07 21:43:15] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:43:15] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:43:16] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"type":"WARNING"}
+[2025-04-07 21:43:16] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"trace":"#0 {main}"}
+[2025-04-07 21:43:30] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:43:30] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:43:31] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"type":"WARNING"}
+[2025-04-07 21:43:31] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"trace":"#0 {main}"}
+[2025-04-07 21:43:38] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:43:38] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:43:38] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"type":"WARNING"}
+[2025-04-07 21:43:38] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"trace":"#0 {main}"}
+[2025-04-07 21:43:44] [ERROR] [::1] [/nieuws.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:43:44] [ERROR] [::1] [/nieuws.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:43:50] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:43:50] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:43:50] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"type":"WARNING"}
+[2025-04-07 21:43:50] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"trace":"#0 {main}"}
+[2025-04-07 21:43:58] [ERROR] [::1] [/register.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:43:58] [ERROR] [::1] [/register.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:43:58] [ERROR] [::1] [/register.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\register.php","line":421,"type":"WARNING"}
+[2025-04-07 21:43:58] [ERROR] [::1] [/register.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\register.php","line":421,"trace":"#0 {main}"}
+[2025-04-07 21:45:20] [ERROR] [::1] [/index] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:45:20] [ERROR] [::1] [/index] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:45:27] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:45:27] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:45:27] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"type":"WARNING"}
+[2025-04-07 21:45:27] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"trace":"#0 {main}"}
+[2025-04-07 21:45:35] [ERROR] [::1] [/register.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:45:35] [ERROR] [::1] [/register.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:45:35] [ERROR] [::1] [/register.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\register.php","line":421,"type":"WARNING"}
+[2025-04-07 21:45:35] [ERROR] [::1] [/register.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\register.php","line":421,"trace":"#0 {main}"}
+[2025-04-07 21:49:45] [ERROR] [::1] [/index.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:49:45] [ERROR] [::1] [/index.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:50:19] [ERROR] [::1] [/index.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:50:19] [ERROR] [::1] [/index.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:54:22] [ERROR] [::1] [/register.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:54:22] [ERROR] [::1] [/register.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:54:22] [ERROR] [::1] [/register.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\register.php","line":421,"type":"WARNING"}
+[2025-04-07 21:54:22] [ERROR] [::1] [/register.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\register.php","line":421,"trace":"#0 {main}"}
+[2025-04-07 21:54:33] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:54:33] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:54:33] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"type":"WARNING"}
+[2025-04-07 21:54:33] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"trace":"#0 {main}"}
+[2025-04-07 21:54:42] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:54:42] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:56:09] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:56:09] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:56:09] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"type":"WARNING"}
+[2025-04-07 21:56:09] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"trace":"#0 {main}"}
+[2025-04-07 21:59:09] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 21:59:09] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 21:59:09] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"type":"WARNING"}
+[2025-04-07 21:59:09] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"trace":"#0 {main}"}
+[2025-04-07 22:03:03] [ERROR] [::1] [/index.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 22:03:03] [ERROR] [::1] [/index.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 22:03:07] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 22:03:07] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 22:03:07] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":137,"type":"WARNING"}
+[2025-04-07 22:03:07] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":137,"trace":"#0 {main}"}
+[2025-04-07 22:03:38] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 22:03:38] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 22:03:38] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":137,"type":"WARNING"}
+[2025-04-07 22:03:38] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":137,"trace":"#0 {main}"}
+[2025-04-07 22:06:03] [ERROR] [::1] [/winkelwagen.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 22:06:03] [ERROR] [::1] [/winkelwagen.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 22:10:00] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 22:10:00] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 22:10:00] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":137,"type":"WARNING"}
+[2025-04-07 22:10:00] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":137,"trace":"#0 {main}"}
+[2025-04-07 22:14:45] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 22:14:45] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 22:14:45] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":137,"type":"WARNING"}
+[2025-04-07 22:14:45] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":137,"trace":"#0 {main}"}
+[2025-04-07 22:14:55] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 22:14:55] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 22:14:55] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":137,"type":"WARNING"}
+[2025-04-07 22:14:55] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":137,"trace":"#0 {main}"}
+[2025-04-07 22:18:04] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 22:18:04] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 22:18:04] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":137,"type":"WARNING"}
+[2025-04-07 22:18:04] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":137,"trace":"#0 {main}"}
+[2025-04-07 22:18:36] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 22:18:36] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 22:18:36] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":137,"type":"WARNING"}
+[2025-04-07 22:18:36] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":137,"trace":"#0 {main}"}
+[2025-04-07 22:21:15] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 22:21:15] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 22:21:15] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":137,"type":"WARNING"}
+[2025-04-07 22:21:15] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":137,"trace":"#0 {main}"}
+[2025-04-07 22:43:59] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 22:43:59] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 22:44:00] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"type":"WARNING"}
+[2025-04-07 22:44:00] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"trace":"#0 {main}"}
+[2025-04-07 22:44:06] [ERROR] [::1] [/index.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 22:44:06] [ERROR] [::1] [/index.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 22:44:26] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 22:44:26] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 22:44:26] [ERROR] [::1] [/login.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"type":"WARNING"}
+[2025-04-07 22:44:26] [ERROR] [::1] [/login.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":133,"trace":"#0 {main}"}
+[2025-04-07 22:54:08] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 22:54:08] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 22:57:06] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 22:57:06] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 22:57:19] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 22:57:19] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 22:59:35] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 22:59:35] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 23:01:35] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 23:01:35] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 23:01:39] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 23:01:39] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 23:03:06] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 23:03:06] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 23:03:37] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 23:03:37] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 23:03:45] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 23:03:45] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 23:03:57] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 23:03:57] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 23:05:01] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 23:05:01] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 23:06:50] [ERROR] [::1] [/register.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 23:06:50] [ERROR] [::1] [/register.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 23:06:54] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 23:06:54] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 23:07:00] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 23:07:00] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 23:07:59] [ERROR] [::1] [/winkelwagen.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 23:07:59] [ERROR] [::1] [/winkelwagen.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 23:08:38] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 23:08:38] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 23:09:02] [ERROR] [::1] [/login] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 23:09:02] [ERROR] [::1] [/login] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 23:09:10] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 23:09:10] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 23:09:14] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 23:09:14] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 23:10:36] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 23:10:36] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 23:17:03] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 23:17:03] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 23:17:07] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 23:17:07] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 23:17:16] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 23:17:16] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 23:17:31] [ERROR] [::1] [/register.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 23:17:31] [ERROR] [::1] [/register.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 23:17:31] [ERROR] [::1] [/register.php] require_once(includes/footer.php): Failed to open stream: No such file or directory {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\register.php","line":434,"type":"WARNING"}
+[2025-04-07 23:17:31] [ERROR] [::1] [/register.php] Failed opening required 'includes/footer.php' (include_path='C:\xampp\php\PEAR') {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\register.php","line":434,"trace":"#0 {main}"}
+[2025-04-07 23:19:32] [ERROR] [::1] [/register.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 23:19:32] [ERROR] [::1] [/register.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 23:20:37] [ERROR] [::1] [/register.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 23:20:37] [ERROR] [::1] [/register.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 23:21:03] [ERROR] [::1] [/register.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 23:21:03] [ERROR] [::1] [/register.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 23:21:10] [ERROR] [::1] [/register.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 23:21:10] [ERROR] [::1] [/register.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 23:22:37] [ERROR] [::1] [/register.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 23:22:37] [ERROR] [::1] [/register.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 23:22:59] [ERROR] [::1] [/register.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 23:22:59] [ERROR] [::1] [/register.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 23:24:26] [ERROR] [::1] [/register.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 23:24:26] [ERROR] [::1] [/register.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 23:25:13] [ERROR] [::1] [/register.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 23:25:13] [ERROR] [::1] [/register.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 23:25:46] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 23:25:46] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 23:25:52] [ERROR] [::1] [/register.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 23:25:52] [ERROR] [::1] [/register.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 23:26:22] [ERROR] [::1] [/index.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 23:26:22] [ERROR] [::1] [/index.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 23:26:30] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 23:26:30] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 23:26:38] [ERROR] [::1] [/register.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 23:26:38] [ERROR] [::1] [/register.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 23:29:06] [ERROR] [::1] [/register.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 23:29:06] [ERROR] [::1] [/register.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 23:40:41] [ERROR] [::1] [/register.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 23:40:41] [ERROR] [::1] [/register.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 23:42:31] [ERROR] [::1] [/register.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 23:42:31] [ERROR] [::1] [/register.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 23:43:52] [ERROR] [::1] [/register.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 23:43:52] [ERROR] [::1] [/register.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 23:47:37] [ERROR] [::1] [/register.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 23:47:37] [ERROR] [::1] [/register.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 23:49:32] [ERROR] [::1] [/register.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 23:49:32] [ERROR] [::1] [/register.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 23:54:16] [ERROR] [::1] [/register.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 23:54:16] [ERROR] [::1] [/register.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 23:57:49] [ERROR] [::1] [/register.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 23:57:49] [ERROR] [::1] [/register.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-08 00:02:54] [ERROR] [::1] [/register.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-08 00:02:54] [ERROR] [::1] [/register.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-08 00:03:02] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-08 00:03:02] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-08 00:06:36] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-08 00:06:36] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-08 00:06:36] [ERROR] [::1] [/login.php] Undefined variable $base_url {"file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai.com\\public_html\\login.php","line":464,"type":"WARNING"}
+[2025-04-08 00:10:03] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-08 00:10:03] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-08 00:11:46] [ERROR] [::1] [/index.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-08 00:11:46] [ERROR] [::1] [/index.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-08 00:12:14] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-08 00:12:14] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-08 00:12:18] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-08 00:12:18] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-08 00:12:22] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-08 00:12:22] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-08 00:12:26] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-08 00:12:26] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-08 00:12:30] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-08 00:12:30] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-08 00:12:34] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-08 00:12:34] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-08 00:12:38] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-08 00:12:38] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-08 00:12:42] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-08 00:12:42] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-08 00:12:53] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-08 00:12:53] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-08 00:13:00] [ERROR] [::1] [/register.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-08 00:13:00] [ERROR] [::1] [/register.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-08 00:15:20] [ERROR] [::1] [/tools.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-08 00:15:20] [ERROR] [::1] [/tools.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-08 00:16:39] [ERROR] [::1] [/tools.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-08 00:16:39] [ERROR] [::1] [/tools.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-08 00:16:53] [ERROR] [::1] [/index.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-08 00:16:53] [ERROR] [::1] [/index.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-08 00:18:41] [ERROR] [::1] [/index.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-08 00:18:41] [ERROR] [::1] [/index.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-08 00:21:28] [ERROR] [::1] [/over-mij.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-08 00:21:28] [ERROR] [::1] [/over-mij.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-08 00:21:43] [ERROR] [::1] [/index.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-08 00:21:43] [ERROR] [::1] [/index.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-08 00:22:21] [ERROR] [::1] [/index.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-08 00:22:21] [ERROR] [::1] [/index.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-08 00:22:26] [ERROR] [::1] [/index.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-08 00:22:26] [ERROR] [::1] [/index.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-08 00:25:08] [ERROR] [::1] [/index.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-08 00:25:08] [ERROR] [::1] [/index.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-08 00:27:05] [ERROR] [::1] [/tools.php?id=content-generator] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-08 00:27:05] [ERROR] [::1] [/tools.php?id=content-generator] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-08 00:27:09] [ERROR] [::1] [/tools.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-08 00:27:09] [ERROR] [::1] [/tools.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-08 00:27:18] [ERROR] [::1] [/index.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-08 00:27:18] [ERROR] [::1] [/index.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-08 00:29:09] [ERROR] [::1] [/index.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-08 00:29:09] [ERROR] [::1] [/index.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-08 00:29:13] [ERROR] [::1] [/index.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-08 00:29:13] [ERROR] [::1] [/index.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-08 00:29:23] [ERROR] [::1] [/index.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-08 00:29:23] [ERROR] [::1] [/index.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-08 00:33:56] [ERROR] [::1] [/index.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-08 00:33:56] [ERROR] [::1] [/index.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-08 00:35:02] [ERROR] [::1] [/index.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-08 00:35:02] [ERROR] [::1] [/index.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-08 00:38:20] [ERROR] [::1] [/index.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-08 00:38:20] [ERROR] [::1] [/index.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-08 00:40:46] [ERROR] [::1] [/index.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-08 00:40:46] [ERROR] [::1] [/index.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-08 00:42:07] [ERROR] [::1] [/index.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-08 00:42:07] [ERROR] [::1] [/index.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}

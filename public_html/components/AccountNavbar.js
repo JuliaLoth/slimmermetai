@@ -23,6 +23,7 @@ class AccountNavbar extends HTMLElement {
   connectedCallback() {
     this.render();
     this._addEventListeners();
+    this._updateCartCountFromStorage();
   }
 
   static get observedAttributes() {
@@ -63,9 +64,21 @@ class AccountNavbar extends HTMLElement {
     this.render();
   }
 
+  _updateCartCountFromStorage() {
+    try {
+      const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+      const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+      const cartCountSpan = this.shadowRoot.querySelector('.cart-count');
+      if (cartCountSpan) {
+        cartCountSpan.textContent = itemCount;
+      }
+    } catch (error) {
+      console.error('Fout bij het bijwerken van de winkelwagenteller:', error);
+    }
+  }
+
   render() {
     const activePage = this.getAttribute('active-page') || '';
-    const cartCount = this.getAttribute('cart-count') || '0';
     
     // Navigatielinks met hun labels en paden
     const navLinks = [
@@ -98,7 +111,7 @@ class AccountNavbar extends HTMLElement {
           <circle cx="20" cy="21" r="1"></circle>
           <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
         </svg>
-        <span class="cart-count">${cartCount}</span>
+        <span class="cart-count">0</span>
       </a>
     `;
 

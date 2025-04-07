@@ -40,12 +40,14 @@ function initAuth() {
 // Registreer een nieuwe gebruiker
 async function register(userData) {
     try {
+        // Geen aparte CSRF token header nodig, backend verwacht het in de body
         const response = await fetch(`${API_URL}/auth/register`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
+                // Geen X-CSRF-Token header hier
             },
-            body: JSON.stringify(userData)
+            body: JSON.stringify(userData) // Stuur het volledige userData object inclusief csrf_token
         });
         
         return await handleResponse(response);
@@ -427,3 +429,178 @@ window.auth = {
     isLoggedIn,
     isAdmin
 }; 
+
+// === Login Pagina Specifieke Functies ===
+
+// Wachtwoord zichtbaarheid toggle
+function togglePasswordVisibility(inputId, button) {
+    const passwordInput = document.getElementById(inputId);
+    if (!passwordInput) return;
+    const icon = button.querySelector('svg');
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        if(icon) icon.innerHTML = `<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line>`;
+    } else {
+        passwordInput.type = "password";
+        if(icon) icon.innerHTML = `<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>`;
+    }
+}
+
+// Functie om berichten te tonen met CSS klassen
+function showMessage(type, message) {
+    const messageElement = document.getElementById('login-message'); // Gebruik een consistente ID
+    if (!messageElement) return;
+
+    messageElement.textContent = message;
+    // Reset klassen en voeg de juiste toe
+    messageElement.className = 'auth-message'; // Reset naar basisklasse
+    if (type === 'success') {
+        messageElement.classList.add('auth-message--success');
+    } else if (type === 'error') {
+        messageElement.classList.add('auth-message--error');
+    } else if (type === 'info') {
+        messageElement.classList.add('auth-message--info');
+    }
+    // Zorg dat het element zichtbaar is (indien het via CSS verborgen was)
+    messageElement.style.display = 'block'; 
+}
+
+// Initialiseer event listeners en logica specifiek voor de login pagina
+function initLoginPage() {
+    debug('Initialiseren van login pagina specifieke logica...');
+
+    // Maak togglePasswordVisibility globaal beschikbaar als het via onclick wordt aangeroepen
+    window.togglePasswordVisibility = togglePasswordVisibility;
+
+    // Check of gebruiker al ingelogd is en redirect indien nodig
+    // (Je kunt initAuth hier integreren of apart houden afhankelijk van de flow)
+    if (auth.isLoggedIn()) {
+        // Optioneel: Redirect naar dashboard als al ingelogd
+        // window.location.href = 'dashboard.php';
+        // debug('Gebruiker is al ingelogd.');
+        // return; // Stop verdere initialisatie als we redirecten
+    }
+
+    const emailLoginForm = document.getElementById('emailLoginForm');
+    const loginButton = document.getElementById('loginButton');
+    const googleButton = document.getElementById('google-signin-button');
+    const microsoftButton = document.getElementById('microsoft-signin-button');
+
+    if (emailLoginForm && loginButton) {
+        emailLoginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            showMessage('info', 'Bezig met inloggen...'); // Gebruik showMessage
+            loginButton.textContent = 'Bezig...';
+            loginButton.disabled = true;
+
+            const formData = new FormData(emailLoginForm);
+            const email = formData.get('email');
+            const password = formData.get('password');
+            // const rememberMe = formData.get('remember-me') === 'on'; // Onthoud mij logica nog implementeren
+            const csrfToken = formData.get('csrf_token');
+
+            try {
+                // LET OP: De originele login functie verwachtte 4 argumenten
+                // maar de auth.login hierboven verwacht er maar 2.
+                // We passen de aanroep aan of de auth.login functie zelf.
+                // Voor nu passen we de aanroep aan en negeren rememberMe & csrfToken hier.
+                // Idealiter wordt CSRF token validatie server-side gedaan.
+                const result = await auth.login(email, password);
+
+                if (result.success) {
+                    showMessage('success', 'Succesvol ingelogd! Je wordt doorverwezen...');
+                    window.location.href = result.redirectUrl || 'dashboard.php';
+                } else {
+                    showMessage('error', result.message || 'Ongeldige e-mail of wachtwoord.');
+                    loginButton.textContent = 'Inloggen';
+                    loginButton.disabled = false;
+                }
+            } catch (error) {
+                debug(`Login error: ${error.message}`);
+                showMessage('error', 'Er is een technische fout opgetreden. Probeer het later opnieuw.');
+                loginButton.textContent = 'Inloggen';
+                loginButton.disabled = false;
+            }
+        });
+    }
+
+    if (googleButton) {
+        googleButton.addEventListener('click', () => {
+             debug('Google Sign-In button clicked!');
+             showMessage('info', 'Google login wordt geïnitialiseerd...');
+             // Gebruik de bestaande googleLogin functie die de redirect doet
+             auth.googleLogin(); 
+             // Foutafhandeling gebeurt na redirect of via callback
+        });
+    }
+
+    if (microsoftButton) {
+        microsoftButton.addEventListener('click', () => {
+            debug('Microsoft Sign-In button clicked!');
+            showMessage('info', 'Microsoft login wordt geïnitialiseerd...');
+            // Voeg hier de aanroep naar Microsoft login toe (bv. auth.microsoftLogin())
+            // Voor nu een placeholder:
+            showMessage('error', 'Microsoft login is nog niet geïmplementeerd.');
+            // auth.signInWithMicrosoft().catch(error => {
+            //     debug(`Microsoft sign-in error: ${error.message}`);
+            //     showMessage('error', 'Kon niet inloggen met Microsoft. Fout: ' + (error.message || error));
+            // });
+        });
+    }
+
+    // Luister naar tab change events van de form card (optioneel)
+    const formCard = document.querySelector('slimmer-auth-form-card');
+    if (formCard) {
+        formCard.addEventListener('tab-change', (event) => {
+            debug('Tab changed to: ' + event.detail.tabId);
+            // Hier kun je eventueel de URL hash aanpassen of andere acties uitvoeren
+        });
+    }
+
+    debug('Login pagina initialisatie voltooid.');
+
+    // --- Tab Switching Logic --- 
+    const tabsContainer = document.querySelector('.auth-tabs');
+    if (tabsContainer) {
+        const tabButtons = tabsContainer.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content[data-tab-content]'); // Selecteer op data-attribuut
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const tabId = button.getAttribute('data-tab');
+
+                // Update button active state
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                // Update content active state
+                tabContents.forEach(content => {
+                    if (content.getAttribute('data-tab-content') === tabId) {
+                        content.classList.add('active');
+                    } else {
+                        content.classList.remove('active');
+                    }
+                });
+                
+                 // Optioneel: Als de 'Registreren' tab wordt geklikt, direct doorverwijzen?
+                // if (tabId === 'register-redirect') {
+                //     window.location.href = 'register.php';
+                // }
+            });
+        });
+    }
+    // --- End Tab Switching Logic ---
+}
+
+// Roep de init functie aan als dit script op de login pagina draait
+// Controleer op het bestaan van het login formulier
+document.addEventListener('DOMContentLoaded', () => {
+    if (document.getElementById('emailLoginForm')) { // Controleer of het login formulier bestaat
+        initLoginPage();
+    }
+    // Voeg hier eventueel initialisatie voor andere pagina's toe
+    // Bijvoorbeeld voor de registratiepagina:
+    // if (document.getElementById('registerForm')) {
+    //     initRegisterPage(); 
+    // }
+}); 

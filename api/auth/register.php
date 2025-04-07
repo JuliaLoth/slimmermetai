@@ -25,8 +25,8 @@ $json_data = file_get_contents('php://input');
 $data = json_decode($json_data, true);
 
 // Controleer verplichte velden
-if (!isset($data['name']) || !isset($data['email']) || !isset($data['password'])) {
-    error_response('Naam, email en wachtwoord zijn verplicht');
+if (!isset($data['firstName']) || !isset($data['lastName']) || !isset($data['email']) || !isset($data['password'])) {
+    error_response('Voornaam, achternaam, e-mailadres en wachtwoord zijn verplicht');
 }
 
 // Controleer CSRF-token
@@ -40,14 +40,16 @@ if (!$csrf->validateToken($data['csrf_token'])) {
 }
 
 // Valideer en sanitize input
-$name = sanitize_input($data['name']);
+$firstName = sanitize_input($data['firstName']);
+$lastName = sanitize_input($data['lastName']);
+$fullName = trim($firstName . ' ' . $lastName); // Combineer namen
 $email = filter_var(sanitize_input($data['email']), FILTER_VALIDATE_EMAIL);
 $password = $data['password'];
-$acceptTerms = isset($data['acceptTerms']) ? (bool)$data['acceptTerms'] : false;
+$termsAgreement = isset($data['termsAgreement']) ? (bool)$data['termsAgreement'] : false; // Check voor termsAgreement
 
 // Controleer of algemene voorwaarden zijn geaccepteerd
-if (!$acceptTerms) {
-    error_response('Je moet akkoord gaan met de algemene voorwaarden');
+if (!$termsAgreement) {
+    error_response('Je moet akkoord gaan met de algemene voorwaarden en het privacybeleid');
 }
 
 // Valideer email
@@ -113,7 +115,7 @@ try {
     
     // Gebruiker invoegen
     $stmt = $pdo->prepare("INSERT INTO users (name, email, password, created_at, role) VALUES (?, ?, ?, NOW(), 'user')");
-    $stmt->execute([$name, $email, $hashed_password]);
+    $stmt->execute([$fullName, $email, $hashed_password]);
     
     $user_id = $pdo->lastInsertId();
     
@@ -129,7 +131,7 @@ try {
     $verification_url = SITE_URL . '/verify-email?token=' . $verification_token;
     
     $mail_subject = 'Bevestig je e-mailadres bij SlimmerMetAI';
-    $mail_body = "Hallo $name,\n\n";
+    $mail_body = "Hallo $firstName,\n\n";
     $mail_body .= "Bedankt voor je registratie bij SlimmerMetAI!\n\n";
     $mail_body .= "Klik op de volgende link om je e-mailadres te bevestigen:\n";
     $mail_body .= "$verification_url\n\n";

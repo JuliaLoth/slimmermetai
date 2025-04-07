@@ -220,7 +220,7 @@ class SlimmerFooter extends HTMLElement {
               <ul class="footer-links">
                 <li><a href="/index.php">Home</a></li>
                 <li><a href="/tools.php">Tools</a></li>
-                <li><a href="/e-learnings.php">E-learnings</a></li>
+                <li><a href="/e-learnings.php">Cursussen</a></li>
                 <li><a href="/nieuws.php">Nieuws</a></li>
               </ul>
             </div>
@@ -243,7 +243,6 @@ class SlimmerFooter extends HTMLElement {
                <ul class="footer-links">
                  <li><a href="/privacybeleid.php">Privacybeleid</a></li>
                  <li><a href="/algemene-voorwaarden.php">Algemene Voorwaarden</a></li>
-                 <li><a href="/cookies.php">Cookiebeleid</a></li>
                </ul>
              </div>
 

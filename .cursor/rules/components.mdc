@@ -1,0 +1,8 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+
+# gebruik altijd best practices van code architectuur. Dus gebruik componenten zodat we schone en robuuste code hebben.
+

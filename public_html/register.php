@@ -597,13 +597,17 @@ document.addEventListener('DOMContentLoaded', function() {
         const formData = new FormData(registerForm);
                 
         try {
-            const result = await auth.register(
-                formData.get('firstName'),
-                formData.get('lastName'),
-                formData.get('email'),
-                formData.get('password'),
-                formData.get('csrf_token')
-            );
+            // Maak een object met de gebruikersgegevens
+            const userData = {
+                firstName: formData.get('firstName'),
+                lastName: formData.get('lastName'),
+                email: formData.get('email'),
+                password: formData.get('password'),
+                csrf_token: formData.get('csrf_token') // CSRF token blijft hier voorlopig
+            };
+
+            // Roep auth.register aan met het userData object
+            const result = await auth.register(userData);
                     
             if (result.success) {
                 // Toon success message
