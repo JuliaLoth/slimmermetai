@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # SlimmerMetAI.com Website
 
 Deze repository bevat de code voor de SlimmerMetAI.com website, inclusief de frontend en PHP API voor hosting op Antagonist.
@@ -149,3 +150,7 @@ $clientSecret = $intent->client_secret;
 ## Licentie
 
 Copyright © 2023 SlimmerMetAI.com. Alle rechten voorbehouden. 
+=======
+# slimmermetai.com
+website
+>>>>>>> 42f5d4acb36f48d16a32e8200a34a44170a87d36

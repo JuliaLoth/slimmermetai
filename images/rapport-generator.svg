@@ -1,0 +1,47 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+    <!-- Achtergrond -->
+    <rect width="400" height="300" fill="#f8f9fa" rx="8" ry="8"/>
+    
+    <!-- Documenten en grafieken -->
+    <rect x="40" y="40" width="160" height="220" fill="#ffffff" rx="6" ry="6" stroke="#e0e0e0" stroke-width="2"/>
+    <rect x="52" y="60" width="136" height="12" fill="#333333" rx="2" ry="2"/>
+    <rect x="52" y="80" width="100" height="8" fill="#666666" rx="1" ry="1"/>
+    
+    <!-- Tekstblokken in het document -->
+    <rect x="52" y="100" width="136" height="6" fill="#999999" rx="1" ry="1"/>
+    <rect x="52" y="112" width="136" height="6" fill="#999999" rx="1" ry="1"/>
+    <rect x="52" y="124" width="136" height="6" fill="#999999" rx="1" ry="1"/>
+    <rect x="52" y="136" width="100" height="6" fill="#999999" rx="1" ry="1"/>
+    
+    <!-- Grafiek -->
+    <rect x="52" y="160" width="136" height="80" fill="#f5f5ff" rx="4" ry="4"/>
+    
+    <!-- Grafiek Balken -->
+    <rect x="70" y="200" width="20" height="30" fill="#5852f2" rx="2" ry="2"/>
+    <rect x="100" y="180" width="20" height="50" fill="#7e79f5" rx="2" ry="2"/>
+    <rect x="130" y="160" width="20" height="70" fill="#a8a4f8" rx="2" ry="2"/>
+    <rect x="160" y="210" width="20" height="20" fill="#d2d0fb" rx="2" ry="2"/>
+    
+    <!-- Tweede document (resultatenpagina) -->
+    <rect x="220" y="40" width="140" height="220" fill="#ffffff" rx="6" ry="6" stroke="#e0e0e0" stroke-width="2"/>
+    <rect x="230" y="60" width="120" height="10" fill="#333333" rx="2" ry="2"/>
+    
+    <!-- Samenvatting secties -->
+    <rect x="230" y="85" width="120" height="30" fill="#f5f5ff" rx="4" ry="4"/>
+    <rect x="238" y="94" width="60" height="6" fill="#5852f2" rx="1" ry="1"/>
+    <rect x="238" y="106" width="104" height="4" fill="#999999" rx="1" ry="1"/>
+    
+    <rect x="230" y="125" width="120" height="30" fill="#f5f5ff" rx="4" ry="4"/>
+    <rect x="238" y="134" width="60" height="6" fill="#5852f2" rx="1" ry="1"/>
+    <rect x="238" y="146" width="104" height="4" fill="#999999" rx="1" ry="1"/>
+    
+    <rect x="230" y="165" width="120" height="30" fill="#f5f5ff" rx="4" ry="4"/>
+    <rect x="238" y="174" width="60" height="6" fill="#5852f2" rx="1" ry="1"/>
+    <rect x="238" y="186" width="104" height="4" fill="#999999" rx="1" ry="1"/>
+    
+    <!-- Aanbevelingen -->
+    <rect x="230" y="205" width="120" height="45" fill="#ebfaeb" rx="4" ry="4"/>
+    <rect x="238" y="212" width="80" height="8" fill="#28a745" rx="1" ry="1"/>
+    <rect x="238" y="226" width="104" height="4" fill="#666666" rx="1" ry="1"/>
+    <rect x="238" y="236" width="90" height="4" fill="#666666" rx="1" ry="1"/>
+</svg> 

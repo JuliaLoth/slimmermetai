@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tools | Slimmer met AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Ontdek onze praktische AI-tools voor professionals. Automatiseer taken en werk efficiënter met Slimmer met AI.">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
+    
+    <a href="#main-content" class="skip-link">Direct naar inhoud</a>
+    
+    <header role="banner">
+        <div class="container">
+            <nav class="navbar" role="navigation" aria-label="Hoofdnavigatie">
+                <div class="logo">
+                    <a href="index.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 80 80" fill="none" aria-label="Slimmer met AI logo">
+                            <rect width="80" height="80" rx="16" fill="#5852f2"/>
+                            <path d="M23 40.5L31.5 49L57 23.5" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        Slimmer met AI
+                    </a>
+                </div>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="tools.html" aria-current="page">Tools</a>
+                    <a href="e-learnings.html">E-Learnings</a>
+                    <a href="over-mij.html">Over Mij</a>
+                    <a href="nieuws.html">Nieuws</a>
+                </div>
+                <div class="auth-buttons">
+                    <a href="login.html" class="btn btn-outline">Inloggen</a>
+                    <a href="signup.html" class="btn btn-primary">Aanmelden</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <main id="main-content" role="main">
+        <section class="hero" aria-labelledby="main-heading">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 id="main-heading">AI Tools voor Professionals</h1>
+                    <p>Ontdek onze collectie van praktische AI-tools die je helpen om efficiënter te werken en tijd te besparen op routinetaken.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" aria-labelledby="tools-heading">
+            <div class="container">
+                <div class="section-header">
+                    <h2 id="tools-heading">Beschikbare Tools</h2>
+                    <p>Kies uit onze selectie van AI-tools, specifiek ontwikkeld voor Nederlandse professionals.</p>
+                </div>
+                
+                <div class="tools-grid">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="images/email-assistant.svg" alt="Screenshot van de Email Assistent Tool die automatisch e-mails sorteert en voorbereide antwoorden toont">
+                        </div>
+                        <div class="card-content">
+                            <span class="tag">Tijdsbesparing</span>
+                            <h3>Email Assistent</h3>
+                            <p>Automatiseer antwoorden op veelvoorkomende emails en sorteer je inbox. Bespaar tot 5 uur per week.</p>
+                            <a href="#email-tool" class="btn btn-primary">Probeer Gratis</a>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="images/rapport-generator.svg" alt="Screenshot van de Rapport Generator met een voorbeeld van een automatisch gegenereerd rapport met grafieken en analyses">
+                        </div>
+                        <div class="card-content">
+                            <span class="tag premium-tag">Premium</span>
+                            <h3>Rapport Generator</h3>
+                            <p>Creëer professionele rapporten in seconden. Upload je data en ontvang een compleet geanalyseerd rapport.</p>
+                            <a href="#rapport-tool" class="btn btn-primary">Meer Info</a>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="images/meeting-summarizer.svg" alt="Screenshot van de Meeting Summarizer die een vergadering transcribeert en belangrijke actiepunten markeert">
+                        </div>
+                        <div class="card-content">
+                            <span class="tag">Productiviteit</span>
+                            <h3>Meeting Summarizer</h3>
+                            <p>Upload je vergaderopname en ontvang een gedetailleerde samenvatting met actiepunten.</p>
+                            <a href="#meeting-tool" class="btn btn-primary">Probeer Gratis</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M12 16v-4"></path>
+                            <path d="M12 8h.01"></path>
+                        </svg>
+                        Slimmer met AI
+                    </div>
+                    <p class="footer-text">Praktische AI-tools en e-learnings voor Nederlandse professionals. Werk slimmer, niet harder.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Tools</h4>
+                    <ul class="footer-links">
+                        <li><a href="#email-tool">Email Assistent</a></li>
+                        <li><a href="#rapport-tool">Rapport Generator</a></li>
+                        <li><a href="#meeting-tool">Meeting Summarizer</a></li>
+                        <li><a href="#all-tools">Alle Tools</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>E-Learnings</h4>
+                    <ul class="footer-links">
+                        <li><a href="e-learnings.html#basics">AI Basics</a></li>
+                        <li><a href="e-learnings.html#prompt">Prompt Engineering</a></li>
+                        <li><a href="e-learnings.html#workflow">Workflow Automatisering</a></li>
+                        <li><a href="e-learnings.html">Alle Cursussen</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Bedrijf</h4>
+                    <ul class="footer-links">
+                        <li><a href="over-mij.html">Over Ons</a></li>
+                        <li><a href="nieuws.html">Nieuws</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Slimmer met AI. Alle rechten voorbehouden.</p>
+                <div class="social-links">
+                    <a href="#linkedin" aria-label="Volg ons op LinkedIn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                    </a>
+                    <a href="#twitter" aria-label="Volg ons op Twitter">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 

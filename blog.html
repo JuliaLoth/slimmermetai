@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Slimmer met AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Lees onze blog artikelen over AI, productiviteit en het slimmer maken van je werk.">
+    <link rel="stylesheet" href="css/style.css">
+    <noscript>
+        <style>
+            .preloader { display: none !important; }
+        </style>
+    </noscript>
+    <style>
+        /* Extra stijlen voor de blog pagina */
+        .blog-header {
+            padding: 6rem 0 2rem;
+            background: linear-gradient(135deg, #4361ee 0%, #7209b7 50%, #e45a84 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .blog-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            padding: 3rem 0;
+        }
+        
+        .blog-main {
+            flex: 1 1 65%;
+            min-width: 300px;
+        }
+        
+        .blog-sidebar {
+            flex: 1 1 25%;
+            min-width: 250px;
+        }
+        
+        .blog-title {
+            margin-bottom: 0.5rem;
+        }
+        
+        .blog-meta {
+            color: #6b7280;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .blog-post {
+            background: white;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .substack-widget-container {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .sidebar-section {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .sidebar-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            position: relative;
+        }
+        
+        .sidebar-section h3::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 2px;
+            background: #5852f2;
+            bottom: -5px;
+            left: 0;
+        }
+        
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .blog-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
+    
+    <a href="#main-content" class="skip-link">Direct naar inhoud</a>
+    
+    <header role="banner">
+        <div class="container">
+            <nav class="navbar" role="navigation" aria-label="Hoofdnavigatie">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="images/Logo.svg" alt="Slimmer met AI logo" width="50">
+                        <span class="logo-text">Slimmer met AI</span>
+                    </a>
+                </div>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="tools.html">Tools</a>
+                    <a href="e-learnings.html">Cursussen</a>
+                    <a href="over-mij.html">Over Mij</a>
+                    <a href="nieuws.html">Nieuws</a>
+                </div>
+                <div class="auth-buttons">
+                    <a href="login.html" class="btn btn-outline">Inloggen</a>
+                    <a href="login.html#signup" class="btn btn-primary">Aanmelden</a>
+                    <a href="winkelwagen.html" class="cart-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <main id="main-content" role="main">
+        <section class="blog-header">
+            <div class="container">
+                <h1>Blog</h1>
+                <p>Praktische AI-tips en trucs voor professionals</p>
+            </div>
+        </section>
+        
+        <div class="container">
+            <div class="blog-content">
+                <div class="blog-main">
+                    <article class="blog-post">
+                        <h2 class="blog-title">Slimmer met AI Nieuwsbrief</h2>
+                        <div class="blog-meta">Laatste update: 20 maart 2024</div>
+                        <p>Blijf op de hoogte van de nieuwste ontwikkelingen, tools en tips op het gebied van AI. Bekijk hieronder mijn meest recente artikelen en abonneer je op de nieuwsbrief om geen update te missen.</p>
+                        
+                        <div class="main-substack-container" role="region" aria-label="Slimmer met AI Nieuwsbrief">
+                            <div id="substack-feed-embed" class="substack-feed-container centered">
+                                <div class="substack-feed-loading" aria-live="polite">Artikelen worden geladen...</div>
+                            </div>
+
+                            <script>
+                                window.SubstackFeedWidget = {
+                                    substackUrl: "slimmermetai.substack.com",
+                                    posts: 6,
+                                    filter: "top",
+                                    layout: "right",
+                                    colors: {
+                                        primary: "#5852f2",
+                                        secondary: "#6b7280",
+                                        background: "#ffffff"
+                                    }
+                                };
+                            </script>
+                            <script src="https://substackapi.com/embeds/feed.js" async></script>
+                        </div>
+                        
+                        <div class="newsletter-cta">
+                            <p>Schrijf je in voor de nieuwsbrief om als eerste de nieuwste AI-tips en -tools te ontvangen:</p>
+                            <div class="newsletter-embed">
+                                <iframe src="https://slimmermetai.substack.com/embed" width="100%" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                
+                <aside class="blog-sidebar">
+                    <div class="sidebar-section">
+                        <h3>Over Slimmer met AI</h3>
+                        <p>Slimmer met AI helpt professionals en bedrijven om AI-tools effectief in te zetten voor meer productiviteit en betere resultaten.</p>
+                        <p><a href="index.html#about" class="btn btn-primary">Meer over ons</a></p>
+                    </div>
+                    
+                    <div class="sidebar-section">
+                        <h3>Categorieën</h3>
+                        <div class="tag-list">
+                            <span class="tag">AI Basics</span>
+                            <span class="tag">Productiviteit</span>
+                            <span class="tag">Automatisering</span>
+                            <span class="tag">ChatGPT</span>
+                            <span class="tag">Midjourney</span>
+                            <span class="tag premium-tag">Premium</span>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+        
+        <section class="section">
+            <div class="container">
+                <div class="cta-section">
+                    <h3>Klaar om aan de slag te gaan met AI?</h3>
+                    <p>Ontdek onze praktische tools en e-learnings om direct te profiteren van de kracht van AI in je dagelijkse werk.</p>
+                    <div class="cta-buttons">
+                        <a href="index.html#tools" class="btn btn-primary">Bekijk onze tools</a>
+                        <a href="index.html#courses" class="btn btn-outline">Ontdek e-learnings</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <img src="images/Logo.svg" alt="Slimmer met AI logo" width="30">
+                        <span class="logo-text">Slimmer met AI</span>
+                    </div>
+                    <p class="footer-text">Praktische AI-tools en e-learnings voor Nederlandse professionals. Werk slimmer, niet harder.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Tools</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#email-tool">Email Assistent</a></li>
+                        <li><a href="index.html#rapport-tool">Rapport Generator</a></li>
+                        <li><a href="index.html#meeting-tool">Meeting Summarizer</a></li>
+                        <li><a href="index.html#all-tools">Alle Tools</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>E-Learnings</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#basics-course">AI Basics</a></li>
+                        <li><a href="e-learnings.html">Alle Cursussen</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Bedrijf</h4>
+                    <ul class="footer-links">
+                        <li><a href="over-mij.html">Over Mij</a></li>
+                        <li><a href="nieuws.html">Nieuws</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Slimmer met AI. Alle rechten voorbehouden.</p>
+                <div class="social-links">
+                    <a href="#linkedin">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                    </a>
+                    <a href="#twitter">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+                        </svg>
+                    </a>
+                    <a href="#instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal" role="dialog" aria-labelledby="login-title" aria-hidden="true">
+        <div class="modal-overlay"></div>
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2 id="login-title">Inloggen bij Slimmer met AI</h2>
+                <button class="modal-close" aria-label="Sluit inlogvenster">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="login-form" class="auth-form">
+                    <div class="form-group">
+                        <label for="email">E-mailadres</label>
+                        <input type="email" id="email" name="email" required placeholder="jouw@email.nl">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Wachtwoord</label>
+                        <div class="password-container">
+                            <input type="password" id="password" name="password" required placeholder="Jouw wachtwoord">
+                            <button type="button" class="password-toggle" aria-label="Toon wachtwoord">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-options">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="remember" name="remember">
+                            <label for="remember">Onthoud mij</label>
+                        </div>
+                        <a href="#forgot-password" class="forgot-link">Wachtwoord vergeten?</a>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Inloggen</button>
+                </form>
+                <div class="auth-divider">
+                    <span>of inloggen met</span>
+                </div>
+                <div class="social-auth">
+                    <button class="social-btn google">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/>
+                        </svg>
+                        Google
+                    </button>
+                    <button class="social-btn microsoft">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M11.4 24H0V12.6h11.4V24zM24 24H12.6V12.6H24V24zM11.4 11.4H0V0h11.4v11.4zM24 11.4H12.6V0H24v11.4z"/>
+                        </svg>
+                        Microsoft
+                    </button>
+                </div>
+                <p class="auth-switch">Nog geen account? <a href="#signup" id="show-signup">Aanmelden</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signup-modal" class="modal" role="dialog" aria-labelledby="signup-title" aria-hidden="true">
+        <div class="modal-overlay"></div>
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2 id="signup-title">Aanmelden bij Slimmer met AI</h2>
+                <button class="modal-close" aria-label="Sluit aanmeldvenster">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="signup-form" class="auth-form">
+                    <div class="form-group">
+                        <label for="signup-name">Naam</label>
+                        <input type="text" id="signup-name" name="name" required placeholder="Jouw naam">
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-email">E-mailadres</label>
+                        <input type="email" id="signup-email" name="email" required placeholder="jouw@email.nl">
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password">Wachtwoord</label>
+                        <div class="password-container">
+                            <input type="password" id="signup-password" name="password" required placeholder="Kies een wachtwoord">
+                            <button type="button" class="password-toggle" aria-label="Toon wachtwoord">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-options">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            <label for="terms">Ik ga akkoord met de <a href="#terms">voorwaarden</a></label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Account aanmaken</button>
+                </form>
+                <div class="auth-divider">
+                    <span>of aanmelden met</span>
+                </div>
+                <div class="social-auth">
+                    <button class="social-btn google">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/>
+                        </svg>
+                        Google
+                    </button>
+                    <button class="social-btn microsoft">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M11.4 24H0V12.6h11.4V24zM24 24H12.6V12.6H24V24zM11.4 11.4H0V0h11.4v11.4zM24 11.4H12.6V0H24v11.4z"/>
+                        </svg>
+                        Microsoft
+                    </button>
+                </div>
+                <p class="auth-switch">Al een account? <a href="#login" id="show-login">Inloggen</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

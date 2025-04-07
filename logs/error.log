@@ -186,3 +186,5 @@
 [2025-04-07 18:49:27] [ERROR] [::1] [/tools.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
 [2025-04-07 18:49:34] [ERROR] [::1] [/winkelwagen.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
 [2025-04-07 18:49:34] [ERROR] [::1] [/winkelwagen.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-07 19:51:08] [ERROR] [::1] [/winkelwagen.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-07 19:51:08] [ERROR] [::1] [/winkelwagen.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
