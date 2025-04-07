@@ -79,6 +79,7 @@ class SlimmerFooter extends HTMLElement {
           margin-right: 0.75rem; /* Iets minder marge */
           width: 28px; /* Iets kleiner logo */
           height: auto;
+          border-radius: 6px; /* Maak hoeken iets minder rond */
         }
 
         .footer-logo .logo-text {

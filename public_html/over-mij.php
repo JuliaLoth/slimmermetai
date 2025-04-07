@@ -29,7 +29,7 @@ require_once __DIR__ . '/includes/header.php';
         
         <div class="about-profile">
             <div class="profile-image-container">
-                <img src="<?php echo asset_url('images/Profiel foto Julia.svg'); ?>" alt="Profielfoto van Julia Loth" class="profile-image" width="300" height="300">
+                <img src="<?php echo asset_url('images/Profiel foto Julia.svg'); ?>" alt="Profielfoto van Julia Loth" class="profile-image">
             </div>
             <div class="profile-content">
                 <p class="lead">Met mijn hands-on mentaliteit breng ik communicatie, concept en techniek samen om vernieuwing te realiseren die Ã©cht werkt in de praktijk.</p>
