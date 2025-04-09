@@ -73,3 +73,5 @@ Test deployment met kale hook v4 op $(Get-Date -Format "yyyy-MM-dd HH:mm:ss")
 Test deployment met hook v5 (bash, clean) op $(Get-Date -Format "yyyy-MM-dd HH:mm:ss")
 
 Test deployment na line ending fix op $(Get-Date -Format "yyyy-MM-dd HH:mm:ss")
+
+Test deployment met hook v7 (geen commentaar) op $(Get-Date -Format "yyyy-MM-dd HH:mm:ss")
