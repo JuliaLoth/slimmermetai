@@ -140,12 +140,48 @@ date_default_timezone_set('Europe/Amsterdam');
 // Centraliseer asset_url hier
 if (!function_exists('asset_url')) {
     function asset_url($path) {
-        // Bepaal het protocol (http of https)
+        // Bepaal het protocol
         $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
         
-        // Gebruik SITE_URL constante indien gedefinieerd, anders baseer op HTTP_HOST
-        $host = $_SERVER['HTTP_HOST'];
-        $base_url = defined('SITE_URL') ? rtrim(SITE_URL, '/') : $protocol . $host;
+        // Bepaal basis host
+        $host = $_SERVER['HTTP_HOST']; // bv. localhost of slimmermetai.com
+
+        // Standaard basis URL
+        $base_url = $protocol . $host;
+
+        // --- Aanpassing voor lokale omgeving in submap ---
+        // Controleer of we lokaal draaien EN of de request URI een submap bevat die we verwachten
+        $is_local = (strpos($host, 'localhost') !== false || strpos($host, '127.0.0.1') !== false);
+        // Haal alleen het pad op, zonder query string
+        $request_uri_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        $project_subpath = '/slimmermetai.com/public_html'; // Definieer het verwachte subpad
+
+        // Controleer of de request URI begint met het subpad
+        // Gebruik str_starts_with() voor PHP 8+, of strpos() === 0 voor compatibiliteit
+        if ($is_local && $request_uri_path !== null && strpos($request_uri_path, $project_subpath . '/') === 0) {
+            // Voeg het project subpad toe aan de base_url voor assets
+            // Belangrijk: Het subpad zit al in de $host voor localhost requests, dus we hoeven het niet dubbel toe te voegen.
+            // We moeten juist het deel *na* /public_html/ vinden in de $request_uri_path.
+            // ECHTER: Dit wordt complex. Een betere aanpak is SITE_URL gebruiken.
+            
+            // Vereenvoudigde (en mogelijk betere) aanpak: Gebruik SITE_URL als die is gedefinieerd
+            if (defined('SITE_URL') && !empty(SITE_URL)) {
+                 $base_url = rtrim(SITE_URL, '/'); 
+                 // Zorg dat SITE_URL in .env lokaal correct is ingesteld!
+                 // bv. SITE_URL=http://localhost/slimmermetai.com/public_html
+            } else {
+                // Fallback als SITE_URL niet is gedefinieerd (minder ideaal lokaal)
+                if ($is_local) {
+                     // Probeer het subpad toe te voegen (kan foutgevoelig zijn) 
+                     $base_url .= $project_subpath; 
+                } 
+            }
+            
+        } elseif (defined('SITE_URL') && !empty(SITE_URL)){
+             // Gebruik SITE_URL ook voor de live omgeving
+             $base_url = rtrim(SITE_URL, '/');
+        }
+        // --- Einde aanpassing ---
 
         // Verwijder eventuele dubbele slashes aan het begin van het pad
         $path = ltrim($path, '/');

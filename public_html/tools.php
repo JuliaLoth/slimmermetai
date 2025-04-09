@@ -42,7 +42,8 @@ require_once __DIR__ . '/includes/header.php';
         </div>
         
         <div class="tools-grid">
-            <div class="card">
+            <!-- VERVANG DEZE CARD -->
+            <!-- <div class="card">
                 <div class="card-image">
                     <img src="<?php echo asset_url('images/email-assistant.svg'); ?>" alt="Screenshot van de Email Assistent AI tool die helpt bij het opstellen en beantwoorden van emails">
                 </div>
@@ -65,8 +66,28 @@ require_once __DIR__ . '/includes/header.php';
                         </button>
                     </div>
                 </div>
-            </div>
+            </div> -->
             
+            <!-- NIEUWE TOOL CARD START (Op de plek van Email Assistent) -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="<?php echo asset_url('images/slimmer-presenteren.svg'); ?>" alt="Icon voor de Slimmer Presenteren tool (React naar PowerPoint)">
+                </div>
+                <div class="card-content">
+                    <h3>Slimmer Presenteren</h3>
+                    <p>Zet React component code automatisch om naar professionele PowerPoint slides. Ideaal voor presentaties aan stakeholders.</p>
+                    <div class="tool-pricing">
+                        <span class="price">Vanaf €9,95</span> 
+                        <span class="price-period">per maand (abonnement)</span>
+                    </div>
+                    <div class="card-actions">
+                        <!-- Link naar de daadwerkelijke tool pagina (nog aan te maken) -->
+                        <a href="slimmer-presenteren-tool.php" class="btn btn-primary">Bekijk Tool</a> 
+                    </div>
+                </div>
+            </div>
+            <!-- NIEUWE TOOL CARD EIND -->
+
             <div class="card">
                 <div class="card-image">
                     <img src="<?php echo asset_url('images/rapport-generator.svg'); ?>" alt="Screenshot van de Rapport Generator die automatisch professionele rapporten maakt">
@@ -116,6 +137,7 @@ require_once __DIR__ . '/includes/header.php';
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </section>

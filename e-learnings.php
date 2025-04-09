@@ -1,4 +1,6 @@
 <?php
+require_once 'includes/init.php'; // Voeg init.php toe voor functies en sessiebeheer
+
 $page_title = 'E-learnings';
 $page_description = 'Ontdek onze praktische e-learnings over AI. Leer hoe je AI effectief kunt inzetten in je werk met onze specifiek ontwikkelde cursussen.';
 

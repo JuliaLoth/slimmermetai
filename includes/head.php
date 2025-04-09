@@ -13,7 +13,7 @@ include_once 'meta-tags.php';
     <title><?php echo $page_title; ?></title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <meta name="description" content="<?php echo $page_description; ?>">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="<?php echo asset_url('css/style.css'); ?>">
     <noscript>
         <style>
             .preloader { display: none !important; }
@@ -21,10 +21,10 @@ include_once 'meta-tags.php';
     </noscript>
 
     <!-- Favicon -->
-    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="<?php echo asset_url('images/favicon.ico'); ?>" type="image/x-icon">
 
     <!-- Scripts -->
-    <script src="/js/main.js" defer></script>
+    <script src="<?php echo asset_url('js/main.js'); ?>" defer></script>
 </head>
 <body>
     <div class="preloader">

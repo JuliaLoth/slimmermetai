@@ -680,3 +680,11 @@
 [2025-04-08 00:50:01] [ERROR] [::1] [/index.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
 [2025-04-08 00:51:41] [ERROR] [::1] [/index.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
 [2025-04-08 00:51:41] [ERROR] [::1] [/index.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-08 00:52:24] [ERROR] [::1] [/tools.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-08 00:52:24] [ERROR] [::1] [/tools.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-08 10:04:42] [ERROR] [::1] [/tools.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-08 10:04:42] [ERROR] [::1] [/tools.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-09 09:24:38] [ERROR] [::1] [/winkelwagen.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-09 09:24:38] [ERROR] [::1] [/winkelwagen.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
+[2025-04-09 09:24:42] [ERROR] [::1] [/login.php] Database connectie mislukt {"error":"SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd"}
+[2025-04-09 09:24:42] [ERROR] [::1] [/login.php] Database connection failed {"error":"Database verbindingsfout. Probeer het later opnieuw."}
