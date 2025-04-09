@@ -69,3 +69,5 @@ Test deployment met veilig hook script op $(Get-Date -Format "yyyy-MM-dd HH:mm:s
 Test deployment met vereenvoudigde hook v3 op $(Get-Date -Format "yyyy-MM-dd HH:mm:ss")
 
 Test deployment met kale hook v4 op $(Get-Date -Format "yyyy-MM-dd HH:mm:ss")
+
+Test deployment met hook v5 (bash, clean) op $(Get-Date -Format "yyyy-MM-dd HH:mm:ss")
