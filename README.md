@@ -61,3 +61,5 @@ Voor Stripe betalingen:
 ## Licentie
 
 Copyright © 2023-2024 SlimmerMetAI.com. Alle rechten voorbehouden.
+
+Test deployment via Git push op $(Get-Date -Format "yyyy-MM-dd HH:mm:ss")
