@@ -162,10 +162,10 @@ Options -Indexes
 </IfModule>
 
 # 404 foutpagina
-ErrorDocument 404 /404.php
+# ErrorDocument 404 /404.php
 
 # 403 foutpagina
-ErrorDocument 403 /403.php
+# ErrorDocument 403 /403.php
 
 # 500 foutpagina
-ErrorDocument 500 /500.php
+# ErrorDocument 500 /500.php
