@@ -80,7 +80,7 @@ header('Content-Type: application/json');
 header('Strict-Transport-Security: max-age=31536000; includeSubDomains');
 header('X-Content-Type-Options: nosniff');
 header('Referrer-Policy: strict-origin-when-cross-origin');
-header('Content-Security-Policy: default-src \'self\'; frame-ancestors \'self\';');
+header("Content-Security-Policy: default-src 'self'; frame-ancestors 'self'; style-src 'self' https://slimmermetai.com 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net https://accounts.google.com; connect-src 'self' https://substackapi.com https://api.stripe.com https://oauth2.googleapis.com https://www.googleapis.com https://cloudflareinsights.com https://accounts.google.com;");
 
 // CORS headers voor API toegang
 header('Access-Control-Allow-Origin: ' . SITE_URL);
