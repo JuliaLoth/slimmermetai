@@ -1,0 +1,137 @@
+# .github/workflows/deploy.yml
+name: Deploy SlimmerMetAI to Antagonist
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4 # Updated to v4
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.1' # Pas aan naar jouw PHP versie
+        extensions: mbstring, xml, curl, gd, pdo_mysql # Voeg evt. andere nodige extensies toe
+        coverage: none
+
+    - name: Get Composer Cache Directory
+      id: composer-cache
+      run: |
+        echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+    - name: Cache Composer dependencies
+      uses: actions/cache@v4 # Updated to v4
+      with:
+        path: ${{ steps.composer-cache.outputs.dir }}
+        key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-composer-
+
+    - name: Install Composer Dependencies
+      run: composer install --prefer-dist --no-progress --no-dev --optimize-autoloader
+
+    # --- Deployment naar Staging (develop branch) ---
+    # - name: Deploy public_html to Staging
+    #   if: github.ref == 'refs/heads/develop'
+    #   uses: easingthemes/ssh-deploy@main # Updated to main branch of action
+    #   with:
+    #     SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+    #     ARGS: "-rlgoDzvc -i --delete"
+    #     SOURCE: "./public_html/" # Let op de trailing slash!
+    #     REMOTE_HOST: ${{ secrets.SSH_HOST }}
+    #     REMOTE_USER: ${{ secrets.SSH_USER }}
+    #     REMOTE_PORT: ${{ secrets.SSH_PORT }} # Optioneel, standaard 22
+    #     TARGET: ${{ secrets.STAGING_PATH }}/public_html/ # Pad op server
+    #
+    # - name: Deploy includes to Staging root
+    #   if: github.ref == 'refs/heads/develop'
+    #   uses: easingthemes/ssh-deploy@main
+    #   with:
+    #     SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+    #     ARGS: "-rlgoDzvc -i --delete"
+    #     SOURCE: "./includes/"
+    #     REMOTE_HOST: ${{ secrets.SSH_HOST }}
+    #     REMOTE_USER: ${{ secrets.SSH_USER }}
+    #     REMOTE_PORT: ${{ secrets.SSH_PORT }}
+    #     TARGET: ${{ secrets.STAGING_PATH }}/includes/
+    #
+    # - name: Deploy vendor to Staging root
+    #   if: github.ref == 'refs/heads/develop'
+    #   uses: easingthemes/ssh-deploy@main
+    #   with:
+    #     SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+    #     ARGS: "-rlgoDzvc -i --delete"
+    #     SOURCE: "./vendor/"
+    #     REMOTE_HOST: ${{ secrets.SSH_HOST }}
+    #     REMOTE_USER: ${{ secrets.SSH_USER }}
+    #     REMOTE_PORT: ${{ secrets.SSH_PORT }}
+    #     TARGET: ${{ secrets.STAGING_PATH }}/vendor/
+    #
+    # - name: Deploy .env to Staging root
+    #   if: github.ref == 'refs/heads/develop'
+    #   uses: easingthemes/ssh-deploy@main
+    #   with:
+    #     SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+    #     ARGS: "-rlgoDzvc -i" # GEEN --delete voor .env
+    #     SOURCE: ".env" # !!! ZIE WAARSCHUWING OVER SECRETS IN GIT !!!
+    #     REMOTE_HOST: ${{ secrets.SSH_HOST }}
+    #     REMOTE_USER: ${{ secrets.SSH_USER }}
+    #     REMOTE_PORT: ${{ secrets.SSH_PORT }}
+    #     TARGET: ${{ secrets.STAGING_PATH }}/.env
+
+    # --- Deployment naar Productie (main branch) ---
+    - name: Deploy public_html to Production
+      if: github.ref == 'refs/heads/main'
+      uses: easingthemes/ssh-deploy@main
+      with:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        ARGS: "-rlgoDzvc -i --delete"
+        SOURCE: "./public_html/"
+        REMOTE_HOST: ${{ secrets.SSH_HOST }}
+        REMOTE_USER: ${{ secrets.SSH_USER }}
+        REMOTE_PORT: ${{ secrets.SSH_PORT }}
+        TARGET: ${{ secrets.PRODUCTION_PATH }}/public_html/
+
+    - name: Deploy includes to Production root
+      if: github.ref == 'refs/heads/main'
+      uses: easingthemes/ssh-deploy@main
+      with:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        ARGS: "-rlgoDzvc -i --delete"
+        SOURCE: "./includes/"
+        REMOTE_HOST: ${{ secrets.SSH_HOST }}
+        REMOTE_USER: ${{ secrets.SSH_USER }}
+        REMOTE_PORT: ${{ secrets.SSH_PORT }}
+        TARGET: ${{ secrets.PRODUCTION_PATH }}/includes/
+
+    - name: Deploy vendor to Production root
+      if: github.ref == 'refs/heads/main'
+      uses: easingthemes/ssh-deploy@main
+      with:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        ARGS: "-rlgoDzvc -i --delete"
+        SOURCE: "./vendor/"
+        REMOTE_HOST: ${{ secrets.SSH_HOST }}
+        REMOTE_USER: ${{ secrets.SSH_USER }}
+        REMOTE_PORT: ${{ secrets.SSH_PORT }}
+        TARGET: ${{ secrets.PRODUCTION_PATH }}/vendor/
+
+    - name: Deploy .env to Production root
+      if: github.ref == 'refs/heads/main'
+      uses: easingthemes/ssh-deploy@main
+      with:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        ARGS: "-rlgoDzvc -i" # GEEN --delete voor .env
+        SOURCE: ".env" # !!! ZIE WAARSCHUWING OVER SECRETS IN GIT !!!
+        REMOTE_HOST: ${{ secrets.SSH_HOST }}
+        REMOTE_USER: ${{ secrets.SSH_USER }}
+        REMOTE_PORT: ${{ secrets.SSH_PORT }}
+        TARGET: ${{ secrets.PRODUCTION_PATH }}/.env 

@@ -37,32 +37,52 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('[main.js] Calling updateNavigation()...');
     updateNavigation();
     
+    // Voeg sticky header toe (deze kan waarschijnlijk direct, hangt af van basis header structuur)
+    console.log('[main.js] Calling initializeStickyHeader()...');
+    initializeStickyHeader();
+
+    // Verwijder de directe aanroepen naar de functies die afhankelijk zijn van componenten
+    // console.log('[main.js] Calling initializeMobileMenu()...');
+    // initializeMobileMenu();
+    // console.log('[main.js] Calling initializeSlider()...');
+    // initializeSlider();
+    // console.log('[main.js] Calling initializeCart()...');
+    // initializeCart();
+    // console.log('[main.js] Returned from initializeCart().');
+    // console.log('[main.js] Calling initializeTooltips()...');
+    // initializeTooltips();
+    // console.log('[main.js] Calling handleIframes()...');
+    // handleIframes();
+
+    console.log('[main.js] DOMContentLoaded listener finished. Waiting for components...');
+});
+
+// Wacht tot ComponentsLoader klaar is voordat we component-specifieke initialisaties doen
+document.addEventListener('slimmer-components-loaded', function() {
+    console.log('[main.js] Event slimmer-components-loaded received. Initializing components...');
+
     // Initialize mobile menu
     console.log('[main.js] Calling initializeMobileMenu()...');
     initializeMobileMenu();
-    
+
     // Slider initialiseren
     console.log('[main.js] Calling initializeSlider()...');
     initializeSlider();
-    
+
     // Voeg winkelwagen functionaliteit toe
     console.log('[main.js] Calling initializeCart()...');
     initializeCart();
     console.log('[main.js] Returned from initializeCart().');
-    
-    // Voeg sticky header toe
-    console.log('[main.js] Calling initializeStickyHeader()...');
-    initializeStickyHeader();
-    
+
     // Tooltip voor de prijzen
     console.log('[main.js] Calling initializeTooltips()...');
     initializeTooltips();
-    
+
     // Iframes handler toevoegen
     console.log('[main.js] Calling handleIframes()...');
     handleIframes();
 
-    console.log('[main.js] DOMContentLoaded listener finished.');
+    console.log('[main.js] Component-specific initializations finished.');
 });
 
 // Update navigatie om huidige pagina te markeren

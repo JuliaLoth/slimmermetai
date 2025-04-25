@@ -692,13 +692,13 @@ function handleCredentialResponse(response) {
 
 // Functie om de Google knop te initialiseren
 function initializeGoogleSignIn() {
-  google.accounts.id.initialize({
-    client_id: "625906341722-2eohq5a55sl4a8511h6s20dbsicuknku.apps.googleusercontent.com", // Jouw Google Client ID
-    callback: handleCredentialResponse
-  });
-
-  // Verwijder de renderButton aanroep
-  // google.accounts.id.renderButton(...);
+  if (!window._gsiInitialised) {
+    google.accounts.id.initialize({
+      client_id: "625906341722-2eohq5a55sl4a8511h6s20dbsicuknku.apps.googleusercontent.com", // Jouw Google Client ID
+      callback: handleCredentialResponse
+    });
+    window._gsiInitialised = true;
+  }
 
   // Voeg event listener toe aan onze eigen knop
   const customButton = document.getElementById('customGoogleSignInButton');

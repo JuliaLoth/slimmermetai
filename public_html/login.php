@@ -465,21 +465,8 @@ require_once 'includes/header.php';
                   <!-- Divider (zoals in register.php) -->
                  <div class="auth-divider"><span>OF</span></div>
 
-                 <!-- Eigen Google knop (exact zoals in register.php) -->
-                <div style="display: flex; justify-content: center; margin-bottom: 1rem;">
-                    <button type="button" id="customGoogleSignInButton" class="social-btn google">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M21.99 12.18c0-.79-.07-1.58-.2-2.38H12v4.51h5.6c-.24 1.47-1.02 2.74-2.19 3.61v3.07h3.94c2.3-2.12 3.63-5.1 3.63-8.81z" fill="#ffffff"/>
-                            <path d="M12 22c3.28 0 6.02-1.09 8.03-2.95l-3.94-3.07c-1.09.73-2.48 1.16-4.09 1.16-3.14 0-5.79-2.11-6.74-4.96H1.19v3.17C3.17 19.58 7.25 22 12 22z" fill="#ffffff"/>
-                            <path d="M5.26 14.11c-.18-.53-.28-1.09-.28-1.66s.1-1.13.28-1.66V7.61H1.19C.45 9.02 0 10.46 0 12s.45 2.98 1.19 4.34l4.07-3.23z" fill="#ffffff"/>
-                            <path d="M12 5.14c1.77 0 3.36.61 4.62 1.82l3.48-3.48C18.02 1.96 15.28 0 12 0 7.25 0 3.17 2.42 1.19 5.79l4.07 3.17c.95-2.85 3.6-4.96 6.74-4.96z" fill="#ffffff"/>
-                        </svg>
-                        Doorgaan met Google
-                    </button>
-                </div>
-
-                <!-- Link naar Registratie (verplaatst naar onder Google knop) -->
-                 <!-- Verwijderd van hier, zie register-redirect tab -->
+                 <!-- Container waarop Google Identity Services de knop rendert -->
+                 <div id="googleSignInButton"></div>
 
              </div> <!-- /#login-form -->
 
@@ -576,7 +563,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const rememberMeCheckbox = document.getElementById('remember-me');
     const loginMessage = document.getElementById('login-message');
     const loginButton = document.getElementById('loginButton');
-    // const googleSignInButton = document.getElementById('customGoogleSignInButton'); // Al gedefinieerd in Google sectie?
 
     // Helper functies voor berichten
     function showError(message) {
@@ -650,25 +636,34 @@ document.addEventListener('DOMContentLoaded', function() {
              return;
          }
         try {
+            if (window._gsiInitialised) {
+                return; // al geïnitialiseerd, dubbele registratie voorkomen
+            }
             google.accounts.id.initialize({
                 client_id: "625906341722-2eohq5a55sl4a8511h6s20dbsicuknku.apps.googleusercontent.com",
                 callback: handleCredentialResponse,
             });
+            window._gsiInitialised = true;
 
-            const customButton = document.getElementById('customGoogleSignInButton');
-            if (customButton) {
-                customButton.addEventListener('click', () => {
-                     showProcessingMessage('Google login wordt gestart...');
-                    google.accounts.id.prompt((notification) => {
-                        if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
-                             hideMessages();
-                             console.warn('Google One Tap prompt was not displayed or was skipped.');
-                             showError('Kon Google login niet starten. Controleer browserinstellingen (pop-ups, cookies).');
-                        }
-                    });
+            const buttonContainer = document.getElementById('googleSignInButton');
+            if (buttonContainer) {
+                // Laat GIS de knop zelf renderen met gewenste stijl
+                google.accounts.id.renderButton(buttonContainer, {
+                    type: 'standard',
+                    theme: 'outline',
+                    size: 'large',
+                    shape: 'rectangular',
+                    text: 'continue_with',
+                    logo_alignment: 'left'
+                });
+                // Toon (optioneel) One-Tap prompt automatisch
+                google.accounts.id.prompt((notification) => {
+                    if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
+                        console.warn('Google One Tap prompt was not displayed or was skipped.');
+                    }
                 });
             } else {
-                console.error('Custom Google Sign-In button not found.');
+                console.error('Google Sign-In container niet gevonden.');
             }
          } catch (error) {
              console.error("Google Sign-In initialization failed:", error);

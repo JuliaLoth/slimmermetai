@@ -11,7 +11,17 @@
 
 class ComponentsLoader {
   constructor() {
-    this.componentsPath = '/components/';
+    // Bepaal dynamisch het basispad vanwaar dit script wordt geladen
+    // Zo voorkomen we fouten wanneer de site in een submap staat of wanneer
+    // er een ander domein/subdomein wordt gebruikt.
+    const currentScript = document.currentScript || document.querySelector('script[src*="ComponentsLoader.js"]');
+    if (currentScript) {
+      // Haal alles tot en met de laatste slash op, zodat we het map-gedeelte overhouden
+      this.componentsPath = currentScript.src.substring(0, currentScript.src.lastIndexOf('/') + 1);
+    } else {
+      // Fallback voor het – onwaarschijnlijke – geval dat currentScript niet bestaat
+      this.componentsPath = '/components/';
+    }
     // Dynamische versie gebaseerd op timestamp voor development
     this.componentsVersion = '?v=' + new Date().getTime();
     
