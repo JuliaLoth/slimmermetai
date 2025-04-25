@@ -80,7 +80,7 @@ header('Content-Type: application/json');
 header('Strict-Transport-Security: max-age=31536000; includeSubDomains');
 header('X-Content-Type-Options: nosniff');
 header('Referrer-Policy: strict-origin-when-cross-origin');
-header("Content-Security-Policy: default-src 'self'; frame-ancestors 'self'; style-src 'self' https://slimmermetai.com 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net https://accounts.google.com; connect-src 'self' https://substackapi.com https://api.stripe.com https://oauth2.googleapis.com https://www.googleapis.com https://cloudflareinsights.com https://accounts.google.com;");
+header("Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://slimmermetai.com https://www.slimmermetai.com https://code.jquery.com https://cdn.jsdelivr.net https://substackapi.com https://accounts.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net https://accounts.google.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://cdn.jsdelivr.net https://accounts.google.com; connect-src 'self' https://slimmermetai.com https://www.slimmermetai.com https://substackapi.com https://api.stripe.com https://oauth2.googleapis.com https://www.googleapis.com https://cloudflareinsights.com https://accounts.google.com; object-src 'none'; upgrade-insecure-requests;");
 
 // CORS headers voor API toegang
 header('Access-Control-Allow-Origin: ' . SITE_URL);
@@ -105,12 +105,10 @@ if (!isset($pdo)) {
         ];
         $pdo = new PDO($dsn, DB_USER, DB_PASS, $options);
     } catch (PDOException $e) {
-        http_response_code(500);
-        echo json_encode(['error' => 'Database verbindingsfout']);
-        if (DEBUG_MODE) {
-            error_log('Database error: ' . $e->getMessage());
-        }
-        exit;
+        // Log de error en stuur een 503 Service Unavailable JSON response terug
+        error_log('Database error: ' . $e->getMessage());
+        // Gebruik 503 om aan te geven dat de service tijdelijk onbeschikbaar is, maar voorkom Apache 500 redirect
+        json_response(['error' => 'Database verbindingsfout'], 503);
     }
 }
 

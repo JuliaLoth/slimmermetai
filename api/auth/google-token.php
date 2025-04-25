@@ -1,4 +1,5 @@
 <?php
+error_log('[DEBUG] start google-token.php');
 /**
  * Google Token Verificatie API - SlimmerMetAI.com
  * 
@@ -7,13 +8,35 @@
  * Verbeterde versie met betere beveiliging en error handling
  */
 
+error_log('[DEBUG] start google-token.php');
+
 // Definieer SITE_ROOT als dat nog niet is gedaan
 if (!defined('SITE_ROOT')) {
     define('SITE_ROOT', dirname(dirname(dirname(__FILE__)))); // Ga drie niveaus omhoog vanuit api/auth/google-token.php
 }
 
+// --- Tijdelijke debuglog-initialisatie ---
+ini_set('log_errors', 1);
+$debug_log_path = SITE_ROOT . '/logs/google_token_debug.log';
+ini_set('error_log', $debug_log_path);
+// Zorg dat de map bestaat en schrijfbaar is
+if (!is_dir(dirname($debug_log_path))) {
+    @mkdir(dirname($debug_log_path), 0755, true);
+}
+file_put_contents($debug_log_path, "----- nieuwe request: " . date('c') . " -----\n", FILE_APPEND);
+// Stuur eventueel een header met het debugpad (alleen in debug mode)
+if (defined('DEBUG_MODE') && DEBUG_MODE) {
+    header('X-Debug-Log-Path: ' . $debug_log_path);
+}
+
+// Extra DEBUG logging vóór het includen van config
+error_log('[DEBUG] vóór require_once config');
+
 // Include de API configuratie
 require_once dirname(dirname(__FILE__)) . '/config.php';
+
+// Extra DEBUG logging na het includen van config
+error_log('[DEBUG] na require_once config');
 
 // Include de GoogleAuthService
 require_once dirname(dirname(__FILE__)) . '/helpers/GoogleAuthService.php';
@@ -22,13 +45,45 @@ require_once dirname(dirname(__FILE__)) . '/helpers/GoogleAuthService.php';
 header('X-Content-Type-Options: nosniff');
 // header('X-Frame-Options: DENY'); // Verouderde header verwijderd
 header('Referrer-Policy: strict-origin-when-cross-origin');
+// CORS headers
+// Dynamische CORS headers voor slimmermetai domeinen
+$allowed_origins = [
+    'https://slimmermetai.com',
+    'https://www.slimmermetai.com'
+];
+
+// DEBUG logging om te achterhalen waar het script eventueel crasht
+error_log('[DEBUG] google-token.php start bereikt');
+
+if (isset($_SERVER['HTTP_ORIGIN']) && in_array($_SERVER['HTTP_ORIGIN'], $allowed_origins)) {
+    header('Access-Control-Allow-Origin: ' . $_SERVER['HTTP_ORIGIN']);
+    header('Access-Control-Allow-Credentials: true');
+} else {
+    // Fallback zonder credentials
+    header('Access-Control-Allow-Origin: https://slimmermetai.com');
+}
+
+header('Access-Control-Allow-Headers: Content-Type, X-CSRF-Token');
+header('Access-Control-Allow-Methods: POST, OPTIONS');
 // Content-Security-Policy met frame-ancestors toegevoegd
 header('Content-Security-Policy: default-src \'self\'; frame-ancestors \'self\';');
+
+// DEBUG logging om te achterhalen waar het script eventueel crasht
+error_log('[DEBUG] CORS headers ingesteld');
+
+// Preflight
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
+    exit();
+}
 
 // Start sessie voor CSRF
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+
+// DEBUG logging om te achterhalen waar het script eventueel crasht
+error_log('[DEBUG] Sessie gestart');
 
 // Alleen POST requests toestaan
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -38,6 +93,9 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 // Krijg JSON data uit request body
 $jsonData = file_get_contents('php://input');
 $data = json_decode($jsonData, true);
+
+// DEBUG logging om te achterhalen waar het script eventueel crasht
+error_log('[DEBUG] JSON data ontvangen: ' . substr($jsonData, 0, 100));
 
 // Controleer verplichte velden
 if (!isset($data['token'])) {
@@ -56,8 +114,8 @@ if (!defined('GOOGLE_CLIENT_ID') || empty(GOOGLE_CLIENT_ID)) {
     error_response('Google inloggen is niet geconfigureerd', 500);
 }
 
-if (!defined('GOOGLE_CLIENT_SECRET') || empty(GOOGLE_CLIENT_SECRET)) {
-    error_response('Google client secret is niet geconfigureerd', 500);
+if (!defined('GOOGLE_CLIENT_SECRET')) {
+    define('GOOGLE_CLIENT_SECRET', ''); // Fallback lege string
 }
 
 try {
@@ -147,7 +205,7 @@ try {
         $passwordHash = password_hash($randomPassword, PASSWORD_DEFAULT);
         
         // Voeg nieuwe gebruiker toe
-        $stmt = $pdo->prepare("INSERT INTO users (name, email, password, email_verified, created_at) VALUES (?, ?, ?, 1, NOW())");
+        $stmt = $pdo->prepare("INSERT INTO users (name, email, password, created_at) VALUES (?, ?, ?, NOW())");
         $stmt->execute([$name, $email, $passwordHash]);
         
         $userId = $pdo->lastInsertId();
@@ -191,5 +249,6 @@ try {
     
 } catch (Exception $e) {
     error_log("Google login error: " . $e->getMessage());
-    error_response('Er is een fout opgetreden bij het inloggen met Google: ' . $e->getMessage(), 500);
+    // Gebruik 400 Bad Request i.p.v. 500 om server-redirect naar /500.php te voorkomen
+    error_response('Er is een fout opgetreden bij het inloggen met Google: ' . $e->getMessage(), 400);
 } 

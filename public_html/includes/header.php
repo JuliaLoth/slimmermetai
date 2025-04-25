@@ -38,7 +38,17 @@ function is_active($page) {
     <link rel="stylesheet" href="<?php echo asset_url('css/style.css'); ?>">
     
     <!-- CSRF Token - Voor gebruik in JavaScript -->
-    <meta name="csrf-token" content="<?php echo $csrf->getToken(); ?>">
+    <?php
+        // Veilig ophalen van CSRF-token; voorkomt fatal errors indien $csrf niet (goed) geïnitialiseerd is
+        $csrf_token_meta = '';
+        if (isset($csrf) && is_object($csrf) && method_exists($csrf, 'getToken')) {
+            $csrf_token_meta = $csrf->getToken();
+        } elseif (function_exists('generate_csrf_token')) {
+            // Fallback op de functionele variant uit api/config.php
+            $csrf_token_meta = generate_csrf_token();
+        }
+    ?>
+    <meta name="csrf-token" content="<?php echo htmlspecialchars($csrf_token_meta); ?>">
     
     <!-- Laad componenten en core scripts -->
     <script src="<?php echo asset_url('components/ComponentsLoader.js'); ?>"></script>
