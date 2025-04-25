@@ -642,6 +642,7 @@ document.addEventListener('DOMContentLoaded', function() {
             google.accounts.id.initialize({
                 client_id: "625906341722-2eohq5a55sl4a8511h6s20dbsicuknku.apps.googleusercontent.com",
                 callback: handleCredentialResponse,
+                use_fedcm_for_prompt: true,
             });
             window._gsiInitialised = true;
 
@@ -656,12 +657,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     text: 'continue_with',
                     logo_alignment: 'left'
                 });
-                // Toon (optioneel) One-Tap prompt automatisch
-                google.accounts.id.prompt((notification) => {
-                    if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
-                        console.warn('Google One Tap prompt was not displayed or was skipped.');
-                    }
-                });
+                // Toon prompt zonder oude moment-API callbacks (FedCM ready)
+                google.accounts.id.prompt();
             } else {
                 console.error('Google Sign-In container niet gevonden.');
             }

@@ -176,7 +176,7 @@ try {
         // Log de inlogpoging
         $stmt = $pdo->prepare(
             "INSERT INTO login_attempts 
-             (email, ip_address, user_agent, success, created_at)
+             (email, ip_address, user_agent, success, attempt_time)
              VALUES (?, ?, ?, 1, NOW())"
         );
         $stmt->execute([

@@ -695,7 +695,8 @@ function initializeGoogleSignIn() {
   if (!window._gsiInitialised) {
     google.accounts.id.initialize({
       client_id: "625906341722-2eohq5a55sl4a8511h6s20dbsicuknku.apps.googleusercontent.com", // Jouw Google Client ID
-      callback: handleCredentialResponse
+      callback: handleCredentialResponse,
+      use_fedcm_for_prompt: true // Opt-in voor FedCM, vereist voor toekomstige compatibiliteit
     });
     window._gsiInitialised = true;
   }
@@ -704,14 +705,8 @@ function initializeGoogleSignIn() {
   const customButton = document.getElementById('customGoogleSignInButton');
   if (customButton) {
       customButton.addEventListener('click', () => {
-          google.accounts.id.prompt((notification) => {
-              if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
-                  // Fallback of extra logging indien nodig als de prompt niet getoond wordt.
-                  // Bijvoorbeeld omdat cookies van derden geblokkeerd zijn.
-                  console.warn('Google One Tap prompt was not displayed or was skipped.');
-                  // Je zou hier eventueel een popup kunnen forceren, maar prompt() is meestal beter.
-              }
-          });
+          // Toon FedCM/One-Tap prompt; oude moment-API callbacks zijn vanaf 2025 verwijderd.
+          google.accounts.id.prompt();
       });
   } else {
       console.error('Custom Google Sign-In button not found.');
