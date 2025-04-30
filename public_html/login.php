@@ -689,6 +689,19 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Backend response:', data);
 
             if (data.success) {
+                // Sla JWT en gebruikersdata op voor vervolgpagina's
+                if (data.token && data.user) {
+                    try {
+                        localStorage.setItem('token', data.token);
+                        localStorage.setItem('user', JSON.stringify(data.user));
+                        // Zet auth state direct zodat andere scripts in dezelfde sessie het token hebben
+                        if (window.auth && typeof window.auth.initAuth === 'function') {
+                            window.auth.initAuth();
+                        }
+                    } catch (e) {
+                        console.warn('Kon auth data niet opslaan in localStorage:', e);
+                    }
+                }
                 showSuccess(data.message || 'Succesvol ingelogd met Google! Je wordt doorgestuurd...');
                 setTimeout(() => {
                      window.location.href = data.redirectUrl || 'dashboard.php';

@@ -12,6 +12,25 @@ if (!defined('SITE_ROOT')) {
 // Include de API configuratie
 require_once dirname(dirname(__FILE__)) . '/config.php';
 
+// Laad algemene constanten (waaronder SESSION_NAME)
+$includesConfig = SITE_ROOT . '/includes/config.php';
+if (is_file($includesConfig)) {
+    require_once $includesConfig;
+}
+
+// Stel sessie-naam in indien gedefinieerd
+if (defined('SESSION_NAME')) {
+    session_name(SESSION_NAME);
+}
+
+// Laad CsrfProtection class
+$csrfPath = dirname(dirname(dirname(__FILE__))) . '/includes/utils/CsrfProtection.php';
+if (is_file($csrfPath)) {
+    require_once $csrfPath;
+} else {
+    error_response('CsrfProtection.php niet gevonden op server', 500);
+}
+
 // Start sessie voor CSRF
 session_start();
 
