@@ -5,14 +5,38 @@ require_once dirname(__DIR__) . '/bootstrap.php';
 
 use function FastRoute\simpleDispatcher;
 use FastRoute\RouteCollector;
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
 
 $dispatcher = simpleDispatcher(function (RouteCollector $r) {
+    // ----- Moderne controllers -----
     $r->addRoute('GET',  '/',              [App\Http\Controller\HomeController::class,        'index']);
     $r->addRoute('POST', '/auth/login',    [App\Http\Controller\Auth\LoginController::class, 'handle']);
     $r->addRoute('POST', '/auth/register', [App\Http\Controller\Auth\RegisterController::class,'handle']);
-    $r->addRoute('POST', '/auth/refresh', [App\Http\Controller\Auth\RefreshTokenController::class,'handle']);
-    $r->addRoute('GET',  '/auth/me',      [App\Http\Controller\Auth\MeController::class,'handle']);
-    $r->addRoute('POST', '/auth/logout',  [App\Http\Controller\Auth\LogoutController::class,'handle']);
+    $r->addRoute('POST', '/auth/refresh',  [App\Http\Controller\Auth\RefreshTokenController::class,'handle']);
+    $r->addRoute('GET',  '/auth/me',       [App\Http\Controller\Auth\MeController::class,'handle']);
+    $r->addRoute('POST', '/auth/logout',   [App\Http\Controller\Auth\LogoutController::class,'handle']);
+
+    // ----- Legacy pagina's automatisch registreren -----
+    $directory = new RecursiveDirectoryIterator(PUBLIC_ROOT, RecursiveDirectoryIterator::SKIP_DOTS);
+    $iterator  = new RecursiveIteratorIterator($directory);
+    foreach ($iterator as $fileInfo) {
+        if ($fileInfo->isFile() && $fileInfo->getExtension() === 'php') {
+            $relativePath = str_replace(PUBLIC_ROOT, '', $fileInfo->getPathname());
+            // Sla het front-controller zelf over
+            if ($relativePath === '/index.php') {
+                continue;
+            }
+            // Map naar route pad zonder extensie
+            $routePath = preg_replace('/\\.php$/i', '', $relativePath);
+            // Zorg dat dubbele slashes verdwijnen
+            $routePath = str_replace('\\', '/', $routePath);
+            $routePath = $routePath === '' ? '/' : $routePath;
+            $r->addRoute('GET', $routePath, function() use ($fileInfo) {
+                require $fileInfo->getPathname();
+            });
+        }
+    }
 });
 
 $httpMethod = $_SERVER['REQUEST_METHOD'];
@@ -47,10 +71,19 @@ switch ($routeInfo[0]) {
         echo 'Method Not Allowed';
         break;
     case FastRoute\Dispatcher::FOUND:
-        [$class, $method] = $routeInfo[1];
-        $vars = $routeInfo[2];
-        // Gebruik container om controller te maken (dependencies inj.)
-        $controller = container()->get($class);
-        call_user_func_array([$controller, $method], $vars);
+        $handler = $routeInfo[1];
+        $vars    = $routeInfo[2];
+        // Als handler een closure is → direct uitvoeren
+        if (is_callable($handler) && !is_array($handler)) {
+            call_user_func_array($handler, $vars);
+            break;
+        }
+        // Array-handler met [class, method]
+        if (is_array($handler)) {
+            [$class, $method] = $handler;
+            $controller = container()->get($class);
+            call_user_func_array([$controller, $method], $vars);
+            break;
+        }
         break;
 }
