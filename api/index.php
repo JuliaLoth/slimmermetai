@@ -1,31 +1,28 @@
 <?php
 /**
- * API Router voor SlimmerMetAI.com
- * Verwerkt inkomende API requests en stuurt ze door naar de juiste handler.
+ * API Front Controller – SlimmerMetAI
+ * Initialiseert omgeving en stuurt door naar de FastRoute-router.
  */
 
-// Definieer root path als dat nog niet is gedaan
+// Definieer root path
 if (!defined('SITE_ROOT')) {
-    // __DIR__ is de map api/, dirname(__DIR__) is de project root
-    define('SITE_ROOT', dirname(__DIR__)); 
+    define('SITE_ROOT', dirname(__DIR__));
 }
 
-// Include de API configuratie (zet headers, db connectie, helpers)
-// error_reporting en display_errors worden hier mogelijk ook gezet op basis van .env
+// Basisconfiguratie (headers, env vars, helpers)
 require_once __DIR__ . '/config.php';
 
-// Extra: laad Composer autoload zodat controllers beschikbaar zijn
-require_once dirname(__DIR__) . '/vendor/autoload.php';
-require_once dirname(__DIR__) . '/bootstrap.php';
+// Composer autoload & bootstrap
+require_once SITE_ROOT . '/vendor/autoload.php';
+require_once SITE_ROOT . '/bootstrap.php';
 
-// Logging aanzetten (pas pad aan indien nodig)
-ini_set('log_errors', 1);
-ini_set('error_log', SITE_ROOT . '/logs/api_errors.log'); // Zorg dat de logs/ map bestaat en schrijfbaar is
+// Logging pad
+ini_set('log_errors', '1');
+ini_set('error_log', SITE_ROOT . '/logs/api_errors.log');
 
-// Voeg FastRoute gebaseerde router toe
+// Dispatch naar onze router
 \App\Infrastructure\Http\Router::dispatch();
 
-// Stop verdere uitvoering (legacy code verwijderd)
 return;
 
 // Haal het request pad op, verwijder de /api/ prefix en query string
