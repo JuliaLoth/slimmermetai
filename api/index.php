@@ -22,6 +22,12 @@ require_once dirname(__DIR__) . '/bootstrap.php';
 ini_set('log_errors', 1);
 ini_set('error_log', SITE_ROOT . '/logs/api_errors.log'); // Zorg dat de logs/ map bestaat en schrijfbaar is
 
+// Voeg FastRoute gebaseerde router toe
+\App\Infrastructure\Http\Router::dispatch();
+
+// Stop verdere uitvoering (legacy code verwijderd)
+return;
+
 // Haal het request pad op, verwijder de /api/ prefix en query string
 $request_uri = $_SERVER['REQUEST_URI'];
 $base_path = '/api/';
