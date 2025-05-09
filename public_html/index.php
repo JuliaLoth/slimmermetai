@@ -21,6 +21,24 @@ $uri        = rawurldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 $routeInfo = $dispatcher->dispatch($httpMethod, $uri);
 switch ($routeInfo[0]) {
     case FastRoute\Dispatcher::NOT_FOUND:
+        // Fallback: probeer legacy PHP-bestand te laden (bijv. /dashboard -> dashboard.php)
+        $candidate = PUBLIC_ROOT . $uri;
+        // Als het pad op '/' eindigt, verwijder die
+        if (substr($candidate, -1) === '/') {
+            $candidate = rtrim($candidate, '/');
+        }
+        $potentialFiles = [
+            $candidate . '.php',
+            $candidate . '/index.php',
+            $candidate . '.html',
+        ];
+        foreach ($potentialFiles as $file) {
+            if (is_file($file)) {
+                require $file;
+                return;
+            }
+        }
+        // Geen legacy bestand, toon 404
         http_response_code(404);
         echo 'Pagina niet gevonden';
         break;
