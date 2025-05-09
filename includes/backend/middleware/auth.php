@@ -4,7 +4,7 @@
  * Zorgt voor het verifiëren van JWT tokens en gebruikersrechten
  */
 
-require_once dirname(dirname(__FILE__)) . '/config/db.php';
+require_once dirname(dirname(dirname(__DIR__))) . '/bootstrap.php';
 
 // Functie om JWT secret key op te halen
 function getJwtSecret() {
@@ -271,10 +271,14 @@ function revokeRefreshTokens($userId, $exceptToken = null) {
     try {
         if ($exceptToken) {
             $query = "DELETE FROM refresh_tokens WHERE user_id = ? AND token != ?";
-            queryUsers($query, [$userId, $exceptToken]);
+            \App\Infrastructure\Database\ConnectionManager::get('users')
+                ->prepare($query)
+                ->execute([$userId, $exceptToken]);
         } else {
             $query = "DELETE FROM refresh_tokens WHERE user_id = ?";
-            queryUsers($query, [$userId]);
+            \App\Infrastructure\Database\ConnectionManager::get('users')
+                ->prepare($query)
+                ->execute([$userId]);
         }
         
         return true;

@@ -9,6 +9,8 @@ require_once dirname(dirname(__DIR__)) . '/includes/init.php';
 require_once INCLUDES_ROOT . '/utils/ApiResponse.php';
 require_once INCLUDES_ROOT . '/auth/Authentication.php';
 
+use App\Infrastructure\Security\Validator;
+
 // Initialiseer authenticatie
 $auth = Authentication::getInstance();
 

@@ -67,23 +67,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT' || $_SERVER['REQUEST_METHOD'] === 'POST
     }
     
     // Valideer en sanitize input
-    $name = isset($data['name']) ? sanitize_input($data['name']) : null;
-    
+    $name  = isset($data['name'])  ? sanitize_input($data['name'])  : null;
+    $email = isset($data['email']) ? sanitize_input($data['email']) : null;
+
     // Controleer of tenminste één veld is ingevuld
-    if ($name === null) {
+    if ($name === null && $email === null) {
         error_response('Je moet tenminste één veld opgeven om bij te werken');
     }
-    
+
     try {
         // Update alleen de opgegeven velden
         $updates = [];
-        $params = [];
-        
+        $params  = [];
+
         if ($name !== null) {
             $updates[] = "name = ?";
-            $params[] = $name;
+            $params[]  = $name;
         }
-        
+
+        if ($email !== null) {
+            // Controleer of e-mail al in gebruik is door een andere gebruiker
+            $stmt = $pdo->prepare("SELECT id FROM users WHERE email = ? AND id != ?");
+            $stmt->execute([$email, $user['id']]);
+            if ($stmt->fetch()) {
+                error_response('Dit e-mailadres is al in gebruik');
+            }
+
+            $updates[] = "email = ?";
+            $params[]  = $email;
+        }
+
         // Geen updates nodig?
         if (empty($updates)) {
             json_response([
@@ -92,19 +105,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT' || $_SERVER['REQUEST_METHOD'] === 'POST
             ]);
             exit;
         }
-        
+
         // Voeg user ID toe
         $params[] = $user['id'];
-        
+
         // Update profiel
         $stmt = $pdo->prepare("
             UPDATE users
             SET " . implode(", ", $updates) . ", updated_at = NOW()
             WHERE id = ?
         ");
-        
+
         $stmt->execute($params);
-        
+
         // Haal bijgewerkt profiel op
         $stmt = $pdo->prepare("
             SELECT id, name, email, role, email_verified, profile_picture, created_at, updated_at, last_login
@@ -113,20 +126,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT' || $_SERVER['REQUEST_METHOD'] === 'POST
         ");
         $stmt->execute([$user['id']]);
         $updated_profile = $stmt->fetch();
-        
+
         // Converteer email_verified naar boolean
         $updated_profile['email_verified'] = (bool)$updated_profile['email_verified'];
-        
+
         // Voeg volledige URL toe aan profielfoto indien nodig
         if ($updated_profile['profile_picture'] && !preg_match('/^https?:\/\//', $updated_profile['profile_picture'])) {
             $updated_profile['profile_picture'] = SITE_URL . '/' . ltrim($updated_profile['profile_picture'], '/');
         }
-        
+
         // Stuur bijgewerkt profiel terug
         json_response([
             'success' => true,
             'message' => 'Profiel bijgewerkt',
-            'profile' => $updated_profile
+            'user'    => $updated_profile
         ]);
     } catch (PDOException $e) {
         // Log de fout

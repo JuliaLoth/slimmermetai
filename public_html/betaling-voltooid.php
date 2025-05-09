@@ -118,6 +118,6 @@ if ($payment_intent) {
             </div>
         </div>
     </div>
-<?php require_once __DIR__ . '/../components/footer.php'; ?>
+<?php require_once __DIR__ . '/components/footer.php'; ?>
 </body>
 </html> 

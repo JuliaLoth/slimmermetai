@@ -37,7 +37,7 @@ $page_description = 'Slimmer met AI - Dashboard';
         title="Welkom, Gebruiker!" 
         subtitle="Dit is je persoonlijke dashboard bij Slimmer met AI. Hier vind je al je cursussen, trainingen en andere AI-tools."
         background="image"
-        image-url="images/hero background def.svg"
+        image-url="images/hero-background.svg"
         centered>
     </slimmer-hero>
 
@@ -133,48 +133,85 @@ $page_description = 'Slimmer met AI - Dashboard';
     <slimmer-footer></slimmer-footer>
 
     <!-- Scripts -->
+    <script src="<?php echo asset_url('js/auth.js'); ?>"></script>
     <script src="<?php echo asset_url('js/main.js'); ?>"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Gebruikersnaam instellen
-            const user = {
-                name: 'Gebruiker',
-                email: 'gebruiker@example.com',
-                role: 'user'
-            };
-            
-            // Check of gebruiker admin is
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Initialiseer authenticatie staat
+            window.auth.initAuth();
+
+            // Haal gebruiker op via API om altijd de meest recente data te hebben
+            let user;
+            try {
+                const response = await window.auth.getCurrentUser();
+                if (response.success) {
+                    user = response.user;
+                }
+            } catch (err) {
+                console.error('Fout bij ophalen gebruiker van API:', err);
+            }
+
+            // Als API-call niet lukte, gebruik localStorage fallback
+            if (!user) {
+                try {
+                    const storedUser = localStorage.getItem('user') || localStorage.getItem('currentUser');
+                    if (storedUser) {
+                        user = JSON.parse(storedUser);
+                    }
+                } catch (e) {
+                    console.error('Kan gebruikersgegevens niet parsen uit localStorage:', e);
+                }
+            }
+
+            // Definitieve fallback
+            if (!user) {
+                user = { name: 'Gebruiker', email: 'gebruiker@example.com', role: 'user' };
+            }
+
+            // Wacht tot custom elements zijn geladen en update attributen
+            if ('customElements' in window) {
+                customElements.whenDefined('slimmer-navbar').then(() => {
+                    const navbar = document.querySelector('slimmer-navbar');
+                    if (navbar) navbar.setAttribute('user-name', user.name);
+                });
+
+                customElements.whenDefined('slimmer-hero').then(() => {
+                    const hero = document.querySelector('slimmer-hero');
+                    if (hero) hero.setAttribute('title', `Welkom, ${user.name}!`);
+                });
+            }
+
+            // Toon admin sectie indien nodig
             if (user.role === 'admin') {
                 document.getElementById('admin-section').style.display = 'block';
             }
-            
-            // Welkomstbericht bijwerken
-            document.getElementById('user-name').textContent = user.name;
-            
-            // Uitloggen via welcome card button
-            document.getElementById('logout-btn').addEventListener('click', function() {
-                window.location.href = 'test-login.php';
-            });
-            
+
+            // Update overige welkomstteksten
+            document.querySelectorAll('#user-name').forEach(span => span.textContent = user.name);
+
+            // Uitloggen knop test placeholder
+            const logoutBtn = document.getElementById('logout-btn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', async () => {
+                    await window.auth.logout();
+                    window.location.href = 'login.php';
+                });
+            }
+
             // Mobiel menu toggle
             const mobileMenuBtn = document.querySelector('.mobile-menu-button');
             const navLinks = document.querySelector('.nav-links');
-            
             if (mobileMenuBtn) {
-                mobileMenuBtn.addEventListener('click', function() {
+                mobileMenuBtn.addEventListener('click', () => {
                     navLinks.classList.toggle('active');
                     mobileMenuBtn.classList.toggle('active');
                 });
             }
-            
+
             // Dashboard kaarten animatie
             const dashboardCards = document.querySelectorAll('.dashboard-card');
-            
-            // Maak alle kaarten zichtbaar na 100ms
             setTimeout(() => {
-                dashboardCards.forEach(card => {
-                    card.classList.add('visible');
-                });
+                dashboardCards.forEach(card => card.classList.add('visible'));
             }, 100);
         });
     </script>

@@ -41,9 +41,8 @@ function getStripeApiKey() {
         }
     }
     
-    // Fallback key (alleen voor test omgeving)
-    error_log('Gebruik fallback Stripe secret key');
-    return 'sk_test_51R9P5k4PGPB9w5n1VCGJD30RWZgNCA2U5xyhCrEHZw46tPGShW8bNRMjbTxvKDUI3A1mclQvBYvywM1ZNU1jffIo00jKgorz1n';
+    error_log('Stripe secret key ontbreekt in omgevingsvariabelen');
+    errorResponse('Stripe secret key ontbreekt in configuratie', 500);
 }
 
 // Haal publieke sleutel op gebaseerd op omgeving
@@ -62,8 +61,8 @@ function getStripePublicKey() {
         }
     }
     
-    // Fallback key (alleen voor test omgeving)
-    return 'pk_test_51R9P5k4PGPB9w5n1not7EQ9Kh15WBNrFC0B09dHvKNN3Slf1dF32rFvQniEwPpeeAQstMGnLQFTblXXwN8QAGovO00S1D67hoD';
+    error_log('Stripe public key ontbreekt in omgevingsvariabelen');
+    errorResponse('Stripe public key ontbreekt in configuratie', 500);
 }
 
 // Laad de Stripe PHP SDK

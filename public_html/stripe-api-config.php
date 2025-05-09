@@ -79,9 +79,14 @@ try {
     $publishableKey = getenv('STRIPE_PUBLIC_KEY');
     $secretKey = getenv('STRIPE_SECRET_KEY'); // Alleen voor status check, niet voor frontend
     
-    // Als er geen keys gevonden zijn, gebruik fallback keys
+    // Als er geen sleutel gevonden is, stuur fout terug i.p.v. onveilige fallback
     if (empty($publishableKey)) {
-        $publishableKey = 'pk_test_51Qf2ltG2yqBai5FsCQsuBl84wnMb9omItJI9mTEl6sE0IeKJbwC9in96zPcFxdHwSxpwlruaKtQK0dwmOykEE9i900lcaOgyyB';
+        http_response_code(500);
+        echo json_encode([
+            'success' => false,
+            'error' => 'Stripe publishable key ontbreekt in configuratie',
+        ]);
+        exit();
     }
     
     // Resultaat met de configuratie en veilige publieke sleutel

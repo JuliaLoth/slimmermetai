@@ -1,0 +1,132 @@
+<?php
+namespace App\Infrastructure\Logging;
+
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+use Monolog\Handler\SlackWebhookHandler;
+use Monolog\Formatter\LineFormatter;
+
+class ErrorHandler {
+    private static ?ErrorHandler $instance=null;
+    private string $logPath;
+    private ?Logger $logger=null;
+    private string $requestId;
+
+    private function __construct(){
+        $this->logPath = defined('SITE_ROOT')?SITE_ROOT.'/logs/':dirname(dirname(dirname(__DIR__))).'/logs/';
+        if(!is_dir($this->logPath)) mkdir($this->logPath,0755,true);
+        $this->requestId=bin2hex(random_bytes(8));
+        if(!headers_sent()) header('X-Request-Id: '.$this->requestId);
+        $this->initLogger();
+    }
+
+    public static function getInstance(): ErrorHandler {
+        return self::$instance??=new ErrorHandler();
+    }
+
+    public function logError($m,$c=[],$s='ERROR'){$this->log($s,$m,$c);}
+    public function logWarning($m,$c=[]){$this->log('WARNING',$m,$c);}
+    public function logInfo($m,$c=[]){$this->log('INFO',$m,$c);}
+
+    private function log($sev,$m,$ctx=[]){
+        $ip=$_SERVER['REMOTE_ADDR']??'CLI';
+        $url=$_SERVER['REQUEST_URI']??'N/A';
+        $ctx=array_merge(['ip'=>$ip,'url'=>$url,'request_id'=>$this->requestId],$ctx);
+        if($this->logger){
+            $this->logger->log($this->mapSeverityToLevel($sev),$m,$ctx);
+        } else {
+            $logFile=$this->logPath.strtolower($sev).'.log';
+            $ts=date('Y-m-d H:i:s');
+            file_put_contents($logFile,"[$ts][$sev][$ip][$url] $m ".json_encode($ctx).PHP_EOL,FILE_APPEND);
+        }
+    }
+
+    private function initLogger(){
+        $this->logger=new Logger('app');
+        $file=$this->logPath.'app-'.date('Y-m-d').'.log';
+        $fh=new StreamHandler($file,Logger::DEBUG);
+        $fh->setFormatter(new LineFormatter(null,null,true,true));
+        $this->logger->pushHandler($fh);
+        $wh=getenv('SLACK_WEBHOOK_URL');
+        if($wh){
+            $sh=new SlackWebhookHandler($wh,null,'SlimmerMetAI-bot',true,null,Logger::CRITICAL,true,false,false);
+            $this->logger->pushHandler($sh);
+        }
+    }
+
+    private function mapSeverityToLevel($s){
+        return match(strtoupper($s)){
+            'DEBUG'=>Logger::DEBUG,
+            'INFO'=>Logger::INFO,
+            'WARNING'=>Logger::WARNING,
+            'ERROR'=>Logger::ERROR,
+            'CRITICAL','FATAL'=>Logger::CRITICAL,
+            default=>Logger::ERROR
+        };
+    }
+
+    public function registerGlobalHandlers(){
+        set_error_handler([$this,'handleError']);
+        set_exception_handler([$this,'handleException']);
+        register_shutdown_function([$this,'handleShutdown']);
+    }
+
+    public function handleError($no,$str,$file,$line){
+        $sev=$this->getErrorSeverity($no);
+        $this->logError($str,['file'=>$file,'line'=>$line,'type'=>$sev]);
+        if(in_array($no,[E_ERROR,E_PARSE,E_CORE_ERROR,E_COMPILE_ERROR,E_USER_ERROR])) $this->showErrorPage();
+        return true;
+    }
+
+    public function handleException($ex){
+        $this->logError($ex->getMessage(),['file'=>$ex->getFile(),'line'=>$ex->getLine(),'trace'=>$ex->getTraceAsString()]);
+        $this->respondError($ex->getMessage());
+    }
+
+    public function handleShutdown(){
+        $err=error_get_last();
+        if($err&&in_array($err['type'],[E_ERROR,E_PARSE,E_CORE_ERROR,E_COMPILE_ERROR])){
+            $this->logError($err['message'],['file'=>$err['file'],'line'=>$err['line'],'type'=>$this->getErrorSeverity($err['type'])]);
+            $this->respondError($err['message']);
+        }
+    }
+
+    private function getErrorSeverity($e){
+        return match($e){
+            E_ERROR,E_CORE_ERROR,E_COMPILE_ERROR,E_USER_ERROR=>'FATAL',
+            E_WARNING,E_CORE_WARNING,E_COMPILE_WARNING,E_USER_WARNING=>'WARNING',
+            E_NOTICE,E_USER_NOTICE=>'NOTICE',
+            E_STRICT=>'STRICT',
+            E_DEPRECATED,E_USER_DEPRECATED=>'DEPRECATED',
+            default=>'UNKNOWN'
+        };
+    }
+
+    private function showErrorPage(){
+        $this->respondError();
+    }
+
+    private function respondError($msg='Interne serverfout'){
+        if($this->isApiRequest()){
+            if(!headers_sent()) header('Content-Type: application/json');
+            echo json_encode(['error'=>true,'message'=>$msg,'request_id'=>$this->requestId]);
+            exit;
+        }
+        if(!headers_sent()){
+            header('HTTP/1.1 500 Internal Server Error');
+            if(defined('DEBUG_MODE')&&DEBUG_MODE){
+                echo '<h1>Er is een fout opgetreden</h1><p>De applicatie heeft een onverwachte fout ondervonden. Deze fout is gelogd.</p>';
+            } else {
+                header('Location: '.(defined('SITE_URL')?SITE_URL:'').'/500.php');
+                exit;
+            }
+        }
+    }
+
+    private function isApiRequest(){
+        $uri=$_SERVER['REQUEST_URI']??'';
+        if(strpos($uri,'/api/')===0) return true;
+        $acc=$_SERVER['HTTP_ACCEPT']??'';
+        return strpos($acc,'application/json')!==false;
+    }
+} 

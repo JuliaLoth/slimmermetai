@@ -23,14 +23,6 @@ if (defined('SESSION_NAME')) {
     session_name(SESSION_NAME);
 }
 
-// Laad CsrfProtection class
-$csrfPath = dirname(dirname(dirname(__FILE__))) . '/includes/utils/CsrfProtection.php';
-if (is_file($csrfPath)) {
-    require_once $csrfPath;
-} else {
-    error_response('CsrfProtection.php niet gevonden op server', 500);
-}
-
 // Start sessie voor CSRF
 session_start();
 
@@ -53,7 +45,7 @@ if (!isset($data['csrf_token'])) {
     error_response('CSRF-token ontbreekt', 403);
 }
 
-$csrf = CsrfProtection::getInstance();
+$csrf = \App\Infrastructure\Security\CsrfProtection::getInstance();
 if (!$csrf->validateToken($data['csrf_token'])) {
     error_response('Ongeldige CSRF-token. Vernieuw de pagina en probeer opnieuw.', 403);
 }

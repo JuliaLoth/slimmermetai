@@ -9,14 +9,47 @@ if (!defined('SITE_ROOT')) {
     define('SITE_ROOT', dirname(dirname(__FILE__))); // Ga een niveau omhoog vanuit api/config.php
 }
 
-// Laad .env variabelen indien mogelijk
-if (file_exists(SITE_ROOT . '/.env')) {
-    $env = parse_ini_file(SITE_ROOT . '/.env');
-    foreach ($env as $key => $value) {
-        $_ENV[$key] = $value;
-        putenv("$key=$value");
+// Zoek het .env-bestand op meerdere mogelijke locaties
+$envPaths = [
+    SITE_ROOT . '/.env',                      // project root (bijv. public_html/.env)
+    dirname(SITE_ROOT) . '/.env',             // één niveau boven public_html (handig bij shared hosting)
+    SITE_ROOT . '/includes/.env',             // fallback – in /includes/
+];
+
+// Nieuwe Dotenv-loader (ondersteunt # comments en quoted waarden)
+$envLoaded = false;
+foreach ($envPaths as $envFile) {
+    if (!file_exists($envFile)) {
+        continue;
     }
+
+    // Autoloader laden als Dotenv nog niet beschikbaar is
+    if (!class_exists('Dotenv\\Dotenv')) {
+        $autoloadPath = SITE_ROOT . '/vendor/autoload.php';
+        if (file_exists($autoloadPath)) {
+            require_once $autoloadPath;
+        }
+    }
+
+    if (class_exists('Dotenv\\Dotenv')) {
+        // Gebruik vlucas/phpdotenv
+        $dotenv = Dotenv\Dotenv::createImmutable(dirname($envFile), basename($envFile));
+        $dotenv->load();
+    } else {
+        // Fallback op parse_ini_file als Dotenv ontbreekt
+        $env = parse_ini_file($envFile);
+        foreach ($env as $key => $value) {
+            $cleanValue = preg_replace('/^([\'\"])(.*)\1$/', '$2', trim($value));
+            $_ENV[$key] = $cleanValue;
+            putenv("$key=$cleanValue");
+        }
+    }
+
+    $envLoaded = true;
+    break; // Stop bij eerste geldige .env
 }
+
+// Als er geen enkel .env gevonden is mag de code verdergaan met defaults
 
 // Omgeving bepalen (development, testing, production)
 $current_env = getenv('APP_ENV') ?: 'production';
@@ -37,6 +70,14 @@ if (!defined('SITE_URL')) define('SITE_URL', getenv('SITE_URL') ?: 'https://slim
 if (!defined('PASSWORD_MIN_LENGTH')) define('PASSWORD_MIN_LENGTH', getenv('PASSWORD_MIN_LENGTH') ?: 8);
 if (!defined('BCRYPT_COST')) define('BCRYPT_COST', getenv('BCRYPT_COST') ?: 12);
 if (!defined('DEBUG_MODE')) define('DEBUG_MODE', getenv('DEBUG_MODE') ?: false);
+if (!defined('DB_PORT')) define('DB_PORT', getenv('DB_PORT') ?: '3306');
+if (!defined('DB_SOCKET')) define('DB_SOCKET', getenv('DB_SOCKET') ?: '');
+
+// --- DEBUG header & log vroegtijdig uitsturen ---
+if (!headers_sent() && (getenv('DEBUG_MODE') || (defined('DEBUG_MODE') && DEBUG_MODE))) {
+    header('X-Debug-DB: host=' . (getenv('DB_HOST') ?: DB_HOST) . ';port=' . (getenv('DB_PORT') ?: DB_PORT) . ';socket=' . (getenv('DB_SOCKET') ?: DB_SOCKET));
+    error_log('[DEBUG early] DB settings - host=' . (getenv('DB_HOST') ?: DB_HOST) . ';port=' . (getenv('DB_PORT') ?: DB_PORT) . ';socket=' . (getenv('DB_SOCKET') ?: DB_SOCKET));
+}
 
 // Google OAuth configuratie uit .env halen
 if (!defined('GOOGLE_CLIENT_ID')) {
@@ -55,6 +96,13 @@ if (file_exists(__DIR__ . '/helpers/auth.php')) {
 if (file_exists(__DIR__ . '/helpers/upload.php')) {
     require_once __DIR__ . '/helpers/upload.php';
 }
+
+// Voeg sessie/cookie gerelateerde constanten toe als ze nog niet bestaan
+if (!defined('SESSION_NAME')) define('SESSION_NAME', 'SLIMMERMETAI_SESSION');
+if (!defined('COOKIE_DOMAIN')) define('COOKIE_DOMAIN', getenv('COOKIE_DOMAIN') ?: '');
+if (!defined('COOKIE_PATH')) define('COOKIE_PATH', getenv('COOKIE_PATH') ?: '/');
+if (!defined('COOKIE_SECURE')) define('COOKIE_SECURE', getenv('COOKIE_SECURE') !== false ? (bool)getenv('COOKIE_SECURE') : true);
+if (!defined('COOKIE_HTTPONLY')) define('COOKIE_HTTPONLY', getenv('COOKIE_HTTPONLY') !== false ? (bool)getenv('COOKIE_HTTPONLY') : true);
 
 // Configuratie array voor eenvoudige toegang
 $config = [
@@ -94,23 +142,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit;
 }
 
-// Database verbinding maken als die nog niet bestaat
-if (!isset($pdo)) {
-    try {
-        $dsn = "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=" . DB_CHARSET;
-        $options = [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-            PDO::ATTR_EMULATE_PREPARES => false,
-        ];
-        $pdo = new PDO($dsn, DB_USER, DB_PASS, $options);
-    } catch (PDOException $e) {
-        // Log de error en stuur een 503 Service Unavailable JSON response terug
-        error_log('Database error: ' . $e->getMessage());
-        // Gebruik 503 om aan te geven dat de service tijdelijk onbeschikbaar is, maar voorkom Apache 500 redirect
-        json_response(['error' => 'Database verbindingsfout'], 503);
-    }
-}
+require_once dirname(__DIR__) . '/bootstrap.php';
+$pdo = db()->getPdo();
 
 // Helper functie voor JSON response
 function json_response($data, $status = 200) {
@@ -160,27 +193,15 @@ function validate_token($token) {
     ];
 }
 
-// CSRF bescherming
+// Nieuwe implementatie waarbij dezelfde CsrfProtection class wordt gebruikt als in de front-end
 function generate_csrf_token() {
-    if (!isset($_SESSION['csrf_token'])) {
-        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
-        $_SESSION['csrf_token_expiry'] = time() + 3600; // 1 uur geldig
-    } else if ($_SESSION['csrf_token_expiry'] < time()) {
-        // Token is verlopen, genereer een nieuwe
-        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
-        $_SESSION['csrf_token_expiry'] = time() + 3600;
-    }
-    return $_SESSION['csrf_token'];
+    $csrf = \App\Infrastructure\Security\CsrfProtection::getInstance();
+    return $csrf->getToken();
 }
 
 function verify_csrf_token($token) {
-    if (!isset($_SESSION['csrf_token']) || 
-        !isset($_SESSION['csrf_token_expiry']) || 
-        $_SESSION['csrf_token_expiry'] < time() || 
-        $token !== $_SESSION['csrf_token']) {
-        return false;
-    }
-    return true;
+    $csrf = \App\Infrastructure\Security\CsrfProtection::getInstance();
+    return $csrf->validateToken($token);
 }
 
 // Veilige cURL functie voor HTTP requests

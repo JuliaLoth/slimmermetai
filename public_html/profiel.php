@@ -37,7 +37,7 @@ $page_description = 'Slimmer met AI -  $args[0].ToString().ToUpper() rofiel';
         title="Mijn Profiel" 
         subtitle="Beheer je persoonlijke gegevens en voorkeuren. Hier kun je je profiel bijwerken en je voortgang bekijken."
         background="image"
-        image-url="images/hero background def.svg"
+        image-url="images/hero-background.svg"
         centered>
     </slimmer-hero>
 
@@ -160,11 +160,106 @@ $page_description = 'Slimmer met AI -  $args[0].ToString().ToUpper() rofiel';
 
     <!-- Footer -->
     <!-- Begin Footer -->
-<?php require_once __DIR__ . '/../components/footer.php'; ?>
+<?php require_once __DIR__ . '/components/footer.php'; ?>
 <!-- Einde Footer -->
 
     <!-- Scripts -->
+    <script src="<?php echo asset_url('js/auth.js'); ?>"></script>
     <script src="<?php echo asset_url('js/main.js'); ?>"></script>
     <script src="<?php echo asset_url('js/user-stats.js'); ?>"></script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', async () => {
+        // Initialiseer auth staat
+        window.auth.initAuth();
+
+        // Haal huidige gebruiker op zodat form velden zijn ingevuld
+        let currentUser = null;
+        try {
+          const res = await window.auth.getCurrentUser();
+          if (res.success) currentUser = res.user;
+        } catch(e) {
+          console.error('Kan gebruiker niet ophalen:', e);
+        }
+
+        if (!currentUser) {
+          try {
+            const stored = localStorage.getItem('user');
+            if (stored) currentUser = JSON.parse(stored);
+          } catch(e) {}
+        }
+
+        if (currentUser) {
+          const nameInput = document.getElementById('name');
+          const emailInput = document.getElementById('email');
+          if (nameInput) nameInput.value = currentUser.name || '';
+          if (emailInput) emailInput.value = currentUser.email || '';
+        }
+
+        /* ===== Profielgegevens wijzigen ===== */
+        const profileForm = document.getElementById('profile-form');
+        if (profileForm) {
+          profileForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+
+            if (!name || !email) {
+              alert('Naam en e-mail zijn verplicht.');
+              return;
+            }
+
+            try {
+              const result = await updateProfile({ name, email });
+              if (result.success) {
+                // Werk localStorage en UI bij
+                localStorage.setItem('user', JSON.stringify(result.user));
+                localStorage.setItem('currentUser', JSON.stringify(result.user));
+
+                // Update navbar naam in huidige pagina
+                const navbar = document.querySelector('slimmer-navbar');
+                if (navbar) navbar.setAttribute('user-name', result.user.name);
+
+                alert('Profiel succesvol bijgewerkt!');
+              } else {
+                alert(result.message || 'Bijwerken mislukt');
+              }
+            } catch (err) {
+              console.error('Fout bij profiel bijwerken:', err);
+              alert('Er is een fout opgetreden bij het opslaan van je profiel.');
+            }
+          });
+        }
+
+        /* ===== Wachtwoord wijzigen ===== */
+        const passwordForm = document.getElementById('password-form');
+        if (passwordForm) {
+          passwordForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const currentPassword = document.getElementById('current-password').value;
+            const newPassword = document.getElementById('new-password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+
+            if (newPassword !== confirmPassword) {
+              alert('Nieuw wachtwoord en bevestiging komen niet overeen.');
+              return;
+            }
+
+            try {
+              const result = await changePassword(currentPassword, newPassword);
+              if (result.success) {
+                alert('Wachtwoord succesvol gewijzigd!');
+                passwordForm.reset();
+              } else {
+                alert(result.message || 'Wijzigen wachtwoord mislukt');
+              }
+            } catch (err) {
+              console.error('Fout bij wachtwoord wijzigen:', err);
+              alert('Er is een fout opgetreden bij het wijzigen van je wachtwoord.');
+            }
+          });
+        }
+      });
+    </script>
 </body>
 </html> 

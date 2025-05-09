@@ -3,8 +3,8 @@
  * Integreert met de backend API voor gebruikersbeheer
  */
 
-// API configuratie
-const API_URL = 'https://slimmermetai.com/api'; // Productie API URL
+// Gebruik een relatieve URL om CSP-problemen met www/non-www te voorkomen
+const API_URL = '/api';
 
 // Debug mode om problemen op te sporen
 const DEBUG = true;
@@ -40,14 +40,14 @@ function initAuth() {
 // Registreer een nieuwe gebruiker
 async function register(userData) {
     try {
-        // Geen aparte CSRF token header nodig, backend verwacht het in de body
-        const response = await fetch(`${API_URL}/auth/register`, {
+        const response = await fetch(`${API_URL}/auth/register.php`, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
-                // Geen X-CSRF-Token header hier
+                'Content-Type': 'application/json',
+                'X-CSRF-Token': userData.csrf_token || '',
             },
-            body: JSON.stringify(userData) // Stuur het volledige userData object inclusief csrf_token
+            credentials: 'include',
+            body: JSON.stringify(userData)
         });
         
         return await handleResponse(response);
@@ -61,30 +61,42 @@ async function register(userData) {
 }
 
 // Log gebruiker in
-async function login(email, password) {
+async function login(arg1, arg2) {
+    // Ondersteun zowel login(email, password) als login({ email, password, rememberMe })
+    let email, password, rememberMe = false;
+    if (typeof arg1 === 'object' && arg1 !== null) {
+        // Eerste argument is credentials object
+        email = arg1.email || '';
+        password = arg1.password || '';
+        rememberMe = arg1.rememberMe || arg1.remember || false;
+    } else {
+        email = arg1;
+        password = arg2;
+    }
+
     debug(`Login poging voor: ${email}`);
     try {
         debug('Versturen van login verzoek naar API...');
-        const response = await fetch(`${API_URL}/auth/login`, {
+        const response = await fetch(`${API_URL}/auth/login.php`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             credentials: 'include', // Belangrijk voor refresh token cookie
-            body: JSON.stringify({ email, password })
+            body: JSON.stringify({ email, password, remember: rememberMe })
         });
         
         debug(`API response status: ${response.status}`);
         const data = await handleResponse(response);
         debug(`API response data: ${JSON.stringify(data)}`);
         
-        if (data.success && data.token) {
+        if (data.success && data.access_token) {
             debug('Login succesvol, token opslaan');
             // Sla gegevens op
-            authToken = data.token;
+            authToken = data.access_token;
             currentUser = data.user;
             
-            localStorage.setItem('token', data.token);
+            localStorage.setItem('token', data.access_token);
             localStorage.setItem('user', JSON.stringify(data.user));
         } else {
             debug(`Login mislukt: ${data.message || 'Onbekende fout'}`);
@@ -105,7 +117,7 @@ async function login(email, password) {
 async function logout() {
     try {
         if (authToken) {
-            await fetch(`${API_URL}/auth/logout`, {
+            await fetch(`${API_URL}/auth/logout.php`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${authToken}`
@@ -134,7 +146,7 @@ async function logout() {
 // Vernieuw access token
 async function refreshToken() {
     try {
-        const response = await fetch(`${API_URL}/auth/refresh-token`, {
+        const response = await fetch(`${API_URL}/auth/refresh-token.php`, {
             method: 'POST',
             credentials: 'include'
         });
@@ -170,7 +182,7 @@ async function getCurrentUser() {
             };
         }
         
-        const response = await fetch(`${API_URL}/auth/me`, {
+        const response = await fetch(`${API_URL}/auth/me.php`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${authToken}`
@@ -179,10 +191,10 @@ async function getCurrentUser() {
         
         const data = await handleResponse(response);
         
-        if (data.success && data.data) {
+        if (data.success && data.user) {
             // Update gebruiker
-            currentUser = data.data;
-            localStorage.setItem('user', JSON.stringify(data.data));
+            currentUser = data.user;
+            localStorage.setItem('user', JSON.stringify(data.user));
         }
         
         return data;
@@ -243,7 +255,7 @@ async function changePassword(currentPassword, newPassword) {
         }
         
         const response = await fetch(`${API_URL}/users/password`, {
-            method: 'PUT',
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${authToken}`
@@ -264,7 +276,7 @@ async function changePassword(currentPassword, newPassword) {
 // Wachtwoord vergeten
 async function forgotPassword(email) {
     try {
-        const response = await fetch(`${API_URL}/auth/forgot-password`, {
+        const response = await fetch(`${API_URL}/auth/forgot-password.php`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -285,7 +297,7 @@ async function forgotPassword(email) {
 // Wachtwoord resetten
 async function resetPassword(token, password) {
     try {
-        const response = await fetch(`${API_URL}/auth/reset-password`, {
+        const response = await fetch(`${API_URL}/auth/reset-password.php`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -305,13 +317,13 @@ async function resetPassword(token, password) {
 
 // Google login
 function googleLogin() {
-    window.location.href = `${API_URL}/auth/google`;
+    window.location.href = `${API_URL}/auth/google.php`;
 }
 
 // Email verifiëren
 async function verifyEmail(token) {
     try {
-        const response = await fetch(`${API_URL}/auth/verify-email`, {
+        const response = await fetch(`${API_URL}/auth/verify-email.php`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -369,7 +381,15 @@ async function deleteAccount() {
 async function handleResponse(response) {
     debug(`Verwerken van response: ${response.status}`);
     try {
-        const data = await response.json();
+        let data;
+        try {
+            data = await response.json();
+        } catch (jsonErr) {
+            // Fallback: probeer tekst te lezen (bij HTML 404 etc.)
+            const text = await response.text();
+            debug(`Response is geen JSON, raw text: ${text.substring(0,100)}`);
+            data = { message: text };
+        }
         debug(`Response data: ${JSON.stringify(data)}`);
         
         if (!response.ok) {

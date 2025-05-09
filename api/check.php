@@ -153,14 +153,8 @@ header('Content-Type: text/html; charset=utf-8');
     $db_message = '';
     
     try {
-        $dsn = "mysql:host={$config['db_host']};dbname={$config['db_name']};charset=utf8mb4";
-        $options = [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-            PDO::ATTR_EMULATE_PREPARES => false
-        ];
-        
-        $pdo_check = new PDO($dsn, $config['db_user'], $config['db_pass'], $options);
+        require_once dirname(__DIR__) . '/bootstrap.php';
+        $pdo_check = db()->getPdo();
         
         // Controleer of de vereiste tabellen bestaan
         $required_tables = ['users', 'refresh_tokens', 'login_attempts', 'email_tokens'];

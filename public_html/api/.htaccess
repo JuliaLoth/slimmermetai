@@ -9,6 +9,19 @@
     
     # Routing voor API endpoints (alleen indien nodig)
     # RewriteRule ^(.*)$ index.php [QSA,L]
+
+    # Auth endpoints
+    RewriteRule ^auth/login/?$ auth/login.php [L,QSA]
+    RewriteRule ^auth/register/?$ auth/register.php [L,QSA]
+    RewriteRule ^auth/forgot-password/?$ auth/forgot-password.php [L,QSA]
+    RewriteRule ^auth/reset-password/?$ auth/reset-password.php [L,QSA]
+
+    # Stuur 404 voor onbekende endpoints
+    RewriteRule ^ - [R=404,L]
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^users/register/?$ users/register.php [L]
 </IfModule>
 
 # CORS headers voor API toegang

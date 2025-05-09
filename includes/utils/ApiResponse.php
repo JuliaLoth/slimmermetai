@@ -8,6 +8,10 @@
  * @author SlimmerMetAI Team
  */
 
+namespace SlimmerMetAI\Utils;
+
+use App\Infrastructure\Logging\ErrorHandler;
+
 class ApiResponse {
     /**
      * Stuur een succesvol response
@@ -198,3 +202,5 @@ class ApiResponse {
         exit;
     }
 }
+
+\class_alias(__NAMESPACE__ . '\\ApiResponse', 'ApiResponse');

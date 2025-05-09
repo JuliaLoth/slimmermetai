@@ -37,7 +37,7 @@ $page_description = 'Slimmer met AI -  $args[0].ToString().ToUpper() ijn tools';
         title="Mijn Tools" 
         subtitle="Alle AI tools die je hebt gekocht op Ã©Ã©n plek. Gebruik ze direct vanuit deze pagina."
         background="image"
-        image-url="images/hero background def.svg"
+        image-url="images/hero-background.svg"
         centered>
     </slimmer-hero>
 

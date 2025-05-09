@@ -28,8 +28,18 @@ function is_active($page) {
     <meta name="description" content="<?php echo htmlspecialchars($page_description); ?>">
     
     <!-- Favicon -->
-    <link rel="icon" href="<?php echo asset_url('images/favicon.ico'); ?>" type="image/x-icon">
-    <link rel="shortcut icon" href="<?php echo asset_url('images/favicon.ico'); ?>" type="image/x-icon">
+    <?php
+        // Dynamisch pad bepalen voor favicon.ico
+        $favicon_relative_path = 'images/favicon.ico';
+        $favicon_full_path    = dirname(__DIR__) . '/' . $favicon_relative_path; // public_html/ + images/favicon.ico
+    ?>
+    <?php if (file_exists($favicon_full_path)): ?>
+        <link rel="icon" href="<?php echo asset_url($favicon_relative_path); ?>" type="image/x-icon">
+        <link rel="shortcut icon" href="<?php echo asset_url($favicon_relative_path); ?>" type="image/x-icon">
+    <?php else: ?>
+        <!-- Fallback naar SVG-logo als favicon.ico nog niet bestaat -->
+        <link rel="icon" href="<?php echo asset_url('images/Logo.svg'); ?>" type="image/svg+xml">
+    <?php endif; ?>
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">

@@ -14,23 +14,38 @@ if (!defined('SITE_ROOT')) {
 
 // Laad .env bestand
 function loadEnv() {
-    $envFile = SITE_ROOT . '/.env';
-    if (file_exists($envFile)) {
+    // Zoek in mogelijke paden: eerst in /includes/, dan één map hoger
+    $possible = [
+        SITE_ROOT . '/.env',            // huidig pad (includes)
+        dirname(SITE_ROOT) . '/.env',   // project root
+    ];
+
+    foreach ($possible as $envFile) {
+        if (!file_exists($envFile)) {
+            continue;
+        }
+
         $lines = file($envFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
         foreach ($lines as $line) {
-            if (strpos($line, '=') !== false && strpos($line, '#') !== 0) {
-                list($key, $value) = explode('=', $line, 2);
-                $key = trim($key);
-                $value = trim($value);
-                
-                // Verwijder aanhalingstekens als ze aanwezig zijn
-                if (preg_match('/^(["\']).*\1$/', $value)) {
-                    $value = substr($value, 1, -1);
-                }
-                
-                putenv("$key=$value");
+            // Sla commentaarregels over
+            if (strpos(trim($line), '#') === 0 || strpos($line, '=') === false) {
+                continue;
             }
+
+            list($key, $value) = explode('=', $line, 2);
+            $key   = trim($key);
+            $value = trim($value);
+
+            // Verwijder eventuele omringende quotes
+            if (preg_match('/^(\"|\")(.*)(\1)$/', $value)) {
+                $value = substr($value, 1, -1);
+            }
+
+            putenv("{$key}={$value}");
         }
+
+        // Stop bij de eerste gevonden .env
+        break;
     }
 }
 
@@ -56,7 +71,7 @@ define('MAX_UPLOAD_SIZE', getenv('MAX_UPLOAD_SIZE') ?: 5 * 1024 * 1024); // 5MB
 
 // Sessie instellingen
 define('SESSION_LIFETIME', getenv('SESSION_LIFETIME') ?: 60 * 60 * 24 * 7); // 1 week
-define('SESSION_NAME', getenv('SESSION_NAME') ?: 'SLIMMERMETAI_SESSION');
+define('SESSION_NAME', 'SLIMMERMETAI_SESSION');
 define('COOKIE_DOMAIN', getenv('COOKIE_DOMAIN') ?: '');
 define('COOKIE_PATH', getenv('COOKIE_PATH') ?: '/');
 define('COOKIE_SECURE', getenv('COOKIE_SECURE') ?: true);
@@ -145,17 +160,13 @@ function logInfo($message, $context = []) {
 
 // Functies voor beveiliging
 function generateCSRFToken() {
-    if (empty($_SESSION['csrf_token'])) {
-        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
-    }
-    return $_SESSION['csrf_token'];
+    $csrf = \App\Infrastructure\Security\CsrfProtection::getInstance();
+    return $csrf->getToken();
 }
 
 function validateCSRFToken($token) {
-    if (!isset($_SESSION['csrf_token']) || $token !== $_SESSION['csrf_token']) {
-        return false;
-    }
-    return true;
+    $csrf = \App\Infrastructure\Security\CsrfProtection::getInstance();
+    return $csrf->validateToken($token);
 }
 
 // Functies voor formattering
@@ -188,5 +199,8 @@ if (file_exists(SECURE_INCLUDES . '/functions.php')) {
     require_once SECURE_INCLUDES . '/functions.php';
 }
 
-// Sessie starten
-session_start(); 
+// Sessie starten met aangepaste naam
+if (session_status() === PHP_SESSION_NONE) {
+    session_name(SESSION_NAME);
+    session_start();
+} 

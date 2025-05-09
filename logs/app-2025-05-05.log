@@ -1,0 +1,4 @@
+[2025-05-05T23:17:01.057058+02:00] app.ERROR: Databaseverbinding mislukt {"ip":"::1","url":"/sse","request_id":"4cfde2613a3c43c1","error":"Class \"ErrorHandler\" not found"} 
+[2025-05-05T23:17:01.057827+02:00] app.ERROR: Class "ErrorHandler" not found {"ip":"::1","url":"/sse","request_id":"4cfde2613a3c43c1","file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\src\\Infrastructure\\Database\\Database.php","line":23,"trace":"#0 C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\bootstrap.php(45): App\\Infrastructure\\Database\\Database->connect()
+#1 C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\public_html\\index.php(4): require_once('C:\\\\Users\\\\julia....')
+#2 {main}"} 

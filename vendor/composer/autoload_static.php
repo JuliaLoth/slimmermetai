@@ -16,6 +16,8 @@ class ComposerStaticInit6f23f1fd5cea534d04e8e579e0173452
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
         'a8d3953fd9959404dd22d3dfcd0a79f0' => __DIR__ . '/..' . '/google/apiclient/src/aliases.php',
+        '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
+        'b33e3d135e5d9e47d845c576147bda89' => __DIR__ . '/..' . '/php-di/php-di/src/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -36,6 +38,7 @@ class ComposerStaticInit6f23f1fd5cea534d04e8e579e0173452
             'Psr\\Log\\' => 8,
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Http\\Client\\' => 16,
+            'Psr\\Container\\' => 14,
             'Psr\\Cache\\' => 10,
             'PhpOption\\' => 10,
             'PhpOffice\\PhpPresentation\\' => 26,
@@ -45,6 +48,14 @@ class ComposerStaticInit6f23f1fd5cea534d04e8e579e0173452
         'M' => 
         array (
             'Monolog\\' => 8,
+        ),
+        'L' => 
+        array (
+            'Laravel\\SerializableClosure\\' => 28,
+        ),
+        'I' => 
+        array (
+            'Invoker\\' => 8,
         ),
         'G' => 
         array (
@@ -59,10 +70,19 @@ class ComposerStaticInit6f23f1fd5cea534d04e8e579e0173452
         'F' => 
         array (
             'Firebase\\JWT\\' => 13,
+            'FastRoute\\' => 10,
         ),
         'D' => 
         array (
             'Dotenv\\' => 7,
+            'DI\\' => 3,
+        ),
+        'A' => 
+        array (
+            'App\\Infrastructure\\' => 19,
+            'App\\Http\\' => 9,
+            'App\\Domain\\' => 11,
+            'App\\Application\\' => 16,
         ),
     );
 
@@ -104,6 +124,10 @@ class ComposerStaticInit6f23f1fd5cea534d04e8e579e0173452
         array (
             0 => __DIR__ . '/..' . '/psr/http-client/src',
         ),
+        'Psr\\Container\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/container/src',
+        ),
         'Psr\\Cache\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/cache/src',
@@ -127,6 +151,14 @@ class ComposerStaticInit6f23f1fd5cea534d04e8e579e0173452
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
+        ),
+        'Laravel\\SerializableClosure\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laravel/serializable-closure/src',
+        ),
+        'Invoker\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-di/invoker/src',
         ),
         'GuzzleHttp\\Psr7\\' => 
         array (
@@ -160,9 +192,33 @@ class ComposerStaticInit6f23f1fd5cea534d04e8e579e0173452
         array (
             0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
         ),
+        'FastRoute\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/nikic/fast-route/src',
+        ),
         'Dotenv\\' => 
         array (
             0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
+        ),
+        'DI\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-di/php-di/src',
+        ),
+        'App\\Infrastructure\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/Infrastructure',
+        ),
+        'App\\Http\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/Http',
+        ),
+        'App\\Domain\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/Domain',
+        ),
+        'App\\Application\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/Application',
         ),
     );
 

@@ -12,7 +12,11 @@ if (!defined('SITE_ROOT')) {
 
 // Include de API configuratie (zet headers, db connectie, helpers)
 // error_reporting en display_errors worden hier mogelijk ook gezet op basis van .env
-require_once __DIR__ . '/config.php'; 
+require_once __DIR__ . '/config.php';
+
+// Extra: laad Composer autoload zodat controllers beschikbaar zijn
+require_once dirname(__DIR__) . '/vendor/autoload.php';
+require_once dirname(__DIR__) . '/bootstrap.php';
 
 // Logging aanzetten (pas pad aan indien nodig)
 ini_set('log_errors', 1);
@@ -46,22 +50,51 @@ $path_parts = explode('/', $endpoint_path);
 // TODO: Implementeer meer geavanceerde routing indien nodig (bv. met parameters in de URL)
 
 if (count($path_parts) >= 1 && !empty($path_parts[0])) {
+    // Eenvoudige controller mapping
+    [$resource, $action] = [$path_parts[0] ?? '', $path_parts[1] ?? ''];
+    if ($resource === 'auth') {
+        $controller = new \App\Http\Controller\AuthController();
+        if ($action === 'login') {
+            $controller->login();
+            exit;
+        } elseif ($action === 'register') {
+            $controller->register();
+            exit;
+        } elseif ($action === 'refresh-token') {
+            $controller->refresh();
+            exit;
+        } elseif ($action === 'logout') {
+            $controller->logout();
+            exit;
+        } elseif ($action === 'me') {
+            (new \App\Http\Middleware\AuthMiddleware())->handle(fn()=> $controller->me());
+            exit;
+        }
+    } elseif ($resource === 'users' && $action === 'register') {
+        (new \App\Http\Controller\UserController(new \App\Application\Service\UserService(new \App\Infrastructure\Repository\UserRepository(\App\Infrastructure\Database\Database::getInstance()))))->register();
+        exit;
+    } elseif ($resource === 'stripe') {
+        $ctrl = new \App\Http\Controller\StripeController();
+        if ($action === 'checkout') {
+            $ctrl->createSession();
+            exit;
+        } elseif ($action === 'status' && isset($path_parts[2])) {
+            $ctrl->status($path_parts[2]);
+            exit;
+        } elseif ($action === 'webhook') {
+            $ctrl->webhook();
+            exit;
+        }
+    }
+
+    // Fallback naar legacy file-based handler
     $handler_file = __DIR__ . '/' . implode('/', $path_parts) . '.php';
-
-    // Log de poging tot het laden van de handler
-    error_log("API Router: Probeert handler te laden: " . $handler_file . " voor request: " . $request_uri);
-
     if (file_exists($handler_file)) {
-        // Laad de handler
         require_once $handler_file;
-        // Het script $handler_file wordt nu uitgevoerd en zou de response moeten afhandelen
-        exit; // Stop verdere uitvoering in index.php na het laden van de handler
-    } else {
-        // Handler bestand niet gevonden
-        error_log("API Router: Handler bestand niet gevonden: " . $handler_file);
-        json_response(['error' => 'API endpoint niet gevonden.'], 404);
         exit;
     }
+    json_response(['error' => 'API endpoint niet gevonden.'], 404);
+    exit;
 } else {
     // Geen geldig endpoint opgegeven na /api/
     error_log("API Router: Geen geldig endpoint opgegeven na /api/ in request: " . $request_uri);

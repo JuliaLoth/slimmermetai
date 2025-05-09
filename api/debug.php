@@ -35,14 +35,8 @@ echo "<p>PDO MySQL beschikbaar: " . (extension_loaded('pdo_mysql') ? 'Ja' : 'Nee
 // Database connectie testen
 echo "<h2>Database Connectie</h2>";
 try {
-    $dsn = "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=" . DB_CHARSET;
-    $options = [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-        PDO::ATTR_EMULATE_PREPARES => false,
-    ];
-    
-    $pdo_test = new PDO($dsn, DB_USER, DB_PASS, $options);
+    require_once dirname(__DIR__) . '/bootstrap.php';
+    $pdo_test = db()->getPdo();
     echo "<p style='color:green'>Database connectie succesvol!</p>";
     
     // Tabellen controleren

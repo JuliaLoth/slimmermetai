@@ -521,7 +521,8 @@ require_once 'includes/header.php';
 <!-- Zorg ervoor dat get_asset_url bestaat (moet in init.php of helpers zitten) -->
 <!-- <script src="<?php echo get_asset_url('js/main.js'); ?>"></script> -->
 <!-- <script src="<?php echo get_asset_url('js/cart.js'); ?>"></script> -->
-<script src="<?php echo get_asset_url('js/auth.js'); ?>"></script>
+<?php $auth_version = filemtime(__DIR__ . '/js/auth.js'); ?>
+<script src="<?php echo get_asset_url('js/auth.js?v=' . $auth_version); ?>"></script>
 
 <script>
 // Wachtwoord zichtbaarheid toggle (hergebruikt van login pagina)
@@ -603,7 +604,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 lastName: formData.get('lastName'),
                 email: formData.get('email'),
                 password: formData.get('password'),
-                csrf_token: formData.get('csrf_token') // CSRF token blijft hier voorlopig
+                csrf_token: formData.get('csrf_token'), // CSRF token blijft hier voorlopig
+                termsAgreement: termsCheckbox.checked // Nieuw: stuur akkoord-veld mee
             };
 
             // Roep auth.register aan met het userData object
@@ -652,6 +654,9 @@ document.addEventListener('DOMContentLoaded', function() {
         errorMessage.style.display = 'none';
         successMessage.style.display = 'none';
     }
+
+    // Maak globaal beschikbaar voor functies buiten deze scope (zoals showProcessingMessage)
+    window.hideMessages = hideMessages;
 });
 
 // === Google Sign-In Functies ===
