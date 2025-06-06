@@ -74,6 +74,9 @@ jobs:
       env:
         APP_ENV: testing
 
+    - name: Ensure phpcs is executable
+      run: chmod +x ./vendor/bin/phpcs
+
     - name: Run code style check
       run: composer run cs:check
 
