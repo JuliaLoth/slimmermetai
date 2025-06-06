@@ -1,0 +1,63 @@
+# Git files
+.git
+.gitignore
+.github
+
+# Docker files
+Dockerfile*
+docker-compose*
+
+# Node modules (will be installed in container)
+node_modules
+npm-debug.log*
+
+# Vendor (will be installed in container)
+vendor
+
+# Development dependencies
+coverage
+tests
+.phpunit.cache
+phpunit.xml
+
+# Local environment files
+.env
+.env.local
+.env.*.local
+
+# IDE files
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+logs
+*.log
+
+# Temporary files
+tmp
+temp
+
+# Documentation
+*.md
+docs/
+
+# CI/CD
+.github/workflows
+
+# Test files
+.phpunit.result.cache
+
+# Cache directories
+.cache
+.npm
+.yarn
+
+# Build artifacts that will be regenerated
+public_html/assets/js/build/
+public_html/assets/css/build/ 

@@ -1,20 +1,25 @@
 # Multi-stage build for SlimmerMetAI website
-FROM node:18 AS frontend-builder
+FROM node:18-alpine AS frontend-builder
 
 # Set working directory
 WORKDIR /app
 
+# Install dependencies needed for native builds
+RUN apk add --no-cache python3 make g++ libc6-compat
+
 # Copy package.json and package-lock.json
 COPY package*.json ./
 
-# Install npm dependencies (clean cache and fresh install to avoid Rollup issues)
-RUN npm cache clean --force && rm -f package-lock.json && npm install --production --ignore-scripts
+# Clean install with better handling of optional dependencies
+RUN npm ci --only=production --ignore-scripts --no-optional || \
+    (rm -rf node_modules package-lock.json && npm install --only=production --ignore-scripts --no-optional)
 
 # Copy source code
 COPY . .
 
-# Build frontend assets
-RUN npm run build
+# Build frontend assets with workaround for Rollup issue
+RUN npm run build || \
+    (echo "Build failed, trying with legacy peer deps..." && npm install --legacy-peer-deps && npm run build)
 
 # Production PHP stage
 FROM php:8.3-fpm-alpine
