@@ -7,8 +7,8 @@ WORKDIR /app
 # Copy package.json and package-lock.json
 COPY package*.json ./
 
-# Install npm dependencies
-RUN npm ci --only=production --ignore-scripts
+# Install npm dependencies (clean cache and fresh install to avoid Rollup issues)
+RUN npm cache clean --force && rm -f package-lock.json && npm install --production --ignore-scripts
 
 # Copy source code
 COPY . .
