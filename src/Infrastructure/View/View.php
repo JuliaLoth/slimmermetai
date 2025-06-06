@@ -2,6 +2,9 @@
 
 namespace App\Infrastructure\View;
 
+use Psr\Http\Message\ResponseInterface;
+use GuzzleHttp\Psr7\Response;
+
 class View
 {
     private const BASE_PATH = __DIR__ . '/../../../resources/views/';
@@ -11,6 +14,19 @@ class View
     public static function render(string $template, array $data = [], ?string $layout = 'layout/main'): void
     {
         echo self::renderToString($template, $data, $layout);
+    }
+
+    /**
+     * Render een view en return een PSR-7 Response object
+     */
+    public static function renderToResponse(string $template, array $data = [], ?string $layout = 'layout/main'): ResponseInterface
+    {
+        $html = self::renderToString($template, $data, $layout);
+
+        return new Response(200, [
+            'Content-Type' => 'text/html; charset=utf-8',
+            'Cache-Control' => 'no-cache, private',
+        ], $html);
     }
 
     /**

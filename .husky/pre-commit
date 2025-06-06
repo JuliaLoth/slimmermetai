@@ -1,5 +1,29 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-npm run lint
-npx lint-staged 
+echo "🔍 Running local CI/CD checks before commit..."
+
+# Voer lokale CI/CD uit (zonder tests voor snelheid)
+if command -v pwsh >/dev/null 2>&1; then
+    # PowerShell Core beschikbaar
+    pwsh -ExecutionPolicy Bypass -File ./scripts/local-ci.ps1 -SkipTests
+elif command -v powershell >/dev/null 2>&1; then
+    # Windows PowerShell beschikbaar
+    powershell -ExecutionPolicy Bypass -File ./scripts/local-ci.ps1 -SkipTests
+else
+    echo "⚠️ PowerShell niet gevonden, proberen met bash..."
+    if [ -f "./scripts/local-ci.sh" ]; then
+        ./scripts/local-ci.sh
+    else
+        echo "❌ Geen lokaal CI/CD script gevonden!"
+        exit 1
+    fi
+fi
+
+if [ $? -ne 0 ]; then
+    echo "❌ Local CI/CD checks gefaald! Commit wordt geweigerd."
+    echo "💡 Los de issues op en probeer opnieuw."
+    exit 1
+fi
+
+echo "✅ Local CI/CD checks geslaagd! Commit wordt toegestaan." 

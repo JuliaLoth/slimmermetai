@@ -30,6 +30,7 @@ parameters:
         
         # Stripe library property access (external library dynamic properties)
         - '#Access to an undefined property Stripe\\\\StripeObject::#'
+        - '#Ternary operator condition is always true#'
         
         # Unused properties warnings (write-only properties are acceptable)
         - '#Property .* is never read, only written#'

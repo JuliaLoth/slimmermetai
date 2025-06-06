@@ -282,7 +282,7 @@ class UploadService
     /**
      * Resize image while maintaining aspect ratio
      */
-    private function resizeImage($image, int $width, int $height, int $maxWidth, int $maxHeight, string $mimeType): \GdImage
+    private function resizeImage(\GdImage $image, int $width, int $height, int $maxWidth, int $maxHeight, string $mimeType): \GdImage
     {
         // Bereken nieuwe afmetingen met behoud van aspect ratio
         if ($width > $height) {

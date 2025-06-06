@@ -19,10 +19,22 @@ class SessionController
     public function getSession(ServerRequestInterface $request): ResponseInterface
     {
         try {
-            // Check for valid session/JWT
-            $user = $this->authService->getCurrentUser();
+            // Extract JWT token from request
+            $token = $this->extractJwtToken($request);
+            if (!$token) {
+                return ApiResponse::error('No authentication token provided', 401);
+            }
 
-            if (!$user) {
+            // Verify token and get payload
+            $payload = $this->authService->verifyToken($token);
+            if (!$payload) {
+                return ApiResponse::error('Invalid authentication token', 401);
+            }
+
+            // Get user info from payload
+            $user = $this->authService->getCurrentUser($payload);
+
+            if (!$user || !$user['id']) {
                 return ApiResponse::error('No active session', 401);
             }
 
@@ -30,7 +42,7 @@ class SessionController
                 'authenticated' => true,
                 'user' => [
                     'id' => $user['id'],
-                    'name' => $user['name'],
+                    'name' => $user['name'] ?? 'User',
                     'email' => $user['email'],
                     'role' => $user['role'] ?? 'user'
                 ]
@@ -54,9 +66,22 @@ class SessionController
     private function handleGetUserProgress(ServerRequestInterface $request): ResponseInterface
     {
         try {
-            $user = $this->authService->getCurrentUser();
+            // Extract JWT token from request
+            $token = $this->extractJwtToken($request);
+            if (!$token) {
+                return ApiResponse::error('Authentication required', 401);
+            }
 
-            if (!$user) {
+            // Verify token and get payload
+            $payload = $this->authService->verifyToken($token);
+            if (!$payload) {
+                return ApiResponse::error('Invalid authentication token', 401);
+            }
+
+            // Get user info from payload
+            $user = $this->authService->getCurrentUser($payload);
+
+            if (!$user || !$user['id']) {
                 return ApiResponse::error('Authentication required', 401);
             }
 
@@ -77,9 +102,22 @@ class SessionController
     private function handleSaveUserProgress(ServerRequestInterface $request): ResponseInterface
     {
         try {
-            $user = $this->authService->getCurrentUser();
+            // Extract JWT token from request
+            $token = $this->extractJwtToken($request);
+            if (!$token) {
+                return ApiResponse::error('Authentication required', 401);
+            }
 
-            if (!$user) {
+            // Verify token and get payload
+            $payload = $this->authService->verifyToken($token);
+            if (!$payload) {
+                return ApiResponse::error('Invalid authentication token', 401);
+            }
+
+            // Get user info from payload
+            $user = $this->authService->getCurrentUser($payload);
+
+            if (!$user || !$user['id']) {
                 return ApiResponse::error('Authentication required', 401);
             }
 
@@ -96,11 +134,38 @@ class SessionController
 
     private function handleOptions(ServerRequestInterface $request): ResponseInterface
     {
-        return ApiResponse::success([], 200, [
+        $headers = [
             'Allow' => 'GET, POST, OPTIONS',
             'Access-Control-Allow-Methods' => 'GET, POST, OPTIONS',
             'Access-Control-Allow-Headers' => 'Content-Type, Authorization'
-        ]);
+        ];
+
+        // Create the response with proper parameter order: data, message, statusCode
+        $response = ApiResponse::success([], null, 200);
+
+        // Add custom headers to the response
+        foreach ($headers as $name => $value) {
+            $response = $response->withHeader($name, $value);
+        }
+
+        return $response;
+    }
+
+    /**
+     * Extract JWT token from Authorization header
+     */
+    private function extractJwtToken(ServerRequestInterface $request): ?string
+    {
+        $authHeader = $request->getHeaderLine('Authorization');
+        if (empty($authHeader)) {
+            return null;
+        }
+
+        if (preg_match('/Bearer\s+(.*)$/i', $authHeader, $matches)) {
+            return $matches[1];
+        }
+
+        return null;
     }
 
     // Legacy methods - deprecated

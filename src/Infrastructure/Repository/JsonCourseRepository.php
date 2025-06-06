@@ -173,6 +173,11 @@ class JsonCourseRepository implements CourseRepositoryInterface
     {
         return [];
     }
+    public function getLessonContent(int $lessonId): ?array
+    {
+        // TODO: Implement lesson content retrieval from database
+        return null;
+    }
     public function getNextLesson(int $userId, int $courseId): ?array
     {
         return null;

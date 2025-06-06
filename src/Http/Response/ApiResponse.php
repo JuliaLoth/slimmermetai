@@ -131,45 +131,4 @@ final class ApiResponse
 
         return new Response($statusCode, $headers, $jsonBody);
     }
-
-    /* --------------------------------------------------------------------- */
-    /* LEGACY METHODS - DEPRECATED                                          */
-    /* --------------------------------------------------------------------- */
-
-    /**
-     * Verstuur JSON-payload inclusief CORS-headers.
-     * @deprecated Use createJsonResponse() instead
-     */
-    private static function send(array $payload, int $statusCode = 200, array $headers = []): void
-    {
-        http_response_code($statusCode);
-        // Basisheaders
-        $defaultHeaders = [
-            'Content-Type'                => 'application/json; charset=UTF-8',
-            'Access-Control-Allow-Origin' => $_SERVER['HTTP_ORIGIN'] ?? '*',
-            'Access-Control-Allow-Methods' => 'GET, POST, PUT, DELETE, OPTIONS',
-            'Access-Control-Allow-Headers' => 'Content-Type, Authorization, X-Requested-With',
-            'Access-Control-Allow-Credentials' => 'true',
-            'Access-Control-Max-Age'          => '86400', // 24 uur
-        ];
-        self::outputHeaders(array_merge($defaultHeaders, $headers));
-        // OPTIONS-preflight direct beantwoorden
-        if (($_SERVER['REQUEST_METHOD'] ?? '') === 'OPTIONS') {
-            exit;
-        }
-
-        echo json_encode($payload);
-        exit;
-    }
-
-    /**
-     * Header-output helper.
-     * @deprecated Use Response object headers instead
-     */
-    private static function outputHeaders(array $headers): void
-    {
-        foreach ($headers as $name => $value) {
-            header("$name: $value");
-        }
-    }
 }

@@ -151,18 +151,15 @@ final class StripeService
 
             // Safe amount conversion with explicit null check
             $amountTotal = null;
-            if (isset($session->amount_total) && is_numeric($session->amount_total)) {
-                $amount = (int)$session->amount_total;
-                if ($amount > 0) {
-                    $amountTotal = $amount / 100;
-                }
+            if (isset($session->amount_total) && $session->amount_total > 0) {
+                $amountTotal = (int)$session->amount_total / 100;
             }
 
             $statusArr = [
                 'id' => $session->id,
                 'status' => $session->payment_status ?? 'unknown',
                 'amount_total' => $amountTotal,
-                'currency' => $session->currency,
+                'currency' => $session->currency ?? null,
             ];
             $this->repository->updateStatus(
                 $session->id,
