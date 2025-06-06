@@ -28,13 +28,13 @@ jobs:
     - name: Debug SSH Configuration
       run: |
         echo "🔍 Debugging SSH Configuration..."
-        echo "Host: slimmermetai.com"
-        echo "Port: ${{ secrets.SSH_PORT }}"
+        echo "Host: 31.184.80.250"
+        echo "Port: 22"
         echo "User: ${{ secrets.SSH_USER }}"
         echo "Production Path: /home/deb133403n2/domains/slimmermetai.com"
         
         # Validate required secrets
-        if [ -z "${{ secrets.SSH_USER }}" ] || [ -z "${{ secrets.SSH_PRIVATE_KEY }}" ] || [ -z "${{ secrets.SSH_PORT }}" ]; then
+        if [ -z "${{ secrets.SSH_USER }}" ] || [ -z "${{ secrets.SSH_PRIVATE_KEY }}" ]; then
           echo "❌ One or more required secrets are missing"
           exit 1
         fi
@@ -54,9 +54,9 @@ jobs:
         # Test connection
         ssh -o StrictHostKeyChecking=no \
             -o ConnectTimeout=10 \
-            -p ${{ secrets.SSH_PORT }} \
+            -p 22 \
             -i ~/.ssh/deploy_key \
-            ${{ secrets.SSH_USER }}@slimmermetai.com \
+            ${{ secrets.SSH_USER }}@31.184.80.250 \
             "echo '🔒 SSH connection successful!' && ls -la /home/deb133403n2/domains/slimmermetai.com"
 
     # --- Deploy to Production ---
@@ -66,18 +66,18 @@ jobs:
         switches: -avzr --delete --exclude='.env*' --exclude='.git*' --exclude='node_modules' --exclude='storage/logs/*' --exclude='.ssh'
         path: ./
         remote_path: /home/deb133403n2/domains/slimmermetai.com/
-        remote_host: slimmermetai.com
+        remote_host: 31.184.80.250
         remote_user: ${{ secrets.SSH_USER }}
         remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
-        remote_port: ${{ secrets.SSH_PORT }}
+        remote_port: 22
 
     - name: Post-Deployment Tasks
       run: |
         echo "📝 Running post-deployment tasks..."
         ssh -o StrictHostKeyChecking=no \
-            -p ${{ secrets.SSH_PORT }} \
+            -p 22 \
             -i ~/.ssh/deploy_key \
-            ${{ secrets.SSH_USER }}@slimmermetai.com \
+            ${{ secrets.SSH_USER }}@31.184.80.250 \
             "cd /home/deb133403n2/domains/slimmermetai.com && \
              cp .env.production .env && \
              chmod -R 755 . && \
