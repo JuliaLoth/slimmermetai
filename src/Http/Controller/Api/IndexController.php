@@ -3,8 +3,9 @@
 namespace App\Http\Controller\Api;
 
 use App\Infrastructure\Config\Config;
-use App\Infrastructure\Http\ApiResponse;
+use App\Http\Response\ApiResponse;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\ResponseInterface;
 
 final class IndexController
 {
@@ -12,9 +13,9 @@ final class IndexController
     {
     }
 
-    public function handle(ServerRequestInterface $request): void
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        ApiResponse::success([
+        return ApiResponse::success([
             'name' => 'Slimmer met AI - API',
             'version' => '1.0',
             'endpoints' => [

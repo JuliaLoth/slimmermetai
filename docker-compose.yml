@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    environment:
+      - APP_ENV=development
+      - DB_HOST=mysql
+      - DB_NAME=slimmermetai
+      - DB_USER=root
+      - DB_PASS=rootpassword
+    volumes:
+      - .:/var/www/html
+      - ./logs:/var/www/html/logs
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - slimmermetai
+
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: slimmermetai
+      MYSQL_USER: slimmermetai
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./includes/database/sql:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+    networks:
+      - slimmermetai
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: root
+      PMA_PASSWORD: rootpassword
+    ports:
+      - "8081:80"
+    depends_on:
+      - mysql
+    networks:
+      - slimmermetai
+
+volumes:
+  mysql_data:
+
+networks:
+  slimmermetai:
+    driver: bridge 

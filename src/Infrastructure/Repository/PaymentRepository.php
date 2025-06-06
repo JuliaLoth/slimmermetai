@@ -51,10 +51,12 @@ class PaymentRepository implements PaymentRepositoryInterface
 
             $this->db->commit();
 
-            $this->performanceMonitor?->logQuery(
-                'Payment session created',
-                ['session_id' => $sessionId, 'user_id' => $userId, 'amount' => $totalAmount]
-            );
+            $this->performanceMonitor?->logQuery([
+                'query' => 'Payment created',
+                'user_id' => $userId,
+                'amount' => $totalAmount,
+                'currency' => $currency
+            ]);
 
             return $sessionId;
         } catch (\Exception $e) {

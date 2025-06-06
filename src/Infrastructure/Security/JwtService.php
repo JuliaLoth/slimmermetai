@@ -9,7 +9,8 @@ final class JwtService
     private string $secret;
     private int $expiration;
     private string $algo = 'HS256';
-/**
+
+    /**
      * JwtService constructor.
      * De configuratie wordt via Dependency Injection meegegeven zodat er geen
      * statische aanroepen meer nodig zijn.
@@ -33,6 +34,14 @@ final class JwtService
         $payloadEnc = $this->base64url(json_encode($payload));
         $signature = $this->sign("$header.$payloadEnc");
         return "$header.$payloadEnc.$signature";
+    }
+
+    /**
+     * Alias for generate() method for compatibility
+     */
+    public function generateToken(array $payload, ?int $exp = null): string
+    {
+        return $this->generate($payload, $exp);
     }
 
     public function verify(string $token): ?array

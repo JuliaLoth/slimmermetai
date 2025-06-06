@@ -225,7 +225,9 @@ class UserRepository implements UserRepositoryInterface
             new Email($row['email']),
             $row['password'],
             (int)$row['id'],
-            new \DateTimeImmutable($row['created_at'])
+            $row['name'] ?? '',
+            $row['role'] ?? 'user',
+            new \DateTimeImmutable($row['created_at'] ?? 'now')
         );
     }
 }

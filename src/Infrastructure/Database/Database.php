@@ -13,7 +13,6 @@ use function container;
 
 class Database implements DatabaseInterface
 {
-    private static ?Database $instance = null; // legacy placeholder
     private ?PDO $pdo = null;
     private bool $isConnected = false;
     private int $transactionCounter = 0;

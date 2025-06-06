@@ -81,10 +81,11 @@ class ToolRepository implements ToolRepositoryInterface
 
             $this->db->insert('user_tools', $data);
 
-            $this->performanceMonitor?->logQuery(
-                'Tool access granted',
-                ['user_id' => $userId, 'tool_id' => $toolId]
-            );
+            $this->performanceMonitor?->logQuery([
+                'query' => 'Tool access granted',
+                'user_id' => $userId,
+                'tool_id' => $toolId
+            ]);
 
             return true;
         } catch (\Exception $e) {
@@ -125,14 +126,19 @@ class ToolRepository implements ToolRepositoryInterface
         );
     }
 
-    public function hasUserAccessToTool(int $userId, int $toolId): bool
+    public function hasUserAccess(int $userId, int $toolId): bool
     {
         return $this->db->exists(
-            'SELECT 1 FROM user_tools 
-             WHERE user_id = ? AND tool_id = ? AND status = "active"
-             AND (expires_at IS NULL OR expires_at > NOW())',
+            'user_tools',
+            'user_id = ? AND tool_id = ? AND status = "active" AND (expires_at IS NULL OR expires_at > NOW())',
             [$userId, $toolId]
         );
+    }
+
+    // Interface alias for backward compatibility
+    public function hasUserAccessToTool(int $userId, int $toolId): bool
+    {
+        return $this->hasUserAccess($userId, $toolId);
     }
 
     public function getToolAccessExpiry(int $userId, int $toolId): ?\DateTimeInterface

@@ -77,10 +77,11 @@ class CourseRepository implements CourseRepositoryInterface
                 'enrolled_at' => date('Y-m-d H:i:s')
             ]);
 
-            $this->performanceMonitor?->logQuery(
-                'User enrolled in course',
-                ['user_id' => $userId, 'course_id' => $courseId]
-            );
+            $this->performanceMonitor?->logQuery([
+                'query' => 'User enrolled in course',
+                'user_id' => $userId,
+                'course_id' => $courseId
+            ]);
 
             return true;
         } catch (\Exception $e) {
@@ -127,7 +128,8 @@ class CourseRepository implements CourseRepositoryInterface
     public function isUserEnrolledInCourse(int $userId, int $courseId): bool
     {
         return $this->db->exists(
-            'SELECT 1 FROM user_courses WHERE user_id = ? AND course_id = ?',
+            'user_courses',
+            'user_id = ? AND course_id = ?',
             [$userId, $courseId]
         );
     }
@@ -420,8 +422,8 @@ class CourseRepository implements CourseRepositoryInterface
 
         foreach ($prerequisites as $prerequisite) {
             $completed = $this->db->exists(
-                'SELECT 1 FROM user_courses 
-                 WHERE user_id = ? AND course_id = ? AND status = "completed"',
+                'user_courses',
+                'user_id = ? AND course_id = ? AND status = "completed"',
                 [$userId, $prerequisite['id']]
             );
 
@@ -469,7 +471,7 @@ class CourseRepository implements CourseRepositoryInterface
             'created_at' => date('Y-m-d H:i:s')
         ]);
 
-        return $this->db->lastInsertId();
+        return (int) $this->db->lastInsertId();
     }
 
     public function replyToDiscussion(int $userId, int $discussionId, string $content): int
@@ -481,7 +483,7 @@ class CourseRepository implements CourseRepositoryInterface
             'created_at' => date('Y-m-d H:i:s')
         ]);
 
-        return $this->db->lastInsertId();
+        return (int) $this->db->lastInsertId();
     }
 
     public function addCourseToFavorites(int $userId, int $courseId): bool
@@ -568,5 +570,243 @@ class CourseRepository implements CourseRepositoryInterface
              AND p.payment_status = "paid"',
             [$courseId]
         ) ?: ['total_sales' => 0, 'total_revenue' => 0];
+    }
+
+    // Implementation of missing interface methods
+
+    public function getCourseById(string $id): ?array
+    {
+        // For string IDs like 'ai-basics', first try by slug/identifier
+        $course = $this->db->fetch(
+            'SELECT * FROM courses WHERE slug = ? AND status = "active"',
+            [$id]
+        );
+
+        // If not found by slug, try by title (fallback for legacy support)
+        if (!$course && is_numeric($id)) {
+            $course = $this->findCourseById((int)$id);
+        }
+
+        // If still not found, provide hardcoded fallback for existing courses
+        if (!$course) {
+            $course = $this->getHardcodedCourseData($id);
+        }
+
+        return $course;
+    }
+
+    public function getCoursesForUser(int $userId): array
+    {
+        return $this->getUserCourses($userId);
+    }
+
+    public function getModuleLessons(string $courseId, string $moduleId): array
+    {
+        return $this->db->fetchAll(
+            'SELECT * FROM course_lessons WHERE course_id = ? AND module_id = ? ORDER BY order_index',
+            [$courseId, $moduleId]
+        );
+    }
+
+    public function storeCourse(array $courseData): string
+    {
+        $this->db->insert('courses', array_merge($courseData, [
+            'created_at' => date('Y-m-d H:i:s'),
+            'status' => 'active'
+        ]));
+
+        return $this->db->lastInsertId();
+    }
+
+    public function updateCourse(string $id, array $courseData): bool
+    {
+        return $this->db->update(
+            'courses',
+            array_merge($courseData, ['updated_at' => date('Y-m-d H:i:s')]),
+            'slug = ? OR id = ?',
+            [$id, $id]
+        ) > 0;
+    }
+
+    public function deleteCourse(string $id): bool
+    {
+        return $this->db->update(
+            'courses',
+            ['status' => 'deleted', 'updated_at' => date('Y-m-d H:i:s')],
+            'slug = ? OR id = ?',
+            [$id, $id]
+        ) > 0;
+    }
+
+    public function getUserProgress(int $userId, string $courseId): ?array
+    {
+        return $this->db->fetch(
+            'SELECT * FROM user_courses WHERE user_id = ? AND course_id = ?',
+            [$userId, $courseId]
+        );
+    }
+
+    public function saveUserProgress(int $userId, string $courseId, array $progressData): bool
+    {
+        $existingProgress = $this->getUserProgress($userId, $courseId);
+
+        if ($existingProgress) {
+            return $this->db->update(
+                'user_courses',
+                array_merge($progressData, ['updated_at' => date('Y-m-d H:i:s')]),
+                'user_id = ? AND course_id = ?',
+                [$userId, $courseId]
+            ) > 0;
+        } else {
+            $this->db->insert('user_courses', array_merge($progressData, [
+                'user_id' => $userId,
+                'course_id' => $courseId,
+                'created_at' => date('Y-m-d H:i:s')
+            ]));
+            return true;
+        }
+    }
+
+    public function saveQuizResult(int $userId, string $courseId, string $lessonId, array $quizData): bool
+    {
+        $this->db->insert('quiz_results', [
+            'user_id' => $userId,
+            'course_id' => $courseId,
+            'lesson_id' => $lessonId,
+            'score' => $quizData['score'] ?? 0,
+            'max_score' => $quizData['max_score'] ?? 100,
+            'answers' => json_encode($quizData['answers'] ?? []),
+            'completed_at' => date('Y-m-d H:i:s')
+        ]);
+
+        return true;
+    }
+
+    public function issueCertificate(int $userId, string $courseId): string
+    {
+        return $this->generateCertificate($userId, (int)$courseId);
+    }
+
+    private function getHardcodedCourseData(string $id): ?array
+    {
+        $courses = [
+            'ai-basics' => [
+                'id' => 'ai-basics',
+                'slug' => 'ai-basics',
+                'name' => 'AI Basics voor Professionals',
+                'title' => 'AI Basics voor Professionals',
+                'price' => '97.00',
+                'originalPrice' => '149.00',
+                'image' => '/images/ai-basics-course.svg',
+                'level' => 'Beginner',
+                'duration' => '4 uur',
+                'description' => 'De perfecte startcursus voor iedereen die AI wil gaan gebruiken in hun werk. Leer de basis van ChatGPT, prompting en praktische toepassingen.',
+                'features' => [
+                    '8 praktische lessen',
+                    'Hands-on oefeningen',
+                    'Certificaat',
+                    'Levenslange toegang',
+                    'Community access',
+                    'E-book inclusief'
+                ]
+            ],
+            'prompt-engineering' => [
+                'id' => 'prompt-engineering',
+                'slug' => 'prompt-engineering',
+                'name' => 'Advanced Prompt Engineering',
+                'title' => 'Advanced Prompt Engineering',
+                'price' => '197.00',
+                'image' => '/images/prompt-engineering-course.svg',
+                'level' => 'Gevorderd',
+                'duration' => '6 uur',
+                'description' => 'Ontdek geavanceerde prompt technieken om maximale resultaten uit AI te halen. Van chain-of-thought tot role-playing prompts.',
+                'features' => [
+                    '12 geavanceerde technieken',
+                    '150+ prompt templates',
+                    'Real-world cases',
+                    'Expert feedback',
+                    'Live Q&A sessies',
+                    'Bonus prompts library'
+                ]
+            ],
+            'ai-automation' => [
+                'id' => 'ai-automation',
+                'slug' => 'ai-automation',
+                'name' => 'AI Workflow Automatisering',
+                'title' => 'AI Workflow Automatisering',
+                'price' => '247.00',
+                'image' => '/images/ai-automation-course.svg',
+                'level' => 'Gevorderd',
+                'duration' => '8 uur',
+                'description' => 'Leer hoe je repetitieve taken automatiseert met AI. Van email management tot rapport generatie - bespaar uren per week.',
+                'features' => [
+                    '10 automatisering recepten',
+                    'Tool integraties',
+                    'ROI calculatie',
+                    'Implementatie support',
+                    'Zapier & Make.com tutorials',
+                    'Custom automation templates'
+                ]
+            ],
+            'ai-strategy' => [
+                'id' => 'ai-strategy',
+                'slug' => 'ai-strategy',
+                'name' => 'AI Strategie voor Organisaties',
+                'title' => 'AI Strategie voor Organisaties',
+                'price' => '497.00',
+                'image' => '/images/ai-strategy-course.svg',
+                'level' => 'Expert',
+                'duration' => '12 uur',
+                'description' => 'Ontwikkel een complete AI-strategie voor je organisatie. Van risicomanagement tot change management en ROI-optimalisatie.',
+                'features' => [
+                    'Strategische frameworks',
+                    'Change management',
+                    'Risk assessment tools',
+                    '1-op-1 consultatie',
+                    'Implementatie roadmap',
+                    'Executive presentation templates'
+                ]
+            ],
+            'ai-content' => [
+                'id' => 'ai-content',
+                'slug' => 'ai-content',
+                'name' => 'Content Creatie met AI',
+                'title' => 'Content Creatie met AI',
+                'price' => '147.00',
+                'image' => '/images/ai-content-course.svg',
+                'level' => 'Beginner',
+                'duration' => '5 uur',
+                'description' => 'Maak professionele content met AI. Van blog posts tot social media, presentaties en marketing materiaal.',
+                'features' => [
+                    'Content templates',
+                    'Brand consistency',
+                    'SEO optimalisatie',
+                    'Multi-platform publishing',
+                    'Visual content creation',
+                    'Content calendar templates'
+                ]
+            ],
+            'ai-data' => [
+                'id' => 'ai-data',
+                'slug' => 'ai-data',
+                'name' => 'Data Analyse met AI',
+                'title' => 'Data Analyse met AI',
+                'price' => '197.00',
+                'image' => '/images/ai-data-course.svg',
+                'level' => 'Gevorderd',
+                'duration' => '7 uur',
+                'description' => 'Transformeer ruwe data naar actionable insights met AI. Leer data visualisatie, trend analyse en predictive modelling.',
+                'features' => [
+                    'Data cleaning technieken',
+                    'Visualisatie tools',
+                    'Predictive analytics',
+                    'Dashboard creatie',
+                    'SQL query automation',
+                    'Business intelligence integratie'
+                ]
+            ]
+        ];
+
+        return $courses[$id] ?? null;
     }
 }

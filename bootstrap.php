@@ -40,164 +40,149 @@ $containerBuilder->addDefinitions([
     // --------- Database Migration System ---------
     App\Infrastructure\Database\Migration::class => DI\autowire(),
 
-    // --------- Services ---------
-    App\Infrastructure\Security\JwtService::class  => DI\autowire(),
-    App\Application\Service\AuthService::class     => DI\autowire(),
-    App\Application\Service\PasswordHasher::class  => DI\autowire()->constructor((int)(getenv('BCRYPT_COST') ?: 12)),
-    App\Application\Service\StripeService::class   => DI\autowire(),
-    App\Application\Service\EmailService::class    => DI\autowire(),
-
-    // --------- Repositories ---------
-    App\Domain\Repository\UserRepositoryInterface::class => DI\get(App\Infrastructure\Repository\UserRepository::class),
-    App\Infrastructure\Repository\UserRepository::class  => DI\autowire(),
-    
-    // --------- Auth Repository ---------
-    App\Domain\Repository\AuthRepositoryInterface::class => DI\get(App\Infrastructure\Repository\AuthRepository::class),
-    App\Infrastructure\Repository\AuthRepository::class  => DI\autowire(),
-
-    // --------- Payment Repository ---------
-    App\Domain\Repository\PaymentRepositoryInterface::class => DI\get(App\Infrastructure\Repository\PaymentRepository::class),
-    App\Infrastructure\Repository\PaymentRepository::class  => DI\autowire(),
-
-    // --------- Course Repository ---------
-    App\Domain\Repository\CourseRepositoryInterface::class => DI\get(App\Infrastructure\Repository\CourseRepository::class),
-    App\Infrastructure\Repository\CourseRepository::class  => DI\autowire(),
-
-    // --------- Tool Repository ---------
-    App\Domain\Repository\ToolRepositoryInterface::class => DI\get(App\Infrastructure\Repository\ToolRepository::class),
-    App\Infrastructure\Repository\ToolRepository::class  => DI\autowire(),
-
-    // --------- Notification Repository ---------
-    App\Domain\Repository\NotificationRepositoryInterface::class => DI\get(App\Infrastructure\Repository\NotificationRepository::class),
-    App\Infrastructure\Repository\NotificationRepository::class  => DI\autowire(),
-
-    // --------- Analytics Repository ---------
-    App\Domain\Repository\AnalyticsRepositoryInterface::class => DI\get(App\Infrastructure\Repository\AnalyticsRepository::class),
-    App\Infrastructure\Repository\AnalyticsRepository::class  => DI\autowire(),
-
-    // --------- Stripe Session Repository (existing) ---------
-    App\Domain\Repository\StripeSessionRepositoryInterface::class => DI\get(App\Infrastructure\Repository\StripeSessionRepository::class),
-    App\Infrastructure\Repository\StripeSessionRepository::class => DI\autowire(),
-
-    // --------- Middleware ---------
+    // --------- Rate Limiting ---------
     App\Http\Middleware\RateLimitMiddleware::class => DI\autowire(),
 
-    // --------- Controllers ---------
-    App\Http\Controller\HomeController::class    => DI\autowire(),
-    App\Http\Controller\Auth\LoginController::class => DI\autowire(),
-    App\Http\Controller\Auth\RegisterController::class => DI\autowire(),
-    App\Http\Controller\UserController::class => DI\autowire(),
-    App\Http\Controller\ToolController::class => DI\autowire(),
-    App\Http\Controller\CourseController::class => DI\autowire(),
-    App\Http\Controller\PageController::class => DI\autowire(),
-    
-    // --------- API Controllers ---------
-    App\Http\Controller\Api\AuthController::class => DI\autowire(),
-    App\Http\Controller\Api\UserController::class => DI\autowire(),
-    App\Http\Controller\Api\PaymentController::class => DI\autowire(),
+    // --------- Health Check ---------
     App\Http\Controller\Api\HealthController::class => DI\autowire(),
 
-    // --------- Legacy controllers ---------
-    App\Http\Controller\Legacy\IncludesHeadController::class => DI\autowire(),
+    // --------- Repository Pattern ---------
+    App\Domain\Repository\UserRepositoryInterface::class => DI\get(App\Infrastructure\Repository\UserRepository::class),
+    App\Domain\Repository\AuthRepositoryInterface::class => DI\get(App\Infrastructure\Repository\AuthRepository::class),
 
-    // --------- Container-compatibele factory functies -------
-    'db' => function(): Database { return Database::getInstance(); },
-    'config' => function(): Config { return Config::getInstance(); },
+    // --------- Services ---------
+    App\Application\Service\AuthService::class => DI\autowire(),
+    App\Application\Service\StripeService::class => DI\autowire(),
+    App\Application\Service\EmailService::class => DI\autowire(),
+    App\Application\Service\PresentationConvertService::class => DI\autowire(),
+    App\Application\Service\JwtService::class => DI\autowire(),
+    App\Application\Service\TokenService::class => DI\autowire(),
+    App\Application\Service\GoogleAuthService::class => DI\autowire(),
+    App\Application\Service\UploadService::class => DI\autowire(),
+    App\Infrastructure\Security\PasswordHasher::class => DI\autowire(),
+
+    // --------- Controllers ---------
+    App\Http\Controller\Api\AuthController::class => DI\autowire(),
+    App\Http\Controller\Api\UserController::class => DI\autowire(),
+    App\Http\Controller\Api\StripeController::class => DI\autowire(),
+    App\Http\Controller\Api\PaymentController::class => DI\autowire(),
+    App\Http\Controller\Api\GoogleAuthController::class => DI\autowire(),
+    App\Http\Controller\Api\StripePaymentIntentController::class => DI\autowire(),
+    App\Http\Controller\Api\IndexController::class => DI\autowire(),
+    App\Http\Controller\Api\ProxyController::class => DI\autowire(),
+
+    // --------- Repositories ---------
+    App\Infrastructure\Repository\UserRepository::class => DI\autowire(),
+    App\Infrastructure\Repository\AuthRepository::class => DI\autowire(),
+    App\Infrastructure\Repository\CourseRepository::class => DI\autowire(),
+    App\Infrastructure\Repository\ToolRepository::class => DI\autowire(),
+    App\Infrastructure\Repository\PaymentRepository::class => DI\autowire(),
+    App\Infrastructure\Repository\NotificationRepository::class => DI\autowire(),
+    App\Infrastructure\Repository\AnalyticsRepository::class => DI\autowire(),
+
+    // --------- Repository Interfaces ---------
+    App\Domain\Repository\StripeSessionRepositoryInterface::class => DI\get(App\Infrastructure\Repository\StripeSessionRepository::class),
+    App\Domain\Repository\CourseRepositoryInterface::class => DI\get(App\Infrastructure\Repository\CourseRepository::class),
+    App\Domain\Repository\ToolRepositoryInterface::class => DI\get(App\Infrastructure\Repository\ToolRepository::class),
+    App\Domain\Repository\PaymentRepositoryInterface::class => DI\get(App\Infrastructure\Repository\PaymentRepository::class),
+    App\Domain\Repository\NotificationRepositoryInterface::class => DI\get(App\Infrastructure\Repository\NotificationRepository::class),
+    App\Domain\Repository\AnalyticsRepositoryInterface::class => DI\get(App\Infrastructure\Repository\AnalyticsRepository::class),
+
+    // --------- Utilities ---------
+    App\Infrastructure\Utils\FileValidator::class => DI\autowire(),
+    App\Infrastructure\Security\JwtService::class => DI\autowire(),
+    App\Infrastructure\Security\Validator::class => DI\autowire(),
 ]);
 
+// Build container
 $container = $containerBuilder->build();
 
-// Globale container helper
+// Global container function for legacy compatibility
 if (!function_exists('container')) {
-    function container(): DI\Container {
+    function container(): \DI\Container {
         global $container;
         return $container;
     }
 }
 
-// ---- Config instellen en constanten definiëren ----
-$config = $container->get(Config::class);
-
-// Definieer legacy constanten voor backward compatibility
-$config->defineConstants();
-
-// ---- Error handler instellen ----
-$errorHandler = $container->get(ErrorHandler::class);
-
-// Database verbinding (slimme conditionele loading)
-if (!$skipDatabase) {
-    // Detecteer welke endpoints database nodig hebben
-    $requiresDatabaseEndpoints = [
-        '/api/auth/',
-        '/api/users/',
-        '/api/stripe/',
-        '/login',
-        '/register',
-        '/dashboard',
-        '/mijn-',
-        '/profiel'
-    ];
-    
-    $currentUri = $_SERVER['REQUEST_URI'] ?? '';
-    $needsDatabase = false;
-    
-    // Check of huidige request database nodig heeft
-    foreach ($requiresDatabaseEndpoints as $endpoint) {
-        if (str_contains($currentUri, $endpoint)) {
-            $needsDatabase = true;
-            break;
-        }
-    }
-    
-    // Forceer database connectie voor POST requests (meestal data persistentie)
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $needsDatabase = true;
-    }
-    
-    if ($needsDatabase) {
-        try {
-            Database::getInstance()->connect();
-            error_log("Database connected for endpoint: " . $currentUri);
-            
-            // ---- LEGACY DATABASE BRIDGE SETUP ----
-            // Automatisch legacy bridge laden voor database-afhankelijke endpoints
-            require_once SITE_ROOT . '/includes/legacy/DatabaseBridge.php';
-            
-        } catch (\Throwable $e) {
-            $errorHandler->logError('Database connectie mislukt', [
-                'error' => $e->getMessage(),
-                'endpoint' => $currentUri,
-                'method' => $_SERVER['REQUEST_METHOD'] ?? 'GET'
-            ]);
-            
-            // Voor API calls: JSON error response
-            if (str_contains($currentUri, '/api/')) {
-                http_response_code(503);
-                echo json_encode([
-                    'success' => false,
-                    'error' => 'Service tijdelijk niet beschikbaar - database connectie mislukt',
-                    'needs_setup' => 'Controleer .env database configuratie'
-                ]);
-                exit;
-            } 
-            // Voor web pages: user-friendly error
-            else if ($config->get('debug_mode', false)) {
-                throw $e;
-            } else {
-                http_response_code(503);
-                echo '<!DOCTYPE html><html><head><title>Service Niet Beschikbaar</title></head><body>';
-                echo '<h1>Service Tijdelijk Niet Beschikbaar</h1>';
-                echo '<p>De database verbinding kon niet worden opgezet. Probeer het later opnieuw.</p>';
-                echo '<p><small>Administrator: Controleer .env database configuratie</small></p>';
-                echo '</body></html>';
-                exit;
-            }
-        }
-    } else {
-        // Endpoints die geen database nodig hebben
-        error_log("Skipping database for endpoint: " . $currentUri . " (no database required)");
+// Helper function for PUBLIC_ROOT access
+if (!function_exists('asset_url')) {
+    function asset_url(string $path): string {
+        return '/' . ltrim($path, '/');
     }
 }
+
+// Skip database in specific cases
+$endpoint = $_SERVER['REQUEST_URI'] ?? '';
+$method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
+
+$needsDatabase = [
+    '/api/auth/',
+    '/api/users/',
+    '/api/stripe/',
+    '/login',
+    '/register',
+    '/dashboard',
+    '/account',
+    '/profiel',
+    '/mijn-',
+    '/winkelwagen',
+    '/betaling'
+];
+
+$skipDbForEndpoint = true;
+foreach ($needsDatabase as $path) {
+    if (str_contains($endpoint, $path)) {
+        $skipDbForEndpoint = false;
+        break;
+    }
+}
+
+// Skip database for GET requests to static endpoints
+if ($method === 'GET' && $skipDbForEndpoint) {
+    define('SKIP_DB', true);
+}
+
+// Always skip database for POST requests (unless in the needed list)
+if ($method === 'POST' && !$skipDbForEndpoint) {
+    define('SKIP_DB', false);
+}
+
+// Database connection logic
+if (!defined('SKIP_DB') || !SKIP_DB) {
+    try {
+        $database = $container->get(App\Infrastructure\Database\Database::class);
+        $database->connect();
+    } catch (\Exception $e) {
+        // Graceful error handling for database unavailability
+        if (str_contains($endpoint, '/api/')) {
+            header('Content-Type: application/json');
+            http_response_code(503);
+            echo json_encode([
+                'error' => 'Service Unavailable',
+                'message' => 'Database connection unavailable. Please check your .env configuration.'
+            ]);
+            exit;
+        } else {
+            // For web pages, show user-friendly error
+            http_response_code(503);
+            echo '<!DOCTYPE html><html><head><title>Service Unavailable</title></head><body>';
+            echo '<h1>Service Temporarily Unavailable</h1>';
+            echo '<p>We are experiencing database connectivity issues. Please try again later.</p>';
+            echo '<p>If you are a developer, please check your .env database configuration.</p>';
+            echo '</body></html>';
+            exit;
+        }
+    }
+}
+
+// Error handling
+$errorHandler = $container->get(App\Infrastructure\Logging\ErrorHandler::class);
+$errorHandler->registerGlobalHandlers();
+
+// Set global constants for legacy compatibility
+$config = $container->get(App\Infrastructure\Config\Config::class);
+$config->defineConstants();
 
 // ---- Sessie-instellingen ----
 if (session_status() === PHP_SESSION_NONE) {

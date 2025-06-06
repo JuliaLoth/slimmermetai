@@ -40,7 +40,8 @@ class PaymentController
                 default => ApiResponse::error('Invalid payment action', 404)
             };
         } catch (\Throwable $e) {
-            $this->performanceMonitor?->logQuery('Payment API Error', [
+            $this->performanceMonitor?->logQuery([
+                'query' => 'Payment API Error',
                 'action' => $action,
                 'error' => $e->getMessage()
             ]);

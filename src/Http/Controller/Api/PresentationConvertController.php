@@ -3,8 +3,9 @@
 namespace App\Http\Controller\Api;
 
 use App\Application\Service\PresentationConvertService;
-use App\Infrastructure\Http\ApiResponse;
+use App\Http\Response\ApiResponse;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\ResponseInterface;
 
 final class PresentationConvertController
 {
@@ -12,23 +13,23 @@ final class PresentationConvertController
     {
     }
 
-    public function convert(ServerRequestInterface $request): void
+    public function convert(ServerRequestInterface $request): ResponseInterface
     {
         if ($request->getMethod() === 'OPTIONS') {
-            ApiResponse::success(['allow' => 'POST, OPTIONS']);
+            return ApiResponse::success(['allow' => 'POST, OPTIONS']);
         }
         if ($request->getMethod() !== 'POST') {
-            ApiResponse::methodNotAllowed('Alleen POST toegestaan', ['POST']);
+            return ApiResponse::error('Alleen POST toegestaan', 405);
         }
         $data = json_decode((string)$request->getBody(), true);
         if (!isset($data['reactCode']) || !is_string($data['reactCode'])) {
-            ApiResponse::validationError(['reactCode' => 'reactCode (string) is verplicht']);
+            return ApiResponse::validationError(['reactCode' => 'reactCode (string) is verplicht']);
         }
         try {
             $result = $this->service->convert($data['reactCode']);
-            ApiResponse::success($result, 'Presentatie succesvol gegenereerd', 201);
+            return ApiResponse::success($result, 'Presentatie succesvol gegenereerd', 201);
         } catch (\Throwable $e) {
-            ApiResponse::serverError('Fout tijdens genereren presentatie', $e->getMessage());
+            return ApiResponse::serverError('Fout tijdens genereren presentatie', $e->getMessage());
         }
     }
 }

@@ -32,7 +32,7 @@ class BodyParsingMiddleware implements MiddlewareInterface
                 }
             } elseif (str_starts_with($contentType, 'application/x-www-form-urlencoded')) {
                 parse_str($raw, $data);
-                $request = $request->withParsedBody($data ?? []);
+                $request = $request->withParsedBody($data);
             }
         }
         return $handler->handle($request);

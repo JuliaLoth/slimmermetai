@@ -6,7 +6,6 @@ use function container;
 
 class Config
 {
-    private static ?Config $instance = null;
     private array $settings = [];
     private bool $envLoaded = false;
 
@@ -90,8 +89,8 @@ class Config
             'session_name' => getenv('SESSION_NAME') ?: 'SLIMMERMETAI_SESSION',
             'cookie_domain' => getenv('COOKIE_DOMAIN') ?: '',
             'cookie_path' => getenv('COOKIE_PATH') ?: '/',
-            'cookie_secure' => $cast(getenv('COOKIE_SECURE') ?? true, 'bool'),
-            'cookie_httponly' => $cast(getenv('COOKIE_HTTPONLY') ?? true, 'bool'),
+            'cookie_secure' => $cast(getenv('COOKIE_SECURE') ?: true, 'bool'),
+            'cookie_httponly' => $cast(getenv('COOKIE_HTTPONLY') ?: true, 'bool'),
             // security
             'password_min_length' => $cast(getenv('PASSWORD_MIN_LENGTH') ?: 8, 'int'),
             'bcrypt_cost' => $cast(getenv('BCRYPT_COST') ?: 12, 'int'),
@@ -104,7 +103,7 @@ class Config
             // smtp
             'smtp_host' => getenv('SMTP_HOST') ?: 'localhost',
             'smtp_port' => getenv('SMTP_PORT') ?: 25,
-            'smtp_secure' => $cast(getenv('SMTP_SECURE') ?? false, 'bool'),
+            'smtp_secure' => $cast(getenv('SMTP_SECURE') ?: false, 'bool'),
             'smtp_user' => getenv('SMTP_USER') ?: '',
             'smtp_pass' => getenv('SMTP_PASSWORD') ?: '',
             // recaptcha
@@ -123,16 +122,16 @@ class Config
         ];
         $this->settings['app_env'] = getenv('APP_ENV') ?: 'production';
         $defaultDebug = $this->settings['app_env'] === 'local';
-        $this->settings['debug_mode'] = $cast(getenv('DEBUG_MODE') ?? $defaultDebug, 'bool');
-        $this->settings['display_errors'] = $cast(getenv('DISPLAY_ERRORS') ?? $defaultDebug, 'bool');
+        $this->settings['debug_mode'] = $cast(getenv('DEBUG_MODE') ?: $defaultDebug, 'bool');
+        $this->settings['display_errors'] = $cast(getenv('DISPLAY_ERRORS') ?: $defaultDebug, 'bool');
         date_default_timezone_set(getenv('TIMEZONE') ?: 'Europe/Amsterdam');
     }
 
-    public function get(string $k, $d = null)
+    public function get(string $k, mixed $d = null): mixed
     {
         return $this->settings[$k] ?? $d;
     }
-    public function set(string $k, $v): void
+    public function set(string $k, mixed $v): void
     {
         $this->settings[$k] = $v;
     }
@@ -153,7 +152,7 @@ class Config
             }
         }
     }
-    public function getTyped(string $k, string $t, $d = null)
+    public function getTyped(string $k, string $t, mixed $d = null): mixed
     {
         $v = $this->get($k, $d);return match ($t) {
             'int'=>(int)$v,'bool'=>filter_var($v, FILTER_VALIDATE_BOOLEAN),'float'=>(float)$v,'array'=>is_array($v) ? $v : array_map('trim', explode(',', (string)$v)),default=>$v

@@ -6,6 +6,11 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use GuzzleHttp\Psr7\Response;
 
+// Fallback definition for PHPStan compatibility
+if (!defined('PUBLIC_ROOT')) {
+    define('PUBLIC_ROOT', dirname(__DIR__, 3) . '/public_html');
+}
+
 /**
  * LegacyPageController
  *

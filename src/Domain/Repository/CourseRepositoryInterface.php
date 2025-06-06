@@ -99,4 +99,18 @@ interface CourseRepositoryInterface
     public function bookmarkLesson(int $userId, int $lessonId): bool;
 
     public function getUserBookmarks(int $userId): array;
+
+    // Course management methods for JSON migration
+    public function getCourseById(string $id): ?array;
+    public function getCoursesForUser(int $userId): array;
+    public function getModuleLessons(string $courseId, string $moduleId): array;
+    public function storeCourse(array $courseData): string;
+    public function updateCourse(string $id, array $courseData): bool;
+    public function deleteCourse(string $id): bool;
+
+    // Enhanced progress methods
+    public function getUserProgress(int $userId, string $courseId): ?array;
+    public function saveUserProgress(int $userId, string $courseId, array $progressData): bool;
+    public function saveQuizResult(int $userId, string $courseId, string $lessonId, array $quizData): bool;
+    public function issueCertificate(int $userId, string $courseId): string;
 }

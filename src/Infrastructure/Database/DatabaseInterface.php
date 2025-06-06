@@ -15,4 +15,8 @@ interface DatabaseInterface
     public function beginTransaction(): bool;
     public function commit(): bool;
     public function rollBack(): bool;
+
+    // Performance monitoring methods
+    public function getPerformanceStatistics(): array;
+    public function getSlowQueries(): array;
 }

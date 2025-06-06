@@ -1,0 +1,139 @@
+/* Navbar !important Fix - Vervangt !important door betere specificiteit */
+
+/* Logo styling - verhoogde specificiteit in plaats van !important */
+.navbar .logo a[href] {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600;
+    font-family: 'Glacial Indifference', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.navbar .logo a[href]:hover {
+    transform: scale(1.05);
+}
+
+.navbar .logo a[href] img {
+    margin-right: 12px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    width: 55px;
+}
+
+.navbar .logo a[href] .logo-text {
+    font-size: 1.6rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    color: var(--text-color);
+}
+
+.navbar .logo a[href]:hover .logo-text {
+    color: var(--accent-color);
+}
+
+/* Account button - verhoogde specificiteit */
+.auth-buttons .account-btn[href] {
+    align-items: center;
+    background-color: #f3f4f6;
+    border: none;
+    border-radius: 8px;
+    color: #374151;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: Glacial Indifference, Inter, sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    gap: 0.5rem;
+    padding: 0.7rem 1rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.auth-buttons .account-btn[href]:hover {
+    background-color: #e5e7eb;
+    color: #1f2937;
+}
+
+/* Cart button - verhoogde specificiteit */
+.auth-buttons .cart-button[href] {
+    align-items: center;
+    background-color: #f3f4f6;
+    border: none;
+    border-radius: 8px;
+    color: #374151;
+    cursor: pointer;
+    display: flex;
+    height: 44px;
+    justify-content: center;
+    position: relative;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    width: 44px;
+}
+
+.auth-buttons .cart-button[href]:hover {
+    background-color: #e5e7eb;
+    color: #1f2937;
+    transform: translateY(-1px);
+}
+
+/* Cart count - specifieke selector voor betere control */
+.auth-buttons .cart-button .cart-count {
+    background-color: var(--accent-color, #db2777);
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(219, 39, 119, 0.3);
+    color: #fff;
+    display: grid;
+    font-family: Inter, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    height: 20px;
+    line-height: 1;
+    opacity: 0;
+    place-items: center;
+    position: absolute;
+    right: -8px;
+    top: -8px;
+    transform: scale(0.8);
+    transition: all 0.3s ease;
+    width: 20px;
+}
+
+.auth-buttons .cart-button .cart-count.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Mobile responsive fixes */
+@media (max-width: 768px) {
+    .navbar .logo a[href] .logo-text {
+        font-size: 1.4rem;
+    }
+    
+    .navbar .logo a[href] img {
+        width: 50px;
+    }
+    
+    .auth-buttons .account-btn[href] {
+        font-size: 0.9rem;
+        padding: 0.6rem 0.8rem;
+    }
+    
+    .auth-buttons .cart-button[href] {
+        height: 40px;
+        width: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar .logo a[href] .logo-text {
+        font-size: 1.2rem;
+    }
+    
+    .navbar .logo a[href] img {
+        margin-right: 8px;
+        width: 45px;
+    }
+} 

@@ -3,8 +3,9 @@
 namespace App\Http\Controller\Api;
 
 use App\Application\Service\StripeService;
-use App\Infrastructure\Http\ApiResponse;
+use App\Http\Response\ApiResponse;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\ResponseInterface;
 
 final class StripePaymentIntentController
 {
@@ -12,24 +13,24 @@ final class StripePaymentIntentController
     {
     }
 
-    public function create(ServerRequestInterface $request): void
+    public function create(ServerRequestInterface $request): ResponseInterface
     {
         if ($request->getMethod() === 'OPTIONS') {
-            ApiResponse::success(['allow' => 'POST, OPTIONS']);
+            return ApiResponse::success(['allow' => 'POST, OPTIONS']);
         }
 
         if ($request->getMethod() !== 'POST') {
-            ApiResponse::methodNotAllowed('Alleen POST-verzoeken zijn toegestaan', ['POST']);
+            return ApiResponse::error('Alleen POST-verzoeken zijn toegestaan', 405);
         }
 
         $data = json_decode((string) $request->getBody(), true);
         if (!is_array($data)) {
-            ApiResponse::validationError(['body' => 'Ongeldige JSON ontvangen']);
+            return ApiResponse::validationError(['body' => 'Ongeldige JSON ontvangen']);
         }
 
         $amount = $data['amount'] ?? null;
         if (!is_numeric($amount)) {
-            ApiResponse::validationError(['amount' => 'Bedrag (amount) is vereist en moet numeriek zijn']);
+            return ApiResponse::validationError(['amount' => 'Bedrag (amount) is vereist en moet numeriek zijn']);
         }
 
         $description = $data['description'] ?? '';
@@ -41,22 +42,12 @@ final class StripePaymentIntentController
         // Voeg standaard metadata toe
         $metadata['source']    = 'api';
         $metadata['timestamp'] = date('Y-m-d H:i:s');
+
         try {
-            $intent = $this->stripe->createPaymentIntent((float) $amount, $description, $metadata);
-            ApiResponse::success([
-                'payment_intent' => [
-                    'id'            => $intent->id,
-                    'client_secret' => $intent->client_secret,
-                    'amount'        => $intent->amount / 100,
-                    'currency'      => $intent->currency,
-                    'status'        => $intent->status,
-                    'description'   => $intent->description,
-                    'created'       => date('Y-m-d H:i:s', $intent->created),
-                ],
-                'is_test_mode' => strpos($intent->id, 'pi_') === 0 && str_contains($intent->id, 'test'),
-            ], 201);
+            $intent = $this->stripe->createPaymentIntent((int)$amount, $description, $metadata);
+            return ApiResponse::success(['payment_intent' => $intent], 'Payment Intent aangemaakt', 201);
         } catch (\Throwable $e) {
-            ApiResponse::serverError('Er is een fout opgetreden bij het aanmaken van het Payment Intent.', $e->getMessage());
+            return ApiResponse::serverError('Fout bij aanmaken Payment Intent', $e->getMessage());
         }
     }
 }

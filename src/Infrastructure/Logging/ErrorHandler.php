@@ -12,7 +12,6 @@ use function container;
 
 class ErrorHandler implements ErrorLoggerInterface
 {
-    private static ?ErrorHandler $instance = null;
     private string $logPath;
     private ?Logger $logger = null;
     private string $requestId;
@@ -75,22 +74,29 @@ class ErrorHandler implements ErrorLoggerInterface
         $fh = new StreamHandler($file, Logger::DEBUG);
         $fh->setFormatter(new LineFormatter(null, null, true, true));
         $this->logger->pushHandler($fh);
+
         $wh = getenv('SLACK_WEBHOOK_URL');
         if ($wh) {
-            $sh = new SlackWebhookHandler($wh, null, 'SlimmerMetAI-bot', true, null, Logger::CRITICAL, true);
-            $this->logger->pushHandler($sh);
+            // Simplified SlackWebhookHandler to avoid parameter type issues
+            try {
+                $sh = new SlackWebhookHandler($wh);
+                $this->logger->pushHandler($sh);
+            } catch (\Throwable $e) {
+                // Fallback: continue without Slack logging if there are issues
+                $this->logError('Failed to initialize Slack webhook handler: ' . $e->getMessage());
+            }
         }
     }
 
-    private function mapSeverityToLevel(string $s): int
+    private function mapSeverityToLevel(string $s): mixed
     {
         return match (strtoupper($s)) {
-            'DEBUG'=>Logger::DEBUG,
-            'INFO'=>Logger::INFO,
-            'WARNING'=>Logger::WARNING,
-            'ERROR'=>Logger::ERROR,
-            'CRITICAL','FATAL'=>Logger::CRITICAL,
-            default=>Logger::ERROR
+            'DEBUG' => Logger::DEBUG,
+            'INFO' => Logger::INFO,
+            'WARNING' => Logger::WARNING,
+            'ERROR' => Logger::ERROR,
+            'CRITICAL','FATAL' => Logger::CRITICAL,
+            default => Logger::ERROR
         };
     }
 

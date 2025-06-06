@@ -2,118 +2,170 @@
 
 namespace App\Infrastructure\Security;
 
-use function container;
+use Psr\Http\Message\ServerRequestInterface;
 
 class CsrfProtection
 {
-    private static ?CsrfProtection $instance = null;
+    private static ?self $instance = null;
     private string $tokenName = 'csrf_token';
     private string $headerName = 'X-CSRF-Token';
-    private string $cookieName = 'CSRF-Token';
+    private string $cookieName = 'csrf_token';
+    private int $tokenLifetime = 3600;
     private int $tokenLength = 32;
-    private int $tokenLifetime = 7200;
 
-    /**
-     * Legacy helper: haalt instantie uit DI-container.
-     */
     public static function getInstance(): self
     {
-        return container()->get(self::class);
+        if (self::$instance === null) {
+            self::$instance = new self();
+        }
+        return self::$instance;
     }
 
-    public function __construct()
+    public function generateToken(): string
+    {
+        $token = bin2hex(random_bytes($this->tokenLength));
+
+        // Start session if not started
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $_SESSION[$this->tokenName] = [
+            'token' => $token,
+            'expires' => time() + $this->tokenLifetime
+        ];
+
+        $this->setTokenCookie($token);
+        return $token;
+    }
+
+    public function getToken(): string
     {
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
-    }
-    public function generateToken(): string
-    {
-        $token = bin2hex(random_bytes($this->tokenLength / 2));
-        $_SESSION[$this->tokenName] = ['token' => $token,'expires' => time() + $this->tokenLifetime];
-        $this->setTokenCookie($token);
-        return $token;
-    }
-    public function getToken(bool $refresh = false): string
-    {
-        if ($refresh || !isset($_SESSION[$this->tokenName]) || $_SESSION[$this->tokenName]['expires'] < time()) {
-            return $this->generateToken();
-        } return $_SESSION[$this->tokenName]['token'];
-    }
-    public function generateTokenField(bool $refresh = false): string
-    {
-        return '<input type="hidden" name="' . $this->tokenName . '" value="' . $this->getToken($refresh) . '">';
-    }
-    public function validateToken(?string $token = null): bool
-    {
-        if ($token === null) {
-            $token = $this->getTokenFromRequest();
+
+        if (isset($_SESSION[$this->tokenName])) {
+            $tokenData = $_SESSION[$this->tokenName];
+            if (is_array($tokenData) && $tokenData['expires'] > time()) {
+                return $tokenData['token'];
+            }
         }
-        if ($token === null) {
-            return false;
+
+        return $this->generateToken();
+    }
+
+    public function validateToken(?string $token = null, ?ServerRequestInterface $request = null): bool
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
         }
+
         if (!isset($_SESSION[$this->tokenName])) {
             return false;
         }
-        if ($_SESSION[$this->tokenName]['expires'] < time()) {
+
+        $sessionData = $_SESSION[$this->tokenName];
+        if (!is_array($sessionData) || $sessionData['expires'] <= time()) {
+            unset($_SESSION[$this->tokenName]);
             return false;
         }
-        return hash_equals($_SESSION[$this->tokenName]['token'], $token);
+
+        $sessionToken = $sessionData['token'];
+
+        // Get token from provided parameter or request
+        if ($token === null && $request !== null) {
+            $token = $this->getTokenFromRequest($request);
+        }
+
+        return $token !== null && hash_equals($sessionToken, $token);
     }
-    public function removeToken(): void
+
+    public function invalidateToken(): void
     {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
         unset($_SESSION[$this->tokenName]);
         if (isset($_COOKIE[$this->cookieName])) {
             setcookie($this->cookieName, '', time() - 3600, '/', '', true, true);
         }
     }
+
     private function setTokenCookie(string $token): void
     {
-        setcookie($this->cookieName, $token, ['expires' => time() + $this->tokenLifetime,'path' => '/','secure' => true,'httponly' => false,'samesite' => 'Strict']);
+        setcookie($this->cookieName, $token, [
+            'expires' => time() + $this->tokenLifetime,
+            'path' => '/',
+            'secure' => true,
+            'httponly' => false,
+            'samesite' => 'Strict'
+        ]);
     }
-    private function getTokenFromRequest(): ?string
+
+    private function getTokenFromRequest(ServerRequestInterface $request): ?string
     {
-        if (isset($_POST[$this->tokenName])) {
-            return $_POST[$this->tokenName];
-        } $headers = function_exists('getallheaders') ? getallheaders() : [];
-        if (isset($headers[$this->headerName])) {
-            return $headers[$this->headerName];
-        } $hk = 'HTTP_' . strtoupper(str_replace('-', '_', $this->headerName));
-        if (isset($_SERVER[$hk])) {
-            return $_SERVER[$hk];
-        } if (isset($_GET[$this->tokenName])) {
-            return $_GET[$this->tokenName];
-        } if (isset($_COOKIE[$this->cookieName])) {
-            return $_COOKIE[$this->cookieName];
-        } return null;
+        // Check POST data
+        $parsedBody = $request->getParsedBody();
+        if (is_array($parsedBody) && isset($parsedBody[$this->tokenName])) {
+            return $parsedBody[$this->tokenName];
+        }
+
+        // Check headers
+        if ($request->hasHeader($this->headerName)) {
+            return $request->getHeaderLine($this->headerName);
+        }
+
+        // Check query parameters
+        $queryParams = $request->getQueryParams();
+        if (isset($queryParams[$this->tokenName])) {
+            return $queryParams[$this->tokenName];
+        }
+
+        // Check cookies
+        $cookies = $request->getCookieParams();
+        if (isset($cookies[$this->cookieName])) {
+            return $cookies[$this->cookieName];
+        }
+
+        return null;
     }
-    public function verifyRequestToken(bool $exitOnFailure = true): bool
+
+    public function verifyRequestToken(ServerRequestInterface $request, bool $exitOnFailure = false): bool
     {
-        if (!$this->validateToken()) {
+        if (!$this->validateToken(null, $request)) {
             if ($exitOnFailure) {
                 http_response_code(403);
                 echo 'Invalid CSRF token';
                 exit;
-            } return false;
-        } return true;
+            }
+            return false;
+        }
+        return true;
     }
-    // setters
+
+    // Setters
     public function setTokenName(string $n): void
     {
         $this->tokenName = $n;
     }
+
     public function setHeaderName(string $n): void
     {
         $this->headerName = $n;
     }
+
     public function setCookieName(string $n): void
     {
         $this->cookieName = $n;
     }
+
     public function setTokenLifetime(int $sec): void
     {
         $this->tokenLifetime = $sec;
     }
+
     public function setTokenLength(int $len): void
     {
         $this->tokenLength = $len;

@@ -3,7 +3,9 @@
 namespace App\Http\Controller\Auth;
 
 use App\Application\Service\AuthService;
-use App\Infrastructure\Http\JsonResponse;
+use App\Http\Response\ApiResponse;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\ResponseInterface;
 
 final class MeController
 {
@@ -11,23 +13,25 @@ final class MeController
     {
     }
 
-    public function handle(): void
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $token = $this->getBearerToken();
+        $token = $this->getBearerToken($request);
         if (!$token) {
-            JsonResponse::send(['success' => false, 'message' => 'Unauthorized'], 401);
+            return ApiResponse::unauthorized('Bearer token ontbreekt');
         }
+
         $payload = $this->auth->verifyToken($token);
         if (!$payload) {
-            JsonResponse::send(['success' => false, 'message' => 'Invalid token'], 401);
+            return ApiResponse::unauthorized('Ongeldig token');
         }
+
         $user = $this->auth->getCurrentUser($payload);
-        JsonResponse::send(['success' => true, 'user' => $user]);
+        return ApiResponse::success(['user' => $user]);
     }
 
-    private function getBearerToken(): ?string
+    private function getBearerToken(ServerRequestInterface $request): ?string
     {
-        $header = $_SERVER['HTTP_AUTHORIZATION'] ?? ($_SERVER['Authorization'] ?? '');
+        $header = $request->getHeaderLine('Authorization');
         if (preg_match('/Bearer\s+(.*)$/i', $header, $matches)) {
             return trim($matches[1]);
         }

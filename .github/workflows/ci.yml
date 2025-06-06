@@ -7,6 +7,92 @@ on:
     branches: [ main ]
 
 jobs:
+  architecture-checks:
+    runs-on: ubuntu-latest
+    name: Architecture & Legacy Code Checks
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.1'
+        extensions: mbstring, xml, ctype, iconv, intl, pdo, pdo_mysql, dom, filter, gd, json
+
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-progress
+
+    - name: Make scripts executable
+      run: |
+        chmod +x scripts/check-public-php.sh
+        chmod +x scripts/database-migration-tool.php
+        chmod +x scripts/database-modernization-final.php
+        chmod +x scripts/generate-architecture-docs.php
+
+    - name: Check for disallowed PHP files in public_html
+      run: |
+        echo "🔍 Checking for PHP files in public_html (except index.php)..."
+        ./scripts/check-public-php.sh
+
+    - name: Scan for legacy database usage
+      run: |
+        echo "🔍 Scanning for legacy database patterns..."
+        php scripts/database-migration-tool.php scan
+      continue-on-error: true
+
+    - name: Generate database modernization report
+      run: |
+        echo "📊 Generating database modernization report..."
+        php scripts/database-modernization-final.php || echo "⚠️ Modernization script completed with warnings"
+      continue-on-error: true
+
+    - name: Generate architecture documentation
+      run: |
+        echo "📝 Generating architecture documentation..."
+        php scripts/generate-architecture-docs.php
+      continue-on-error: true
+
+    - name: Archive reports
+      uses: actions/upload-artifact@v4
+      with:
+        name: architecture-reports
+        path: |
+          docs/database-migration-report.md
+          docs/database_modernization_report.json
+          docs/REPOSITORIES.md
+          docs/CONTROLLERS.md
+          docs/MIGRATION_STATUS.md
+        retention-days: 30
+      if: always()
+
+    - name: Comment PR with architecture status
+      uses: actions/github-script@v7
+      if: github.event_name == 'pull_request'
+      with:
+        script: |
+          const fs = require('fs');
+          let comment = "## 🏗️ Architecture Check Results\n\n";
+          
+          // Check for PHP files violation
+          try {
+            const { execSync } = require('child_process');
+            execSync('./scripts/check-public-php.sh', { stdio: 'inherit' });
+            comment += "✅ **PHP Files Check**: No disallowed PHP files in public_html\n";
+          } catch (error) {
+            comment += "❌ **PHP Files Check**: Disallowed PHP files detected in public_html\n";
+          }
+          
+          comment += "\n📊 **Database Architecture**: Legacy database pattern scan completed. Check artifacts for detailed reports.\n";
+          comment += "\n💡 **Repository Pattern Benefits**: See docs/ARCHITECTURE_RATIONALE.md for why we use repository pattern.\n";
+          
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: comment
+          });
+
   test:
     runs-on: ubuntu-latest
     
@@ -104,11 +190,115 @@ jobs:
         flags: unittests
         name: codecov-umbrella
 
-  security:
+  frontend-test:
     runs-on: ubuntu-latest
+    name: Frontend Tests & Build
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+
+    - name: Install npm dependencies
+      run: npm ci
+
+    - name: Run ESLint
+      run: npm run lint
+
+    - name: Run JavaScript tests
+      run: npm run test:run
+
+    - name: Run JavaScript tests with coverage
+      run: npm run test:coverage
+
+    - name: Upload JS coverage
+      uses: codecov/codecov-action@v4
+      with:
+        files: ./coverage/clover.xml
+        flags: frontend
+        name: codecov-frontend
+
+    - name: Build frontend assets
+      run: npm run build
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: frontend-build
+        path: public_html/assets/
+
+  docker-build:
+    runs-on: ubuntu-latest
+    name: Docker Image Build
+    needs: [frontend-test]
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Download frontend artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: frontend-build
+        path: public_html/assets/
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Log in to GitHub Container Registry
+      uses: docker/login-action@v3
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Extract metadata
+      id: meta
+      uses: docker/metadata-action@v5
+      with:
+        images: ghcr.io/${{ github.repository }}
+        tags: |
+          type=ref,event=branch
+          type=ref,event=pr
+          type=sha,prefix={{branch}}-
+          type=raw,value=latest,enable={{is_default_branch}}
+
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        platforms: linux/amd64,linux/arm64
+        push: true
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+
+    - name: Generate Docker image summary
+      run: |
+        echo "## 🐳 Docker Image Built Successfully" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "**Image:** \`ghcr.io/${{ github.repository }}\`" >> $GITHUB_STEP_SUMMARY
+        echo "**Tags:** ${{ steps.meta.outputs.tags }}" >> $GITHUB_STEP_SUMMARY
+        echo "**Platforms:** linux/amd64, linux/arm64" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### 🚀 Usage" >> $GITHUB_STEP_SUMMARY
+        echo "\`\`\`bash" >> $GITHUB_STEP_SUMMARY
+        echo "docker pull ghcr.io/${{ github.repository }}:latest" >> $GITHUB_STEP_SUMMARY
+        echo "docker run -p 8080:80 ghcr.io/${{ github.repository }}:latest" >> $GITHUB_STEP_SUMMARY
+        echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+
+  security:
+    runs-on: ubuntu-latest
+    name: Security Scans
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0 # Fetch full history for secret scanning
 
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
@@ -132,32 +322,75 @@ jobs:
           exit 1
         fi
 
-  frontend:
+    - name: Install TruffleHog for secret scanning
+      run: |
+        curl -sSfL https://raw.githubusercontent.com/trufflesecurity/trufflehog/main/scripts/install.sh | sh -s -- -b /usr/local/bin
+
+    - name: Run TruffleHog secret scan
+      run: |
+        echo "🔍 Scanning for secrets in git history..."
+        trufflehog git file://. --branch=main --max-depth=50 --no-verification --json > secrets-scan.json || true
+        
+        # Check if any secrets were found
+        if [ -s secrets-scan.json ]; then
+          echo "⚠️ Potential secrets found:"
+          cat secrets-scan.json
+          echo "::warning::Potential secrets detected. Review the scan results."
+        else
+          echo "✅ No secrets detected in repository"
+        fi
+
+    - name: GitHub Secret Scanning
+      run: |
+        echo "ℹ️ GitHub native secret scanning is active on this repository"
+        echo "Check the Security tab in GitHub for any detected secrets"
+
+    - name: Upload security scan results
+      uses: actions/upload-artifact@v4
+      with:
+        name: security-scan-results
+        path: |
+          secrets-scan.json
+        retention-days: 30
+      if: always()
+
+  deploy-staging:
+    needs: [test, frontend-test, docker-build, security, architecture-checks]
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/develop' && github.event_name == 'push'
+    
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
+    - name: Log in to GitHub Container Registry
+      uses: docker/login-action@v3
       with:
-        node-version: '18'
-        cache: 'npm'
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Install npm dependencies
-      run: npm ci
+    - name: Deploy to staging environment
+      run: |
+        echo "🚀 Deploying Docker image to staging environment"
+        echo "Image: ghcr.io/${{ github.repository }}:develop"
+        echo "Environment: STAGING"
+        echo "Branch: develop"
+        # Hier zou je docker pull en docker run commando's uitvoeren
+        # docker pull ghcr.io/${{ github.repository }}:develop
+        # docker stop slimmermetai-staging || true
+        # docker rm slimmermetai-staging || true
+        # docker run -d --name slimmermetai-staging -p 8080:80 ghcr.io/${{ github.repository }}:develop
 
-    - name: Build frontend assets
-      run: npm run build
+    - name: Run staging smoke tests
+      run: |
+        echo "🧪 Running smoke tests on staging environment"
+        # Hier zouden health checks en basic functionality tests komen
+        # curl -f http://staging.slimmermetai.nl/health || exit 1
+        # curl -f http://staging.slimmermetai.nl/api/health || exit 1
 
-    - name: Upload build artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: frontend-build
-        path: public_html/assets/
-
-  deploy:
-    needs: [test, security, frontend]
+  deploy-production:
+    needs: [test, frontend-test, docker-build, security, architecture-checks]
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     
@@ -165,49 +398,49 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Setup PHP
-      uses: shivammathur/setup-php@v2
+    - name: Log in to GitHub Container Registry
+      uses: docker/login-action@v3
       with:
-        php-version: '8.1'
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Install production dependencies
-      run: composer install --prefer-dist --no-progress --no-dev --optimize-autoloader
-
-    - name: Download frontend artifacts
-      uses: actions/download-artifact@v4
-      with:
-        name: frontend-build
-        path: public_html/assets/
-
-    - name: Create deployment package
+    - name: Deploy to production
       run: |
-        tar -czf deployment.tar.gz \
-          --exclude='.git' \
-          --exclude='node_modules' \
-          --exclude='tests' \
-          --exclude='coverage' \
-          --exclude='.env*' \
-          --exclude='*.md' \
-          .
-
-    - name: Deploy to production (placeholder)
-      run: |
-        echo "🚀 Deployment package created: deployment.tar.gz"
-        echo "📦 Package size: $(du -h deployment.tar.gz | cut -f1)"
-        echo "🎯 Ready for production deployment"
+        echo "🚀 Deploying Docker image to production environment"
+        echo "Image: ghcr.io/${{ github.repository }}:latest"
+        echo "Environment: PRODUCTION"
+        echo "Branch: main"
         # Hier zou je de daadwerkelijke deployment logica toevoegen
-        # bijvoorbeeld via SSH, FTP, of hosting provider API's
+        # docker pull ghcr.io/${{ github.repository }}:latest
+        # docker stop slimmermetai-production || true
+        # docker rm slimmermetai-production || true
+        # docker run -d --name slimmermetai-production -p 80:80 ghcr.io/${{ github.repository }}:latest
+
+    - name: Run production health checks
+      run: |
+        echo "🏥 Running health checks on production environment"
+        # Hier zouden production health checks komen
+        # curl -f https://slimmermetai.nl/health || exit 1
+        # curl -f https://slimmermetai.nl/api/health || exit 1
+
+    - name: Run database migrations
+      run: |
+        echo "🗄️ Running database migrations"
+        # docker exec slimmermetai-production php bin/migrate.php migrate
 
   notify:
-    needs: [deploy]
+    needs: [deploy-production, deploy-staging]
     runs-on: ubuntu-latest
     if: always()
     
     steps:
     - name: Notify deployment status
       run: |
-        if [ "${{ needs.deploy.result }}" == "success" ]; then
-          echo "✅ Deployment successful!"
+        if [ "${{ needs.deploy-production.result }}" == "success" ]; then
+          echo "✅ Production deployment successful!"
+        elif [ "${{ needs.deploy-staging.result }}" == "success" ]; then
+          echo "✅ Staging deployment successful!"
         else
           echo "❌ Deployment failed!"
         fi 

@@ -154,3 +154,67 @@ Deze hooks worden geactiveerd via Husky + lint-staged. Tijdens CI falen builds w
 ### Productie-build & deploy
 
 `npm run build` genereert geoptimaliseerde assets in `public_html/assets`. De GitHub Actions workflow uploadt deze map als artefact (en kan optioneel als release-asset of naar een `gh-pages` branch/S3 worden gepusht).
+
+
+## 🏗️ Architectuur
+
+### Repository Pattern Status
+- **Repositories**: 8 interfaces gedefinieerd
+- **Controllers**: 86 controllers gescand
+- **Modernisering**: 99% van bestanden gemoderniseerd
+
+### Automatische Controles
+- ✅ **CI/CD Integratie**: Scripts automatisch uitgevoerd
+- ✅ **Legacy Detection**: Automatische scan op legacy patterns
+- ✅ **Architecture Guards**: Voorkomt regressie naar legacy code
+
+📖 **Meer info**: Zie [docs/ARCHITECTURE_RATIONALE.md](docs/ARCHITECTURE_RATIONALE.md) voor waarom we deze keuzes maken.
+
+### Repository Pattern Status
+- **Repositories**: 8 interfaces gedefinieerd
+- **Controllers**: 86 controllers gescand
+- **Modernisering**: 99% van bestanden gemoderniseerd
+
+### Automatische Controles
+- ✅ **CI/CD Integratie**: Scripts automatisch uitgevoerd
+- ✅ **Legacy Detection**: Automatische scan op legacy patterns
+- ✅ **Architecture Guards**: Voorkomt regressie naar legacy code
+
+📖 **Meer info**: Zie [docs/ARCHITECTURE_RATIONALE.md](docs/ARCHITECTURE_RATIONALE.md) voor waarom we deze keuzes maken.
+
+### Repository Pattern Status
+- **Repositories**: 8 interfaces gedefinieerd
+- **Controllers**: 86 controllers gescand
+- **Modernisering**: 99% van bestanden gemoderniseerd
+
+### Automatische Controles
+- ✅ **CI/CD Integratie**: Scripts automatisch uitgevoerd
+- ✅ **Legacy Detection**: Automatische scan op legacy patterns
+- ✅ **Architecture Guards**: Voorkomt regressie naar legacy code
+
+📖 **Meer info**: Zie [docs/ARCHITECTURE_RATIONALE.md](docs/ARCHITECTURE_RATIONALE.md) voor waarom we deze keuzes maken.
+
+### Repository Pattern Status
+- **Repositories**: 8 interfaces gedefinieerd
+- **Controllers**: 86 controllers gescand
+- **Modernisering**: 99% van bestanden gemoderniseerd
+
+### Automatische Controles
+- ✅ **CI/CD Integratie**: Scripts automatisch uitgevoerd
+- ✅ **Legacy Detection**: Automatische scan op legacy patterns
+- ✅ **Architecture Guards**: Voorkomt regressie naar legacy code
+
+📖 **Meer info**: Zie [docs/ARCHITECTURE_RATIONALE.md](docs/ARCHITECTURE_RATIONALE.md) voor waarom we deze keuzes maken.
+
+### Repository Pattern Status
+- **Repositories**: 8 interfaces gedefinieerd
+- **Controllers**: 129 controllers gescand
+- **Modernisering**: 99% van bestanden gemoderniseerd
+
+### Automatische Controles
+- ✅ **CI/CD Integratie**: Scripts automatisch uitgevoerd
+- ✅ **Legacy Detection**: Automatische scan op legacy patterns
+- ✅ **Architecture Guards**: Voorkomt regressie naar legacy code
+
+📖 **Meer info**: Zie [docs/ARCHITECTURE_RATIONALE.md](docs/ARCHITECTURE_RATIONALE.md) voor waarom we deze keuzes maken.
+

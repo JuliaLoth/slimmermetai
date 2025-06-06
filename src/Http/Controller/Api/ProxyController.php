@@ -3,8 +3,9 @@
 namespace App\Http\Controller\Api;
 
 use App\Infrastructure\Config\Config;
-use App\Infrastructure\Http\ApiResponse;
+use App\Http\Response\ApiResponse;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * ApiProxyController
@@ -18,34 +19,32 @@ final class ProxyController
     {
     }
 
-    public function handle(ServerRequestInterface $request): void
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         // query param ?endpoint=x
         $endpoint = $request->getQueryParams()['endpoint'] ?? '';
         if ($request->getMethod() === 'OPTIONS') {
-            ApiResponse::success(['allow' => 'GET, OPTIONS']);
+            return ApiResponse::success(['allow' => 'GET, OPTIONS']);
         }
 
         switch ($endpoint) {
             case 'stripe':
-                                                                                                                                                                                                                                                                                                                              ApiResponse::success([
+                return ApiResponse::success([
                     'name'        => 'Stripe API',
                     'version'     => '1.0',
                     'description' => 'Betaalverwerking voor Slimmer met AI',
                     'timestamp'   => date('Y-m-d H:i:s'),
-                                                                                                                                                                                                                                                                                                                              ]);
+                ]);
 
-                break;
             case 'stripe_config':
-                                                                                                                                                                                                                                                                                                                              ApiResponse::success([
-                    'publishableKey' => $this->config->get('stripe_public_key', ''),
-                    'timestamp'      => date('Y-m-d H:i:s'),
-                    'proxy'          => true,
-                                                                                                                                                                                                                                                                                                                              ]);
+                return ApiResponse::success([
+                    'public_key' => $this->config->get('stripe_public_key', ''),
+                    'currency'   => 'EUR',
+                    'locale'     => 'nl-NL',
+                ]);
 
-                break;
             case 'stripe_test':
-                                                                                                                                                                                                                                                                                                                              ApiResponse::success([
+                return ApiResponse::success([
                     'status'      => 'success',
                     'message'     => 'API proxy test is geslaagd',
                     'timestamp'   => date('Y-m-d H:i:s'),
@@ -54,11 +53,10 @@ final class ProxyController
                         'server_name'  => $_SERVER['SERVER_NAME'] ?? 'unknown',
                         'request_uri'  => $_SERVER['REQUEST_URI'] ?? 'unknown',
                     ],
-                                                                                                                                                                                                                                                                                                                              ]);
+                ]);
 
-                break;
             default:
-                                                                                                                                                                                                                                                                                                                              ApiResponse::notFound('Onbekend API endpoint: ' . $endpoint);
+                return ApiResponse::error('Unknown endpoint: ' . $endpoint, 404);
         }
     }
 }

@@ -5,12 +5,20 @@ namespace App\Application\Service;
 use App\Infrastructure\Config\Config;
 use App\Domain\Logging\ErrorLoggerInterface;
 use PhpOffice\PhpPresentation\PhpPresentation;
+use PhpOffice\PhpPresentation\DocumentLayout;
 use PhpOffice\PhpPresentation\Style\Alignment;
 use PhpOffice\PhpPresentation\Style\Color;
 use PhpOffice\PhpPresentation\Style\Bullet;
 use PhpOffice\PhpPresentation\Shape\RichText;
+use PhpOffice\PhpPresentation\Shape\RichText\Run;
+use PhpOffice\PhpPresentation\Shape\RichText\Paragraph;
 
 use function container;
+
+// Fallback definition for PHPStan compatibility
+if (!defined('PUBLIC_ROOT')) {
+    define('PUBLIC_ROOT', dirname(__DIR__, 3) . '/public_html');
+}
 
 final class PresentationConvertService
 {
@@ -108,26 +116,33 @@ PROMPT;
         $slide = $presentation->getActiveSlide();
         $y = 50;
         $margin = 30;
-        $slideWidth = $presentation->getLayout()->getCX(PhpPresentation::LAYOUT_SCREEN_16X9);
-        $slideHeight = $presentation->getLayout()->getCY(PhpPresentation::LAYOUT_SCREEN_16X9);
-        $textShape = static function (string $text, int $size, bool $bold, int $height, int $offsetY) use ($slide, $slideWidth, $margin) {
 
-            $run = new RichText\Run();
-            $run->setText($text);
-            $run->getFont()->setName('Arial')->setSize($size)->setBold($bold);
+        // Fix voor nieuwe DocumentLayout API
+        $slideWidth = $presentation->getLayout()->getCX(DocumentLayout::UNIT_PIXEL);
+        $slideHeight = $presentation->getLayout()->getCY(DocumentLayout::UNIT_PIXEL);
+
+        // Use 16:9 layout
+        $presentation->getLayout()->setDocumentLayout(DocumentLayout::LAYOUT_SCREEN_16X9);
+
+        $textShape = static function (string $text, int $size, bool $bold, int $height, int $offsetY) use ($slide, $slideWidth, $margin) {
             $shape = new RichText();
             $shape->setHeight($height);
-            $shape->setWidth($slideWidth - 2 * $margin);
+            $shape->setWidth((int)($slideWidth - 2 * $margin));
             $shape->setOffsetX($margin);
             $shape->setOffsetY($offsetY);
-            $shape->getActiveParagraph()->addRun($run);
+
+            // Nieuwe API voor Run en Paragraph
+            $run = $shape->getActiveParagraph()->createTextRun($text);
+            $run->getFont()->setName('Arial')->setSize($size)->setBold($bold);
             $shape->getActiveParagraph()->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
             $slide->addShape($shape);
         };
+
         foreach ($structuredData as $item) {
             $type = $item['type'] ?? 'text';
             $content = $item['content'] ?? '';
             $level = $item['level'] ?? 1;
+
             if ($type === 'title') {
                 if ($level === 1 && $y !== 50) {
                     // nieuwe slide voor hoofdtitel
@@ -135,23 +150,25 @@ PROMPT;
                     $y = 50;
                 }
                 $size = match ($level) {
-                    1=>44,2=>32,default=>28
+                    1 => 44, 2 => 32, default => 28
                 };
-                $textShape($content, $size, true, $size * 1.5, $y);
-                $y += $size * 1.5 + 10;
+                $textShape($content, $size, true, (int)($size * 1.5), $y);
+                $y += (int)($size * 1.5) + 10;
             } elseif ($type === 'text') {
                 $textShape($content, 18, false, 18 * 3, $y);
                 $y += 18 * 3 + 5;
             } elseif ($type === 'list' && is_array($content)) {
                 $listShape = new RichText();
-                $listShape->setWidth($slideWidth - 2 * $margin);
+                $listShape->setWidth((int)($slideWidth - 2 * $margin));
                 $listShape->setOffsetX($margin);
                 $listShape->setOffsetY($y);
+
+                // Nieuwe API voor list items
                 foreach ($content as $li) {
-                            $p = $listShape->createParagraph();
-                            $p->getBulletStyle()->setBulletType(Bullet::TYPE_BULLET);
-                            $run = $p->createRun($li);
-                            $run->getFont()->setSize(18);
+                    $paragraph = $listShape->createParagraph();
+                    $paragraph->getBulletStyle()->setBulletType(Bullet::TYPE_BULLET);
+                    $run = $paragraph->createTextRun($li);
+                    $run->getFont()->setSize(18);
                 }
                 $listShape->setHeight(25 * count($content));
                 $slide->addShape($listShape);
@@ -160,11 +177,12 @@ PROMPT;
                 $slide = $presentation->createSlide();
                 $y = 50;
                 $size = match ($level) {
-                    1=>44,2=>32,default=>28
+                    1 => 44, 2 => 32, default => 28
                 };
-                $textShape($content, $size, true, $size * 1.5, $y);
-                $y += $size * 1.5 + 10;
+                $textShape($content, $size, true, (int)($size * 1.5), $y);
+                $y += (int)($size * 1.5) + 10;
             }
+
             if ($y > ($slideHeight - 100)) {
                 $slide = $presentation->createSlide();
                 $y = 50;

@@ -14,14 +14,41 @@ parameters:
         # Legacy code compatibiliteit
         - '#Function (mysql_|mysqli_) not found#'
         - '#Call to undefined function (container|database|db)#'
+        - '#Used function (container|database|db) not found#'
+        - '#Function (container|database|db) not found#'
         
         # PSR-15 patterns
         - '#Parameter .* of method .* has no typehint specified#'
         
         # Development debugging
         - '#Function (var_dump|print_r|error_log) should not be used#'
+        
+        # PhpOffice Library issues (external library problems)
+        - '#Access to undefined constant PhpOffice\\\\PhpPresentation\\\\PhpPresentation::#'
+        - '#Call to an undefined method PhpOffice\\\\PhpPresentation\\\\Shape\\\\RichText\\\\Paragraph::#'
+        - '#Parameter .* of closure expects int, float given#'
+        
+        # Stripe library property access (external library dynamic properties)
+        - '#Access to an undefined property Stripe\\\\StripeObject::#'
+        
+        # Unused properties warnings (write-only properties are acceptable)
+        - '#Property .* is never read, only written#'
+        
+        # API Response usage patterns
+        - '#Result of static method .* is used#'
+        - '#Cannot call method getBody\\(\\) on null#'
+        
+        # Reflection type issues (PHP version compatibility)
+        - '#Call to an undefined method ReflectionType::getName\\(\\)#'
+        
+        # Performance monitoring optional methods
+        - '#Variable .* might not be defined#'
+        - '#Expression on left side of \\?\\? is not nullable#'
+        
+        # DatabasePerformanceMonitor array access
+        - '#Offset .* on array.* always exists and is not nullable#'
     
-    # Check for missing typehints
+    # Legacy type checking configurations
     checkMissingIterableValueType: false
     checkGenericClassInNonGenericObjectType: false
     

@@ -160,7 +160,7 @@ class DatabasePerformanceMonitor
         ]);
     }
 
-    private function logQuery(array $query): void
+    public function logQuery(array $query): void
     {
         error_log(sprintf(
             "[DB Query] %s | Duration: %.2fms | Rows: %d | Memory: %s | Caller: %s",

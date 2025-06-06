@@ -7,6 +7,9 @@ use App\Domain\Logging\ErrorLoggerInterface;
 use App\Domain\Repository\StripeSessionRepositoryInterface;
 use Stripe\Stripe;
 use Stripe\Checkout\Session as StripeSession;
+use Stripe\PaymentIntent;
+use Stripe\SetupIntent;
+use Stripe\StripeObject;
 
 use function container;
 
@@ -57,11 +60,13 @@ final class StripeService
     public function createCheckoutSession(array $lineItems, string $successUrl, string $cancelUrl, array $options = []): array
     {
         // Development mode detectie: alleen voor lokale development
-        $isDevelopment = (getenv('APP_ENV') === 'local' || getenv('APP_ENV') === 'development') &&
+        $appEnv = getenv('APP_ENV');
+        $isDevelopment = ($appEnv === 'local' || $appEnv === 'development') &&
                         !$this->isValidStripeKey($this->secretKey);
+
         if ($isDevelopment) {
             $this->logger->logInfo('Using mock Stripe session for development (no valid API key or local env)');
-        // Bereken totaal voor de mock response
+            // Bereken totaal voor de mock response
             $totalAmount = 0;
             foreach ($lineItems as $item) {
                 $unitAmount = $item['price_data']['unit_amount'] ?? 2999;
@@ -70,7 +75,12 @@ final class StripeService
             }
 
             $mockSessionId = 'cs_test_mock_' . uniqid();
-            $productName = $lineItems[0]['price_data']['product_data']['name'] ?? 'SlimmerMetAI Product';
+            // Safe product name extraction
+            $productName = 'SlimmerMetAI Product';
+            if (!empty($lineItems[0]['price_data']['product_data']['name'])) {
+                $productName = $lineItems[0]['price_data']['product_data']['name'];
+            }
+
             $this->logger->logInfo("Mock checkout session created", [
                 'session_id' => $mockSessionId,
                 'total_amount' => $totalAmount,
@@ -78,11 +88,11 @@ final class StripeService
                 'line_items_count' => count($lineItems),
                 'mock_mode' => true
             ]);
-        // Return mock success URL met parameters om succesvol te simuleren
-                    return [
-                        'id' => $mockSessionId,
-                        'url' => $successUrl . '?mock=true&session_id=' . $mockSessionId . '&total=' . number_format($totalAmount / 100, 2)
-                    ];
+            // Return mock success URL met parameters om succesvol te simuleren
+            return [
+                'id' => $mockSessionId,
+                'url' => $successUrl . '?mock=true&session_id=' . $mockSessionId . '&total=' . number_format($totalAmount / 100, 2)
+            ];
         }
 
         // Echte Stripe API calls voor productie
@@ -94,7 +104,7 @@ final class StripeService
         try {
             $this->logger->logInfo('Creating real Stripe checkout session', [
                 'line_items_count' => count($lineItems),
-                'environment' => getenv('APP_ENV') ?: 'production'
+                'environment' => $appEnv ?: 'production'
             ]);
             $session = StripeSession::create([
                 'mode' => $options['mode'] ?? 'payment',
@@ -106,16 +116,16 @@ final class StripeService
                 'client_reference_id' => $options['client_reference_id'] ?? null,
                 'metadata' => $options['metadata'] ?? null,
             ]);
-// Opslaan in repository
+            // Opslaan in repository
             $this->repository->save(\App\Domain\Entity\StripeSession::fromStripeArray($session->toArray()));
             return ['id' => $session->id, 'url' => $session->url];
         } catch (\Throwable $e) {
             $this->logger->logError('Stripe sessie creatie mislukt', [
                 'error' => $e->getMessage(),
                 'api_key_format' => $this->isValidStripeKey($this->secretKey) ? 'valid_format' : 'invalid_format',
-                'environment' => getenv('APP_ENV') ?: 'production'
+                'environment' => $appEnv ?: 'production'
             ]);
-        // In productie geen fallback naar mock mode
+            // In productie geen fallback naar mock mode
             throw $e;
         }
     }
@@ -138,13 +148,27 @@ final class StripeService
     {
         try {
             $session = StripeSession::retrieve($sessionId);
+
+            // Safe amount conversion with explicit null check
+            $amountTotal = null;
+            if (isset($session->amount_total) && is_numeric($session->amount_total)) {
+                $amount = (int)$session->amount_total;
+                if ($amount > 0) {
+                    $amountTotal = $amount / 100;
+                }
+            }
+
             $statusArr = [
                 'id' => $session->id,
-                'status' => $session->payment_status,
-                'amount_total' => $session->amount_total ? (int)$session->amount_total / 100 : null,
+                'status' => $session->payment_status ?? 'unknown',
+                'amount_total' => $amountTotal,
                 'currency' => $session->currency,
             ];
-            $this->repository->updateStatus($session->id, $session->payment_status, $session->status);
+            $this->repository->updateStatus(
+                $session->id,
+                $session->payment_status ?? 'unknown',
+                $session->status ?? 'incomplete'
+            );
             return $statusArr;
         } catch (\Throwable $e) {
             $this->logger->logError('Stripe sessie ophalen mislukt', ['id' => $sessionId, 'error' => $e->getMessage()]);
@@ -179,25 +203,24 @@ final class StripeService
             case 'checkout.session.async_payment_succeeded':
             case 'checkout.session.async_payment_failed':
                 $session = $event->data->object;
-// \Stripe\Checkout\Session
-                $this->repository->updateStatus($session->id, $session->payment_status, $session->status);
+                // Safe property access met null coalescing
+                $paymentStatus = $session->payment_status ?? 'unknown';
+                $status = $session->status ?? 'incomplete';
+                $this->repository->updateStatus($session->id, $paymentStatus, $status);
 
                 break;
             case 'payment_intent.succeeded':
             case 'payment_intent.payment_failed':
                 // Voor deze events is er geen directe Checkout Session referentie, maar we loggen ze wel.
-
                 $this->logger->logInfo('PaymentIntent webhook ontvangen', [
-                'event' => $event->type,
-                'intent_id' => $event->data->object->id ?? null,
-                'status' => $event->data->object->status ?? null,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ]);
+                    'event' => $event->type,
+                    'intent_id' => $event->data->object->id ?? null,
+                    'status' => $event->data->object->status ?? null,
+                ]);
 
                 break;
             default:
                 // voor nu niets doen
-
-
                 break;
         }
 
@@ -216,7 +239,7 @@ final class StripeService
     public function createPaymentIntent(int|float $amount, string $description = '', array $metadata = [], string $currency = 'eur'): \Stripe\PaymentIntent
     {
         try {
-/** @var \Stripe\PaymentIntent $intent */
+            /** @var \Stripe\PaymentIntent $intent */
             $intent = \Stripe\PaymentIntent::create([
                 'amount' => (int) round($amount * 100), // euro naar centen
                 'currency' => strtolower($currency),

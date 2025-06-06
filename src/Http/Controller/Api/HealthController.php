@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controller\Api;
 
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use GuzzleHttp\Psr7\Response;
 use App\Infrastructure\Config\Config;
-use App\Infrastructure\Database\Database;
+use App\Infrastructure\Database\DatabaseInterface;
 use App\Infrastructure\Logging\ErrorHandler;
 
 /**
@@ -16,8 +18,11 @@ use App\Infrastructure\Logging\ErrorHandler;
  */
 class HealthController
 {
-    public function __construct(private Config $config, private ErrorHandler $errorHandler)
-    {
+    public function __construct(
+        private Config $config,
+        private DatabaseInterface $database,
+        private ErrorHandler $errorHandler
+    ) {
     }
 
     /**
@@ -40,7 +45,8 @@ class HealthController
         $checks = [];
         $overallStatus = 'healthy';
         $httpStatus = 200;
-// Database check
+
+        // Database check
         $checks['database'] = $this->checkDatabase();
         if ($checks['database']['status'] !== 'healthy') {
             $overallStatus = 'degraded';
@@ -62,6 +68,7 @@ class HealthController
 
         // External services check
         $checks['external_services'] = $this->checkExternalServices();
+
         $response = [
             'status' => $overallStatus,
             'timestamp' => date('c'),
@@ -72,6 +79,7 @@ class HealthController
             'php_version' => PHP_VERSION,
             'environment' => $this->config->get('app_env', 'production')
         ];
+
         return new Response($httpStatus, ['Content-Type' => 'application/json'], json_encode($response, JSON_PRETTY_PRINT));
     }
 
@@ -82,7 +90,8 @@ class HealthController
     {
         $ready = true;
         $issues = [];
-// Check critical dependencies
+
+        // Check critical dependencies
         if (!$this->isDatabaseReady()) {
             $ready = false;
             $issues[] = 'Database niet toegankelijk';
@@ -122,6 +131,7 @@ class HealthController
             'disk_usage' => $this->getDiskUsage(),
             'cpu_usage_percent' => $this->getCpuUsage()
         ];
+
         return new Response(200, ['Content-Type' => 'application/json'], json_encode($metrics, JSON_PRETTY_PRINT));
     }
 
@@ -129,12 +139,12 @@ class HealthController
     {
         try {
             $start = microtime(true);
-            $db = Database::getInstance();
-            $db->connect();
-// Simple query to test connection
-            $pdo = $db->getConnection();
-            $pdo->query('SELECT 1');
+
+            // Simple query to test connection using DatabaseInterface
+            $this->database->fetch('SELECT 1');
+
             $responseTime = round((microtime(true) - $start) * 1000, 2);
+
             return [
                 'status' => 'healthy',
                 'response_time_ms' => $responseTime,
@@ -156,6 +166,7 @@ class HealthController
             'logs' => $this->config->get('site_root') . '/logs',
             'cache' => $this->config->get('site_root') . '/cache'
         ];
+
         $issues = [];
         foreach ($criticalPaths as $name => $path) {
             if (!is_dir($path)) {
@@ -176,11 +187,13 @@ class HealthController
         $usage = memory_get_usage(true);
         $limit = $this->parseMemoryLimit();
         $percentage = ($usage / $limit) * 100;
+
         $status = match (true) {
             $percentage > 90 => 'critical',
             $percentage > 80 => 'warning',
             default => 'healthy'
         };
+
         return [
             'status' => $status,
             'usage_bytes' => $usage,
@@ -192,10 +205,13 @@ class HealthController
     private function checkExternalServices(): array
     {
         $services = [];
-// Check Stripe API
+
+        // Check Stripe API
         $services['stripe'] = $this->checkStripeApi();
-// Check Google APIs
+
+        // Check Google APIs
         $services['google_oauth'] = $this->checkGoogleOAuth();
+
         return $services;
     }
 
@@ -207,10 +223,11 @@ class HealthController
         }
 
         try {
-// Simple API call to check connectivity
+            // Simple API call to check connectivity
             $start = microtime(true);
-// In real implementation, would make actual Stripe API call
+            // In real implementation, would make actual Stripe API call
             $responseTime = round((microtime(true) - $start) * 1000, 2);
+
             return [
                 'status' => 'healthy',
                 'response_time_ms' => $responseTime
@@ -236,8 +253,7 @@ class HealthController
     private function isDatabaseReady(): bool
     {
         try {
-            $db = Database::getInstance();
-            $db->connect();
+            $this->database->fetch('SELECT 1');
             return true;
         } catch (\Exception $e) {
             return false;

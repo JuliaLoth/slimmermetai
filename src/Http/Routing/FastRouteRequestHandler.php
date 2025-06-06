@@ -63,7 +63,7 @@ class FastRouteRequestHandler implements RequestHandlerInterface
      * @param callable|array{class-string, string} $handler
      * @param array<string,string>                 $vars
      */
-    private function invokeHandler($handler, ServerRequestInterface $request, array $vars)
+    private function invokeHandler($handler, ServerRequestInterface $request, array $vars): mixed
     {
         // Inline callable (closure of function)
         if (is_callable($handler) && !is_array($handler)) {
@@ -79,7 +79,12 @@ class FastRouteRequestHandler implements RequestHandlerInterface
         if ($reflection->getNumberOfParameters() > 0) {
             $first = $reflection->getParameters()[0];
             $type  = $first->getType();
-            if ($type && is_a($type->getName(), ServerRequestInterface::class, true)) {
+
+            // PHP 8+ compatible type checking
+            if (
+                $type instanceof \ReflectionNamedType &&
+                is_a($type->getName(), ServerRequestInterface::class, true)
+            ) {
                 $invokeParams[] = $request;
             }
         }

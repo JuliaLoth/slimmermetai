@@ -1,5 +1,4 @@
 <?php
-define('SKIP_DB', true); // VOOR LOCAL DEVELOPMENT ZONDER DATABASE
 // Unified front controller met FastRoute + PHP-DI
 
 require_once dirname(__DIR__) . '/bootstrap.php';
@@ -81,6 +80,7 @@ $dispatcher = simpleDispatcher(function (RouteCollector $r) {
     $r->addRoute('GET',  '/over-mij',   [App\Http\Controller\OverMijController::class,     'index']);
     $r->addRoute('GET',  '/e-learnings',[App\Http\Controller\ElearningsController::class,  'index']);
     $r->addRoute('GET',  '/ai-cursussen',[App\Http\Controller\ElearningsController::class,  'index']);
+    $r->addRoute('GET',  '/e-learning', [App\Http\Controller\ElearningDashboardController::class, 'index']); // Legacy dashboard
     $r->addRoute('GET',  '/login',      [App\Http\Controller\Auth\LoginPageController::class, 'index']);
     $r->addRoute('GET',  '/register',   [App\Http\Controller\Auth\RegisterPageController::class, 'index']);
     $r->addRoute('GET',  '/profiel',    [App\Http\Controller\ProfileController::class, 'index']);
@@ -108,6 +108,26 @@ $dispatcher = simpleDispatcher(function (RouteCollector $r) {
     $r->addRoute('GET',  '/e-learnings/ai-strategy', [App\Http\Controller\CourseDetailController::class, 'aiStrategy']);
     $r->addRoute('GET',  '/e-learnings/ai-content', [App\Http\Controller\CourseDetailController::class, 'aiContent']);
     $r->addRoute('GET',  '/e-learnings/ai-data', [App\Http\Controller\CourseDetailController::class, 'aiData']);
+
+    // Course viewer pages (vervangen HTML bestanden)
+    $r->addRoute('GET',  '/e-learning/course-ai-basics', [App\Http\Controller\CourseViewerController::class, 'aiBasics']);
+    $r->addRoute('GET',  '/e-learning/course-prompt-engineering', [App\Http\Controller\CourseViewerController::class, 'promptEngineering']);
+
+    // Legacy HTML redirects
+    $r->addRoute('GET', '/e-learning/index.html', function() {
+        header('Location: /e-learning', true, 301);
+        exit;
+    });
+    $r->addRoute('GET', '/e-learning/course-ai-basics.html', function() {
+        header('Location: /e-learning/course-ai-basics', true, 301);
+        exit;
+    });
+
+    // Includes e-learning redirects  
+    $r->addRoute('GET', '/includes/e-learning/index.html', function() {
+        header('Location: /e-learning', true, 301);
+        exit;
+    });
 
     // Legacy alias route
     $r->addRoute('GET', '/tools.php', function() {
@@ -220,6 +240,10 @@ $dispatcher = simpleDispatcher(function (RouteCollector $r) {
     $r->addRoute(['POST','OPTIONS'], '/api/auth/refresh', [App\Http\Controller\Api\AuthController::class, 'handle']);
     $r->addRoute(['GET','OPTIONS'], '/api/auth/me', [App\Http\Controller\Api\AuthController::class, 'handle']);
     $r->addRoute(['POST','OPTIONS'], '/api/auth/logout', [App\Http\Controller\Api\AuthController::class, 'handle']);
+    
+    // ----- Secure Session API Routes -----
+    $r->addRoute(['GET','OPTIONS'], '/api/session', [App\Http\Controller\Api\SessionController::class, 'getSession']);
+    $r->addRoute(['GET','POST','OPTIONS'], '/api/user/progress', [App\Http\Controller\Api\SessionController::class, 'getUserProgress']);
     
     // ----- Moderne User API Routes -----
     $r->addRoute(['GET','PUT','OPTIONS'], '/api/users/profile', [App\Http\Controller\Api\UserController::class, 'handle']);
