@@ -1,0 +1,2870 @@
+<?xml version="1.0"?>
+<phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
+  <file name="Config.php" path="\Infrastructure\Config">
+    <totals>
+      <lines total="162" comments="12" code="150" executable="89" executed="82" percent="92.13"/>
+      <methods count="11" tested="8" percent="72.73"/>
+      <functions count="0" tested="0" percent="0"/>
+      <classes count="1" tested="0" percent="0.00"/>
+      <traits count="0" tested="0" percent="0"/>
+    </totals>
+    <class name="App\Infrastructure\Config\Config" start="7" executable="89" executed="82" crap="65.99">
+      <namespace name="App\Infrastructure\Config"/>
+      <method name="getInstance" signature="getInstance(): self" start="12" end="16" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="__construct" signature="__construct()" start="18" end="22" crap="1" executable="2" executed="2" coverage="100"/>
+      <method name="loadEnv" signature="loadEnv(): void" start="24" end="40" crap="5.15" executable="11" executed="9" coverage="81.818181818182"/>
+      <method name="parseEnvFile" signature="parseEnvFile(string $file): void" start="42" end="58" crap="5.02" executable="11" executed="10" coverage="90.909090909091"/>
+      <method name="initSettings" signature="initSettings(): void" start="60" end="128" crap="43" executable="54" executed="54" coverage="100"/>
+      <method name="get" signature="get(string $k, mixed $d): mixed" start="130" end="133" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="set" signature="set(string $k, mixed $v): void" start="134" end="137" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="all" signature="all(): array" start="138" end="141" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="has" signature="has(string $k): bool" start="142" end="145" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="defineConstants" signature="defineConstants(): void" start="146" end="154" crap="12" executable="4" executed="0" coverage="0"/>
+      <method name="getTyped" signature="getTyped(string $k, string $t, mixed $d): mixed" start="155" end="160" crap="2" executable="2" executed="2" coverage="100"/>
+    </class>
+    <coverage>
+      <line nr="15">
+        <covered by="Tests\Unit\StripeControllerTest::testConfigWithValidKey"/>
+      </line>
+      <line nr="20">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="21">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="26">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="29">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="30">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="31">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="32">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="33">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="34">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="36">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="39">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="44">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="45">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="46">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="48">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="49">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="50">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="51">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="54">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="55">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="56">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="63">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="64">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="65">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="66">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="67">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="69">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="70">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="71">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="73">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="74">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="75">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="76">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="77">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="79">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="80">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="81">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="82">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="83">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="84">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="85">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="86">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="88">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="89">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="90">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="91">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="92">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="93">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="95">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="96">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="97">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="98">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="100">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="101">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="102">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="104">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="105">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="106">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="107">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="108">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="110">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="111">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="113">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="114">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="116">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="117">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="118">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="120">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="121">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="123">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="124">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="125">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="126">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="127">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+      <line nr="132">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\StripeControllerTest::testConfigWithValidKey"/>
+      </line>
+      <line nr="136">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+      </line>
+      <line nr="140">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+      </line>
+      <line nr="144">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+      </line>
+      <line nr="157">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+      </line>
+      <line nr="158">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+      </line>
+      <line nr="122">
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetDefaultValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanCheckIfKeyExists"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
+        <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
+        <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+      </line>
+    </coverage>
+    <source>
+      <line no="1">
+        <token name="T_OPEN_TAG">&lt;?php</token>
+      </line>
+      <line no="2"/>
+      <line no="3">
+        <token name="T_NAMESPACE">namespace</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">App\Infrastructure\Config</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="4"/>
+      <line no="5">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">container</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="6"/>
+      <line no="7">
+        <token name="T_CLASS">class</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">Config</token>
+      </line>
+      <line no="8">
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="9">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_ARRAY">array</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$settings</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="10">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">bool</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$envLoaded</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">false</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="11"/>
+      <line no="12">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STATIC">static</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getInstance</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">self</token>
+      </line>
+      <line no="13">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="14">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_COMMENT">// legacy helper &#x2013; haalt de instantie uit de DI-container</token>
+      </line>
+      <line no="15">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">container</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">get</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">self</token>
+        <token name="T_DOUBLE_COLON">::</token>
+        <token name="T_CLASS">class</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="16">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="17"/>
+      <line no="18">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">__construct</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+      </line>
+      <line no="19">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="20">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">loadEnv</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="21">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">initSettings</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="22">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="23"/>
+      <line no="24">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">loadEnv</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">void</token>
+      </line>
+      <line no="25">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="26">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_IF">if</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">envLoaded</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="27">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="28">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="29">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$siteRoot</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">dirname</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">dirname</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">dirname</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_DIR">__DIR__</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="30">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$baseEnv</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$siteRoot</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOT">.</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'/.env'</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="31">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$env</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getenv</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'APP_ENV'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'production'</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="32">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$envSpecific</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$siteRoot</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOT">.</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'/.env.'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOT">.</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$env</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="33">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_IF">if</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">file_exists</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$baseEnv</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="34">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">parseEnvFile</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$baseEnv</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="35">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="36">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_IF">if</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">file_exists</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$envSpecific</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="37">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">parseEnvFile</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$envSpecific</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="38">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="39">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">envLoaded</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">true</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="40">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="41"/>
+      <line no="42">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">parseEnvFile</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">string</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$file</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">void</token>
+      </line>
+      <line no="43">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="44">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_FOREACH">foreach</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">file</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$file</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">FILE_IGNORE_NEW_LINES</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_PIPE">|</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">FILE_SKIP_EMPTY_LINES</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_AS">as</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$line</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="45">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_IF">if</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">str_starts_with</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">trim</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$line</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'#'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_BOOLEAN_OR">||</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">strpos</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$line</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'='</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_IS_IDENTICAL">===</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">false</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="46">
+        <token name="T_WHITESPACE">                </token>
+        <token name="T_CONTINUE">continue</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="47">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="48">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_VARIABLE">$k</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_VARIABLE">$v</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">explode</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'='</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$line</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_LNUMBER">2</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="49">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$k</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">trim</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$k</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="50">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$v</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">trim</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$v</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="51">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_IF">if</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">preg_match</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'/^(["\"]).*\1$/'</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$v</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="52">
+        <token name="T_WHITESPACE">                </token>
+        <token name="T_VARIABLE">$v</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">substr</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$v</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_LNUMBER">1</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_MINUS">-</token>
+        <token name="T_LNUMBER">1</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="53">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="54">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_STRING">putenv</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_DOUBLE_QUOTES">"</token>
+        <token name="T_VARIABLE">$k</token>
+        <token name="T_ENCAPSED_AND_WHITESPACE">=</token>
+        <token name="T_VARIABLE">$v</token>
+        <token name="T_DOUBLE_QUOTES">"</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="55">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$_ENV</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_VARIABLE">$k</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$v</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="56">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$_SERVER</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_VARIABLE">$k</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$v</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="57">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="58">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="59"/>
+      <line no="60">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">initSettings</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">void</token>
+      </line>
+      <line no="61">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="62"/>
+      <line no="63">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$cast</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STATIC">static</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FN">fn</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$v</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$t</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_MATCH">match</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$t</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="64">
+        <token name="T_CONSTANT_ENCAPSED_STRING">'int'</token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_INT_CAST">(int)</token>
+        <token name="T_VARIABLE">$v</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'bool'</token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_STRING">filter_var</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$v</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">FILTER_VALIDATE_BOOLEAN</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'float'</token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_DOUBLE_CAST">(float)</token>
+        <token name="T_VARIABLE">$v</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'array'</token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_STRING">is_array</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$v</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$v</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">array_map</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'trim'</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">explode</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">','</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING_CAST">(string)</token>
+        <token name="T_VARIABLE">$v</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_DEFAULT">default</token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_VARIABLE">$v</token>
+      </line>
+      <line no="65">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="66">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$siteRoot</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">dirname</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">dirname</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">dirname</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_DIR">__DIR__</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="67">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">settings</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_SQUARE">[</token>
+      </line>
+      <line no="68">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_COMMENT">// basis</token>
+      </line>
+      <line no="69">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'site_name'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getenv</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'SITE_NAME'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'SlimmerMetAI'</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="70">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'site_url'</token>
+        <token name="T_WHITESPACE">  </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getenv</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'SITE_URL'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'https://slimmermetai.com'</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="71">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'admin_email'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getenv</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'ADMIN_EMAIL'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'admin@slimmermetai.com'</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="72">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_COMMENT">// database</token>
+      </line>
+      <line no="73">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'db_host'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getenv</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'DB_HOST'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'localhost'</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="74">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'db_name'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getenv</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'DB_NAME'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'slimmermetai'</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="75">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'db_user'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getenv</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'DB_USER'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'root'</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="76">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'db_pass'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getenv</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'DB_PASS'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">''</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="77">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'db_charset'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getenv</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'DB_CHARSET'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'utf8mb4'</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="78">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_COMMENT">// paden</token>
+      </line>
+      <line no="79">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'site_root'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$siteRoot</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="80">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'public_root'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$siteRoot</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOT">.</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'/public_html'</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="81">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'public_includes'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$siteRoot</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOT">.</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'/public_html/includes'</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="82">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'secure_includes'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$siteRoot</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOT">.</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'/includes'</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="83">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'uploads_dir'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$siteRoot</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOT">.</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'/public_html/uploads'</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="84">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'profile_pic_dir'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$siteRoot</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOT">.</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'/public_html/uploads/profile_pictures'</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="85">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'max_upload_size'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$cast</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">getenv</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'MAX_UPLOAD_SIZE'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_LNUMBER">5</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_MULT">*</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_LNUMBER">1024</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_MULT">*</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_LNUMBER">1024</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'int'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="86">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'allowed_file_types'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$cast</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">getenv</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'ALLOWED_FILE_TYPES'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'jpg,jpeg,png,pdf,doc,docx'</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'array'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="87">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_COMMENT">// sessie</token>
+      </line>
+      <line no="88">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'session_lifetime'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$cast</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">getenv</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'SESSION_LIFETIME'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_LNUMBER">60</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_MULT">*</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_LNUMBER">60</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_MULT">*</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_LNUMBER">24</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_MULT">*</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_LNUMBER">7</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'int'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="89">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'session_name'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getenv</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'SESSION_NAME'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'SLIMMERMETAI_SESSION'</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="90">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'cookie_domain'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getenv</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'COOKIE_DOMAIN'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">''</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="91">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'cookie_path'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getenv</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'COOKIE_PATH'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'/'</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="92">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'cookie_secure'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$cast</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">getenv</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'COOKIE_SECURE'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">true</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'bool'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="93">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'cookie_httponly'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$cast</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">getenv</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'COOKIE_HTTPONLY'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">true</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'bool'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="94">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_COMMENT">// security</token>
+      </line>
+      <line no="95">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'password_min_length'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$cast</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">getenv</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'PASSWORD_MIN_LENGTH'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_LNUMBER">8</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'int'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="96">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'bcrypt_cost'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$cast</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">getenv</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'BCRYPT_COST'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_LNUMBER">12</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'int'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="97">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'login_max_attempts'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$cast</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">getenv</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'LOGIN_MAX_ATTEMPTS'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_LNUMBER">5</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'int'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="98">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'login_lockout_time'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$cast</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">getenv</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'LOGIN_LOCKOUT_TIME'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_LNUMBER">15</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_MULT">*</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_LNUMBER">60</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'int'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="99">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_COMMENT">// mail</token>
+      </line>
+      <line no="100">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'mail_from'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getenv</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'MAIL_FROM'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'noreply@slimmermetai.com'</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="101">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'mail_from_name'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getenv</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'MAIL_FROM_NAME'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'SlimmerMetAI'</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="102">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'mail_reply_to'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getenv</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'MAIL_REPLY_TO'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'support@slimmermetai.com'</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="103">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_COMMENT">// smtp</token>
+      </line>
+      <line no="104">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'smtp_host'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getenv</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'SMTP_HOST'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'localhost'</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="105">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'smtp_port'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getenv</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'SMTP_PORT'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_LNUMBER">25</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="106">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'smtp_secure'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$cast</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">getenv</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'SMTP_SECURE'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">false</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'bool'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="107">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'smtp_user'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getenv</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'SMTP_USER'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">''</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="108">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'smtp_pass'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getenv</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'SMTP_PASSWORD'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">''</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="109">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_COMMENT">// recaptcha</token>
+      </line>
+      <line no="110">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'recaptcha_site_key'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getenv</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'RECAPTCHA_SITE_KEY'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">''</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="111">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'recaptcha_secret_key'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getenv</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'RECAPTCHA_SECRET_KEY'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">''</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="112">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_COMMENT">// jwt</token>
+      </line>
+      <line no="113">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'jwt_secret'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getenv</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'JWT_SECRET'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">''</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="114">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'jwt_expiration'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$cast</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">getenv</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'JWT_EXPIRATION'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_LNUMBER">3600</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'int'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="115">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_COMMENT">// stripe</token>
+      </line>
+      <line no="116">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'stripe_secret_key'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getenv</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'STRIPE_SECRET_KEY'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">''</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="117">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'stripe_public_key'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getenv</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'STRIPE_PUBLIC_KEY'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">''</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="118">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'stripe_webhook_secret'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getenv</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'STRIPE_WEBHOOK_SECRET'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">''</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="119">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_COMMENT">// google</token>
+      </line>
+      <line no="120">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'google_client_id'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getenv</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'GOOGLE_CLIENT_ID'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">''</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="121">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'google_client_secret'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getenv</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'GOOGLE_CLIENT_SECRET'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">''</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="122">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="123">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">settings</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'app_env'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getenv</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'APP_ENV'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'production'</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="124">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$defaultDebug</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">settings</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'app_env'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_IS_IDENTICAL">===</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'local'</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="125">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">settings</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'debug_mode'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$cast</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">getenv</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'DEBUG_MODE'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$defaultDebug</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'bool'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="126">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">settings</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'display_errors'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$cast</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">getenv</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'DISPLAY_ERRORS'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$defaultDebug</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'bool'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="127">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_STRING">date_default_timezone_set</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">getenv</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'TIMEZONE'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'Europe/Amsterdam'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="128">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="129"/>
+      <line no="130">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">get</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">string</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$k</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">mixed</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$d</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">null</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">mixed</token>
+      </line>
+      <line no="131">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="132">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">settings</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_VARIABLE">$k</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_COALESCE">??</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$d</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="133">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="134">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">set</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">string</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$k</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">mixed</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$v</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">void</token>
+      </line>
+      <line no="135">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="136">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">settings</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_VARIABLE">$k</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$v</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="137">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="138">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">all</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_ARRAY">array</token>
+      </line>
+      <line no="139">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="140">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">settings</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="141">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="142">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">has</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">string</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$k</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">bool</token>
+      </line>
+      <line no="143">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="144">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_ISSET">isset</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">settings</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_VARIABLE">$k</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="145">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="146">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">defineConstants</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">void</token>
+      </line>
+      <line no="147">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="148">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_FOREACH">foreach</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">settings</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_AS">as</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$k</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$v</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="149">
+        <token name="T_WHITESPACE">                </token>
+        <token name="T_VARIABLE">$c</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">strtoupper</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$k</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="150">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_IF">if</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_EXCLAMATION_MARK">!</token>
+        <token name="T_STRING">defined</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$c</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="151">
+        <token name="T_WHITESPACE">                </token>
+        <token name="T_STRING">define</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$c</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$v</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="152">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="153">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="154">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="155">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getTyped</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">string</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$k</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">string</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$t</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">mixed</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$d</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">null</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">mixed</token>
+      </line>
+      <line no="156">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="157">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$v</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">get</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$k</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$d</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_MATCH">match</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$t</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="158">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'int'</token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_INT_CAST">(int)</token>
+        <token name="T_VARIABLE">$v</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'bool'</token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_STRING">filter_var</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$v</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">FILTER_VALIDATE_BOOLEAN</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'float'</token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_DOUBLE_CAST">(float)</token>
+        <token name="T_VARIABLE">$v</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'array'</token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_STRING">is_array</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$v</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$v</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">array_map</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'trim'</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">explode</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">','</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING_CAST">(string)</token>
+        <token name="T_VARIABLE">$v</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_DEFAULT">default</token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_VARIABLE">$v</token>
+      </line>
+      <line no="159">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="160">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="161">
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="162"/>
+    </source>
+  </file>
+</phpunit>

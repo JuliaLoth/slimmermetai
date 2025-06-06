@@ -1,55 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.6/phpunit.xsd"
-         bootstrap="tests/bootstrap.php"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="bootstrap.php"
          colors="true"
          verbose="true"
-         executionOrder="depends,defects"
-         testdox="true"
-         stopOnFailure="false"
-         cacheResult="false">
+         cacheDirectory=".phpunit.cache"
+         failOnEmptyTestSuite="false"
+         beStrictAboutOutputDuringTests="true"
+         beStrictAboutTodoAnnotatedTests="true"
+         beStrictAboutResourceUsageDuringSmallTests="true">
 
+    <!-- Test Suites -->
     <testsuites>
-        <testsuite name="Unit Tests">
+        <testsuite name="Unit">
             <directory>tests/Unit</directory>
         </testsuite>
-        <testsuite name="Integration Tests">
+        <testsuite name="Feature">
+            <directory>tests/Feature</directory>
+        </testsuite>
+        <testsuite name="Integration">
             <directory>tests/Integration</directory>
         </testsuite>
-        <testsuite name="Feature Tests">
-            <directory>tests/Feature</directory>
+        <testsuite name="E2E">
+            <directory>tests/E2E</directory>
         </testsuite>
     </testsuites>
 
-    <coverage processUncoveredFiles="true">
+    <!-- Source directories for coverage -->
+    <source>
         <include>
             <directory suffix=".php">src</directory>
         </include>
         <exclude>
-            <directory>vendor</directory>
-            <directory>tests</directory>
-            <directory>includes</directory>
+            <directory>src/Domain/Entity</directory>
+            <directory>src/Domain/ValueObject</directory>
+            <file>src/Infrastructure/Config/constants.php</file>
         </exclude>
+    </source>
+
+    <!-- Coverage reporting configuration -->
+    <coverage processUncoveredFiles="true"
+              cacheDirectory=".phpunit.cache/coverage"
+              disableCodeCoverageIgnore="false">
+        <include>
+            <directory suffix=".php">src</directory>
+        </include>
+        <exclude>
+            <!-- Exclude data objects and value objects -->
+            <directory>src/Domain/Entity</directory>
+            <directory>src/Domain/ValueObject</directory>
+            
+            <!-- Exclude configuration files -->
+            <file>src/Infrastructure/Config/constants.php</file>
+            
+            <!-- Exclude interfaces (cannot be unit tested directly) -->
+            <directory suffix="Interface.php">src</directory>
+        </exclude>
+        
         <report>
+            <html outputDirectory="coverage/html" lowUpperBound="50" highLowerBound="80"/>
             <clover outputFile="coverage/clover.xml"/>
-            <html outputDirectory="coverage/html"/>
-            <text outputFile="coverage/coverage.txt"/>
+            <text outputFile="coverage/coverage.txt" showUncoveredFiles="false" showOnlySummary="true"/>
+            <xml outputDirectory="coverage/xml"/>
         </report>
     </coverage>
 
+    <!-- PHP Settings -->
     <php>
+        <!-- Environment Variables for Testing -->
         <env name="APP_ENV" value="testing"/>
         <env name="SKIP_DB" value="true"/>
-        <env name="DB_HOST" value="localhost"/>
-        <env name="DB_NAME" value="slimmermetai_test"/>
-        <env name="DB_USER" value="test"/>
-        <env name="DB_PASS" value="test"/>
-        <env name="JWT_SECRET" value="test-secret-key-for-testing-purposes-only"/>
-        <env name="STRIPE_SECRET_KEY" value="sk_test_fake_key_for_testing"/>
-        <env name="STRIPE_PUBLIC_KEY" value="pk_test_fake_key_for_testing"/>
+        <env name="JWT_SECRET" value="test_jwt_secret_key_for_unit_tests"/>
+        <env name="STRIPE_PUBLISHABLE_KEY" value="pk_test_mock_key"/>
+        <env name="STRIPE_SECRET_KEY" value="sk_test_mock_key"/>
+        
+        <!-- Memory and Time Limits -->
+        <ini name="memory_limit" value="256M"/>
+        <ini name="max_execution_time" value="300"/>
+        
+        <!-- Error Reporting -->
+        <ini name="error_reporting" value="E_ALL"/>
+        <ini name="display_errors" value="1"/>
+        <ini name="display_startup_errors" value="1"/>
+        
+        <!-- Testing Configuration -->
+        <ini name="assert.active" value="1"/>
+        <ini name="assert.exception" value="1"/>
+        <ini name="zend.assertions" value="1"/>
     </php>
 
+    <!-- Extensions -->
+    <extensions>
+        <!-- Add Xdebug extension for coverage when available -->
+    </extensions>
+
+    <!-- Logging -->
     <logging>
         <junit outputFile="coverage/junit.xml"/>
+        <testdoxHtml outputFile="coverage/testdox.html"/>
+        <testdoxText outputFile="coverage/testdox.txt"/>
     </logging>
+    
+    <!-- Listeners for enhanced testing -->
+    <listeners>
+        <!-- Add custom listeners here if needed -->
+    </listeners>
 </phpunit> 

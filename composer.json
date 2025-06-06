@@ -26,15 +26,36 @@
     "scripts": {
         "legacy:scan": "php bin/legacy_migrate.php",
         "test": "phpunit",
-        "test:coverage": "phpunit --coverage-html coverage",
-        "analyse": "phpstan analyse src --level=6",
-        "psalm": "psalm",
-        "cs:check": "phpcs src --standard=PSR12 --warning-severity=0",
-        "cs:fix": "phpcbf src --standard=PSR12",
-        "ci": [
-            "@cs:check",
-            "@analyse", 
-            "@test"
+        "test:unit": "phpunit --testsuite=Unit",
+        "test:feature": "phpunit --testsuite=Feature", 
+        "test:integration": "phpunit --testsuite=Integration",
+        "test:e2e": "phpunit --testsuite=E2E",
+        "test:coverage": "phpunit --coverage-html coverage/html --coverage-clover coverage/clover.xml --coverage-text=coverage/coverage.txt",
+        "test:coverage:text": "phpunit --coverage-text",
+        "test:coverage:html": "phpunit --coverage-html coverage/html",
+        "test:coverage:clover": "phpunit --coverage-clover coverage/clover.xml",
+        "test:coverage:check": "phpunit --coverage-text --coverage-clover coverage/clover.xml && php scripts/check-coverage-threshold.php",
+        "test:auth": "phpunit tests/Feature/AuthControllerTest.php tests/Unit/AuthServiceTest.php tests/Unit/AuthRepositoryTest.php",
+        "test:stripe": "phpunit tests/Feature/StripeControllerTest.php tests/Unit/StripeServiceTest.php",
+        "test:parallel": "paratest --processes=4",
+        "test:watch": "phpunit-watcher watch",
+        "test:verbose": "phpunit --verbose",
+        "test:debug": "phpunit --debug",
+        "quality:check": "composer test:coverage && composer cs:check && composer phpstan",
+        "quality:fix": "composer cs:fix && composer test:coverage",
+        "cs:check": "phpcs --standard=PSR12 src/",
+        "cs:fix": "phpcbf --standard=PSR12 src/",
+        "phpstan": "phpstan analyse src/ --level=7",
+        "phpstan:baseline": "phpstan analyse src/ --level=7 --generate-baseline",
+        "coverage:open": "start coverage/html/index.html",
+        "coverage:serve": "php -S localhost:8080 -t coverage/html/",
+        "coverage:clean": "rm -rf coverage/",
+        "autoload": "composer dump-autoload -o",
+        "post-install-cmd": [
+            "@autoload"
+        ],
+        "post-update-cmd": [
+            "@autoload"
         ]
     },
     "autoload": {

@@ -59,6 +59,11 @@ $containerBuilder->addDefinitions([
     App\Application\Service\TokenService::class => DI\autowire(),
     App\Application\Service\GoogleAuthService::class => DI\autowire(),
     App\Application\Service\UploadService::class => DI\autowire(),
+    App\Application\Service\PasswordHasher::class => DI\autowire(),
+
+    // --------- Service Interfaces ---------
+    App\Domain\Service\PasswordHasherInterface::class => DI\get(App\Application\Service\PasswordHasher::class),
+    
     App\Infrastructure\Security\PasswordHasher::class => DI\autowire(),
 
     // --------- Controllers ---------

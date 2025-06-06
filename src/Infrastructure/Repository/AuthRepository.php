@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Repository;
 
-use App\Domain\Repository\AuthRepositoryInterface;
+use App\Domain\Repository\AuthRepositoryInterface as DomainAuthRepositoryInterface;
+use App\Infrastructure\Repository\AuthRepositoryInterface;
 use App\Domain\Entity\User;
 use App\Domain\ValueObject\Email;
 use App\Infrastructure\Database\DatabaseInterface;
 use PDOException;
 
-class AuthRepository implements AuthRepositoryInterface
+class AuthRepository implements DomainAuthRepositoryInterface, AuthRepositoryInterface
 {
     public function __construct(private DatabaseInterface $database)
     {
@@ -115,8 +116,16 @@ class AuthRepository implements AuthRepositoryInterface
         }
     }
 
-    public function createPasswordResetToken(int $userId, string $token, \DateTimeInterface $expiresAt): bool
+    public function createPasswordResetToken(int $userId, string $token = null, \DateTimeInterface $expiresAt = null): bool
     {
+        // Voor backward compatibility: als alleen userId wordt meegegeven, genereer token en expiry
+        if ($token === null) {
+            $token = bin2hex(random_bytes(32));
+        }
+        if ($expiresAt === null) {
+            $expiresAt = new \DateTimeImmutable('+1 hour');
+        }
+        
         // Eerst oude tokens invalideren
         $this->database->execute(
             "UPDATE email_tokens SET used_at = NOW() WHERE user_id = ? AND type = 'password_reset' AND used_at IS NULL",
@@ -181,14 +190,158 @@ class AuthRepository implements AuthRepositoryInterface
         );
     }
 
-    public function getFailedLoginAttempts(string $email, \DateTimeInterface $since): int
+    public function getFailedLoginAttempts(string $email, \DateTimeInterface|int $since): int
     {
+        // Support voor int (timestamp) of DateTimeInterface
+        if (is_int($since)) {
+            $since = new \DateTimeImmutable("@{$since}");
+        }
+        
         $result = $this->database->fetch(
             "SELECT COUNT(*) as count FROM login_history WHERE email = ? AND success = 0 AND created_at > ?",
             [$email, $since->format('Y-m-d H:i:s')]
         );
 
         return (int)($result['count'] ?? 0);
+    }
+
+    // Additional methods for test compatibility and expanded functionality
+    
+    /**
+     * Alias for findUserByEmail for test compatibility
+     */
+    public function findByEmail(string $email): ?User
+    {
+        return $this->findUserByEmail(new Email($email));
+    }
+
+    /**
+     * Alias for findUserById
+     */
+    public function findById(int $id): ?User
+    {
+        $row = $this->database->fetch(
+            "SELECT * FROM users WHERE id = ? AND deleted_at IS NULL",
+            [$id]
+        );
+
+        return $row ? $this->hydrateUser($row) : null;
+    }
+
+    /**
+     * Alias for createUser for test compatibility
+     */
+    public function create(array $userData): User
+    {
+        $name = $userData['name'] ?? '';
+        $email = new Email($userData['email']);
+        $password = $userData['password'] ?? '';
+        $role = $userData['role'] ?? 'user';
+
+        $userId = $this->createUser($name, $email, $password, $role);
+        
+        $user = $this->findById($userId);
+        if (!$user) {
+            throw new \RuntimeException("Failed to create user or retrieve created user");
+        }
+        
+        return $user;
+    }
+
+    /**
+     * Validate password reset token
+     */
+    public function validatePasswordResetToken(string $token): bool
+    {
+        $tokenData = $this->findPasswordResetToken($token);
+        return $tokenData !== null;
+    }
+
+    /**
+     * Delete password reset token
+     */
+    public function deletePasswordResetToken(string $token): bool
+    {
+        return $this->deleteUsedToken($token);
+    }
+
+    /**
+     * Blacklist a JWT token
+     */
+    public function blacklistToken(string $token): bool
+    {
+        return $this->database->execute(
+            "INSERT INTO blacklisted_tokens (token, blacklisted_at) VALUES (?, NOW())",
+            [$token]
+        );
+    }
+
+    /**
+     * Check if token is blacklisted
+     */
+    public function isTokenBlacklisted(string $token): bool
+    {
+        $result = $this->database->fetch(
+            "SELECT COUNT(*) as count FROM blacklisted_tokens WHERE token = ?",
+            [$token]
+        );
+
+        return (int)($result['count'] ?? 0) > 0;
+    }
+
+    /**
+     * Get login history (alias for getUserLoginHistory)
+     */
+    public function getLoginHistory(int $userId, int $limit = 10): array
+    {
+        return $this->getUserLoginHistory($userId, $limit);
+    }
+
+    /**
+     * Record login attempt (alias for logLoginAttempt)
+     */
+    public function recordLoginAttempt(string $email, bool $success, string $ipAddress): void
+    {
+        $this->logLoginAttempt($email, $success, $ipAddress);
+    }
+
+    /**
+     * Deactivate user account
+     */
+    public function deactivateUser(int $userId): bool
+    {
+        return $this->database->execute(
+            "UPDATE users SET active = 0, updated_at = NOW() WHERE id = ?",
+            [$userId]
+        );
+    }
+
+    /**
+     * Activate user account
+     */
+    public function activateUser(int $userId): bool
+    {
+        return $this->database->execute(
+            "UPDATE users SET active = 1, updated_at = NOW() WHERE id = ?",
+            [$userId]
+        );
+    }
+
+    /**
+     * Create user within transaction for test purposes
+     */
+    public function createWithTransaction(array $userData): User
+    {
+        $this->database->beginTransaction();
+        
+        try {
+            $user = $this->create($userData);
+            $this->database->commit();
+            return $user;
+        } catch (\Exception $e) {
+            $this->database->rollBack();
+            throw $e;
+        }
     }
 
     private function hydrateUser(array $row): User

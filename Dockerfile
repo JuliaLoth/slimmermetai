@@ -11,15 +11,28 @@ RUN apk add --no-cache python3 make g++ libc6-compat
 COPY package*.json ./
 
 # Clean install with better handling of optional dependencies
-RUN npm ci --only=production --ignore-scripts --no-optional || \
-    (rm -rf node_modules package-lock.json && npm install --only=production --ignore-scripts --no-optional)
+# Force install the correct rollup binary for linux
+RUN npm cache clean --force && \
+    rm -f package-lock.json && \
+    npm install --no-optional && \
+    npm install @rollup/rollup-linux-x64-gnu --save-optional || true
 
 # Copy source code
 COPY . .
 
-# Build frontend assets with workaround for Rollup issue
+# Build frontend assets with multiple fallback strategies
 RUN npm run build || \
-    (echo "Build failed, trying with legacy peer deps..." && npm install --legacy-peer-deps && npm run build)
+    (echo "Build failed, trying with ROLLUP_BINARY_PATH..." && \
+     export ROLLUP_BINARY_PATH=/app/node_modules/@rollup/rollup-linux-x64-gnu/rollup.linux-x64-gnu.node && \
+     npm run build) || \
+    (echo "Build failed, trying with legacy peer deps..." && \
+     npm install --legacy-peer-deps && \
+     npm run build) || \
+    (echo "Build failed, using JS fallback..." && \
+     export ROLLUP_FORCE_JS=1 && \
+     npm run build) || \
+    (echo "All builds failed, using manual fallback..." && \
+     npm run build-fallback)
 
 # Production PHP stage
 FROM php:8.3-fpm-alpine
@@ -51,16 +64,13 @@ RUN apk add --no-cache \
         intl \
         zip
 
-# Install Composer
+# Copy Composer from official image
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# Configure opcache for production
-RUN echo "opcache.enable=1" >> /usr/local/etc/php/conf.d/opcache.ini \
-    && echo "opcache.memory_consumption=128" >> /usr/local/etc/php/conf.d/opcache.ini \
-    && echo "opcache.interned_strings_buffer=8" >> /usr/local/etc/php/conf.d/opcache.ini \
-    && echo "opcache.max_accelerated_files=4000" >> /usr/local/etc/php/conf.d/opcache.ini \
-    && echo "opcache.revalidate_freq=60" >> /usr/local/etc/php/conf.d/opcache.ini \
-    && echo "opcache.fast_shutdown=1" >> /usr/local/etc/php/conf.d/opcache.ini
+# Configure PHP
+RUN echo "opcache.enable=1" >> /usr/local/etc/php/conf.d/opcache.ini && \
+    echo "opcache.memory_consumption=128" >> /usr/local/etc/php/conf.d/opcache.ini && \
+    echo "opcache.max_accelerated_files=4000" >> /usr/local/etc/php/conf.d/opcache.ini
 
 # Set working directory
 WORKDIR /var/www/html
@@ -68,11 +78,11 @@ WORKDIR /var/www/html
 # Copy application files
 COPY --chown=www-data:www-data . .
 
-# Copy built frontend assets from previous stage
-COPY --from=frontend-builder --chown=www-data:www-data /app/public_html/assets ./public_html/assets
-
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader --no-interaction
+
+# Copy built frontend assets from frontend-builder stage
+COPY --from=frontend-builder /app/public_html/assets/ ./public_html/assets/
 
 # Create necessary directories
 RUN mkdir -p /var/www/html/logs \
@@ -83,23 +93,11 @@ RUN mkdir -p /var/www/html/logs \
     && chmod -R 755 /var/www/html/logs \
     && chmod -R 755 /var/www/html/uploads
 
-# Configure nginx
+# Configure Nginx
 COPY docker/nginx.conf /etc/nginx/nginx.conf
-COPY docker/default.conf /etc/nginx/conf.d/default.conf
 
-# Configure supervisor
+# Configure Supervisor
 COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-
-# Configure PHP-FPM
-RUN echo "pm = dynamic" >> /usr/local/etc/php-fpm.d/www.conf \
-    && echo "pm.max_children = 50" >> /usr/local/etc/php-fpm.d/www.conf \
-    && echo "pm.start_servers = 5" >> /usr/local/etc/php-fpm.d/www.conf \
-    && echo "pm.min_spare_servers = 5" >> /usr/local/etc/php-fpm.d/www.conf \
-    && echo "pm.max_spare_servers = 35" >> /usr/local/etc/php-fpm.d/www.conf
-
-# Health check
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-    CMD curl -f http://localhost/api/health || exit 1
 
 # Expose port
 EXPOSE 80

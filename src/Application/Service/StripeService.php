@@ -18,7 +18,7 @@ use function container;
  *
  * Verzorgt de communicatie met de Stripe SDK en centraliseert Stripe-gerelateerde logica.
  */
-final class StripeService
+class StripeService
 {
     /** legacy helper */
     public static function getInstance(): self

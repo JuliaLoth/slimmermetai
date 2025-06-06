@@ -8,7 +8,7 @@ use App\Domain\Entity\User;
 use App\Domain\ValueObject\Email;
 use App\Domain\Logging\ErrorLoggerInterface;
 
-final class AuthService
+class AuthService
 {
     public function __construct(private UserRepositoryInterface $users, private PasswordHasher $hasher, private JwtService $jwt, private ErrorLoggerInterface $logger)
     {

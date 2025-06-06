@@ -1,0 +1,10 @@
+Password Hasher (Tests\Unit\PasswordHasher)
+ [x] Implements interface
+ [x] Can hash password
+ [x] Can verify password
+ [x] Needs rehash
+ [x] Password strength validation
+ [x] Custom minimum length
+ [x] Different cost factors
+ [x] Empty password handling
+
