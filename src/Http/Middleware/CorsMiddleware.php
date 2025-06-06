@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Middleware;
 
 use Psr\Http\Message\ServerRequestInterface;
@@ -15,11 +16,8 @@ use App\Infrastructure\Config\Config;
  */
 class CorsMiddleware implements MiddlewareInterface
 {
-    public function __construct(
-        ?string $allowOrigin = null,
-        ?string $allowMethods = null,
-        ?string $allowHeaders = null
-    ) {
+    public function __construct(?string $allowOrigin = null, ?string $allowMethods = null, ?string $allowHeaders = null)
+    {
         $cfg = Config::getInstance();
         $this->allowOrigin  = $allowOrigin  ?? $cfg->get('cors_allow_origin', '*');
         $this->allowMethods = $allowMethods ?? $cfg->get('cors_allow_methods', 'GET,POST,PUT,PATCH,DELETE,OPTIONS');
@@ -29,11 +27,10 @@ class CorsMiddleware implements MiddlewareInterface
     private string $allowOrigin;
     private string $allowMethods;
     private string $allowHeaders;
-
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         if ($request->getMethod() === 'OPTIONS') {
-            // Preflight response
+// Preflight response
             return $this->applyHeaders(new Response(204));
         }
 
@@ -48,4 +45,4 @@ class CorsMiddleware implements MiddlewareInterface
             ->withHeader('Access-Control-Allow-Methods', $this->allowMethods)
             ->withHeader('Access-Control-Allow-Headers', $this->allowHeaders);
     }
-} 
+}

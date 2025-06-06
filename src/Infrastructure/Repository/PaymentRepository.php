@@ -14,14 +14,15 @@ class PaymentRepository implements PaymentRepositoryInterface
     public function __construct(
         private Database $db,
         private ?DatabasePerformanceMonitor $performanceMonitor = null
-    ) {}
+    ) {
+    }
 
     public function createPaymentSession(int $userId, array $items, int $totalAmount, string $currency): string
     {
         $sessionId = 'cs_' . bin2hex(random_bytes(32));
-        
+
         $this->db->beginTransaction();
-        
+
         try {
             // Insert payment session
             $this->db->insert('payments', [
@@ -34,7 +35,7 @@ class PaymentRepository implements PaymentRepositoryInterface
                 'created_at' => date('Y-m-d H:i:s'),
                 'metadata' => json_encode(['items' => $items])
             ]);
-            
+
             // Insert payment items
             foreach ($items as $item) {
                 $this->db->insert('payment_items', [
@@ -47,16 +48,15 @@ class PaymentRepository implements PaymentRepositoryInterface
                     'total_price' => ($item['quantity'] ?? 1) * ($item['price'] ?? 0)
                 ]);
             }
-            
+
             $this->db->commit();
-            
+
             $this->performanceMonitor?->logQuery(
                 'Payment session created',
                 ['session_id' => $sessionId, 'user_id' => $userId, 'amount' => $totalAmount]
             );
-            
+
             return $sessionId;
-            
         } catch (\Exception $e) {
             $this->db->rollBack();
             throw $e;
@@ -69,11 +69,11 @@ class PaymentRepository implements PaymentRepositoryInterface
             'SELECT * FROM payments WHERE session_id = ?',
             [$sessionId]
         );
-        
+
         if (!$payment) {
             return null;
         }
-        
+
         return new StripeSession(
             $payment['session_id'],
             $payment['user_id'],
@@ -92,16 +92,16 @@ class PaymentRepository implements PaymentRepositoryInterface
             'payment_status' => $status,
             'updated_at' => date('Y-m-d H:i:s')
         ];
-        
+
         if ($paymentIntentId) {
             $updateData['payment_intent_id'] = $paymentIntentId;
         }
-        
+
         if ($status === 'paid') {
             $updateData['status'] = 'completed';
             $updateData['paid_at'] = date('Y-m-d H:i:s');
         }
-        
+
         return $this->db->update('payments', $updateData, 'session_id = ?', [$sessionId]) > 0;
     }
 
@@ -123,14 +123,14 @@ class PaymentRepository implements PaymentRepositoryInterface
     {
         $sql = 'SELECT * FROM payments WHERE payment_status = ?';
         $params = [$status];
-        
+
         if ($userId) {
             $sql .= ' AND user_id = ?';
             $params[] = $userId;
         }
-        
+
         $sql .= ' ORDER BY created_at DESC';
-        
+
         return $this->db->fetchAll($sql, $params);
     }
 
@@ -138,7 +138,7 @@ class PaymentRepository implements PaymentRepositoryInterface
     {
         $from = $fromDate->format('Y-m-d H:i:s');
         $to = $toDate->format('Y-m-d H:i:s');
-        
+
         $stats = $this->db->fetch(
             'SELECT 
                 COUNT(*) as total_payments,
@@ -150,27 +150,27 @@ class PaymentRepository implements PaymentRepositoryInterface
              WHERE created_at BETWEEN ? AND ?',
             [$from, $to]
         );
-        
+
         return $stats ?: [];
     }
 
     public function processWebhookPayment(array $eventData): bool
     {
         $sessionId = $eventData['data']['object']['id'] ?? null;
-        
+
         if (!$sessionId) {
             return false;
         }
-        
+
         $this->db->beginTransaction();
-        
+
         try {
             // Update payment status
             $this->updatePaymentStatus(
                 $sessionId,
                 $eventData['data']['object']['payment_status'] ?? 'unknown'
             );
-            
+
             // Log webhook event
             $this->db->insert('webhook_events', [
                 'event_id' => $eventData['id'] ?? null,
@@ -179,10 +179,9 @@ class PaymentRepository implements PaymentRepositoryInterface
                 'processed_at' => date('Y-m-d H:i:s'),
                 'event_data' => json_encode($eventData)
             ]);
-            
+
             $this->db->commit();
             return true;
-            
         } catch (\Exception $e) {
             $this->db->rollBack();
             return false;
@@ -197,13 +196,13 @@ class PaymentRepository implements PaymentRepositoryInterface
             'completed_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ];
-        
+
         if (!empty($metadata)) {
             $existing = $this->db->getValue('SELECT metadata FROM payments WHERE session_id = ?', [$sessionId]);
             $existingMetadata = $existing ? json_decode($existing, true) : [];
             $updateData['metadata'] = json_encode(array_merge($existingMetadata, $metadata));
         }
-        
+
         return $this->db->update('payments', $updateData, 'session_id = ?', [$sessionId]) > 0;
     }
 
@@ -221,7 +220,7 @@ class PaymentRepository implements PaymentRepositoryInterface
     public function createRefund(string $sessionId, int $amount, string $reason): bool
     {
         $this->db->beginTransaction();
-        
+
         try {
             $this->db->insert('refunds', [
                 'session_id' => $sessionId,
@@ -230,15 +229,14 @@ class PaymentRepository implements PaymentRepositoryInterface
                 'status' => 'pending',
                 'created_at' => date('Y-m-d H:i:s')
             ]);
-            
+
             $this->db->update('payments', [
                 'refund_status' => 'pending',
                 'updated_at' => date('Y-m-d H:i:s')
             ], 'session_id = ?', [$sessionId]);
-            
+
             $this->db->commit();
             return true;
-            
         } catch (\Exception $e) {
             $this->db->rollBack();
             return false;
@@ -260,7 +258,7 @@ class PaymentRepository implements PaymentRepositoryInterface
     public function createSubscriptionPayment(int $userId, string $planId): string
     {
         $sessionId = 'sub_' . bin2hex(random_bytes(32));
-        
+
         $this->db->insert('subscription_payments', [
             'session_id' => $sessionId,
             'user_id' => $userId,
@@ -268,7 +266,7 @@ class PaymentRepository implements PaymentRepositoryInterface
             'status' => 'pending',
             'created_at' => date('Y-m-d H:i:s')
         ]);
-        
+
         return $sessionId;
     }
 
@@ -316,7 +314,7 @@ class PaymentRepository implements PaymentRepositoryInterface
     {
         $from = $fromDate->format('Y-m-d H:i:s');
         $to = $toDate->format('Y-m-d H:i:s');
-        
+
         return $this->db->fetch(
             'SELECT 
                 SUM(total_amount) as total_revenue,
@@ -333,7 +331,7 @@ class PaymentRepository implements PaymentRepositoryInterface
     {
         $from = $fromDate->format('Y-m-d H:i:s');
         $to = $toDate->format('Y-m-d H:i:s');
-        
+
         return $this->db->fetchAll(
             'SELECT 
                 pi.product_type,
@@ -358,7 +356,7 @@ class PaymentRepository implements PaymentRepositoryInterface
             'year' => '%Y',
             default => '%Y-%m'
         };
-        
+
         return $this->db->fetchAll(
             "SELECT 
                 DATE_FORMAT(created_at, ?) as period,
@@ -373,4 +371,4 @@ class PaymentRepository implements PaymentRepositoryInterface
             [$dateFormat, $dateFormat]
         );
     }
-} 
+}

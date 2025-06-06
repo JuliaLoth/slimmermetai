@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Infrastructure\Database;
 
 use App\Infrastructure\Config\Config;
@@ -6,7 +7,7 @@ use App\Infrastructure\Logging\ErrorHandler;
 
 /**
  * Database Migration System
- * 
+ *
  * Manages database schema versioning and migrations
  */
 class Migration
@@ -15,17 +16,12 @@ class Migration
     private Config $config;
     private ErrorHandler $errorHandler;
     private string $migrationsPath;
-
-    public function __construct(
-        Database $database,
-        Config $config,
-        ErrorHandler $errorHandler
-    ) {
+    public function __construct(Database $database, Config $config, ErrorHandler $errorHandler)
+    {
         $this->pdo = $database->getConnection();
         $this->config = $config;
         $this->errorHandler = $errorHandler;
         $this->migrationsPath = $config->get('site_root') . '/database/migrations';
-        
         $this->ensureMigrationsTable();
     }
 
@@ -36,7 +32,6 @@ class Migration
     {
         $results = [];
         $pendingMigrations = $this->getPendingMigrations();
-
         if (empty($pendingMigrations)) {
             return ['message' => 'No pending migrations'];
         }
@@ -53,7 +48,8 @@ class Migration
                     'migration' => $migration,
                     'error' => $e->getMessage()
                 ]);
-                break; // Stop on first failure
+                break;
+            // Stop on first failure
             }
         }
 
@@ -66,7 +62,6 @@ class Migration
     public function rollback(): array
     {
         $lastMigration = $this->getLastExecutedMigration();
-        
         if (!$lastMigration) {
             return ['message' => 'No migrations to rollback'];
         }
@@ -92,7 +87,6 @@ class Migration
     {
         $allMigrations = $this->getAllMigrationFiles();
         $executedMigrations = $this->getExecutedMigrations();
-        
         $status = [];
         foreach ($allMigrations as $migration) {
             $executed = in_array($migration, $executedMigrations);
@@ -119,10 +113,8 @@ class Migration
         $className = $this->toCamelCase($name);
         $filename = "{$timestamp}_{$name}.php";
         $filepath = $this->migrationsPath . '/' . $filename;
-
         $template = $this->getMigrationTemplate($className);
         file_put_contents($filepath, $template);
-
         return $filename;
     }
 
@@ -133,7 +125,6 @@ class Migration
     {
         $results = [];
         $executedMigrations = array_reverse($this->getExecutedMigrations());
-
         foreach ($executedMigrations as $migration) {
             try {
                 $this->rollbackMigration($migration);
@@ -157,7 +148,6 @@ class Migration
                 INDEX idx_migration (migration)
             ) ENGINE=InnoDB
         ";
-        
         $this->pdo->exec($sql);
     }
 
@@ -165,7 +155,6 @@ class Migration
     {
         $allMigrations = $this->getAllMigrationFiles();
         $executedMigrations = $this->getExecutedMigrations();
-        
         return array_diff($allMigrations, $executedMigrations);
     }
 
@@ -177,11 +166,10 @@ class Migration
 
         $files = glob($this->migrationsPath . '/*.php');
         $migrations = [];
-        
         foreach ($files as $file) {
             $migrations[] = basename($file, '.php');
         }
-        
+
         sort($migrations);
         return $migrations;
     }
@@ -222,18 +210,16 @@ class Migration
     private function loadMigrationClass(string $migration): object
     {
         $filepath = $this->migrationsPath . '/' . $migration . '.php';
-        
         if (!file_exists($filepath)) {
             throw new \Exception("Migration file not found: {$filepath}");
         }
 
         require_once $filepath;
-        
-        // Extract class name from migration name
+// Extract class name from migration name
         $parts = explode('_', $migration);
-        array_splice($parts, 0, 4); // Remove timestamp parts
+        array_splice($parts, 0, 4);
+// Remove timestamp parts
         $className = $this->toCamelCase(implode('_', $parts));
-        
         if (!class_exists($className)) {
             throw new \Exception("Migration class not found: {$className}");
         }
@@ -310,4 +296,4 @@ class {$className}
 }
 ";
     }
-} 
+}

@@ -8,9 +8,10 @@ use PDO;
 use PDOException;
 use App\Infrastructure\Config\Config;
 use App\Domain\Logging\ErrorLoggerInterface;
+
 use function container;
 
-class Database implements DatabaseInterface 
+class Database implements DatabaseInterface
 {
     private static ?Database $instance = null; // legacy placeholder
     private ?PDO $pdo = null;
@@ -18,7 +19,7 @@ class Database implements DatabaseInterface
     private int $transactionCounter = 0;
     private ?DatabasePerformanceMonitor $performanceMonitor = null;
 
-    public function __construct(private ErrorLoggerInterface $logger) 
+    public function __construct(private ErrorLoggerInterface $logger)
     {
         // Initialize performance monitor if available
         try {
@@ -30,7 +31,7 @@ class Database implements DatabaseInterface
     }
 
     /** Legacy helper for backward compatibility */
-    public static function getInstance(): self 
+    public static function getInstance(): self
     {
         return container()->get(self::class);
     }
@@ -43,7 +44,7 @@ class Database implements DatabaseInterface
         return $this->pdo;
     }
 
-    public function connect(): bool 
+    public function connect(): bool
     {
         if ($this->isConnected) {
             return true;
@@ -51,7 +52,7 @@ class Database implements DatabaseInterface
 
         $config = Config::getInstance();
         $dsn = "mysql:host={$config->get('db_host')};dbname={$config->get('db_name')};charset={$config->get('db_charset')}";
-        
+
         try {
             $this->pdo = new PDO($dsn, $config->get('db_user'), $config->get('db_pass'), [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
@@ -65,16 +66,16 @@ class Database implements DatabaseInterface
             $this->logger->logError('Database connectie mislukt', [
                 'error' => $e->getMessage()
             ]);
-            
+
             if ($config->get('debug_mode')) {
                 throw $e;
             }
-            
+
             throw new PDOException('Database verbindingsfout. Probeer later opnieuw.');
         }
     }
 
-    public function disconnect(): void 
+    public function disconnect(): void
     {
         $this->pdo = null;
         $this->isConnected = false;
@@ -93,19 +94,19 @@ class Database implements DatabaseInterface
         try {
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute($params);
-            
+
             // End performance monitoring
             if ($this->performanceMonitor && $queryId) {
                 $this->performanceMonitor->endQuery($queryId, $stmt->rowCount());
             }
-            
+
             return $stmt;
         } catch (PDOException $e) {
             // Log query error
             if ($this->performanceMonitor && $queryId) {
                 $this->performanceMonitor->queryError($queryId, $e);
             }
-            
+
             $this->logger->logError('DB query mislukt', [
                 'query' => $sql,
                 'params' => json_encode($params),
@@ -139,12 +140,12 @@ class Database implements DatabaseInterface
         return $this->pdo->lastInsertId();
     }
 
-    public function beginTransaction(): bool 
+    public function beginTransaction(): bool
     {
         if (!$this->isConnected) {
             $this->connect();
         }
-        
+
         if ($this->transactionCounter === 0) {
             $this->pdo->beginTransaction();
         }
@@ -152,12 +153,12 @@ class Database implements DatabaseInterface
         return true;
     }
 
-    public function commit(): bool 
+    public function commit(): bool
     {
         if (!$this->isConnected) {
             return false;
         }
-        
+
         $this->transactionCounter--;
         if ($this->transactionCounter === 0) {
             return $this->pdo->commit();
@@ -165,12 +166,12 @@ class Database implements DatabaseInterface
         return true;
     }
 
-    public function rollBack(): bool 
+    public function rollBack(): bool
     {
         if (!$this->isConnected) {
             return false;
         }
-        
+
         $this->transactionCounter = 0;
         return $this->pdo->rollBack();
     }
@@ -198,7 +199,7 @@ class Database implements DatabaseInterface
         $fields = array_keys($data);
         $placeholders = str_repeat('?,', count($fields) - 1) . '?';
         $sql = "INSERT INTO {$table} (" . implode(',', $fields) . ") VALUES ({$placeholders})";
-        
+
         $this->query($sql, array_values($data));
         return $this->lastInsertId();
     }
@@ -208,12 +209,12 @@ class Database implements DatabaseInterface
         $this->connect();
         $set = [];
         $vals = [];
-        
+
         foreach ($data as $k => $v) {
             $set[] = "{$k} = ?";
             $vals[] = $v;
         }
-        
+
         $sql = "UPDATE {$table} SET " . implode(',', $set) . " WHERE {$where}";
         $stmt = $this->query($sql, array_merge($vals, $whereParams));
         return $stmt->rowCount();
@@ -252,8 +253,8 @@ class Database implements DatabaseInterface
         return array_column($rows, $column ?? 0);
     }
 
-    public function getPdo(): ?PDO 
+    public function getPdo(): ?PDO
     {
         return $this->pdo;
     }
-} 
+}

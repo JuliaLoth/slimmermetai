@@ -7,7 +7,9 @@ use App\Http\Response\ApiResponse;
 
 class UserController
 {
-    public function __construct(private UserService $service) {}
+    public function __construct(private UserService $service)
+    {
+    }
 
     public function register(): void
     {
@@ -15,4 +17,4 @@ class UserController
         $dto = $this->service->register($data['email'] ?? '', $data['password'] ?? '');
         ApiResponse::success($dto, 'Gebruiker geregistreerd', 201);
     }
-} 
+}

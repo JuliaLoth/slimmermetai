@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Middleware;
 
 use Psr\Http\Message\ServerRequestInterface;
@@ -21,16 +22,11 @@ class BodyParsingMiddleware implements MiddlewareInterface
         if (in_array($method, ['POST', 'PUT', 'PATCH', 'DELETE'])) {
             $contentType = $request->getHeaderLine('Content-Type');
             $raw = (string) $request->getBody();
-
             if (str_starts_with($contentType, 'application/json')) {
                 if ($raw !== '') {
                     $data = json_decode($raw, true);
                     if (json_last_error() !== JSON_ERROR_NONE) {
-                        return new Response(
-                            400,
-                            ['Content-Type' => 'application/json'],
-                            json_encode(['error' => 'Invalid JSON'])
-                        );
+                        return new Response(400, ['Content-Type' => 'application/json'], json_encode(['error' => 'Invalid JSON']));
                     }
                     $request = $request->withParsedBody($data ?? []);
                 }
@@ -41,4 +37,4 @@ class BodyParsingMiddleware implements MiddlewareInterface
         }
         return $handler->handle($request);
     }
-} 
+}

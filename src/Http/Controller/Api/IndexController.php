@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controller\Api;
 
 use App\Infrastructure\Config\Config;
@@ -7,7 +8,9 @@ use Psr\Http\Message\ServerRequestInterface;
 
 final class IndexController
 {
-    public function __construct(private Config $config) {}
+    public function __construct(private Config $config)
+    {
+    }
 
     public function handle(ServerRequestInterface $request): void
     {
@@ -34,4 +37,4 @@ final class IndexController
             ],
         ]);
     }
-} 
+}

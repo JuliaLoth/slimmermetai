@@ -1,11 +1,14 @@
 <?php
+
 namespace App\Application\Service;
 
 use App\Infrastructure\Mail\Mailer;
 
 final class EmailService
 {
-    public function __construct(private Mailer $mailer) {}
+    public function __construct(private Mailer $mailer)
+    {
+    }
 
     /**
      * Algemeen mail versturen
@@ -65,4 +68,4 @@ final class EmailService
         </div>
         HTML;
     }
-} 
+}

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controller;
 
 use App\Infrastructure\View\View;
@@ -12,11 +13,10 @@ final class DashboardController
     {
         $queryParams = $request->getQueryParams();
         $googleLoginSuccess = isset($queryParams['google_login']) && $queryParams['google_login'] === 'success';
-        
         $html = View::renderToString('dashboard/index', [
             'title' => 'Dashboard | Slimmer met AI',
             'googleLoginSuccess' => $googleLoginSuccess,
         ]);
         return new Response(200, ['Content-Type' => 'text/html; charset=utf-8'], $html);
     }
-} 
+}

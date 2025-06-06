@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controller\Legacy;
 
 use Psr\Http\Message\ServerRequestInterface;
@@ -13,4 +14,4 @@ final class Error404Controller
         $html = View::renderToString('legacy/404');
         return new Response(404, ['Content-Type' => 'text/html; charset=utf-8'], $html);
     }
-} 
+}

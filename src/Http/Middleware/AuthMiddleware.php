@@ -1,11 +1,14 @@
 <?php
+
 namespace App\Http\Middleware;
 
 use App\Application\Service\AuthService;
 
 class AuthMiddleware
 {
-    public function __construct(private AuthService $auth) {}
+    public function __construct(private AuthService $auth)
+    {
+    }
 
     public function handle(callable $next)
     {
@@ -24,7 +27,9 @@ class AuthMiddleware
     private function getBearerToken(): ?string
     {
         $h = $_SERVER['HTTP_AUTHORIZATION'] ?? ($_SERVER['Authorization'] ?? null);
-        if ($h && preg_match('/Bearer\s+(\S+)/', $h, $m)) return $m[1];
+        if ($h && preg_match('/Bearer\s+(\S+)/', $h, $m)) {
+            return $m[1];
+        }
         return null;
     }
-} 
+}

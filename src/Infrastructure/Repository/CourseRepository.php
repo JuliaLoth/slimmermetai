@@ -13,7 +13,8 @@ class CourseRepository implements CourseRepositoryInterface
     public function __construct(
         private Database $db,
         private ?DatabasePerformanceMonitor $performanceMonitor = null
-    ) {}
+    ) {
+    }
 
     public function findCourseById(int $courseId): ?array
     {
@@ -75,12 +76,12 @@ class CourseRepository implements CourseRepositoryInterface
                 'progress' => 0,
                 'enrolled_at' => date('Y-m-d H:i:s')
             ]);
-            
+
             $this->performanceMonitor?->logQuery(
                 'User enrolled in course',
                 ['user_id' => $userId, 'course_id' => $courseId]
             );
-            
+
             return true;
         } catch (\Exception $e) {
             return false;
@@ -134,17 +135,17 @@ class CourseRepository implements CourseRepositoryInterface
     public function updateCourseProgress(int $userId, int $courseId, int $progress): bool
     {
         $status = $progress >= 100 ? 'completed' : 'in_progress';
-        
+
         $updateData = [
             'progress' => min(100, max(0, $progress)),
             'status' => $status,
             'updated_at' => date('Y-m-d H:i:s')
         ];
-        
+
         if ($status === 'completed') {
             $updateData['completed_at'] = date('Y-m-d H:i:s');
         }
-        
+
         return $this->db->update(
             'user_courses',
             $updateData,
@@ -170,20 +171,20 @@ class CourseRepository implements CourseRepositoryInterface
             'lesson_id' => $lessonId,
             'completed_at' => date('Y-m-d H:i:s')
         ]);
-        
+
         // Calculate and update course progress
         $totalLessons = $this->db->getValue(
             'SELECT COUNT(*) FROM course_lessons WHERE course_id = ?',
             [$courseId]
         );
-        
+
         $completedLessons = $this->db->getValue(
             'SELECT COUNT(*) FROM user_lesson_completions WHERE user_id = ? AND course_id = ?',
             [$userId, $courseId]
         );
-        
+
         $progress = $totalLessons > 0 ? round(($completedLessons / $totalLessons) * 100) : 0;
-        
+
         return $this->updateCourseProgress($userId, $courseId, $progress);
     }
 
@@ -224,7 +225,7 @@ class CourseRepository implements CourseRepositoryInterface
     {
         // Get all lessons for the course
         $lessons = $this->getCourseLessons($courseId);
-        
+
         // Get completed lessons
         $completedLessonIds = array_column(
             $this->db->fetchAll(
@@ -233,14 +234,14 @@ class CourseRepository implements CourseRepositoryInterface
             ),
             'lesson_id'
         );
-        
+
         // Find first incomplete lesson
         foreach ($lessons as $lesson) {
             if (!in_array($lesson['id'], $completedLessonIds)) {
                 return $lesson;
             }
         }
-        
+
         return null; // All lessons completed
     }
 
@@ -267,10 +268,10 @@ class CourseRepository implements CourseRepositoryInterface
                 'review' => $review,
                 'created_at' => date('Y-m-d H:i:s')
             ]);
-            
+
             // Update course average rating
             $this->updateCourseAverageRating($courseId);
-            
+
             return true;
         } catch (\Exception $e) {
             return false;
@@ -322,11 +323,11 @@ class CourseRepository implements CourseRepositoryInterface
     public function getCourseCompletionRate(int $courseId): float
     {
         $stats = $this->getCourseEnrollmentStats($courseId);
-        
+
         if (empty($stats) || $stats['total_enrollments'] == 0) {
             return 0.0;
         }
-        
+
         return round(($stats['completions'] / $stats['total_enrollments']) * 100, 2);
     }
 
@@ -352,7 +353,7 @@ class CourseRepository implements CourseRepositoryInterface
             'SELECT COUNT(*) FROM course_ratings WHERE course_id = ?',
             [$courseId]
         );
-        
+
         return [
             'enrollment_stats' => $enrollmentStats,
             'completion_rate' => $this->getCourseCompletionRate($courseId),
@@ -365,7 +366,7 @@ class CourseRepository implements CourseRepositoryInterface
     public function generateCertificate(int $userId, int $courseId): string
     {
         $certificateId = 'cert_' . bin2hex(random_bytes(16));
-        
+
         $this->db->insert('course_certificates', [
             'certificate_id' => $certificateId,
             'user_id' => $userId,
@@ -373,7 +374,7 @@ class CourseRepository implements CourseRepositoryInterface
             'issued_at' => date('Y-m-d H:i:s'),
             'verification_url' => "https://slimmermetai.nl/certificaat/verify/{$certificateId}"
         ]);
-        
+
         return $certificateId;
     }
 
@@ -416,19 +417,19 @@ class CourseRepository implements CourseRepositoryInterface
     public function checkPrerequisites(int $userId, int $courseId): bool
     {
         $prerequisites = $this->getCoursePrerequisites($courseId);
-        
+
         foreach ($prerequisites as $prerequisite) {
             $completed = $this->db->exists(
                 'SELECT 1 FROM user_courses 
                  WHERE user_id = ? AND course_id = ? AND status = "completed"',
                 [$userId, $prerequisite['id']]
             );
-            
+
             if (!$completed) {
                 return false;
             }
         }
-        
+
         return true;
     }
 
@@ -467,7 +468,7 @@ class CourseRepository implements CourseRepositoryInterface
             'content' => $content,
             'created_at' => date('Y-m-d H:i:s')
         ]);
-        
+
         return $this->db->lastInsertId();
     }
 
@@ -479,7 +480,7 @@ class CourseRepository implements CourseRepositoryInterface
             'content' => $content,
             'created_at' => date('Y-m-d H:i:s')
         ]);
-        
+
         return $this->db->lastInsertId();
     }
 
@@ -548,7 +549,7 @@ class CourseRepository implements CourseRepositoryInterface
     private function updateCourseAverageRating(int $courseId): void
     {
         $averageRating = $this->getAverageCourseRating($courseId);
-        
+
         $this->db->update('courses', [
             'average_rating' => $averageRating
         ], 'id = ?', [$courseId]);
@@ -568,4 +569,4 @@ class CourseRepository implements CourseRepositoryInterface
             [$courseId]
         ) ?: ['total_sales' => 0, 'total_revenue' => 0];
     }
-} 
+}

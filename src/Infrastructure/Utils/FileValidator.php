@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Infrastructure\Utils;
 
 use App\Infrastructure\Config\Config;
@@ -10,7 +11,6 @@ final class FileValidator
 {
     private array $allowedTypes;
     private int $maxUpload;
-
     public function __construct(Config $config)
     {
         $this->allowedTypes = $config->get('allowed_file_types');
@@ -42,4 +42,4 @@ final class FileValidator
     {
         return ($file['size'] ?? 0) <= $this->maxUpload;
     }
-} 
+}

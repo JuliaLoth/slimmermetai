@@ -97,4 +97,4 @@ final class ToolDetailController
         ]);
         return new \GuzzleHttp\Psr7\Response(200, ['Content-Type' => 'text/html; charset=utf-8'], $html);
     }
-} 
+}

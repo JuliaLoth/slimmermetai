@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Middleware;
 
 use Psr\Http\Message\ServerRequestInterface;
@@ -15,10 +16,6 @@ class FinalHandler implements RequestHandlerInterface
 {
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        return new Response(
-            404,
-            ['Content-Type' => 'application/json'],
-            json_encode(['error' => 'Endpoint niet gevonden'])
-        );
+        return new Response(404, ['Content-Type' => 'application/json'], json_encode(['error' => 'Endpoint niet gevonden']));
     }
-} 
+}

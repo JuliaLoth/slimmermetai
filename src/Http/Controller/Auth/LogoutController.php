@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controller\Auth;
 
 use App\Application\Service\AuthService;
@@ -6,7 +7,9 @@ use App\Infrastructure\Http\JsonResponse;
 
 final class LogoutController
 {
-    public function __construct(private AuthService $auth) {}
+    public function __construct(private AuthService $auth)
+    {
+    }
 
     public function handle(): void
     {
@@ -23,4 +26,4 @@ final class LogoutController
         $this->auth->logout();
         JsonResponse::send(['success' => true]);
     }
-} 
+}

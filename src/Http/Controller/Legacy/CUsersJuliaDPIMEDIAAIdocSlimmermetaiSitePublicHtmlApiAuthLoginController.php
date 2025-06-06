@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controller\Legacy;
 
 use Psr\Http\Message\ServerRequestInterface;

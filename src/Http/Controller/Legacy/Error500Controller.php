@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controller\Legacy;
 
 use Psr\Http\Message\ServerRequestInterface;
@@ -13,4 +14,4 @@ final class Error500Controller
         $html = View::renderToString('legacy/500');
         return new Response(500, ['Content-Type' => 'text/html; charset=utf-8'], $html);
     }
-} 
+}

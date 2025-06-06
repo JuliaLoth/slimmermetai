@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Middleware;
 
 use Psr\Http\Server\RequestHandlerInterface;
@@ -19,8 +20,7 @@ class MiddlewareDispatcher implements RequestHandlerInterface
     private array $stack;
     private RequestHandlerInterface $finalHandler;
     private int $index = 0;
-
-    /**
+/**
      * @param MiddlewareInterface[] $stack
      */
     public function __construct(array $stack, RequestHandlerInterface $finalHandler)
@@ -37,4 +37,4 @@ class MiddlewareDispatcher implements RequestHandlerInterface
         }
         return $this->finalHandler->handle($request);
     }
-} 
+}

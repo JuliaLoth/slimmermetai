@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controller;
 
 use App\Application\Service\AuthService;
@@ -6,7 +7,9 @@ use App\Http\Response\ApiResponse;
 
 class AuthController
 {
-    public function __construct(private AuthService $auth) {}
+    public function __construct(private AuthService $auth)
+    {
+    }
 
     public function login(): void
     {
@@ -54,4 +57,4 @@ class AuthController
         $result = $this->auth->logout();
         ApiResponse::success($result, 'Uitgelogd');
     }
-} 
+}

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controller;
 
 use App\Application\Service\StripeService;
@@ -7,7 +8,9 @@ use App\Http\Response\ApiResponse;
 
 class StripeController
 {
-    public function __construct(private StripeService $stripe) {}
+    public function __construct(private StripeService $stripe)
+    {
+    }
 
     /**
      * POST /api/stripe/checkout
@@ -61,8 +64,7 @@ class StripeController
     {
         // Haal de public key uit de configuratie
         $key = \App\Infrastructure\Config\Config::getInstance()->get('stripe_public_key', '');
-
-        // Development fallback met werkende test key
+// Development fallback met werkende test key
         if (!$key && (getenv('APP_ENV') === 'local' || !getenv('APP_ENV'))) {
             $key = 'pk_test_51QhZcvFUPGqhx8KyJ5xQzYbW8rNpO6XoMdZF9tCkBwvHqxRzBp7VgZfEhLjMsO3nU7wDxFwXy8CoJv5uNlMqSbKd00zIcLtGhQ';
             ApiResponse::success([
@@ -84,4 +86,4 @@ class StripeController
             'timestamp'      => date('Y-m-d H:i:s'),
         ]);
     }
-} 
+}

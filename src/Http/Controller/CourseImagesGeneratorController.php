@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controller;
 
 use Psr\Http\Message\ServerRequestInterface;
@@ -13,4 +14,4 @@ final class CourseImagesGeneratorController
         $html = '<h1>Course Images Generator</h1><p>Deze functionaliteit wordt binnenkort gemigreerd naar een CLI-command.</p>';
         return new Response(200, ['Content-Type' => 'text/html; charset=utf-8'], $html);
     }
-} 
+}

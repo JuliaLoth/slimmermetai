@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controller\Auth;
 
 use App\Infrastructure\View\View;
@@ -15,4 +16,4 @@ final class RegisterPageController
         ]);
         return new Response(200, ['Content-Type' => 'text/html; charset=utf-8'], $html);
     }
-} 
+}

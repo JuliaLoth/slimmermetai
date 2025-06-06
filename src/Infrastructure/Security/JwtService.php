@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Infrastructure\Security;
 
 use App\Infrastructure\Config\Config;
@@ -8,8 +9,7 @@ final class JwtService
     private string $secret;
     private int $expiration;
     private string $algo = 'HS256';
-
-    /**
+/**
      * JwtService constructor.
      * De configuratie wordt via Dependency Injection meegegeven zodat er geen
      * statische aanroepen meer nodig zijn.
@@ -38,14 +38,24 @@ final class JwtService
     public function verify(string $token): ?array
     {
         $parts = explode('.', $token);
-        if (count($parts) !== 3) return null;
+        if (count($parts) !== 3) {
+            return null;
+        }
         [$h, $p, $s] = $parts;
         $calcSig = $this->sign("$h.$p");
-        if (!hash_equals($calcSig, $s)) return null;
+        if (!hash_equals($calcSig, $s)) {
+            return null;
+        }
         $payload = json_decode($this->base64urlDecode($p), true);
-        if (!$payload) return null;
-        if (isset($payload['exp']) && $payload['exp'] < time()) return null;
-        if (isset($payload['nbf']) && $payload['nbf'] > time()) return null;
+        if (!$payload) {
+            return null;
+        }
+        if (isset($payload['exp']) && $payload['exp'] < time()) {
+            return null;
+        }
+        if (isset($payload['nbf']) && $payload['nbf'] > time()) {
+            return null;
+        }
         return $payload;
     }
 
@@ -63,4 +73,4 @@ final class JwtService
     {
         return base64_decode(strtr($data, '-_', '+/'));
     }
-} 
+}

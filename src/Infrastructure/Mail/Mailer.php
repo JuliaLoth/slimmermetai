@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Infrastructure\Mail;
 
 use App\Infrastructure\Config\Config;
@@ -19,8 +20,7 @@ final class Mailer
     private string $user;
     private string $pass;
     private string $from;
-
-    /**
+/**
      * Stuur een mail.
      * @param string       $to
      * @param string       $subject
@@ -31,7 +31,7 @@ final class Mailer
     public function send(string $to, string $subject, string $html, ?string $from = null): bool
     {
         $from = $from ?? $this->from;
-        // Gebruik PHPMailer indien beschikbaar
+// Gebruik PHPMailer indien beschikbaar
         if (class_exists('\PHPMailer\\PHPMailer\\PHPMailer')) {
             return $this->sendViaPhpMailer($to, $subject, $html, $from);
         }
@@ -52,7 +52,7 @@ final class Mailer
     {
         $mail = new \PHPMailer\PHPMailer\PHPMailer(true);
         try {
-            //Server settings
+        //Server settings
             $mail->isSMTP();
             $mail->Host       = $this->host;
             $mail->Port       = $this->port;
@@ -62,10 +62,10 @@ final class Mailer
                 $mail->Password = $this->pass;
             }
             $mail->SMTPSecure = $this->secure ? \PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_SMTPS : \PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;
-            //Recipients
+        //Recipients
             $mail->setFrom($from, 'SlimmerMetAI');
             $mail->addAddress($to);
-            //Content
+        //Content
             $mail->isHTML(true);
             $mail->Subject = $subject;
             $mail->Body    = $html;
@@ -90,4 +90,4 @@ final class Mailer
         $this->pass   = $cfg->get('smtp_pass', '');
         $this->from   = $cfg->get('mail_from', 'noreply@example.com');
     }
-} 
+}

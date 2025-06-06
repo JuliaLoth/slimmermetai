@@ -1,7 +1,9 @@
 <?php
+
 namespace App\Http\Response;
 
 use App\Domain\Logging\ErrorLoggerInterface;
+
 use function container;
 
 /**
@@ -96,8 +98,7 @@ final class ApiResponse
     private static function send(array $payload, int $statusCode = 200, array $headers = []): void
     {
         http_response_code($statusCode);
-
-        // Basisheaders
+// Basisheaders
         $defaultHeaders = [
             'Content-Type'                => 'application/json; charset=UTF-8',
             'Access-Control-Allow-Origin' => $_SERVER['HTTP_ORIGIN'] ?? '*',
@@ -106,10 +107,8 @@ final class ApiResponse
             'Access-Control-Allow-Credentials' => 'true',
             'Access-Control-Max-Age'          => '86400', // 24 uur
         ];
-
         self::outputHeaders(array_merge($defaultHeaders, $headers));
-
-        // OPTIONS-preflight direct beantwoorden
+// OPTIONS-preflight direct beantwoorden
         if (($_SERVER['REQUEST_METHOD'] ?? '') === 'OPTIONS') {
             exit;
         }
@@ -135,9 +134,8 @@ final class ApiResponse
     {
         // Log fout via ErrorLoggerInterface indien beschikbaar
         container()->get(ErrorLoggerInterface::class)->logError($message, ['error' => (string)$error]);
-
         $debug = defined('DEBUG_MODE') && DEBUG_MODE;
         $details = $debug && $error ? ['details' => (string)$error] : null;
         self::error($message, 500, $details);
     }
-} 
+}

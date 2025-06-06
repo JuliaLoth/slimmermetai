@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Application\Service;
 
 use App\Infrastructure\Config\Config;
@@ -13,7 +14,9 @@ use function container;
 
 final class PresentationConvertService
 {
-    public function __construct(private Config $config, private ErrorLoggerInterface $logger) {}
+    public function __construct(private Config $config, private ErrorLoggerInterface $logger)
+    {
+    }
 
     /**
      * Converteer React-code naar een PowerPoint-presentatie.
@@ -31,10 +34,8 @@ final class PresentationConvertService
 
         // 1. Call Claude om structuur op te halen
         $structuredData = $this->askClaudeForStructure($reactCode, $claudeApiKey);
-
-        // 2. Genereer PowerPoint
+// 2. Genereer PowerPoint
         $fileRelPath = $this->generatePptx($structuredData);
-
         return ['downloadUrl' => $fileRelPath];
     }
 
@@ -47,7 +48,6 @@ final class PresentationConvertService
 Je bent een assistent die React code analyseert en zet in een JSON-structuur voor een PowerPoint-presentatie.
 Geef ALLEEN een JSON-array terug met objecten die keys bevatten: type, content, level (optioneel).
 PROMPT;
-
         $userMessage = "Analyseer de volgende React code en genereer de JSON output:\n\n```jsx\n{$reactCode}\n```";
         $payload = [
             'model' => 'claude-3-haiku-20240307',
@@ -57,7 +57,6 @@ PROMPT;
                 ['role' => 'user', 'content' => $userMessage]
             ]
         ];
-
         $ch = curl_init('https://api.anthropic.com/v1/messages');
         curl_setopt_array($ch, [
             CURLOPT_RETURNTRANSFER => true,
@@ -75,12 +74,11 @@ PROMPT;
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         $err = curl_error($ch);
         curl_close($ch);
-
         if ($err) {
-            throw new \RuntimeException('cURL fout: '.$err);
+            throw new \RuntimeException('cURL fout: ' . $err);
         }
         if ($httpCode >= 400) {
-            throw new \RuntimeException('Claude API fout (HTTP '.$httpCode.'): '.substr((string)$response,0,200));
+            throw new \RuntimeException('Claude API fout (HTTP ' . $httpCode . '): ' . substr((string)$response, 0, 200));
         }
 
         $json = json_decode((string)$response, true);
@@ -101,67 +99,71 @@ PROMPT;
     private function generatePptx(array $structuredData): string
     {
         $uploadRelDir = '/uploads/presentations';
-        $uploadAbsDir = PUBLIC_ROOT.$uploadRelDir;
+        $uploadAbsDir = PUBLIC_ROOT . $uploadRelDir;
         if (!is_dir($uploadAbsDir) && !mkdir($uploadAbsDir, 0755, true)) {
             throw new \RuntimeException('Kan upload-map niet aanmaken');
         }
 
         $presentation = new PhpPresentation();
         $slide = $presentation->getActiveSlide();
-        $y = 50; $margin = 30;
+        $y = 50;
+        $margin = 30;
         $slideWidth = $presentation->getLayout()->getCX(PhpPresentation::LAYOUT_SCREEN_16X9);
         $slideHeight = $presentation->getLayout()->getCY(PhpPresentation::LAYOUT_SCREEN_16X9);
+        $textShape = static function (string $text, int $size, bool $bold, int $height, int $offsetY) use ($slide, $slideWidth, $margin) {
 
-        $textShape = static function(string $text,int $size,bool $bold,int $height,int $offsetY) use ($slide,$slideWidth,$margin) {
             $run = new RichText\Run();
             $run->setText($text);
             $run->getFont()->setName('Arial')->setSize($size)->setBold($bold);
             $shape = new RichText();
             $shape->setHeight($height);
-            $shape->setWidth($slideWidth - 2*$margin);
+            $shape->setWidth($slideWidth - 2 * $margin);
             $shape->setOffsetX($margin);
             $shape->setOffsetY($offsetY);
             $shape->getActiveParagraph()->addRun($run);
             $shape->getActiveParagraph()->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
             $slide->addShape($shape);
         };
-
         foreach ($structuredData as $item) {
             $type = $item['type'] ?? 'text';
             $content = $item['content'] ?? '';
             $level = $item['level'] ?? 1;
-
             if ($type === 'title') {
-                if ($level === 1 && $y !== 50) { // nieuwe slide voor hoofdtitel
+                if ($level === 1 && $y !== 50) {
+                    // nieuwe slide voor hoofdtitel
                     $slide = $presentation->createSlide();
                     $y = 50;
                 }
-                $size = match($level) {1=>44,2=>32,default=>28};
-                $textShape($content,$size,true,$size*1.5,$y);
-                $y += $size*1.5 + 10;
+                $size = match ($level) {
+                    1=>44,2=>32,default=>28
+                };
+                $textShape($content, $size, true, $size * 1.5, $y);
+                $y += $size * 1.5 + 10;
             } elseif ($type === 'text') {
-                $textShape($content,18,false,18*3,$y);
-                $y += 18*3 + 5;
+                $textShape($content, 18, false, 18 * 3, $y);
+                $y += 18 * 3 + 5;
             } elseif ($type === 'list' && is_array($content)) {
                 $listShape = new RichText();
-                $listShape->setWidth($slideWidth - 2*$margin);
+                $listShape->setWidth($slideWidth - 2 * $margin);
                 $listShape->setOffsetX($margin);
                 $listShape->setOffsetY($y);
                 foreach ($content as $li) {
-                    $p = $listShape->createParagraph();
-                    $p->getBulletStyle()->setBulletType(Bullet::TYPE_BULLET);
-                    $run = $p->createRun($li);
-                    $run->getFont()->setSize(18);
+                            $p = $listShape->createParagraph();
+                            $p->getBulletStyle()->setBulletType(Bullet::TYPE_BULLET);
+                            $run = $p->createRun($li);
+                            $run->getFont()->setSize(18);
                 }
-                $listShape->setHeight(25*count($content));
+                $listShape->setHeight(25 * count($content));
                 $slide->addShape($listShape);
                 $y += $listShape->getHeight() + 5;
             } elseif ($type === 'section_start') {
                 $slide = $presentation->createSlide();
                 $y = 50;
-                $size = match($level) {1=>44,2=>32,default=>28};
-                $textShape($content,$size,true,$size*1.5,$y);
-                $y += $size*1.5 + 10;
+                $size = match ($level) {
+                    1=>44,2=>32,default=>28
+                };
+                $textShape($content, $size, true, $size * 1.5, $y);
+                $y += $size * 1.5 + 10;
             }
             if ($y > ($slideHeight - 100)) {
                 $slide = $presentation->createSlide();
@@ -169,13 +171,11 @@ PROMPT;
             }
         }
 
-        $filename = 'presentatie_'.time().'_'.uniqid().'.pptx';
-        $abs = $uploadAbsDir.'/'.$filename;
-        $rel = $uploadRelDir.'/'.$filename;
-
+        $filename = 'presentatie_' . time() . '_' . uniqid() . '.pptx';
+        $abs = $uploadAbsDir . '/' . $filename;
+        $rel = $uploadRelDir . '/' . $filename;
         $writer = \PhpOffice\PhpPresentation\IOFactory::createWriter($presentation, 'PowerPoint2007');
         $writer->save($abs);
-
         return $rel;
     }
-} 
+}

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Middleware;
 
 use App\Infrastructure\Security\CsrfProtection;
@@ -18,16 +19,15 @@ class CsrfMiddleware implements MiddlewareInterface
 {
     /** @var array<int,string> */
     private array $excludedPaths = [];
-
     public function __construct(private CsrfProtection $csrf, ?array $excludedPaths = null)
     {
         $cfg = Config::getInstance();
         $this->excludedPaths = $excludedPaths ?? $cfg->getTyped('csrf_exclude_paths', 'array', [
-            '/api', 
-            '/stripe/webhook', 
+            '/api',
+            '/stripe/webhook',
             '/stripe/checkout',
             '/auth/login',
-            '/auth/register', 
+            '/auth/register',
             '/auth/forgot-password'
         ]);
     }
@@ -45,13 +45,9 @@ class CsrfMiddleware implements MiddlewareInterface
         if (in_array($method, ['POST', 'PUT', 'PATCH', 'DELETE'])) {
             $token = $request->getHeaderLine('X-CSRF-Token') ?: $request->getParsedBody()['csrf_token'] ?? null;
             if (!$this->csrf->validateToken($token)) {
-                return new Response(
-                    403,
-                    ['Content-Type' => 'application/json'],
-                    json_encode(['error' => 'Invalid CSRF token'])
-                );
+                return new Response(403, ['Content-Type' => 'application/json'], json_encode(['error' => 'Invalid CSRF token']));
             }
         }
         return $handler->handle($request);
     }
-} 
+}

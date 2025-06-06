@@ -1,8 +1,10 @@
 <?php
+
 namespace App\Infrastructure\Http;
 
 use FastRoute\Dispatcher;
 use FastRoute\RouteCollector;
+
 use function FastRoute\simpleDispatcher;
 
 class Router
@@ -11,33 +13,29 @@ class Router
      * Basispad waaronder de API draait, standaard '/api'.
      */
     private const BASE_PATH = '/api';
-
-    /**
+/**
      * Start de router en verstuur het verzoek naar de juiste controller.
      */
     public static function dispatch(): void
     {
         $dispatcher = simpleDispatcher(function (RouteCollector $r) {
+
             // ---------- Auth ----------
             $r->addRoute('POST', '/auth/login', [\App\Http\Controller\AuthController::class, 'login']);
             $r->addRoute('POST', '/auth/register', [\App\Http\Controller\AuthController::class, 'register']);
             $r->addRoute('POST', '/auth/refresh-token', [\App\Http\Controller\AuthController::class, 'refresh']);
             $r->addRoute('POST', '/auth/logout', [\App\Http\Controller\AuthController::class, 'logout']);
-            $r->addRoute('GET',  '/auth/me', [self::class, 'withAuthMiddleware', [\App\Http\Controller\AuthController::class, 'me']]);
-
-            // ---------- Gebruikers ----------
+            $r->addRoute('GET', '/auth/me', [self::class, 'withAuthMiddleware', [\App\Http\Controller\AuthController::class, 'me']]);
+// ---------- Gebruikers ----------
             $r->addRoute('POST', '/users/register', [\App\Http\Controller\UserController::class, 'register']);
-
-            // ---------- Stripe ----------
+// ---------- Stripe ----------
             $r->addRoute('POST', '/stripe/checkout', [\App\Http\Controller\StripeController::class, 'createSession']);
-            $r->addRoute('GET',  '/stripe/status/{id}', [\App\Http\Controller\StripeController::class, 'status']);
-            $r->addRoute('GET',  '/stripe/config', [\App\Http\Controller\StripeController::class, 'config']);
+            $r->addRoute('GET', '/stripe/status/{id}', [\App\Http\Controller\StripeController::class, 'status']);
+            $r->addRoute('GET', '/stripe/config', [\App\Http\Controller\StripeController::class, 'config']);
             $r->addRoute('POST', '/stripe/webhook', [\App\Http\Controller\StripeController::class, 'webhook']);
         });
-
         [$httpMethod, $uri] = [$_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI']];
-
-        // Strip query string en basispad
+// Strip query string en basispad
         if (false !== $pos = strpos($uri, '?')) {
             $uri = substr($uri, 0, $pos);
         }
@@ -52,21 +50,24 @@ class Router
         $routeInfo = $dispatcher->dispatch($httpMethod, $uri);
         switch ($routeInfo[0]) {
             case Dispatcher::NOT_FOUND:
-                self::jsonResponse(['error' => 'Endpoint niet gevonden'], 404);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      self::jsonResponse(['error' => 'Endpoint niet gevonden'], 404);
+
                 return;
             case Dispatcher::METHOD_NOT_ALLOWED:
-                self::jsonResponse(['error' => 'Methode niet toegestaan', 'allowed' => $routeInfo[1]], 405);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  self::jsonResponse(['error' => 'Methode niet toegestaan', 'allowed' => $routeInfo[1]], 405);
+
                 return;
             case Dispatcher::FOUND:
-                $handler = $routeInfo[1];
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  $handler = $routeInfo[1];
                 $vars = $routeInfo[2];
-                // Handler kan speciale vorm hebben wanneer auth-middleware moet worden toegepast
+            // Handler kan speciale vorm hebben wanneer auth-middleware moet worden toegepast
                 if (is_array($handler) && $handler[0] === self::class && $handler[1] === 'withAuthMiddleware') {
-                    // handler[2] bevat het werkelijke doel-array.
+// handler[2] bevat het werkelijke doel-array.
                     self::withAuthMiddleware($handler[2], $vars);
                     return;
                 }
                 self::invoke($handler, $vars);
+
                 return;
         }
     }
@@ -79,7 +80,7 @@ class Router
         [$class, $method] = $handler;
         $container = \container();
         $controller = $container->get($class);
-        // Voeg route-parameters als argumenten toe (indien methode type-hint heeft kunnen we dit uitbreiden)
+// Voeg route-parameters als argumenten toe (indien methode type-hint heeft kunnen we dit uitbreiden)
         $controller->{$method}(...array_values($vars));
     }
 
@@ -98,4 +99,4 @@ class Router
         header('Content-Type: application/json');
         echo json_encode($data);
     }
-} 
+}

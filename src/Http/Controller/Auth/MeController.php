@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controller\Auth;
 
 use App\Application\Service\AuthService;
@@ -6,7 +7,9 @@ use App\Infrastructure\Http\JsonResponse;
 
 final class MeController
 {
-    public function __construct(private AuthService $auth) {}
+    public function __construct(private AuthService $auth)
+    {
+    }
 
     public function handle(): void
     {
@@ -30,4 +33,4 @@ final class MeController
         }
         return null;
     }
-} 
+}

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Application\Service;
 
 use App\Infrastructure\Security\JwtService;
@@ -9,12 +10,9 @@ use App\Domain\Logging\ErrorLoggerInterface;
 
 final class AuthService
 {
-    public function __construct(
-        private UserRepositoryInterface $users,
-        private PasswordHasher $hasher,
-        private JwtService $jwt,
-        private ErrorLoggerInterface $logger
-    ) {}
+    public function __construct(private UserRepositoryInterface $users, private PasswordHasher $hasher, private JwtService $jwt, private ErrorLoggerInterface $logger)
+    {
+    }
 
     /**
      * Login met e-mail en wachtwoord
@@ -92,4 +90,4 @@ final class AuthService
     {
         return ['id' => $payload['user_id'] ?? null, 'email' => $payload['email'] ?? null];
     }
-} 
+}

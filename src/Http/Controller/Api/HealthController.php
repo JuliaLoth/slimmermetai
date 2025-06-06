@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controller\Api;
 
 use Psr\Http\Message\ServerRequestInterface;
@@ -10,30 +11,25 @@ use App\Infrastructure\Logging\ErrorHandler;
 
 /**
  * HealthController
- * 
+ *
  * Provides health check endpoints voor monitoring en uptime checks.
  */
 class HealthController
 {
-    public function __construct(
-        private Config $config,
-        private ErrorHandler $errorHandler
-    ) {}
+    public function __construct(private Config $config, private ErrorHandler $errorHandler)
+    {
+    }
 
     /**
      * Basic health check - quick response voor uptime monitoring
      */
     public function health(ServerRequestInterface $request): ResponseInterface
     {
-        return new Response(
-            200,
-            ['Content-Type' => 'application/json'],
-            json_encode([
+        return new Response(200, ['Content-Type' => 'application/json'], json_encode([
                 'status' => 'healthy',
                 'timestamp' => date('c'),
                 'service' => 'SlimmerMetAI'
-            ])
-        );
+            ]));
     }
 
     /**
@@ -44,8 +40,7 @@ class HealthController
         $checks = [];
         $overallStatus = 'healthy';
         $httpStatus = 200;
-
-        // Database check
+// Database check
         $checks['database'] = $this->checkDatabase();
         if ($checks['database']['status'] !== 'healthy') {
             $overallStatus = 'degraded';
@@ -67,7 +62,6 @@ class HealthController
 
         // External services check
         $checks['external_services'] = $this->checkExternalServices();
-
         $response = [
             'status' => $overallStatus,
             'timestamp' => date('c'),
@@ -78,12 +72,7 @@ class HealthController
             'php_version' => PHP_VERSION,
             'environment' => $this->config->get('app_env', 'production')
         ];
-
-        return new Response(
-            $httpStatus,
-            ['Content-Type' => 'application/json'],
-            json_encode($response, JSON_PRETTY_PRINT)
-        );
+        return new Response($httpStatus, ['Content-Type' => 'application/json'], json_encode($response, JSON_PRETTY_PRINT));
     }
 
     /**
@@ -93,8 +82,7 @@ class HealthController
     {
         $ready = true;
         $issues = [];
-
-        // Check critical dependencies
+// Check critical dependencies
         if (!$this->isDatabaseReady()) {
             $ready = false;
             $issues[] = 'Database niet toegankelijk';
@@ -111,16 +99,11 @@ class HealthController
         }
 
         $httpStatus = $ready ? 200 : 503;
-        
-        return new Response(
-            $httpStatus,
-            ['Content-Type' => 'application/json'],
-            json_encode([
+        return new Response($httpStatus, ['Content-Type' => 'application/json'], json_encode([
                 'ready' => $ready,
                 'timestamp' => date('c'),
                 'issues' => $issues
-            ])
-        );
+            ]));
     }
 
     /**
@@ -139,12 +122,7 @@ class HealthController
             'disk_usage' => $this->getDiskUsage(),
             'cpu_usage_percent' => $this->getCpuUsage()
         ];
-
-        return new Response(
-            200,
-            ['Content-Type' => 'application/json'],
-            json_encode($metrics, JSON_PRETTY_PRINT)
-        );
+        return new Response(200, ['Content-Type' => 'application/json'], json_encode($metrics, JSON_PRETTY_PRINT));
     }
 
     private function checkDatabase(): array
@@ -153,13 +131,10 @@ class HealthController
             $start = microtime(true);
             $db = Database::getInstance();
             $db->connect();
-            
-            // Simple query to test connection
+// Simple query to test connection
             $pdo = $db->getConnection();
             $pdo->query('SELECT 1');
-            
             $responseTime = round((microtime(true) - $start) * 1000, 2);
-            
             return [
                 'status' => 'healthy',
                 'response_time_ms' => $responseTime,
@@ -181,7 +156,6 @@ class HealthController
             'logs' => $this->config->get('site_root') . '/logs',
             'cache' => $this->config->get('site_root') . '/cache'
         ];
-
         $issues = [];
         foreach ($criticalPaths as $name => $path) {
             if (!is_dir($path)) {
@@ -202,13 +176,11 @@ class HealthController
         $usage = memory_get_usage(true);
         $limit = $this->parseMemoryLimit();
         $percentage = ($usage / $limit) * 100;
-
-        $status = match(true) {
+        $status = match (true) {
             $percentage > 90 => 'critical',
             $percentage > 80 => 'warning',
             default => 'healthy'
         };
-
         return [
             'status' => $status,
             'usage_bytes' => $usage,
@@ -220,13 +192,10 @@ class HealthController
     private function checkExternalServices(): array
     {
         $services = [];
-
-        // Check Stripe API
+// Check Stripe API
         $services['stripe'] = $this->checkStripeApi();
-        
-        // Check Google APIs
+// Check Google APIs
         $services['google_oauth'] = $this->checkGoogleOAuth();
-
         return $services;
     }
 
@@ -238,11 +207,10 @@ class HealthController
         }
 
         try {
-            // Simple API call to check connectivity
+// Simple API call to check connectivity
             $start = microtime(true);
-            // In real implementation, would make actual Stripe API call
+// In real implementation, would make actual Stripe API call
             $responseTime = round((microtime(true) - $start) * 1000, 2);
-            
             return [
                 'status' => 'healthy',
                 'response_time_ms' => $responseTime
@@ -283,7 +251,6 @@ class HealthController
             $this->config->get('site_root') . '/composer.json',
             $this->config->get('public_root') . '/index.php'
         ];
-
         foreach ($requiredFiles as $file) {
             if (!file_exists($file)) {
                 return false;
@@ -296,7 +263,6 @@ class HealthController
     private function isConfigurationValid(): bool
     {
         $requiredSettings = ['site_name', 'site_url', 'db_host'];
-        
         foreach ($requiredSettings as $setting) {
             if (empty($this->config->get($setting))) {
                 return false;
@@ -338,11 +304,10 @@ class HealthController
         if ($limit === '-1') {
             return PHP_INT_MAX;
         }
-        
+
         $unit = strtoupper(substr($limit, -1));
         $value = (int)substr($limit, 0, -1);
-        
-        return match($unit) {
+        return match ($unit) {
             'G' => $value * 1024 * 1024 * 1024,
             'M' => $value * 1024 * 1024,
             'K' => $value * 1024,
@@ -367,7 +332,6 @@ class HealthController
         $path = $this->config->get('site_root');
         $bytes = disk_total_space($path);
         $free = disk_free_space($path);
-        
         return [
             'total_bytes' => $bytes,
             'free_bytes' => $free,
@@ -385,4 +349,4 @@ class HealthController
         }
         return 0.0;
     }
-} 
+}

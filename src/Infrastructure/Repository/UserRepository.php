@@ -9,7 +9,9 @@ use App\Infrastructure\Database\Database;
 
 class UserRepository implements UserRepositoryInterface
 {
-    public function __construct(private Database $db) {}
+    public function __construct(private Database $db)
+    {
+    }
 
     public function byId(int $id): ?User
     {
@@ -48,13 +50,13 @@ class UserRepository implements UserRepositoryInterface
     {
         $allowedFields = ['name', 'bio', 'avatar_url', 'phone', 'company', 'job_title'];
         $updateData = array_intersect_key($profileData, array_flip($allowedFields));
-        
+
         if (empty($updateData)) {
             return false;
         }
 
         $updateData['updated_at'] = date('Y-m-d H:i:s');
-        
+
         return $this->db->update('users', $updateData, 'id = ?', [$userId]) > 0;
     }
 
@@ -81,19 +83,19 @@ class UserRepository implements UserRepositoryInterface
             'SELECT preference_key, preference_value FROM user_preferences WHERE user_id = ?',
             [$userId]
         );
-        
+
         $result = [];
         foreach ($preferences as $pref) {
             $result[$pref['preference_key']] = json_decode($pref['preference_value'], true);
         }
-        
+
         return $result;
     }
 
     public function updateUserPreferences(int $userId, array $preferences): bool
     {
         $this->db->beginTransaction();
-        
+
         try {
             foreach ($preferences as $key => $value) {
                 $this->db->query(
@@ -103,10 +105,9 @@ class UserRepository implements UserRepositoryInterface
                     [$userId, $key, json_encode($value)]
                 );
             }
-            
+
             $this->db->commit();
             return true;
-            
         } catch (\Exception $e) {
             $this->db->rollBack();
             return false;
@@ -227,4 +228,4 @@ class UserRepository implements UserRepositoryInterface
             new \DateTimeImmutable($row['created_at'])
         );
     }
-} 
+}

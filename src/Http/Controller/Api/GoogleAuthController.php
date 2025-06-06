@@ -1,15 +1,19 @@
 <?php
+
 namespace App\Http\Controller\Api;
 
 use App\Domain\Logging\ErrorLoggerInterface;
 use App\Infrastructure\Http\ApiResponse;
 use Google\Client;
 use Psr\Http\Message\ServerRequestInterface;
+
 use function container;
 
 final class GoogleAuthController
 {
-    public function __construct(private ErrorLoggerInterface $logger) {}
+    public function __construct(private ErrorLoggerInterface $logger)
+    {
+    }
 
     public function handle(ServerRequestInterface $request): void
     {
@@ -49,4 +53,4 @@ final class GoogleAuthController
         // Voorlopig sturen we enkel payload terug
         ApiResponse::success(['payload' => $payload], 'Token geldig');
     }
-} 
+}

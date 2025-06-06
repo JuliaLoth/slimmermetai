@@ -13,7 +13,8 @@ class ToolRepository implements ToolRepositoryInterface
     public function __construct(
         private Database $db,
         private ?DatabasePerformanceMonitor $performanceMonitor = null
-    ) {}
+    ) {
+    }
 
     public function findToolById(int $toolId): ?array
     {
@@ -73,18 +74,18 @@ class ToolRepository implements ToolRepositoryInterface
                 'status' => 'active',
                 'granted_at' => date('Y-m-d H:i:s')
             ];
-            
+
             if ($expiresAt) {
                 $data['expires_at'] = $expiresAt->format('Y-m-d H:i:s');
             }
-            
+
             $this->db->insert('user_tools', $data);
-            
+
             $this->performanceMonitor?->logQuery(
                 'Tool access granted',
                 ['user_id' => $userId, 'tool_id' => $toolId]
             );
-            
+
             return true;
         } catch (\Exception $e) {
             return false;
@@ -140,7 +141,7 @@ class ToolRepository implements ToolRepositoryInterface
             'SELECT expires_at FROM user_tools WHERE user_id = ? AND tool_id = ? AND status = "active"',
             [$userId, $toolId]
         );
-        
+
         return $expiryDate ? new \DateTimeImmutable($expiryDate) : null;
     }
 
@@ -153,10 +154,10 @@ class ToolRepository implements ToolRepositoryInterface
                 'used_at' => date('Y-m-d H:i:s'),
                 'metadata' => json_encode($metadata)
             ]);
-            
+
             // Update usage statistics
             $this->updateUsageStatistics($userId, $toolId);
-            
+
             return true;
         } catch (\Exception $e) {
             return false;
@@ -194,7 +195,7 @@ class ToolRepository implements ToolRepositoryInterface
     public function getUserDailyUsage(int $userId, \DateTimeInterface $date): array
     {
         $dateStr = $date->format('Y-m-d');
-        
+
         return $this->db->fetchAll(
             'SELECT t.name, COUNT(*) as usage_count
              FROM tool_usage_logs tul
@@ -252,14 +253,14 @@ class ToolRepository implements ToolRepositoryInterface
     public function checkUsageLimit(int $userId, int $toolId, string $period = 'daily'): bool
     {
         $limits = $this->getUserToolLimits($userId, $toolId);
-        
+
         if (empty($limits)) {
             return true; // No limits set
         }
-        
+
         $currentUsage = $this->getCurrentUsageCount($userId, $toolId, $period);
         $limit = $period === 'daily' ? $limits['daily_limit'] : $limits['monthly_limit'];
-        
+
         return $currentUsage < $limit;
     }
 
@@ -271,7 +272,7 @@ class ToolRepository implements ToolRepositoryInterface
             'monthly' => 'used_at >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)',
             default => 'DATE(used_at) = CURDATE()'
         };
-        
+
         return (int) $this->db->getValue(
             "SELECT COUNT(*) FROM tool_usage_logs 
              WHERE user_id = ? AND tool_id = ? AND {$dateCondition}",
@@ -282,7 +283,7 @@ class ToolRepository implements ToolRepositoryInterface
     public function generateToolApiKey(int $userId, int $toolId): string
     {
         $apiKey = 'sk_' . bin2hex(random_bytes(32));
-        
+
         $this->db->insert('user_tool_api_keys', [
             'user_id' => $userId,
             'tool_id' => $toolId,
@@ -290,7 +291,7 @@ class ToolRepository implements ToolRepositoryInterface
             'status' => 'active',
             'created_at' => date('Y-m-d H:i:s')
         ]);
-        
+
         return $apiKey;
     }
 
@@ -382,7 +383,7 @@ class ToolRepository implements ToolRepositoryInterface
             'SELECT COUNT(DISTINCT user_id) FROM user_tools WHERE tool_id = ? AND status = "active"',
             [$toolId]
         );
-        
+
         return [
             'usage_stats' => $usageStats,
             'average_rating' => $averageRating,
@@ -410,7 +411,7 @@ class ToolRepository implements ToolRepositoryInterface
     {
         $from = $fromDate->format('Y-m-d H:i:s');
         $to = $toDate->format('Y-m-d H:i:s');
-        
+
         return $this->db->fetch(
             'SELECT 
                 COUNT(*) as total_sales,
@@ -433,7 +434,7 @@ class ToolRepository implements ToolRepositoryInterface
             'year' => '%Y',
             default => '%Y-%m'
         };
-        
+
         return $this->db->fetchAll(
             "SELECT 
                 DATE_FORMAT(used_at, ?) as period,
@@ -458,10 +459,10 @@ class ToolRepository implements ToolRepositoryInterface
                 'feedback' => $feedback,
                 'created_at' => date('Y-m-d H:i:s')
             ]);
-            
+
             // Update tool average rating
             $this->updateToolAverageRating($toolId);
-            
+
             return true;
         } catch (\Exception $e) {
             return false;
@@ -556,7 +557,7 @@ class ToolRepository implements ToolRepositoryInterface
             'SELECT configuration FROM user_tool_configurations WHERE user_id = ? AND tool_id = ?',
             [$userId, $toolId]
         );
-        
+
         return $config ? json_decode($config, true) : [];
     }
 
@@ -566,7 +567,7 @@ class ToolRepository implements ToolRepositoryInterface
             'SELECT default_configuration FROM tools WHERE id = ?',
             [$toolId]
         );
-        
+
         return $config ? json_decode($config, true) : [];
     }
 
@@ -652,9 +653,9 @@ class ToolRepository implements ToolRepositoryInterface
     private function updateToolAverageRating(int $toolId): void
     {
         $averageRating = $this->getAverageToolRating($toolId);
-        
+
         $this->db->update('tools', [
             'average_rating' => $averageRating
         ], 'id = ?', [$toolId]);
     }
-} 
+}

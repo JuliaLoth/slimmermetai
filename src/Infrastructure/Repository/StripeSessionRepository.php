@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Infrastructure\Repository;
 
 use App\Domain\Entity\StripeSession;
@@ -7,7 +8,9 @@ use App\Infrastructure\Database\Database;
 
 class StripeSessionRepository implements StripeSessionRepositoryInterface
 {
-    public function __construct(private Database $db) {}
+    public function __construct(private Database $db)
+    {
+    }
 
     public function save(StripeSession $s): void
     {
@@ -30,7 +33,9 @@ class StripeSessionRepository implements StripeSessionRepositoryInterface
     public function updateStatus(string $sessionId, string $paymentStatus, ?string $status = null): void
     {
         $data = ['payment_status' => $paymentStatus, 'updated_at' => date('Y-m-d H:i:s')];
-        if ($status !== null) $data['status'] = $status;
+        if ($status !== null) {
+            $data['status'] = $status;
+        }
         $this->db->update('stripe_sessions', $data, 'session_id = ?', [$sessionId]);
     }
 
@@ -42,15 +47,6 @@ class StripeSessionRepository implements StripeSessionRepositoryInterface
 
     private function hydrate(array $row): StripeSession
     {
-        return new StripeSession(
-            $row['session_id'],
-            $row['user_id'] ? (int)$row['user_id'] : null,
-            (int)$row['amount_total'],
-            $row['currency'],
-            $row['payment_status'],
-            $row['status'],
-            new \DateTimeImmutable($row['created_at']),
-            json_decode($row['metadata'] ?? '[]', true),
-        );
+        return new StripeSession($row['session_id'], $row['user_id'] ? (int)$row['user_id'] : null, (int)$row['amount_total'], $row['currency'], $row['payment_status'], $row['status'], new \DateTimeImmutable($row['created_at']), json_decode($row['metadata'] ?? '[]', true),);
     }
-} 
+}

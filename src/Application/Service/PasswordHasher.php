@@ -1,10 +1,10 @@
 <?php
+
 namespace App\Application\Service;
 
 final class PasswordHasher
 {
     private int $cost;
-
     public function __construct(int $cost = 12)
     {
         $this->cost = $cost;
@@ -29,4 +29,4 @@ final class PasswordHasher
     {
         return strlen($password) >= $minLength && preg_match('/[A-Z]/', $password) && preg_match('/[a-z]/', $password) && preg_match('/\d/', $password);
     }
-} 
+}

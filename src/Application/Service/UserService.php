@@ -9,7 +9,9 @@ use App\Application\DTO\UserDTO;
 
 class UserService
 {
-    public function __construct(private UserRepositoryInterface $userRepo) {}
+    public function __construct(private UserRepositoryInterface $userRepo)
+    {
+    }
 
     public function register(string $email, string $plainPassword): UserDTO
     {
@@ -34,4 +36,4 @@ class UserService
         $dto->createdAt = $user->getCreatedAt()->format('Y-m-d H:i:s');
         return $dto;
     }
-} 
+}

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Middleware;
 
 use Psr\Http\Message\ServerRequestInterface;
@@ -20,11 +21,8 @@ use App\Infrastructure\Config\Config;
 class ErrorHandlingMiddleware implements MiddlewareInterface
 {
     private bool $displayErrors;
-
-    public function __construct(
-        private ErrorLoggerInterface $logger,
-        ?bool $displayErrors = null
-    ) {
+    public function __construct(private ErrorLoggerInterface $logger, ?bool $displayErrors = null)
+    {
         if ($displayErrors === null) {
             $this->displayErrors = Config::getInstance()->get('display_errors', false);
         } else {
@@ -37,19 +35,16 @@ class ErrorHandlingMiddleware implements MiddlewareInterface
         try {
             return $handler->handle($request);
         } catch (Throwable $e) {
-            // Log via domein-logger
+        // Log via domein-logger
             $this->logger->logError('Unhandled exception', [
                 'exception' => $e,
             ]);
-
             $accept = strtolower($request->getHeaderLine('Accept'));
             $contentType = strtolower($request->getHeaderLine('Content-Type'));
             $path = $request->getUri()->getPath();
-
             $wantsJson = str_contains($accept, 'application/json')
                 || str_contains($contentType, 'application/json')
                 || str_starts_with($path, '/api');
-
             if ($wantsJson) {
                 $payload = json_encode([
                     'error' => true,
@@ -62,11 +57,7 @@ class ErrorHandlingMiddleware implements MiddlewareInterface
                 }
             }
 
-            return new Response(
-                500,
-                ['Content-Type' => $wantsJson ? 'application/json' : 'text/html'],
-                $payload
-            );
+            return new Response(500, ['Content-Type' => $wantsJson ? 'application/json' : 'text/html'], $payload);
         }
     }
-} 
+}

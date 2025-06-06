@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controller\Auth;
 
 use App\Infrastructure\View\View;
@@ -12,4 +13,4 @@ final class LoginPageController
         ]);
         return new \GuzzleHttp\Psr7\Response(200, ['Content-Type' => 'text/html; charset=utf-8'], $html);
     }
-} 
+}

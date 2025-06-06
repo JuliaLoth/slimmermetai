@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controller;
 
 use Psr\Http\Message\ServerRequestInterface;
@@ -26,11 +27,6 @@ final class LegacyPageController
         ob_start();
         require $full;
         $html = ob_get_clean();
-
-        return new Response(
-            200,
-            ['Content-Type' => 'text/html; charset=utf-8'],
-            $html
-        );
+        return new Response(200, ['Content-Type' => 'text/html; charset=utf-8'], $html);
     }
-} 
+}

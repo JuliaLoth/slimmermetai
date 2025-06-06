@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controller;
 
 use App\Infrastructure\View\View;
@@ -16,4 +17,4 @@ final class AccountPageController
         ]);
         return new Response(200, ['Content-Type' => 'text/html; charset=utf-8'], $html);
     }
-} 
+}

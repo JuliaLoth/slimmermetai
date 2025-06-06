@@ -21,14 +21,15 @@ class AuthController implements RequestHandlerInterface
         private PasswordHasher $passwordHasher,
         private JwtService $jwtService,
         private DatabaseInterface $database
-    ) {}
+    ) {
+    }
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $path = $request->getUri()->getPath();
         $method = $request->getMethod();
 
-        return match(true) {
+        return match (true) {
             $path === '/api/auth/register' && $method === 'POST' => $this->register($request),
             $path === '/api/auth/login' && $method === 'POST' => $this->login($request),
             $path === '/api/auth/verify-email' && $method === 'POST' => $this->verifyEmail($request),
@@ -53,7 +54,7 @@ class AuthController implements RequestHandlerInterface
             }
 
             $email = new Email($data['email']);
-            
+
             // Check if user already exists
             $existingUser = $this->authRepository->findUserByEmail($email);
             if ($existingUser) {
@@ -73,7 +74,7 @@ class AuthController implements RequestHandlerInterface
             // Create email verification token
             $token = bin2hex(random_bytes(32));
             $expiresAt = new \DateTimeImmutable('+24 hours');
-            
+
             $this->authRepository->createEmailVerificationToken($userId, $token, $expiresAt);
 
             // TODO: Send verification email
@@ -96,7 +97,6 @@ class AuthController implements RequestHandlerInterface
                     'role' => $user->getRole()
                 ]
             ]);
-
         } catch (\Exception $e) {
             return ApiResponse::error('Er is een fout opgetreden bij de registratie', 500);
         }
@@ -117,11 +117,11 @@ class AuthController implements RequestHandlerInterface
             if (!$user || !$this->passwordHasher->verify($data['password'], $user->getPasswordHash())) {
                 // Log failed login attempt
                 $this->authRepository->logLoginAttempt(
-                    (string)$email, 
-                    false, 
+                    (string)$email,
+                    false,
                     $request->getServerParams()['REMOTE_ADDR'] ?? ''
                 );
-                
+
                 return ApiResponse::error('Ongeldige inloggegevens', 401);
             }
 
@@ -137,8 +137,8 @@ class AuthController implements RequestHandlerInterface
 
             // Log successful login
             $this->authRepository->logLoginAttempt(
-                (string)$email, 
-                true, 
+                (string)$email,
+                true,
                 $request->getServerParams()['REMOTE_ADDR'] ?? ''
             );
 
@@ -162,7 +162,6 @@ class AuthController implements RequestHandlerInterface
                     'role' => $user->getRole()
                 ]
             ]);
-
         } catch (\Exception $e) {
             return ApiResponse::error('Er is een fout opgetreden bij het inloggen', 500);
         }
@@ -192,7 +191,6 @@ class AuthController implements RequestHandlerInterface
                     'email_verified' => true
                 ]
             ]);
-
         } catch (\Exception $e) {
             return ApiResponse::error('Er is een fout opgetreden bij de e-mailverificatie', 500);
         }
@@ -220,7 +218,7 @@ class AuthController implements RequestHandlerInterface
             // Create password reset token
             $token = bin2hex(random_bytes(32));
             $expiresAt = new \DateTimeImmutable('+1 hour');
-            
+
             $this->authRepository->createPasswordResetToken($user->getId(), $token, $expiresAt);
 
             // TODO: Send password reset email
@@ -228,7 +226,6 @@ class AuthController implements RequestHandlerInterface
             return ApiResponse::success([
                 'message' => 'Als dit e-mailadres bekend is, hebben we een herstellink verstuurd.'
             ]);
-
         } catch (\Exception $e) {
             return ApiResponse::error('Er is een fout opgetreden', 500);
         }
@@ -266,7 +263,6 @@ class AuthController implements RequestHandlerInterface
             return ApiResponse::success([
                 'message' => 'Wachtwoord succesvol gewijzigd'
             ]);
-
         } catch (\Exception $e) {
             return ApiResponse::error('Er is een fout opgetreden bij het wijzigen van het wachtwoord', 500);
         }
@@ -283,7 +279,7 @@ class AuthController implements RequestHandlerInterface
         try {
             // TODO: Extract user from JWT token in Authorization header
             $authHeader = $request->getHeaderLine('Authorization');
-            
+
             if (empty($authHeader) || !str_starts_with($authHeader, 'Bearer ')) {
                 return ApiResponse::error('Geen geldige autorisatie', 401);
             }
@@ -309,7 +305,6 @@ class AuthController implements RequestHandlerInterface
                     'role' => $user->getRole()
                 ]
             ]);
-
         } catch (\Exception $e) {
             return ApiResponse::error('Er is een fout opgetreden', 500);
         }
@@ -369,4 +364,4 @@ class AuthController implements RequestHandlerInterface
             'total_slow_queries' => count($slowQueries)
         ]);
     }
-} 
+}

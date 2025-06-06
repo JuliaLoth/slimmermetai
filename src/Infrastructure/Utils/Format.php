@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Infrastructure\Utils;
 
 /**
@@ -7,7 +8,9 @@ namespace App\Infrastructure\Utils;
  */
 final class Format
 {
-    private function __construct() {}
+    private function __construct()
+    {
+    }
 
     /**
      * Formatteer een prijs in euro's met twee decimalen en nl_NL-notatie.
@@ -33,4 +36,4 @@ final class Format
     {
         return date($format, is_numeric($dateTime) ? (int) $dateTime : strtotime($dateTime));
     }
-} 
+}

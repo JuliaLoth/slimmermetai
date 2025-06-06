@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controller\Api;
 
 use App\Application\Service\StripeService;
@@ -7,7 +8,9 @@ use Psr\Http\Message\ServerRequestInterface;
 
 final class StripePaymentIntentController
 {
-    public function __construct(private StripeService $stripe) {}
+    public function __construct(private StripeService $stripe)
+    {
+    }
 
     public function create(ServerRequestInterface $request): void
     {
@@ -31,12 +34,13 @@ final class StripePaymentIntentController
 
         $description = $data['description'] ?? '';
         $metadata    = $data['metadata'] ?? [];
-        if (!is_array($metadata)) $metadata = [];
+        if (!is_array($metadata)) {
+            $metadata = [];
+        }
 
         // Voeg standaard metadata toe
         $metadata['source']    = 'api';
         $metadata['timestamp'] = date('Y-m-d H:i:s');
-
         try {
             $intent = $this->stripe->createPaymentIntent((float) $amount, $description, $metadata);
             ApiResponse::success([
@@ -55,4 +59,4 @@ final class StripePaymentIntentController
             ApiResponse::serverError('Er is een fout opgetreden bij het aanmaken van het Payment Intent.', $e->getMessage());
         }
     }
-} 
+}

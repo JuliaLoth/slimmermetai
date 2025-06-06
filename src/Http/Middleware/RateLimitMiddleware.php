@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Middleware;
 
 use Psr\Http\Message\ServerRequestInterface;
@@ -10,7 +11,7 @@ use App\Infrastructure\Config\Config;
 
 /**
  * RateLimitMiddleware
- * 
+ *
  * Implementeert rate limiting voor API endpoints om misbruik te voorkomen.
  * Gebruikt sliding window algoritme met in-memory storage.
  */
@@ -20,7 +21,6 @@ class RateLimitMiddleware implements MiddlewareInterface
     private int $maxRequests;
     private int $windowSeconds;
     private array $exemptPaths;
-
     public function __construct(?Config $config = null)
     {
         $config = $config ?? Config::getInstance();
@@ -36,8 +36,7 @@ class RateLimitMiddleware implements MiddlewareInterface
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $path = $request->getUri()->getPath();
-        
-        // Skip rate limiting for exempt paths
+// Skip rate limiting for exempt paths
         foreach ($this->exemptPaths as $exemptPath) {
             if (str_starts_with($path, $exemptPath)) {
                 return $handler->handle($request);
@@ -51,19 +50,16 @@ class RateLimitMiddleware implements MiddlewareInterface
 
         $clientIp = $this->getClientIp($request);
         $now = time();
-
-        // Clean old requests outside the window
+// Clean old requests outside the window
         $this->cleanOldRequests($clientIp, $now);
-
-        // Check if client has exceeded rate limit
+// Check if client has exceeded rate limit
         if ($this->isRateLimited($clientIp, $now)) {
             return $this->createRateLimitResponse();
         }
 
         // Record this request
         $this->recordRequest($clientIp, $now);
-
-        // Add rate limit headers to response
+// Add rate limit headers to response
         $response = $handler->handle($request);
         return $this->addRateLimitHeaders($response, $clientIp, $now);
     }
@@ -71,17 +67,16 @@ class RateLimitMiddleware implements MiddlewareInterface
     private function getClientIp(ServerRequestInterface $request): string
     {
         $serverParams = $request->getServerParams();
-        
-        // Check for forwarded IP (useful behind proxies like Cloudflare)
+// Check for forwarded IP (useful behind proxies like Cloudflare)
         if (!empty($serverParams['HTTP_X_FORWARDED_FOR'])) {
             $ips = explode(',', $serverParams['HTTP_X_FORWARDED_FOR']);
             return trim($ips[0]);
         }
-        
+
         if (!empty($serverParams['HTTP_X_REAL_IP'])) {
             return $serverParams['HTTP_X_REAL_IP'];
         }
-        
+
         return $serverParams['REMOTE_ADDR'] ?? '127.0.0.1';
     }
 
@@ -92,10 +87,7 @@ class RateLimitMiddleware implements MiddlewareInterface
         }
 
         $cutoff = $now - $this->windowSeconds;
-        $this->requests[$clientIp] = array_filter(
-            $this->requests[$clientIp],
-            fn($timestamp) => $timestamp >= $cutoff
-        );
+        $this->requests[$clientIp] = array_filter($this->requests[$clientIp], fn($timestamp) => $timestamp >= $cutoff);
     }
 
     private function isRateLimited(string $clientIp, int $now): bool
@@ -119,23 +111,18 @@ class RateLimitMiddleware implements MiddlewareInterface
     private function createRateLimitResponse(): ResponseInterface
     {
         $resetTime = time() + $this->windowSeconds;
-        
-        return new Response(
-            429,
-            [
+        return new Response(429, [
                 'Content-Type' => 'application/json',
                 'Retry-After' => (string)$this->windowSeconds,
                 'X-RateLimit-Limit' => (string)$this->maxRequests,
                 'X-RateLimit-Remaining' => '0',
                 'X-RateLimit-Reset' => (string)$resetTime
-            ],
-            json_encode([
+            ], json_encode([
                 'error' => 'Rate limit exceeded',
                 'message' => "Maximum {$this->maxRequests} requests per {$this->windowSeconds} seconds allowed",
                 'retry_after' => $this->windowSeconds,
                 'reset_time' => $resetTime
-            ])
-        );
+            ]));
     }
 
     private function addRateLimitHeaders(ResponseInterface $response, string $clientIp, int $now): ResponseInterface
@@ -143,10 +130,9 @@ class RateLimitMiddleware implements MiddlewareInterface
         $requestCount = isset($this->requests[$clientIp]) ? count($this->requests[$clientIp]) : 0;
         $remaining = max(0, $this->maxRequests - $requestCount);
         $resetTime = $now + $this->windowSeconds;
-
         return $response
             ->withHeader('X-RateLimit-Limit', (string)$this->maxRequests)
             ->withHeader('X-RateLimit-Remaining', (string)$remaining)
             ->withHeader('X-RateLimit-Reset', (string)$resetTime);
     }
-} 
+}

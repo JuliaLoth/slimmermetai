@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Middleware;
 
 use App\Application\Service\AuthService;
@@ -19,14 +20,10 @@ class AuthenticationMiddleware implements MiddlewareInterface
 {
     /** @var array<int,string> */
     private array $publicPaths = [];
-
     private string $loginRoute;
-
-    /** @param array<int,string> $publicPaths  Paden (prefix) die geen auth vereisen */
-    public function __construct(
-        private AuthService $authService,
-        ?array $publicPaths = null
-    ) {
+/** @param array<int,string> $publicPaths  Paden (prefix) die geen auth vereisen */
+    public function __construct(private AuthService $authService, ?array $publicPaths = null)
+    {
         $cfg = Config::getInstance();
         $this->publicPaths = $publicPaths ?? $cfg->getTyped('auth_public_paths', 'array', [
             '/',
@@ -54,7 +51,7 @@ class AuthenticationMiddleware implements MiddlewareInterface
     {
         $path = $request->getUri()->getPath();
         foreach ($this->publicPaths as $public) {
-            // Special case for root path - exact match only
+        // Special case for root path - exact match only
             if ($public === '/' && $path === '/') {
                 return $handler->handle($request);
             }
@@ -63,7 +60,7 @@ class AuthenticationMiddleware implements MiddlewareInterface
                 return $handler->handle($request);
             }
         }
-        
+
         $header = $request->getHeaderLine('Authorization');
         if (!$header && $request->hasHeader('HTTP_AUTHORIZATION')) {
             $header = $request->getHeaderLine('HTTP_AUTHORIZATION');
@@ -85,19 +82,11 @@ class AuthenticationMiddleware implements MiddlewareInterface
     {
         $accept = strtolower($request->getHeaderLine('Accept'));
         $isApi = str_contains($accept, 'application/json') || str_starts_with($request->getUri()->getPath(), '/api');
-
         if ($isApi) {
-            return new Response(
-                401,
-                ['Content-Type' => 'application/json'],
-                json_encode(['error' => 'Unauthorized', 'reason' => $reason])
-            );
+            return new Response(401, ['Content-Type' => 'application/json'], json_encode(['error' => 'Unauthorized', 'reason' => $reason]));
         }
 
         // Web: redirect naar loginpagina
-        return new Response(
-            302,
-            ['Location' => $this->loginRoute]
-        );
+        return new Response(302, ['Location' => $this->loginRoute]);
     }
-} 
+}

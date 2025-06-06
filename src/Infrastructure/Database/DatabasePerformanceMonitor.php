@@ -25,7 +25,7 @@ class DatabasePerformanceMonitor
         }
 
         $queryId = uniqid('query_', true);
-        
+
         $this->queryLog[$queryId] = [
             'sql' => $sql,
             'params' => $this->sanitizeParams($params),
@@ -131,7 +131,7 @@ class DatabasePerformanceMonitor
     {
         $slow = $this->slowQueries;
         usort($slow, fn($a, $b) => $b['duration'] <=> $a['duration']);
-        
+
         return array_slice($slow, 0, $limit);
     }
 
@@ -174,7 +174,7 @@ class DatabasePerformanceMonitor
 
     private function sanitizeParams(array $params): array
     {
-        return array_map(function($param) {
+        return array_map(function ($param) {
             if (is_string($param) && strlen($param) > 100) {
                 return substr($param, 0, 100) . '...[truncated]';
             }
@@ -185,22 +185,24 @@ class DatabasePerformanceMonitor
     private function getCaller(): string
     {
         $trace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 10);
-        
+
         // Skip DatabasePerformanceMonitor en Database classes
         foreach ($trace as $frame) {
             if (!isset($frame['class'])) {
                 continue;
             }
-            
+
             $class = $frame['class'];
-            if (str_contains($class, 'DatabasePerformanceMonitor') || 
-                str_contains($class, 'Database')) {
+            if (
+                str_contains($class, 'DatabasePerformanceMonitor') ||
+                str_contains($class, 'Database')
+            ) {
                 continue;
             }
-            
+
             return $class . '::' . ($frame['function'] ?? 'unknown');
         }
-        
+
         return 'unknown';
     }
 
@@ -219,4 +221,4 @@ class DatabasePerformanceMonitor
         }
         return $bytes . 'B';
     }
-} 
+}

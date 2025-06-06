@@ -21,14 +21,15 @@ class UserController implements RequestHandlerInterface
         private PasswordHasher $passwordHasher,
         private JwtService $jwtService,
         private DatabaseInterface $database
-    ) {}
+    ) {
+    }
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $path = $request->getUri()->getPath();
         $method = $request->getMethod();
 
-        return match(true) {
+        return match (true) {
             $path === '/api/users/profile' && $method === 'GET' => $this->getProfile($request),
             $path === '/api/users/profile' && $method === 'PUT' => $this->updateProfile($request),
             $path === '/api/users/password' && $method === 'PUT' => $this->updatePassword($request),
@@ -64,7 +65,6 @@ class UserController implements RequestHandlerInterface
                     'created_at' => $profile->getCreatedAt()->format('Y-m-d H:i:s')
                 ]
             ]);
-
         } catch (\Exception $e) {
             return ApiResponse::error('Er is een fout opgetreden', 500);
         }
@@ -80,7 +80,7 @@ class UserController implements RequestHandlerInterface
 
             $data = $request->getParsedBody();
             $errors = $this->validateProfileData($data);
-            
+
             if (!empty($errors)) {
                 return ApiResponse::error('Validatiefout', 422, $errors);
             }
@@ -94,7 +94,6 @@ class UserController implements RequestHandlerInterface
             return ApiResponse::success([
                 'message' => 'Profiel succesvol bijgewerkt'
             ]);
-
         } catch (\Exception $e) {
             return ApiResponse::error('Er is een fout opgetreden', 500);
         }
@@ -138,7 +137,6 @@ class UserController implements RequestHandlerInterface
             return ApiResponse::success([
                 'message' => 'Wachtwoord succesvol gewijzigd'
             ]);
-
         } catch (\Exception $e) {
             return ApiResponse::error('Er is een fout opgetreden', 500);
         }
@@ -157,7 +155,6 @@ class UserController implements RequestHandlerInterface
             return ApiResponse::success([
                 'preferences' => $preferences
             ]);
-
         } catch (\Exception $e) {
             return ApiResponse::error('Er is een fout opgetreden', 500);
         }
@@ -187,7 +184,6 @@ class UserController implements RequestHandlerInterface
             return ApiResponse::success([
                 'message' => 'Voorkeuren succesvol bijgewerkt'
             ]);
-
         } catch (\Exception $e) {
             return ApiResponse::error('Er is een fout opgetreden', 500);
         }
@@ -206,7 +202,6 @@ class UserController implements RequestHandlerInterface
             return ApiResponse::success([
                 'stats' => $stats
             ]);
-
         } catch (\Exception $e) {
             return ApiResponse::error('Er is een fout opgetreden', 500);
         }
@@ -225,7 +220,6 @@ class UserController implements RequestHandlerInterface
             return ApiResponse::success([
                 'courses' => $courses
             ]);
-
         } catch (\Exception $e) {
             return ApiResponse::error('Er is een fout opgetreden', 500);
         }
@@ -244,7 +238,6 @@ class UserController implements RequestHandlerInterface
             return ApiResponse::success([
                 'tools' => $tools
             ]);
-
         } catch (\Exception $e) {
             return ApiResponse::error('Er is een fout opgetreden', 500);
         }
@@ -279,7 +272,6 @@ class UserController implements RequestHandlerInterface
             return ApiResponse::success([
                 'message' => 'Account succesvol gedeactiveerd'
             ]);
-
         } catch (\Exception $e) {
             return ApiResponse::error('Er is een fout opgetreden', 500);
         }
@@ -288,7 +280,7 @@ class UserController implements RequestHandlerInterface
     private function getUserFromToken(ServerRequestInterface $request): ?array
     {
         $authHeader = $request->getHeaderLine('Authorization');
-        
+
         if (empty($authHeader) || !str_starts_with($authHeader, 'Bearer ')) {
             return null;
         }
@@ -340,4 +332,4 @@ class UserController implements RequestHandlerInterface
             'total_slow_queries' => count($slowQueries)
         ]);
     }
-} 
+}
