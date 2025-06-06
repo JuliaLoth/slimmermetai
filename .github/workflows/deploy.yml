@@ -3,13 +3,12 @@ name: Deploy SlimmerMetAI to Antagonist
 
 on:
   push:
-    branches:
-      - main
-      - develop
+    branches: [main]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
 
     steps:
     - name: Checkout code
@@ -22,67 +21,66 @@ jobs:
         extensions: mbstring, xml, curl, gd, pdo_mysql
         coverage: none
 
-    - name: Get Composer Cache Directory
-      id: composer-cache
-      run: |
-        echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
-
-    - name: Cache Composer dependencies
-      uses: actions/cache@v4
-      with:
-        path: ${{ steps.composer-cache.outputs.dir }}
-        key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-composer-
-
-    - name: Install Composer Dependencies
+    - name: Install Dependencies
       run: composer install --prefer-dist --no-progress --no-dev --optimize-autoloader
 
-    # --- Deployment naar Productie (main branch) ---
-    - name: Deploy public_html to Production
-      if: github.ref == 'refs/heads/main'
+    # --- Debug SSH Configuration ---
+    - name: Debug SSH Configuration
+      run: |
+        echo "🔍 Debugging SSH Configuration..."
+        echo "Host: slimmermetai.com"
+        echo "Port: ${{ secrets.SSH_PORT }}"
+        echo "User: ${{ secrets.SSH_USER }}"
+        echo "Production Path: /home/deb133403n2/domains/slimmermetai.com"
+        
+        # Validate required secrets
+        if [ -z "${{ secrets.SSH_USER }}" ] || [ -z "${{ secrets.SSH_PRIVATE_KEY }}" ] || [ -z "${{ secrets.SSH_PORT }}" ]; then
+          echo "❌ One or more required secrets are missing"
+          exit 1
+        fi
+        
+        echo "✅ All required secrets are configured"
+
+    # --- Test SSH Connection ---
+    - name: Test SSH Connection
+      run: |
+        echo "🔑 Testing SSH Connection..."
+        
+        # Setup SSH
+        mkdir -p ~/.ssh
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+        chmod 600 ~/.ssh/deploy_key
+        
+        # Test connection
+        ssh -o StrictHostKeyChecking=no \
+            -o ConnectTimeout=10 \
+            -p ${{ secrets.SSH_PORT }} \
+            -i ~/.ssh/deploy_key \
+            ${{ secrets.SSH_USER }}@slimmermetai.com \
+            "echo '🔒 SSH connection successful!' && ls -la /home/deb133403n2/domains/slimmermetai.com"
+
+    # --- Deploy to Production ---
+    - name: Deploy to Production
       uses: burnett01/rsync-deployments@7.0.1
       with:
-        switches: -avzr --delete
-        path: ./public_html/
-        remote_path: ${{ secrets.PRODUCTION_PATH }}/public_html/
-        remote_host: ${{ secrets.SSH_HOST }}
+        switches: -avzr --delete --exclude='.env*' --exclude='.git*' --exclude='node_modules' --exclude='storage/logs/*' --exclude='.ssh'
+        path: ./
+        remote_path: /home/deb133403n2/domains/slimmermetai.com/
+        remote_host: slimmermetai.com
         remote_user: ${{ secrets.SSH_USER }}
         remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
         remote_port: ${{ secrets.SSH_PORT }}
 
-    - name: Deploy includes to Production
-      if: github.ref == 'refs/heads/main'
-      uses: burnett01/rsync-deployments@7.0.1
-      with:
-        switches: -avzr --delete
-        path: ./includes/
-        remote_path: ${{ secrets.PRODUCTION_PATH }}/includes/
-        remote_host: ${{ secrets.SSH_HOST }}
-        remote_user: ${{ secrets.SSH_USER }}
-        remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
-        remote_port: ${{ secrets.SSH_PORT }}
-
-    - name: Deploy vendor to Production
-      if: github.ref == 'refs/heads/main'
-      uses: burnett01/rsync-deployments@7.0.1
-      with:
-        switches: -avzr --delete
-        path: ./vendor/
-        remote_path: ${{ secrets.PRODUCTION_PATH }}/vendor/
-        remote_host: ${{ secrets.SSH_HOST }}
-        remote_user: ${{ secrets.SSH_USER }}
-        remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
-        remote_port: ${{ secrets.SSH_PORT }}
-
-    - name: Deploy .env to Production
-      if: github.ref == 'refs/heads/main'
-      uses: burnett01/rsync-deployments@7.0.1
-      with:
-        switches: -avzr
-        path: ./.env
-        remote_path: ${{ secrets.PRODUCTION_PATH }}/.env
-        remote_host: ${{ secrets.SSH_HOST }}
-        remote_user: ${{ secrets.SSH_USER }}
-        remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
-        remote_port: ${{ secrets.SSH_PORT }} 
+    - name: Post-Deployment Tasks
+      run: |
+        echo "📝 Running post-deployment tasks..."
+        ssh -o StrictHostKeyChecking=no \
+            -p ${{ secrets.SSH_PORT }} \
+            -i ~/.ssh/deploy_key \
+            ${{ secrets.SSH_USER }}@slimmermetai.com \
+            "cd /home/deb133403n2/domains/slimmermetai.com && \
+             cp .env.production .env && \
+             chmod -R 755 . && \
+             find . -type f -exec chmod 644 {} \; && \
+             chmod -R 775 storage && \
+             chmod -R 775 public/uploads" 
