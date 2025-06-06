@@ -77,6 +77,12 @@ jobs:
     - name: Ensure phpcs is executable
       run: chmod +x ./vendor/bin/phpcs
 
+    - name: Grant execute permissions for PHP tools
+      run: |
+        chmod +x ./vendor/bin/phpcbf
+        chmod +x ./vendor/bin/phpstan
+        chmod +x ./vendor/bin/phpunit
+
     - name: Run code style check
       run: composer run cs:check
 
