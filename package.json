@@ -1,6 +1,7 @@
 {
   "name": "slimmermetai-site",
   "version": "1.0.0",
+  "type": "module",
   "description": "Deze repository bevat de code voor de SlimmerMetAI.com website, inclusief de frontend en PHP API voor hosting op Antagonist.",
   "main": "index.js",
   "directories": {
@@ -40,12 +41,15 @@
     "vite-plugin-static-copy": "^3.0.0"
   },
   "lint-staged": {
-    "*.js": [
+    "*.{js,jsx,ts,tsx}": [
       "eslint --fix",
       "prettier --write"
     ],
     "*.{css,scss}": [
       "stylelint --fix"
+    ],
+    "*.md": [
+      "prettier --write"
     ]
   }
 }

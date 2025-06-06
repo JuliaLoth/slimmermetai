@@ -77,6 +77,9 @@ jobs:
     - name: Run code style check
       run: composer run cs:check
 
+    - name: Auto-fix code style issues
+      run: composer run cs:fix || true
+
     - name: Run static analysis
       run: composer run analyse
 
@@ -106,12 +109,13 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
 
-    - name: Security check
+    - name: Install Symfony CLI
       run: |
-        # Install symfony security checker
-        curl -L https://github.com/sensiolabs/security-checker/releases/latest/download/security-checker_linux_amd64 -o security-checker
-        chmod +x security-checker
-        ./security-checker security:check composer.lock
+        curl -sS https://get.symfony.com/cli/installer | bash
+        echo "$HOME/.symfony5/bin" >> $GITHUB_PATH
+
+    - name: Security check
+      run: symfony security:check composer.lock
 
   frontend:
     runs-on: ubuntu-latest

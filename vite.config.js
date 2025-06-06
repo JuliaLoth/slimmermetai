@@ -1,7 +1,10 @@
 import { defineConfig } from 'vite';
 import path from 'path';
+import { fileURLToPath, URL } from 'node:url';
 import purgecss from 'vite-plugin-purgecss';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig(({ mode }) => ({
   plugins: [
