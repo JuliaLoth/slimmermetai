@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="" tests="9" assertions="21" errors="0" warnings="0" failures="0" skipped="0" time="0.019147">
+    <testsuite name="Unit Tests" tests="9" assertions="21" errors="0" warnings="0" failures="0" skipped="0" time="0.019147">
+      <testsuite name="Tests\Unit\ConfigTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\ConfigTest.php" tests="9" assertions="21" errors="0" warnings="0" failures="0" skipped="0" time="0.019147">
+        <testcase name="testConfigCanGetValues" class="Tests\Unit\ConfigTest" classname="Tests.Unit.ConfigTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\ConfigTest.php" line="38" assertions="2" time="0.009217"/>
+        <testcase name="testConfigCanGetDefaultValues" class="Tests\Unit\ConfigTest" classname="Tests.Unit.ConfigTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\ConfigTest.php" line="51" assertions="1" time="0.001536"/>
+        <testcase name="testConfigCanSetValues" class="Tests\Unit\ConfigTest" classname="Tests.Unit.ConfigTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\ConfigTest.php" line="58" assertions="1" time="0.000626"/>
+        <testcase name="testConfigCanCheckIfKeyExists" class="Tests\Unit\ConfigTest" classname="Tests.Unit.ConfigTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\ConfigTest.php" line="67" assertions="2" time="0.001170"/>
+        <testcase name="testConfigCanGetAllValues" class="Tests\Unit\ConfigTest" classname="Tests.Unit.ConfigTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\ConfigTest.php" line="74" assertions="2" time="0.000729"/>
+        <testcase name="testConfigCanGetTypedValues" class="Tests\Unit\ConfigTest" classname="Tests.Unit.ConfigTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\ConfigTest.php" line="87" assertions="6" time="0.000581"/>
+        <testcase name="testEnvironmentValues" class="Tests\Unit\ConfigTest" classname="Tests.Unit.ConfigTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\ConfigTest.php" line="108" assertions="1" time="0.000702"/>
+        <testcase name="testSecurityDefaults" class="Tests\Unit\ConfigTest" classname="Tests.Unit.ConfigTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\ConfigTest.php" line="115" assertions="5" time="0.003931"/>
+        <testcase name="testConfigWithMissingMethod" class="Tests\Unit\ConfigTest" classname="Tests.Unit.ConfigTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\ConfigTest.php" line="132" assertions="1" time="0.000656"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>

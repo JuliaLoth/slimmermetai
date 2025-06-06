@@ -84,3 +84,5 @@
 [2025-06-06T15:13:00.883983+02:00] app.ERROR: Database connectie mislukt {"ip":"::1","url":"/login","request_id":"9599658d358655fa","error":"SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)"} 
 [2025-06-06T15:35:56.809905+02:00] app.ERROR: Database connectie mislukt {"ip":"::1","url":"/sse","request_id":"73ca015a2c08d7c1","error":"SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)"} 
 [2025-06-06T15:35:58.381269+02:00] app.ERROR: Database connectie mislukt {"ip":"::1","url":"/login","request_id":"6c6d82aa4253aba6","error":"SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)"} 
+[2025-06-06T16:41:25.007232+02:00] app.ERROR: Database connectie mislukt {"ip":"::1","url":"/sse","request_id":"01e4c33837574eda","error":"SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)"} 
+[2025-06-06T16:41:27.075205+02:00] app.ERROR: Database connectie mislukt {"ip":"::1","url":"/login","request_id":"68a14e086712d143","error":"SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)"} 

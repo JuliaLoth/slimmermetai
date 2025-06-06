@@ -18,7 +18,8 @@
     "lint": "eslint \"resources/js/**/*.js\"",
     "lint:css": "stylelint \"resources/css/**/*.css\" || true",
     "format": "prettier --write \"resources/js/**/*.js\" \"**/*.{css,scss,md}\"",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test:watch": "vitest --watch"
   },
   "keywords": [],
   "author": "",
@@ -59,5 +60,14 @@
     "*.md": [
       "prettier --write"
     ]
-  }
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
 }

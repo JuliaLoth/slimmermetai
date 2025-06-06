@@ -3,7 +3,9 @@
 # Gebruik: .\scripts\local-ci.ps1
 
 param(
-    [switch]$SkipTests = $false
+    [switch]$SkipTests = $false,
+    [switch]$Coverage = $false,
+    [switch]$Verbose = $false
 )
 
 # Check if we're in the right directory
@@ -16,6 +18,7 @@ Write-Host ""
 Write-Host "==================================================================================" -ForegroundColor Blue
 Write-Host "                           LOCAL CI/CD PIPELINE                                  " -ForegroundColor Blue
 Write-Host "                   Voer alle checks uit voordat je commit                       " -ForegroundColor Blue
+if ($Coverage) { Write-Host "                           🧪 WITH COVERAGE 🧪                                  " -ForegroundColor Magenta }
 Write-Host "==================================================================================" -ForegroundColor Blue
 Write-Host ""
 
@@ -97,24 +100,70 @@ try {
     # Step 5: Static Analysis
     Write-Host "5. Running static analysis (PHPStan)..." -ForegroundColor Cyan
     
-    & composer run analyse
+    if ($Verbose) {
+        & composer run analyse -- --verbose
+    } else {
+        & composer run analyse
+    }
+    
     if ($LASTEXITCODE -ne 0) {
         Write-Host "Static analysis failed! Please fix the issues before committing." -ForegroundColor Red
+        Write-Host ""
+        Write-Host "💡 Common fixes for typehint errors:" -ForegroundColor Yellow
+        Write-Host "   - Add array typehints: array<string> instead of array" -ForegroundColor Cyan
+        Write-Host "   - Add generic typehints: Collection<User> instead of Collection" -ForegroundColor Cyan
+        Write-Host "   - Update phpstan.neon to ignore specific errors temporarily" -ForegroundColor Cyan
         exit 1
     }
     Write-Host "Static analysis passed" -ForegroundColor Green
 
-    # Step 6: PHP Unit Tests (conditionally)
+    # Step 6: PHP Unit Tests (conditionally) 
     if (-not $SkipTests) {
         Write-Host "6. Running PHP unit tests..." -ForegroundColor Cyan
         
         if (Get-Command php -ErrorAction SilentlyContinue) {
-            & composer run test
-            if ($LASTEXITCODE -ne 0) {
-                Write-Host "PHP tests failed! Please fix the issues before committing." -ForegroundColor Red
-                exit 1
+            # Ensure coverage directory exists
+            if ($Coverage) {
+                if (-not (Test-Path "coverage")) {
+                    New-Item -ItemType Directory -Path "coverage" -Force | Out-Null
+                }
+                
+                Write-Host "   📊 Running tests with coverage analysis..." -ForegroundColor Magenta
+                & composer run test:coverage
+                
+                if ($LASTEXITCODE -ne 0) {
+                    Write-Host "PHP tests with coverage failed!" -ForegroundColor Red
+                    Write-Host ""
+                    Write-Host "💡 Common test failures:" -ForegroundColor Yellow
+                    Write-Host "   - Config test failures: Check .env.testing configuration" -ForegroundColor Cyan
+                    Write-Host "   - Environment value mismatches: Verify test expectations" -ForegroundColor Cyan
+                    Write-Host "   - Mock setup issues: Ensure test dependencies are properly mocked" -ForegroundColor Cyan
+                    exit 1
+                }
+                
+                # Coverage reporting
+                if (Test-Path "coverage/coverage.txt") {
+                    Write-Host ""
+                    Write-Host "📈 COVERAGE REPORT:" -ForegroundColor Magenta
+                    Get-Content "coverage/coverage.txt" | Select-Object -Last 10 | Write-Host -ForegroundColor White
+                }
+                
+                if (Test-Path "coverage/html/index.html") {
+                    Write-Host ""
+                    Write-Host "🌐 HTML Coverage report generated at: coverage/html/index.html" -ForegroundColor Green
+                }
+                
+                Write-Host "PHP tests with coverage passed" -ForegroundColor Green
+            } else {
+                & composer run test
+                if ($LASTEXITCODE -ne 0) {
+                    Write-Host "PHP tests failed! Please fix the issues before committing." -ForegroundColor Red
+                    Write-Host ""
+                    Write-Host "💡 Run with -Coverage flag to see detailed test coverage" -ForegroundColor Yellow
+                    exit 1
+                }
+                Write-Host "PHP tests passed" -ForegroundColor Green
             }
-            Write-Host "PHP tests passed" -ForegroundColor Green
         } else {
             Write-Host "PHP not found, skipping PHP tests" -ForegroundColor Yellow
         }
@@ -136,12 +185,22 @@ try {
     if (-not $SkipTests) {
         Write-Host "8. Running frontend tests..." -ForegroundColor Cyan
         
-        & npm run test:run
-        if ($LASTEXITCODE -ne 0) {
-            Write-Host "Frontend tests failed! Please fix the issues before committing." -ForegroundColor Red
-            exit 1
+        if ($Coverage) {
+            Write-Host "   📊 Running frontend tests with coverage..." -ForegroundColor Magenta
+            & npm run test:coverage
+            if ($LASTEXITCODE -ne 0) {
+                Write-Host "Frontend tests with coverage failed!" -ForegroundColor Red
+                exit 1
+            }
+            Write-Host "Frontend tests with coverage passed" -ForegroundColor Green
+        } else {
+            & npm run test:run
+            if ($LASTEXITCODE -ne 0) {
+                Write-Host "Frontend tests failed! Please fix the issues before committing." -ForegroundColor Red
+                exit 1
+            }
+            Write-Host "Frontend tests passed" -ForegroundColor Green
         }
-        Write-Host "Frontend tests passed" -ForegroundColor Green
     } else {
         Write-Host "8. Skipping frontend tests (SkipTests flag used)" -ForegroundColor Yellow
     }
@@ -186,12 +245,20 @@ try {
     Write-Host "==================================================================================" -ForegroundColor Green
     Write-Host ""
 
+    if ($Coverage) {
+        Write-Host "📊 COVERAGE SUMMARY:" -ForegroundColor Magenta
+        Write-Host "  - PHP Coverage: Check coverage/html/index.html for detailed report" -ForegroundColor White
+        Write-Host "  - Frontend Coverage: Check coverage-js/ directory if available" -ForegroundColor White
+        Write-Host ""
+    }
+
     Write-Host "Next steps:" -ForegroundColor Blue
     Write-Host "  git add ."
     Write-Host "  git commit -m 'Your commit message'"
     Write-Host "  git push origin main"
     Write-Host ""
     Write-Host "Tip: Run this script before every commit!" -ForegroundColor Yellow
+    Write-Host "Tip: Use -Coverage flag for detailed test coverage analysis" -ForegroundColor Yellow
 
 } catch {
     $errorMessage = $_.Exception.Message
