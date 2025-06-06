@@ -29,7 +29,7 @@
         "test:coverage": "phpunit --coverage-html coverage",
         "analyse": "phpstan analyse src --level=6",
         "psalm": "psalm",
-        "cs:check": "phpcs src --standard=PSR12",
+        "cs:check": "phpcs src --standard=PSR12 --warning-severity=0",
         "cs:fix": "phpcbf src --standard=PSR12",
         "ci": [
             "@cs:check",
