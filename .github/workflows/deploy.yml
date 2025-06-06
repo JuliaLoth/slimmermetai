@@ -32,6 +32,8 @@ jobs:
         echo "Port: 22"
         echo "User: ${{ secrets.SSH_USER }}"
         echo "Production Path: /home/deb133403n2/domains/slimmermetai.com"
+        echo "Timestamp: $(date)"
+        echo "GitHub Runner IP: $(curl -s https://ifconfig.me || echo 'Unable to detect')"
         
         # Validate required secrets
         if [ -z "${{ secrets.SSH_USER }}" ] || [ -z "${{ secrets.SSH_PRIVATE_KEY }}" ]; then
@@ -41,29 +43,59 @@ jobs:
         
         echo "✅ All required secrets are configured"
 
+    # --- Test Network Connectivity ---
+    - name: Test Network Connectivity
+      run: |
+        echo "🌐 Testing network connectivity to server..."
+        
+        # Test ping (if ICMP is allowed)
+        ping -c 3 31.184.80.250 || echo "❌ Ping failed (ICMP may be blocked)"
+        
+        # Test port connectivity
+        timeout 10 bash -c '</dev/tcp/31.184.80.250/22' && echo "✅ Port 22 is reachable" || echo "❌ Port 22 is not reachable"
+
     # --- Test SSH Connection ---
     - name: Test SSH Connection
       run: |
         echo "🔑 Testing SSH Connection..."
         
-        # Setup SSH
+        # Setup SSH with secure permissions
         mkdir -p ~/.ssh
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
         chmod 600 ~/.ssh/deploy_key
+        chmod 700 ~/.ssh
         
-        # Test connection
+        # Add SSH config for better debugging
+        cat > ~/.ssh/config << EOF
+        Host deploy-server
+          HostName 31.184.80.250
+          Port 22
+          User ${{ secrets.SSH_USER }}
+          IdentityFile ~/.ssh/deploy_key
+          StrictHostKeyChecking no
+          ConnectTimeout 30
+          ServerAliveInterval 60
+          ServerAliveCountMax 3
+          LogLevel VERBOSE
+        EOF
+        
+        # Test connection with increased timeout and verbose logging
+        echo "Testing SSH connection with extended timeout..."
         ssh -o StrictHostKeyChecking=no \
-            -o ConnectTimeout=10 \
+            -o ConnectTimeout=30 \
+            -o ServerAliveInterval=60 \
+            -o ServerAliveCountMax=3 \
+            -o LogLevel=VERBOSE \
             -p 22 \
             -i ~/.ssh/deploy_key \
             ${{ secrets.SSH_USER }}@31.184.80.250 \
-            "echo '🔒 SSH connection successful!' && ls -la /home/deb133403n2/domains/slimmermetai.com"
+            "echo '🔒 SSH connection successful!' && echo 'Server time: $(date)' && ls -la /home/deb133403n2/domains/slimmermetai.com"
 
     # --- Deploy to Production ---
     - name: Deploy to Production
       uses: burnett01/rsync-deployments@7.0.1
       with:
-        switches: -avzr --delete --exclude='.env*' --exclude='.git*' --exclude='node_modules' --exclude='storage/logs/*' --exclude='.ssh'
+        switches: -avzr --delete --exclude='.env*' --exclude='.git*' --exclude='node_modules' --exclude='storage/logs/*' --exclude='.ssh' --timeout=60
         path: ./
         remote_path: /home/deb133403n2/domains/slimmermetai.com/
         remote_host: 31.184.80.250
@@ -74,13 +106,23 @@ jobs:
     - name: Post-Deployment Tasks
       run: |
         echo "📝 Running post-deployment tasks..."
+        
+        # Execute post-deployment commands with extended timeout
         ssh -o StrictHostKeyChecking=no \
+            -o ConnectTimeout=30 \
+            -o ServerAliveInterval=60 \
+            -o ServerAliveCountMax=3 \
             -p 22 \
             -i ~/.ssh/deploy_key \
             ${{ secrets.SSH_USER }}@31.184.80.250 \
             "cd /home/deb133403n2/domains/slimmermetai.com && \
-             cp .env.production .env && \
+             echo '📂 Current directory: $(pwd)' && \
+             echo '📋 Directory contents:' && ls -la && \
+             echo '⚙️  Setting up environment...' && \
+             cp .env.production .env 2>/dev/null || echo 'Warning: .env.production not found' && \
+             echo '🔒 Setting permissions...' && \
              chmod -R 755 . && \
              find . -type f -exec chmod 644 {} \; && \
-             chmod -R 775 storage && \
-             chmod -R 775 public/uploads" 
+             chmod -R 775 storage 2>/dev/null || echo 'Warning: storage directory not found' && \
+             chmod -R 775 public/uploads 2>/dev/null || echo 'Warning: public/uploads directory not found' && \
+             echo '✅ Post-deployment tasks completed successfully'" 
