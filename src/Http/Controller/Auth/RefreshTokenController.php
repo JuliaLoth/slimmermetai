@@ -6,6 +6,8 @@ use App\Infrastructure\Http\JsonResponse;
 
 final class RefreshTokenController
 {
+    public function __construct(private AuthService $auth) {}
+
     public function handle(): void
     {
         // Haal bearer token uit Authorization header of cookie
@@ -13,8 +15,7 @@ final class RefreshTokenController
         if (!$token) {
             JsonResponse::send(['success' => false, 'message' => 'Geen refresh token gevonden'], 401);
         }
-        $auth = AuthService::getInstance();
-        $result = $auth->refresh($token);
+        $result = $this->auth->refresh($token);
         if (!$result['success']) {
             JsonResponse::send(['success' => false, 'message' => $result['message']], 401);
         }

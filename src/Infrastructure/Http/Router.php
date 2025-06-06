@@ -31,6 +31,7 @@ class Router
             // ---------- Stripe ----------
             $r->addRoute('POST', '/stripe/checkout', [\App\Http\Controller\StripeController::class, 'createSession']);
             $r->addRoute('GET',  '/stripe/status/{id}', [\App\Http\Controller\StripeController::class, 'status']);
+            $r->addRoute('GET',  '/stripe/config', [\App\Http\Controller\StripeController::class, 'config']);
             $r->addRoute('POST', '/stripe/webhook', [\App\Http\Controller\StripeController::class, 'webhook']);
         });
 

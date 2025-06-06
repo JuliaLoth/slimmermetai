@@ -1,0 +1,26 @@
+/* Progress bars voor statistieken en voortgang */
+
+.progress-container {
+    margin-top: 0.75rem;
+}
+
+.progress-bar {
+    height: 8px;
+    width: 100%;
+    background-color: #f3f4f6;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+/* Kleuren voor verschillende progress-varianten */
+.progress-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+/* Voorbeelden van kleurtoewijzingen (optioneel, kan overschreven worden) */
+.progress-blue   { background: #3f51b5; }
+.progress-green  { background: #00bfa5; }
+.progress-orange { background: #ff9800; }
+.progress-pink   { background: #e91e63; } 

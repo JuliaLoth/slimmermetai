@@ -1,0 +1,781 @@
+﻿/* Reset en basis stijlen */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --text-color: #333;
+    --primary-color: #5852f2;
+    --primary-hover: #4a45d1;
+    --accent-color: #db2777;
+    --gradient-bg: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+    --hero-background: url('../images/hero background def.svg');
+}
+
+/* Glacial Indifference font */
+@font-face {
+    font-family: 'Glacial Indifference';
+    src: url('../fonts/GlacialIndifference-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Glacial Indifference';
+    src: url('../fonts/GlacialIndifference-Bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Basis stijlen */
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9fafc;
+    background-image: url('../images/Website background.svg');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 1150px;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+
+/* Toegankelijkheid */
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    z-index: 999;
+    padding: 1em;
+    background-color: white;
+    color: #5852f2;
+    text-decoration: none;
+}
+
+.skip-link:focus {
+    top: 0;
+    left: 0;
+}
+
+/* Header & navbar styles verplaatst naar resources/css/components/navbar.css */
+
+/* Button styling */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.05rem;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+    overflow: hidden;
+    border: none;
+    cursor: pointer;
+    background-size: 200% auto;
+    font-family: 'Glacial Indifference', sans-serif;
+    letter-spacing: 0.02em;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: 0.5s ease;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn-primary {
+    background-image: linear-gradient(45deg, #5852f2, #8e88ff, #5852f2);
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 4px 15px rgba(88, 82, 242, 0.2);
+}
+
+.btn-primary:hover {
+    background-position: right center;
+    box-shadow: 0 7px 20px rgba(88, 82, 242, 0.4);
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    background-image: linear-gradient(45deg, transparent 50%, #5852f2 50%);
+    background-size: 250% 100%;
+    background-position: left bottom;
+    color: #5852f2;
+    border: 2px solid #5852f2;
+}
+
+.btn-outline:hover {
+    background-position: right bottom;
+    color: white;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Sections */
+.section {
+    padding: 3rem 0;
+    background-color: rgba(255, 255, 255, 0.92);
+    border-radius: 10px;
+    margin-bottom: 3rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.section-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+}
+
+.section-header h2 {
+    font-family: 'Glacial Indifference', sans-serif;
+    font-weight: bold;
+    font-size: 2.2rem;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+}
+
+/* Profiel Sectie */
+.about-profile {
+    display: flex; /* Maak een flex container */
+    align-items: center; /* Centreer items verticaal */
+    gap: 40px; /* Ruimte tussen afbeelding en tekst */
+    flex-wrap: wrap; /* Sta wrapping toe op kleinere schermen */
+    margin-top: 40px; /* Extra ruimte bovenaan */
+}
+
+.profile-image-container {
+    flex-shrink: 0; /* Voorkom dat de container krimpt */
+    width: 250px; /* Mobiele breedte */
+    height: 250px; /* Mobiele hoogte */
+    border-radius: 50%; /* Maak de container rond */
+    overflow: hidden; /* Clip de afbeelding binnen de container */
+    margin: 0 auto 20px auto; /* Centreer en ruimte onder op mobiel */
+    box-shadow: 0 10px 25px rgba(88, 82, 242, 0.1); /* Optionele schaduw */
+    border: 4px solid white; /* Optionele witte rand */
+    position: relative; /* Voeg positie toe voor zekerheid */
+}
+
+.profile-image {
+    display: block;
+    width: 100%; /* Vul de container */
+    height: 100%; /* Vul de container */
+    object-fit: cover; /* Zorg dat de SVG de cirkel vult zonder vervorming */
+    transition: transform 0.4s ease; /* Herstel hover-effect */
+}
+
+.profile-image-container:hover .profile-image {
+    transform: scale(1.05); /* Herstel hover-effect */
+}
+
+.profile-content {
+    flex: 1; /* Laat de tekst de resterende ruimte innemen */
+    min-width: 300px; /* Minimale breedte voordat het wrapt */
+}
+
+.profile-content .lead {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: var(--neutral-700);
+}
+
+.profile-content p {
+    margin-bottom: 15px;
+    line-height: 1.7;
+}
+
+.mission-list {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 20px;
+}
+
+.mission-list li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 10px;
+    line-height: 1.7;
+}
+
+.mission-list li::before {
+    content: '✔'; /* Gebruik een vinkje of ander icoon */
+    position: absolute;
+    left: 0;
+    top: 1px;
+    color: var(--primary-500); /* Gebruik primaire kleur */
+    font-weight: bold;
+}
+
+/* Achtergrond Sectie */
+.background-content p {
+    margin-bottom: 15px;
+    line-height: 1.7;
+}
+
+/* Responsive aanpassingen voor Over Mij */
+@media (min-width: 768px) {
+    .about-profile {
+        flex-wrap: nowrap; /* Voorkom wrapping op grotere schermen */
+        text-align: left; /* Lijn tekst links uit */
+    }
+
+    .profile-image-container {
+        width: 300px; /* Grotere container op desktop */
+        height: 300px;
+        margin: 0; /* Reset marge */
+    }
+}
+
+/* Footer-styling verplaatst naar resources/css/components/footer.css */
+
+/* Card & feature stijlen verplaatst naar resources/css/components/card.css */
+
+/* Testimonials stijlen verplaatst naar resources/css/components/testimonials.css */
+
+/* CTA-stijlen verplaatst naar resources/css/components/cta.css */
+
+/* Hero-with-background stijlen verplaatst naar hero.css */
+
+/* Voeg animatie toe voor cards */
+@keyframes cardHover {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Animaties voor cards bij scrollen */
+.card, .feature-card, .testimonial-card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.card.visible, .feature-card.visible, .testimonial-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Vertraagde animatie voor cards */
+.cards-grid .card:nth-child(1) { transition-delay: 0.1s; }
+.cards-grid .card:nth-child(2) { transition-delay: 0.2s; }
+.cards-grid .card:nth-child(3) { transition-delay: 0.3s; }
+.cards-grid .card:nth-child(4) { transition-delay: 0.4s; }
+.cards-grid .card:nth-child(5) { transition-delay: 0.5s; }
+
+.testimonial-grid .testimonial-card:nth-child(1) { transition-delay: 0.1s; }
+.testimonial-grid .testimonial-card:nth-child(2) { transition-delay: 0.2s; }
+.testimonial-grid .testimonial-card:nth-child(3) { transition-delay: 0.3s; }
+
+/* Logo animatie verfijning */
+.navbar .logo a:hover img {
+    transform: rotate(-5deg) scale(1.1);
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Account button styling */
+.account-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    color: #4b5563;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    background-color: rgba(236, 238, 241, 0.5);
+    font-size: 16px;
+}
+
+.account-btn:hover {
+    background-color: rgba(236, 238, 241, 0.8);
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.auth-buttons {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+/* Cards standaard zichtbaar maken */
+.card, .feature-card {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.card.visible, .feature-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hero content direct zichtbaar maken */
+.hero-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Fallback voor animaties als JS niet beschikbaar is */
+.no-js .card, 
+.no-js .feature-card, 
+.no-js .testimonial-card, 
+.no-js .hero-content {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+/* Fix voor de substack iframe in de cta-container */
+.cta-container iframe {
+    max-width: 100%;
+    margin: 0 auto;
+    display: block;
+    z-index: 10;
+    position: relative;
+}
+
+/* Footer bottom styling */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e5e7eb;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #f3f4f6;
+    color: #4b5563;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* Tags styling */
+.tags-container {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.tags-container .tag {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    background-color: rgba(88, 82, 242, 0.1);
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.tag.premium-tag {
+    background-color: rgba(219, 39, 119, 0.1);
+    color: #db2777;
+}
+
+.tag.online-tag {
+    background-color: rgba(88, 82, 242, 0.1);
+    color: #5852f2;
+}
+
+.tag.elearning-tag {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+}
+
+/* Tool pricing styling */
+.tool-pricing {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0;
+}
+
+.price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.price-period {
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+/* Notification & tooltip stijlen verplaatst naar resources/css/components/notification.css */
+
+/* Hero with background styling update */
+/* .hero-with-background {
+    padding: 10rem 0 6rem;
+    text-align: center;
+    background-color: transparent;
+    position: relative;
+    overflow: hidden;
+    margin-top: 4rem;
+    background-image: url('../images/herobanner.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+} */
+
+/* Fallback wanneer de herobanner niet beschikbaar is */
+/* .hero-with-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(88, 82, 242, 0.1) 0%, rgba(219, 39, 119, 0.1) 100%);
+    z-index: 0;
+} */
+
+/* Page-hero stijlen verplaatst naar hero.css */
+
+/* Cart-stijlen verplaatst naar resources/css/components/cart.css */
+
+/* Uitgegrijsde kaarten voor 'In de maak' cursussen */
+.card.coming-soon {
+    position: relative;
+}
+
+.coming-soon-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.card.coming-soon:hover .coming-soon-overlay {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.coming-soon-text {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 30px;
+    font-weight: 600;
+    transform: rotate(-5deg);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.card.coming-soon:hover .coming-soon-text {
+    transform: rotate(0) scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Styling voor nieuwsbrief inschrijving zonder iframe */
+.newsletter-signup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 620px;
+    width: 100%;
+}
+
+.newsletter-signup .btn {
+    width: auto;
+    min-width: 250px;
+}
+
+.newsletter-signup iframe {
+    max-width: 100%;
+    margin: 0 auto;
+    display: block;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+}
+
+.newsletter-note {
+    color: #6b7280;
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Styling voor fallback content op nieuwspagina */
+.fallback-content {
+    text-align: center;
+    padding: 30px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    margin: 20px 0;
+    border: 1px solid #eee;
+}
+
+.fallback-content a {
+    font-weight: 600;
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+/* Custom Substack Feed styling */
+.custom-substack-feed {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.loading-spinner {
+    text-align: center;
+    padding: 40px;
+    color: #6b7280;
+    font-style: italic;
+}
+
+.custom-post-item {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-post-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.post-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    font-family: 'Glacial Indifference', sans-serif;
+}
+
+.post-title a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.post-title a:hover {
+    color: var(--primary-color);
+}
+
+.post-meta {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+.post-date {
+    position: relative;
+    padding-left: 20px;
+}
+
+.post-date::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px;
+    height: 14px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' ry='2'%3E%3C/rect%3E%3Cline x1='16' y1='2' x2='16' y2='6'%3E%3C/line%3E%3Cline x1='8' y1='2' x2='8' y2='6'%3E%3C/line%3E%3Cline x1='3' y1='10' x2='21' y2='10'%3E%3C/line%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.post-excerpt {
+    color: #4b5563;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.post-read-more {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: rgba(88, 82, 242, 0.1);
+    color: var(--primary-color);
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    font-family: 'Glacial Indifference', sans-serif;
+}
+
+.post-read-more:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Verberg de standaard Substack embed als onze custom feed werkt */
+.custom-substack-feed:not(:empty) + #substack-feed-embed {
+    display: none;
+}
+
+.newsletter-form {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+    width: 100%;
+    max-width: 100%;
+}
+
+.newsletter-form .newsletter-signup {
+    max-width: 620px;
+    margin: 0 auto;
+}
+
+.newsletter .section-header {
+    max-width: 700px;
+    margin: 0 auto 1rem;
+}
+
+/* Styling voor cursuscards */
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* Speciale hover-effect voor cursussen */
+.courses-grid .card:hover .tags-container .tag {
+    background-color: rgba(88, 82, 242, 0.2);
+    transform: translateY(-2px);
+}
+
+.tags-container {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.tag {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    background-color: rgba(88, 82, 242, 0.1);
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+/* Coming soon overlay */
+.card.coming-soon {
+    position: relative;
+}
+
+.coming-soon-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.card.coming-soon:hover .coming-soon-overlay {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.coming-soon-text {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 30px;
+    font-weight: 600;
+    transform: rotate(-5deg);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.card.coming-soon:hover .coming-soon-text {
+    transform: rotate(0) scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Custom Footer Elements */
+.footer-subscription {
+    max-width: 500px;
+    margin: 0 auto 1rem;
+}

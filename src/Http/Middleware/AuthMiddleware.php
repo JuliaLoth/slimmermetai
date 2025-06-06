@@ -5,10 +5,12 @@ use App\Application\Service\AuthService;
 
 class AuthMiddleware
 {
+    public function __construct(private AuthService $auth) {}
+
     public function handle(callable $next)
     {
         $token = $this->getBearerToken();
-        $payload = $token ? AuthService::getInstance()->verifyToken($token) : null;
+        $payload = $token ? $this->auth->verifyToken($token) : null;
         if (!$payload) {
             http_response_code(401);
             echo json_encode(['error' => 'Unauthorized']);

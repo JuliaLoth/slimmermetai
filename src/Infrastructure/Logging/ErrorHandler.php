@@ -5,14 +5,23 @@ use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 use Monolog\Handler\SlackWebhookHandler;
 use Monolog\Formatter\LineFormatter;
+use function container;
+use App\Domain\Logging\ErrorLoggerInterface;
 
-class ErrorHandler {
+class ErrorHandler implements ErrorLoggerInterface {
     private static ?ErrorHandler $instance=null;
     private string $logPath;
     private ?Logger $logger=null;
     private string $requestId;
 
-    private function __construct(){
+    /**
+     * Legacy helper die een instantie uit de container haalt.
+     */
+    public static function getInstance(): self {
+        return container()->get(self::class);
+    }
+
+    public function __construct(){
         $this->logPath = defined('SITE_ROOT')?SITE_ROOT.'/logs/':dirname(dirname(dirname(__DIR__))).'/logs/';
         if(!is_dir($this->logPath)) mkdir($this->logPath,0755,true);
         $this->requestId=bin2hex(random_bytes(8));
@@ -20,15 +29,22 @@ class ErrorHandler {
         $this->initLogger();
     }
 
-    public static function getInstance(): ErrorHandler {
-        return self::$instance??=new ErrorHandler();
+    public function logError(string $m, array $c = [], string $s = 'ERROR'): void
+    {
+        $this->log($s, $m, $c);
     }
 
-    public function logError($m,$c=[],$s='ERROR'){$this->log($s,$m,$c);}
-    public function logWarning($m,$c=[]){$this->log('WARNING',$m,$c);}
-    public function logInfo($m,$c=[]){$this->log('INFO',$m,$c);}
+    public function logWarning(string $m, array $c = []): void
+    {
+        $this->log('WARNING', $m, $c);
+    }
 
-    private function log($sev,$m,$ctx=[]){
+    public function logInfo(string $m, array $c = []): void
+    {
+        $this->log('INFO', $m, $c);
+    }
+
+    private function log(string $sev, string $m, array $ctx = []): void {
         $ip=$_SERVER['REMOTE_ADDR']??'CLI';
         $url=$_SERVER['REQUEST_URI']??'N/A';
         $ctx=array_merge(['ip'=>$ip,'url'=>$url,'request_id'=>$this->requestId],$ctx);
@@ -41,7 +57,7 @@ class ErrorHandler {
         }
     }
 
-    private function initLogger(){
+    private function initLogger(): void {
         $this->logger=new Logger('app');
         $file=$this->logPath.'app-'.date('Y-m-d').'.log';
         $fh=new StreamHandler($file,Logger::DEBUG);
@@ -54,7 +70,7 @@ class ErrorHandler {
         }
     }
 
-    private function mapSeverityToLevel($s){
+    private function mapSeverityToLevel(string $s): int {
         return match(strtoupper($s)){
             'DEBUG'=>Logger::DEBUG,
             'INFO'=>Logger::INFO,
@@ -65,25 +81,25 @@ class ErrorHandler {
         };
     }
 
-    public function registerGlobalHandlers(){
+    public function registerGlobalHandlers(): void {
         set_error_handler([$this,'handleError']);
         set_exception_handler([$this,'handleException']);
         register_shutdown_function([$this,'handleShutdown']);
     }
 
-    public function handleError($no,$str,$file,$line){
+    public function handleError(int $no, string $str, string $file, int $line): bool {
         $sev=$this->getErrorSeverity($no);
         $this->logError($str,['file'=>$file,'line'=>$line,'type'=>$sev]);
         if(in_array($no,[E_ERROR,E_PARSE,E_CORE_ERROR,E_COMPILE_ERROR,E_USER_ERROR])) $this->showErrorPage();
         return true;
     }
 
-    public function handleException($ex){
+    public function handleException(\Throwable $ex): void {
         $this->logError($ex->getMessage(),['file'=>$ex->getFile(),'line'=>$ex->getLine(),'trace'=>$ex->getTraceAsString()]);
         $this->respondError($ex->getMessage());
     }
 
-    public function handleShutdown(){
+    public function handleShutdown(): void {
         $err=error_get_last();
         if($err&&in_array($err['type'],[E_ERROR,E_PARSE,E_CORE_ERROR,E_COMPILE_ERROR])){
             $this->logError($err['message'],['file'=>$err['file'],'line'=>$err['line'],'type'=>$this->getErrorSeverity($err['type'])]);
@@ -91,7 +107,7 @@ class ErrorHandler {
         }
     }
 
-    private function getErrorSeverity($e){
+    private function getErrorSeverity(int $e): string {
         return match($e){
             E_ERROR,E_CORE_ERROR,E_COMPILE_ERROR,E_USER_ERROR=>'FATAL',
             E_WARNING,E_CORE_WARNING,E_COMPILE_WARNING,E_USER_WARNING=>'WARNING',
@@ -102,11 +118,11 @@ class ErrorHandler {
         };
     }
 
-    private function showErrorPage(){
+    private function showErrorPage(): void {
         $this->respondError();
     }
 
-    private function respondError($msg='Interne serverfout'){
+    private function respondError(string $msg='Interne serverfout'): void {
         if($this->isApiRequest()){
             if(!headers_sent()) header('Content-Type: application/json');
             echo json_encode(['error'=>true,'message'=>$msg,'request_id'=>$this->requestId]);
@@ -123,7 +139,7 @@ class ErrorHandler {
         }
     }
 
-    private function isApiRequest(){
+    private function isApiRequest(): bool {
         $uri=$_SERVER['REQUEST_URI']??'';
         if(strpos($uri,'/api/')===0) return true;
         $acc=$_SERVER['HTTP_ACCEPT']??'';

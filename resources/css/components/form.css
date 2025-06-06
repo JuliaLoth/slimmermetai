@@ -1,0 +1,41 @@
+/* Contactformulier component */
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+}
+
+.contact-form label {
+    font-weight: 600;
+    color: #374151;
+}
+
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+    padding: 0.75rem 1rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.2s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus,
+.contact-form select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(88, 82, 242, 0.15);
+}
+
+.contact-form .btn-submit {
+    align-self: flex-start;
+    padding: 0.8rem 1.75rem;
+} 

@@ -1,7 +1,8 @@
 <?php
 namespace App\Infrastructure\Http;
 
-use App\Infrastructure\Logging\ErrorHandler;
+use App\Domain\Logging\ErrorLoggerInterface;
+use function container;
 
 /**
  * ApiResponse
@@ -50,7 +51,7 @@ final class ApiResponse
 
     public static function serverError(string $message='Interne serverfout',mixed $error=null): void
     {
-        ErrorHandler::getInstance()->logError($message,['error'=>$error]);
+        container()->get(ErrorLoggerInterface::class)->logError($message,['error'=>$error]);
         $payload=['success'=>false,'message'=>$message];
         if(getenv('APP_ENV')==='local'&&$error) $payload['details']=$error;
         self::send($payload,500);

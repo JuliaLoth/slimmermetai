@@ -141,10 +141,10 @@ class AccountDropdown extends HTMLElement {
                 Account
             </button>
             <div class="dropdown-menu" aria-hidden="true">
-                <a href="dashboard.php">Dashboard</a>
-                <a href="profiel.php">Mijn profiel</a>
-                <a href="mijn-tools.php">Mijn tools</a>
-                <a href="mijn-cursussen.php">Mijn cursussen</a>
+                <a href="/dashboard">Dashboard</a>
+                <a href="/profiel">Mijn profiel</a>
+                <a href="/mijn-tools">Mijn tools</a>
+                <a href="/mijn-cursussen">Mijn cursussen</a>
                 <a href="#" class="logout-link" id="logout-btn">Uitloggen</a>
             </div>
         </div>
@@ -196,7 +196,7 @@ class AccountDropdown extends HTMLElement {
       // Simuleer uitloggen en navigeer naar login pagina
       localStorage.removeItem('token');
       localStorage.removeItem('user');
-      window.location.href = 'login.php';
+      window.location.href = '/login';
     });
     
     // Update huidige pagina markering
@@ -204,7 +204,7 @@ class AccountDropdown extends HTMLElement {
   }
   
   updateCurrentPageHighlight() {
-    const currentPath = window.location.pathname.split('/').pop() || 'index.php';
+    const currentPath = window.location.pathname.split('/').pop() || '';
     const links = this.shadowRoot.querySelectorAll('.dropdown-menu a');
     
     links.forEach(link => {

@@ -9,11 +9,15 @@ final class JwtService
     private int $expiration;
     private string $algo = 'HS256';
 
-    public function __construct(?string $secret = null, ?int $expiration = null)
+    /**
+     * JwtService constructor.
+     * De configuratie wordt via Dependency Injection meegegeven zodat er geen
+     * statische aanroepen meer nodig zijn.
+     */
+    public function __construct(Config $config, ?string $secret = null, ?int $expiration = null)
     {
-        $cfg = Config::getInstance();
-        $this->secret = $secret ?? $cfg->get('jwt_secret', 'change_me');
-        $this->expiration = $expiration ?? $cfg->get('jwt_expiration', 3600);
+        $this->secret     = $secret ?? $config->get('jwt_secret', 'change_me');
+        $this->expiration = $expiration ?? $config->get('jwt_expiration', 3600);
     }
 
     public function generate(array $payload, ?int $exp = null): string

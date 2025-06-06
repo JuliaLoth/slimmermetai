@@ -1,6 +1,8 @@
 <?php
 namespace App\Infrastructure\Security;
 
+use function container;
+
 class CsrfProtection {
     private static ?CsrfProtection $instance=null;
     private string $tokenName='csrf_token';
@@ -9,8 +11,12 @@ class CsrfProtection {
     private int $tokenLength=32;
     private int $tokenLifetime=7200;
 
-    private function __construct(){ if(session_status()===PHP_SESSION_NONE) session_start(); }
-    public static function getInstance(): CsrfProtection {return self::$instance??=new CsrfProtection();}
+    /**
+     * Legacy helper: haalt instantie uit DI-container.
+     */
+    public static function getInstance(): self { return container()->get(self::class); }
+
+    public function __construct(){ if(session_status()===PHP_SESSION_NONE) session_start(); }
     public function generateToken(): string { $token=bin2hex(random_bytes($this->tokenLength/2)); $_SESSION[$this->tokenName]=['token'=>$token,'expires'=>time()+$this->tokenLifetime]; $this->setTokenCookie($token); return $token; }
     public function getToken(bool $refresh=false): string { if($refresh||!isset($_SESSION[$this->tokenName])||$_SESSION[$this->tokenName]['expires']<time()) return $this->generateToken(); return $_SESSION[$this->tokenName]['token']; }
     public function generateTokenField(bool $refresh=false): string {return '<input type="hidden" name="'.$this->tokenName.'" value="'.$this->getToken($refresh).'">';}

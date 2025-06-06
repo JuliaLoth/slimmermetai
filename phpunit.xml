@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.6/phpunit.xsd"
+         bootstrap="tests/bootstrap.php"
+         colors="true"
+         verbose="true"
+         executionOrder="depends,defects"
+         testdox="true"
+         stopOnFailure="false"
+         cacheResult="false">
+
+    <testsuites>
+        <testsuite name="Unit Tests">
+            <directory>tests/Unit</directory>
+        </testsuite>
+        <testsuite name="Integration Tests">
+            <directory>tests/Integration</directory>
+        </testsuite>
+        <testsuite name="Feature Tests">
+            <directory>tests/Feature</directory>
+        </testsuite>
+    </testsuites>
+
+    <coverage processUncoveredFiles="true">
+        <include>
+            <directory suffix=".php">src</directory>
+        </include>
+        <exclude>
+            <directory>vendor</directory>
+            <directory>tests</directory>
+            <directory>includes</directory>
+        </exclude>
+        <report>
+            <clover outputFile="coverage/clover.xml"/>
+            <html outputDirectory="coverage/html"/>
+            <text outputFile="coverage/coverage.txt"/>
+        </report>
+    </coverage>
+
+    <php>
+        <env name="APP_ENV" value="testing"/>
+        <env name="SKIP_DB" value="true"/>
+        <env name="DB_HOST" value="localhost"/>
+        <env name="DB_NAME" value="slimmermetai_test"/>
+        <env name="DB_USER" value="test"/>
+        <env name="DB_PASS" value="test"/>
+        <env name="JWT_SECRET" value="test-secret-key-for-testing-purposes-only"/>
+        <env name="STRIPE_SECRET_KEY" value="sk_test_fake_key_for_testing"/>
+        <env name="STRIPE_PUBLIC_KEY" value="pk_test_fake_key_for_testing"/>
+    </php>
+
+    <logging>
+        <junit outputFile="coverage/junit.xml"/>
+    </logging>
+</phpunit> 

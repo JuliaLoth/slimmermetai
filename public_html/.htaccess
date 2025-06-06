@@ -62,9 +62,9 @@ Options -Indexes
     RewriteRule ^(.+)\.php$ /$1 [R=301,L]
 
     # Interne rewrite voor PHP bestanden
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_FILENAME}.php -f
-    RewriteRule ^(.+?)/?$ $1.php [L]
+    # RewriteCond %{REQUEST_FILENAME} !-d
+    # RewriteCond %{REQUEST_FILENAME}.php -f
+    # RewriteRule ^(.+?)/?$ $1.php [L]  # uitgeschakeld na migratie
     
     # Stuur index naar hoofdmap
     RewriteRule ^index$ / [R=301,L]

@@ -1,0 +1,8 @@
+[2025-06-03 16:30:38] Asset::css called with: main
+[2025-06-03 16:30:38] Available CSS mappings: ["main"]
+[2025-06-03 16:30:38] Found CSS file: main-ByGz9PwU.css
+[2025-06-03 16:30:38] Final CSS URL: /assets/js/main-ByGz9PwU.css
+[2025-06-03 16:30:38] Asset::url called with: main
+[2025-06-03 16:30:38] Available name mappings: ["auth","main","user-stats","stripe-payment"]
+[2025-06-03 16:30:38] Found via name mapping: bundle-main.DyCt6E3B.js
+[2025-06-03 16:30:38] Final URL: /assets/js/bundle-main.DyCt6E3B.js

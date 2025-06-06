@@ -1,0 +1,55 @@
+parameters:
+    level: 6
+    paths:
+        - src
+        - tests
+    
+    # Bootstrap file voor analysis
+    bootstrapFiles:
+        - bootstrap.php
+    
+    # Exclusions
+    excludePaths:
+        - vendor
+        - includes/legacy
+        - public_html/includes
+    
+    # Ignored error patterns
+    ignoreErrors:
+        # Legacy code compatibiliteit
+        - '#Function (mysql_|mysqli_) not found#'
+        - '#Call to undefined function (container|database|db)#'
+        
+        # PSR-15 patterns
+        - '#Parameter .* of method .* has no typehint specified#'
+        
+        # Development debugging
+        - '#Function (var_dump|print_r|error_log) should not be used#'
+    
+    # Check for missing typehints
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false
+    
+    # Report unused private properties/methods
+    reportUnmatchedIgnoredErrors: false
+    
+    # Custom error formatters
+    errorFormat: table
+    
+    # Parallel processing
+    parallel:
+        jobSize: 20
+        maximumNumberOfProcesses: 32
+    
+    # Memory limit
+    memoryLimitFile: .phpstan-memory-limit
+    
+    # Include rules
+    includes:
+        # Core PHPStan rules
+        - phar://phpstan.phar/conf/bleedingEdge.neon
+    
+    # Symfony compatibility (voor Filesystem/Finder)
+    symfony:
+        constant_hassers: false
+        container_xml_path: null 

@@ -28,6 +28,14 @@ Options -Indexes
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
+    # ---------- Legacy .php redirects ----------
+    # Redirect alle verzoeken naar oude *.php pagina's naar extensieloze variant.
+    # Uitzondering voor index.php (front controller) en als fysiek bestand bestaat.
+    RewriteCond %{REQUEST_URI} !^/index\.php$
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.+)\.php$ /$1 [L,R=301]
+
     # Voorkom directe toegang tot includes map
     RewriteRule ^includes/ - [F,L]
 

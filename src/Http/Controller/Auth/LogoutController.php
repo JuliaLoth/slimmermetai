@@ -6,6 +6,8 @@ use App\Infrastructure\Http\JsonResponse;
 
 final class LogoutController
 {
+    public function __construct(private AuthService $auth) {}
+
     public function handle(): void
     {
         // Optionally invalidate refresh token cookie
@@ -18,7 +20,7 @@ final class LogoutController
                 'samesite' => 'Strict'
             ]);
         }
-        AuthService::getInstance()->logout();
+        $this->auth->logout();
         JsonResponse::send(['success' => true]);
     }
 } 

@@ -2,9 +2,12 @@
 namespace App\Application\Service;
 
 use App\Infrastructure\Config\Config;
-use App\Infrastructure\Logging\ErrorHandler;
+use App\Domain\Logging\ErrorLoggerInterface;
+use App\Domain\Repository\StripeSessionRepositoryInterface;
 use Stripe\Stripe;
 use Stripe\Checkout\Session as StripeSession;
+
+use function container;
 
 /**
  * StripeService
@@ -13,35 +16,37 @@ use Stripe\Checkout\Session as StripeSession;
  */
 final class StripeService
 {
-    private static ?StripeService $instance = null;
+    /** legacy helper */
+    public static function getInstance(): self
+    {
+        return container()->get(self::class);
+    }
 
     private string $secretKey;
     private string $webhookSecret;
+    private Config $config;
 
-    private ErrorHandler $logger;
-    private \App\Infrastructure\Repository\StripeSessionRepository $repository;
-
-    private function __construct()
-    {
-        $cfg = Config::getInstance();
-        $this->secretKey = $cfg->get('stripe_secret_key', '');
-        $this->webhookSecret = $cfg->get('stripe_webhook_secret', '');
-        $this->logger = ErrorHandler::getInstance();
+    public function __construct(
+        Config $config,
+        private ErrorLoggerInterface $logger,
+        private StripeSessionRepositoryInterface $repository,
+    ) {
+        $this->config = $config;
+        $this->secretKey = $config->get('stripe_secret_key', '');
+        $this->webhookSecret = $config->get('stripe_webhook_secret', '');
 
         if (!class_exists(Stripe::class)) {
             $this->logger->logError('Stripe SDK niet geïnstalleerd of niet autoloadable.');
             throw new \RuntimeException('Stripe SDK ontbreekt');
         }
-        // Initialiseer Stripe
-        Stripe::setApiKey($this->secretKey);
 
-        // voeg repository
-        $this->repository = new \App\Infrastructure\Repository\StripeSessionRepository(\App\Infrastructure\Database\Database::getInstance());
-    }
-
-    public static function getInstance(): self
-    {
-        return self::$instance ??= new self();
+        // Alleen Stripe initialiseren als we een geldige key hebben
+        if ($this->secretKey && $this->isValidStripeKey($this->secretKey)) {
+            Stripe::setApiKey($this->secretKey);
+            $this->logger->logInfo('Stripe API geïnitialiseerd met geldige key');
+        } else {
+            $this->logger->logInfo('Geen geldige Stripe API key - using mock mode for development');
+        }
     }
 
     /**
@@ -55,7 +60,51 @@ final class StripeService
      */
     public function createCheckoutSession(array $lineItems, string $successUrl, string $cancelUrl, array $options = []): array
     {
+        // Development mode detectie: alleen voor lokale development
+        $isDevelopment = (getenv('APP_ENV') === 'local' || getenv('APP_ENV') === 'development') && 
+                        !$this->isValidStripeKey($this->secretKey);
+        
+        if ($isDevelopment) {
+            $this->logger->logInfo('Using mock Stripe session for development (no valid API key or local env)');
+            
+            // Bereken totaal voor de mock response
+            $totalAmount = 0;
+            foreach ($lineItems as $item) {
+                $unitAmount = $item['price_data']['unit_amount'] ?? 2999;
+                $quantity = $item['quantity'] ?? 1;
+                $totalAmount += $unitAmount * $quantity;
+            }
+            
+            $mockSessionId = 'cs_test_mock_' . uniqid();
+            $productName = $lineItems[0]['price_data']['product_data']['name'] ?? 'SlimmerMetAI Product';
+            
+            $this->logger->logInfo("Mock checkout session created", [
+                'session_id' => $mockSessionId,
+                'total_amount' => $totalAmount,
+                'product' => $productName,
+                'line_items_count' => count($lineItems),
+                'mock_mode' => true
+            ]);
+            
+            // Return mock success URL met parameters om succesvol te simuleren
+            return [
+                'id' => $mockSessionId,
+                'url' => $successUrl . '?mock=true&session_id=' . $mockSessionId . '&total=' . number_format($totalAmount / 100, 2)
+            ];
+        }
+
+        // Echte Stripe API calls voor productie
+        if (!$this->isValidStripeKey($this->secretKey)) {
+            $this->logger->logError('Geen geldige Stripe API key geconfigureerd voor productie');
+            throw new \RuntimeException('Stripe API key ontbreekt of is ongeldig');
+        }
+
         try {
+            $this->logger->logInfo('Creating real Stripe checkout session', [
+                'line_items_count' => count($lineItems),
+                'environment' => getenv('APP_ENV') ?: 'production'
+            ]);
+            
             $session = StripeSession::create([
                 'mode' => $options['mode'] ?? 'payment',
                 'line_items' => $lineItems,
@@ -67,13 +116,27 @@ final class StripeService
                 'metadata' => $options['metadata'] ?? null,
             ]);
 
-            // TODO: opslaan in repository
+            // Opslaan in repository
             $this->repository->save(\App\Domain\Entity\StripeSession::fromStripeArray($session->toArray()));
             return ['id' => $session->id, 'url' => $session->url];
         } catch (\Throwable $e) {
-            $this->logger->logError('Stripe sessie creatie mislukt', ['error' => $e->getMessage()]);
+            $this->logger->logError('Stripe sessie creatie mislukt', [
+                'error' => $e->getMessage(),
+                'api_key_format' => $this->isValidStripeKey($this->secretKey) ? 'valid_format' : 'invalid_format',
+                'environment' => getenv('APP_ENV') ?: 'production'
+            ]);
+            
+            // In productie geen fallback naar mock mode
             throw $e;
         }
+    }
+
+    /**
+     * Check if the provided Stripe key is valid format
+     */
+    private function isValidStripeKey(string $key): bool
+    {
+        return preg_match('/^sk_(test|live)_[a-zA-Z0-9]{24,}$/', $key) === 1;
     }
 
     /**
@@ -129,11 +192,46 @@ final class StripeService
                 $session = $event->data->object; // \Stripe\Checkout\Session
                 $this->repository->updateStatus($session->id, $session->payment_status, $session->status);
                 break;
+            case 'payment_intent.succeeded':
+            case 'payment_intent.payment_failed':
+                // Voor deze events is er geen directe Checkout Session referentie, maar we loggen ze wel.
+                $this->logger->logInfo('PaymentIntent webhook ontvangen', [
+                    'event' => $event->type,
+                    'intent_id' => $event->data->object->id ?? null,
+                    'status' => $event->data->object->status ?? null,
+                ]);
+                break;
             default:
                 // voor nu niets doen
                 break;
         }
 
         return $event->type;
+    }
+
+    /**
+     * Maak een Payment Intent aan (legacy ondersteuning voor /api/create-payment-intent).
+     *
+     * @param int|float $amount      Bedrag in euro's (wordt naar centen omgezet)
+     * @param string $description    Beschrijving van de betaling
+     * @param array<string,mixed> $metadata  Extra metadata
+     * @param string $currency       Valuta (default eur)
+     * @return \Stripe\PaymentIntent
+     */
+    public function createPaymentIntent(int|float $amount, string $description = '', array $metadata = [], string $currency = 'eur'): \Stripe\PaymentIntent
+    {
+        try {
+            /** @var \Stripe\PaymentIntent $intent */
+            $intent = \Stripe\PaymentIntent::create([
+                'amount' => (int) round($amount * 100), // euro naar centen
+                'currency' => strtolower($currency),
+                'description' => $description ?: 'Betaling aan SlimmerMetAI',
+                'metadata' => $metadata,
+            ]);
+            return $intent;
+        } catch (\Throwable $e) {
+            $this->logger->logError('Stripe payment intent creatie mislukt', ['error' => $e->getMessage()]);
+            throw $e;
+        }
     }
 } 

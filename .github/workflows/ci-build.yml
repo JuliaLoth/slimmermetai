@@ -1,0 +1,57 @@
+name: Build & Assets
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: Cache node modules (fallback)
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build front-end assets
+        run: npm run build --if-present
+
+      - name: Upload build artefacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: vite-build
+          path: |
+            public_html/assets/**
+            !public_html/assets/js/.vite/cache/**
+
+#  --- Deployment (optioneel) ---
+#  uncomment en configureer wanneer je een hostingplatform toevoegt
+#  deploy:
+#    needs: build
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Download artefacts
+#        uses: actions/download-artifact@v3
+#        with:
+#          name: vite-build
+#          path: public_html/assets/js
+#      - name: Deploy to server
+#        run: |
+#          echo "Deploy stap hier via rsync/ftp/ssh of specifieke hosting-action" 

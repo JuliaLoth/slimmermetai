@@ -3,6 +3,7 @@
 namespace App\Http\Controller;
 
 use App\Application\Service\UserService;
+use App\Http\Response\ApiResponse;
 
 class UserController
 {
@@ -12,7 +13,6 @@ class UserController
     {
         $data = json_decode(file_get_contents('php://input'), true);
         $dto = $this->service->register($data['email'] ?? '', $data['password'] ?? '');
-        header('Content-Type: application/json');
-        echo json_encode($dto);
+        ApiResponse::success($dto, 'Gebruiker geregistreerd', 201);
     }
 } 

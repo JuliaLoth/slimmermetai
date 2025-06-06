@@ -10,16 +10,7 @@ class View
      */
     public static function render(string $template, array $data = [], ?string $layout = 'layout/main'): void
     {
-        // Capture hoofdtemplate
-        $content = self::capture($template, $data);
-
-        if ($layout) {
-            // Plaats content in $data en render layout
-            $data['content'] = $content;
-            self::printTemplate($layout, $data);
-        } else {
-            echo $content;
-        }
+        echo self::renderToString($template, $data, $layout);
     }
 
     /**
@@ -30,6 +21,20 @@ class View
         ob_start();
         self::printTemplate($template, $data);
         return ob_get_clean();
+    }
+
+    public static function renderToString(string $template, array $data = [], ?string $layout = 'layout/main'): string
+    {
+        // Capture hoofdtemplate
+        $content = self::capture($template, $data);
+
+        if ($layout) {
+            $data['content'] = $content;
+            ob_start();
+            self::printTemplate($layout, $data);
+            return ob_get_clean();
+        }
+        return $content;
     }
 
     private static function printTemplate(string $template, array $data): void

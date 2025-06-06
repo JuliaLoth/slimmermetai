@@ -1,0 +1,44 @@
+# SlimmerMetAI Productie Configuratie
+# Kopieer deze inhoud naar .env en vul de juiste waarden in
+
+# Environment
+APP_ENV=production
+APP_DEBUG=false
+
+# Database configuratie
+DB_HOST=localhost
+DB_NAME=slimmermetai_production
+DB_USERNAME=slimmermetai_user
+DB_PASSWORD=JOUW_STERKE_WACHTWOORD_HIER
+
+# Stripe configuratie (PRODUCTIE KEYS)
+STRIPE_PUBLISHABLE_KEY=pk_live_JOUW_LIVE_PUBLISHABLE_KEY_HIER
+STRIPE_SECRET_KEY=sk_live_JOUW_LIVE_SECRET_KEY_HIER
+STRIPE_WEBHOOK_SECRET=whsec_JOUW_WEBHOOK_SECRET_HIER
+
+# Google OAuth (PRODUCTIE DOMEIN)
+GOOGLE_CLIENT_ID=JOUW_GOOGLE_CLIENT_ID_HIER
+GOOGLE_CLIENT_SECRET=JOUW_GOOGLE_CLIENT_SECRET_HIER
+
+# Site configuratie
+SITE_URL=https://jouwdomein.nl
+SITE_NAME="Slimmer met AI"
+
+# JWT configuratie
+JWT_SECRET=JOUW_SUPER_STERKE_JWT_SECRET_HIER_MIN_32_KARAKTERS
+JWT_EXPIRATION=86400
+
+# Mail configuratie
+MAIL_HOST=smtp.jouwprovider.nl
+MAIL_PORT=587
+MAIL_USERNAME=noreply@jouwdomein.nl
+MAIL_PASSWORD=JOUW_MAIL_WACHTWOORD
+MAIL_FROM_ADDRESS=noreply@jouwdomein.nl
+MAIL_FROM_NAME="Slimmer met AI"
+
+# Security
+BCRYPT_COST=12
+SESSION_LIFETIME=0
+
+# Logging
+LOG_LEVEL=warning 

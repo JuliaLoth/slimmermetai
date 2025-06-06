@@ -5,30 +5,16 @@ use App\Infrastructure\Security\JwtService;
 use App\Domain\Repository\UserRepositoryInterface;
 use App\Domain\Entity\User;
 use App\Domain\ValueObject\Email;
-use App\Infrastructure\Database\Database;
-use App\Infrastructure\Logging\ErrorHandler;
+use App\Domain\Logging\ErrorLoggerInterface;
 
 final class AuthService
 {
-    private static ?AuthService $instance = null;
-
-    public static function getInstance(): AuthService
-    {
-        return self::$instance ??= new AuthService();
-    }
-
-    private UserRepositoryInterface $users;
-    private PasswordHasher $hasher;
-    private JwtService $jwt;
-    private ErrorHandler $logger;
-
-    private function __construct()
-    {
-        $this->users = new \App\Infrastructure\Repository\UserRepository(Database::getInstance());
-        $this->hasher = new PasswordHasher((int)(getenv('BCRYPT_COST') ?: 12));
-        $this->jwt = new JwtService();
-        $this->logger = ErrorHandler::getInstance();
-    }
+    public function __construct(
+        private UserRepositoryInterface $users,
+        private PasswordHasher $hasher,
+        private JwtService $jwt,
+        private ErrorLoggerInterface $logger
+    ) {}
 
     /**
      * Login met e-mail en wachtwoord

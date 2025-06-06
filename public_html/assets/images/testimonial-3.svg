@@ -1,0 +1,11 @@
+<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+    <!-- Achtergrond cirkel -->
+    <circle cx="30" cy="30" r="30" fill="#5852f2" opacity="0.1"/>
+    
+    <!-- Gestileerd persoon silhouet - man -->
+    <circle cx="30" cy="22" r="12" fill="#5852f2" opacity="0.7"/>
+    <path d="M12,60 C12,42 48,42 48,60" fill="#5852f2" opacity="0.7"/>
+    
+    <!-- Initialen -->
+    <text x="30" y="26" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" text-anchor="middle">BH</text>
+</svg> 

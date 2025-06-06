@@ -34,10 +34,8 @@ class ComponentsLoader {
       'Button.js',      // Basic UI component
       'Card.js',        // Card component - gebruikt door veel pagina's
       'Footer.js',      // Footer component 
-      'Navbar.js',      // Navbar component - afhankelijk van andere componenten
       'UserStats.js',   // UserStats component - statistieken voor gebruikers
       'ShoppingCart.js', // ShoppingCart component - winkelwagen functionaliteit (Wordt nu direct geladen)
-      'AccountNavbar.js', // AccountNavbar component - vereenvoudigde navbar voor niet-ingelogde gebruikers
       'Testimonials.js',  // Testimonials component - voor gebruikerservaringen
       'Slider.js',
       // Nieuwe Auth componenten

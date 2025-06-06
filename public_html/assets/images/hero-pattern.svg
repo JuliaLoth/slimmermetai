@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1440 900">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5852f2" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#db2777" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="grad2" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#5852f2" stop-opacity="0.03"/>
+      <stop offset="100%" stop-color="#db2777" stop-opacity="0.03"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="white"/>
+  
+  <!-- Achtergrond vlakken -->
+  <rect width="100%" height="100%" fill="url(#grad1)"/>
+
+  <!-- Grote cirkels -->
+  <circle cx="100" cy="100" r="200" fill="url(#grad2)"/>
+  <circle cx="800" cy="400" r="300" fill="url(#grad2)"/>
+  <circle cx="1300" cy="800" r="350" fill="url(#grad2)"/>
+
+  <!-- Kleine decoratieve dots -->
+  <g fill="#5852f2" opacity="0.1">
+    <circle cx="200" cy="200" r="5"/>
+    <circle cx="300" cy="300" r="3"/>
+    <circle cx="400" cy="150" r="4"/>
+    <circle cx="500" cy="400" r="6"/>
+    <circle cx="600" cy="200" r="3"/>
+    <circle cx="700" cy="350" r="5"/>
+    <circle cx="850" cy="250" r="4"/>
+    <circle cx="950" cy="450" r="3"/>
+    <circle cx="1050" cy="200" r="5"/>
+    <circle cx="1150" cy="300" r="3"/>
+    <circle cx="1250" cy="450" r="4"/>
+    <circle cx="1350" cy="150" r="6"/>
+  </g>
+
+  <g fill="#db2777" opacity="0.1">
+    <circle cx="150" cy="250" r="4"/>
+    <circle cx="250" cy="350" r="5"/>
+    <circle cx="350" cy="200" r="3"/>
+    <circle cx="450" cy="450" r="4"/>
+    <circle cx="550" cy="150" r="6"/>
+    <circle cx="650" cy="300" r="4"/>
+    <circle cx="750" cy="400" r="3"/>
+    <circle cx="900" cy="200" r="5"/>
+    <circle cx="1000" cy="350" r="4"/>
+    <circle cx="1100" cy="150" r="3"/>
+    <circle cx="1200" cy="400" r="6"/>
+    <circle cx="1300" cy="250" r="4"/>
+  </g>
+
+  <!-- Golvende lijnen -->
+  <path d="M0,600 Q360,500 720,550 T1440,500" stroke="#5852f2" stroke-width="2" fill="none" opacity="0.07"/>
+  <path d="M0,650 Q360,750 720,700 T1440,750" stroke="#db2777" stroke-width="2" fill="none" opacity="0.07"/>
+</svg> 

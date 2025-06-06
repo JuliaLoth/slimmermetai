@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Stripe Helper klasse voor SlimmerMetAI
  * 
@@ -8,16 +9,22 @@
 
 namespace SlimmerMetAI;
 
+use App\Infrastructure\Database\DatabaseInterface;
+
 class StripeHelper {
     private $stripe;
-    private $isTestMode = true;
+    private bool $isTestMode = true;
+    private ?DatabaseInterface $database;
     
     /**
      * Constructor
      * 
-     * Initialiseert de Stripe API
+     * @param DatabaseInterface|null $database Database interface voor dependency injection
      */
-    public function __construct() {
+    public function __construct(?DatabaseInterface $database = null) {
+        // Dependency injection met fallback voor legacy compatibility
+        $this->database = $database ?? $this->getLegacyDatabase();
+        
         // Laad Stripe bibliotheek via Composer's autoload
         if (!class_exists('\Stripe\Stripe')) {
             require_once dirname(dirname(__FILE__)) . '/vendor/autoload.php';
@@ -37,6 +44,24 @@ class StripeHelper {
             
             // Stel de meest recente API versie in
             \Stripe\Stripe::setApiVersion('2025-03-31');
+        }
+    }
+    
+    /**
+     * Legacy database fallback voor backward compatibility
+     */
+    private function getLegacyDatabase(): ?DatabaseInterface
+    {
+        try {
+            if (function_exists('container')) {
+                return container()->get(DatabaseInterface::class);
+            }
+            
+            error_log("StripeHelper: Container functie niet beschikbaar - geen database verbinding");
+            return null;
+        } catch (\Throwable $e) {
+            error_log("StripeHelper: Kon geen database connectie krijgen - " . $e->getMessage());
+            return null;
         }
     }
     
@@ -224,51 +249,31 @@ class StripeHelper {
     }
     
     /**
-     * Sla Stripe sessie op in de database
+     * Sla Stripe sessie op in de database - MODERN VERSION
      * 
      * @param \Stripe\Checkout\Session $session De Stripe sessie
      * @return bool Success
      */
-    private function saveSessionToDatabase($session) {
-        // Als er geen PDO-verbinding is, log alleen een bericht
-        if (!isset($GLOBALS['pdo']) || !$GLOBALS['pdo']) {
+    private function saveSessionToDatabase($session): bool {
+        // Check database beschikbaarheid
+        if (!$this->database) {
             error_log('Geen databaseverbinding beschikbaar voor het opslaan van de Stripe sessie');
             return false;
         }
         
-        global $pdo;
-        
-        // Controleer of de tabel bestaat
         try {
-            $check_table = $pdo->query("SHOW TABLES LIKE 'stripe_sessions'");
-            if ($check_table->rowCount() == 0) {
+            // Controleer of de tabel bestaat
+            $tableExists = $this->database->getValue(
+                "SELECT COUNT(*) FROM information_schema.tables WHERE table_name = 'stripe_sessions'"
+            );
+            
+            if (!$tableExists) {
                 error_log('Stripe sessions tabel bestaat niet');
                 return false;
             }
             
             // Converteer van Stripe object naar array
             $sessionData = json_decode(json_encode($session), true);
-            
-            // Bereid de query voor
-            $query = "INSERT INTO stripe_sessions (
-                        session_id, 
-                        user_id, 
-                        amount_total, 
-                        currency, 
-                        payment_status, 
-                        status, 
-                        created_at, 
-                        metadata
-                    ) VALUES (
-                        :session_id, 
-                        :user_id, 
-                        :amount_total, 
-                        :currency, 
-                        :payment_status, 
-                        :status, 
-                        NOW(), 
-                        :metadata
-                    )";
             
             // Haal user_id uit de session metadata of client_reference_id
             $userId = null;
@@ -279,16 +284,26 @@ class StripeHelper {
             // Bereid metadata voor
             $metadata = json_encode($sessionData['metadata'] ?? []);
             
-            // Voer de query uit
-            $stmt = $pdo->prepare($query);
-            $stmt->execute([
-                ':session_id' => $sessionData['id'],
-                ':user_id' => $userId,
-                ':amount_total' => ($sessionData['amount_total'] ?? 0) / 100, // Van centen naar euro
-                ':currency' => $sessionData['currency'] ?? 'eur',
-                ':payment_status' => $sessionData['payment_status'] ?? 'unpaid',
-                ':status' => $sessionData['status'] ?? 'open',
-                ':metadata' => $metadata
+            // Gebruik moderne database interface
+            $query = "INSERT INTO stripe_sessions (
+                        session_id, 
+                        user_id, 
+                        amount_total, 
+                        currency, 
+                        payment_status, 
+                        status, 
+                        created_at, 
+                        metadata
+                    ) VALUES (?, ?, ?, ?, ?, ?, NOW(), ?)";
+            
+            $this->database->query($query, [
+                $sessionData['id'],
+                $userId,
+                ($sessionData['amount_total'] ?? 0) / 100, // Van centen naar euro
+                $sessionData['currency'] ?? 'eur',
+                $sessionData['payment_status'] ?? 'unpaid',
+                $sessionData['status'] ?? 'open',
+                $metadata
             ]);
             
             return true;
@@ -299,11 +314,33 @@ class StripeHelper {
     }
     
     /**
+     * Haal Stripe customer ID op voor gebruiker
+     * 
+     * @param int $userId Gebruiker ID
+     * @return string|null Stripe customer ID
+     */
+    public function getUserStripeId(int $userId): ?string {
+        if (!$this->database) {
+            return null;
+        }
+        
+        try {
+            return $this->database->getValue(
+                "SELECT stripe_customer_id FROM users WHERE id = ? AND stripe_customer_id IS NOT NULL", 
+                [$userId]
+            );
+        } catch (\Exception $e) {
+            error_log('Database fout bij ophalen Stripe customer ID: ' . $e->getMessage());
+            return null;
+        }
+    }
+    
+    /**
      * Geeft terug of we in testmodus werken
      * 
      * @return bool True als in testmodus
      */
-    public function isTestMode() {
+    public function isTestMode(): bool {
         return $this->isTestMode;
     }
     
@@ -312,7 +349,7 @@ class StripeHelper {
      * 
      * @return array Array met testkaartgegevens
      */
-    public function getTestCards() {
+    public function getTestCards(): array {
         return [
             'success' => [
                 'number' => '4242 4242 4242 4242',

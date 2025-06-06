@@ -1,0 +1,16 @@
+<?php
+
+namespace App\Http\Controller;
+
+use App\Infrastructure\View\View;
+
+final class ToolsController
+{
+    public function index(\Psr\Http\Message\ServerRequestInterface $request): \Psr\Http\Message\ResponseInterface
+    {
+        $html = View::renderToString('tools/index', [
+            'title' => 'AI Tools | Slimmer met AI',
+        ]);
+        return new \GuzzleHttp\Psr7\Response(200, ['Content-Type' => 'text/html; charset=utf-8'], $html);
+    }
+}

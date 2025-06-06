@@ -1,0 +1,23 @@
+/* Alert component */
+
+.alert {
+    padding: 1rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.alert-success {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.alert-error {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+.alert-info {
+    background-color: #dbeafe;
+    color: #1e3a8a;
+} 

@@ -1,28 +1,9 @@
 # SlimmerMetAI API configuratie
-<IfModule mod_rewrite.c>
-    RewriteEngine On
-    RewriteBase /api/
-    
-    # Sta directe toegang toe tot bestanden (geen routing voor bestaande bestanden)
-    RewriteCond %{REQUEST_FILENAME} -f
-    RewriteRule ^ - [L]
-    
-    # Routing voor API endpoints (alleen indien nodig)
-    # RewriteRule ^(.*)$ index.php [QSA,L]
+RewriteEngine On
 
-    # Auth endpoints
-    RewriteRule ^auth/login/?$ auth/login.php [L,QSA]
-    RewriteRule ^auth/register/?$ auth/register.php [L,QSA]
-    RewriteRule ^auth/forgot-password/?$ auth/forgot-password.php [L,QSA]
-    RewriteRule ^auth/reset-password/?$ auth/reset-password.php [L,QSA]
-
-    # Stuur 404 voor onbekende endpoints
-    RewriteRule ^ - [R=404,L]
-
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^users/register/?$ users/register.php [L]
-</IfModule>
+# Migratie: alle routing gebeurd nu via de front-controller in de hoofdmap.
+# Deze sub-.htaccess is leeggemaakt om dubbele regels te voorkomen.
+# Laat alle requests door naar bovenliggende .htaccess (fallback -> index.php).
 
 # CORS headers voor API toegang
 <IfModule mod_headers.c>

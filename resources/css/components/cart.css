@@ -1,0 +1,203 @@
+/* Component-specifieke winkelwagen styles */ 
+
+/* -------------------------------------------------------------
+   Cart / Winkelwagen Component – overgezet uit style.css
+   ------------------------------------------------------------- */
+
+.cart-section {
+    padding: 6rem 0 4rem;
+}
+
+.cart-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.cart-items {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    padding: 2rem;
+    min-height: 300px;
+}
+
+.cart-summary {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    padding: 2rem;
+    position: sticky;
+    top: 100px;
+    height: max-content;
+}
+
+.cart-summary h3 {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.summary-row.total {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e5e7eb;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.btn-block {
+    width: 100%;
+    margin-top: 1.5rem;
+}
+
+.empty-cart-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 200px;
+    gap: 1.5rem;
+}
+
+.empty-cart-message p {
+    font-size: 1.2rem;
+    color: #6b7280;
+    margin-bottom: 1rem;
+}
+
+.cart-item {
+    display: grid;
+    grid-template-columns: 100px 1fr auto;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid #e5e7eb;
+    align-items: center;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.cart-item-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.cart-item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cart-item-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.cart-item-details h3 {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.product-type {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    background-color: rgba(88, 82, 242, 0.1);
+    color: var(--primary-color);
+    border-radius: 4px;
+    font-size: 0.8rem;
+    width: fit-content;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.quantity-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid #e5e7eb;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    padding: 0;
+    line-height: 1;
+}
+
+.quantity-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.quantity {
+    font-weight: 500;
+    min-width: 20px;
+    text-align: center;
+}
+
+.cart-item-price {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+}
+
+.cart-item-price span {
+    font-weight: 600;
+    font-size: 1.1rem;
+    font-family: 'Glacial Indifference', sans-serif;
+}
+
+.remove-item-btn {
+    background: none;
+    border: none;
+    color: #9ca3af;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    padding: 0.25rem;
+}
+
+.remove-item-btn:hover {
+    color: #ef4444;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+    .cart-container { grid-template-columns: 1fr; }
+    .cart-summary { position: static; order: -1; margin-bottom: 1.5rem; }
+    .cart-item { grid-template-columns: 80px 1fr; grid-template-areas: "image details" "image price"; gap: 1rem; }
+    .cart-item-image { grid-area: image; width: 80px; height: 80px; }
+    .cart-item-details { grid-area: details; }
+    .cart-item-price { grid-area: price; flex-direction: row; justify-content: space-between; width: 100%; align-items: center; }
+}
+
+@media (max-width: 480px) {
+    .cart-item { grid-template-columns: 1fr; grid-template-areas: "details" "price"; text-align: center; }
+    .cart-item-image { display: none; }
+    .cart-item-details { align-items: center; }
+    .quantity-controls { justify-content: center; }
+    .cart-item-price { justify-content: center; }
+} 

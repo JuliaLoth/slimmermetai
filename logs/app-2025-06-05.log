@@ -1,0 +1,72 @@
+[2025-06-05T14:56:58.360002+02:00] app.ERROR: Database connectie mislukt {"ip":"::1","url":"/","request_id":"f1078aee2054ecbd","error":"SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)"} 
+[2025-06-05T14:56:58.361555+02:00] app.ERROR: Databaseverbinding mislukt {"ip":"::1","url":"/","request_id":"f1078aee2054ecbd","error":"SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)"} 
+[2025-06-05T14:56:58.361650+02:00] app.ERROR: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO) {"ip":"::1","url":"/","request_id":"f1078aee2054ecbd","file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\src\\Infrastructure\\Database\\Database.php","line":32,"trace":"#0 C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\src\\Infrastructure\\Database\\Database.php(32): PDO->__construct('mysql:host=loca...', 'root', '', Array)
+#1 C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\bootstrap.php(66): App\\Infrastructure\\Database\\Database->connect()
+#2 C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\public_html\\index.php(5): require_once('C:\\\\Users\\\\julia....')
+#3 C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\router.php(48): require('C:\\\\Users\\\\julia....')
+#4 {main}"} 
+[2025-06-05T14:56:58.483639+02:00] app.ERROR: Database connectie mislukt {"ip":"::1","url":"/.well-known/appspecific/com.chrome.devtools.json","request_id":"cff2e5f57ecb966a","error":"SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)"} 
+[2025-06-05T14:56:58.484201+02:00] app.ERROR: Databaseverbinding mislukt {"ip":"::1","url":"/.well-known/appspecific/com.chrome.devtools.json","request_id":"cff2e5f57ecb966a","error":"SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)"} 
+[2025-06-05T14:56:58.484337+02:00] app.ERROR: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO) {"ip":"::1","url":"/.well-known/appspecific/com.chrome.devtools.json","request_id":"cff2e5f57ecb966a","file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\src\\Infrastructure\\Database\\Database.php","line":32,"trace":"#0 C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\src\\Infrastructure\\Database\\Database.php(32): PDO->__construct('mysql:host=loca...', 'root', '', Array)
+#1 C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\bootstrap.php(66): App\\Infrastructure\\Database\\Database->connect()
+#2 C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\public_html\\index.php(5): require_once('C:\\\\Users\\\\julia....')
+#3 C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\router.php(48): require('C:\\\\Users\\\\julia....')
+#4 {main}"} 
+[2025-06-05T14:56:58.587978+02:00] app.ERROR: Database connectie mislukt {"ip":"::1","url":"/favicon.ico","request_id":"f48362866c90da3c","error":"SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)"} 
+[2025-06-05T14:56:58.588717+02:00] app.ERROR: Databaseverbinding mislukt {"ip":"::1","url":"/favicon.ico","request_id":"f48362866c90da3c","error":"SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)"} 
+[2025-06-05T14:56:58.588852+02:00] app.ERROR: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO) {"ip":"::1","url":"/favicon.ico","request_id":"f48362866c90da3c","file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\src\\Infrastructure\\Database\\Database.php","line":32,"trace":"#0 C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\src\\Infrastructure\\Database\\Database.php(32): PDO->__construct('mysql:host=loca...', 'root', '', Array)
+#1 C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\bootstrap.php(66): App\\Infrastructure\\Database\\Database->connect()
+#2 C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\public_html\\index.php(5): require_once('C:\\\\Users\\\\julia....')
+#3 C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\router.php(48): require('C:\\\\Users\\\\julia....')
+#4 {main}"} 
+[2025-06-05T14:58:14.304162+02:00] app.ERROR: Database connectie mislukt {"ip":"::1","url":"/","request_id":"3b502e5584c11e44","error":"SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)"} 
+[2025-06-05T14:58:14.304532+02:00] app.ERROR: Databaseverbinding mislukt {"ip":"::1","url":"/","request_id":"3b502e5584c11e44","error":"SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)"} 
+[2025-06-05T14:58:14.304591+02:00] app.ERROR: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO) {"ip":"::1","url":"/","request_id":"3b502e5584c11e44","file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\src\\Infrastructure\\Database\\Database.php","line":32,"trace":"#0 C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\src\\Infrastructure\\Database\\Database.php(32): PDO->__construct('mysql:host=loca...', 'root', '', Array)
+#1 C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\bootstrap.php(66): App\\Infrastructure\\Database\\Database->connect()
+#2 C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\public_html\\index.php(5): require_once('C:\\\\Users\\\\julia....')
+#3 C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\router.php(48): require('C:\\\\Users\\\\julia....')
+#4 {main}"} 
+[2025-06-05T14:58:14.395222+02:00] app.ERROR: Database connectie mislukt {"ip":"::1","url":"/.well-known/appspecific/com.chrome.devtools.json","request_id":"2e6d440a45f68d7d","error":"SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)"} 
+[2025-06-05T14:58:14.395735+02:00] app.ERROR: Databaseverbinding mislukt {"ip":"::1","url":"/.well-known/appspecific/com.chrome.devtools.json","request_id":"2e6d440a45f68d7d","error":"SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)"} 
+[2025-06-05T14:58:14.395814+02:00] app.ERROR: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO) {"ip":"::1","url":"/.well-known/appspecific/com.chrome.devtools.json","request_id":"2e6d440a45f68d7d","file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\src\\Infrastructure\\Database\\Database.php","line":32,"trace":"#0 C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\src\\Infrastructure\\Database\\Database.php(32): PDO->__construct('mysql:host=loca...', 'root', '', Array)
+#1 C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\bootstrap.php(66): App\\Infrastructure\\Database\\Database->connect()
+#2 C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\public_html\\index.php(5): require_once('C:\\\\Users\\\\julia....')
+#3 C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\router.php(48): require('C:\\\\Users\\\\julia....')
+#4 {main}"} 
+[2025-06-05T14:58:14.491636+02:00] app.ERROR: Database connectie mislukt {"ip":"::1","url":"/favicon.ico","request_id":"76a61501cffeee7e","error":"SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)"} 
+[2025-06-05T14:58:14.492097+02:00] app.ERROR: Databaseverbinding mislukt {"ip":"::1","url":"/favicon.ico","request_id":"76a61501cffeee7e","error":"SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)"} 
+[2025-06-05T14:58:14.492206+02:00] app.ERROR: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO) {"ip":"::1","url":"/favicon.ico","request_id":"76a61501cffeee7e","file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\src\\Infrastructure\\Database\\Database.php","line":32,"trace":"#0 C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\src\\Infrastructure\\Database\\Database.php(32): PDO->__construct('mysql:host=loca...', 'root', '', Array)
+#1 C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\bootstrap.php(66): App\\Infrastructure\\Database\\Database->connect()
+#2 C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\public_html\\index.php(5): require_once('C:\\\\Users\\\\julia....')
+#3 C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\router.php(48): require('C:\\\\Users\\\\julia....')
+#4 {main}"} 
+[2025-06-05T14:59:21.342340+02:00] app.ERROR: Database connectie mislukt {"ip":"::1","url":"/","request_id":"470ab44cd2f82082","error":"SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)"} 
+[2025-06-05T14:59:21.342881+02:00] app.ERROR: Databaseverbinding mislukt {"ip":"::1","url":"/","request_id":"470ab44cd2f82082","error":"SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)"} 
+[2025-06-05T14:59:21.342967+02:00] app.ERROR: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO) {"ip":"::1","url":"/","request_id":"470ab44cd2f82082","file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\src\\Infrastructure\\Database\\Database.php","line":32,"trace":"#0 C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\src\\Infrastructure\\Database\\Database.php(32): PDO->__construct('mysql:host=loca...', 'root', '', Array)
+#1 C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\bootstrap.php(66): App\\Infrastructure\\Database\\Database->connect()
+#2 C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\public_html\\index.php(5): require_once('C:\\\\Users\\\\julia....')
+#3 C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\router.php(48): require('C:\\\\Users\\\\julia....')
+#4 {main}"} 
+[2025-06-05T14:59:28.618179+02:00] app.ERROR: Database connectie mislukt {"ip":"::1","url":"/dashboard","request_id":"2b35b23e1641ff3f","error":"SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)"} 
+[2025-06-05T14:59:28.618525+02:00] app.ERROR: Databaseverbinding mislukt {"ip":"::1","url":"/dashboard","request_id":"2b35b23e1641ff3f","error":"SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)"} 
+[2025-06-05T14:59:28.618583+02:00] app.ERROR: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO) {"ip":"::1","url":"/dashboard","request_id":"2b35b23e1641ff3f","file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\src\\Infrastructure\\Database\\Database.php","line":32,"trace":"#0 C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\src\\Infrastructure\\Database\\Database.php(32): PDO->__construct('mysql:host=loca...', 'root', '', Array)
+#1 C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\bootstrap.php(66): App\\Infrastructure\\Database\\Database->connect()
+#2 C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\public_html\\index.php(5): require_once('C:\\\\Users\\\\julia....')
+#3 C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\router.php(48): require('C:\\\\Users\\\\julia....')
+#4 {main}"} 
+[2025-06-05T14:59:50.647603+02:00] app.ERROR: Database connectie mislukt {"ip":"::1","url":"/test.php","request_id":"d2bc033794a9902e","error":"SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)"} 
+[2025-06-05T14:59:50.648023+02:00] app.ERROR: Databaseverbinding mislukt {"ip":"::1","url":"/test.php","request_id":"d2bc033794a9902e","error":"SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)"} 
+[2025-06-05T14:59:50.648083+02:00] app.ERROR: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO) {"ip":"::1","url":"/test.php","request_id":"d2bc033794a9902e","file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\src\\Infrastructure\\Database\\Database.php","line":32,"trace":"#0 C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\src\\Infrastructure\\Database\\Database.php(32): PDO->__construct('mysql:host=loca...', 'root', '', Array)
+#1 C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\bootstrap.php(66): App\\Infrastructure\\Database\\Database->connect()
+#2 C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\public_html\\index.php(5): require_once('C:\\\\Users\\\\julia....')
+#3 C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\router.php(48): require('C:\\\\Users\\\\julia....')
+#4 {main}"} 
+[2025-06-05T15:05:48.796192+02:00] app.INFO: Geen geldige Stripe API key - using mock mode for development {"ip":"::1","url":"/api/stripe/config","request_id":"ce9b129eaa857766"} 
+[2025-06-05T15:15:17.202678+02:00] app.ERROR: Database connectie mislukt {"ip":"::1","url":"/dashboard","request_id":"45bc95d8b3b8982c","error":"SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)"} 
+[2025-06-05T15:15:17.203161+02:00] app.ERROR: Databaseverbinding mislukt {"ip":"::1","url":"/dashboard","request_id":"45bc95d8b3b8982c","error":"SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)"} 
+[2025-06-05T15:15:17.203223+02:00] app.ERROR: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO) {"ip":"::1","url":"/dashboard","request_id":"45bc95d8b3b8982c","file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\src\\Infrastructure\\Database\\Database.php","line":32,"trace":"#0 C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\src\\Infrastructure\\Database\\Database.php(32): PDO->__construct('mysql:host=loca...', 'root', '', Array)
+#1 C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\bootstrap.php(66): App\\Infrastructure\\Database\\Database->connect()
+#2 C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\public_html\\index.php(5): require_once('C:\\\\Users\\\\julia....')
+#3 C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\router.php(48): require('C:\\\\Users\\\\julia....')
+#4 {main}"} 
+[2025-06-05T15:28:31.445863+02:00] app.ERROR: session_start(): Ignoring session_start() because a session is already active {"ip":"::1","url":"/auth/login","request_id":"14fc6c7ac118c3a3","file":"C:\\Users\\julia.DPIMEDIA\\AIdoc\\slimmermetai-site\\src\\Http\\Controller\\Auth\\LoginController.php","line":51,"type":"NOTICE"} 

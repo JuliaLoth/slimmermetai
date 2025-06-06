@@ -1,0 +1,38 @@
+{
+  "resources/js/auth/auth.js": {
+    "file": "bundle-auth.BUAKKj1M.js",
+    "name": "auth",
+    "src": "resources/js/auth/auth.js",
+    "isEntry": true
+  },
+  "resources/js/cart/cart.js": {
+    "file": "bundle-cart.C7Dqr615.js",
+    "name": "cart",
+    "src": "resources/js/cart/cart.js",
+    "isEntry": true
+  },
+  "resources/js/core/main.js": {
+    "file": "bundle-main.BPqypxkR.js",
+    "name": "main",
+    "src": "resources/js/core/main.js",
+    "isEntry": true,
+    "css": [
+      "main-BdQlK01d.css"
+    ]
+  },
+  "resources/js/stripe/payment.js": {
+    "file": "bundle-stripe.BSJRhHuo.js",
+    "name": "stripe",
+    "src": "resources/js/stripe/payment.js",
+    "isEntry": true,
+    "imports": [
+      "resources/js/stripe/stripe-payment.js"
+    ]
+  },
+  "resources/js/stripe/stripe-payment.js": {
+    "file": "bundle-stripe-payment.BqQl3eFl.js",
+    "name": "stripe-payment",
+    "src": "resources/js/stripe/stripe-payment.js",
+    "isEntry": true
+  }
+}

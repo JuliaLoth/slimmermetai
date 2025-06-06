@@ -1,18 +1,21 @@
 <?php
 namespace App\Infrastructure\Config;
 
+use function container;
+
 class Config {
     private static ?Config $instance = null;
     private array $settings = [];
     private bool $envLoaded = false;
 
-    private function __construct() {
-        $this->loadEnv();
-        $this->initSettings();
+    public static function getInstance(): self {
+        // legacy helper – haalt de instantie uit de DI-container
+        return container()->get(self::class);
     }
 
-    public static function getInstance(): Config {
-        return self::$instance ??= new Config();
+    public function __construct() {
+        $this->loadEnv();
+        $this->initSettings();
     }
 
     private function loadEnv(): void {
@@ -77,6 +80,12 @@ class Config {
             'mail_from'=> getenv('MAIL_FROM') ?: 'noreply@slimmermetai.com',
             'mail_from_name'=> getenv('MAIL_FROM_NAME') ?: 'SlimmerMetAI',
             'mail_reply_to'=> getenv('MAIL_REPLY_TO') ?: 'support@slimmermetai.com',
+            // smtp
+            'smtp_host'=> getenv('SMTP_HOST') ?: 'localhost',
+            'smtp_port'=> getenv('SMTP_PORT') ?: 25,
+            'smtp_secure'=> $cast(getenv('SMTP_SECURE') ?? false, 'bool'),
+            'smtp_user'=> getenv('SMTP_USER') ?: '',
+            'smtp_pass'=> getenv('SMTP_PASSWORD') ?: '',
             // recaptcha
             'recaptcha_site_key'=> getenv('RECAPTCHA_SITE_KEY') ?: '',
             'recaptcha_secret_key'=> getenv('RECAPTCHA_SECRET_KEY') ?: '',

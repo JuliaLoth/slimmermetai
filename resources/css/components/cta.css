@@ -1,0 +1,76 @@
+/* -------------------------------------------------------------
+   Call-to-Action Section – overgezet uit style.css
+   ------------------------------------------------------------- */
+
+/* Wrapper section */
+.cta-section {
+    padding: 4rem 0;
+}
+
+/* Container */
+.cta-container {
+    background: linear-gradient(135deg, rgba(88, 82, 242, 0.1) 0%, rgba(219, 39, 119, 0.1) 100%);
+    border-radius: 16px;
+    padding: 3rem 2rem;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    position: relative;
+    overflow: hidden;
+    max-width: 850px;
+    margin: 0 auto;
+    z-index: 1;
+}
+
+.cta-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/pattern.svg');
+    background-size: cover;
+    opacity: 0.05;
+    z-index: 0;
+    animation: gradientAnimation 15s ease infinite;
+    background-size: 400% 400%;
+}
+
+/* Heading */
+.cta-container h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+    color: var(--text-color);
+    font-family: 'Glacial Indifference', sans-serif;
+}
+
+/* Text */
+.cta-text {
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    position: relative;
+    z-index: 1;
+    color: #4b5563;
+}
+
+/* Newsletter embed */
+.cta-container .newsletter-signup {
+    margin-top: 2rem;
+    max-width: 480px;
+}
+
+.cta-container .newsletter-signup iframe {
+    transform: scale(1);
+    transition: transform 0.3s ease;
+    margin: 0 auto;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    width: 600px;
+    height: 250px;
+}
+
+.cta-container .newsletter-signup iframe:hover {
+    transform: scale(1.02);
+} 
