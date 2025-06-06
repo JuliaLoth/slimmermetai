@@ -29,10 +29,11 @@ RUN apk add --no-cache \
     zip \
     unzip \
     jpeg-dev \
-    png-dev \
+    libpng-dev \
     freetype-dev \
     oniguruma-dev \
     libxml2-dev \
+    icu-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install \
         pdo \
