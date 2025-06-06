@@ -1,5 +1,5 @@
 # Multi-stage build for SlimmerMetAI website
-FROM node:18-alpine AS frontend-builder
+FROM node:18 AS frontend-builder
 
 # Set working directory
 WORKDIR /app
@@ -7,11 +7,8 @@ WORKDIR /app
 # Copy package.json and package-lock.json
 COPY package*.json ./
 
-# Clear npm cache and remove lock file for fresh install
-RUN npm cache clean --force && rm -f package-lock.json
-
 # Install npm dependencies
-RUN npm install --only=production --ignore-scripts
+RUN npm ci --only=production --ignore-scripts
 
 # Copy source code
 COPY . .
