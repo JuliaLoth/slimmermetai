@@ -39,6 +39,7 @@ RUN apk add --no-cache \
     oniguruma-dev \
     libxml2-dev \
     icu-dev \
+    libzip-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install \
         pdo \
@@ -47,7 +48,8 @@ RUN apk add --no-cache \
         xml \
         gd \
         opcache \
-        intl
+        intl \
+        zip
 
 # Install Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
@@ -75,6 +77,7 @@ RUN composer install --no-dev --optimize-autoloader --no-interaction
 # Create necessary directories
 RUN mkdir -p /var/www/html/logs \
     && mkdir -p /var/www/html/uploads \
+    && mkdir -p /var/log/supervisor \
     && chown -R www-data:www-data /var/www/html/logs \
     && chown -R www-data:www-data /var/www/html/uploads \
     && chmod -R 755 /var/www/html/logs \
