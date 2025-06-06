@@ -97,7 +97,7 @@ class Validator
         return $sanitizedData;
     }
     // ================== VALIDATORS ==================
-    protected function validateRequired($field, $value, $params)
+    protected function validateRequired(string $field, mixed $value, array $params): bool
     {
         $v = $value !== null && $value !== '';
         if (!$v) {
@@ -105,142 +105,142 @@ class Validator
         }
         return $v;
     }
-    protected function validateMin($field, $value, $p)
+    protected function validateMin(string $field, mixed $value, array $params): bool
     {
-        $min = (int)$p[0];
-        $v = strlen($value) >= $min;
+        $min = (int)$params[0];
+        $v = strlen((string)$value) >= $min;
         if (!$v) {
             $this->addError($field, "Het veld '$field' moet minimaal $min tekens bevatten.");
         }
         return $v;
     }
-    protected function validateMax($f, $v, $p)
+    protected function validateMax(string $field, mixed $value, array $params): bool
     {
-        $max = (int)$p[0];
-        $ok = strlen($v) <= $max;
+        $max = (int)$params[0];
+        $ok = strlen((string)$value) <= $max;
         if (!$ok) {
-            $this->addError($f, "Het veld '$f' mag maximaal $max tekens bevatten.");
+            $this->addError($field, "Het veld '$field' mag maximaal $max tekens bevatten.");
         }
         return $ok;
     }
-    protected function validateEmail($f, $v, $p)
+    protected function validateEmail(string $field, mixed $value, array $params): bool
     {
-        $ok = filter_var($v, FILTER_VALIDATE_EMAIL) !== false;
+        $ok = filter_var($value, FILTER_VALIDATE_EMAIL) !== false;
         if (!$ok) {
-            $this->addError($f, "Het veld '$f' moet een geldig e-mailadres bevatten.");
+            $this->addError($field, "Het veld '$field' moet een geldig e-mailadres bevatten.");
         }
         return $ok;
     }
-    protected function validateNumeric($f, $v, $p)
+    protected function validateNumeric(string $field, mixed $value, array $params): bool
     {
-        $ok = is_numeric($v);
+        $ok = is_numeric($value);
         if (!$ok) {
-            $this->addError($f, "Het veld '$f' moet numeriek zijn.");
+            $this->addError($field, "Het veld '$field' moet numeriek zijn.");
         }
         return $ok;
     }
-    protected function validateInteger($f, $v, $p)
+    protected function validateInteger(string $field, mixed $value, array $params): bool
     {
-        $ok = filter_var($v, FILTER_VALIDATE_INT) !== false;
+        $ok = filter_var($value, FILTER_VALIDATE_INT) !== false;
         if (!$ok) {
-            $this->addError($f, "Het veld '$f' moet een geheel getal zijn.");
+            $this->addError($field, "Het veld '$field' moet een geheel getal zijn.");
         }
         return $ok;
     }
-    protected function validateUrl($f, $v, $p)
+    protected function validateUrl(string $field, mixed $value, array $params): bool
     {
-        $ok = filter_var($v, FILTER_VALIDATE_URL) !== false;
+        $ok = filter_var($value, FILTER_VALIDATE_URL) !== false;
         if (!$ok) {
-            $this->addError($f, "Het veld '$f' moet een geldige URL bevatten.");
+            $this->addError($field, "Het veld '$field' moet een geldige URL bevatten.");
         }
         return $ok;
     }
-    protected function validateBetween($f, $v, $p)
+    protected function validateBetween(string $field, mixed $value, array $params): bool
     {
-        $min = (int)$p[0];
-        $max = (int)$p[1];
-        $ok = is_numeric($v) && $v >= $min && $v <= $max;
+        $min = (int)$params[0];
+        $max = (int)$params[1];
+        $ok = is_numeric($value) && $value >= $min && $value <= $max;
         if (!$ok) {
-            $this->addError($f, "Het veld '$f' moet tussen $min en $max liggen.");
+            $this->addError($field, "Het veld '$field' moet tussen $min en $max liggen.");
         }
         return $ok;
     }
-    protected function validateIn($f, $v, $p)
+    protected function validateIn(string $field, mixed $value, array $params): bool
     {
-        $ok = in_array($v, $p);
+        $ok = in_array($value, $params);
         if (!$ok) {
-            $this->addError($f, "Het veld '$f' moet een van de volgende waardes zijn: " . implode(', ', $p) . '.');
+            $this->addError($field, "Het veld '$field' moet een van de volgende waardes zijn: " . implode(', ', $params) . '.');
         }
         return $ok;
     }
-    protected function validateDate($f, $v, $p)
+    protected function validateDate(string $field, mixed $value, array $params): bool
     {
-        $fmt = $p[0] ?? 'Y-m-d';
-        $d = \DateTime::createFromFormat($fmt, $v);
-        $ok = $d && $d->format($fmt) === $v;
+        $fmt = $params[0] ?? 'Y-m-d';
+        $d = \DateTime::createFromFormat($fmt, (string)$value);
+        $ok = $d && $d->format($fmt) === (string)$value;
         if (!$ok) {
-            $this->addError($f, "Het veld '$f' moet een geldige datum zijn in het formaat $fmt.");
+            $this->addError($field, "Het veld '$field' moet een geldige datum zijn in het formaat $fmt.");
         }
         return $ok;
     }
-    protected function validateMatch($f, $v, $p)
+    protected function validateMatch(string $field, mixed $value, array $params): bool
     {
-        $other = $p[0];
-        $ok = $v === ($this->data[$other] ?? null);
+        $other = $params[0];
+        $ok = $value === ($this->data[$other] ?? null);
         if (!$ok) {
-            $this->addError($f, "Het veld '$f' moet overeenkomen met het veld '$other'.");
+            $this->addError($field, "Het veld '$field' moet overeenkomen met het veld '$other'.");
         }
         return $ok;
     }
-    protected function validateRegex($f, $v, $p)
+    protected function validateRegex(string $field, mixed $value, array $params): bool
     {
-        $pat = $p[0];
-        $ok = preg_match($pat, $v) === 1;
+        $pat = $params[0];
+        $ok = preg_match($pat, (string)$value) === 1;
         if (!$ok) {
-            $this->addError($f, "Het veld '$f' heeft een ongeldig formaat.");
+            $this->addError($field, "Het veld '$field' heeft een ongeldig formaat.");
         }
         return $ok;
     }
-    protected function validateFile($f, $v, $p)
+    protected function validateFile(string $field, mixed $value, array $params): bool
     {
-        $ok = isset($_FILES[$f]) && $_FILES[$f]['error'] === UPLOAD_ERR_OK;
+        $ok = isset($_FILES[$field]) && $_FILES[$field]['error'] === UPLOAD_ERR_OK;
         if (!$ok) {
-            $this->addError($f, "Er is geen geldig bestand geüpload voor '$f'.");
+            $this->addError($field, "Er is geen geldig bestand geüpload voor '$field'.");
         }
         return $ok;
     }
     // ================== SANITIZERS ==================
-    public static function sanitizeString($v)
+    public static function sanitizeString(mixed $v): string
     {
-        return htmlspecialchars(trim($v), ENT_QUOTES, 'UTF-8');
+        return htmlspecialchars(trim((string)$v), ENT_QUOTES, 'UTF-8');
     }
 
-    public static function sanitizeEmail($v)
+    public static function sanitizeEmail(mixed $v): string
     {
-        return filter_var(strtolower(trim($v)), FILTER_SANITIZE_EMAIL);
+        return filter_var(strtolower(trim((string)$v)), FILTER_SANITIZE_EMAIL);
     }
 
-    public static function sanitizeInt($v)
+    public static function sanitizeInt(mixed $v): int
     {
         return (int)$v;
     }
 
-    public static function sanitizeFloat($v)
+    public static function sanitizeFloat(mixed $v): float
     {
         return (float)$v;
     }
 
-    public static function sanitizeUrl($v)
+    public static function sanitizeUrl(mixed $v): string
     {
-        return filter_var(trim($v), FILTER_SANITIZE_URL);
+        return filter_var(trim((string)$v), FILTER_SANITIZE_URL);
     }
 
-    public static function sanitizeStripTags($v)
+    public static function sanitizeStripTags(mixed $v): string
     {
-        return strip_tags($v);
+        return strip_tags((string)$v);
     }
 
-    public static function sanitizeArray($a)
+    public static function sanitizeArray(mixed $a): array
     {
         if (!is_array($a)) {
             return[];
@@ -252,9 +252,9 @@ class Validator
         return $s;
     }
 
-    public static function sanitizeFileName($n)
+    public static function sanitizeFileName(mixed $n): string
     {
-        $n = basename($n);
+        $n = basename((string)$n);
         $n = preg_replace('/[^a-zA-Z0-9\-_\.]/', '_', $n);
         $n = preg_replace('/\.+/', '.', $n);
         $n = preg_replace('/_+/', '_', $n);

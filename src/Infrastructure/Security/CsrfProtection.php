@@ -44,7 +44,7 @@ class CsrfProtection
     {
         return '<input type="hidden" name="' . $this->tokenName . '" value="' . $this->getToken($refresh) . '">';
     }
-    public function validateToken($token = null): bool
+    public function validateToken(?string $token = null): bool
     {
         if ($token === null) {
             $token = $this->getTokenFromRequest();
@@ -67,11 +67,11 @@ class CsrfProtection
             setcookie($this->cookieName, '', time() - 3600, '/', '', true, true);
         }
     }
-    private function setTokenCookie($token)
+    private function setTokenCookie(string $token): void
     {
         setcookie($this->cookieName, $token, ['expires' => time() + $this->tokenLifetime,'path' => '/','secure' => true,'httponly' => false,'samesite' => 'Strict']);
     }
-    private function getTokenFromRequest()
+    private function getTokenFromRequest(): ?string
     {
         if (isset($_POST[$this->tokenName])) {
             return $_POST[$this->tokenName];
@@ -98,24 +98,24 @@ class CsrfProtection
         } return true;
     }
     // setters
-    public function setTokenName($n)
+    public function setTokenName(string $n): void
     {
         $this->tokenName = $n;
     }
-    public function setHeaderName($n)
+    public function setHeaderName(string $n): void
     {
         $this->headerName = $n;
     }
-    public function setCookieName($n)
+    public function setCookieName(string $n): void
     {
         $this->cookieName = $n;
     }
-    public function setTokenLifetime($sec)
+    public function setTokenLifetime(int $sec): void
     {
-        $this->tokenLifetime = (int)$sec;
+        $this->tokenLifetime = $sec;
     }
-    public function setTokenLength($len)
+    public function setTokenLength(int $len): void
     {
-        $this->tokenLength = (int)$len;
+        $this->tokenLength = $len;
     }
 }

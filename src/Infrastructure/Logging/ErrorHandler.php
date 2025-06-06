@@ -59,7 +59,8 @@ class ErrorHandler implements ErrorLoggerInterface
         $url = $_SERVER['REQUEST_URI'] ?? 'N/A';
         $ctx = array_merge(['ip' => $ip,'url' => $url,'request_id' => $this->requestId], $ctx);
         if ($this->logger) {
-            $this->logger->log($this->mapSeverityToLevel($sev), $m, $ctx);
+            $level = $this->mapSeverityToLevel($sev);
+            $this->logger->log($level, $m, $ctx);
         } else {
             $logFile = $this->logPath . strtolower($sev) . '.log';
             $ts = date('Y-m-d H:i:s');
@@ -76,7 +77,7 @@ class ErrorHandler implements ErrorLoggerInterface
         $this->logger->pushHandler($fh);
         $wh = getenv('SLACK_WEBHOOK_URL');
         if ($wh) {
-            $sh = new SlackWebhookHandler($wh, null, 'SlimmerMetAI-bot', true, null, Logger::CRITICAL, true, false, false);
+            $sh = new SlackWebhookHandler($wh, null, 'SlimmerMetAI-bot', true, null, Logger::CRITICAL, true);
             $this->logger->pushHandler($sh);
         }
     }
