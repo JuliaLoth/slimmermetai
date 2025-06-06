@@ -123,6 +123,8 @@ Test deployment na line ending fix op $(Get-Date -Format "yyyy-MM-dd HH:mm:ss")
 
 Test deployment met hook v7 (geen commentaar) op $(Get-Date -Format "yyyy-MM-dd HH:mm:ss")
 
+Test deployment met SSH koppeling naar Antagonist op 2025-06-06 11:35
+
 ## Frontend workflow
 
 ### Lokale ontwikkeling
