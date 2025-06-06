@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of PHPOffice Common
  *
@@ -9,7 +10,8 @@
  * file that was distributed with this source code. For the full list of
  * contributors, visit https://github.com/PHPOffice/Common/contributors.
  *
- * @link        https://github.com/PHPOffice/Common
+ * @see        https://github.com/PHPOffice/Common
+ *
  * @copyright   2009-2016 PHPOffice Common contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
@@ -20,6 +22,7 @@ use PhpOffice\Common\Microsoft\PasswordEncoder;
 
 /**
  * Test class for PhpOffice\Common\PasswordEncoder
+ *
  * @coversDefaultClass \PhpOffice\Common\PasswordEncoder
  */
 class PasswordEncoderTest extends \PHPUnit\Framework\TestCase
@@ -27,63 +30,63 @@ class PasswordEncoderTest extends \PHPUnit\Framework\TestCase
     /**
      * Test that a password can be hashed without specifying any additional parameters
      */
-    public function testEncodePassword()
+    public function testEncodePassword(): void
     {
-        //given
+        // Given
         $password = 'test';
 
-        //when
+        // When
         $hashPassword = PasswordEncoder::hashPassword($password);
 
-        //then
+        // Then
         $this->assertEquals('M795/MAlmGU8RIsY9Q9uDLHC7bk=', $hashPassword);
     }
 
     /**
      * Test that a password can be hashed with a custom salt
      */
-    public function testEncodePasswordWithSalt()
+    public function testEncodePasswordWithSalt(): void
     {
-        //given
+        // Given
         $password = 'test';
         $salt = base64_decode('uq81pJRRGFIY5U+E9gt8tA==');
 
-        //when
+        // When
         $hashPassword = PasswordEncoder::hashPassword($password, PasswordEncoder::ALGORITHM_SHA_1, $salt);
 
-        //then
+        // Then
         $this->assertEquals('QiDOcpia1YzSVJPiKPwWebl9p/0=', $hashPassword);
     }
 
     /**
      * Test that the encoder falls back on SHA-1 if a non supported algorithm is given
      */
-    public function testDefaultsToSha1IfUnsupportedAlgorithm()
+    public function testDefaultsToSha1IfUnsupportedAlgorithm(): void
     {
-        //given
+        // Given
         $password = 'test';
         $salt = base64_decode('uq81pJRRGFIY5U+E9gt8tA==');
 
-        //when
+        // When
         $hashPassword = PasswordEncoder::hashPassword($password, PasswordEncoder::ALGORITHM_MAC, $salt);
 
-        //then
+        // Then
         $this->assertEquals('QiDOcpia1YzSVJPiKPwWebl9p/0=', $hashPassword);
     }
 
     /**
      * Test that the encoder falls back on SHA-1 if a non supported algorithm is given
      */
-    public function testEncodePasswordWithNullAsciiCodeInPassword()
+    public function testEncodePasswordWithNullAsciiCodeInPassword(): void
     {
-        //given
+        // Given
         $password = 'test' . chr(0);
         $salt = base64_decode('uq81pJRRGFIY5U+E9gt8tA==');
 
-        //when
+        // When
         $hashPassword = PasswordEncoder::hashPassword($password, PasswordEncoder::ALGORITHM_MAC, $salt, 1);
 
-        //then
+        // Then
         $this->assertEquals('rDV9sgdDsztoCQlvRCb1lF2wxNg=', $hashPassword);
     }
 }

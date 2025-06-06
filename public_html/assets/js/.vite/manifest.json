@@ -12,12 +12,12 @@
     "isEntry": true
   },
   "resources/js/core/main.js": {
-    "file": "bundle-main.BPqypxkR.js",
+    "file": "bundle-main.DLewDV27.js",
     "name": "main",
     "src": "resources/js/core/main.js",
     "isEntry": true,
     "css": [
-      "main-BdQlK01d.css"
+      "main-BC00gaEF.css"
     ]
   },
   "resources/js/stripe/payment.js": {

@@ -10,66 +10,69 @@
  * file that was distributed with this source code. For the full list of
  * contributors, visit https://github.com/PHPOffice/PHPPresentation/contributors.
  *
- * @copyright   2009-2015 PHPPresentation contributors
+ * @see        https://github.com/PHPOffice/PHPPresentation
+ *
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
- * @link        https://github.com/PHPOffice/PHPPresentation
  */
+
+declare(strict_types=1);
 
 namespace PhpOffice\PhpPresentation\Tests\Shape;
 
+use PhpOffice\PhpPresentation\Exception\OutOfBoundsException;
 use PhpOffice\PhpPresentation\Shape\Table;
+use PhpOffice\PhpPresentation\Shape\Table\Row;
+use PHPUnit\Framework\TestCase;
 
 /**
- * Test class for Table element
+ * Test class for Table element.
  *
- * @coversDefaultClass PhpOffice\PhpPresentation\Shape\Table
+ * @coversDefaultClass \PhpOffice\PhpPresentation\Shape\Table
  */
-class TableTest extends \PHPUnit_Framework_TestCase
+class TableTest extends TestCase
 {
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $object = new Table();
-        $this->assertEmpty($object->getRows());
-        $this->assertFalse($object->isResizeProportional());
+        self::assertEmpty($object->getRows());
+        self::assertFalse($object->isResizeProportional());
     }
 
-    public function testNumColums()
+    public function testNumColums(): void
     {
-        $value = rand(1, 100);
+        $value = mt_rand(1, 100);
         $object = new Table();
 
-        $this->assertEquals(1, $object->getNumColumns());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\Table', $object->setNumColumns($value));
-        $this->assertEquals($value, $object->getNumColumns());
+        self::assertEquals(1, $object->getNumColumns());
+        self::assertInstanceOf(Table::class, $object->setNumColumns($value));
+        self::assertEquals($value, $object->getNumColumns());
     }
 
-    public function testRows()
+    public function testRows(): void
     {
         $object = new Table();
 
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\Table\\Row', $object->createRow());
-        $this->assertCount(1, $object->getRows());
+        self::assertInstanceOf(Row::class, $object->createRow());
+        self::assertCount(1, $object->getRows());
 
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\Table\\Row', $object->getRow(0));
-        $this->assertNull($object->getRow(1, true));
+        self::assertInstanceOf(Row::class, $object->getRow(0));
     }
 
-    /**
-     * @expectedException \Exception
-     * expectedExceptionMessage Row number out of bounds.
-     */
-    public function testGetRowException()
+    public function testGetRowException(): void
     {
+        $this->expectException(OutOfBoundsException::class);
+        $this->expectExceptionMessage('The expected value (1) is out of bounds (0, 0)');
+
         $object = new Table();
-        $object->getRow();
+        $object->getRow(1);
     }
 
-    public function testHashCode()
+    public function testHashCode(): void
     {
         $object = new Table();
-        $this->assertEquals(md5(get_class($object)), $object->getHashCode());
+        self::assertEquals(md5(get_class($object)), $object->getHashCode());
 
         $row = $object->createRow();
-        $this->assertEquals(md5($row->getHashCode().get_class($object)), $object->getHashCode());
+        self::assertEquals(md5($row->getHashCode() . get_class($object)), $object->getHashCode());
     }
 }

@@ -3,7 +3,7 @@
  * Google OAuth Redirect Endpoint - SlimmerMetAI.com
  * 
  * Dit script redirected naar Google OAuth voor inloggen/registreren via Google
- * Development versie zonder database afhankelijkheden
+ * Moderne versie met Config klasse integratie
  */
 
 // Error handling voor development
@@ -16,38 +16,26 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 try {
-    // Definieer SITE_ROOT als dat nog niet is gedaan
-    if (!defined('SITE_ROOT')) {
-        define('SITE_ROOT', dirname(dirname(dirname(__FILE__))));
-    }
-    
-    // Include de API configuratie
+    // Include de API configuratie met moderne Config klasse
     require_once dirname(dirname(__FILE__)) . '/config.php';
     
-    // Google OAuth configuratie vanuit environment
-    $googleClientId = getenv('GOOGLE_CLIENT_ID') ?: GOOGLE_CLIENT_ID;
-    $googleClientSecret = getenv('GOOGLE_CLIENT_SECRET') ?: GOOGLE_CLIENT_SECRET;
-    $siteUrl = getenv('SITE_URL') ?: 'https://slimmermetai.nl';
+    // Gebruik de Config klasse in plaats van hardcoded waarden
+    $config = \App\Infrastructure\Config\Config::getInstance();
     
-    // Development fallback voor localhost
-    if (getenv('APP_ENV') === 'local' || getenv('APP_ENV') === 'development') {
-        if (empty($googleClientId)) {
-            $googleClientId = '625906341722-2eohq5a55sl4a8511h6s20dbsicuknku.apps.googleusercontent.com';
-        }
-        $siteUrl = 'http://localhost:8000';
-    }
+    // Google OAuth configuratie via Config klasse
+    $googleClientId = $config->get('google_client_id');
+    $siteUrl = $config->get('site_url');
     
     if (empty($googleClientId)) {
-        throw new Exception('Google Client ID is niet geconfigureerd');
+        throw new Exception('Google Client ID is niet geconfigureerd. Controleer uw .env bestand.');
     }
     
-    // Bepaal de redirect URI gebaseerd op environment
+    if (empty($siteUrl)) {
+        throw new Exception('Site URL is niet geconfigureerd. Controleer uw .env bestand.');
+    }
+    
+    // Bepaal de redirect URI gebaseerd op configuratie
     $redirectUri = $siteUrl . '/api/auth/google-callback.php';
-    
-    // Voor development verschillende URI's proberen
-    if (getenv('APP_ENV') === 'local' || getenv('APP_ENV') === 'development') {
-        $redirectUri = 'http://localhost:8000'; // Google Console callback setting
-    }
     
     // Krijg de redirectUrl parameter als die is meegegeven
     $redirectAfterLogin = isset($_GET['redirect']) ? $_GET['redirect'] : '/dashboard';
@@ -93,7 +81,7 @@ try {
     $authUrl = 'https://accounts.google.com/o/oauth2/v2/auth?' . http_build_query($params);
     
     // Debug info alleen in development
-    if (getenv('APP_ENV') === 'local' || getenv('APP_ENV') === 'development') {
+    if ($config->get('app_env') === 'local' || $config->get('app_env') === 'development') {
         error_log("Google OAuth URL: " . $authUrl);
         error_log("Redirect URI: " . $redirectUri);
         error_log("Client ID: " . $googleClientId);

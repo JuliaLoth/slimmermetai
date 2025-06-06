@@ -1,0 +1,10 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+. Run CI/CD pipline locally
+Before pushing changes, run CI/CD pipline locally to identify and resolve any remaining type issues. 
+
+
+

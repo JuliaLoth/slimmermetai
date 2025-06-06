@@ -10,55 +10,85 @@
  * file that was distributed with this source code. For the full list of
  * contributors, visit https://github.com/PHPOffice/PHPPresentation/contributors.
  *
- * @copyright   2009-2015 PHPPresentation contributors
+ * @see        https://github.com/PHPOffice/PHPPresentation
+ *
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
- * @link        https://github.com/PHPOffice/PHPPresentation
  */
+
+declare(strict_types=1);
 
 namespace PhpOffice\PhpPresentation\Tests\Shape\Drawing;
 
+use PhpOffice\PhpPresentation\Exception\FileNotFoundException;
 use PhpOffice\PhpPresentation\Shape\Drawing\File;
+use PHPUnit\Framework\TestCase;
 
 /**
- * Test class for Drawing element
+ * Test class for Drawing element.
  *
- * @coversDefaultClass PhpOffice\PhpPresentation\Shape\Drawing
+ * @coversDefaultClass \PhpOffice\PhpPresentation\Shape\Drawing
  */
-class FileTest extends \PHPUnit_Framework_TestCase
+class FileTest extends TestCase
 {
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $object = new File();
-        $this->assertEmpty($object->getPath());
+        self::assertEmpty($object->getPath());
+    }
+
+    public function testPathBasic(): void
+    {
+        $this->expectException(FileNotFoundException::class);
+        $this->expectExceptionMessage('The file "" doesn\'t exist');
+
+        $object = new File();
+        self::assertInstanceOf(File::class, $object->setPath());
+    }
+
+    public function testPathWithoutVerifyFile(): void
+    {
+        $object = new File();
+
+        self::assertInstanceOf(File::class, $object->setPath('', false));
+        self::assertEmpty($object->getPath());
+    }
+
+    public function testPathWithRealFile(): void
+    {
+        $object = new File();
+
+        $imagePath = dirname(__DIR__, 4) . '/resources/images/PhpPresentationLogo.png';
+
+        self::assertInstanceOf(File::class, $object->setPath($imagePath, false));
+        self::assertEquals($imagePath, $object->getPath());
+        self::assertEquals(0, $object->getWidth());
+        self::assertEquals(0, $object->getHeight());
     }
 
     /**
-     * @expectedException \Exception
-     * @expectedExceptionMessage File  not found!
+     * @dataProvider dataProviderMimeType
      */
-    public function testPathBasic()
+    public function testMimeType(string $pathFile, string $mimeType): void
     {
         $object = new File();
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\Drawing\\File', $object->setPath());
+        self::assertInstanceOf(File::class, $object->setPath($pathFile));
+        self::assertEquals($mimeType, $object->getMimeType());
     }
 
-    public function testPathWithoutVerifyFile()
+    /**
+     * @return array<array<string>>
+     */
+    public static function dataProviderMimeType(): array
     {
-        $object = new File();
-
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\Drawing\\File', $object->setPath('', false));
-        $this->assertEmpty($object->getPath());
-    }
-
-    public function testPathWithRealFile()
-    {
-        $object = new File();
-
-        $imagePath = PHPPRESENTATION_TESTS_BASE_DIR.DIRECTORY_SEPARATOR.'resources'.DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'PhpPresentationLogo.png';
-
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\Drawing\\File', $object->setPath($imagePath, false));
-        $this->assertEquals($imagePath, $object->getPath());
-        $this->assertEquals(0, $object->getWidth());
-        $this->assertEquals(0, $object->getHeight());
+        return [
+            [
+                dirname(__DIR__, 4) . '/resources/images/PhpPresentationLogo.png',
+                'image/png',
+            ],
+            [
+                dirname(__DIR__, 4) . '/resources/images/tiger.svg',
+                'image/svg+xml',
+            ],
+        ];
     }
 }

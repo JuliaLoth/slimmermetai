@@ -10,78 +10,81 @@
  * file that was distributed with this source code. For the full list of
  * contributors, visit https://github.com/PHPOffice/PHPPresentation/contributors.
  *
- * @copyright   2009-2015 PHPPresentation contributors
+ * @see        https://github.com/PHPOffice/PHPPresentation
+ *
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
- * @link        https://github.com/PHPOffice/PHPPresentation
  */
+
+declare(strict_types=1);
 
 namespace PhpOffice\PhpPresentation\Tests\Shape\RichText;
 
 use PhpOffice\PhpPresentation\Shape\Hyperlink;
 use PhpOffice\PhpPresentation\Shape\RichText\TextElement;
+use PHPUnit\Framework\TestCase;
 
 /**
- * Test class for TextElement element
+ * Test class for TextElement element.
  *
- * @coversDefaultClass PhpOffice\PhpPresentation\Shape\RichText\TextElement
+ * @coversDefaultClass \PhpOffice\PhpPresentation\Shape\RichText\TextElement
  */
-class TextElementTest extends \PHPUnit_Framework_TestCase
+class TextElementTest extends TestCase
 {
     /**
-     * Test can read
+     * Test can read.
      */
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $object = new TextElement();
-        $this->assertEquals('', $object->getText());
+        self::assertEquals('', $object->getText());
 
         $object = new TextElement('AAA');
-        $this->assertEquals('AAA', $object->getText());
+        self::assertEquals('AAA', $object->getText());
     }
 
-    public function testFont()
+    public function testFont(): void
     {
         $object = new TextElement();
-        $this->assertNull($object->getFont());
+        self::assertNull($object->getFont());
     }
 
-    public function testHyperlink()
+    public function testHyperlink(): void
     {
         $object = new TextElement();
-        $this->assertFalse($object->hasHyperlink());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\RichText\\TextElement', $object->setHyperlink());
-        $this->assertFalse($object->hasHyperlink());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\Hyperlink', $object->getHyperlink());
-        $this->assertTrue($object->hasHyperlink());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\RichText\\TextElement', $object->setHyperlink(new Hyperlink('http://www.google.fr')));
-        $this->assertTrue($object->hasHyperlink());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\Hyperlink', $object->getHyperlink());
+        self::assertFalse($object->hasHyperlink());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\RichText\\TextElement', $object->setHyperlink());
+        self::assertFalse($object->hasHyperlink());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\Hyperlink', $object->getHyperlink());
+        self::assertTrue($object->hasHyperlink());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\RichText\\TextElement', $object->setHyperlink(new Hyperlink('http://www.google.fr')));
+        self::assertTrue($object->hasHyperlink());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\Hyperlink', $object->getHyperlink());
     }
 
-    public function testLanguage()
+    public function testLanguage(): void
     {
         $object = new TextElement();
-        $this->assertNull($object->getLanguage());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\RichText\\TextElement', $object->setLanguage('en-US'));
-        $this->assertEquals('en-US', $object->getLanguage());
+        self::assertNull($object->getLanguage());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\RichText\\TextElement', $object->setLanguage('en-US'));
+        self::assertEquals('en-US', $object->getLanguage());
     }
 
-    public function testText()
+    public function testText(): void
     {
         $object = new TextElement();
-        $this->assertEquals('', $object->getText());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\RichText\\TextElement', $object->setText());
-        $this->assertEquals('', $object->getText());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\RichText\\TextElement', $object->setText('AAA'));
-        $this->assertEquals('AAA', $object->getText());
+        self::assertEquals('', $object->getText());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\RichText\\TextElement', $object->setText());
+        self::assertEquals('', $object->getText());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\RichText\\TextElement', $object->setText('AAA'));
+        self::assertEquals('AAA', $object->getText());
     }
 
     /**
-     * Test get/set hash index
+     * Test get/set hash index.
      */
-    public function testHashCode()
+    public function testHashCode(): void
     {
         $object = new TextElement();
-        $this->assertEquals(md5(get_class($object)), $object->getHashCode());
+        self::assertEquals(md5(get_class($object)), $object->getHashCode());
     }
 }

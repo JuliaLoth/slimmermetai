@@ -10,89 +10,95 @@
  * file that was distributed with this source code. For the full list of
  * contributors, visit https://github.com/PHPOffice/PHPPresentation/contributors.
  *
- * @copyright   2009-2015 PHPPresentation contributors
+ * @see        https://github.com/PHPOffice/PHPPresentation
+ *
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
- * @link        https://github.com/PHPOffice/PHPPresentation
  */
+
+declare(strict_types=1);
 
 namespace PhpOffice\PhpPresentation\Tests\Style;
 
 use PhpOffice\PhpPresentation\Style\Color;
+use PHPUnit\Framework\TestCase;
 
 /**
- * Test class for PhpPresentation
+ * Test class for PhpPresentation.
  *
- * @coversDefaultClass PhpOffice\PhpPresentation\PhpPresentation
+ * @coversDefaultClass \PhpOffice\PhpPresentation\PhpPresentation
  */
-class ColorTest extends \PHPUnit_Framework_TestCase
+class ColorTest extends TestCase
 {
     /**
-     * Test create new instance
+     * Test create new instance.
      */
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $object = new Color();
-        $this->assertEquals(Color::COLOR_BLACK, $object->getARGB());
-        $object = new Color(COLOR::COLOR_BLUE);
-        $this->assertEquals(Color::COLOR_BLUE, $object->getARGB());
+        self::assertEquals(Color::COLOR_BLACK, $object->getARGB());
+        $object = new Color(Color::COLOR_BLUE);
+        self::assertEquals(Color::COLOR_BLUE, $object->getARGB());
     }
 
     /**
-     * Test Alpha
+     * Test Alpha.
      */
-    public function testAlpha()
+    public function testAlpha(): void
     {
+        $randAlpha = mt_rand(0, 100);
         $object = new Color();
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Style\\Color', $object->setARGB());
-        $this->assertEquals(100, $object->getAlpha());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Style\\Color', $object->setARGB(Color::COLOR_BLUE));
-        $this->assertEquals(100, $object->getAlpha());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Style\\Color', $object->setARGB('AA0000FF'));
-        $this->assertEquals(66.67, $object->getAlpha());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Style\\Color', $object->setARGB());
+        self::assertEquals(100, $object->getAlpha());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Style\\Color', $object->setARGB('AA0000FF'));
+        self::assertEquals(67, $object->getAlpha());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Style\\Color', $object->setARGB(Color::COLOR_BLUE));
+        self::assertEquals(100, $object->getAlpha());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Style\\Color', $object->setAlpha($randAlpha));
+        self::assertEquals($randAlpha, round($object->getAlpha()));
     }
 
     /**
-     * Test get/set ARGB
+     * Test get/set ARGB.
      */
-    public function testSetGetARGB()
+    public function testSetGetARGB(): void
     {
         $object = new Color();
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Style\\Color', $object->setARGB());
-        $this->assertEquals(Color::COLOR_BLACK, $object->getARGB());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Style\\Color', $object->setARGB(''));
-        $this->assertEquals(Color::COLOR_BLACK, $object->getARGB());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Style\\Color', $object->setARGB(Color::COLOR_BLUE));
-        $this->assertEquals(Color::COLOR_BLUE, $object->getARGB());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Style\\Color', $object->setARGB());
+        self::assertEquals(Color::COLOR_BLACK, $object->getARGB());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Style\\Color', $object->setARGB(''));
+        self::assertEquals(Color::COLOR_BLACK, $object->getARGB());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Style\\Color', $object->setARGB(Color::COLOR_BLUE));
+        self::assertEquals(Color::COLOR_BLUE, $object->getARGB());
     }
 
     /**
-     * Test get/set RGB
+     * Test get/set RGB.
      */
-    public function testSetGetRGB()
+    public function testSetGetRGB(): void
     {
         $object = new Color();
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Style\\Color', $object->setRGB());
-        $this->assertEquals('000000', $object->getRGB());
-        $this->assertEquals('FF000000', $object->getARGB());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Style\\Color', $object->setRGB(''));
-        $this->assertEquals('000000', $object->getRGB());
-        $this->assertEquals('FF000000', $object->getARGB());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Style\\Color', $object->setRGB('555'));
-        $this->assertEquals('555', $object->getRGB());
-        $this->assertEquals('FF555', $object->getARGB());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Style\\Color', $object->setRGB('6666'));
-        $this->assertEquals('FF6666', $object->getRGB());
-        $this->assertEquals('FF6666', $object->getARGB());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Style\\Color', $object->setRGB());
+        self::assertEquals('000000', $object->getRGB());
+        self::assertEquals('FF000000', $object->getARGB());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Style\\Color', $object->setRGB(''));
+        self::assertEquals('000000', $object->getRGB());
+        self::assertEquals('FF000000', $object->getARGB());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Style\\Color', $object->setRGB('555'));
+        self::assertEquals('555', $object->getRGB());
+        self::assertEquals('FF555', $object->getARGB());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Style\\Color', $object->setRGB('6666'));
+        self::assertEquals('FF6666', $object->getRGB());
+        self::assertEquals('FF6666', $object->getARGB());
     }
 
     /**
-     * Test get/set hash index
+     * Test get/set hash index.
      */
-    public function testSetGetHashIndex()
+    public function testSetGetHashIndex(): void
     {
         $object = new Color();
-        $value = rand(1, 100);
+        $value = mt_rand(1, 100);
         $object->setHashIndex($value);
-        $this->assertEquals($value, $object->getHashIndex());
+        self::assertEquals($value, $object->getHashIndex());
     }
 }

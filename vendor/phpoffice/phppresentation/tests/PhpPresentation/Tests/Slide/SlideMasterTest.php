@@ -10,78 +10,91 @@
  * file that was distributed with this source code. For the full list of
  * contributors, visit https://github.com/PHPOffice/PHPPresentation/contributors.
  *
- * @copyright   2009-2015 PHPPresentation contributors
+ * @see        https://github.com/PHPOffice/PHPPresentation
+ *
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
- * @link        https://github.com/PHPOffice/PHPPresentation
  */
+
+declare(strict_types=1);
 
 namespace PhpOffice\PhpPresentation\Tests;
 
+use PhpOffice\PhpPresentation\Slide\Background\Color;
+use PhpOffice\PhpPresentation\Slide\SlideLayout;
 use PhpOffice\PhpPresentation\Slide\SlideMaster;
+use PhpOffice\PhpPresentation\Style\SchemeColor;
+use PhpOffice\PhpPresentation\Style\TextStyle;
+use PHPUnit\Framework\TestCase;
 
 /**
- * Test class for PhpPresentation
+ * Test class for PhpPresentation.
  *
- * @coversDefaultClass PhpOffice\PhpPresentation\Slide\SlideMaster
+ * @coversDefaultClass \PhpOffice\PhpPresentation\Slide\SlideMaster
  */
-class SlideMasterTest extends \PHPUnit_Framework_TestCase
+class SlideMasterTest extends TestCase
 {
-    public function testBase()
+    public function testBase(): void
     {
         $object = new SlideMaster();
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Slide\\AbstractSlide', $object);
-        $this->assertNull($object->getParent());
-        $this->assertInstanceOf('\\ArrayObject', $object->getShapeCollection());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Style\\ColorMap', $object->colorMap);
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Slide\\Background\\Color', $object->getBackground());
-        $this->assertEquals('FFFFFF', $object->getBackground()->getColor()->getRGB());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Style\\TextStyle', $object->getTextStyles());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Slide\\AbstractSlide', $object);
+        self::assertNull($object->getParent());
+        self::assertIsArray($object->getShapeCollection());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Style\\ColorMap', $object->colorMap);
+        /** @var Color $background */
+        $background = $object->getBackground();
+        self::assertInstanceOf(Color::class, $background);
+        self::assertEquals('FFFFFF', $background->getColor()->getRGB());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Style\\TextStyle', $object->getTextStyles());
     }
 
-    public function testLayout()
+    public function testLayout(): void
     {
         $object = new SlideMaster();
 
         // Mock Post
-        $mockSlideLayout = $this->getMockForAbstractClass('PhpOffice\PhpPresentation\Slide\SlideLayout', array($object));
+        /** @var SlideLayout $mockSlideLayout */
+        $mockSlideLayout = $this->getMockForAbstractClass(SlideLayout::class, [$object]);
 
-        $this->assertEmpty($object->getAllSlideLayouts());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Slide\\SlideLayout', $object->createSlideLayout());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Slide\\SlideLayout', $object->addSlideLayout($mockSlideLayout));
-        $this->assertCount(2, $object->getAllSlideLayouts());
+        self::assertEmpty($object->getAllSlideLayouts());
+        self::assertInstanceOf(SlideLayout::class, $object->createSlideLayout());
+        self::assertInstanceOf(SlideLayout::class, $object->addSlideLayout($mockSlideLayout));
+        self::assertCount(2, $object->getAllSlideLayouts());
     }
 
-    public function testSchemeColors()
+    public function testSchemeColors(): void
     {
         // Mock Pre
-        $mockSchemeColorAccent1 = $this->getMockForAbstractClass('PhpOffice\PhpPresentation\Style\SchemeColor');
+        /** @var SchemeColor $mockSchemeColorAccent1 */
+        $mockSchemeColorAccent1 = $this->getMockForAbstractClass(SchemeColor::class);
         $mockSchemeColorAccent1->setValue('accent1');
         $mockSchemeColorAccent1->setRGB('ABCDEF');
-        $mockSchemeColorNew = $this->getMockForAbstractClass('PhpOffice\PhpPresentation\Style\SchemeColor');
+        /** @var SchemeColor $mockSchemeColorNew */
+        $mockSchemeColorNew = $this->getMockForAbstractClass(SchemeColor::class);
         $mockSchemeColorNew->setValue('new');
         $mockSchemeColorNew->setRGB('ABCDEF');
 
         $object = new SlideMaster();
 
-        $this->assertInternalType('array', $object->getAllSchemeColors());
-        $this->assertCount(12, $object->getAllSchemeColors());
+        self::assertIsArray($object->getAllSchemeColors());
+        self::assertCount(12, $object->getAllSchemeColors());
         // Add idem value
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Slide\\SlideMaster', $object->addSchemeColor($mockSchemeColorAccent1));
-        $this->assertCount(12, $object->getAllSchemeColors());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Slide\\SlideMaster', $object->addSchemeColor($mockSchemeColorAccent1));
+        self::assertCount(12, $object->getAllSchemeColors());
         // Add new value
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Slide\\SlideMaster', $object->addSchemeColor($mockSchemeColorNew));
-        $this->assertCount(13, $object->getAllSchemeColors());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Slide\\SlideMaster', $object->addSchemeColor($mockSchemeColorNew));
+        self::assertCount(13, $object->getAllSchemeColors());
     }
 
-    public function testTextStyles()
+    public function testTextStyles(): void
     {
         // Mock Pre
-        $mockTextStyle = $this->getMockForAbstractClass('PhpOffice\PhpPresentation\Style\TextStyle');
+        /** @var TextStyle $mockTextStyle */
+        $mockTextStyle = $this->getMockForAbstractClass(TextStyle::class);
 
         $object = new SlideMaster();
 
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Style\\TextStyle', $object->getTextStyles());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Slide\\SlideMaster', $object->setTextStyles($mockTextStyle));
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Style\\TextStyle', $object->getTextStyles());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Style\\TextStyle', $object->getTextStyles());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Slide\\SlideMaster', $object->setTextStyles($mockTextStyle));
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Style\\TextStyle', $object->getTextStyles());
     }
 }

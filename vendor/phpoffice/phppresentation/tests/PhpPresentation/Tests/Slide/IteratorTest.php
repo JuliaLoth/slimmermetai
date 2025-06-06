@@ -10,42 +10,43 @@
  * file that was distributed with this source code. For the full list of
  * contributors, visit https://github.com/PHPOffice/PHPPresentation/contributors.
  *
- * @copyright   2009-2015 PHPPresentation contributors
+ * @see        https://github.com/PHPOffice/PHPPresentation
+ *
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
- * @link        https://github.com/PHPOffice/PHPPresentation
  */
+
+declare(strict_types=1);
 
 namespace PhpOffice\PhpPresentation\Tests\Slide;
 
 use PhpOffice\PhpPresentation\PhpPresentation;
 use PhpOffice\PhpPresentation\Slide;
 use PhpOffice\PhpPresentation\Slide\Iterator;
+use PHPUnit\Framework\TestCase;
 
 /**
- * Test class for IOFactory
+ * Test class for IOFactory.
  *
- * @coversDefaultClass PhpOffice\PhpPresentation\IOFactory
+ * @coversDefaultClass \PhpOffice\PhpPresentation\IOFactory
  */
-class IteratorTest extends \PHPUnit_Framework_TestCase
+class IteratorTest extends TestCase
 {
-    /**
-     */
-    public function testMethod()
+    public function testMethod(): void
     {
         $oPhpPresentation = new PhpPresentation();
         $oPhpPresentation->addSlide(new Slide());
 
         $object = new Iterator($oPhpPresentation);
 
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Slide', $object->current());
-        $this->assertEquals(0, $object->key());
-        $this->assertNull($object->next());
-        $this->assertEquals(1, $object->key());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Slide', $object->current());
-        $this->assertTrue($object->valid());
-        $this->assertNull($object->next());
-        $this->assertFalse($object->valid());
-        $this->assertNull($object->rewind());
-        $this->assertEquals(0, $object->key());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Slide', $object->current());
+        self::assertEquals(0, $object->key());
+        $object->next();
+        self::assertEquals(1, $object->key());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Slide', $object->current());
+        self::assertTrue($object->valid());
+        $object->next();
+        self::assertFalse($object->valid());
+        $object->rewind();
+        self::assertEquals(0, $object->key());
     }
 }

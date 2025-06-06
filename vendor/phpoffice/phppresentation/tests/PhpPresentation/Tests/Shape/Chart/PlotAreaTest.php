@@ -10,102 +10,105 @@
  * file that was distributed with this source code. For the full list of
  * contributors, visit https://github.com/PHPOffice/PHPPresentation/contributors.
  *
- * @copyright   2009-2015 PHPPresentation contributors
+ * @see        https://github.com/PHPOffice/PHPPresentation
+ *
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
- * @link        https://github.com/PHPOffice/PHPPresentation
  */
+
+declare(strict_types=1);
 
 namespace PhpOffice\PhpPresentation\Tests\Shape\Chart;
 
-use PhpOffice\PhpPresentation\Shape\Chart;
+use PhpOffice\PhpPresentation\Exception\UndefinedChartTypeException;
 use PhpOffice\PhpPresentation\Shape\Chart\Axis;
 use PhpOffice\PhpPresentation\Shape\Chart\PlotArea;
+use PhpOffice\PhpPresentation\Shape\Chart\Type\AbstractType;
 use PhpOffice\PhpPresentation\Shape\Chart\Type\Bar3D;
+use PHPUnit\Framework\TestCase;
 
 /**
- * Test class for PlotArea element
+ * Test class for PlotArea element.
  *
- * @coversDefaultClass PhpOffice\PhpPresentation\Shape\Chart\PlotArea
+ * @coversDefaultClass \PhpOffice\PhpPresentation\Shape\Chart\PlotArea
  */
-class PlotAreaTest extends \PHPUnit_Framework_TestCase
+class PlotAreaTest extends TestCase
 {
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $object = new PlotArea();
 
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\Chart\\Axis', $object->getAxisX());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\Chart\\Axis', $object->getAxisY());
+        self::assertInstanceOf(Axis::class, $object->getAxisX());
+        self::assertInstanceOf(Axis::class, $object->getAxisY());
     }
 
-    public function testHashIndex()
+    public function testHashIndex(): void
     {
         $object = new PlotArea();
-        $value = rand(1, 100);
+        $value = mt_rand(1, 100);
 
-        $this->assertEmpty($object->getHashIndex());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\Chart\\PlotArea', $object->setHashIndex($value));
-        $this->assertEquals($value, $object->getHashIndex());
+        self::assertEmpty($object->getHashIndex());
+        self::assertInstanceOf(PlotArea::class, $object->setHashIndex($value));
+        self::assertEquals($value, $object->getHashIndex());
     }
 
-    public function testHeight()
+    public function testHeight(): void
     {
         $object = new PlotArea();
-        $value = rand(0, 100);
+        $value = mt_rand(0, 100);
 
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\Chart\\PlotArea', $object->setHeight());
-        $this->assertEquals(0, $object->getHeight());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\Chart\\PlotArea', $object->setHeight($value));
-        $this->assertEquals($value, $object->getHeight());
+        self::assertInstanceOf(PlotArea::class, $object->setHeight());
+        self::assertEquals(0, $object->getHeight());
+        self::assertInstanceOf(PlotArea::class, $object->setHeight($value));
+        self::assertEquals($value, $object->getHeight());
     }
 
-    public function testOffsetX()
+    public function testOffsetX(): void
     {
         $object = new PlotArea();
-        $value = rand(0, 100);
+        $value = mt_rand(0, 100);
 
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\Chart\\PlotArea', $object->setOffsetX());
-        $this->assertEquals(0, $object->getOffsetX());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\Chart\\PlotArea', $object->setOffsetX($value));
-        $this->assertEquals($value, $object->getOffsetX());
+        self::assertInstanceOf(PlotArea::class, $object->setOffsetX());
+        self::assertEquals(0, $object->getOffsetX());
+        self::assertInstanceOf(PlotArea::class, $object->setOffsetX($value));
+        self::assertEquals($value, $object->getOffsetX());
     }
 
-    public function testOffsetY()
+    public function testOffsetY(): void
     {
         $object = new PlotArea();
-        $value = rand(0, 100);
+        $value = mt_rand(0, 100);
 
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\Chart\\PlotArea', $object->setOffsetY());
-        $this->assertEquals(0, $object->getOffsetY());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\Chart\\PlotArea', $object->setOffsetY($value));
-        $this->assertEquals($value, $object->getOffsetY());
+        self::assertInstanceOf(PlotArea::class, $object->setOffsetY());
+        self::assertEquals(0, $object->getOffsetY());
+        self::assertInstanceOf(PlotArea::class, $object->setOffsetY($value));
+        self::assertEquals($value, $object->getOffsetY());
     }
 
-    public function testType()
+    public function testType(): void
     {
         $object = new PlotArea();
 
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\Chart\\PlotArea', $object->setType(new Bar3D()));
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\Chart\\Type\\AbstractType', $object->getType());
+        self::assertInstanceOf(PlotArea::class, $object->setType(new Bar3D()));
+        self::assertInstanceOf(AbstractType::class, $object->getType());
     }
 
-    /**
-     * @expectedException \Exception
-     * @expectedExceptionMessage Chart type has not been set.
-     */
-    public function testTypeException()
+    public function testTypeException(): void
     {
+        $this->expectException(UndefinedChartTypeException::class);
+        $this->expectExceptionMessage('The chart type has not been defined');
+
         $object = new PlotArea();
         $object->getType();
     }
 
-    public function testWidth()
+    public function testWidth(): void
     {
         $object = new PlotArea();
-        $value = rand(0, 100);
+        $value = mt_rand(0, 100);
 
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\Chart\\PlotArea', $object->setWidth());
-        $this->assertEquals(0, $object->getWidth());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\Chart\\PlotArea', $object->setWidth($value));
-        $this->assertEquals($value, $object->getWidth());
+        self::assertInstanceOf(PlotArea::class, $object->setWidth());
+        self::assertEquals(0, $object->getWidth());
+        self::assertInstanceOf(PlotArea::class, $object->setWidth($value));
+        self::assertEquals($value, $object->getWidth());
     }
 }

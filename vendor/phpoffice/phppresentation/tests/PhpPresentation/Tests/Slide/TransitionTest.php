@@ -10,83 +10,74 @@
  * file that was distributed with this source code. For the full list of
  * contributors, visit https://github.com/PHPOffice/PHPPresentation/contributors.
  *
- * @copyright   2009-2015 PHPPresentation contributors
+ * @see        https://github.com/PHPOffice/PHPPresentation
+ *
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
- * @link        https://github.com/PHPOffice/PHPPresentation
  */
+
+declare(strict_types=1);
 
 namespace PhpOffice\PhpPresentation\Tests;
 
 use PhpOffice\PhpPresentation\Slide\Transition;
+use PHPUnit\Framework\TestCase;
 
 /**
- * Test class for PhpPresentation
+ * Test class for PhpPresentation.
  *
- * @coversDefaultClass PhpOffice\PhpPresentation\Slide\Transition
+ * @coversDefaultClass \PhpOffice\PhpPresentation\Slide\Transition
  */
-class TransitionTest extends \PHPUnit_Framework_TestCase
+class TransitionTest extends TestCase
 {
-    public function testSpeed()
+    public function testSpeed(): void
     {
         $object = new Transition();
-        $this->assertNull($object->getSpeed());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Slide\\Transition', $object->setSpeed());
-        $this->assertEquals(Transition::SPEED_MEDIUM, $object->getSpeed());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Slide\\Transition', $object->setSpeed(Transition::SPEED_FAST));
-        $this->assertEquals(Transition::SPEED_FAST, $object->getSpeed());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Slide\\Transition', $object->setSpeed(rand(1, 1000)));
-        $this->assertNull($object->getSpeed());
+        self::assertNull($object->getSpeed());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Slide\\Transition', $object->setSpeed());
+        self::assertEquals(Transition::SPEED_MEDIUM, $object->getSpeed());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Slide\\Transition', $object->setSpeed(Transition::SPEED_FAST));
+        self::assertEquals(Transition::SPEED_FAST, $object->getSpeed());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Slide\\Transition', $object->setSpeed('notagoodvalue'));
+        self::assertNull($object->getSpeed());
     }
 
-    public function testManualTrigger()
+    public function testManualTrigger(): void
     {
         $object = new Transition();
-        $this->assertFalse($object->hasManualTrigger());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Slide\\Transition', $object->setManualTrigger());
-        $this->assertFalse($object->hasManualTrigger());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Slide\\Transition', $object->setManualTrigger(true));
-        $this->assertTrue($object->hasManualTrigger());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Slide\\Transition', $object->setManualTrigger(null));
-        $this->assertTrue($object->hasManualTrigger());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Slide\\Transition', $object->setManualTrigger(false));
-        $this->assertFalse($object->hasManualTrigger());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Slide\\Transition', $object->setManualTrigger(null));
-        $this->assertFalse($object->hasManualTrigger());
+        self::assertFalse($object->hasManualTrigger());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Slide\\Transition', $object->setManualTrigger());
+        self::assertFalse($object->hasManualTrigger());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Slide\\Transition', $object->setManualTrigger(true));
+        self::assertTrue($object->hasManualTrigger());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Slide\\Transition', $object->setManualTrigger(false));
+        self::assertFalse($object->hasManualTrigger());
     }
 
-    public function testTimeTrigger()
+    public function testTimeTrigger(): void
     {
         $object = new Transition();
-        $this->assertFalse($object->hasTimeTrigger());
-        $this->assertNull($object->getAdvanceTimeTrigger());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Slide\\Transition', $object->setTimeTrigger());
-        $this->assertFalse($object->hasTimeTrigger());
-        $this->assertNull($object->getAdvanceTimeTrigger());
-        $value = rand(1, 1000);
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Slide\\Transition', $object->setTimeTrigger(true, $value));
-        $this->assertTrue($object->hasTimeTrigger());
-        $this->assertEquals($value, $object->getAdvanceTimeTrigger());
-        $value = rand(1, 1000);
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Slide\\Transition', $object->setTimeTrigger(null, $value));
-        $this->assertTrue($object->hasTimeTrigger());
-        $this->assertEquals($value, $object->getAdvanceTimeTrigger());
-        $value = rand(1, 1000);
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Slide\\Transition', $object->setTimeTrigger(false, $value));
-        $this->assertFalse($object->hasTimeTrigger());
-        $this->assertNull($object->getAdvanceTimeTrigger());
-        $value = rand(1, 1000);
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Slide\\Transition', $object->setTimeTrigger(null, $value));
-        $this->assertFalse($object->hasTimeTrigger());
-        $this->assertNull($object->getAdvanceTimeTrigger());
+        self::assertFalse($object->hasTimeTrigger());
+        self::assertNull($object->getAdvanceTimeTrigger());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Slide\\Transition', $object->setTimeTrigger());
+        self::assertFalse($object->hasTimeTrigger());
+        self::assertNull($object->getAdvanceTimeTrigger());
+        $value = mt_rand(1, 1000);
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Slide\\Transition', $object->setTimeTrigger(true, $value));
+        self::assertTrue($object->hasTimeTrigger());
+        self::assertEquals($value, $object->getAdvanceTimeTrigger());
+        $value = mt_rand(1, 1000);
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Slide\\Transition', $object->setTimeTrigger(false, $value));
+        self::assertFalse($object->hasTimeTrigger());
+        self::assertNull($object->getAdvanceTimeTrigger());
     }
 
-    public function testTransitionType()
+    public function testTransitionType(): void
     {
         $object = new Transition();
-        $this->assertNull($object->getTransitionType());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Slide\\Transition', $object->setTransitionType());
-        $this->assertNull($object->getTransitionType());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Slide\\Transition', $object->setTransitionType(Transition::TRANSITION_RANDOM));
-        $this->assertEquals(Transition::TRANSITION_RANDOM, $object->getTransitionType());
+        self::assertNull($object->getTransitionType());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Slide\\Transition', $object->setTransitionType());
+        self::assertNull($object->getTransitionType());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Slide\\Transition', $object->setTransitionType(Transition::TRANSITION_RANDOM));
+        self::assertEquals(Transition::TRANSITION_RANDOM, $object->getTransitionType());
     }
 }

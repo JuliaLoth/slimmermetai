@@ -24,17 +24,38 @@ $google_client_secret_key = $is_production
     ? 'GOOGLE_CLIENT_SECRET_PRODUCTION' 
     : 'GOOGLE_CLIENT_SECRET_DEVELOPMENT';
 
-// Google OAuth configuratie uit Config klasse
+// Google OAuth configuratie uit Config klasse - GEEN HARDCODED FALLBACKS
 $googleClientId = getenv($google_client_id_key) ?: $config->get('google_client_id');
 if (empty($googleClientId)) {
-    $googleClientId = '625906341722-2eohq5a55sl4a8511h6s20dbsicuknku.apps.googleusercontent.com';
+    error_log("CRITICAL: Google Client ID niet geconfigureerd voor omgeving: {$current_env}");
+    if ($is_production) {
+        die(json_encode([
+            'error' => 'Server configuration error',
+            'message' => 'Authentication service temporarily unavailable'
+        ]));
+    } else {
+        die(json_encode([
+            'error' => 'Configuration error',
+            'message' => "Google Client ID ontbreekt in .env bestand voor {$current_env} omgeving. Configureer {$google_client_id_key}."
+        ]));
+    }
 }
 
 $googleClientSecret = getenv($google_client_secret_key) ?: $config->get('google_client_secret');
-
-// Legacy constanten voor backward compatibility (tijdelijk)
-if (!defined('GOOGLE_CLIENT_ID')) define('GOOGLE_CLIENT_ID', $googleClientId);
-if (!defined('GOOGLE_CLIENT_SECRET')) define('GOOGLE_CLIENT_SECRET', $googleClientSecret);
+if (empty($googleClientSecret)) {
+    error_log("CRITICAL: Google Client Secret niet geconfigureerd voor omgeving: {$current_env}");
+    if ($is_production) {
+        die(json_encode([
+            'error' => 'Server configuration error',
+            'message' => 'Authentication service temporarily unavailable'
+        ]));
+    } else {
+        die(json_encode([
+            'error' => 'Configuration error',
+            'message' => "Google Client Secret ontbreekt in .env bestand voor {$current_env} omgeving. Configureer {$google_client_secret_key}."
+        ]));
+    }
+}
 
 // Laad helpers
 if (file_exists(__DIR__ . '/helpers/auth.php')) {

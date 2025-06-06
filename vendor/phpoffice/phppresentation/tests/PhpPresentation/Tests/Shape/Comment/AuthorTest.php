@@ -10,58 +10,61 @@
  * file that was distributed with this source code. For the full list of
  * contributors, visit https://github.com/PHPOffice/PHPPresentation/contributors.
  *
- * @copyright   2009-2015 PHPPresentation contributors
+ * @see        https://github.com/PHPOffice/PHPPresentation
+ *
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
- * @link        https://github.com/PHPOffice/PHPPresentation
  */
+
+declare(strict_types=1);
 
 namespace PhpOffice\PhpPresentation\Tests\Shape\Comment;
 
 use PhpOffice\PhpPresentation\Shape\Comment\Author;
+use PHPUnit\Framework\TestCase;
 
 /**
- * Test class for Author element
+ * Test class for Author element.
  *
- * @coversDefaultClass PhpOffice\PhpPresentation\Shape\Comment\Author
+ * @coversDefaultClass \PhpOffice\PhpPresentation\Shape\Comment\Author
  */
-class AuthorTest extends \PHPUnit_Framework_TestCase
+class AuthorTest extends TestCase
 {
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $object = new Author();
 
-        $this->assertNull($object->getName());
-        $this->assertNull($object->getIndex());
-        $this->assertNull($object->getInitials());
+        self::assertNull($object->getName());
+        self::assertNull($object->getIndex());
+        self::assertNull($object->getInitials());
     }
 
-    public function testGetSetIndex()
+    public function testGetSetIndex(): void
     {
-        $expectedVal = rand(1, 100);
+        $expectedVal = mt_rand(1, 100);
 
         $object = new Author();
-        $this->assertNull($object->getIndex());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\Comment\\Author', $object->setIndex($expectedVal));
-        $this->assertEquals($expectedVal, $object->getIndex());
+        self::assertNull($object->getIndex());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\Comment\\Author', $object->setIndex($expectedVal));
+        self::assertEquals($expectedVal, $object->getIndex());
     }
 
-    public function testGetSetInitials()
+    public function testGetSetInitials(): void
     {
         $expectedVal = 'AABBCCDD';
 
         $object = new Author();
-        $this->assertNull($object->getInitials());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\Comment\\Author', $object->setInitials($expectedVal));
-        $this->assertEquals($expectedVal, $object->getInitials());
+        self::assertNull($object->getInitials());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\Comment\\Author', $object->setInitials($expectedVal));
+        self::assertEquals($expectedVal, $object->getInitials());
     }
 
-    public function testGetSetName()
+    public function testGetSetName(): void
     {
         $expectedVal = 'AABBCCDD';
 
         $object = new Author();
-        $this->assertNull($object->getName());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\Comment\\Author', $object->setName($expectedVal));
-        $this->assertEquals($expectedVal, $object->getName());
+        self::assertNull($object->getName());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\Comment\\Author', $object->setName($expectedVal));
+        self::assertEquals($expectedVal, $object->getName());
     }
 }

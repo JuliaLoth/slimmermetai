@@ -27,6 +27,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-npm-
 
+      - name: Validate dependencies
+        run: npm audit
+
       - name: Install dependencies
         run: npm ci
 

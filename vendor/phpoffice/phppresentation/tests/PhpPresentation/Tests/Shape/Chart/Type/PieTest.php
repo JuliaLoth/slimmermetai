@@ -10,57 +10,59 @@
  * file that was distributed with this source code. For the full list of
  * contributors, visit https://github.com/PHPOffice/PHPPresentation/contributors.
  *
- * @copyright   2009-2015 PHPPresentation contributors
+ * @see        https://github.com/PHPOffice/PHPPresentation
+ *
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
- * @link        https://github.com/PHPOffice/PHPPresentation
  */
+
+declare(strict_types=1);
 
 namespace PhpOffice\PhpPresentation\Tests\Shape\Chart\Type;
 
-use PhpOffice\PhpPresentation\Shape\Chart\Type\Pie;
 use PhpOffice\PhpPresentation\Shape\Chart\Series;
+use PhpOffice\PhpPresentation\Shape\Chart\Type\Pie;
+use PHPUnit\Framework\TestCase;
 
 /**
- * Test class for Pie element
+ * Test class for Pie element.
  *
- * @coversDefaultClass PhpOffice\PhpPresentation\Shape\Chart\Type\Pie
+ * @coversDefaultClass \PhpOffice\PhpPresentation\Shape\Chart\Type\Pie
  */
-class PieTest extends \PHPUnit_Framework_TestCase
+class PieTest extends TestCase
 {
-    public function testData()
+    public function testData(): void
     {
         $object = new Pie();
 
-        $this->assertInternalType('array', $object->getSeries());
-        $this->assertEmpty($object->getSeries());
+        self::assertIsArray($object->getSeries());
+        self::assertEmpty($object->getSeries());
 
-        $array = array(
+        $array = [
             new Series(),
             new Series(),
-        );
+        ];
 
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\Chart\\Type\\Pie', $object->setSeries());
-        $this->assertEmpty($object->getSeries());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\Chart\\Type\\Pie', $object->setSeries($array));
-        $this->assertCount(count($array), $object->getSeries());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\Chart\\Type\\Pie', $object->setSeries());
+        self::assertEmpty($object->getSeries());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\Chart\\Type\\Pie', $object->setSeries($array));
+        self::assertCount(count($array), $object->getSeries());
     }
 
-    public function testSeries()
+    public function testSeries(): void
     {
         $object = new Pie();
 
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\Chart\\Type\\Pie', $object->addSeries(new Series()));
-        $this->assertCount(1, $object->getSeries());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\Chart\\Type\\Pie', $object->addSeries(new Series()));
+        self::assertCount(1, $object->getSeries());
     }
 
-
-    public function testHashCode()
+    public function testHashCode(): void
     {
         $oSeries = new Series();
 
         $object = new Pie();
         $object->addSeries($oSeries);
 
-        $this->assertEquals(md5($oSeries->getHashCode().get_class($object)), $object->getHashCode());
+        self::assertEquals(md5($oSeries->getHashCode() . get_class($object)), $object->getHashCode());
     }
 }

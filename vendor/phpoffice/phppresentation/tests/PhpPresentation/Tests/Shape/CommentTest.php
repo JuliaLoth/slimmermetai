@@ -10,73 +10,78 @@
  * file that was distributed with this source code. For the full list of
  * contributors, visit https://github.com/PHPOffice/PHPPresentation/contributors.
  *
- * @copyright   2009-2015 PHPPresentation contributors
+ * @see        https://github.com/PHPOffice/PHPPresentation
+ *
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
- * @link        https://github.com/PHPOffice/PHPPresentation
  */
+
+declare(strict_types=1);
 
 namespace PhpOffice\PhpPresentation\Tests\Shape;
 
 use PhpOffice\PhpPresentation\Shape\Comment;
+use PhpOffice\PhpPresentation\Shape\Comment\Author;
+use PHPUnit\Framework\TestCase;
 
 /**
- * Test class for Chart element
+ * Test class for Chart element.
  *
- * @coversDefaultClass PhpOffice\PhpPresentation\Shape\Comment
+ * @coversDefaultClass \PhpOffice\PhpPresentation\Shape\Comment
  */
-class CommentTest extends \PHPUnit_Framework_TestCase
+class CommentTest extends TestCase
 {
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $object = new Comment();
 
-        $this->assertNull($object->getAuthor());
-        $this->assertNull($object->getText());
-        $this->assertInternalType('int', $object->getDate());
-        $this->assertNull($object->getHeight());
-        $this->assertNull($object->getWidth());
+        self::assertNull($object->getAuthor());
+        self::assertNull($object->getText());
+        self::assertIsInt($object->getDate());
+        self::assertNull($object->getHeight());
+        self::assertNull($object->getWidth());
     }
 
-    public function testGetSetAuthor()
+    public function testGetSetAuthor(): void
     {
         $object = new Comment();
 
-        $oStub = $this->getMockBuilder('PhpOffice\PhpPresentation\Shape\Comment\Author')->getMock();
+        /** @var Author $oStub */
+        $oStub = $this->getMockBuilder(Author::class)->getMock();
 
-        $this->assertNull($object->getAuthor());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\Comment', $object->setAuthor($oStub));
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\Comment\\Author', $object->getAuthor());
+        self::assertNull($object->getAuthor());
+        self::assertInstanceOf(Comment::class, $object->setAuthor($oStub));
+        self::assertInstanceOf(Author::class, $object->getAuthor());
     }
 
-    public function testGetSetDate()
+    public function testGetSetDate(): void
     {
         $expectedDate = time();
 
         $object = new Comment();
-        $this->assertInternalType('int', $object->getDate());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\Comment', $object->setDate($expectedDate));
-        $this->assertEquals($expectedDate, $object->getDate());
-        $this->assertInternalType('int', $object->getDate());
+        self::assertIsInt($object->getDate());
+        self::assertInstanceOf(Comment::class, $object->setDate($expectedDate));
+        self::assertEquals($expectedDate, $object->getDate());
+        self::assertIsInt($object->getDate());
     }
 
-    public function testGetSetText()
+    public function testGetSetText(): void
     {
         $expectedText = 'AABBCCDD';
 
         $object = new Comment();
-        $this->assertNull($object->getText());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\Comment', $object->setText($expectedText));
-        $this->assertEquals($expectedText, $object->getText());
+        self::assertNull($object->getText());
+        self::assertInstanceOf(Comment::class, $object->setText($expectedText));
+        self::assertEquals($expectedText, $object->getText());
     }
 
-    public function testGetSetHeightAndWidtg()
+    public function testGetSetHeightAndWidtg(): void
     {
         $object = new Comment();
-        $this->assertNull($object->getHeight());
-        $this->assertNull($object->getWidth());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\Comment', $object->setHeight(1));
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\Comment', $object->setWidth(1));
-        $this->assertNull($object->getHeight());
-        $this->assertNull($object->getWidth());
+        self::assertNull($object->getHeight());
+        self::assertNull($object->getWidth());
+        self::assertInstanceOf(Comment::class, $object->setHeight(1));
+        self::assertInstanceOf(Comment::class, $object->setWidth(1));
+        self::assertNull($object->getHeight());
+        self::assertNull($object->getWidth());
     }
 }

@@ -10,147 +10,184 @@
  * file that was distributed with this source code. For the full list of
  * contributors, visit https://github.com/PHPOffice/PHPPresentation/contributors.
  *
- * @copyright   2009-2015 PHPPresentation contributors
+ * @see        https://github.com/PHPOffice/PHPPresentation
+ *
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
- * @link        https://github.com/PHPOffice/PHPPresentation
  */
+
+declare(strict_types=1);
 
 namespace PhpOffice\PhpPresentation\Tests;
 
 use PhpOffice\PhpPresentation\DocumentLayout;
 use PhpOffice\PhpPresentation\DocumentProperties;
+use PhpOffice\PhpPresentation\Exception\OutOfBoundsException;
 use PhpOffice\PhpPresentation\PhpPresentation;
 use PhpOffice\PhpPresentation\PresentationProperties;
+use PhpOffice\PhpPresentation\Slide;
+use PHPUnit\Framework\TestCase;
 
 /**
- * Test class for PhpPresentation
+ * Test class for PhpPresentation.
  *
- * @coversDefaultClass PhpOffice\PhpPresentation\PhpPresentation
+ * @coversDefaultClass \PhpOffice\PhpPresentation\PhpPresentation
  */
-class PhpPresentationTest extends \PHPUnit_Framework_TestCase
+class PhpPresentationTest extends TestCase
 {
     /**
-     * Test create new instance
+     * Test create new instance.
      */
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $object = new PhpPresentation();
         $slide = $object->getSlide();
 
-        $this->assertEquals(new DocumentProperties(), $object->getDocumentProperties());
-        $this->assertEquals(new DocumentLayout(), $object->getLayout());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Slide', $object->getSlide());
-        $this->assertEquals(1, count($object->getAllSlides()));
-        $this->assertEquals(0, $object->getIndex($slide));
-        $this->assertEquals(1, $object->getSlideCount());
-        $this->assertEquals(0, $object->getActiveSlideIndex());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Slide\\Iterator', $object->getSlideIterator());
+        self::assertEquals(new DocumentProperties(), $object->getDocumentProperties());
+        self::assertEquals(new DocumentLayout(), $object->getLayout());
+        self::assertInstanceOf(Slide::class, $object->getSlide());
+        self::assertCount(1, $object->getAllSlides());
+        self::assertEquals(0, $object->getIndex($slide));
+        self::assertEquals(1, $object->getSlideCount());
+        self::assertEquals(0, $object->getActiveSlideIndex());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Slide\\Iterator', $object->getSlideIterator());
     }
 
-    public function testProperties()
+    public function testProperties(): void
     {
         $object = new PhpPresentation();
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\DocumentProperties', $object->getProperties());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\DocumentProperties', $object->getDocumentProperties());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\PhpPresentation', $object->setProperties(new DocumentProperties()));
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\DocumentProperties', $object->getProperties());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\DocumentProperties', $object->getDocumentProperties());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\PhpPresentation', $object->setDocumentProperties(new DocumentProperties()));
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\DocumentProperties', $object->getProperties());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\DocumentProperties', $object->getDocumentProperties());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\DocumentProperties', $object->getDocumentProperties());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\PhpPresentation', $object->setDocumentProperties(new DocumentProperties()));
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\DocumentProperties', $object->getDocumentProperties());
     }
 
-    public function testPresentationProperties()
+    public function testPresentationProperties(): void
     {
         $object = new PhpPresentation();
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\PresentationProperties', $object->getPresentationProperties());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\PhpPresentation', $object->setPresentationProperties(new PresentationProperties()));
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\PresentationProperties', $object->getPresentationProperties());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\PresentationProperties', $object->getPresentationProperties());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\PhpPresentation', $object->setPresentationProperties(new PresentationProperties()));
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\PresentationProperties', $object->getPresentationProperties());
     }
 
     /**
-     * Test add external slide
+     * Test add external slide.
      */
-    public function testAddExternalSlide()
+    public function testAddExternalSlide(): void
     {
         $origin = new PhpPresentation();
         $slide = $origin->getSlide();
         $object = new PhpPresentation();
         $object->addExternalSlide($slide);
 
-        $this->assertEquals(2, $object->getSlideCount());
+        self::assertEquals(2, $object->getSlideCount());
     }
 
     /**
-     * Test copy presentation
+     * Test copy presentation.
      */
-    public function testCopy()
+    public function testCopy(): void
     {
         $object = new PhpPresentation();
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\PhpPresentation', $object->copy());
+        $object->createSlide();
+
+        $copy = $object->copy();
+
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\PhpPresentation', $copy);
+        self::assertEquals(2, $copy->getSlideCount());
     }
 
     /**
-     * Test remove slide by index exception
-     *
-     * @expectedException Exception
-     * @expectedExceptionMessage Slide index is out of bounds.
+     * Test remove slide by index exception.
      */
-    public function testRemoveSlideByIndexException()
+    public function testRemoveSlideByIndexException(): void
     {
+        $this->expectException(OutOfBoundsException::class);
+        $this->expectExceptionMessage('The expected value (1) is out of bounds (0, 0)');
+
         $object = new PhpPresentation();
         $object->removeSlideByIndex(1);
     }
 
     /**
-     * Test get slide exception
-     *
-     * @expectedException Exception
-     * @expectedExceptionMessage Slide index is out of bounds.
+     * Test get slide exception.
      */
-    public function testGetSlideException()
+    public function testGetSlideException(): void
     {
+        $this->expectException(OutOfBoundsException::class);
+        $this->expectExceptionMessage('The expected value (1) is out of bounds (0, 0)');
+
         $object = new PhpPresentation();
         $object->getSlide(1);
     }
 
     /**
-     * Test set active slide index exception
-     *
-     * @expectedException Exception
-     * @expectedExceptionMessage Active slide index is out of bounds.
+     * Test set active slide index exception.
      */
-    public function testSetActiveSlideIndexException()
+    public function testSetActiveSlideIndexException(): void
     {
+        $this->expectException(OutOfBoundsException::class);
+        $this->expectExceptionMessage('The expected value (1) is out of bounds (0, 0)');
+
         $object = new PhpPresentation();
         $object->setActiveSlideIndex(1);
     }
 
-    /**
-     * @deprecated
-     */
-    public function testMarkAsFinal()
+    public function testAddSlideAtStart(): void
     {
-        $object = new PhpPresentation();
-        $this->assertFalse($object->isMarkedAsFinal());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\PresentationProperties', $object->markAsFinal(true));
-        $this->assertTrue($object->isMarkedAsFinal());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\PresentationProperties', $object->markAsFinal(false));
-        $this->assertFalse($object->isMarkedAsFinal());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\PresentationProperties', $object->markAsFinal());
-        $this->assertTrue($object->isMarkedAsFinal());
+        $presentation = new PhpPresentation();
+        $presentation->removeSlideByIndex(0);
+        $slide1 = new Slide($presentation);
+        $slide1->setName('Slide 1');
+        $slide2 = new Slide($presentation);
+        $slide2->setName('Slide 2');
+        $slide3 = new Slide($presentation);
+        $slide3->setName('Slide 3');
+
+        $presentation->addSlide($slide1);
+        $presentation->addSlide($slide2);
+        $presentation->addSlide($slide3, 0);
+
+        self::assertEquals('Slide 3', $presentation->getSlide(0)->getName());
+        self::assertEquals('Slide 1', $presentation->getSlide(1)->getName());
+        self::assertEquals('Slide 2', $presentation->getSlide(2)->getName());
     }
 
-    /**
-     * @deprecated
-     */
-    public function testZoom()
+    public function testAddSlideAtMiddle(): void
     {
-        $object = new PhpPresentation();
-        $this->assertEquals(1, $object->getZoom());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\PresentationProperties', $object->setZoom(0.3));
-        $this->assertEquals(0.3, $object->getZoom());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\PresentationProperties', $object->setZoom());
-        $this->assertEquals(1, $object->getZoom());
+        $presentation = new PhpPresentation();
+        $presentation->removeSlideByIndex(0);
+        $slide1 = new Slide($presentation);
+        $slide1->setName('Slide 1');
+        $slide2 = new Slide($presentation);
+        $slide2->setName('Slide 2');
+        $slide3 = new Slide($presentation);
+        $slide3->setName('Slide 3');
+
+        $presentation->addSlide($slide1);
+        $presentation->addSlide($slide2);
+        $presentation->addSlide($slide3, 1);
+
+        self::assertEquals('Slide 1', $presentation->getSlide(0)->getName());
+        self::assertEquals('Slide 3', $presentation->getSlide(1)->getName());
+        self::assertEquals('Slide 2', $presentation->getSlide(2)->getName());
+    }
+
+    public function testAddSlideAtEnd(): void
+    {
+        $presentation = new PhpPresentation();
+        $presentation->removeSlideByIndex(0);
+        $slide1 = new Slide($presentation);
+        $slide1->setName('Slide 1');
+        $slide2 = new Slide($presentation);
+        $slide2->setName('Slide 2');
+        $slide3 = new Slide($presentation);
+        $slide3->setName('Slide 3');
+
+        $presentation->addSlide($slide1);
+        $presentation->addSlide($slide2);
+        $presentation->addSlide($slide3);
+
+        self::assertEquals('Slide 1', $presentation->getSlide(0)->getName());
+        self::assertEquals('Slide 2', $presentation->getSlide(1)->getName());
+        self::assertEquals('Slide 3', $presentation->getSlide(2)->getName());
     }
 }

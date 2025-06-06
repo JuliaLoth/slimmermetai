@@ -10,71 +10,74 @@
  * file that was distributed with this source code. For the full list of
  * contributors, visit https://github.com/PHPOffice/PHPPresentation/contributors.
  *
- * @copyright   2009-2015 PHPPresentation contributors
+ * @see        https://github.com/PHPOffice/PHPPresentation
+ *
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
- * @link        https://github.com/PHPOffice/PHPPresentation
  */
+
+declare(strict_types=1);
 
 namespace PhpOffice\PhpPresentation\Tests\Shape\RichText;
 
 use PhpOffice\PhpPresentation\Shape\RichText\Run;
 use PhpOffice\PhpPresentation\Style\Font;
+use PHPUnit\Framework\TestCase;
 
 /**
- * Test class for Run element
+ * Test class for Run element.
  *
- * @coversDefaultClass PhpOffice\PhpPresentation\Shape\RichText\Run
+ * @coversDefaultClass \PhpOffice\PhpPresentation\Shape\RichText\Run
  */
-class RunTest extends \PHPUnit_Framework_TestCase
+class RunTest extends TestCase
 {
     /**
-     * Test can read
+     * Test can read.
      */
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $object = new Run();
-        $this->assertEquals('', $object->getText());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Style\\Font', $object->getFont());
+        self::assertEquals('', $object->getText());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Style\\Font', $object->getFont());
 
         $object = new Run('BBB');
-        $this->assertEquals('BBB', $object->getText());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Style\\Font', $object->getFont());
+        self::assertEquals('BBB', $object->getText());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Style\\Font', $object->getFont());
     }
 
-    public function testFont()
+    public function testFont(): void
     {
         $object = new Run();
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\RichText\\Run', $object->setFont(new Font()));
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Style\\Font', $object->getFont());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\RichText\\Run', $object->setFont(new Font()));
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Style\\Font', $object->getFont());
     }
 
-    public function testLanguage()
+    public function testLanguage(): void
     {
         $object = new Run();
-        $this->assertNull($object->getLanguage());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\RichText\\Run', $object->setLanguage('en-US'));
-        $this->assertEquals('en-US', $object->getLanguage());
+        self::assertNull($object->getLanguage());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\RichText\\Run', $object->setLanguage('en-US'));
+        self::assertEquals('en-US', $object->getLanguage());
     }
 
-    public function testText()
+    public function testText(): void
     {
         $object = new Run();
-        $this->assertEquals('', $object->getText());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\RichText\\Run', $object->setText());
-        $this->assertEquals('', $object->getText());
-        $this->assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\RichText\\Run', $object->setText('AAA'));
-        $this->assertEquals('AAA', $object->getText());
+        self::assertEquals('', $object->getText());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\RichText\\Run', $object->setText());
+        self::assertEquals('', $object->getText());
+        self::assertInstanceOf('PhpOffice\\PhpPresentation\\Shape\\RichText\\Run', $object->setText('AAA'));
+        self::assertEquals('AAA', $object->getText());
 
         $object = new Run('BBB');
-        $this->assertEquals('BBB', $object->getText());
+        self::assertEquals('BBB', $object->getText());
     }
 
     /**
-     * Test get/set hash index
+     * Test get/set hash index.
      */
-    public function testHashCode()
+    public function testHashCode(): void
     {
         $object = new Run();
-        $this->assertEquals(md5($object->getFont()->getHashCode().get_class($object)), $object->getHashCode());
+        self::assertEquals(md5($object->getFont()->getHashCode() . get_class($object)), $object->getHashCode());
     }
 }
