@@ -59,6 +59,14 @@ final class JwtService
         return $payload;
     }
 
+    /**
+     * Alias for verify() method for compatibility with UserController
+     */
+    public function validateToken(string $token): ?array
+    {
+        return $this->verify($token);
+    }
+
     private function sign(string $data): string
     {
         return $this->base64url(hash_hmac('sha256', $data, $this->secret, true));
