@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
-  <build time="Fri Jun 6 18:30:03 CEST 2025" phpunit="9.6.23" coverage="9.2.32">
+  <build time="Mon Jun 9 21:26:40 CEST 2025" phpunit="9.6.23" coverage="9.2.32">
     <runtime name="PHP" version="8.0.30" url="https://secure.php.net/"/>
     <driver name="xdebug" version="3.4.3"/>
   </build>
@@ -53,25 +53,25 @@
       <test name="Tests\Unit\StripeControllerTest::testCreateSessionWithDifferentData with data set &quot;with_line_items&quot;" size="unknown" result="0" status="PASSED"/>
       <test name="Tests\Unit\StripeControllerTest::testCreateSessionWithDifferentData with data set &quot;with_metadata&quot;" size="unknown" result="0" status="PASSED"/>
       <test name="Tests\Unit\StripeControllerTest::testControllerConstructorWithDependency" size="unknown" result="0" status="PASSED"/>
-      <test name="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithValidItems" size="unknown" result="3" status="FAILURE"/>
-      <test name="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithEmptyCart" size="unknown" result="3" status="FAILURE"/>
-      <test name="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithInvalidTotal" size="unknown" result="3" status="FAILURE"/>
-      <test name="Tests\Feature\StripeControllerTest::testMockModeDetection" size="unknown" result="4" status="ERROR"/>
-      <test name="Tests\Feature\StripeControllerTest::testErrorHandlingForStripeApiFailures" size="unknown" result="3" status="FAILURE"/>
-      <test name="Tests\Integration\DatabaseMockTest::testContainerIntegration" size="unknown" result="3" status="FAILURE"/>
+      <test name="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithValidItems" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithException" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Feature\StripeControllerTest::testStatusSuccess" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Feature\StripeControllerTest::testWebhookSuccess" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Feature\StripeControllerTest::testWebhookException" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Feature\StripeControllerTest::testConfigSuccess" size="unknown" result="0" status="PASSED"/>
       <test name="Tests\Integration\DatabaseMockTest::testMultipleDataTypes" size="unknown" result="0" status="PASSED"/>
     </tests>
     <directory name="/">
       <totals>
-        <lines total="11024" comments="834" code="10190" executable="4492" executed="240" percent="5.34"/>
+        <lines total="11028" comments="834" code="10194" executable="4492" executed="243" percent="5.41"/>
         <methods count="681" tested="43" percent="6.31"/>
         <functions count="0" tested="0" percent="0"/>
-        <classes count="130" tested="1" percent="0.77"/>
+        <classes count="130" tested="2" percent="1.54"/>
         <traits count="0" tested="0" percent="0"/>
       </totals>
       <directory name="Application">
         <totals>
-          <lines total="1608" comments="252" code="1356" executable="702" executed="5" percent="0.71"/>
+          <lines total="1609" comments="252" code="1357" executable="702" executed="5" percent="0.71"/>
           <methods count="64" tested="5" percent="7.81"/>
           <functions count="0" tested="0" percent="0"/>
           <classes count="10" tested="1" percent="10.00"/>
@@ -97,7 +97,7 @@
         </directory>
         <directory name="Service">
           <totals>
-            <lines total="1597" comments="252" code="1345" executable="702" executed="5" percent="0.71"/>
+            <lines total="1598" comments="252" code="1346" executable="702" executed="5" percent="0.71"/>
             <methods count="64" tested="5" percent="7.81"/>
             <functions count="0" tested="0" percent="0"/>
             <classes count="10" tested="1" percent="10.00"/>
@@ -105,7 +105,7 @@
           </totals>
           <file name="AuthService.php" href="Application/Service/AuthService.php.xml">
             <totals>
-              <lines total="94" comments="8" code="86" executable="42" executed="0" percent="0.00"/>
+              <lines total="95" comments="8" code="87" executable="42" executed="0" percent="0.00"/>
               <methods count="7" tested="0" percent="0.00"/>
               <functions count="0" tested="0" percent="0"/>
               <classes count="1" tested="0" percent="0.00"/>
@@ -197,26 +197,26 @@
       </directory>
       <directory name="Http">
         <totals>
-          <lines total="4491" comments="334" code="4157" executable="1592" executed="46" percent="2.89"/>
-          <methods count="219" tested="6" percent="2.74"/>
+          <lines total="4492" comments="334" code="4158" executable="1592" executed="51" percent="3.20"/>
+          <methods count="219" tested="7" percent="3.20"/>
           <functions count="0" tested="0" percent="0"/>
-          <classes count="97" tested="0" percent="0.00"/>
+          <classes count="97" tested="1" percent="1.03"/>
           <traits count="0" tested="0" percent="0"/>
         </totals>
         <directory name="Controller">
           <totals>
-            <lines total="3757" comments="217" code="3540" executable="1339" executed="22" percent="1.64"/>
-            <methods count="184" tested="4" percent="2.17"/>
+            <lines total="3758" comments="217" code="3541" executable="1339" executed="27" percent="2.02"/>
+            <methods count="184" tested="5" percent="2.72"/>
             <functions count="0" tested="0" percent="0"/>
-            <classes count="87" tested="0" percent="0.00"/>
+            <classes count="87" tested="1" percent="1.15"/>
             <traits count="0" tested="0" percent="0"/>
           </totals>
           <directory name="Api">
             <totals>
-              <lines total="1764" comments="110" code="1654" executable="831" executed="22" percent="2.65"/>
-              <methods count="79" tested="4" percent="5.06"/>
+              <lines total="1765" comments="110" code="1655" executable="831" executed="27" percent="3.25"/>
+              <methods count="79" tested="5" percent="6.33"/>
               <functions count="0" tested="0" percent="0"/>
-              <classes count="11" tested="0" percent="0.00"/>
+              <classes count="11" tested="1" percent="9.09"/>
               <traits count="0" tested="0" percent="0"/>
             </totals>
             <file name="AuthController.php" href="Http/Controller/Api/AuthController.php.xml">
@@ -293,10 +293,10 @@
             </file>
             <file name="StripeController.php" href="Http/Controller/Api/StripeController.php.xml">
               <totals>
-                <lines total="78" comments="13" code="65" executable="27" executed="22" percent="81.48"/>
-                <methods count="5" tested="4" percent="80.00"/>
+                <lines total="79" comments="13" code="66" executable="27" executed="27" percent="100.00"/>
+                <methods count="5" tested="5" percent="100.00"/>
                 <functions count="0" tested="0" percent="0"/>
-                <classes count="1" tested="0" percent="0.00"/>
+                <classes count="1" tested="1" percent="100.00"/>
                 <traits count="0" tested="0" percent="0"/>
               </totals>
             </file>
@@ -1142,8 +1142,8 @@
       </directory>
       <directory name="Infrastructure">
         <totals>
-          <lines total="4925" comments="248" code="4677" executable="2198" executed="189" percent="8.60"/>
-          <methods count="398" tested="32" percent="8.04"/>
+          <lines total="4927" comments="248" code="4679" executable="2198" executed="187" percent="8.51"/>
+          <methods count="398" tested="31" percent="7.79"/>
           <functions count="0" tested="0" percent="0"/>
           <classes count="23" tested="0" percent="0.00"/>
           <traits count="0" tested="0" percent="0"/>
@@ -1168,15 +1168,15 @@
         </directory>
         <directory name="Database">
           <totals>
-            <lines total="785" comments="35" code="750" executable="325" executed="2" percent="0.62"/>
-            <methods count="58" tested="1" percent="1.72"/>
+            <lines total="785" comments="35" code="750" executable="325" executed="0" percent="0.00"/>
+            <methods count="58" tested="0" percent="0.00"/>
             <functions count="0" tested="0" percent="0"/>
             <classes count="3" tested="0" percent="0.00"/>
             <traits count="0" tested="0" percent="0"/>
           </totals>
           <file name="Database.php" href="Infrastructure/Database/Database.php.xml">
             <totals>
-              <lines total="260" comments="8" code="252" executable="100" executed="1" percent="1.00"/>
+              <lines total="260" comments="8" code="252" executable="100" executed="0" percent="0.00"/>
               <methods count="24" tested="0" percent="0.00"/>
               <functions count="0" tested="0" percent="0"/>
               <classes count="1" tested="0" percent="0.00"/>
@@ -1185,8 +1185,8 @@
           </file>
           <file name="DatabasePerformanceMonitor.php" href="Infrastructure/Database/DatabasePerformanceMonitor.php.xml">
             <totals>
-              <lines total="225" comments="4" code="221" executable="114" executed="1" percent="0.88"/>
-              <methods count="15" tested="1" percent="6.67"/>
+              <lines total="225" comments="4" code="221" executable="114" executed="0" percent="0.00"/>
+              <methods count="15" tested="0" percent="0.00"/>
               <functions count="0" tested="0" percent="0"/>
               <classes count="1" tested="0" percent="0.00"/>
               <traits count="0" tested="0" percent="0"/>
@@ -1231,7 +1231,7 @@
         </directory>
         <directory name="Logging">
           <totals>
-            <lines total="220" comments="8" code="212" executable="83" executed="27" percent="32.53"/>
+            <lines total="221" comments="8" code="213" executable="83" executed="27" percent="32.53"/>
             <methods count="21" tested="3" percent="14.29"/>
             <functions count="0" tested="0" percent="0"/>
             <classes count="2" tested="0" percent="0.00"/>
@@ -1248,7 +1248,7 @@
           </file>
           <file name="ErrorLogger.php" href="Infrastructure/Logging/ErrorLogger.php.xml">
             <totals>
-              <lines total="38" comments="3" code="35" executable="5" executed="0" percent="0.00"/>
+              <lines total="39" comments="3" code="36" executable="5" executed="0" percent="0.00"/>
               <methods count="5" tested="0" percent="0.00"/>
               <functions count="0" tested="0" percent="0"/>
               <classes count="1" tested="0" percent="0.00"/>
@@ -1348,7 +1348,7 @@
         </directory>
         <directory name="Security">
           <totals>
-            <lines total="532" comments="27" code="505" executable="216" executed="0" percent="0.00"/>
+            <lines total="533" comments="27" code="506" executable="216" executed="0" percent="0.00"/>
             <methods count="51" tested="0" percent="0.00"/>
             <functions count="0" tested="0" percent="0"/>
             <classes count="3" tested="0" percent="0.00"/>
@@ -1365,7 +1365,7 @@
           </file>
           <file name="JwtService.php" href="Infrastructure/Security/JwtService.php.xml">
             <totals>
-              <lines total="94" comments="11" code="83" executable="33" executed="0" percent="0.00"/>
+              <lines total="95" comments="11" code="84" executable="33" executed="0" percent="0.00"/>
               <methods count="8" tested="0" percent="0.00"/>
               <functions count="0" tested="0" percent="0"/>
               <classes count="1" tested="0" percent="0.00"/>

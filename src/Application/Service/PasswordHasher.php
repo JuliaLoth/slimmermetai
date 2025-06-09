@@ -7,7 +7,7 @@ use App\Domain\Service\PasswordHasherInterface;
 final class PasswordHasher implements PasswordHasherInterface
 {
     private int $cost;
-    
+
     public function __construct(int $cost = 12)
     {
         $this->cost = $cost;

@@ -2,15 +2,15 @@
 <phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
   <file name="Database.php" path="\Infrastructure\Database">
     <totals>
-      <lines total="260" comments="8" code="252" executable="100" executed="1" percent="1.00"/>
+      <lines total="260" comments="8" code="252" executable="100" executed="0" percent="0.00"/>
       <methods count="24" tested="0" percent="0.00"/>
       <functions count="0" tested="0" percent="0"/>
       <classes count="1" tested="0" percent="0.00"/>
       <traits count="0" tested="0" percent="0"/>
     </totals>
-    <class name="App\Infrastructure\Database\Database" start="14" executable="100" executed="1" crap="2099.15">
+    <class name="App\Infrastructure\Database\Database" start="14" executable="100" executed="0" crap="2162">
       <namespace name="App\Infrastructure\Database"/>
-      <method name="__construct" signature="__construct(App\Domain\Logging\ErrorLoggerInterface $logger)" start="21" end="30" crap="3.19" executable="3" executed="1" coverage="33.333333333333"/>
+      <method name="__construct" signature="__construct(App\Domain\Logging\ErrorLoggerInterface $logger)" start="21" end="30" crap="6" executable="3" executed="0" coverage="0"/>
       <method name="getInstance" signature="getInstance(): self" start="33" end="36" crap="2" executable="1" executed="0" coverage="0"/>
       <method name="getConnection" signature="getConnection(): PDO" start="38" end="44" crap="6" executable="3" executed="0" coverage="0"/>
       <method name="connect" signature="connect(): bool" start="46" end="75" crap="20" executable="19" executed="0" coverage="0"/>
@@ -35,11 +35,6 @@
       <method name="getColumn" signature="getColumn(string $sql, array $params, ?string $column): array" start="249" end="253" crap="2" executable="2" executed="0" coverage="0"/>
       <method name="getPdo" signature="getPdo(): ?PDO" start="255" end="258" crap="2" executable="1" executed="0" coverage="0"/>
     </class>
-    <coverage>
-      <line nr="25">
-        <covered by="Tests\Integration\DatabaseMockTest::testContainerIntegration"/>
-      </line>
-    </coverage>
     <source>
       <line no="1">
         <token name="T_OPEN_TAG">&lt;?php</token>

@@ -1,16 +1,519 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="" tests="8" assertions="22" errors="0" warnings="0" failures="0" skipped="0" time="3.281747">
-    <testsuite name="Unit" tests="8" assertions="22" errors="0" warnings="0" failures="0" skipped="0" time="3.281747">
-      <testsuite name="Tests\Unit\PasswordHasherTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\PasswordHasherTest.php" tests="8" assertions="22" errors="0" warnings="0" failures="0" skipped="0" time="3.281747">
-        <testcase name="testImplementsInterface" class="Tests\Unit\PasswordHasherTest" classname="Tests.Unit.PasswordHasherTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\PasswordHasherTest.php" line="25" assertions="1" time="0.006602"/>
-        <testcase name="testCanHashPassword" class="Tests\Unit\PasswordHasherTest" classname="Tests.Unit.PasswordHasherTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\PasswordHasherTest.php" line="30" assertions="3" time="0.407415"/>
-        <testcase name="testCanVerifyPassword" class="Tests\Unit\PasswordHasherTest" classname="Tests.Unit.PasswordHasherTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\PasswordHasherTest.php" line="40" assertions="2" time="0.609174"/>
-        <testcase name="testNeedsRehash" class="Tests\Unit\PasswordHasherTest" classname="Tests.Unit.PasswordHasherTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\PasswordHasherTest.php" line="49" assertions="2" time="0.202738"/>
-        <testcase name="testPasswordStrengthValidation" class="Tests\Unit\PasswordHasherTest" classname="Tests.Unit.PasswordHasherTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\PasswordHasherTest.php" line="63" assertions="6" time="0.000311"/>
-        <testcase name="testCustomMinimumLength" class="Tests\Unit\PasswordHasherTest" classname="Tests.Unit.PasswordHasherTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\PasswordHasherTest.php" line="76" assertions="2" time="0.000095"/>
-        <testcase name="testDifferentCostFactors" class="Tests\Unit\PasswordHasherTest" classname="Tests.Unit.PasswordHasherTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\PasswordHasherTest.php" line="82" assertions="3" time="1.652120"/>
-        <testcase name="testEmptyPasswordHandling" class="Tests\Unit\PasswordHasherTest" classname="Tests.Unit.PasswordHasherTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\PasswordHasherTest.php" line="99" assertions="3" time="0.403290"/>
+  <testsuite name="" tests="119" assertions="145" errors="55" warnings="0" failures="16" skipped="0" time="4.942478">
+    <testsuite name="Unit" tests="89" assertions="88" errors="42" warnings="0" failures="16" skipped="0" time="4.598373">
+      <testsuite name="Tests\Unit\AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" tests="21" assertions="19" errors="2" warnings="0" failures="16" skipped="0" time="0.183260">
+        <testcase name="testFindByEmailWithExistingUser" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="34" assertions="1" time="0.148795">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Unit\AuthRepositoryTest::testFindByEmailWithExistingUser
+null does not match expected type "array".
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php:62</failure>
+        </testcase>
+        <testcase name="testFindByEmailWithNonExistentUser" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="66" assertions="1" time="0.002336"/>
+        <testcase name="testFindByIdWithExistingUser" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="88" assertions="1" time="0.001674">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Unit\AuthRepositoryTest::testFindByIdWithExistingUser
+null does not match expected type "array".
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php:114</failure>
+        </testcase>
+        <testcase name="testCreateUser" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="118" assertions="0" time="0.004032">
+          <error type="RuntimeException">Tests\Unit\AuthRepositoryTest::testCreateUser
+RuntimeException: Failed to create user or retrieve created user
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Infrastructure\Repository\AuthRepository.php:245
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php:153</error>
+        </testcase>
+        <testcase name="testUpdatePassword" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="160" assertions="1" time="0.002905">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Unit\AuthRepositoryTest::testUpdatePassword
+Failed asserting that false is true.
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php:180</failure>
+        </testcase>
+        <testcase name="testUpdatePasswordWithInvalidUser" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="183" assertions="1" time="0.001776"/>
+        <testcase name="testCreatePasswordResetToken" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="206" assertions="1" time="0.001539">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Unit\AuthRepositoryTest::testCreatePasswordResetToken
+Failed asserting that false is of type "string".
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php:221</failure>
+        </testcase>
+        <testcase name="testValidatePasswordResetToken" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="225" assertions="1" time="0.001180">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Unit\AuthRepositoryTest::testValidatePasswordResetToken
+false does not match expected type "array".
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php:250</failure>
+        </testcase>
+        <testcase name="testValidateExpiredPasswordResetToken" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="254" assertions="1" time="0.002097">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Unit\AuthRepositoryTest::testValidateExpiredPasswordResetToken
+Failed asserting that false is null.
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php:279</failure>
+        </testcase>
+        <testcase name="testDeletePasswordResetToken" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="282" assertions="1" time="0.001149">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Unit\AuthRepositoryTest::testDeletePasswordResetToken
+Failed asserting that false is true.
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php:301</failure>
+        </testcase>
+        <testcase name="testBlacklistToken" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="304" assertions="1" time="0.001027">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Unit\AuthRepositoryTest::testBlacklistToken
+Failed asserting that false is true.
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php:318</failure>
+        </testcase>
+        <testcase name="testIsTokenBlacklisted" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="321" assertions="1" time="0.001135">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Unit\AuthRepositoryTest::testIsTokenBlacklisted
+Failed asserting that false is true.
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php:340</failure>
+        </testcase>
+        <testcase name="testIsTokenNotBlacklisted" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="343" assertions="1" time="0.001199"/>
+        <testcase name="testUpdateLastLogin" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="365" assertions="1" time="0.002061">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Unit\AuthRepositoryTest::testUpdateLastLogin
+Failed asserting that false is true.
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php:383</failure>
+        </testcase>
+        <testcase name="testGetUserLoginHistory" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="386" assertions="1" time="0.001344">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Unit\AuthRepositoryTest::testGetUserLoginHistory
+Failed asserting that two arrays are equal.
+--- Expected
++++ Actual
+@@ @@
+ Array (
+-    0 =&gt; Array (...)
+-    1 =&gt; Array (...)
+ )
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php:421</failure>
+        </testcase>
+        <testcase name="testRecordLoginAttempt" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="425" assertions="1" time="0.001175">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Unit\AuthRepositoryTest::testRecordLoginAttempt
+Failed asserting that null is true.
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php:447</failure>
+        </testcase>
+        <testcase name="testGetFailedLoginAttempts" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="450" assertions="1" time="0.001689">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Unit\AuthRepositoryTest::testGetFailedLoginAttempts
+0 does not match expected type "array".
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php:476</failure>
+        </testcase>
+        <testcase name="testDeactivateUser" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="480" assertions="1" time="0.001360">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Unit\AuthRepositoryTest::testDeactivateUser
+Failed asserting that false is true.
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php:499</failure>
+        </testcase>
+        <testcase name="testActivateUser" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="502" assertions="1" time="0.001153">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Unit\AuthRepositoryTest::testActivateUser
+Failed asserting that false is true.
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php:521</failure>
+        </testcase>
+        <testcase name="testDatabaseExceptionHandling" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="524" assertions="1" time="0.001672">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Unit\AuthRepositoryTest::testDatabaseExceptionHandling
+Failed asserting that exception of type "PDOException" is thrown.</failure>
+        </testcase>
+        <testcase name="testTransactionHandling" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="539" assertions="0" time="0.001963">
+          <error type="RuntimeException">Tests\Unit\AuthRepositoryTest::testTransactionHandling
+RuntimeException: Failed to create user or retrieve created user
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Infrastructure\Repository\AuthRepository.php:245
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Infrastructure\Repository\AuthRepository.php:338
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php:574</error>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Unit\AuthServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php" tests="16" assertions="0" errors="16" warnings="0" failures="0" skipped="0" time="0.093067">
+        <testcase name="testSuccessfulLogin" class="Tests\Unit\AuthServiceTest" classname="Tests.Unit.AuthServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php" line="39" assertions="0" time="0.081545">
+          <error type="PHPUnit\Framework\MockObject\MethodCannotBeConfiguredException">Tests\Unit\AuthServiceTest::testSuccessfulLogin
+PHPUnit\Framework\MockObject\MethodCannotBeConfiguredException: Trying to configure method "findByEmail" which cannot be configured because it does not exist, has not been specified, is final, or is static
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php:55</error>
+        </testcase>
+        <testcase name="testLoginWithInvalidEmail" class="Tests\Unit\AuthServiceTest" classname="Tests.Unit.AuthServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php" line="81" assertions="0" time="0.000774">
+          <error type="PHPUnit\Framework\MockObject\MethodCannotBeConfiguredException">Tests\Unit\AuthServiceTest::testLoginWithInvalidEmail
+PHPUnit\Framework\MockObject\MethodCannotBeConfiguredException: Trying to configure method "findByEmail" which cannot be configured because it does not exist, has not been specified, is final, or is static
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php:88</error>
+        </testcase>
+        <testcase name="testLoginWithWrongPassword" class="Tests\Unit\AuthServiceTest" classname="Tests.Unit.AuthServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php" line="98" assertions="0" time="0.000620">
+          <error type="PHPUnit\Framework\MockObject\MethodCannotBeConfiguredException">Tests\Unit\AuthServiceTest::testLoginWithWrongPassword
+PHPUnit\Framework\MockObject\MethodCannotBeConfiguredException: Trying to configure method "findByEmail" which cannot be configured because it does not exist, has not been specified, is final, or is static
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php:113</error>
+        </testcase>
+        <testcase name="testLoginWithInactiveUser" class="Tests\Unit\AuthServiceTest" classname="Tests.Unit.AuthServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php" line="129" assertions="0" time="0.000627">
+          <error type="PHPUnit\Framework\MockObject\MethodCannotBeConfiguredException">Tests\Unit\AuthServiceTest::testLoginWithInactiveUser
+PHPUnit\Framework\MockObject\MethodCannotBeConfiguredException: Trying to configure method "findByEmail" which cannot be configured because it does not exist, has not been specified, is final, or is static
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php:143</error>
+        </testcase>
+        <testcase name="testSuccessfulRegistration" class="Tests\Unit\AuthServiceTest" classname="Tests.Unit.AuthServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php" line="153" assertions="0" time="0.000602">
+          <error type="PHPUnit\Framework\MockObject\MethodCannotBeConfiguredException">Tests\Unit\AuthServiceTest::testSuccessfulRegistration
+PHPUnit\Framework\MockObject\MethodCannotBeConfiguredException: Trying to configure method "findByEmail" which cannot be configured because it does not exist, has not been specified, is final, or is static
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php:163</error>
+        </testcase>
+        <testcase name="testRegistrationWithExistingEmail" class="Tests\Unit\AuthServiceTest" classname="Tests.Unit.AuthServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php" line="195" assertions="0" time="0.000545">
+          <error type="PHPUnit\Framework\MockObject\MethodCannotBeConfiguredException">Tests\Unit\AuthServiceTest::testRegistrationWithExistingEmail
+PHPUnit\Framework\MockObject\MethodCannotBeConfiguredException: Trying to configure method "findByEmail" which cannot be configured because it does not exist, has not been specified, is final, or is static
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php:205</error>
+        </testcase>
+        <testcase name="testTokenValidation" class="Tests\Unit\AuthServiceTest" classname="Tests.Unit.AuthServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php" line="218" assertions="0" time="0.000620">
+          <error type="Error">Tests\Unit\AuthServiceTest::testTokenValidation
+Error: Call to undefined method App\Application\Service\AuthService::validateToken()
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php:233</error>
+        </testcase>
+        <testcase name="testTokenValidationWithInvalidToken" class="Tests\Unit\AuthServiceTest" classname="Tests.Unit.AuthServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php" line="239" assertions="0" time="0.001107">
+          <error type="Error">Tests\Unit\AuthServiceTest::testTokenValidationWithInvalidToken
+Error: Call to undefined method App\Application\Service\AuthService::validateToken()
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php:249</error>
+        </testcase>
+        <testcase name="testForgotPassword" class="Tests\Unit\AuthServiceTest" classname="Tests.Unit.AuthServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php" line="255" assertions="0" time="0.000822">
+          <error type="PHPUnit\Framework\MockObject\MethodCannotBeConfiguredException">Tests\Unit\AuthServiceTest::testForgotPassword
+PHPUnit\Framework\MockObject\MethodCannotBeConfiguredException: Trying to configure method "findByEmail" which cannot be configured because it does not exist, has not been specified, is final, or is static
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php:266</error>
+        </testcase>
+        <testcase name="testForgotPasswordWithInvalidEmail" class="Tests\Unit\AuthServiceTest" classname="Tests.Unit.AuthServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php" line="282" assertions="0" time="0.000658">
+          <error type="PHPUnit\Framework\MockObject\MethodCannotBeConfiguredException">Tests\Unit\AuthServiceTest::testForgotPasswordWithInvalidEmail
+PHPUnit\Framework\MockObject\MethodCannotBeConfiguredException: Trying to configure method "findByEmail" which cannot be configured because it does not exist, has not been specified, is final, or is static
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php:288</error>
+        </testcase>
+        <testcase name="testResetPassword" class="Tests\Unit\AuthServiceTest" classname="Tests.Unit.AuthServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php" line="298" assertions="0" time="0.000973">
+          <error type="PHPUnit\Framework\MockObject\MethodCannotBeConfiguredException">Tests\Unit\AuthServiceTest::testResetPassword
+PHPUnit\Framework\MockObject\MethodCannotBeConfiguredException: Trying to configure method "validatePasswordResetToken" which cannot be configured because it does not exist, has not been specified, is final, or is static
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php:306</error>
+        </testcase>
+        <testcase name="testResetPasswordWithInvalidToken" class="Tests\Unit\AuthServiceTest" classname="Tests.Unit.AuthServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php" line="334" assertions="0" time="0.000668">
+          <error type="PHPUnit\Framework\MockObject\MethodCannotBeConfiguredException">Tests\Unit\AuthServiceTest::testResetPasswordWithInvalidToken
+PHPUnit\Framework\MockObject\MethodCannotBeConfiguredException: Trying to configure method "validatePasswordResetToken" which cannot be configured because it does not exist, has not been specified, is final, or is static
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php:341</error>
+        </testcase>
+        <testcase name="testGetCurrentUser" class="Tests\Unit\AuthServiceTest" classname="Tests.Unit.AuthServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php" line="351" assertions="0" time="0.000875">
+          <error type="PHPUnit\Framework\MockObject\MethodCannotBeConfiguredException">Tests\Unit\AuthServiceTest::testGetCurrentUser
+PHPUnit\Framework\MockObject\MethodCannotBeConfiguredException: Trying to configure method "findById" which cannot be configured because it does not exist, has not been specified, is final, or is static
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php:363</error>
+        </testcase>
+        <testcase name="testLogout" class="Tests\Unit\AuthServiceTest" classname="Tests.Unit.AuthServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php" line="373" assertions="0" time="0.001059">
+          <error type="PHPUnit\Framework\MockObject\MethodCannotBeConfiguredException">Tests\Unit\AuthServiceTest::testLogout
+PHPUnit\Framework\MockObject\MethodCannotBeConfiguredException: Trying to configure method "blacklistToken" which cannot be configured because it does not exist, has not been specified, is final, or is static
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php:379</error>
+        </testcase>
+        <testcase name="testPasswordStrengthValidation" class="Tests\Unit\AuthServiceTest" classname="Tests.Unit.AuthServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php" line="389" assertions="0" time="0.000856">
+          <error type="Error">Tests\Unit\AuthServiceTest::testPasswordStrengthValidation
+Error: Call to undefined method App\Application\Service\AuthService::validatePasswordStrength()
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php:395</error>
+        </testcase>
+        <testcase name="testEmailValidation" class="Tests\Unit\AuthServiceTest" classname="Tests.Unit.AuthServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php" line="408" assertions="0" time="0.000714">
+          <error type="Error">Tests\Unit\AuthServiceTest::testEmailValidation
+Error: Call to undefined method App\Application\Service\AuthService::validateEmail()
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php:418</error>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Unit\ConfigTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\ConfigTest.php" tests="9" assertions="21" errors="0" warnings="0" failures="0" skipped="0" time="0.019047">
+        <testcase name="testConfigCanGetValues" class="Tests\Unit\ConfigTest" classname="Tests.Unit.ConfigTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\ConfigTest.php" line="38" assertions="2" time="0.001283"/>
+        <testcase name="testConfigCanGetDefaultValues" class="Tests\Unit\ConfigTest" classname="Tests.Unit.ConfigTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\ConfigTest.php" line="51" assertions="1" time="0.002290"/>
+        <testcase name="testConfigCanSetValues" class="Tests\Unit\ConfigTest" classname="Tests.Unit.ConfigTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\ConfigTest.php" line="58" assertions="1" time="0.002088"/>
+        <testcase name="testConfigCanCheckIfKeyExists" class="Tests\Unit\ConfigTest" classname="Tests.Unit.ConfigTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\ConfigTest.php" line="67" assertions="2" time="0.001648"/>
+        <testcase name="testConfigCanGetAllValues" class="Tests\Unit\ConfigTest" classname="Tests.Unit.ConfigTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\ConfigTest.php" line="74" assertions="2" time="0.001465"/>
+        <testcase name="testConfigCanGetTypedValues" class="Tests\Unit\ConfigTest" classname="Tests.Unit.ConfigTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\ConfigTest.php" line="87" assertions="6" time="0.001964"/>
+        <testcase name="testEnvironmentValues" class="Tests\Unit\ConfigTest" classname="Tests.Unit.ConfigTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\ConfigTest.php" line="108" assertions="1" time="0.002214"/>
+        <testcase name="testSecurityDefaults" class="Tests\Unit\ConfigTest" classname="Tests.Unit.ConfigTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\ConfigTest.php" line="115" assertions="5" time="0.004337"/>
+        <testcase name="testConfigWithMissingMethod" class="Tests\Unit\ConfigTest" classname="Tests.Unit.ConfigTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\ConfigTest.php" line="132" assertions="1" time="0.001759"/>
+      </testsuite>
+      <testsuite name="Tests\Unit\PasswordHasherTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\PasswordHasherTest.php" tests="8" assertions="22" errors="0" warnings="0" failures="0" skipped="0" time="4.075531">
+        <testcase name="testImplementsInterface" class="Tests\Unit\PasswordHasherTest" classname="Tests.Unit.PasswordHasherTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\PasswordHasherTest.php" line="25" assertions="1" time="0.041538"/>
+        <testcase name="testCanHashPassword" class="Tests\Unit\PasswordHasherTest" classname="Tests.Unit.PasswordHasherTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\PasswordHasherTest.php" line="30" assertions="3" time="0.519801"/>
+        <testcase name="testCanVerifyPassword" class="Tests\Unit\PasswordHasherTest" classname="Tests.Unit.PasswordHasherTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\PasswordHasherTest.php" line="40" assertions="2" time="0.754919"/>
+        <testcase name="testNeedsRehash" class="Tests\Unit\PasswordHasherTest" classname="Tests.Unit.PasswordHasherTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\PasswordHasherTest.php" line="49" assertions="2" time="0.249573"/>
+        <testcase name="testPasswordStrengthValidation" class="Tests\Unit\PasswordHasherTest" classname="Tests.Unit.PasswordHasherTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\PasswordHasherTest.php" line="63" assertions="6" time="0.001031"/>
+        <testcase name="testCustomMinimumLength" class="Tests\Unit\PasswordHasherTest" classname="Tests.Unit.PasswordHasherTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\PasswordHasherTest.php" line="76" assertions="2" time="0.000470"/>
+        <testcase name="testDifferentCostFactors" class="Tests\Unit\PasswordHasherTest" classname="Tests.Unit.PasswordHasherTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\PasswordHasherTest.php" line="82" assertions="3" time="2.011991"/>
+        <testcase name="testEmptyPasswordHandling" class="Tests\Unit\PasswordHasherTest" classname="Tests.Unit.PasswordHasherTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\PasswordHasherTest.php" line="99" assertions="3" time="0.496208"/>
+      </testsuite>
+      <testsuite name="Tests\Unit\StripeControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeControllerTest.php" tests="11" assertions="26" errors="0" warnings="0" failures="0" skipped="0" time="0.134827">
+        <testcase name="testCreateSessionSuccess" class="Tests\Unit\StripeControllerTest" classname="Tests.Unit.StripeControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeControllerTest.php" line="30" assertions="3" time="0.099696"/>
+        <testcase name="testCreateSessionException" class="Tests\Unit\StripeControllerTest" classname="Tests.Unit.StripeControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeControllerTest.php" line="52" assertions="3" time="0.026314"/>
+        <testcase name="testStatusSuccess" class="Tests\Unit\StripeControllerTest" classname="Tests.Unit.StripeControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeControllerTest.php" line="66" assertions="3" time="0.001317"/>
+        <testcase name="testStatusException" class="Tests\Unit\StripeControllerTest" classname="Tests.Unit.StripeControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeControllerTest.php" line="83" assertions="3" time="0.002113"/>
+        <testcase name="testWebhookSuccess" class="Tests\Unit\StripeControllerTest" classname="Tests.Unit.StripeControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeControllerTest.php" line="99" assertions="3" time="0.001257"/>
+        <testcase name="testWebhookException" class="Tests\Unit\StripeControllerTest" classname="Tests.Unit.StripeControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeControllerTest.php" line="115" assertions="3" time="0.000739"/>
+        <testcase name="testConfigWithValidKey" class="Tests\Unit\StripeControllerTest" classname="Tests.Unit.StripeControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeControllerTest.php" line="128" assertions="1" time="0.000653"/>
+        <testsuite name="Tests\Unit\StripeControllerTest::testCreateSessionWithDifferentData" tests="3" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="0.002268">
+          <testcase name="testCreateSessionWithDifferentData with data set &quot;empty_data&quot;" class="Tests\Unit\StripeControllerTest" classname="Tests.Unit.StripeControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeControllerTest.php" line="161" assertions="2" time="0.000685"/>
+          <testcase name="testCreateSessionWithDifferentData with data set &quot;with_line_items&quot;" class="Tests\Unit\StripeControllerTest" classname="Tests.Unit.StripeControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeControllerTest.php" line="161" assertions="2" time="0.000816"/>
+          <testcase name="testCreateSessionWithDifferentData with data set &quot;with_metadata&quot;" class="Tests\Unit\StripeControllerTest" classname="Tests.Unit.StripeControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeControllerTest.php" line="161" assertions="2" time="0.000767"/>
+        </testsuite>
+        <testcase name="testControllerConstructorWithDependency" class="Tests\Unit\StripeControllerTest" classname="Tests.Unit.StripeControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeControllerTest.php" line="173" assertions="1" time="0.000470"/>
+      </testsuite>
+      <testsuite name="Tests\Unit\StripeServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php" tests="24" assertions="0" errors="24" warnings="0" failures="0" skipped="0" time="0.092642">
+        <testcase name="testGetPublishableKeyInDevelopmentMode" class="Tests\Unit\StripeServiceTest" classname="Tests.Unit.StripeServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php" line="44" assertions="0" time="0.073601">
+          <error type="Error">Tests\Unit\StripeServiceTest::testGetPublishableKeyInDevelopmentMode
+Error: Call to undefined method App\Application\Service\StripeService::getPublishableKey()
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php:54</error>
+        </testcase>
+        <testcase name="testGetPublishableKeyInProductionMode" class="Tests\Unit\StripeServiceTest" classname="Tests.Unit.StripeServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php" line="60" assertions="0" time="0.000835">
+          <error type="Error">Tests\Unit\StripeServiceTest::testGetPublishableKeyInProductionMode
+Error: Call to undefined method App\Application\Service\StripeService::getPublishableKey()
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php:70</error>
+        </testcase>
+        <testcase name="testCreateCheckoutSessionInMockMode" class="Tests\Unit\StripeServiceTest" classname="Tests.Unit.StripeServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php" line="76" assertions="0" time="0.000765">
+          <error type="ArgumentCountError">Tests\Unit\StripeServiceTest::testCreateCheckoutSessionInMockMode
+ArgumentCountError: Too few arguments to function App\Application\Service\StripeService::createCheckoutSession(), 2 passed in C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php on line 95 and at least 3 expected
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Application\Service\StripeService.php:60
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php:95</error>
+        </testcase>
+        <testcase name="testCreateCheckoutSessionWithValidItems" class="Tests\Unit\StripeServiceTest" classname="Tests.Unit.StripeServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php" line="103" assertions="0" time="0.000673">
+          <error type="ArgumentCountError">Tests\Unit\StripeServiceTest::testCreateCheckoutSessionWithValidItems
+ArgumentCountError: Too few arguments to function App\Application\Service\StripeService::createCheckoutSession(), 2 passed in C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php on line 133 and at least 3 expected
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Application\Service\StripeService.php:60
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php:133</error>
+        </testcase>
+        <testcase name="testCreateCheckoutSessionWithEmptyItems" class="Tests\Unit\StripeServiceTest" classname="Tests.Unit.StripeServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php" line="139" assertions="0" time="0.000595">
+          <error type="ArgumentCountError">Tests\Unit\StripeServiceTest::testCreateCheckoutSessionWithEmptyItems
+ArgumentCountError: Too few arguments to function App\Application\Service\StripeService::createCheckoutSession(), 2 passed in C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php on line 144 and at least 3 expected
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Application\Service\StripeService.php:60
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php:144</error>
+        </testcase>
+        <testcase name="testCreateCheckoutSessionWithInvalidTotal" class="Tests\Unit\StripeServiceTest" classname="Tests.Unit.StripeServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php" line="150" assertions="0" time="0.001900">
+          <error type="ArgumentCountError">Tests\Unit\StripeServiceTest::testCreateCheckoutSessionWithInvalidTotal
+ArgumentCountError: Too few arguments to function App\Application\Service\StripeService::createCheckoutSession(), 2 passed in C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php on line 162 and at least 3 expected
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Application\Service\StripeService.php:60
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php:162</error>
+        </testcase>
+        <testcase name="testCreatePaymentIntentInMockMode" class="Tests\Unit\StripeServiceTest" classname="Tests.Unit.StripeServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php" line="168" assertions="0" time="0.000945">
+          <error type="TypeError">Tests\Unit\StripeServiceTest::testCreatePaymentIntentInMockMode
+TypeError: App\Application\Service\StripeService::createPaymentIntent(): Argument #3 ($metadata) must be of type array, string given, called in C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php on line 178
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Application\Service\StripeService.php:236
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php:178</error>
+        </testcase>
+        <testcase name="testCreatePaymentIntentWithInvalidAmount" class="Tests\Unit\StripeServiceTest" classname="Tests.Unit.StripeServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php" line="187" assertions="0" time="0.001273">
+          <error type="TypeError">Tests\Unit\StripeServiceTest::testCreatePaymentIntentWithInvalidAmount
+TypeError: App\Application\Service\StripeService::createPaymentIntent(): Argument #3 ($metadata) must be of type array, string given, called in C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php on line 189
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Application\Service\StripeService.php:236
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php:189</error>
+        </testcase>
+        <testcase name="testCreatePaymentIntentWithInvalidCurrency" class="Tests\Unit\StripeServiceTest" classname="Tests.Unit.StripeServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php" line="195" assertions="0" time="0.000827">
+          <error type="TypeError">Tests\Unit\StripeServiceTest::testCreatePaymentIntentWithInvalidCurrency
+TypeError: App\Application\Service\StripeService::createPaymentIntent(): Argument #3 ($metadata) must be of type array, string given, called in C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php on line 197
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Application\Service\StripeService.php:236
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php:197</error>
+        </testcase>
+        <testcase name="testGetSessionStatusInMockMode" class="Tests\Unit\StripeServiceTest" classname="Tests.Unit.StripeServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php" line="203" assertions="0" time="0.000821">
+          <error type="Error">Tests\Unit\StripeServiceTest::testGetSessionStatusInMockMode
+Error: Call to undefined method App\Application\Service\StripeService::getSessionStatus()
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php:207</error>
+        </testcase>
+        <testcase name="testGetSessionStatusWithInvalidId" class="Tests\Unit\StripeServiceTest" classname="Tests.Unit.StripeServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php" line="215" assertions="0" time="0.000738">
+          <error type="Error">Tests\Unit\StripeServiceTest::testGetSessionStatusWithInvalidId
+Error: Call to undefined method App\Application\Service\StripeService::getSessionStatus()
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php:219</error>
+        </testcase>
+        <testcase name="testVerifyWebhookSignatureInMockMode" class="Tests\Unit\StripeServiceTest" classname="Tests.Unit.StripeServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php" line="225" assertions="0" time="0.000715">
+          <error type="Error">Tests\Unit\StripeServiceTest::testVerifyWebhookSignatureInMockMode
+Error: Call to undefined method App\Application\Service\StripeService::verifyWebhookSignature()
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php:238</error>
+        </testcase>
+        <testcase name="testProcessWebhookInMockMode" class="Tests\Unit\StripeServiceTest" classname="Tests.Unit.StripeServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php" line="244" assertions="0" time="0.000639">
+          <error type="Error">Tests\Unit\StripeServiceTest::testProcessWebhookInMockMode
+Error: Call to undefined method App\Application\Service\StripeService::processWebhook()
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php:257</error>
+        </testcase>
+        <testcase name="testProcessWebhookWithUnsupportedEvent" class="Tests\Unit\StripeServiceTest" classname="Tests.Unit.StripeServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php" line="263" assertions="0" time="0.000616">
+          <error type="Error">Tests\Unit\StripeServiceTest::testProcessWebhookWithUnsupportedEvent
+Error: Call to undefined method App\Application\Service\StripeService::processWebhook()
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php:272</error>
+        </testcase>
+        <testcase name="testAmountConversion" class="Tests\Unit\StripeServiceTest" classname="Tests.Unit.StripeServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php" line="278" assertions="0" time="0.000941">
+          <error type="Error">Tests\Unit\StripeServiceTest::testAmountConversion
+Error: Call to undefined method App\Application\Service\StripeService::convertToCents()
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php:281</error>
+        </testcase>
+        <testcase name="testCurrencyValidation" class="Tests\Unit\StripeServiceTest" classname="Tests.Unit.StripeServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php" line="286" assertions="0" time="0.000790">
+          <error type="Error">Tests\Unit\StripeServiceTest::testCurrencyValidation
+Error: Call to undefined method App\Application\Service\StripeService::isValidCurrency()
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php:292</error>
+        </testcase>
+        <testcase name="testItemValidation" class="Tests\Unit\StripeServiceTest" classname="Tests.Unit.StripeServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php" line="305" assertions="0" time="0.000753">
+          <error type="Error">Tests\Unit\StripeServiceTest::testItemValidation
+Error: Call to undefined method App\Application\Service\StripeService::validateItems()
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php:317</error>
+        </testcase>
+        <testcase name="testConfigurationValidation" class="Tests\Unit\StripeServiceTest" classname="Tests.Unit.StripeServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php" line="334" assertions="0" time="0.000692">
+          <error type="Error">Tests\Unit\StripeServiceTest::testConfigurationValidation
+Error: Call to undefined method App\Application\Service\StripeService::isProperlyConfigured()
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php:344</error>
+        </testcase>
+        <testcase name="testConfigurationValidationWithMissingKeys" class="Tests\Unit\StripeServiceTest" classname="Tests.Unit.StripeServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php" line="348" assertions="0" time="0.000610">
+          <error type="Error">Tests\Unit\StripeServiceTest::testConfigurationValidationWithMissingKeys
+Error: Call to undefined method App\Application\Service\StripeService::isProperlyConfigured()
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php:358</error>
+        </testcase>
+        <testcase name="testErrorLogging" class="Tests\Unit\StripeServiceTest" classname="Tests.Unit.StripeServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php" line="362" assertions="0" time="0.000812">
+          <error type="PHPUnit\Framework\MockObject\MethodCannotBeConfiguredException">Tests\Unit\StripeServiceTest::testErrorLogging
+PHPUnit\Framework\MockObject\MethodCannotBeConfiguredException: Trying to configure method "log" which cannot be configured because it does not exist, has not been specified, is final, or is static
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php:367</error>
+        </testcase>
+        <testcase name="testGetAllowedCurrencies" class="Tests\Unit\StripeServiceTest" classname="Tests.Unit.StripeServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php" line="377" assertions="0" time="0.001035">
+          <error type="Error">Tests\Unit\StripeServiceTest::testGetAllowedCurrencies
+Error: Call to undefined method App\Application\Service\StripeService::getAllowedCurrencies()
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php:379</error>
+        </testcase>
+        <testcase name="testFormatAmount" class="Tests\Unit\StripeServiceTest" classname="Tests.Unit.StripeServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php" line="387" assertions="0" time="0.000756">
+          <error type="Error">Tests\Unit\StripeServiceTest::testFormatAmount
+Error: Call to undefined method App\Application\Service\StripeService::formatAmount()
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php:390</error>
+        </testcase>
+        <testcase name="testCalculateTaxAmount" class="Tests\Unit\StripeServiceTest" classname="Tests.Unit.StripeServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php" line="395" assertions="0" time="0.000688">
+          <error type="Error">Tests\Unit\StripeServiceTest::testCalculateTaxAmount
+Error: Call to undefined method App\Application\Service\StripeService::calculateTax()
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php:400</error>
+        </testcase>
+        <testcase name="testGenerateUniqueSessionId" class="Tests\Unit\StripeServiceTest" classname="Tests.Unit.StripeServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php" line="405" assertions="0" time="0.000624">
+          <error type="Error">Tests\Unit\StripeServiceTest::testGenerateUniqueSessionId
+Error: Call to undefined method App\Application\Service\StripeService::generateMockSessionId()
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php:407</error>
+        </testcase>
+      </testsuite>
+    </testsuite>
+    <testsuite name="Feature" tests="19" assertions="27" errors="13" warnings="0" failures="0" skipped="0" time="0.273136">
+      <testsuite name="Tests\Feature\AuthControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php" tests="13" assertions="0" errors="13" warnings="0" failures="0" skipped="0" time="0.265473">
+        <testcase name="testLoginWithValidCredentials" class="Tests\Feature\AuthControllerTest" classname="Tests.Feature.AuthControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php" line="41" assertions="0" time="0.051172">
+          <error type="PHPUnit\Framework\MockObject\MethodCannotBeConfiguredException">Tests\Feature\AuthControllerTest::testLoginWithValidCredentials
+PHPUnit\Framework\MockObject\MethodCannotBeConfiguredException: Trying to configure method "findByEmail" which cannot be configured because it does not exist, has not been specified, is final, or is static
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php:45</error>
+        </testcase>
+        <testcase name="testLoginWithInvalidCredentials" class="Tests\Feature\AuthControllerTest" classname="Tests.Feature.AuthControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php" line="71" assertions="0" time="0.000852">
+          <error type="PHPUnit\Framework\MockObject\MethodCannotBeConfiguredException">Tests\Feature\AuthControllerTest::testLoginWithInvalidCredentials
+PHPUnit\Framework\MockObject\MethodCannotBeConfiguredException: Trying to configure method "findByEmail" which cannot be configured because it does not exist, has not been specified, is final, or is static
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php:75</error>
+        </testcase>
+        <testcase name="testLoginValidationErrors" class="Tests\Feature\AuthControllerTest" classname="Tests.Feature.AuthControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php" line="94" assertions="0" time="0.206984">
+          <error type="Error">Tests\Feature\AuthControllerTest::testLoginValidationErrors
+Error: Call to private method App\Http\Controller\Api\AuthController::login() from scope Tests\Feature\AuthControllerTest
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php:102</error>
+        </testcase>
+        <testcase name="testRegisterWithValidData" class="Tests\Feature\AuthControllerTest" classname="Tests.Feature.AuthControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php" line="113" assertions="0" time="0.000670">
+          <error type="PHPUnit\Framework\MockObject\MethodCannotBeConfiguredException">Tests\Feature\AuthControllerTest::testRegisterWithValidData
+PHPUnit\Framework\MockObject\MethodCannotBeConfiguredException: Trying to configure method "findByEmail" which cannot be configured because it does not exist, has not been specified, is final, or is static
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php:117</error>
+        </testcase>
+        <testcase name="testRegisterWithPasswordMismatch" class="Tests\Feature\AuthControllerTest" classname="Tests.Feature.AuthControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php" line="138" assertions="0" time="0.000531">
+          <error type="Error">Tests\Feature\AuthControllerTest::testRegisterWithPasswordMismatch
+Error: Call to private method App\Http\Controller\Api\AuthController::register() from scope Tests\Feature\AuthControllerTest
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php:148</error>
+        </testcase>
+        <testcase name="testRegisterWithInvalidEmail" class="Tests\Feature\AuthControllerTest" classname="Tests.Feature.AuthControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php" line="158" assertions="0" time="0.000563">
+          <error type="Error">Tests\Feature\AuthControllerTest::testRegisterWithInvalidEmail
+Error: Call to private method App\Http\Controller\Api\AuthController::register() from scope Tests\Feature\AuthControllerTest
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php:168</error>
+        </testcase>
+        <testcase name="testLogoutWithValidToken" class="Tests\Feature\AuthControllerTest" classname="Tests.Feature.AuthControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php" line="178" assertions="0" time="0.000931">
+          <error type="PHPUnit\Framework\MockObject\IncompatibleReturnValueException">Tests\Feature\AuthControllerTest::testLogoutWithValidToken
+PHPUnit\Framework\MockObject\IncompatibleReturnValueException: Method validateToken may not return value of type boolean, its declared return type is "?array"
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php:183</error>
+        </testcase>
+        <testcase name="testForgotPasswordWithValidEmail" class="Tests\Feature\AuthControllerTest" classname="Tests.Feature.AuthControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php" line="196" assertions="0" time="0.000849">
+          <error type="PHPUnit\Framework\MockObject\MethodCannotBeConfiguredException">Tests\Feature\AuthControllerTest::testForgotPasswordWithValidEmail
+PHPUnit\Framework\MockObject\MethodCannotBeConfiguredException: Trying to configure method "findByEmail" which cannot be configured because it does not exist, has not been specified, is final, or is static
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php:200</error>
+        </testcase>
+        <testcase name="testForgotPasswordWithInvalidEmail" class="Tests\Feature\AuthControllerTest" classname="Tests.Feature.AuthControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php" line="220" assertions="0" time="0.000642">
+          <error type="Error">Tests\Feature\AuthControllerTest::testForgotPasswordWithInvalidEmail
+Error: Call to private method App\Http\Controller\Api\AuthController::forgotPassword() from scope Tests\Feature\AuthControllerTest
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php:227</error>
+        </testcase>
+        <testcase name="testMeEndpointWithValidToken" class="Tests\Feature\AuthControllerTest" classname="Tests.Feature.AuthControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php" line="237" assertions="0" time="0.000568">
+          <error type="PHPUnit\Framework\MockObject\MethodCannotBeConfiguredException">Tests\Feature\AuthControllerTest::testMeEndpointWithValidToken
+PHPUnit\Framework\MockObject\MethodCannotBeConfiguredException: Trying to configure method "findById" which cannot be configured because it does not exist, has not been specified, is final, or is static
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php:241</error>
+        </testcase>
+        <testcase name="testMeEndpointWithoutToken" class="Tests\Feature\AuthControllerTest" classname="Tests.Feature.AuthControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php" line="263" assertions="0" time="0.000538">
+          <error type="Error">Tests\Feature\AuthControllerTest::testMeEndpointWithoutToken
+Error: Call to private method App\Http\Controller\Api\AuthController::me() from scope Tests\Feature\AuthControllerTest
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php:268</error>
+        </testcase>
+        <testcase name="testCorsHeaders" class="Tests\Feature\AuthControllerTest" classname="Tests.Feature.AuthControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php" line="295" assertions="0" time="0.000628">
+          <error type="PHPUnit\Framework\MockObject\MethodCannotBeConfiguredException">Tests\Feature\AuthControllerTest::testCorsHeaders
+PHPUnit\Framework\MockObject\MethodCannotBeConfiguredException: Trying to configure method "findByEmail" which cannot be configured because it does not exist, has not been specified, is final, or is static
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php:304</error>
+        </testcase>
+        <testcase name="testRateLimitingHeaders" class="Tests\Feature\AuthControllerTest" classname="Tests.Feature.AuthControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php" line="322" assertions="0" time="0.000546">
+          <error type="PHPUnit\Framework\MockObject\MethodCannotBeConfiguredException">Tests\Feature\AuthControllerTest::testRateLimitingHeaders
+PHPUnit\Framework\MockObject\MethodCannotBeConfiguredException: Trying to configure method "findByEmail" which cannot be configured because it does not exist, has not been specified, is final, or is static
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php:331</error>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Feature\StripeControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\StripeControllerTest.php" tests="6" assertions="27" errors="0" warnings="0" failures="0" skipped="0" time="0.007663">
+        <testcase name="testCreateCheckoutSessionWithValidItems" class="Tests\Feature\StripeControllerTest" classname="Tests.Feature.StripeControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\StripeControllerTest.php" line="28" assertions="5" time="0.001884"/>
+        <testcase name="testCreateCheckoutSessionWithException" class="Tests\Feature\StripeControllerTest" classname="Tests.Feature.StripeControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\StripeControllerTest.php" line="49" assertions="3" time="0.001347"/>
+        <testcase name="testStatusSuccess" class="Tests\Feature\StripeControllerTest" classname="Tests.Feature.StripeControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\StripeControllerTest.php" line="65" assertions="5" time="0.000842"/>
+        <testcase name="testWebhookSuccess" class="Tests\Feature\StripeControllerTest" classname="Tests.Feature.StripeControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\StripeControllerTest.php" line="86" assertions="5" time="0.000816"/>
+        <testcase name="testWebhookException" class="Tests\Feature\StripeControllerTest" classname="Tests.Feature.StripeControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\StripeControllerTest.php" line="105" assertions="3" time="0.000688"/>
+        <testcase name="testConfigSuccess" class="Tests\Feature\StripeControllerTest" classname="Tests.Feature.StripeControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\StripeControllerTest.php" line="120" assertions="6" time="0.002086"/>
+      </testsuite>
+    </testsuite>
+    <testsuite name="Integration" tests="11" assertions="30" errors="0" warnings="0" failures="0" skipped="0" time="0.070970">
+      <testsuite name="Tests\Integration\DatabaseMockTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\DatabaseMockTest.php" tests="11" assertions="30" errors="0" warnings="0" failures="0" skipped="0" time="0.070970">
+        <testcase name="testMockDatabaseImplementsInterface" class="Tests\Integration\DatabaseMockTest" classname="Tests.Integration.DatabaseMockTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\DatabaseMockTest.php" line="25" assertions="1" time="0.002980"/>
+        <testcase name="testMockDatabaseCanAddAndRetrieveData" class="Tests\Integration\DatabaseMockTest" classname="Tests.Integration.DatabaseMockTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\DatabaseMockTest.php" line="30" assertions="5" time="0.062387"/>
+        <testcase name="testTransactionMethods" class="Tests\Integration\DatabaseMockTest" classname="Tests.Integration.DatabaseMockTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\DatabaseMockTest.php" line="58" assertions="3" time="0.000740"/>
+        <testcase name="testQueryExecution" class="Tests\Integration\DatabaseMockTest" classname="Tests.Integration.DatabaseMockTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\DatabaseMockTest.php" line="65" assertions="2" time="0.000498"/>
+        <testcase name="testPerformanceStatistics" class="Tests\Integration\DatabaseMockTest" classname="Tests.Integration.DatabaseMockTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\DatabaseMockTest.php" line="71" assertions="4" time="0.000480"/>
+        <testcase name="testSlowQueries" class="Tests\Integration\DatabaseMockTest" classname="Tests.Integration.DatabaseMockTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\DatabaseMockTest.php" line="81" assertions="1" time="0.000347"/>
+        <testcase name="testMockStatementFunctionality" class="Tests\Integration\DatabaseMockTest" classname="Tests.Integration.DatabaseMockTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\DatabaseMockTest.php" line="87" assertions="5" time="0.000440"/>
+        <testcase name="testContainerIntegration" class="Tests\Integration\DatabaseMockTest" classname="Tests.Integration.DatabaseMockTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\DatabaseMockTest.php" line="98" assertions="2" time="0.000403"/>
+        <testcase name="testMockDatabaseDoesNotConnectToRealDatabase" class="Tests\Integration\DatabaseMockTest" classname="Tests.Integration.DatabaseMockTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\DatabaseMockTest.php" line="111" assertions="2" time="0.000868"/>
+        <testcase name="testMultipleDataTypes" class="Tests\Integration\DatabaseMockTest" classname="Tests.Integration.DatabaseMockTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\DatabaseMockTest.php" line="119" assertions="2" time="0.001451"/>
+        <testcase name="testIncrementalIds" class="Tests\Integration\DatabaseMockTest" classname="Tests.Integration.DatabaseMockTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\DatabaseMockTest.php" line="145" assertions="3" time="0.000377"/>
       </testsuite>
     </testsuite>
   </testsuite>

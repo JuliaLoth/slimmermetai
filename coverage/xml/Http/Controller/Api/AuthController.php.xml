@@ -10,7 +10,7 @@
     </totals>
     <class name="App\Http\Controller\Api\AuthController" start="17" executable="187" executed="0" crap="2862">
       <namespace name="App\Http\Controller\Api"/>
-      <method name="__construct" signature="__construct(App\Domain\Repository\AuthRepositoryInterface $authRepository, App\Application\Service\PasswordHasher $passwordHasher, App\Infrastructure\Security\JwtService $jwtService, App\Infrastructure\Database\DatabaseInterface $database)" start="19" end="25" crap="2" executable="1" executed="0" coverage="0"/>
+      <method name="__construct" signature="__construct(App\Domain\Repository\AuthRepositoryInterface $authRepository, App\Domain\Service\PasswordHasherInterface $passwordHasher, App\Domain\Security\JwtServiceInterface $jwtService, App\Infrastructure\Database\DatabaseInterface $database)" start="19" end="25" crap="2" executable="1" executed="0" coverage="0"/>
       <method name="handle" signature="handle(Psr\Http\Message\ServerRequestInterface $request): Psr\Http\Message\ResponseInterface" start="27" end="43" crap="90" executable="13" executed="0" coverage="0"/>
       <method name="register" signature="register(Psr\Http\Message\ServerRequestInterface $request): Psr\Http\Message\ResponseInterface" start="45" end="103" crap="20" executable="35" executed="0" coverage="0"/>
       <method name="login" signature="login(Psr\Http\Message\ServerRequestInterface $request): Psr\Http\Message\ResponseInterface" start="105" end="168" crap="56" executable="41" executed="0" coverage="0"/>
@@ -60,13 +60,13 @@
       <line no="9">
         <token name="T_USE">use</token>
         <token name="T_WHITESPACE"> </token>
-        <token name="T_NAME_QUALIFIED">App\Application\Service\PasswordHasher</token>
+        <token name="T_NAME_QUALIFIED">App\Domain\Service\PasswordHasherInterface</token>
         <token name="T_SEMICOLON">;</token>
       </line>
       <line no="10">
         <token name="T_USE">use</token>
         <token name="T_WHITESPACE"> </token>
-        <token name="T_NAME_QUALIFIED">App\Infrastructure\Security\JwtService</token>
+        <token name="T_NAME_QUALIFIED">App\Domain\Security\JwtServiceInterface</token>
         <token name="T_SEMICOLON">;</token>
       </line>
       <line no="11">
@@ -134,7 +134,7 @@
         <token name="T_WHITESPACE">        </token>
         <token name="T_PRIVATE">private</token>
         <token name="T_WHITESPACE"> </token>
-        <token name="T_STRING">PasswordHasher</token>
+        <token name="T_STRING">PasswordHasherInterface</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_VARIABLE">$passwordHasher</token>
         <token name="T_COMMA">,</token>
@@ -143,7 +143,7 @@
         <token name="T_WHITESPACE">        </token>
         <token name="T_PRIVATE">private</token>
         <token name="T_WHITESPACE"> </token>
-        <token name="T_STRING">JwtService</token>
+        <token name="T_STRING">JwtServiceInterface</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_VARIABLE">$jwtService</token>
         <token name="T_COMMA">,</token>

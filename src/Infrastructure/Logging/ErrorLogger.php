@@ -35,4 +35,4 @@ class ErrorLogger implements ErrorLoggerInterface
     {
         $this->handler->registerGlobalHandlers();
     }
-} 
+}

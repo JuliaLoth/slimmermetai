@@ -2,19 +2,19 @@
 <phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
   <file name="StripeController.php" path="\Http\Controller\Api">
     <totals>
-      <lines total="78" comments="13" code="65" executable="27" executed="22" percent="81.48"/>
-      <methods count="5" tested="4" percent="80.00"/>
+      <lines total="79" comments="13" code="66" executable="27" executed="27" percent="100.00"/>
+      <methods count="5" tested="5" percent="100.00"/>
       <functions count="0" tested="0" percent="0"/>
-      <classes count="1" tested="0" percent="0.00"/>
+      <classes count="1" tested="1" percent="100.00"/>
       <traits count="0" tested="0" percent="0"/>
     </totals>
-    <class name="App\Http\Controller\Api\StripeController" start="9" executable="27" executed="22" crap="9.51">
+    <class name="App\Http\Controller\Api\StripeController" start="9" executable="27" executed="27" crap="9">
       <namespace name="App\Http\Controller\Api"/>
       <method name="__construct" signature="__construct(App\Application\Service\StripeService $stripe)" start="11" end="13" crap="1" executable="1" executed="1" coverage="100"/>
       <method name="createSession" signature="createSession(): Psr\Http\Message\ResponseInterface" start="18" end="30" crap="2" executable="8" executed="8" coverage="100"/>
       <method name="status" signature="status(string $id): Psr\Http\Message\ResponseInterface" start="35" end="43" crap="2" executable="4" executed="4" coverage="100"/>
       <method name="webhook" signature="webhook(): Psr\Http\Message\ResponseInterface" start="48" end="58" crap="2" executable="6" executed="6" coverage="100"/>
-      <method name="config" signature="config(): Psr\Http\Message\ResponseInterface" start="63" end="77" crap="2.98" executable="8" executed="3" coverage="37.5"/>
+      <method name="config" signature="config(): Psr\Http\Message\ResponseInterface" start="63" end="77" crap="2" executable="8" executed="8" coverage="100"/>
     </class>
     <coverage>
       <line nr="13">
@@ -30,10 +30,11 @@
         <covered by="Tests\Unit\StripeControllerTest::testCreateSessionWithDifferentData with data set &quot;with_metadata&quot;"/>
         <covered by="Tests\Unit\StripeControllerTest::testControllerConstructorWithDependency"/>
         <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithValidItems"/>
-        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithEmptyCart"/>
-        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithInvalidTotal"/>
-        <covered by="Tests\Feature\StripeControllerTest::testMockModeDetection"/>
-        <covered by="Tests\Feature\StripeControllerTest::testErrorHandlingForStripeApiFailures"/>
+        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithException"/>
+        <covered by="Tests\Feature\StripeControllerTest::testStatusSuccess"/>
+        <covered by="Tests\Feature\StripeControllerTest::testWebhookSuccess"/>
+        <covered by="Tests\Feature\StripeControllerTest::testWebhookException"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="20">
         <covered by="Tests\Unit\StripeControllerTest::testCreateSessionSuccess"/>
@@ -42,10 +43,7 @@
         <covered by="Tests\Unit\StripeControllerTest::testCreateSessionWithDifferentData with data set &quot;with_line_items&quot;"/>
         <covered by="Tests\Unit\StripeControllerTest::testCreateSessionWithDifferentData with data set &quot;with_metadata&quot;"/>
         <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithValidItems"/>
-        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithEmptyCart"/>
-        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithInvalidTotal"/>
-        <covered by="Tests\Feature\StripeControllerTest::testMockModeDetection"/>
-        <covered by="Tests\Feature\StripeControllerTest::testErrorHandlingForStripeApiFailures"/>
+        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithException"/>
       </line>
       <line nr="21">
         <covered by="Tests\Unit\StripeControllerTest::testCreateSessionSuccess"/>
@@ -54,10 +52,7 @@
         <covered by="Tests\Unit\StripeControllerTest::testCreateSessionWithDifferentData with data set &quot;with_line_items&quot;"/>
         <covered by="Tests\Unit\StripeControllerTest::testCreateSessionWithDifferentData with data set &quot;with_metadata&quot;"/>
         <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithValidItems"/>
-        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithEmptyCart"/>
-        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithInvalidTotal"/>
-        <covered by="Tests\Feature\StripeControllerTest::testMockModeDetection"/>
-        <covered by="Tests\Feature\StripeControllerTest::testErrorHandlingForStripeApiFailures"/>
+        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithException"/>
       </line>
       <line nr="22">
         <covered by="Tests\Unit\StripeControllerTest::testCreateSessionSuccess"/>
@@ -66,10 +61,7 @@
         <covered by="Tests\Unit\StripeControllerTest::testCreateSessionWithDifferentData with data set &quot;with_line_items&quot;"/>
         <covered by="Tests\Unit\StripeControllerTest::testCreateSessionWithDifferentData with data set &quot;with_metadata&quot;"/>
         <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithValidItems"/>
-        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithEmptyCart"/>
-        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithInvalidTotal"/>
-        <covered by="Tests\Feature\StripeControllerTest::testMockModeDetection"/>
-        <covered by="Tests\Feature\StripeControllerTest::testErrorHandlingForStripeApiFailures"/>
+        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithException"/>
       </line>
       <line nr="23">
         <covered by="Tests\Unit\StripeControllerTest::testCreateSessionSuccess"/>
@@ -78,10 +70,7 @@
         <covered by="Tests\Unit\StripeControllerTest::testCreateSessionWithDifferentData with data set &quot;with_line_items&quot;"/>
         <covered by="Tests\Unit\StripeControllerTest::testCreateSessionWithDifferentData with data set &quot;with_metadata&quot;"/>
         <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithValidItems"/>
-        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithEmptyCart"/>
-        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithInvalidTotal"/>
-        <covered by="Tests\Feature\StripeControllerTest::testMockModeDetection"/>
-        <covered by="Tests\Feature\StripeControllerTest::testErrorHandlingForStripeApiFailures"/>
+        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithException"/>
       </line>
       <line nr="25">
         <covered by="Tests\Unit\StripeControllerTest::testCreateSessionSuccess"/>
@@ -90,10 +79,7 @@
         <covered by="Tests\Unit\StripeControllerTest::testCreateSessionWithDifferentData with data set &quot;with_line_items&quot;"/>
         <covered by="Tests\Unit\StripeControllerTest::testCreateSessionWithDifferentData with data set &quot;with_metadata&quot;"/>
         <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithValidItems"/>
-        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithEmptyCart"/>
-        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithInvalidTotal"/>
-        <covered by="Tests\Feature\StripeControllerTest::testMockModeDetection"/>
-        <covered by="Tests\Feature\StripeControllerTest::testErrorHandlingForStripeApiFailures"/>
+        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithException"/>
       </line>
       <line nr="26">
         <covered by="Tests\Unit\StripeControllerTest::testCreateSessionSuccess"/>
@@ -101,23 +87,23 @@
         <covered by="Tests\Unit\StripeControllerTest::testCreateSessionWithDifferentData with data set &quot;with_line_items&quot;"/>
         <covered by="Tests\Unit\StripeControllerTest::testCreateSessionWithDifferentData with data set &quot;with_metadata&quot;"/>
         <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithValidItems"/>
-        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithEmptyCart"/>
-        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithInvalidTotal"/>
-        <covered by="Tests\Feature\StripeControllerTest::testMockModeDetection"/>
-        <covered by="Tests\Feature\StripeControllerTest::testErrorHandlingForStripeApiFailures"/>
       </line>
       <line nr="27">
         <covered by="Tests\Unit\StripeControllerTest::testCreateSessionException"/>
+        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithException"/>
       </line>
       <line nr="28">
         <covered by="Tests\Unit\StripeControllerTest::testCreateSessionException"/>
+        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithException"/>
       </line>
       <line nr="38">
         <covered by="Tests\Unit\StripeControllerTest::testStatusSuccess"/>
         <covered by="Tests\Unit\StripeControllerTest::testStatusException"/>
+        <covered by="Tests\Feature\StripeControllerTest::testStatusSuccess"/>
       </line>
       <line nr="39">
         <covered by="Tests\Unit\StripeControllerTest::testStatusSuccess"/>
+        <covered by="Tests\Feature\StripeControllerTest::testStatusSuccess"/>
       </line>
       <line nr="40">
         <covered by="Tests\Unit\StripeControllerTest::testStatusException"/>
@@ -128,32 +114,58 @@
       <line nr="50">
         <covered by="Tests\Unit\StripeControllerTest::testWebhookSuccess"/>
         <covered by="Tests\Unit\StripeControllerTest::testWebhookException"/>
+        <covered by="Tests\Feature\StripeControllerTest::testWebhookSuccess"/>
+        <covered by="Tests\Feature\StripeControllerTest::testWebhookException"/>
       </line>
       <line nr="51">
         <covered by="Tests\Unit\StripeControllerTest::testWebhookSuccess"/>
         <covered by="Tests\Unit\StripeControllerTest::testWebhookException"/>
+        <covered by="Tests\Feature\StripeControllerTest::testWebhookSuccess"/>
+        <covered by="Tests\Feature\StripeControllerTest::testWebhookException"/>
       </line>
       <line nr="53">
         <covered by="Tests\Unit\StripeControllerTest::testWebhookSuccess"/>
         <covered by="Tests\Unit\StripeControllerTest::testWebhookException"/>
+        <covered by="Tests\Feature\StripeControllerTest::testWebhookSuccess"/>
+        <covered by="Tests\Feature\StripeControllerTest::testWebhookException"/>
       </line>
       <line nr="54">
         <covered by="Tests\Unit\StripeControllerTest::testWebhookSuccess"/>
+        <covered by="Tests\Feature\StripeControllerTest::testWebhookSuccess"/>
       </line>
       <line nr="55">
         <covered by="Tests\Unit\StripeControllerTest::testWebhookException"/>
+        <covered by="Tests\Feature\StripeControllerTest::testWebhookException"/>
       </line>
       <line nr="56">
         <covered by="Tests\Unit\StripeControllerTest::testWebhookException"/>
+        <covered by="Tests\Feature\StripeControllerTest::testWebhookException"/>
       </line>
       <line nr="66">
         <covered by="Tests\Unit\StripeControllerTest::testConfigWithValidKey"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="68">
         <covered by="Tests\Unit\StripeControllerTest::testConfigWithValidKey"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="69">
         <covered by="Tests\Unit\StripeControllerTest::testConfigWithValidKey"/>
+      </line>
+      <line nr="72">
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
+      </line>
+      <line nr="73">
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
+      </line>
+      <line nr="74">
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
+      </line>
+      <line nr="75">
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
+      </line>
+      <line nr="76">
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
     </coverage>
     <source>
@@ -802,8 +814,8 @@
       </line>
       <line no="78">
         <token name="T_CLOSE_CURLY">}</token>
-        <token name="T_WHITESPACE"> </token>
       </line>
+      <line no="79"/>
     </source>
   </file>
 </phpunit>

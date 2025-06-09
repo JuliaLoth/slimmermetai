@@ -2,7 +2,7 @@
 <phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
   <file name="ErrorLogger.php" path="\Infrastructure\Logging">
     <totals>
-      <lines total="38" comments="3" code="35" executable="5" executed="0" percent="0.00"/>
+      <lines total="39" comments="3" code="36" executable="5" executed="0" percent="0.00"/>
       <methods count="5" tested="0" percent="0.00"/>
       <functions count="0" tested="0" percent="0"/>
       <classes count="1" tested="0" percent="0.00"/>
@@ -296,8 +296,8 @@
       </line>
       <line no="38">
         <token name="T_CLOSE_CURLY">}</token>
-        <token name="T_WHITESPACE"> </token>
       </line>
+      <line no="39"/>
     </source>
   </file>
 </phpunit>

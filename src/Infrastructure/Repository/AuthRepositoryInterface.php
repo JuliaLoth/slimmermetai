@@ -26,4 +26,4 @@ interface AuthRepositoryInterface extends \App\Domain\Repository\AuthRepositoryI
     public function deactivateUser(int $userId): bool;
     public function activateUser(int $userId): bool;
     public function createWithTransaction(array $userData): User;
-} 
+}

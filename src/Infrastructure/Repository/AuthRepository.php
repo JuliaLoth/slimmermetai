@@ -125,7 +125,7 @@ class AuthRepository implements DomainAuthRepositoryInterface, AuthRepositoryInt
         if ($expiresAt === null) {
             $expiresAt = new \DateTimeImmutable('+1 hour');
         }
-        
+
         // Eerst oude tokens invalideren
         $this->database->execute(
             "UPDATE email_tokens SET used_at = NOW() WHERE user_id = ? AND type = 'password_reset' AND used_at IS NULL",
@@ -196,7 +196,7 @@ class AuthRepository implements DomainAuthRepositoryInterface, AuthRepositoryInt
         if (is_int($since)) {
             $since = new \DateTimeImmutable("@{$since}");
         }
-        
+
         $result = $this->database->fetch(
             "SELECT COUNT(*) as count FROM login_history WHERE email = ? AND success = 0 AND created_at > ?",
             [$email, $since->format('Y-m-d H:i:s')]
@@ -206,7 +206,7 @@ class AuthRepository implements DomainAuthRepositoryInterface, AuthRepositoryInt
     }
 
     // Additional methods for test compatibility and expanded functionality
-    
+
     /**
      * Alias for findUserByEmail for test compatibility
      */
@@ -239,12 +239,12 @@ class AuthRepository implements DomainAuthRepositoryInterface, AuthRepositoryInt
         $role = $userData['role'] ?? 'user';
 
         $userId = $this->createUser($name, $email, $password, $role);
-        
+
         $user = $this->findById($userId);
         if (!$user) {
             throw new \RuntimeException("Failed to create user or retrieve created user");
         }
-        
+
         return $user;
     }
 
@@ -333,7 +333,7 @@ class AuthRepository implements DomainAuthRepositoryInterface, AuthRepositoryInt
     public function createWithTransaction(array $userData): User
     {
         $this->database->beginTransaction();
-        
+
         try {
             $user = $this->create($userData);
             $this->database->commit();

@@ -75,4 +75,4 @@ class StripeController
             'locale' => 'nl-NL'
         ]);
     }
-} 
+}

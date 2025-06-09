@@ -51,6 +51,61 @@
         </style>
     </head>
     <body>
+        <h2>Auth Repository (Tests\Unit\AuthRepository)</h2>
+        <ul>
+            <li class="defect">Find by email with existing user</li>
+            <li class="success">Find by email with non existent user</li>
+            <li class="defect">Find by id with existing user</li>
+            <li class="defect">Create user</li>
+            <li class="defect">Update password</li>
+            <li class="success">Update password with invalid user</li>
+            <li class="defect">Create password reset token</li>
+            <li class="defect">Validate password reset token</li>
+            <li class="defect">Validate expired password reset token</li>
+            <li class="defect">Delete password reset token</li>
+            <li class="defect">Blacklist token</li>
+            <li class="defect">Is token blacklisted</li>
+            <li class="success">Is token not blacklisted</li>
+            <li class="defect">Update last login</li>
+            <li class="defect">Get user login history</li>
+            <li class="defect">Record login attempt</li>
+            <li class="defect">Get failed login attempts</li>
+            <li class="defect">Deactivate user</li>
+            <li class="defect">Activate user</li>
+            <li class="defect">Database exception handling</li>
+            <li class="defect">Transaction handling</li>
+        </ul>
+        <h2>Auth Service (Tests\Unit\AuthService)</h2>
+        <ul>
+            <li class="defect">Successful login</li>
+            <li class="defect">Login with invalid email</li>
+            <li class="defect">Login with wrong password</li>
+            <li class="defect">Login with inactive user</li>
+            <li class="defect">Successful registration</li>
+            <li class="defect">Registration with existing email</li>
+            <li class="defect">Token validation</li>
+            <li class="defect">Token validation with invalid token</li>
+            <li class="defect">Forgot password</li>
+            <li class="defect">Forgot password with invalid email</li>
+            <li class="defect">Reset password</li>
+            <li class="defect">Reset password with invalid token</li>
+            <li class="defect">Get current user</li>
+            <li class="defect">Logout</li>
+            <li class="defect">Password strength validation</li>
+            <li class="defect">Email validation</li>
+        </ul>
+        <h2>Config (Tests\Unit\Config)</h2>
+        <ul>
+            <li class="success">Config can get values</li>
+            <li class="success">Config can get default values</li>
+            <li class="success">Config can set values</li>
+            <li class="success">Config can check if key exists</li>
+            <li class="success">Config can get all values</li>
+            <li class="success">Config can get typed values</li>
+            <li class="success">Environment values</li>
+            <li class="success">Security defaults</li>
+            <li class="success">Config with missing method</li>
+        </ul>
         <h2>Password Hasher (Tests\Unit\PasswordHasher)</h2>
         <ul>
             <li class="success">Implements interface</li>
@@ -61,6 +116,86 @@
             <li class="success">Custom minimum length</li>
             <li class="success">Different cost factors</li>
             <li class="success">Empty password handling</li>
+        </ul>
+        <h2>Stripe Controller (Tests\Unit\StripeController)</h2>
+        <ul>
+            <li class="success">Create session success</li>
+            <li class="success">Create session exception</li>
+            <li class="success">Status success</li>
+            <li class="success">Status exception</li>
+            <li class="success">Webhook success</li>
+            <li class="success">Webhook exception</li>
+            <li class="success">Config with valid key</li>
+            <li class="success">Create session with different data with data set "empty_data"</li>
+            <li class="success">Create session with different data with data set "with_line_items"</li>
+            <li class="success">Create session with different data with data set "with_metadata"</li>
+            <li class="success">Controller constructor with dependency</li>
+        </ul>
+        <h2>Stripe Service (Tests\Unit\StripeService)</h2>
+        <ul>
+            <li class="defect">Get publishable key in development mode</li>
+            <li class="defect">Get publishable key in production mode</li>
+            <li class="defect">Create checkout session in mock mode</li>
+            <li class="defect">Create checkout session with valid items</li>
+            <li class="defect">Create checkout session with empty items</li>
+            <li class="defect">Create checkout session with invalid total</li>
+            <li class="defect">Create payment intent in mock mode</li>
+            <li class="defect">Create payment intent with invalid amount</li>
+            <li class="defect">Create payment intent with invalid currency</li>
+            <li class="defect">Get session status in mock mode</li>
+            <li class="defect">Get session status with invalid id</li>
+            <li class="defect">Verify webhook signature in mock mode</li>
+            <li class="defect">Process webhook in mock mode</li>
+            <li class="defect">Process webhook with unsupported event</li>
+            <li class="defect">Amount conversion</li>
+            <li class="defect">Currency validation</li>
+            <li class="defect">Item validation</li>
+            <li class="defect">Configuration validation</li>
+            <li class="defect">Configuration validation with missing keys</li>
+            <li class="defect">Error logging</li>
+            <li class="defect">Get allowed currencies</li>
+            <li class="defect">Format amount</li>
+            <li class="defect">Calculate tax amount</li>
+            <li class="defect">Generate unique session id</li>
+        </ul>
+        <h2>Auth Controller (Tests\Feature\AuthController)</h2>
+        <ul>
+            <li class="defect">Login with valid credentials</li>
+            <li class="defect">Login with invalid credentials</li>
+            <li class="defect">Login validation errors</li>
+            <li class="defect">Register with valid data</li>
+            <li class="defect">Register with password mismatch</li>
+            <li class="defect">Register with invalid email</li>
+            <li class="defect">Logout with valid token</li>
+            <li class="defect">Forgot password with valid email</li>
+            <li class="defect">Forgot password with invalid email</li>
+            <li class="defect">Me endpoint with valid token</li>
+            <li class="defect">Me endpoint without token</li>
+            <li class="defect">Cors headers</li>
+            <li class="defect">Rate limiting headers</li>
+        </ul>
+        <h2>Stripe Controller (Tests\Feature\StripeController)</h2>
+        <ul>
+            <li class="success">Create checkout session with valid items</li>
+            <li class="success">Create checkout session with exception</li>
+            <li class="success">Status success</li>
+            <li class="success">Webhook success</li>
+            <li class="success">Webhook exception</li>
+            <li class="success">Config success</li>
+        </ul>
+        <h2>Database Mock (Tests\Integration\DatabaseMock)</h2>
+        <ul>
+            <li class="success">Mock database implements interface</li>
+            <li class="success">Mock database can add and retrieve data</li>
+            <li class="success">Transaction methods</li>
+            <li class="success">Query execution</li>
+            <li class="success">Performance statistics</li>
+            <li class="success">Slow queries</li>
+            <li class="success">Mock statement functionality</li>
+            <li class="success">Container integration</li>
+            <li class="success">Mock database does not connect to real database</li>
+            <li class="success">Multiple data types</li>
+            <li class="success">Incremental ids</li>
         </ul>
     </body>
 </html>

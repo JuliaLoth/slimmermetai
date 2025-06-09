@@ -31,139 +31,127 @@
       <line nr="42">
         <covered by="Tests\Unit\StripeControllerTest::testCreateSessionException"/>
         <covered by="Tests\Unit\StripeControllerTest::testStatusException"/>
-        <covered by="Tests\Feature\StripeControllerTest::testMockModeDetection"/>
+        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithException"/>
         <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
       </line>
       <line nr="57">
         <covered by="Tests\Unit\StripeControllerTest::testCreateSessionException"/>
         <covered by="Tests\Unit\StripeControllerTest::testStatusException"/>
-        <covered by="Tests\Feature\StripeControllerTest::testMockModeDetection"/>
+        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithException"/>
         <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
       </line>
       <line nr="58">
         <covered by="Tests\Unit\StripeControllerTest::testCreateSessionException"/>
         <covered by="Tests\Unit\StripeControllerTest::testStatusException"/>
-        <covered by="Tests\Feature\StripeControllerTest::testMockModeDetection"/>
+        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithException"/>
         <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
       </line>
       <line nr="59">
         <covered by="Tests\Unit\StripeControllerTest::testCreateSessionException"/>
         <covered by="Tests\Unit\StripeControllerTest::testStatusException"/>
-        <covered by="Tests\Feature\StripeControllerTest::testMockModeDetection"/>
+        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithException"/>
         <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
       </line>
       <line nr="60">
         <covered by="Tests\Unit\StripeControllerTest::testCreateSessionException"/>
         <covered by="Tests\Unit\StripeControllerTest::testStatusException"/>
-        <covered by="Tests\Feature\StripeControllerTest::testMockModeDetection"/>
+        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithException"/>
         <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
       </line>
       <line nr="61">
         <covered by="Tests\Unit\StripeControllerTest::testCreateSessionException"/>
         <covered by="Tests\Unit\StripeControllerTest::testStatusException"/>
-        <covered by="Tests\Feature\StripeControllerTest::testMockModeDetection"/>
+        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithException"/>
         <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
       </line>
       <line nr="62">
         <covered by="Tests\Unit\StripeControllerTest::testCreateSessionException"/>
         <covered by="Tests\Unit\StripeControllerTest::testStatusException"/>
-        <covered by="Tests\Feature\StripeControllerTest::testMockModeDetection"/>
+        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithException"/>
         <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
       </line>
       <line nr="93">
         <covered by="Tests\Unit\StripeControllerTest::testCreateSessionException"/>
         <covered by="Tests\Unit\StripeControllerTest::testStatusException"/>
-        <covered by="Tests\Feature\StripeControllerTest::testMockModeDetection"/>
+        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithException"/>
         <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
       </line>
       <line nr="94">
         <covered by="Tests\Unit\StripeControllerTest::testCreateSessionException"/>
         <covered by="Tests\Unit\StripeControllerTest::testStatusException"/>
-        <covered by="Tests\Feature\StripeControllerTest::testMockModeDetection"/>
+        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithException"/>
         <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
       </line>
       <line nr="95">
         <covered by="Tests\Unit\StripeControllerTest::testCreateSessionException"/>
         <covered by="Tests\Unit\StripeControllerTest::testStatusException"/>
-        <covered by="Tests\Feature\StripeControllerTest::testMockModeDetection"/>
+        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithException"/>
         <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
       </line>
       <line nr="96">
         <covered by="Tests\Unit\StripeControllerTest::testCreateSessionException"/>
         <covered by="Tests\Unit\StripeControllerTest::testStatusException"/>
-        <covered by="Tests\Feature\StripeControllerTest::testMockModeDetection"/>
+        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithException"/>
         <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
       </line>
       <line nr="97">
         <covered by="Tests\Unit\StripeControllerTest::testCreateSessionException"/>
         <covered by="Tests\Unit\StripeControllerTest::testStatusException"/>
-        <covered by="Tests\Feature\StripeControllerTest::testMockModeDetection"/>
+        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithException"/>
         <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
       </line>
       <line nr="98">
         <covered by="Tests\Unit\StripeControllerTest::testCreateSessionException"/>
         <covered by="Tests\Unit\StripeControllerTest::testStatusException"/>
-        <covered by="Tests\Feature\StripeControllerTest::testMockModeDetection"/>
+        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithException"/>
         <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
       </line>
       <line nr="99">
         <covered by="Tests\Unit\StripeControllerTest::testCreateSessionException"/>
         <covered by="Tests\Unit\StripeControllerTest::testStatusException"/>
-        <covered by="Tests\Feature\StripeControllerTest::testMockModeDetection"/>
+        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithException"/>
         <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
       </line>
       <line nr="112">
-        <covered by="Tests\Feature\StripeControllerTest::testMockModeDetection"/>
         <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
       </line>
       <line nr="113">
-        <covered by="Tests\Feature\StripeControllerTest::testMockModeDetection"/>
         <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
       </line>
       <line nr="114">
-        <covered by="Tests\Feature\StripeControllerTest::testMockModeDetection"/>
         <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
       </line>
       <line nr="117">
-        <covered by="Tests\Feature\StripeControllerTest::testMockModeDetection"/>
         <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
       </line>
       <line nr="138">
-        <covered by="Tests\Feature\StripeControllerTest::testMockModeDetection"/>
         <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
       </line>
       <line nr="139">
-        <covered by="Tests\Feature\StripeControllerTest::testMockModeDetection"/>
         <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
       </line>
       <line nr="140">
-        <covered by="Tests\Feature\StripeControllerTest::testMockModeDetection"/>
         <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
       </line>
       <line nr="141">
-        <covered by="Tests\Feature\StripeControllerTest::testMockModeDetection"/>
         <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
       </line>
       <line nr="142">
-        <covered by="Tests\Feature\StripeControllerTest::testMockModeDetection"/>
         <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
       </line>
       <line nr="143">
-        <covered by="Tests\Feature\StripeControllerTest::testMockModeDetection"/>
         <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
       </line>
       <line nr="100">
         <covered by="Tests\Unit\StripeControllerTest::testCreateSessionException"/>
         <covered by="Tests\Unit\StripeControllerTest::testStatusException"/>
-        <covered by="Tests\Feature\StripeControllerTest::testMockModeDetection"/>
+        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithException"/>
         <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
       </line>
       <line nr="137">
-        <covered by="Tests\Feature\StripeControllerTest::testMockModeDetection"/>
         <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
       </line>
       <line nr="144">
-        <covered by="Tests\Feature\StripeControllerTest::testMockModeDetection"/>
         <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
       </line>
     </coverage>

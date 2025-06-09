@@ -1,12 +1,12 @@
 {
   "resources/js/auth/auth.js": {
-    "file": "bundle-auth.BUAKKj1M.js",
+    "file": "bundle-auth.CrQANKKg.js",
     "name": "auth",
     "src": "resources/js/auth/auth.js",
     "isEntry": true
   },
   "resources/js/cart/cart.js": {
-    "file": "bundle-cart.C7Dqr615.js",
+    "file": "bundle-cart.Dewgk70_.js",
     "name": "cart",
     "src": "resources/js/cart/cart.js",
     "isEntry": true

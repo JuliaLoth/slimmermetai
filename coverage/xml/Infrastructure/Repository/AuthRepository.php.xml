@@ -1243,9 +1243,7 @@
         <token name="T_WHITESPACE">        </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="128">
-        <token name="T_WHITESPACE">        </token>
-      </line>
+      <line no="128"/>
       <line no="129">
         <token name="T_WHITESPACE">        </token>
         <token name="T_COMMENT">// Eerst oude tokens invalideren</token>
@@ -1764,9 +1762,7 @@
         <token name="T_WHITESPACE">        </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="199">
-        <token name="T_WHITESPACE">        </token>
-      </line>
+      <line no="199"/>
       <line no="200">
         <token name="T_WHITESPACE">        </token>
         <token name="T_VARIABLE">$result</token>
@@ -1831,9 +1827,7 @@
         <token name="T_WHITESPACE">    </token>
         <token name="T_COMMENT">// Additional methods for test compatibility and expanded functionality</token>
       </line>
-      <line no="209">
-        <token name="T_WHITESPACE">    </token>
-      </line>
+      <line no="209"/>
       <line no="210">
         <token name="T_WHITESPACE">    </token>
         <token name="T_DOC_COMMENT">/**</token>
@@ -2092,9 +2086,7 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="242">
-        <token name="T_WHITESPACE">        </token>
-      </line>
+      <line no="242"/>
       <line no="243">
         <token name="T_WHITESPACE">        </token>
         <token name="T_VARIABLE">$user</token>
@@ -2136,9 +2128,7 @@
         <token name="T_WHITESPACE">        </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="247">
-        <token name="T_WHITESPACE">        </token>
-      </line>
+      <line no="247"/>
       <line no="248">
         <token name="T_WHITESPACE">        </token>
         <token name="T_RETURN">return</token>
@@ -2691,9 +2681,7 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="336">
-        <token name="T_WHITESPACE">        </token>
-      </line>
+      <line no="336"/>
       <line no="337">
         <token name="T_WHITESPACE">        </token>
         <token name="T_TRY">try</token>

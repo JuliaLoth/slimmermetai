@@ -25,6 +25,7 @@
     <coverage>
       <line nr="15">
         <covered by="Tests\Unit\StripeControllerTest::testConfigWithValidKey"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="20">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -36,6 +37,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="21">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -47,6 +49,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="26">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -58,6 +61,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="29">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -69,6 +73,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="30">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -80,6 +85,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="31">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -91,6 +97,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="32">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -102,6 +109,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="33">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -113,6 +121,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="34">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -124,6 +133,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="36">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -135,6 +145,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="39">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -146,6 +157,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="44">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -157,6 +169,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="45">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -168,6 +181,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="46">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -179,6 +193,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="48">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -190,6 +205,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="49">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -201,6 +217,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="50">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -212,6 +229,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="51">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -223,6 +241,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="54">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -234,6 +253,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="55">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -245,6 +265,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="56">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -256,6 +277,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="63">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -267,6 +289,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="64">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -278,6 +301,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="65">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -289,6 +313,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="66">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -300,6 +325,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="67">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -311,6 +337,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="69">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -322,6 +349,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="70">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -333,6 +361,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="71">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -344,6 +373,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="73">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -355,6 +385,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="74">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -366,6 +397,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="75">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -377,6 +409,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="76">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -388,6 +421,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="77">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -399,6 +433,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="79">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -410,6 +445,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="80">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -421,6 +457,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="81">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -432,6 +469,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="82">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -443,6 +481,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="83">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -454,6 +493,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="84">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -465,6 +505,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="85">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -476,6 +517,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="86">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -487,6 +529,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="88">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -498,6 +541,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="89">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -509,6 +553,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="90">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -520,6 +565,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="91">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -531,6 +577,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="92">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -542,6 +589,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="93">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -553,6 +601,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="95">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -564,6 +613,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="96">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -575,6 +625,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="97">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -586,6 +637,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="98">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -597,6 +649,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="100">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -608,6 +661,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="101">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -619,6 +673,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="102">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -630,6 +685,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="104">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -641,6 +697,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="105">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -652,6 +709,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="106">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -663,6 +721,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="107">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -674,6 +733,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="108">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -685,6 +745,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="110">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -696,6 +757,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="111">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -707,6 +769,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="113">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -718,6 +781,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="114">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -729,6 +793,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="116">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -740,6 +805,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="117">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -751,6 +817,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="118">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -762,6 +829,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="120">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -773,6 +841,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="121">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -784,6 +853,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="123">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -795,6 +865,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="124">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -806,6 +877,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="125">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -817,6 +889,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="126">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -828,6 +901,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="127">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -839,6 +913,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="132">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetValues"/>
@@ -848,10 +923,12 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\StripeControllerTest::testConfigWithValidKey"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="136">
         <covered by="Tests\Unit\ConfigTest::testConfigCanSetValues"/>
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetTypedValues"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="140">
         <covered by="Tests\Unit\ConfigTest::testConfigCanGetAllValues"/>
@@ -875,6 +952,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\ConfigTest::testConfigWithMissingMethod"/>
+        <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
     </coverage>
     <source>

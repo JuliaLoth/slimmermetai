@@ -1,3 +1,55 @@
+Auth Repository (Tests\Unit\AuthRepository)
+ [ ] Find by email with existing user
+ [x] Find by email with non existent user
+ [ ] Find by id with existing user
+ [ ] Create user
+ [ ] Update password
+ [x] Update password with invalid user
+ [ ] Create password reset token
+ [ ] Validate password reset token
+ [ ] Validate expired password reset token
+ [ ] Delete password reset token
+ [ ] Blacklist token
+ [ ] Is token blacklisted
+ [x] Is token not blacklisted
+ [ ] Update last login
+ [ ] Get user login history
+ [ ] Record login attempt
+ [ ] Get failed login attempts
+ [ ] Deactivate user
+ [ ] Activate user
+ [ ] Database exception handling
+ [ ] Transaction handling
+
+Auth Service (Tests\Unit\AuthService)
+ [ ] Successful login
+ [ ] Login with invalid email
+ [ ] Login with wrong password
+ [ ] Login with inactive user
+ [ ] Successful registration
+ [ ] Registration with existing email
+ [ ] Token validation
+ [ ] Token validation with invalid token
+ [ ] Forgot password
+ [ ] Forgot password with invalid email
+ [ ] Reset password
+ [ ] Reset password with invalid token
+ [ ] Get current user
+ [ ] Logout
+ [ ] Password strength validation
+ [ ] Email validation
+
+Config (Tests\Unit\Config)
+ [x] Config can get values
+ [x] Config can get default values
+ [x] Config can set values
+ [x] Config can check if key exists
+ [x] Config can get all values
+ [x] Config can get typed values
+ [x] Environment values
+ [x] Security defaults
+ [x] Config with missing method
+
 Password Hasher (Tests\Unit\PasswordHasher)
  [x] Implements interface
  [x] Can hash password
@@ -7,4 +59,79 @@ Password Hasher (Tests\Unit\PasswordHasher)
  [x] Custom minimum length
  [x] Different cost factors
  [x] Empty password handling
+
+Stripe Controller (Tests\Unit\StripeController)
+ [x] Create session success
+ [x] Create session exception
+ [x] Status success
+ [x] Status exception
+ [x] Webhook success
+ [x] Webhook exception
+ [x] Config with valid key
+ [x] Create session with different data with data set "empty_data"
+ [x] Create session with different data with data set "with_line_items"
+ [x] Create session with different data with data set "with_metadata"
+ [x] Controller constructor with dependency
+
+Stripe Service (Tests\Unit\StripeService)
+ [ ] Get publishable key in development mode
+ [ ] Get publishable key in production mode
+ [ ] Create checkout session in mock mode
+ [ ] Create checkout session with valid items
+ [ ] Create checkout session with empty items
+ [ ] Create checkout session with invalid total
+ [ ] Create payment intent in mock mode
+ [ ] Create payment intent with invalid amount
+ [ ] Create payment intent with invalid currency
+ [ ] Get session status in mock mode
+ [ ] Get session status with invalid id
+ [ ] Verify webhook signature in mock mode
+ [ ] Process webhook in mock mode
+ [ ] Process webhook with unsupported event
+ [ ] Amount conversion
+ [ ] Currency validation
+ [ ] Item validation
+ [ ] Configuration validation
+ [ ] Configuration validation with missing keys
+ [ ] Error logging
+ [ ] Get allowed currencies
+ [ ] Format amount
+ [ ] Calculate tax amount
+ [ ] Generate unique session id
+
+Auth Controller (Tests\Feature\AuthController)
+ [ ] Login with valid credentials
+ [ ] Login with invalid credentials
+ [ ] Login validation errors
+ [ ] Register with valid data
+ [ ] Register with password mismatch
+ [ ] Register with invalid email
+ [ ] Logout with valid token
+ [ ] Forgot password with valid email
+ [ ] Forgot password with invalid email
+ [ ] Me endpoint with valid token
+ [ ] Me endpoint without token
+ [ ] Cors headers
+ [ ] Rate limiting headers
+
+Stripe Controller (Tests\Feature\StripeController)
+ [x] Create checkout session with valid items
+ [x] Create checkout session with exception
+ [x] Status success
+ [x] Webhook success
+ [x] Webhook exception
+ [x] Config success
+
+Database Mock (Tests\Integration\DatabaseMock)
+ [x] Mock database implements interface
+ [x] Mock database can add and retrieve data
+ [x] Transaction methods
+ [x] Query execution
+ [x] Performance statistics
+ [x] Slow queries
+ [x] Mock statement functionality
+ [x] Container integration
+ [x] Mock database does not connect to real database
+ [x] Multiple data types
+ [x] Incremental ids
 

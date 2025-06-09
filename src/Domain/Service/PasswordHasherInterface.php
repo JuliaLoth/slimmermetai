@@ -25,4 +25,4 @@ interface PasswordHasherInterface
      * Check if password meets strength requirements
      */
     public function isStrong(string $password, int $minLength = 8): bool;
-} 
+}

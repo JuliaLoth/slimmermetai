@@ -12,4 +12,4 @@ use App\Domain\Entity\StripeSession;
 interface StripeSessionRepositoryInterface extends \App\Domain\Repository\StripeSessionRepositoryInterface
 {
     // All methods are inherited from the domain interface
-} 
+}
