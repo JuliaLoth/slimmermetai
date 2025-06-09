@@ -29,8 +29,11 @@ class StripeService
     private string $secretKey;
     private string $webhookSecret;
     private Config $config;
-    public function __construct(Config $config, private ErrorLoggerInterface $logger, private StripeSessionRepositoryInterface $repository,)
-    {
+    public function __construct(
+        Config $config,
+        private ErrorLoggerInterface $logger,
+        private StripeSessionRepositoryInterface $repository,
+    ) {
         $this->config = $config;
         $this->secretKey = $config->get('stripe_secret_key', '');
         $this->webhookSecret = $config->get('stripe_webhook_secret', '');
@@ -62,10 +65,12 @@ class StripeService
         // Development mode detectie: alleen voor lokale development
         $appEnv = getenv('APP_ENV');
         $isDevelopment = ($appEnv === 'local' || $appEnv === 'development') &&
-                        !$this->isValidStripeKey($this->secretKey);
+            !$this->isValidStripeKey($this->secretKey);
 
         if ($isDevelopment) {
-            $this->logger->logInfo('Using mock Stripe session for development (no valid API key or local env)');
+            $this->logger->logInfo(
+                'Using mock Stripe session for development (no valid API key or local env)'
+            );
             // Bereken totaal voor de mock response
             $totalAmount = 0;
             foreach ($lineItems as $item) {
@@ -91,7 +96,8 @@ class StripeService
             // Return mock success URL met parameters om succesvol te simuleren
             return [
                 'id' => $mockSessionId,
-                'url' => $successUrl . '?mock=true&session_id=' . $mockSessionId . '&total=' . number_format($totalAmount / 100, 2)
+                'url' => $successUrl . '?mock=true&session_id=' . $mockSessionId .
+                    '&total=' . number_format($totalAmount / 100, 2)
             ];
         }
 

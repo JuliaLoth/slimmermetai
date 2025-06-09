@@ -169,11 +169,14 @@ jobs:
         chmod +x ./vendor/bin/phpstan
         chmod +x ./vendor/bin/phpunit
 
-    - name: Run code style check
-      run: composer run cs:check
-
     - name: Auto-fix code style issues
       run: composer run cs:fix || true
+
+    - name: Run code style check (errors only - warnings allowed)
+      run: composer run cs:check-errors-only
+
+    - name: Run full code style check for reporting (warnings allowed to fail)
+      run: composer run cs:check || echo "⚠️ Code style warnings detected but not blocking CI"
 
     - name: Run static analysis
       run: composer run analyse

@@ -22,28 +22,57 @@ final class EmailService
 
     public function sendVerificationEmail(string $to, string $token, string $name = ''): bool
     {
-        $verifyUrl = sprintf('%s/verify-email?token=%s', getenv('FRONTEND_URL') ?: 'https://slimmermetai.com', $token);
-        $html = $this->buildTemplate('Bevestig je e-mailadres', $name, $verifyUrl, 'Verifieer E-mailadres');
+        $verifyUrl = sprintf(
+            '%s/verify-email?token=%s',
+            getenv('FRONTEND_URL') ?: 'https://slimmermetai.com',
+            $token
+        );
+        $html = $this->buildTemplate(
+            'Bevestig je e-mailadres',
+            $name,
+            $verifyUrl,
+            'Verifieer E-mailadres'
+        );
         return $this->send($to, 'Verifieer je e-mailadres - SlimmerMetAI', $html);
     }
 
     public function sendWelcomeEmail(string $to, string $name = ''): bool
     {
         $dashboardUrl = (getenv('FRONTEND_URL') ?: 'https://slimmermetai.com') . '/dashboard';
-        $html = $this->buildTemplate('Welkom bij SlimmerMetAI!', $name, $dashboardUrl, 'Ga naar dashboard');
+        $html = $this->buildTemplate(
+            'Welkom bij SlimmerMetAI!',
+            $name,
+            $dashboardUrl,
+            'Ga naar dashboard'
+        );
         return $this->send($to, 'Welkom bij SlimmerMetAI!', $html);
     }
 
     public function sendPasswordResetEmail(string $to, string $token, string $name = ''): bool
     {
-        $resetUrl = sprintf('%s/reset-password?token=%s', getenv('FRONTEND_URL') ?: 'https://slimmermetai.com', $token);
-        $html = $this->buildTemplate('Wachtwoord resetten', $name, $resetUrl, 'Reset wachtwoord', 'Deze link is 1 uur geldig.');
+        $resetUrl = sprintf(
+            '%s/reset-password?token=%s',
+            getenv('FRONTEND_URL') ?: 'https://slimmermetai.com',
+            $token
+        );
+        $html = $this->buildTemplate(
+            'Wachtwoord resetten',
+            $name,
+            $resetUrl,
+            'Reset wachtwoord',
+            'Deze link is 1 uur geldig.'
+        );
         return $this->send($to, 'Wachtwoord resetten - SlimmerMetAI', $html);
     }
 
     /* ---------------- Helper ---------------- */
-    private function buildTemplate(string $title, string $name, string $actionUrl, string $buttonText, string $note = ''): string
-    {
+    private function buildTemplate(
+        string $title,
+        string $name,
+        string $actionUrl,
+        string $buttonText,
+        string $note = ''
+    ): string {
         $brandUrl = getenv('FRONTEND_URL') ?: 'https://slimmermetai.com';
         $year = date('Y');
         $displayName = $name ?: 'daar';

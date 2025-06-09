@@ -12,8 +12,17 @@ final class StripeSession
 {
     /** @var array<string,mixed> */
     private array $metadata;
-    public function __construct(private string $id, private ?int $userId, private int $amountTotal, private string $currency, private string $paymentStatus, private string $status, private \DateTimeImmutable $createdAt, ?array $metadata = null,)
-    {
+
+    public function __construct(
+        private string $id,
+        private ?int $userId,
+        private int $amountTotal,
+        private string $currency,
+        private string $paymentStatus,
+        private string $status,
+        private \DateTimeImmutable $createdAt,
+        ?array $metadata = null,
+    ) {
         $this->metadata = $metadata ?? [];
     }
 

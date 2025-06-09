@@ -700,7 +700,8 @@ class CourseRepository implements CourseRepositoryInterface
                 'image' => '/images/ai-basics-course.svg',
                 'level' => 'Beginner',
                 'duration' => '4 uur',
-                'description' => 'De perfecte startcursus voor iedereen die AI wil gaan gebruiken in hun werk. Leer de basis van ChatGPT, prompting en praktische toepassingen.',
+                'description' => 'De perfecte startcursus voor iedereen die AI wil gaan gebruiken in hun werk. ' .
+                    'Leer de basis van ChatGPT, prompting en praktische toepassingen.',
                 'features' => [
                     '8 praktische lessen',
                     'Hands-on oefeningen',
@@ -719,7 +720,8 @@ class CourseRepository implements CourseRepositoryInterface
                 'image' => '/images/prompt-engineering-course.svg',
                 'level' => 'Gevorderd',
                 'duration' => '6 uur',
-                'description' => 'Ontdek geavanceerde prompt technieken om maximale resultaten uit AI te halen. Van chain-of-thought tot role-playing prompts.',
+                'description' => 'Ontdek geavanceerde prompt technieken om maximale resultaten uit AI te halen. ' .
+                    'Van chain-of-thought tot role-playing prompts.',
                 'features' => [
                     '12 geavanceerde technieken',
                     '150+ prompt templates',
@@ -738,7 +740,8 @@ class CourseRepository implements CourseRepositoryInterface
                 'image' => '/images/ai-automation-course.svg',
                 'level' => 'Gevorderd',
                 'duration' => '8 uur',
-                'description' => 'Leer hoe je repetitieve taken automatiseert met AI. Van email management tot rapport generatie - bespaar uren per week.',
+                'description' => 'Leer hoe je repetitieve taken automatiseert met AI. ' .
+                    'Van email management tot rapport generatie - bespaar uren per week.',
                 'features' => [
                     '10 automatisering recepten',
                     'Tool integraties',
@@ -757,7 +760,8 @@ class CourseRepository implements CourseRepositoryInterface
                 'image' => '/images/ai-strategy-course.svg',
                 'level' => 'Expert',
                 'duration' => '12 uur',
-                'description' => 'Ontwikkel een complete AI-strategie voor je organisatie. Van risicomanagement tot change management en ROI-optimalisatie.',
+                'description' => 'Ontwikkel een complete AI-strategie voor je organisatie. ' .
+                    'Van risicomanagement tot change management en ROI-optimalisatie.',
                 'features' => [
                     'Strategische frameworks',
                     'Change management',
@@ -776,7 +780,8 @@ class CourseRepository implements CourseRepositoryInterface
                 'image' => '/images/ai-content-course.svg',
                 'level' => 'Beginner',
                 'duration' => '5 uur',
-                'description' => 'Maak professionele content met AI. Van blog posts tot social media, presentaties en marketing materiaal.',
+                'description' => 'Maak professionele content met AI. ' .
+                    'Van blog posts tot social media, presentaties en marketing materiaal.',
                 'features' => [
                     'Content templates',
                     'Brand consistency',
@@ -795,7 +800,8 @@ class CourseRepository implements CourseRepositoryInterface
                 'image' => '/images/ai-data-course.svg',
                 'level' => 'Gevorderd',
                 'duration' => '7 uur',
-                'description' => 'Transformeer ruwe data naar actionable insights met AI. Leer data visualisatie, trend analyse en predictive modelling.',
+                'description' => 'Transformeer ruwe data naar actionable insights met AI. ' .
+                    'Leer data visualisatie, trend analyse en predictive modelling.',
                 'features' => [
                     'Data cleaning technieken',
                     'Visualisatie tools',

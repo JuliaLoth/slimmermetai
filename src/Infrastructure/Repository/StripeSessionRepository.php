@@ -47,6 +47,15 @@ class StripeSessionRepository implements StripeSessionRepositoryInterface
 
     private function hydrate(array $row): StripeSession
     {
-        return new StripeSession($row['session_id'], $row['user_id'] ? (int)$row['user_id'] : null, (int)$row['amount_total'], $row['currency'], $row['payment_status'], $row['status'], new \DateTimeImmutable($row['created_at']), json_decode($row['metadata'] ?? '[]', true),);
+        return new StripeSession(
+            $row['session_id'],
+            $row['user_id'] ? (int)$row['user_id'] : null,
+            (int)$row['amount_total'],
+            $row['currency'],
+            $row['payment_status'],
+            $row['status'],
+            new \DateTimeImmutable($row['created_at']),
+            json_decode($row['metadata'] ?? '[]', true),
+        );
     }
 }

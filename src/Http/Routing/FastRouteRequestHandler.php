@@ -28,16 +28,26 @@ class FastRouteRequestHandler implements RequestHandlerInterface
         $routeInfo = $this->dispatcher->dispatch($request->getMethod(), $request->getUri()->getPath());
         switch ($routeInfo[0]) {
             case FastRouteDispatcher::NOT_FOUND:
-                return new Response(404, ['Content-Type' => 'application/json'], json_encode(['error' => 'Pagina niet gevonden']));
+                return new Response(
+                    404,
+                    ['Content-Type' => 'application/json'],
+                    json_encode(['error' => 'Pagina niet gevonden'])
+                );
             case FastRouteDispatcher::METHOD_NOT_ALLOWED:
-                return new Response(405, ['Content-Type' => 'application/json'], json_encode(['error' => 'Method Not Allowed']));
+                return new Response(
+                    405,
+                    ['Content-Type' => 'application/json'],
+                    json_encode(['error' => 'Method Not Allowed'])
+                );
             case FastRouteDispatcher::FOUND:
-                                                                                                                                                                                                             $handler = $routeInfo[1];
-                $vars    = $routeInfo[2];
-            // ---- Buffer legacy echo output ----
-                        ob_start();
+                $handler = $routeInfo[1];
+                $vars = $routeInfo[2];
+
+                // ---- Buffer legacy echo output ----
+                ob_start();
                 $result = $this->invokeHandler($handler, $request, $vars);
                 $buffer = ob_get_clean();
+
                 if ($result instanceof ResponseInterface) {
                     return $result;
                 }
@@ -48,8 +58,11 @@ class FastRouteRequestHandler implements RequestHandlerInterface
                 }
                 $body .= $buffer;
 
-
-                return new Response(200, ['Content-Type' => 'text/html; charset=utf-8'], $body);
+                return new Response(
+                    200,
+                    ['Content-Type' => 'text/html; charset=utf-8'],
+                    $body
+                );
         }
 
         // Fallback – zou theoretisch nooit moeten gebeuren
