@@ -46,6 +46,7 @@
         "cs:check": "phpcs --standard=PSR12 src/",
         "cs:check-errors-only": "phpcs --standard=PSR12 src/ --warning-severity=0",
         "cs:fix": "phpcbf --standard=PSR12 src/",
+        "analyse": "phpstan analyse src/ --level=7",
         "phpstan": "phpstan analyse src/ --level=7",
         "phpstan:baseline": "phpstan analyse src/ --level=7 --generate-baseline",
         "coverage:open": "start coverage/html/index.html",
