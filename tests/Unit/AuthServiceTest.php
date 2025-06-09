@@ -4,31 +4,35 @@ namespace Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
 use App\Application\Service\AuthService;
-use App\Application\Service\JwtService;
-use App\Infrastructure\Repository\AuthRepositoryInterface;
+use App\Domain\Security\JwtServiceInterface;
+use App\Domain\Repository\UserRepositoryInterface;
 use App\Domain\Service\PasswordHasherInterface;
+use App\Domain\Logging\ErrorLoggerInterface;
 
 class AuthServiceTest extends TestCase
 {
     private AuthService $authService;
-    private $mockAuthRepository;
+    private $mockUserRepository;
     private $mockJwtService;
     private $mockPasswordHasher;
+    private $mockErrorLogger;
 
     protected function setUp(): void
     {
         parent::setUp();
         
-        // Create mocks
-        $this->mockAuthRepository = $this->createMock(AuthRepositoryInterface::class);
-        $this->mockJwtService = $this->createMock(JwtService::class);
+        // Create mocks for correct interfaces - use interfaces instead of final classes
+        $this->mockUserRepository = $this->createMock(UserRepositoryInterface::class);
         $this->mockPasswordHasher = $this->createMock(PasswordHasherInterface::class);
+        $this->mockJwtService = $this->createMock(JwtServiceInterface::class);
+        $this->mockErrorLogger = $this->createMock(ErrorLoggerInterface::class);
         
-        // Create AuthService with mocked dependencies
+        // Create AuthService with correct mocked dependencies
         $this->authService = new AuthService(
-            $this->mockAuthRepository,
+            $this->mockUserRepository,
+            $this->mockPasswordHasher,
             $this->mockJwtService,
-            $this->mockPasswordHasher
+            $this->mockErrorLogger
         );
     }
 
@@ -47,7 +51,7 @@ class AuthServiceTest extends TestCase
         ];
 
         // Mock repository to find user
-        $this->mockAuthRepository
+        $this->mockUserRepository
             ->method('findByEmail')
             ->with($email)
             ->willReturn($userData);
@@ -80,7 +84,7 @@ class AuthServiceTest extends TestCase
         $password = 'password123';
 
         // Mock repository to return null (user not found)
-        $this->mockAuthRepository
+        $this->mockUserRepository
             ->method('findByEmail')
             ->with($email)
             ->willReturn(null);
@@ -105,7 +109,7 @@ class AuthServiceTest extends TestCase
             'active' => 1
         ];
 
-        $this->mockAuthRepository
+        $this->mockUserRepository
             ->method('findByEmail')
             ->with($email)
             ->willReturn($userData);
@@ -135,7 +139,7 @@ class AuthServiceTest extends TestCase
             'active' => 0 // User is inactive
         ];
 
-        $this->mockAuthRepository
+        $this->mockUserRepository
             ->method('findByEmail')
             ->with($email)
             ->willReturn($userData);
@@ -155,7 +159,7 @@ class AuthServiceTest extends TestCase
         ];
 
         // Mock email uniqueness check
-        $this->mockAuthRepository
+        $this->mockUserRepository
             ->method('findByEmail')
             ->with($userData['email'])
             ->willReturn(null);
@@ -167,7 +171,7 @@ class AuthServiceTest extends TestCase
             ->willReturn('$2y$10$hashedpassword');
 
         // Mock user creation
-        $this->mockAuthRepository
+        $this->mockUserRepository
             ->method('create')
             ->willReturn([
                 'id' => 2,
@@ -197,7 +201,7 @@ class AuthServiceTest extends TestCase
         ];
 
         // Mock repository to return existing user
-        $this->mockAuthRepository
+        $this->mockUserRepository
             ->method('findByEmail')
             ->with($userData['email'])
             ->willReturn([
@@ -258,13 +262,13 @@ class AuthServiceTest extends TestCase
         ];
 
         // Mock user lookup
-        $this->mockAuthRepository
+        $this->mockUserRepository
             ->method('findByEmail')
             ->with($email)
             ->willReturn($userData);
 
         // Mock reset token creation
-        $this->mockAuthRepository
+        $this->mockUserRepository
             ->method('createPasswordResetToken')
             ->with(1)
             ->willReturn('reset_token_123');
@@ -280,7 +284,7 @@ class AuthServiceTest extends TestCase
         $email = 'nonexistent@example.com';
 
         // Mock repository to return null
-        $this->mockAuthRepository
+        $this->mockUserRepository
             ->method('findByEmail')
             ->with($email)
             ->willReturn(null);
@@ -298,7 +302,7 @@ class AuthServiceTest extends TestCase
         $hashedPassword = '$2y$10$newhashedpassword';
 
         // Mock token validation
-        $this->mockAuthRepository
+        $this->mockUserRepository
             ->method('validatePasswordResetToken')
             ->with($token)
             ->willReturn(['user_id' => 1]);
@@ -310,13 +314,13 @@ class AuthServiceTest extends TestCase
             ->willReturn($hashedPassword);
 
         // Mock password update
-        $this->mockAuthRepository
+        $this->mockUserRepository
             ->method('updatePassword')
             ->with(1, $hashedPassword)
             ->willReturn(true);
 
         // Mock token cleanup
-        $this->mockAuthRepository
+        $this->mockUserRepository
             ->method('deletePasswordResetToken')
             ->with($token)
             ->willReturn(true);
@@ -333,7 +337,7 @@ class AuthServiceTest extends TestCase
         $newPassword = 'newpassword123';
 
         // Mock token validation to fail
-        $this->mockAuthRepository
+        $this->mockUserRepository
             ->method('validatePasswordResetToken')
             ->with($token)
             ->willReturn(null);
@@ -355,7 +359,7 @@ class AuthServiceTest extends TestCase
         ];
 
         // Mock user retrieval
-        $this->mockAuthRepository
+        $this->mockUserRepository
             ->method('findById')
             ->with($userId)
             ->willReturn($userData);
@@ -371,7 +375,7 @@ class AuthServiceTest extends TestCase
         $token = 'valid.jwt.token';
 
         // Mock token blacklisting
-        $this->mockAuthRepository
+        $this->mockUserRepository
             ->method('blacklistToken')
             ->with($token)
             ->willReturn(true);

@@ -6,12 +6,15 @@ use PHPUnit\Framework\TestCase;
 use App\Application\Service\StripeService;
 use App\Infrastructure\Config\Config;
 use App\Infrastructure\Logging\ErrorLogger;
+use App\Domain\Logging\ErrorLoggerInterface;
+use App\Domain\Repository\StripeSessionRepositoryInterface;
 
 class StripeServiceTest extends TestCase
 {
     private StripeService $stripeService;
     private $mockConfig;
     private $mockErrorLogger;
+    private $mockStripeSessionRepository;
 
     protected function setUp(): void
     {
@@ -19,12 +22,22 @@ class StripeServiceTest extends TestCase
         
         // Create mocks
         $this->mockConfig = $this->createMock(Config::class);
-        $this->mockErrorLogger = $this->createMock(ErrorLogger::class);
+        $this->mockErrorLogger = $this->createMock(ErrorLoggerInterface::class);
+        $this->mockStripeSessionRepository = $this->createMock(StripeSessionRepositoryInterface::class);
         
-        // Create StripeService with mocked dependencies
+        // Mock config to return empty strings instead of null to prevent type errors
+        $this->mockConfig
+            ->method('get')
+            ->willReturnMap([
+                ['stripe_secret_key', '', ''],
+                ['stripe_webhook_secret', '', '']
+            ]);
+        
+        // Create StripeService with all required mocked dependencies
         $this->stripeService = new StripeService(
             $this->mockConfig,
-            $this->mockErrorLogger
+            $this->mockErrorLogger,
+            $this->mockStripeSessionRepository
         );
     }
 

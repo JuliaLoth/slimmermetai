@@ -4,45 +4,50 @@ namespace Tests\Feature;
 
 use PHPUnit\Framework\TestCase;
 use App\Http\Controller\Api\AuthController;
-use App\Application\Service\AuthService;
-use App\Application\Service\JwtService;
-use App\Infrastructure\Repository\AuthRepositoryInterface;
+use App\Domain\Repository\AuthRepositoryInterface;
+use App\Domain\Service\PasswordHasherInterface;
+use App\Domain\Security\JwtServiceInterface;
+use App\Infrastructure\Database\DatabaseInterface;
 use GuzzleHttp\Psr7\ServerRequest;
 use GuzzleHttp\Psr7\Response;
 
 class AuthControllerTest extends TestCase
 {
     private AuthController $controller;
-    private $mockAuthService;
-    private $mockJwtService;
     private $mockAuthRepository;
+    private $mockPasswordHasher;
+    private $mockJwtService;
+    private $mockDatabase;
 
     protected function setUp(): void
     {
         parent::setUp();
         
-        // Create mocks
-        $this->mockAuthService = $this->createMock(AuthService::class);
-        $this->mockJwtService = $this->createMock(JwtService::class);
+        // Create mocks for all AuthController dependencies - use interfaces instead of final classes
         $this->mockAuthRepository = $this->createMock(AuthRepositoryInterface::class);
+        $this->mockPasswordHasher = $this->createMock(PasswordHasherInterface::class);
+        $this->mockJwtService = $this->createMock(JwtServiceInterface::class);
+        $this->mockDatabase = $this->createMock(DatabaseInterface::class);
         
-        // Create controller with mocked dependencies
-        $this->controller = new AuthController($this->mockAuthService);
+        // Create controller with all required mocked dependencies
+        $this->controller = new AuthController(
+            $this->mockAuthRepository,
+            $this->mockPasswordHasher,
+            $this->mockJwtService,
+            $this->mockDatabase
+        );
     }
 
     public function testLoginWithValidCredentials()
     {
         // Mock successful authentication
-        $this->mockAuthService
-            ->method('login')
-            ->with('test@example.com', 'password123')
+        $this->mockAuthRepository
+            ->method('findByEmail')
+            ->with('test@example.com')
             ->willReturn([
-                'success' => true,
-                'user' => [
-                    'id' => 1,
-                    'email' => 'test@example.com',
-                    'name' => 'Test User'
-                ]
+                'id' => 1,
+                'email' => 'test@example.com',
+                'name' => 'Test User'
             ]);
 
         // Create request with valid credentials
@@ -66,13 +71,10 @@ class AuthControllerTest extends TestCase
     public function testLoginWithInvalidCredentials()
     {
         // Mock failed authentication
-        $this->mockAuthService
-            ->method('login')
-            ->with('invalid@example.com', 'wrongpassword')
-            ->willReturn([
-                'success' => false,
-                'error' => 'Invalid credentials'
-            ]);
+        $this->mockAuthRepository
+            ->method('findByEmail')
+            ->with('invalid@example.com')
+            ->willReturn(null);
 
         $request = new ServerRequest('POST', '/api/auth/login');
         $request = $request->withParsedBody([
@@ -111,16 +113,10 @@ class AuthControllerTest extends TestCase
     public function testRegisterWithValidData()
     {
         // Mock successful registration
-        $this->mockAuthService
-            ->method('register')
-            ->willReturn([
-                'success' => true,
-                'user' => [
-                    'id' => 2,
-                    'email' => 'newuser@example.com',
-                    'name' => 'New User'
-                ]
-            ]);
+        $this->mockAuthRepository
+            ->method('findByEmail')
+            ->with('newuser@example.com')
+            ->willReturn(null);
 
         $request = new ServerRequest('POST', '/api/auth/register');
         $request = $request->withParsedBody([
@@ -182,9 +178,9 @@ class AuthControllerTest extends TestCase
     public function testLogoutWithValidToken()
     {
         // Mock successful logout
-        $this->mockAuthService
-            ->method('logout')
-            ->willReturn(['success' => true]);
+        $this->mockJwtService
+            ->method('validateToken')
+            ->willReturn(true);
 
         $request = new ServerRequest('POST', '/api/auth/logout');
         $request = $request->withHeader('Authorization', 'Bearer valid-jwt-token');
@@ -200,12 +196,11 @@ class AuthControllerTest extends TestCase
     public function testForgotPasswordWithValidEmail()
     {
         // Mock successful password reset request
-        $this->mockAuthService
-            ->method('forgotPassword')
+        $this->mockAuthRepository
+            ->method('findByEmail')
             ->with('test@example.com')
             ->willReturn([
-                'success' => true,
-                'message' => 'Password reset link sent to test@example.com'
+                'email' => 'test@example.com'
             ]);
 
         $request = new ServerRequest('POST', '/api/auth/forgot-password');
@@ -242,8 +237,9 @@ class AuthControllerTest extends TestCase
     public function testMeEndpointWithValidToken()
     {
         // Mock user data retrieval
-        $this->mockAuthService
-            ->method('getCurrentUser')
+        $this->mockAuthRepository
+            ->method('findById')
+            ->with(1)
             ->willReturn([
                 'id' => 1,
                 'email' => 'test@example.com',
@@ -304,9 +300,13 @@ class AuthControllerTest extends TestCase
             'password' => 'password123'
         ]);
 
-        $this->mockAuthService
-            ->method('login')
-            ->willReturn(['success' => true, 'user' => []]);
+        $this->mockAuthRepository
+            ->method('findByEmail')
+            ->willReturn([
+                'id' => 1,
+                'email' => 'test@example.com',
+                'name' => 'Test User'
+            ]);
 
         $response = $this->controller->login($request);
 
@@ -327,9 +327,13 @@ class AuthControllerTest extends TestCase
             'password' => 'password123'
         ]);
 
-        $this->mockAuthService
-            ->method('login')
-            ->willReturn(['success' => true, 'user' => []]);
+        $this->mockAuthRepository
+            ->method('findByEmail')
+            ->willReturn([
+                'id' => 1,
+                'email' => 'test@example.com',
+                'name' => 'Test User'
+            ]);
 
         $response = $this->controller->login($request);
 

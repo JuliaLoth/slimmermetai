@@ -498,129 +498,222 @@ function initLoginPage() {
         // Optioneel: Redirect naar dashboard als al ingelogd
         // window.location.href = 'dashboard.php';
         // debug('Gebruiker is al ingelogd.');
-        // return; // Stop verdere initialisatie als we redirecten
     }
 
-    const emailLoginForm = document.getElementById('emailLoginForm');
-    const loginButton = document.getElementById('loginButton');
-    const googleButton = document.getElementById('google-signin-button');
-    const microsoftButton = document.getElementById('microsoft-signin-button');
+    // Event listeners voor tabbladen (indien aanwezig)
+    setupTabSwitching();
 
-    if (emailLoginForm && loginButton) {
-        emailLoginForm.addEventListener('submit', async (e) => {
+    // Event listeners voor formulieren
+    setupFormSubmissions();
+
+    // Password visibility toggles
+    setupPasswordToggles();
+
+    // CSRF token injectie
+    injectCSRFTokens();
+}
+
+// Tabblad switching tussen login, register, forgot password
+function setupTabSwitching() {
+    const tabs = document.querySelectorAll('.auth-tab');
+    const forms = document.querySelectorAll('.auth-form');
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function(e) {
             e.preventDefault();
-            showMessage('info', 'Bezig met inloggen...'); // Gebruik showMessage
-            loginButton.textContent = 'Bezig...';
-            loginButton.disabled = true;
+            const targetForm = this.getAttribute('data-target');
 
-            const formData = new FormData(emailLoginForm);
+            // Update actieve tab
+            tabs.forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+
+            // Update zichtbare form
+            forms.forEach(form => {
+                if (form.id === targetForm) {
+                    form.style.display = 'block';
+                } else {
+                    form.style.display = 'none';
+                }
+            });
+
+            // Update URL (optional)
+            const url = new URL(window.location);
+            url.searchParams.set('tab', targetForm);
+            window.history.replaceState(null, '', url);
+        });
+    });
+
+    // Check URL parameters for initial tab
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialTab = urlParams.get('tab');
+    if (initialTab) {
+        const tabButton = document.querySelector(`[data-target="${initialTab}"]`);
+        if (tabButton) {
+            tabButton.click();
+        }
+    }
+}
+
+// Formulier submissions
+function setupFormSubmissions() {
+    // Login form
+    const loginForm = document.getElementById('login-form');
+    if (loginForm) {
+        loginForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
             const email = formData.get('email');
             const password = formData.get('password');
-            // const rememberMe = formData.get('remember-me') === 'on'; // Onthoud mij logica nog implementeren
-            const csrfToken = formData.get('csrf_token');
+            const rememberMe = formData.get('remember') === 'on';
 
-            try {
-                // LET OP: De originele login functie verwachtte 4 argumenten
-                // maar de auth.login hierboven verwacht er maar 2.
-                // We passen de aanroep aan of de auth.login functie zelf.
-                // Voor nu passen we de aanroep aan en negeren rememberMe & csrfToken hier.
-                // Idealiter wordt CSRF token validatie server-side gedaan.
-                const result = await auth.login(email, password);
+            showMessage('info', 'Inloggen...');
 
-                if (result.success) {
-                    showMessage('success', 'Succesvol ingelogd! Je wordt doorverwezen...');
-                    window.location.href = result.redirectUrl || 'dashboard.php';
-                } else {
-                    showMessage('error', result.message || 'Ongeldige e-mail of wachtwoord.');
-                    loginButton.textContent = 'Inloggen';
-                    loginButton.disabled = false;
-                }
-            } catch (error) {
-                debug(`Login error: ${error.message}`);
-                showMessage('error', 'Er is een technische fout opgetreden. Probeer het later opnieuw.');
-                loginButton.textContent = 'Inloggen';
-                loginButton.disabled = false;
+            const result = await login({ email, password, rememberMe });
+            
+            if (result.success) {
+                showMessage('success', 'Succesvol ingelogd! Je wordt doorgestuurd...');
+                
+                // Redirect naar dashboard of gewenste pagina
+                setTimeout(() => {
+                    if (result.redirect) {
+                        window.location.href = result.redirect;
+                    } else {
+                        window.location.href = '/dashboard';
+                    }
+                }, 1000);
+            } else {
+                showMessage('error', result.message || 'Inloggen mislukt');
             }
         });
     }
 
-    if (googleButton) {
-        googleButton.addEventListener('click', () => {
-             debug('Google Sign-In button clicked!');
-             showMessage('info', 'Google login wordt geïnitialiseerd...');
-             // Gebruik de bestaande googleLogin functie die de redirect doet
-             auth.googleLogin(); 
-             // Foutafhandeling gebeurt na redirect of via callback
-        });
-    }
+    // Register form
+    const registerForm = document.getElementById('register-form');
+    if (registerForm) {
+        registerForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const userData = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                password: formData.get('password'),
+                confirm_password: formData.get('confirm_password'),
+                csrf_token: formData.get('_token')
+            };
 
-    if (microsoftButton) {
-        microsoftButton.addEventListener('click', () => {
-            debug('Microsoft Sign-In button clicked!');
-            showMessage('info', 'Microsoft login wordt geïnitialiseerd...');
-            // Voeg hier de aanroep naar Microsoft login toe (bv. auth.microsoftLogin())
-            // Voor nu een placeholder:
-            showMessage('error', 'Microsoft login is nog niet geïmplementeerd.');
-            // auth.signInWithMicrosoft().catch(error => {
-            //     debug(`Microsoft sign-in error: ${error.message}`);
-            //     showMessage('error', 'Kon niet inloggen met Microsoft. Fout: ' + (error.message || error));
-            // });
-        });
-    }
+            showMessage('info', 'Account aanmaken...');
 
-    // Luister naar tab change events van de form card (optioneel)
-    const formCard = document.querySelector('slimmer-auth-form-card');
-    if (formCard) {
-        formCard.addEventListener('tab-change', (event) => {
-            debug('Tab changed to: ' + event.detail.tabId);
-            // Hier kun je eventueel de URL hash aanpassen of andere acties uitvoeren
-        });
-    }
-
-    debug('Login pagina initialisatie voltooid.');
-
-    // --- Tab Switching Logic --- 
-    const tabsContainer = document.querySelector('.auth-tabs');
-    if (tabsContainer) {
-        const tabButtons = tabsContainer.querySelectorAll('.tab-btn');
-        const tabContents = document.querySelectorAll('.tab-content[data-tab-content]'); // Selecteer op data-attribuut
-
-        tabButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const tabId = button.getAttribute('data-tab');
-
-                // Update button active state
-                tabButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-
-                // Update content active state
-                tabContents.forEach(content => {
-                    if (content.getAttribute('data-tab-content') === tabId) {
-                        content.classList.add('active');
-                    } else {
-                        content.classList.remove('active');
-                    }
-                });
+            const result = await register(userData);
+            
+            if (result.success) {
+                showMessage('success', 'Account succesvol aangemaakt! Je wordt doorgestuurd...');
                 
-                 // Optioneel: Als de 'Registreren' tab wordt geklikt, direct doorverwijzen?
-                // if (tabId === 'register-redirect') {
-                //     window.location.href = 'register.php';
-                // }
-            });
+                setTimeout(() => {
+                    if (result.redirect) {
+                        window.location.href = result.redirect;
+                    } else {
+                        window.location.href = '/dashboard';
+                    }
+                }, 1000);
+            } else {
+                showMessage('error', result.message || 'Registratie mislukt');
+            }
         });
     }
-    // --- End Tab Switching Logic ---
+
+    // Forgot password form
+    const forgotForm = document.getElementById('forgot-password-form');
+    if (forgotForm) {
+        forgotForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const email = formData.get('email');
+
+            showMessage('info', 'Wachtwoord reset aanvragen...');
+
+            const result = await forgotPassword(email);
+            
+            if (result.success) {
+                showMessage('success', 'Reset email verzonden! Controleer je inbox.');
+            } else {
+                showMessage('error', result.message || 'Reset aanvraag mislukt');
+            }
+        });
+    }
 }
 
-// Roep de init functie aan als dit script op de login pagina draait
-// Controleer op het bestaan van het login formulier
-document.addEventListener('DOMContentLoaded', () => {
-    if (document.getElementById('emailLoginForm')) { // Controleer of het login formulier bestaat
-        initLoginPage();
-    }
-    // Voeg hier eventueel initialisatie voor andere pagina's toe
-    // Bijvoorbeeld voor de registratiepagina:
-    // if (document.getElementById('registerForm')) {
-    //     initRegisterPage(); 
-    // }
-}); 
+// Password visibility toggles
+function setupPasswordToggles() {
+    const toggleBtns = document.querySelectorAll('.password-toggle');
+    
+    toggleBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const inputId = this.getAttribute('data-target');
+            togglePasswordVisibility(inputId, this);
+        });
+    });
+}
+
+// CSRF token injectie in formulieren
+function injectCSRFTokens() {
+    const metaToken = document.querySelector('meta[name="csrf-token"]');
+    if (!metaToken) return;
+    
+    const token = metaToken.getAttribute('content');
+    const forms = document.querySelectorAll('.auth-form form');
+    
+    forms.forEach(form => {
+        // Check of er al een CSRF token input is
+        let tokenInput = form.querySelector('input[name="_token"]');
+        
+        if (!tokenInput) {
+            // Maak een nieuwe CSRF token input
+            tokenInput = document.createElement('input');
+            tokenInput.type = 'hidden';
+            tokenInput.name = '_token';
+            form.appendChild(tokenInput);
+        }
+        
+        tokenInput.value = token;
+    });
+}
+
+// Als we op de login pagina zijn, initialiseer dan de logica
+if (document.addEventListener) {
+    document.addEventListener('DOMContentLoaded', initLoginPage);
+} else if (document.attachEvent) {
+    document.attachEvent('onreadystatechange', function() {
+        if (document.readyState === 'complete') {
+            initLoginPage();
+        }
+    });
+}
+
+// ES6 Module Export voor compatibility met tests
+const Auth = {
+    init: initAuth,
+    setToken: function(token) {
+        authToken = token;
+        localStorage.setItem('token', token);
+    },
+    getToken: function() {
+        return authToken || localStorage.getItem('token');
+    },
+    setUser: function(user) {
+        currentUser = user;
+        localStorage.setItem('user', JSON.stringify(user));
+    },
+    getUser: function() {
+        return currentUser;
+    },
+    isLoggedIn: isLoggedIn,
+    login: login,
+    register: register,
+    logout: logout,
+    togglePasswordVisibility: togglePasswordVisibility
+};
+
+export default Auth; 

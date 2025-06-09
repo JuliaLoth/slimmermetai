@@ -6,8 +6,8 @@ namespace App\Http\Controller\Api;
 
 use App\Domain\Repository\AuthRepositoryInterface;
 use App\Domain\ValueObject\Email;
-use App\Application\Service\PasswordHasher;
-use App\Infrastructure\Security\JwtService;
+use App\Domain\Service\PasswordHasherInterface;
+use App\Domain\Security\JwtServiceInterface;
 use App\Infrastructure\Database\DatabaseInterface;
 use App\Http\Response\ApiResponse;
 use Psr\Http\Message\ResponseInterface;
@@ -18,8 +18,8 @@ class AuthController implements RequestHandlerInterface
 {
     public function __construct(
         private AuthRepositoryInterface $authRepository,
-        private PasswordHasher $passwordHasher,
-        private JwtService $jwtService,
+        private PasswordHasherInterface $passwordHasher,
+        private JwtServiceInterface $jwtService,
         private DatabaseInterface $database
     ) {
     }

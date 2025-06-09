@@ -3,8 +3,9 @@
 namespace App\Infrastructure\Security;
 
 use App\Infrastructure\Config\Config;
+use App\Domain\Security\JwtServiceInterface;
 
-final class JwtService
+final class JwtService implements JwtServiceInterface
 {
     private string $secret;
     private int $expiration;

@@ -218,37 +218,30 @@ const Cart = {
     
     // Toon aantal items in winkelwagen
     renderCartCount: function() {
-        // Directe DOM elementen
-        const cartCountElements = document.querySelectorAll('.cart-count:not(slimmer-navbar .cart-count)'); // Selecteer alleen tellers buiten de navbar
         const itemCount = this.items.reduce((total, item) => total + item.quantity, 0);
         
-        // Update reguliere DOM elementen (indien aanwezig buiten navbar)
+        // Update #cart-count element (ID selector)
+        const cartCountById = document.getElementById('cart-count');
+        if (cartCountById) {
+            cartCountById.textContent = itemCount;
+            cartCountById.style.display = itemCount > 0 ? 'flex' : 'none';
+        }
+        
+        // Update .cart-count elements (class selector) - exclude navbar elements
+        const cartCountElements = document.querySelectorAll('.cart-count');
         cartCountElements.forEach(element => {
-            element.textContent = itemCount;
-            element.style.display = itemCount > 0 ? 'flex' : 'none';
+            // Skip elements inside slimmer-navbar components
+            if (!element.closest('slimmer-navbar')) {
+                element.textContent = itemCount;
+                element.style.display = itemCount > 0 ? 'flex' : 'none';
+            }
         });
         
-        // Update alleen het attribuut op de navbar component
+        // Update navbar component attribute if present
         const navbarElement = document.querySelector('slimmer-navbar');
         if (navbarElement) {
-            // Update het cart-count attribuut van de navbar
             navbarElement.setAttribute('cart-count', itemCount.toString());
             console.log(`Navbar cart-count attribuut bijgewerkt naar: ${itemCount}`);
-            
-            // Verwijder directe shadow DOM manipulatie
-            /* 
-            if (navbarElement.shadowRoot) {
-                const shadowCartCounts = navbarElement.shadowRoot.querySelectorAll('.cart-count');
-                shadowCartCounts.forEach(element => {
-                    element.textContent = itemCount;
-                    if (itemCount > 0) {
-                        element.style.display = 'flex';
-                    } else {
-                        element.style.display = 'none';
-                    }
-                });
-            }
-            */
         }
     },
     
@@ -493,3 +486,6 @@ setTimeout(() => {
         Cart.init(true); // Force reinit
     }
 }, 1000); 
+
+// ES6 Module Export voor compatibility met tests
+export default Cart; 

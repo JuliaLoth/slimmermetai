@@ -2,15 +2,16 @@
 
 namespace App\Application\Service;
 
-use App\Infrastructure\Security\JwtService;
+use App\Domain\Security\JwtServiceInterface;
 use App\Domain\Repository\UserRepositoryInterface;
 use App\Domain\Entity\User;
 use App\Domain\ValueObject\Email;
 use App\Domain\Logging\ErrorLoggerInterface;
+use App\Domain\Service\PasswordHasherInterface;
 
 class AuthService
 {
-    public function __construct(private UserRepositoryInterface $users, private PasswordHasher $hasher, private JwtService $jwt, private ErrorLoggerInterface $logger)
+    public function __construct(private UserRepositoryInterface $users, private PasswordHasherInterface $hasher, private JwtServiceInterface $jwt, private ErrorLoggerInterface $logger)
     {
     }
 
