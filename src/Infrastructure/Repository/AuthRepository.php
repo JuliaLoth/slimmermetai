@@ -45,8 +45,8 @@ class AuthRepository implements DomainAuthRepositoryInterface, AuthRepositoryInt
 
         try {
             $userId = $this->database->query(
-                "INSERT INTO users (name, email, password, role, created_at, updated_at) VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)",
-                [$name, (string)$email, $hashedPassword, $role]
+                "INSERT INTO users (name, email, password_hash, password, role, created_at, updated_at) VALUES (?, ?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)",
+                [$name, (string)$email, $hashedPassword, $hashedPassword, $role]
             );
 
             $id = (int)$this->database->lastInsertId();
@@ -63,7 +63,7 @@ class AuthRepository implements DomainAuthRepositoryInterface, AuthRepositoryInt
     public function updateLastLogin(int $userId): bool
     {
         return $this->database->execute(
-            "UPDATE users SET last_login_at = CURRENT_TIMESTAMP, updated_at = CURRENT_TIMESTAMP WHERE id = ?",
+            "UPDATE users SET last_login = CURRENT_TIMESTAMP, updated_at = CURRENT_TIMESTAMP WHERE id = ?",
             [$userId]
         );
     }
@@ -160,8 +160,8 @@ class AuthRepository implements DomainAuthRepositoryInterface, AuthRepositoryInt
     public function updatePassword(int $userId, string $hashedPassword): bool
     {
         return $this->database->execute(
-            "UPDATE users SET password = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?",
-            [$hashedPassword, $userId]
+            "UPDATE users SET password_hash = ?, password = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?",
+            [$hashedPassword, $hashedPassword, $userId]
         );
     }
 
@@ -400,7 +400,7 @@ class AuthRepository implements DomainAuthRepositoryInterface, AuthRepositoryInt
     {
         return new User(
             new Email($row['email']),
-            $row['password'],
+            $row['password_hash'] ?? $row['password'], // Try password_hash first, fallback to password
             (int)$row['id'],
             $row['name'] ?? '',
             $row['role'] ?? 'user',
