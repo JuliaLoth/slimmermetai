@@ -41,7 +41,8 @@ final class ForgotPasswordController
         }
 
         // For now, just simulate success (password reset would be implemented later)
-        $success_message = 'Als dit e-mailadres bij ons bekend is, ontvang je binnen enkele minuten een e-mail met instructies om je wachtwoord te herstellen.';
+        $success_message = 'Als dit e-mailadres bij ons bekend is, ontvang je binnen enkele minuten ' .
+            'een e-mail met instructies om je wachtwoord te herstellen.';
 
         // Always show success message for security (don't reveal if email exists)
         $accept = $request->getHeaderLine('Accept');

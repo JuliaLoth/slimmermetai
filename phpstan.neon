@@ -49,13 +49,9 @@ parameters:
         # DatabasePerformanceMonitor array access
         - '#Offset .* on array.* always exists and is not nullable#'
         
-        # Typehint warnings - temporarily ignore these as suggested by deprecation warnings
+        # Typehint warnings - gebruik moderne identifiers
         - identifier: missingType.iterableValue
         - identifier: missingType.generics
-    
-    # Legacy type checking configurations
-    checkMissingIterableValueType: false
-    checkGenericClassInNonGenericObjectType: false
     
     # Report unused private properties/methods
     reportUnmatchedIgnoredErrors: false 

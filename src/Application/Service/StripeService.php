@@ -69,7 +69,7 @@ class StripeService
         // Development mode detectie: alleen voor lokale development
         $appEnv = getenv('APP_ENV');
         $isDevelopment = ($appEnv === 'local' || $appEnv === 'development') &&
-                         !$this->isValidStripeKey($this->secretKey);
+            !$this->isValidStripeKey($this->secretKey);
 
         if ($isDevelopment) {
             $this->logger->logInfo(
@@ -101,7 +101,7 @@ class StripeService
             return [
                 'id' => $mockSessionId,
                 'url' => $successUrl . '?mock=true&session_id=' . $mockSessionId .
-                         '&total=' . number_format($totalAmount / 100, 2)
+                    '&total=' . number_format($totalAmount / 100, 2)
             ];
         }
 
