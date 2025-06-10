@@ -2,15 +2,15 @@
 <phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
   <file name="DatabasePerformanceMonitor.php" path="\Infrastructure\Database">
     <totals>
-      <lines total="225" comments="4" code="221" executable="114" executed="0" percent="0.00"/>
-      <methods count="15" tested="0" percent="0.00"/>
+      <lines total="225" comments="4" code="221" executable="114" executed="1" percent="0.88"/>
+      <methods count="15" tested="1" percent="6.67"/>
       <functions count="0" tested="0" percent="0"/>
       <classes count="1" tested="0" percent="0.00"/>
       <traits count="0" tested="0" percent="0"/>
     </totals>
-    <class name="App\Infrastructure\Database\DatabasePerformanceMonitor" start="9" executable="114" executed="0" crap="1122">
+    <class name="App\Infrastructure\Database\DatabasePerformanceMonitor" start="9" executable="114" executed="1" crap="1093.59">
       <namespace name="App\Infrastructure\Database"/>
-      <method name="__construct" signature="__construct(App\Domain\Logging\ErrorLoggerInterface $logger)" start="16" end="19" crap="2" executable="1" executed="0" coverage="0"/>
+      <method name="__construct" signature="__construct(App\Domain\Logging\ErrorLoggerInterface $logger)" start="16" end="19" crap="1" executable="1" executed="1" coverage="100"/>
       <method name="startQuery" signature="startQuery(string $sql, array $params): string" start="21" end="39" crap="6" executable="12" executed="0" coverage="0"/>
       <method name="endQuery" signature="endQuery(string $queryId, int $rowCount): void" start="41" end="64" crap="30" executable="13" executed="0" coverage="0"/>
       <method name="queryError" signature="queryError(string $queryId, Exception $exception): void" start="66" end="85" crap="12" executable="14" executed="0" coverage="0"/>
@@ -26,6 +26,11 @@
       <method name="truncateSql" signature="truncateSql(string $sql): string" start="209" end="213" crap="6" executable="2" executed="0" coverage="0"/>
       <method name="formatBytes" signature="formatBytes(int $bytes): string" start="215" end="223" crap="12" executable="5" executed="0" coverage="0"/>
     </class>
+    <coverage>
+      <line nr="18">
+        <covered by="Tests\Unit\StripeServiceTest::testStaticGetInstanceMethod"/>
+      </line>
+    </coverage>
     <source>
       <line no="1">
         <token name="T_OPEN_TAG">&lt;?php</token>

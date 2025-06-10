@@ -2,7 +2,7 @@
 
 namespace App\Domain\ValueObject;
 
-final class Email
+final class Email implements \JsonSerializable
 {
     private string $value;
 
@@ -26,6 +26,11 @@ final class Email
     }
 
     public function getValue(): string
+    {
+        return $this->value;
+    }
+
+    public function jsonSerialize(): string
     {
         return $this->value;
     }

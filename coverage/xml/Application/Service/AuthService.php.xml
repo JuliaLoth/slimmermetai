@@ -2,22 +2,272 @@
 <phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
   <file name="AuthService.php" path="\Application\Service">
     <totals>
-      <lines total="95" comments="8" code="87" executable="42" executed="0" percent="0.00"/>
-      <methods count="7" tested="0" percent="0.00"/>
+      <lines total="95" comments="8" code="87" executable="42" executed="42" percent="100.00"/>
+      <methods count="7" tested="7" percent="100.00"/>
       <functions count="0" tested="0" percent="0"/>
-      <classes count="1" tested="0" percent="0.00"/>
+      <classes count="1" tested="1" percent="100.00"/>
       <traits count="0" tested="0" percent="0"/>
     </totals>
-    <class name="App\Application\Service\AuthService" start="12" executable="42" executed="0" crap="156">
+    <class name="App\Application\Service\AuthService" start="12" executable="42" executed="42" crap="12">
       <namespace name="App\Application\Service"/>
-      <method name="__construct" signature="__construct(App\Domain\Repository\UserRepositoryInterface $users, App\Domain\Service\PasswordHasherInterface $hasher, App\Domain\Security\JwtServiceInterface $jwt, App\Domain\Logging\ErrorLoggerInterface $logger)" start="14" end="16" crap="2" executable="1" executed="0" coverage="0"/>
-      <method name="login" signature="login(string $email, string $password): array" start="21" end="37" crap="12" executable="13" executed="0" coverage="0"/>
-      <method name="register" signature="register(string $email, string $password): array" start="42" end="62" crap="12" executable="16" executed="0" coverage="0"/>
-      <method name="verifyToken" signature="verifyToken(string $token): ?array" start="64" end="67" crap="2" executable="1" executed="0" coverage="0"/>
-      <method name="refresh" signature="refresh(string $token): array" start="69" end="82" crap="6" executable="9" executed="0" coverage="0"/>
-      <method name="logout" signature="logout(): array" start="84" end="88" crap="2" executable="1" executed="0" coverage="0"/>
-      <method name="getCurrentUser" signature="getCurrentUser(array $payload): array" start="90" end="93" crap="2" executable="1" executed="0" coverage="0"/>
+      <method name="__construct" signature="__construct(App\Domain\Repository\UserRepositoryInterface $users, App\Domain\Service\PasswordHasherInterface $hasher, App\Domain\Security\JwtServiceInterface $jwt, App\Domain\Logging\ErrorLoggerInterface $logger)" start="14" end="16" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="login" signature="login(string $email, string $password): array" start="21" end="37" crap="3" executable="13" executed="13" coverage="100"/>
+      <method name="register" signature="register(string $email, string $password): array" start="42" end="62" crap="3" executable="16" executed="16" coverage="100"/>
+      <method name="verifyToken" signature="verifyToken(string $token): ?array" start="64" end="67" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="refresh" signature="refresh(string $token): array" start="69" end="82" crap="2" executable="9" executed="9" coverage="100"/>
+      <method name="logout" signature="logout(): array" start="84" end="88" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="getCurrentUser" signature="getCurrentUser(array $payload): array" start="90" end="93" crap="1" executable="1" executed="1" coverage="100"/>
     </class>
+    <coverage>
+      <line nr="16">
+        <covered by="Tests\Unit\AuthServiceTest::testSuccessfulLogin"/>
+        <covered by="Tests\Unit\AuthServiceTest::testLoginWithInvalidEmail"/>
+        <covered by="Tests\Unit\AuthServiceTest::testLoginWithWrongPassword"/>
+        <covered by="Tests\Unit\AuthServiceTest::testSuccessfulRegistration"/>
+        <covered by="Tests\Unit\AuthServiceTest::testRegistrationWithExistingEmail"/>
+        <covered by="Tests\Unit\AuthServiceTest::testRegistrationWithWeakPassword"/>
+        <covered by="Tests\Unit\AuthServiceTest::testTokenVerification"/>
+        <covered by="Tests\Unit\AuthServiceTest::testTokenVerificationWithInvalidToken"/>
+        <covered by="Tests\Unit\AuthServiceTest::testTokenRefresh"/>
+        <covered by="Tests\Unit\AuthServiceTest::testTokenRefreshWithInvalidToken"/>
+        <covered by="Tests\Unit\AuthServiceTest::testLogout"/>
+        <covered by="Tests\Unit\AuthServiceTest::testGetCurrentUser"/>
+        <covered by="Tests\Unit\AuthServiceTest::testGetCurrentUserWithMissingData"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testLoginWithWrongPasswordFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testRegistrationWithWeakPasswordFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testRegistrationWithExistingEmailFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenVerificationWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testLogoutSucceeds"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testGetCurrentUserWithValidPayload"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testPasswordStrengthValidation"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testPasswordHashingAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testJWTTokenGenerationAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="23">
+        <covered by="Tests\Unit\AuthServiceTest::testSuccessfulLogin"/>
+        <covered by="Tests\Unit\AuthServiceTest::testLoginWithInvalidEmail"/>
+        <covered by="Tests\Unit\AuthServiceTest::testLoginWithWrongPassword"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testLoginWithWrongPasswordFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="24">
+        <covered by="Tests\Unit\AuthServiceTest::testSuccessfulLogin"/>
+        <covered by="Tests\Unit\AuthServiceTest::testLoginWithInvalidEmail"/>
+        <covered by="Tests\Unit\AuthServiceTest::testLoginWithWrongPassword"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testLoginWithWrongPasswordFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="25">
+        <covered by="Tests\Unit\AuthServiceTest::testLoginWithInvalidEmail"/>
+        <covered by="Tests\Unit\AuthServiceTest::testLoginWithWrongPassword"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testLoginWithWrongPasswordFails"/>
+      </line>
+      <line nr="27">
+        <covered by="Tests\Unit\AuthServiceTest::testSuccessfulLogin"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="29">
+        <covered by="Tests\Unit\AuthServiceTest::testSuccessfulLogin"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="31">
+        <covered by="Tests\Unit\AuthServiceTest::testSuccessfulLogin"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="33">
+        <covered by="Tests\Unit\AuthServiceTest::testSuccessfulLogin"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="35">
+        <covered by="Tests\Unit\AuthServiceTest::testSuccessfulLogin"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="44">
+        <covered by="Tests\Unit\AuthServiceTest::testSuccessfulRegistration"/>
+        <covered by="Tests\Unit\AuthServiceTest::testRegistrationWithExistingEmail"/>
+        <covered by="Tests\Unit\AuthServiceTest::testRegistrationWithWeakPassword"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testRegistrationWithWeakPasswordFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testRegistrationWithExistingEmailFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="45">
+        <covered by="Tests\Unit\AuthServiceTest::testRegistrationWithWeakPassword"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testRegistrationWithWeakPasswordFails"/>
+      </line>
+      <line nr="47">
+        <covered by="Tests\Unit\AuthServiceTest::testSuccessfulRegistration"/>
+        <covered by="Tests\Unit\AuthServiceTest::testRegistrationWithExistingEmail"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testRegistrationWithExistingEmailFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="48">
+        <covered by="Tests\Unit\AuthServiceTest::testRegistrationWithExistingEmail"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testRegistrationWithExistingEmailFails"/>
+      </line>
+      <line nr="50">
+        <covered by="Tests\Unit\AuthServiceTest::testSuccessfulRegistration"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="51">
+        <covered by="Tests\Unit\AuthServiceTest::testSuccessfulRegistration"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="52">
+        <covered by="Tests\Unit\AuthServiceTest::testSuccessfulRegistration"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="54">
+        <covered by="Tests\Unit\AuthServiceTest::testSuccessfulRegistration"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="56">
+        <covered by="Tests\Unit\AuthServiceTest::testSuccessfulRegistration"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="58">
+        <covered by="Tests\Unit\AuthServiceTest::testSuccessfulRegistration"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="60">
+        <covered by="Tests\Unit\AuthServiceTest::testSuccessfulRegistration"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="66">
+        <covered by="Tests\Unit\AuthServiceTest::testTokenVerification"/>
+        <covered by="Tests\Unit\AuthServiceTest::testTokenVerificationWithInvalidToken"/>
+        <covered by="Tests\Unit\AuthServiceTest::testTokenRefresh"/>
+        <covered by="Tests\Unit\AuthServiceTest::testTokenRefreshWithInvalidToken"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenVerificationWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="71">
+        <covered by="Tests\Unit\AuthServiceTest::testTokenRefresh"/>
+        <covered by="Tests\Unit\AuthServiceTest::testTokenRefreshWithInvalidToken"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="72">
+        <covered by="Tests\Unit\AuthServiceTest::testTokenRefresh"/>
+        <covered by="Tests\Unit\AuthServiceTest::testTokenRefreshWithInvalidToken"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="73">
+        <covered by="Tests\Unit\AuthServiceTest::testTokenRefreshWithInvalidToken"/>
+      </line>
+      <line nr="76">
+        <covered by="Tests\Unit\AuthServiceTest::testTokenRefresh"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="78">
+        <covered by="Tests\Unit\AuthServiceTest::testTokenRefresh"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="79">
+        <covered by="Tests\Unit\AuthServiceTest::testTokenRefresh"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="80">
+        <covered by="Tests\Unit\AuthServiceTest::testTokenRefresh"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="87">
+        <covered by="Tests\Unit\AuthServiceTest::testLogout"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testLogoutSucceeds"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="92">
+        <covered by="Tests\Unit\AuthServiceTest::testGetCurrentUser"/>
+        <covered by="Tests\Unit\AuthServiceTest::testGetCurrentUserWithMissingData"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testGetCurrentUserWithValidPayload"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="28">
+        <covered by="Tests\Unit\AuthServiceTest::testSuccessfulLogin"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="30">
+        <covered by="Tests\Unit\AuthServiceTest::testSuccessfulLogin"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="32">
+        <covered by="Tests\Unit\AuthServiceTest::testSuccessfulLogin"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="34">
+        <covered by="Tests\Unit\AuthServiceTest::testSuccessfulLogin"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="36">
+        <covered by="Tests\Unit\AuthServiceTest::testSuccessfulLogin"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="53">
+        <covered by="Tests\Unit\AuthServiceTest::testSuccessfulRegistration"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="55">
+        <covered by="Tests\Unit\AuthServiceTest::testSuccessfulRegistration"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="57">
+        <covered by="Tests\Unit\AuthServiceTest::testSuccessfulRegistration"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="59">
+        <covered by="Tests\Unit\AuthServiceTest::testSuccessfulRegistration"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="61">
+        <covered by="Tests\Unit\AuthServiceTest::testSuccessfulRegistration"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="77">
+        <covered by="Tests\Unit\AuthServiceTest::testTokenRefresh"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="81">
+        <covered by="Tests\Unit\AuthServiceTest::testTokenRefresh"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+    </coverage>
     <source>
       <line no="1">
         <token name="T_OPEN_TAG">&lt;?php</token>

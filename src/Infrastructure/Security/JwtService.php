@@ -25,13 +25,20 @@ final class JwtService implements JwtServiceInterface
     public function generate(array $payload, ?int $exp = null): string
     {
         $header = $this->base64url(json_encode(['typ' => 'JWT', 'alg' => $this->algo]));
-        $expTime = time() + ($exp ?? $this->expiration);
-        $payload = array_merge($payload, [
+
+        // Only set expiration if not already present in payload
+        if (!isset($payload['exp'])) {
+            $expTime = time() + ($exp ?? $this->expiration);
+            $payload['exp'] = $expTime;
+        }
+
+        // Set other standard claims if not present
+        $payload = array_merge([
             'iat' => time(),
-            'exp' => $expTime,
             'nbf' => time(),
             'jti' => bin2hex(random_bytes(8)),
-        ]);
+        ], $payload); // Payload values take precedence
+
         $payloadEnc = $this->base64url(json_encode($payload));
         $signature = $this->sign("$header.$payloadEnc");
         return "$header.$payloadEnc.$signature";

@@ -2,23 +2,785 @@
 <phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
   <file name="JwtService.php" path="\Infrastructure\Security">
     <totals>
-      <lines total="95" comments="11" code="84" executable="33" executed="0" percent="0.00"/>
-      <methods count="8" tested="0" percent="0.00"/>
+      <lines total="102" comments="14" code="88" executable="34" executed="31" percent="91.18"/>
+      <methods count="8" tested="7" percent="87.50"/>
       <functions count="0" tested="0" percent="0"/>
       <classes count="1" tested="0" percent="0.00"/>
       <traits count="0" tested="0" percent="0"/>
     </totals>
-    <class name="App\Infrastructure\Security\JwtService" start="8" executable="33" executed="0" crap="240">
+    <class name="App\Infrastructure\Security\JwtService" start="8" executable="34" executed="31" crap="16.18">
       <namespace name="App\Infrastructure\Security"/>
-      <method name="__construct" signature="__construct(App\Infrastructure\Config\Config $config, ?string $secret, ?int $expiration)" start="19" end="23" crap="2" executable="2" executed="0" coverage="0"/>
-      <method name="generate" signature="generate(array $payload, ?int $exp): string" start="25" end="38" crap="2" executable="11" executed="0" coverage="0"/>
-      <method name="generateToken" signature="generateToken(array $payload, ?int $exp): string" start="43" end="46" crap="2" executable="1" executed="0" coverage="0"/>
-      <method name="verify" signature="verify(string $token): ?array" start="48" end="70" crap="72" executable="15" executed="0" coverage="0"/>
-      <method name="validateToken" signature="validateToken(string $token): ?array" start="75" end="78" crap="2" executable="1" executed="0" coverage="0"/>
-      <method name="sign" signature="sign(string $data): string" start="80" end="83" crap="2" executable="1" executed="0" coverage="0"/>
-      <method name="base64url" signature="base64url(string $data): string" start="85" end="88" crap="2" executable="1" executed="0" coverage="0"/>
-      <method name="base64urlDecode" signature="base64urlDecode(string $data): string" start="90" end="93" crap="2" executable="1" executed="0" coverage="0"/>
+      <method name="__construct" signature="__construct(App\Infrastructure\Config\Config $config, ?string $secret, ?int $expiration)" start="19" end="23" crap="1" executable="2" executed="2" coverage="100"/>
+      <method name="generate" signature="generate(array $payload, ?int $exp): string" start="25" end="45" crap="2" executable="12" executed="12" coverage="100"/>
+      <method name="generateToken" signature="generateToken(array $payload, ?int $exp): string" start="50" end="53" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="verify" signature="verify(string $token): ?array" start="55" end="77" crap="8.51" executable="15" executed="12" coverage="80"/>
+      <method name="validateToken" signature="validateToken(string $token): ?array" start="82" end="85" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="sign" signature="sign(string $data): string" start="87" end="90" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="base64url" signature="base64url(string $data): string" start="92" end="95" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="base64urlDecode" signature="base64urlDecode(string $data): string" start="97" end="100" crap="1" executable="1" executed="1" coverage="100"/>
     </class>
+    <coverage>
+      <line nr="21">
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testValidTokenPassesThrough"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testMissingAuthorizationHeaderReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testInvalidAuthorizationFormatReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testInvalidTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testExpiredTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testBlacklistedTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testDifferentAuthorizationSchemes"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testCaseInsensitiveBearerScheme"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testTokenWithoutExpiration"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testResponseHeaders"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testPasswordResetCompleteFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testEmailVerificationCompleteFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testMultipleFailedLoginAttempts"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testUserAccountSecurity"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testConcurrentUserOperations"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserRegistrationWithInvalidData"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testRegistrationWithExistingEmail"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testEmailVerificationFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testPasswordResetFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testSecurityFeatures"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testDataValidationAndSanitization"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCompleteRegistrationFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCompleteLoginFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testLoginWithInvalidCredentials"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithValidToken"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithInvalidToken"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testForgotPasswordFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testResetPasswordFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testEmailVerificationFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testLogoutEndpoint"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testRegistrationValidationErrors"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testInvalidEndpoint"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testRateLimitingOnFailedLogins"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCORSHeaders"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testLoginWithWrongPasswordFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testRegistrationWithWeakPasswordFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testRegistrationWithExistingEmailFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenVerificationWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testLogoutSucceeds"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testGetCurrentUserWithValidPayload"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testPasswordStrengthValidation"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testPasswordHashingAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testJWTTokenGenerationAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="22">
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testValidTokenPassesThrough"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testMissingAuthorizationHeaderReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testInvalidAuthorizationFormatReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testInvalidTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testExpiredTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testBlacklistedTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testDifferentAuthorizationSchemes"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testCaseInsensitiveBearerScheme"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testTokenWithoutExpiration"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testResponseHeaders"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testPasswordResetCompleteFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testEmailVerificationCompleteFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testMultipleFailedLoginAttempts"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testUserAccountSecurity"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testConcurrentUserOperations"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserRegistrationWithInvalidData"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testRegistrationWithExistingEmail"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testEmailVerificationFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testPasswordResetFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testSecurityFeatures"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testDataValidationAndSanitization"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCompleteRegistrationFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCompleteLoginFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testLoginWithInvalidCredentials"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithValidToken"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithInvalidToken"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testForgotPasswordFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testResetPasswordFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testEmailVerificationFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testLogoutEndpoint"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testRegistrationValidationErrors"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testInvalidEndpoint"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testRateLimitingOnFailedLogins"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCORSHeaders"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testLoginWithWrongPasswordFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testRegistrationWithWeakPasswordFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testRegistrationWithExistingEmailFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenVerificationWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testLogoutSucceeds"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testGetCurrentUserWithValidPayload"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testPasswordStrengthValidation"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testPasswordHashingAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testJWTTokenGenerationAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="27">
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testValidTokenPassesThrough"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testExpiredTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testBlacklistedTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testCaseInsensitiveBearerScheme"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testTokenWithoutExpiration"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testPasswordResetCompleteFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testUserAccountSecurity"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testConcurrentUserOperations"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testRegistrationWithExistingEmail"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testEmailVerificationFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testPasswordResetFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testSecurityFeatures"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCompleteRegistrationFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCompleteLoginFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithValidToken"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenVerificationWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testJWTTokenGenerationAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="30">
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testValidTokenPassesThrough"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testExpiredTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testBlacklistedTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testCaseInsensitiveBearerScheme"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testTokenWithoutExpiration"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testPasswordResetCompleteFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testUserAccountSecurity"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testConcurrentUserOperations"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testRegistrationWithExistingEmail"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testEmailVerificationFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testPasswordResetFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testSecurityFeatures"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCompleteRegistrationFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCompleteLoginFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithValidToken"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenVerificationWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testJWTTokenGenerationAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="31">
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testTokenWithoutExpiration"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testPasswordResetCompleteFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testUserAccountSecurity"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testConcurrentUserOperations"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testRegistrationWithExistingEmail"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testEmailVerificationFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testPasswordResetFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testSecurityFeatures"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCompleteRegistrationFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCompleteLoginFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithValidToken"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testJWTTokenGenerationAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="32">
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testTokenWithoutExpiration"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testPasswordResetCompleteFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testUserAccountSecurity"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testConcurrentUserOperations"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testRegistrationWithExistingEmail"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testEmailVerificationFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testPasswordResetFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testSecurityFeatures"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCompleteRegistrationFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCompleteLoginFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithValidToken"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testJWTTokenGenerationAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="36">
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testValidTokenPassesThrough"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testExpiredTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testBlacklistedTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testCaseInsensitiveBearerScheme"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testTokenWithoutExpiration"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testPasswordResetCompleteFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testUserAccountSecurity"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testConcurrentUserOperations"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testRegistrationWithExistingEmail"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testEmailVerificationFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testPasswordResetFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testSecurityFeatures"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCompleteRegistrationFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCompleteLoginFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithValidToken"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenVerificationWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testJWTTokenGenerationAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="37">
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testValidTokenPassesThrough"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testExpiredTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testBlacklistedTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testCaseInsensitiveBearerScheme"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testTokenWithoutExpiration"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testPasswordResetCompleteFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testUserAccountSecurity"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testConcurrentUserOperations"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testRegistrationWithExistingEmail"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testEmailVerificationFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testPasswordResetFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testSecurityFeatures"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCompleteRegistrationFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCompleteLoginFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithValidToken"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenVerificationWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testJWTTokenGenerationAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="38">
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testValidTokenPassesThrough"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testExpiredTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testBlacklistedTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testCaseInsensitiveBearerScheme"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testTokenWithoutExpiration"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testPasswordResetCompleteFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testUserAccountSecurity"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testConcurrentUserOperations"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testRegistrationWithExistingEmail"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testEmailVerificationFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testPasswordResetFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testSecurityFeatures"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCompleteRegistrationFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCompleteLoginFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithValidToken"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenVerificationWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testJWTTokenGenerationAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="39">
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testValidTokenPassesThrough"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testExpiredTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testBlacklistedTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testCaseInsensitiveBearerScheme"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testTokenWithoutExpiration"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testPasswordResetCompleteFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testUserAccountSecurity"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testConcurrentUserOperations"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testRegistrationWithExistingEmail"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testEmailVerificationFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testPasswordResetFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testSecurityFeatures"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCompleteRegistrationFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCompleteLoginFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithValidToken"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenVerificationWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testJWTTokenGenerationAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="42">
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testValidTokenPassesThrough"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testExpiredTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testBlacklistedTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testCaseInsensitiveBearerScheme"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testTokenWithoutExpiration"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testPasswordResetCompleteFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testUserAccountSecurity"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testConcurrentUserOperations"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testRegistrationWithExistingEmail"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testEmailVerificationFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testPasswordResetFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testSecurityFeatures"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCompleteRegistrationFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCompleteLoginFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithValidToken"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenVerificationWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testJWTTokenGenerationAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="43">
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testValidTokenPassesThrough"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testExpiredTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testBlacklistedTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testCaseInsensitiveBearerScheme"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testTokenWithoutExpiration"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testPasswordResetCompleteFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testUserAccountSecurity"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testConcurrentUserOperations"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testRegistrationWithExistingEmail"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testEmailVerificationFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testPasswordResetFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testSecurityFeatures"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCompleteRegistrationFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCompleteLoginFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithValidToken"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenVerificationWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testJWTTokenGenerationAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="44">
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testValidTokenPassesThrough"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testExpiredTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testBlacklistedTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testCaseInsensitiveBearerScheme"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testTokenWithoutExpiration"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testPasswordResetCompleteFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testUserAccountSecurity"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testConcurrentUserOperations"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testRegistrationWithExistingEmail"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testEmailVerificationFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testPasswordResetFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testSecurityFeatures"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCompleteRegistrationFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCompleteLoginFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithValidToken"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenVerificationWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testJWTTokenGenerationAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="52">
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testPasswordResetCompleteFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testUserAccountSecurity"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testConcurrentUserOperations"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testRegistrationWithExistingEmail"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testEmailVerificationFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testPasswordResetFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testSecurityFeatures"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCompleteRegistrationFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCompleteLoginFlow"/>
+      </line>
+      <line nr="57">
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testValidTokenPassesThrough"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testInvalidTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testExpiredTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testBlacklistedTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testCaseInsensitiveBearerScheme"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testTokenWithoutExpiration"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCompleteRegistrationFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithValidToken"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithInvalidToken"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenVerificationWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testJWTTokenGenerationAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="58">
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testValidTokenPassesThrough"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testInvalidTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testExpiredTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testBlacklistedTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testCaseInsensitiveBearerScheme"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testTokenWithoutExpiration"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCompleteRegistrationFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithValidToken"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithInvalidToken"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenVerificationWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testJWTTokenGenerationAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="61">
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testValidTokenPassesThrough"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testInvalidTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testExpiredTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testBlacklistedTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testCaseInsensitiveBearerScheme"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testTokenWithoutExpiration"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCompleteRegistrationFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithValidToken"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithInvalidToken"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenVerificationWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testJWTTokenGenerationAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="62">
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testValidTokenPassesThrough"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testInvalidTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testExpiredTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testBlacklistedTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testCaseInsensitiveBearerScheme"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testTokenWithoutExpiration"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCompleteRegistrationFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithValidToken"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithInvalidToken"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenVerificationWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testJWTTokenGenerationAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="63">
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testValidTokenPassesThrough"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testInvalidTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testExpiredTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testBlacklistedTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testCaseInsensitiveBearerScheme"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testTokenWithoutExpiration"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCompleteRegistrationFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithValidToken"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithInvalidToken"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenVerificationWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testJWTTokenGenerationAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="64">
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testInvalidTokenReturnsUnauthorized"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithInvalidToken"/>
+      </line>
+      <line nr="66">
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testValidTokenPassesThrough"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testExpiredTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testBlacklistedTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testCaseInsensitiveBearerScheme"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testTokenWithoutExpiration"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCompleteRegistrationFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithValidToken"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenVerificationWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testJWTTokenGenerationAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="67">
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testValidTokenPassesThrough"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testExpiredTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testBlacklistedTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testCaseInsensitiveBearerScheme"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testTokenWithoutExpiration"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCompleteRegistrationFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithValidToken"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenVerificationWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testJWTTokenGenerationAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="70">
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testValidTokenPassesThrough"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testExpiredTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testBlacklistedTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testCaseInsensitiveBearerScheme"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testTokenWithoutExpiration"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCompleteRegistrationFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithValidToken"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenVerificationWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testJWTTokenGenerationAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="71">
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testExpiredTokenReturnsUnauthorized"/>
+      </line>
+      <line nr="73">
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testValidTokenPassesThrough"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testBlacklistedTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testCaseInsensitiveBearerScheme"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testTokenWithoutExpiration"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCompleteRegistrationFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithValidToken"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenVerificationWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testJWTTokenGenerationAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="76">
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testValidTokenPassesThrough"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testBlacklistedTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testCaseInsensitiveBearerScheme"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testTokenWithoutExpiration"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCompleteRegistrationFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithValidToken"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenVerificationWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testJWTTokenGenerationAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="84">
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithValidToken"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithInvalidToken"/>
+      </line>
+      <line nr="89">
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testValidTokenPassesThrough"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testInvalidTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testExpiredTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testBlacklistedTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testCaseInsensitiveBearerScheme"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testTokenWithoutExpiration"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testPasswordResetCompleteFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testUserAccountSecurity"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testConcurrentUserOperations"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testRegistrationWithExistingEmail"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testEmailVerificationFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testPasswordResetFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testSecurityFeatures"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCompleteRegistrationFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCompleteLoginFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithValidToken"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithInvalidToken"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenVerificationWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testJWTTokenGenerationAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="94">
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testValidTokenPassesThrough"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testInvalidTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testExpiredTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testBlacklistedTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testCaseInsensitiveBearerScheme"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testTokenWithoutExpiration"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testPasswordResetCompleteFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testUserAccountSecurity"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testConcurrentUserOperations"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testRegistrationWithExistingEmail"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testEmailVerificationFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testPasswordResetFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testSecurityFeatures"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCompleteRegistrationFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCompleteLoginFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithValidToken"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithInvalidToken"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenVerificationWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testJWTTokenGenerationAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="99">
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testValidTokenPassesThrough"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testExpiredTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testBlacklistedTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testCaseInsensitiveBearerScheme"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testTokenWithoutExpiration"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCompleteRegistrationFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithValidToken"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenVerificationWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testJWTTokenGenerationAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="40">
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testValidTokenPassesThrough"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testExpiredTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testBlacklistedTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testCaseInsensitiveBearerScheme"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testTokenWithoutExpiration"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testPasswordResetCompleteFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testUserAccountSecurity"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testConcurrentUserOperations"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testRegistrationWithExistingEmail"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testEmailVerificationFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testPasswordResetFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testSecurityFeatures"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCompleteRegistrationFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testCompleteLoginFlow"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithValidToken"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenVerificationWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testJWTTokenGenerationAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+    </coverage>
     <source>
       <line no="1">
         <token name="T_OPEN_TAG">&lt;?php</token>
@@ -258,6 +1020,30 @@
       </line>
       <line no="28">
         <token name="T_WHITESPACE">        </token>
+      </line>
+      <line no="29">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_COMMENT">// Only set expiration if not already present in payload</token>
+      </line>
+      <line no="30">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_IF">if</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_EXCLAMATION_MARK">!</token>
+        <token name="T_ISSET">isset</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$payload</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'exp'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="31">
+        <token name="T_WHITESPACE">            </token>
         <token name="T_VARIABLE">$expTime</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_EQUAL">=</token>
@@ -279,7 +1065,30 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="29">
+      <line no="32">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$payload</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'exp'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$expTime</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="33">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="34">
+        <token name="T_WHITESPACE">        </token>
+      </line>
+      <line no="35">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_COMMENT">// Set other standard claims if not present</token>
+      </line>
+      <line no="36">
         <token name="T_WHITESPACE">        </token>
         <token name="T_VARIABLE">$payload</token>
         <token name="T_WHITESPACE"> </token>
@@ -287,12 +1096,9 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_STRING">array_merge</token>
         <token name="T_OPEN_BRACKET">(</token>
-        <token name="T_VARIABLE">$payload</token>
-        <token name="T_COMMA">,</token>
-        <token name="T_WHITESPACE"> </token>
         <token name="T_OPEN_SQUARE">[</token>
       </line>
-      <line no="30">
+      <line no="37">
         <token name="T_WHITESPACE">            </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'iat'</token>
         <token name="T_WHITESPACE"> </token>
@@ -303,16 +1109,7 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="31">
-        <token name="T_WHITESPACE">            </token>
-        <token name="T_CONSTANT_ENCAPSED_STRING">'exp'</token>
-        <token name="T_WHITESPACE"> </token>
-        <token name="T_DOUBLE_ARROW">=&gt;</token>
-        <token name="T_WHITESPACE"> </token>
-        <token name="T_VARIABLE">$expTime</token>
-        <token name="T_COMMA">,</token>
-      </line>
-      <line no="32">
+      <line no="38">
         <token name="T_WHITESPACE">            </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'nbf'</token>
         <token name="T_WHITESPACE"> </token>
@@ -323,7 +1120,7 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="33">
+      <line no="39">
         <token name="T_WHITESPACE">            </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'jti'</token>
         <token name="T_WHITESPACE"> </token>
@@ -338,13 +1135,21 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="34">
+      <line no="40">
         <token name="T_WHITESPACE">        </token>
         <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$payload</token>
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_SEMICOLON">;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_COMMENT">// Payload values take precedence</token>
       </line>
-      <line no="35">
+      <line no="41">
+        <token name="T_WHITESPACE">        </token>
+      </line>
+      <line no="42">
         <token name="T_WHITESPACE">        </token>
         <token name="T_VARIABLE">$payloadEnc</token>
         <token name="T_WHITESPACE"> </token>
@@ -361,7 +1166,7 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="36">
+      <line no="43">
         <token name="T_WHITESPACE">        </token>
         <token name="T_VARIABLE">$signature</token>
         <token name="T_WHITESPACE"> </token>
@@ -379,7 +1184,7 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="37">
+      <line no="44">
         <token name="T_WHITESPACE">        </token>
         <token name="T_RETURN">return</token>
         <token name="T_WHITESPACE"> </token>
@@ -392,22 +1197,22 @@
         <token name="T_DOUBLE_QUOTES">"</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="38">
+      <line no="45">
         <token name="T_WHITESPACE">    </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="39"/>
-      <line no="40">
+      <line no="46"/>
+      <line no="47">
         <token name="T_WHITESPACE">    </token>
         <token name="T_DOC_COMMENT">/**</token>
       </line>
-      <line no="41">
+      <line no="48">
         <token name="T_DOC_COMMENT">     * Alias for generate() method for compatibility</token>
       </line>
-      <line no="42">
+      <line no="49">
         <token name="T_DOC_COMMENT">     */</token>
       </line>
-      <line no="43">
+      <line no="50">
         <token name="T_WHITESPACE">    </token>
         <token name="T_PUBLIC">public</token>
         <token name="T_WHITESPACE"> </token>
@@ -433,11 +1238,11 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_STRING">string</token>
       </line>
-      <line no="44">
+      <line no="51">
         <token name="T_WHITESPACE">    </token>
         <token name="T_OPEN_CURLY">{</token>
       </line>
-      <line no="45">
+      <line no="52">
         <token name="T_WHITESPACE">        </token>
         <token name="T_RETURN">return</token>
         <token name="T_WHITESPACE"> </token>
@@ -452,12 +1257,12 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="46">
+      <line no="53">
         <token name="T_WHITESPACE">    </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="47"/>
-      <line no="48">
+      <line no="54"/>
+      <line no="55">
         <token name="T_WHITESPACE">    </token>
         <token name="T_PUBLIC">public</token>
         <token name="T_WHITESPACE"> </token>
@@ -474,11 +1279,11 @@
         <token name="T_QUESTION_MARK">?</token>
         <token name="T_ARRAY">array</token>
       </line>
-      <line no="49">
+      <line no="56">
         <token name="T_WHITESPACE">    </token>
         <token name="T_OPEN_CURLY">{</token>
       </line>
-      <line no="50">
+      <line no="57">
         <token name="T_WHITESPACE">        </token>
         <token name="T_VARIABLE">$parts</token>
         <token name="T_WHITESPACE"> </token>
@@ -493,7 +1298,7 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="51">
+      <line no="58">
         <token name="T_WHITESPACE">        </token>
         <token name="T_IF">if</token>
         <token name="T_WHITESPACE"> </token>
@@ -510,18 +1315,18 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_OPEN_CURLY">{</token>
       </line>
-      <line no="52">
+      <line no="59">
         <token name="T_WHITESPACE">            </token>
         <token name="T_RETURN">return</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_STRING">null</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="53">
+      <line no="60">
         <token name="T_WHITESPACE">        </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="54">
+      <line no="61">
         <token name="T_WHITESPACE">        </token>
         <token name="T_OPEN_SQUARE">[</token>
         <token name="T_VARIABLE">$h</token>
@@ -538,7 +1343,7 @@
         <token name="T_VARIABLE">$parts</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="55">
+      <line no="62">
         <token name="T_WHITESPACE">        </token>
         <token name="T_VARIABLE">$calcSig</token>
         <token name="T_WHITESPACE"> </token>
@@ -556,7 +1361,7 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="56">
+      <line no="63">
         <token name="T_WHITESPACE">        </token>
         <token name="T_IF">if</token>
         <token name="T_WHITESPACE"> </token>
@@ -573,18 +1378,18 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_OPEN_CURLY">{</token>
       </line>
-      <line no="57">
+      <line no="64">
         <token name="T_WHITESPACE">            </token>
         <token name="T_RETURN">return</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_STRING">null</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="58">
+      <line no="65">
         <token name="T_WHITESPACE">        </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="59">
+      <line no="66">
         <token name="T_WHITESPACE">        </token>
         <token name="T_VARIABLE">$payload</token>
         <token name="T_WHITESPACE"> </token>
@@ -604,7 +1409,7 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="60">
+      <line no="67">
         <token name="T_WHITESPACE">        </token>
         <token name="T_IF">if</token>
         <token name="T_WHITESPACE"> </token>
@@ -615,18 +1420,18 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_OPEN_CURLY">{</token>
       </line>
-      <line no="61">
+      <line no="68">
         <token name="T_WHITESPACE">            </token>
         <token name="T_RETURN">return</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_STRING">null</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="62">
+      <line no="69">
         <token name="T_WHITESPACE">        </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="63">
+      <line no="70">
         <token name="T_WHITESPACE">        </token>
         <token name="T_IF">if</token>
         <token name="T_WHITESPACE"> </token>
@@ -655,18 +1460,18 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_OPEN_CURLY">{</token>
       </line>
-      <line no="64">
+      <line no="71">
         <token name="T_WHITESPACE">            </token>
         <token name="T_RETURN">return</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_STRING">null</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="65">
+      <line no="72">
         <token name="T_WHITESPACE">        </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="66">
+      <line no="73">
         <token name="T_WHITESPACE">        </token>
         <token name="T_IF">if</token>
         <token name="T_WHITESPACE"> </token>
@@ -695,40 +1500,40 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_OPEN_CURLY">{</token>
       </line>
-      <line no="67">
+      <line no="74">
         <token name="T_WHITESPACE">            </token>
         <token name="T_RETURN">return</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_STRING">null</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="68">
+      <line no="75">
         <token name="T_WHITESPACE">        </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="69">
+      <line no="76">
         <token name="T_WHITESPACE">        </token>
         <token name="T_RETURN">return</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_VARIABLE">$payload</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="70">
+      <line no="77">
         <token name="T_WHITESPACE">    </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="71"/>
-      <line no="72">
+      <line no="78"/>
+      <line no="79">
         <token name="T_WHITESPACE">    </token>
         <token name="T_DOC_COMMENT">/**</token>
       </line>
-      <line no="73">
+      <line no="80">
         <token name="T_DOC_COMMENT">     * Alias for verify() method for compatibility with UserController</token>
       </line>
-      <line no="74">
+      <line no="81">
         <token name="T_DOC_COMMENT">     */</token>
       </line>
-      <line no="75">
+      <line no="82">
         <token name="T_WHITESPACE">    </token>
         <token name="T_PUBLIC">public</token>
         <token name="T_WHITESPACE"> </token>
@@ -745,11 +1550,11 @@
         <token name="T_QUESTION_MARK">?</token>
         <token name="T_ARRAY">array</token>
       </line>
-      <line no="76">
+      <line no="83">
         <token name="T_WHITESPACE">    </token>
         <token name="T_OPEN_CURLY">{</token>
       </line>
-      <line no="77">
+      <line no="84">
         <token name="T_WHITESPACE">        </token>
         <token name="T_RETURN">return</token>
         <token name="T_WHITESPACE"> </token>
@@ -761,12 +1566,12 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="78">
+      <line no="85">
         <token name="T_WHITESPACE">    </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="79"/>
-      <line no="80">
+      <line no="86"/>
+      <line no="87">
         <token name="T_WHITESPACE">    </token>
         <token name="T_PRIVATE">private</token>
         <token name="T_WHITESPACE"> </token>
@@ -782,11 +1587,11 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_STRING">string</token>
       </line>
-      <line no="81">
+      <line no="88">
         <token name="T_WHITESPACE">    </token>
         <token name="T_OPEN_CURLY">{</token>
       </line>
-      <line no="82">
+      <line no="89">
         <token name="T_WHITESPACE">        </token>
         <token name="T_RETURN">return</token>
         <token name="T_WHITESPACE"> </token>
@@ -812,12 +1617,12 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="83">
+      <line no="90">
         <token name="T_WHITESPACE">    </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="84"/>
-      <line no="85">
+      <line no="91"/>
+      <line no="92">
         <token name="T_WHITESPACE">    </token>
         <token name="T_PRIVATE">private</token>
         <token name="T_WHITESPACE"> </token>
@@ -833,11 +1638,11 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_STRING">string</token>
       </line>
-      <line no="86">
+      <line no="93">
         <token name="T_WHITESPACE">    </token>
         <token name="T_OPEN_CURLY">{</token>
       </line>
-      <line no="87">
+      <line no="94">
         <token name="T_WHITESPACE">        </token>
         <token name="T_RETURN">return</token>
         <token name="T_WHITESPACE"> </token>
@@ -862,12 +1667,12 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="88">
+      <line no="95">
         <token name="T_WHITESPACE">    </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="89"/>
-      <line no="90">
+      <line no="96"/>
+      <line no="97">
         <token name="T_WHITESPACE">    </token>
         <token name="T_PRIVATE">private</token>
         <token name="T_WHITESPACE"> </token>
@@ -883,11 +1688,11 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_STRING">string</token>
       </line>
-      <line no="91">
+      <line no="98">
         <token name="T_WHITESPACE">    </token>
         <token name="T_OPEN_CURLY">{</token>
       </line>
-      <line no="92">
+      <line no="99">
         <token name="T_WHITESPACE">        </token>
         <token name="T_RETURN">return</token>
         <token name="T_WHITESPACE"> </token>
@@ -906,14 +1711,14 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="93">
+      <line no="100">
         <token name="T_WHITESPACE">    </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="94">
+      <line no="101">
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="95"/>
+      <line no="102"/>
     </source>
   </file>
 </phpunit>

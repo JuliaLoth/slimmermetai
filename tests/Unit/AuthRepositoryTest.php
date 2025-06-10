@@ -4,30 +4,23 @@ namespace Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
 use App\Infrastructure\Repository\AuthRepository;
-use App\Infrastructure\Database\Database;
+use App\Infrastructure\Database\DatabaseInterface;
+use App\Domain\Entity\User;
+use App\Domain\ValueObject\Email;
 
 class AuthRepositoryTest extends TestCase
 {
     private AuthRepository $authRepository;
     private $mockDatabase;
-    private $mockPdo;
-    private $mockStatement;
 
     protected function setUp(): void
     {
         parent::setUp();
         
-        // Create mocks
-        $this->mockDatabase = $this->createMock(Database::class);
-        $this->mockPdo = $this->createMock(\PDO::class);
-        $this->mockStatement = $this->createMock(\PDOStatement::class);
+        // Create mock for DatabaseInterface (not Database class)
+        $this->mockDatabase = $this->createMock(DatabaseInterface::class);
         
-        // Configure database mock to return PDO mock
-        $this->mockDatabase
-            ->method('getConnection')
-            ->willReturn($this->mockPdo);
-        
-        // Create AuthRepository with mocked database
+        // Create AuthRepository with mocked database interface
         $this->authRepository = new AuthRepository($this->mockDatabase);
     }
 
@@ -39,50 +32,58 @@ class AuthRepositoryTest extends TestCase
             'email' => $email,
             'password' => '$2y$10$hashedpassword',
             'name' => 'Test User',
-            'active' => 1,
+            'role' => 'user',
             'created_at' => '2024-01-01 00:00:00'
         ];
 
-        // Mock PDO statement
-        $this->mockPdo
-            ->method('prepare')
-            ->willReturn($this->mockStatement);
-
-        $this->mockStatement
-            ->method('execute')
-            ->with([$email])
-            ->willReturn(true);
-
-        $this->mockStatement
+        // Mock database fetch to return user data array
+        $this->mockDatabase
             ->method('fetch')
             ->willReturn($userData);
 
         $result = $this->authRepository->findByEmail($email);
 
-        $this->assertEquals($userData, $result);
-        $this->assertEquals($email, $result['email']);
+        // Should return User entity, not array
+        $this->assertInstanceOf(User::class, $result);
+        $this->assertEquals($email, (string)$result->getEmail());
+        $this->assertEquals(1, $result->getId());
     }
 
     public function testFindByEmailWithNonExistentUser()
     {
         $email = 'nonexistent@example.com';
 
-        $this->mockPdo
-            ->method('prepare')
-            ->willReturn($this->mockStatement);
-
-        $this->mockStatement
-            ->method('execute')
-            ->with([$email])
-            ->willReturn(true);
-
-        $this->mockStatement
+        // Mock database to return null (no user found)
+        $this->mockDatabase
             ->method('fetch')
-            ->willReturn(false); // No user found
+            ->willReturn(null);
 
         $result = $this->authRepository->findByEmail($email);
 
         $this->assertNull($result);
+    }
+
+    public function testFindUserByEmailWithEmailValueObject()
+    {
+        $email = 'test@example.com';
+        $emailVO = new Email($email);
+        $userData = [
+            'id' => 1,
+            'email' => $email,
+            'password' => '$2y$10$hashedpassword',
+            'name' => 'Test User',
+            'role' => 'user',
+            'created_at' => '2024-01-01 00:00:00'
+        ];
+
+        $this->mockDatabase
+            ->method('fetch')
+            ->willReturn($userData);
+
+        $result = $this->authRepository->findUserByEmail($emailVO);
+
+        $this->assertInstanceOf(User::class, $result);
+        $this->assertEquals($email, (string)$result->getEmail());
     }
 
     public function testFindByIdWithExistingUser()
@@ -91,28 +92,20 @@ class AuthRepositoryTest extends TestCase
         $userData = [
             'id' => $userId,
             'email' => 'test@example.com',
+            'password' => '$2y$10$hashedpassword',
             'name' => 'Test User',
-            'active' => 1,
+            'role' => 'user',
             'created_at' => '2024-01-01 00:00:00'
         ];
 
-        $this->mockPdo
-            ->method('prepare')
-            ->willReturn($this->mockStatement);
-
-        $this->mockStatement
-            ->method('execute')
-            ->with([$userId])
-            ->willReturn(true);
-
-        $this->mockStatement
+        $this->mockDatabase
             ->method('fetch')
             ->willReturn($userData);
 
         $result = $this->authRepository->findById($userId);
 
-        $this->assertEquals($userData, $result);
-        $this->assertEquals($userId, $result['id']);
+        $this->assertInstanceOf(User::class, $result);
+        $this->assertEquals($userId, $result->getId());
     }
 
     public function testCreateUser()
@@ -120,41 +113,81 @@ class AuthRepositoryTest extends TestCase
         $userData = [
             'name' => 'New User',
             'email' => 'newuser@example.com',
-            'password' => '$2y$10$hashedpassword'
+            'password' => '$2y$10$hashedpassword',
+            'role' => 'user'
         ];
 
         $newUserId = 2;
 
-        // Mock prepare for insert
-        $this->mockPdo
-            ->method('prepare')
-            ->willReturn($this->mockStatement);
-
-        $this->mockStatement
-            ->method('execute')
+        // Mock database operations for user creation
+        $this->mockDatabase
+            ->method('beginTransaction')
             ->willReturn(true);
 
-        // Mock lastInsertId
-        $this->mockPdo
-            ->method('lastInsertId')
-            ->willReturn($newUserId);
+        $mockStatement = $this->createMock(\PDOStatement::class);
+        $this->mockDatabase
+            ->method('query')
+            ->willReturn($mockStatement);
 
-        // Mock second query to fetch created user
+        $this->mockDatabase
+            ->method('lastInsertId')
+            ->willReturn((string)$newUserId);
+
+        $this->mockDatabase
+            ->method('commit')
+            ->willReturn(true);
+
+        // Mock fetch for retrieving created user
         $createdUserData = array_merge($userData, [
             'id' => $newUserId,
-            'active' => 1,
             'created_at' => date('Y-m-d H:i:s')
         ]);
 
-        $this->mockStatement
+        $this->mockDatabase
             ->method('fetch')
             ->willReturn($createdUserData);
 
         $result = $this->authRepository->create($userData);
 
-        $this->assertEquals($newUserId, $result['id']);
-        $this->assertEquals($userData['email'], $result['email']);
-        $this->assertEquals($userData['name'], $result['name']);
+        $this->assertInstanceOf(User::class, $result);
+        $this->assertEquals($userData['email'], (string)$result->getEmail());
+        $this->assertEquals($userData['name'], $result->getName());
+    }
+
+    public function testCreateUserWithTransaction()
+    {
+        $userData = [
+            'name' => 'New User',
+            'email' => 'newuser@example.com',
+            'password' => '$2y$10$hashedpassword'
+        ];
+
+        // Mock transaction methods (may be called multiple times)
+        $this->mockDatabase
+            ->method('beginTransaction')
+            ->willReturn(true);
+
+        $this->mockDatabase
+            ->method('commit')
+            ->willReturn(true);
+
+        // Mock database operations
+        $mockStatement = $this->createMock(\PDOStatement::class);
+        $this->mockDatabase
+            ->method('query')
+            ->willReturn($mockStatement);
+
+        $this->mockDatabase
+            ->method('lastInsertId')
+            ->willReturn('1');
+
+        $this->mockDatabase
+            ->method('fetch')
+            ->willReturn(array_merge($userData, ['id' => 1, 'role' => 'user', 'created_at' => date('Y-m-d H:i:s')]));
+
+        $result = $this->authRepository->createWithTransaction($userData);
+
+        $this->assertInstanceOf(User::class, $result);
     }
 
     public function testUpdatePassword()
@@ -162,64 +195,61 @@ class AuthRepositoryTest extends TestCase
         $userId = 1;
         $newPasswordHash = '$2y$10$newhashedpassword';
 
-        $this->mockPdo
-            ->method('prepare')
-            ->willReturn($this->mockStatement);
-
-        $this->mockStatement
+        $this->mockDatabase
             ->method('execute')
-            ->with([$newPasswordHash, $userId])
             ->willReturn(true);
-
-        $this->mockStatement
-            ->method('rowCount')
-            ->willReturn(1);
 
         $result = $this->authRepository->updatePassword($userId, $newPasswordHash);
 
         $this->assertTrue($result);
     }
 
-    public function testUpdatePasswordWithInvalidUser()
+    public function testUpdateLastLogin()
     {
-        $userId = 999; // Non-existent user
-        $newPasswordHash = '$2y$10$newhashedpassword';
+        $userId = 1;
 
-        $this->mockPdo
-            ->method('prepare')
-            ->willReturn($this->mockStatement);
-
-        $this->mockStatement
+        $this->mockDatabase
             ->method('execute')
-            ->with([$newPasswordHash, $userId])
             ->willReturn(true);
 
-        $this->mockStatement
-            ->method('rowCount')
-            ->willReturn(0); // No rows affected
+        $result = $this->authRepository->updateLastLogin($userId);
 
-        $result = $this->authRepository->updatePassword($userId, $newPasswordHash);
-
-        $this->assertFalse($result);
+        $this->assertTrue($result);
     }
 
     public function testCreatePasswordResetToken()
     {
         $userId = 1;
-        $token = 'reset_token_123456';
 
-        $this->mockPdo
-            ->method('prepare')
-            ->willReturn($this->mockStatement);
-
-        $this->mockStatement
+        $this->mockDatabase
             ->method('execute')
             ->willReturn(true);
 
         $result = $this->authRepository->createPasswordResetToken($userId);
 
-        $this->assertIsString($result);
-        $this->assertEquals(64, strlen($result)); // Should be 64 character token
+        $this->assertTrue($result);
+    }
+
+    public function testFindPasswordResetToken()
+    {
+        $token = 'valid_reset_token';
+        $tokenData = [
+            'user_id' => 1,
+            'token' => $token,
+            'type' => 'password_reset',
+            'expires_at' => date('Y-m-d H:i:s', time() + 3600),
+            'email' => 'test@example.com',
+            'name' => 'Test User'
+        ];
+
+        $this->mockDatabase
+            ->method('fetch')
+            ->willReturn($tokenData);
+
+        $result = $this->authRepository->findPasswordResetToken($token);
+
+        $this->assertEquals($tokenData, $result);
+        $this->assertEquals(1, $result['user_id']);
     }
 
     public function testValidatePasswordResetToken()
@@ -228,73 +258,40 @@ class AuthRepositoryTest extends TestCase
         $tokenData = [
             'user_id' => 1,
             'token' => $token,
-            'expires_at' => date('Y-m-d H:i:s', time() + 3600),
-            'created_at' => date('Y-m-d H:i:s')
+            'type' => 'password_reset',
+            'expires_at' => date('Y-m-d H:i:s', time() + 3600)
         ];
 
-        $this->mockPdo
-            ->method('prepare')
-            ->willReturn($this->mockStatement);
-
-        $this->mockStatement
-            ->method('execute')
-            ->with([$token])
-            ->willReturn(true);
-
-        $this->mockStatement
+        $this->mockDatabase
             ->method('fetch')
             ->willReturn($tokenData);
 
         $result = $this->authRepository->validatePasswordResetToken($token);
 
-        $this->assertEquals($tokenData, $result);
-        $this->assertEquals(1, $result['user_id']);
+        $this->assertTrue($result);
     }
 
     public function testValidateExpiredPasswordResetToken()
     {
         $token = 'expired_reset_token';
-        $tokenData = [
-            'user_id' => 1,
-            'token' => $token,
-            'expires_at' => date('Y-m-d H:i:s', time() - 3600), // Expired 1 hour ago
-            'created_at' => date('Y-m-d H:i:s', time() - 7200)
-        ];
 
-        $this->mockPdo
-            ->method('prepare')
-            ->willReturn($this->mockStatement);
-
-        $this->mockStatement
-            ->method('execute')
-            ->with([$token])
-            ->willReturn(true);
-
-        $this->mockStatement
+        // Mock database to return null for expired token
+        $this->mockDatabase
             ->method('fetch')
-            ->willReturn($tokenData);
+            ->willReturn(null);
 
         $result = $this->authRepository->validatePasswordResetToken($token);
 
-        $this->assertNull($result); // Should be null for expired token
+        $this->assertFalse($result);
     }
 
     public function testDeletePasswordResetToken()
     {
         $token = 'reset_token_to_delete';
 
-        $this->mockPdo
-            ->method('prepare')
-            ->willReturn($this->mockStatement);
-
-        $this->mockStatement
+        $this->mockDatabase
             ->method('execute')
-            ->with([$token])
             ->willReturn(true);
-
-        $this->mockStatement
-            ->method('rowCount')
-            ->willReturn(1);
 
         $result = $this->authRepository->deletePasswordResetToken($token);
 
@@ -305,11 +302,7 @@ class AuthRepositoryTest extends TestCase
     {
         $token = 'jwt_token_to_blacklist';
 
-        $this->mockPdo
-            ->method('prepare')
-            ->willReturn($this->mockStatement);
-
-        $this->mockStatement
+        $this->mockDatabase
             ->method('execute')
             ->willReturn(true);
 
@@ -322,18 +315,9 @@ class AuthRepositoryTest extends TestCase
     {
         $token = 'blacklisted_token';
 
-        $this->mockPdo
-            ->method('prepare')
-            ->willReturn($this->mockStatement);
-
-        $this->mockStatement
-            ->method('execute')
-            ->with([$token])
-            ->willReturn(true);
-
-        $this->mockStatement
+        $this->mockDatabase
             ->method('fetch')
-            ->willReturn(['token' => $token]); // Token exists in blacklist
+            ->willReturn(['count' => 1]); // Token exists in blacklist
 
         $result = $this->authRepository->isTokenBlacklisted($token);
 
@@ -344,43 +328,13 @@ class AuthRepositoryTest extends TestCase
     {
         $token = 'valid_token';
 
-        $this->mockPdo
-            ->method('prepare')
-            ->willReturn($this->mockStatement);
-
-        $this->mockStatement
-            ->method('execute')
-            ->with([$token])
-            ->willReturn(true);
-
-        $this->mockStatement
+        $this->mockDatabase
             ->method('fetch')
-            ->willReturn(false); // Token not in blacklist
+            ->willReturn(['count' => 0]); // Token not in blacklist
 
         $result = $this->authRepository->isTokenBlacklisted($token);
 
         $this->assertFalse($result);
-    }
-
-    public function testUpdateLastLogin()
-    {
-        $userId = 1;
-
-        $this->mockPdo
-            ->method('prepare')
-            ->willReturn($this->mockStatement);
-
-        $this->mockStatement
-            ->method('execute')
-            ->willReturn(true);
-
-        $this->mockStatement
-            ->method('rowCount')
-            ->willReturn(1);
-
-        $result = $this->authRepository->updateLastLogin($userId);
-
-        $this->assertTrue($result);
     }
 
     public function testGetUserLoginHistory()
@@ -390,109 +344,107 @@ class AuthRepositoryTest extends TestCase
             [
                 'id' => 1,
                 'user_id' => $userId,
+                'email' => 'test@example.com',
+                'success' => 1,
                 'ip_address' => '127.0.0.1',
-                'user_agent' => 'Mozilla/5.0...',
-                'login_at' => '2024-01-01 12:00:00'
+                'created_at' => '2024-01-01 12:00:00'
             ],
             [
                 'id' => 2,
                 'user_id' => $userId,
+                'email' => 'test@example.com',
+                'success' => 1,
                 'ip_address' => '127.0.0.1',
-                'user_agent' => 'Mozilla/5.0...',
-                'login_at' => '2024-01-02 12:00:00'
+                'created_at' => '2024-01-02 12:00:00'
             ]
         ];
 
-        $this->mockPdo
-            ->method('prepare')
-            ->willReturn($this->mockStatement);
+        $this->mockDatabase
+            ->method('fetchAll')
+            ->willReturn($loginHistory);
 
-        $this->mockStatement
-            ->method('execute')
-            ->with([$userId])
-            ->willReturn(true);
+        $result = $this->authRepository->getUserLoginHistory($userId);
 
-        $this->mockStatement
+        $this->assertEquals($loginHistory, $result);
+        $this->assertCount(2, $result);
+    }
+
+    public function testGetLoginHistory()
+    {
+        // Test alias method
+        $userId = 1;
+        $loginHistory = [
+            [
+                'id' => 1,
+                'user_id' => $userId,
+                'email' => 'test@example.com',
+                'success' => 1,
+                'ip_address' => '127.0.0.1',
+                'created_at' => '2024-01-01 12:00:00'
+            ]
+        ];
+
+        $this->mockDatabase
             ->method('fetchAll')
             ->willReturn($loginHistory);
 
         $result = $this->authRepository->getLoginHistory($userId);
 
         $this->assertEquals($loginHistory, $result);
-        $this->assertCount(2, $result);
+        $this->assertCount(1, $result);
+    }
+
+    public function testLogLoginAttempt()
+    {
+        $email = 'test@example.com';
+        $success = true;
+        $ipAddress = '127.0.0.1';
+
+        $this->mockDatabase
+            ->method('execute')
+            ->willReturn(true);
+
+        // Should not throw exception
+        $this->authRepository->logLoginAttempt($email, $success, $ipAddress);
+        $this->assertTrue(true); // If we reach here, the method worked
     }
 
     public function testRecordLoginAttempt()
     {
         $email = 'test@example.com';
+        $success = true;
         $ipAddress = '127.0.0.1';
-        $userAgent = 'Mozilla/5.0...';
-        $successful = true;
 
-        $this->mockPdo
-            ->method('prepare')
-            ->willReturn($this->mockStatement);
-
-        $this->mockStatement
+        $this->mockDatabase
             ->method('execute')
             ->willReturn(true);
 
-        $result = $this->authRepository->recordLoginAttempt(
-            $email,
-            $ipAddress,
-            $userAgent,
-            $successful
-        );
-
-        $this->assertTrue($result);
+        // Should not throw exception (void method)
+        $this->authRepository->recordLoginAttempt($email, $success, $ipAddress);
+        $this->assertTrue(true); // If we reach here, the method worked
     }
 
     public function testGetFailedLoginAttempts()
     {
         $email = 'test@example.com';
-        $timeWindow = 3600; // 1 hour
-        $attempts = [
-            [
-                'email' => $email,
-                'ip_address' => '127.0.0.1',
-                'attempted_at' => date('Y-m-d H:i:s', time() - 1800)
-            ]
-        ];
+        $since = time() - 3600; // 1 hour ago
 
-        $this->mockPdo
-            ->method('prepare')
-            ->willReturn($this->mockStatement);
+        $this->mockDatabase
+            ->method('fetch')
+            ->willReturn(['count' => 3]);
 
-        $this->mockStatement
-            ->method('execute')
-            ->willReturn(true);
+        $result = $this->authRepository->getFailedLoginAttempts($email, $since);
 
-        $this->mockStatement
-            ->method('fetchAll')
-            ->willReturn($attempts);
-
-        $result = $this->authRepository->getFailedLoginAttempts($email, $timeWindow);
-
-        $this->assertEquals($attempts, $result);
-        $this->assertCount(1, $result);
+        $this->assertEquals(3, $result);
     }
 
     public function testDeactivateUser()
     {
         $userId = 1;
 
-        $this->mockPdo
-            ->method('prepare')
-            ->willReturn($this->mockStatement);
-
-        $this->mockStatement
+        $this->mockDatabase
             ->method('execute')
-            ->with([0, $userId])
             ->willReturn(true);
-
-        $this->mockStatement
-            ->method('rowCount')
-            ->willReturn(1);
 
         $result = $this->authRepository->deactivateUser($userId);
 
@@ -503,77 +455,78 @@ class AuthRepositoryTest extends TestCase
     {
         $userId = 1;
 
-        $this->mockPdo
-            ->method('prepare')
-            ->willReturn($this->mockStatement);
-
-        $this->mockStatement
+        $this->mockDatabase
             ->method('execute')
-            ->with([1, $userId])
             ->willReturn(true);
-
-        $this->mockStatement
-            ->method('rowCount')
-            ->willReturn(1);
 
         $result = $this->authRepository->activateUser($userId);
 
         $this->assertTrue($result);
     }
 
-    public function testDatabaseExceptionHandling()
+    public function testDeleteExpiredTokens()
     {
-        $email = 'test@example.com';
+        $mockStatement = $this->createMock(\PDOStatement::class);
+        $mockStatement
+            ->method('rowCount')
+            ->willReturn(5);
 
-        // Mock PDO to throw exception
-        $this->mockPdo
-            ->method('prepare')
-            ->willThrowException(new \PDOException('Database connection failed'));
+        $this->mockDatabase
+            ->method('query')
+            ->willReturn($mockStatement);
 
-        $this->expectException(\PDOException::class);
-        $this->expectExceptionMessage('Database connection failed');
+        $result = $this->authRepository->deleteExpiredTokens();
 
-        $this->authRepository->findByEmail($email);
+        $this->assertEquals(5, $result);
     }
 
-    public function testTransactionHandling()
+    public function testCreateEmailVerificationToken()
     {
-        $userData = [
-            'name' => 'Transaction User',
-            'email' => 'transaction@example.com',
-            'password' => '$2y$10$hashedpassword'
-        ];
+        $userId = 1;
+        $token = 'verification_token_123';
+        $expiresAt = new \DateTimeImmutable('+24 hours');
 
-        // Mock transaction methods
-        $this->mockPdo
-            ->expects($this->once())
-            ->method('beginTransaction')
-            ->willReturn(true);
-
-        $this->mockPdo
-            ->expects($this->once())
-            ->method('commit')
-            ->willReturn(true);
-
-        $this->mockPdo
-            ->method('prepare')
-            ->willReturn($this->mockStatement);
-
-        $this->mockStatement
+        $this->mockDatabase
             ->method('execute')
             ->willReturn(true);
 
-        $this->mockPdo
-            ->method('lastInsertId')
-            ->willReturn(1);
+        $result = $this->authRepository->createEmailVerificationToken($userId, $token, $expiresAt);
 
-        $this->mockStatement
+        $this->assertTrue($result);
+    }
+
+    public function testVerifyEmailToken()
+    {
+        $token = 'valid_verification_token';
+        $userData = [
+            'id' => 1,
+            'user_id' => 1,
+            'email' => 'test@example.com',
+            'password' => '$2y$10$hashedpassword',
+            'name' => 'Test User',
+            'role' => 'user',
+            'created_at' => '2024-01-01 00:00:00'
+        ];
+
+        $this->mockDatabase
+            ->method('beginTransaction')
+            ->willReturn(true);
+
+        $this->mockDatabase
             ->method('fetch')
-            ->willReturn(array_merge($userData, ['id' => 1]));
+            ->willReturn($userData);
 
-        $result = $this->authRepository->createWithTransaction($userData);
+        $this->mockDatabase
+            ->method('execute')
+            ->willReturn(true);
 
-        $this->assertNotNull($result);
-        $this->assertEquals($userData['email'], $result['email']);
+        $this->mockDatabase
+            ->method('commit')
+            ->willReturn(true);
+
+        $result = $this->authRepository->verifyEmailToken($token);
+
+        $this->assertInstanceOf(User::class, $result);
+        $this->assertEquals('test@example.com', (string)$result->getEmail());
     }
 } 

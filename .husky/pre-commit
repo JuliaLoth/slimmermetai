@@ -3,13 +3,23 @@
 
 echo "🔍 Running local CI/CD checks before commit..."
 
-# Voer lokale CI/CD uit (zonder tests voor snelheid)
+# Check environment variable for test mode
+# Set CI_FULL_TESTS=1 to run tests, or leave unset for fast mode
+if [ "$CI_FULL_TESTS" = "1" ]; then
+    echo "🧪 Full mode: Running with tests (set by CI_FULL_TESTS=1)"
+    SKIP_TESTS_FLAG=""
+else
+    echo "⚡ Fast mode: Skipping tests for speed (set CI_FULL_TESTS=1 to include tests)"
+    SKIP_TESTS_FLAG="-SkipTests"
+fi
+
+# Voer lokale CI/CD uit
 if command -v pwsh >/dev/null 2>&1; then
     # PowerShell Core beschikbaar
-    pwsh -ExecutionPolicy Bypass -File ./scripts/local-ci.ps1 -SkipTests
+    pwsh -ExecutionPolicy Bypass -File ./scripts/local-ci.ps1 $SKIP_TESTS_FLAG
 elif command -v powershell >/dev/null 2>&1; then
     # Windows PowerShell beschikbaar
-    powershell -ExecutionPolicy Bypass -File ./scripts/local-ci.ps1 -SkipTests
+    powershell -ExecutionPolicy Bypass -File ./scripts/local-ci.ps1 $SKIP_TESTS_FLAG
 else
     echo "⚠️ PowerShell niet gevonden, proberen met bash..."
     if [ -f "./scripts/local-ci.sh" ]; then
@@ -23,6 +33,7 @@ fi
 if [ $? -ne 0 ]; then
     echo "❌ Local CI/CD checks gefaald! Commit wordt geweigerd."
     echo "💡 Los de issues op en probeer opnieuw."
+    echo "💡 Tip: Run 'composer run test' om tests lokaal uit te voeren"
     exit 1
 fi
 

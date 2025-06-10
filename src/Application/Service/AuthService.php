@@ -11,8 +11,12 @@ use App\Domain\Service\PasswordHasherInterface;
 
 class AuthService
 {
-    public function __construct(private UserRepositoryInterface $users, private PasswordHasherInterface $hasher, private JwtServiceInterface $jwt, private ErrorLoggerInterface $logger)
-    {
+    public function __construct(
+        private UserRepositoryInterface $users,
+        private PasswordHasherInterface $hasher,
+        private JwtServiceInterface $jwt,
+        private ErrorLoggerInterface $logger
+    ) {
     }
 
     /**

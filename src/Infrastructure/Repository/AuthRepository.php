@@ -45,7 +45,7 @@ class AuthRepository implements DomainAuthRepositoryInterface, AuthRepositoryInt
 
         try {
             $userId = $this->database->query(
-                "INSERT INTO users (name, email, password, role, created_at, updated_at) VALUES (?, ?, ?, ?, NOW(), NOW())",
+                "INSERT INTO users (name, email, password, role, created_at, updated_at) VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)",
                 [$name, (string)$email, $hashedPassword, $role]
             );
 
@@ -63,7 +63,7 @@ class AuthRepository implements DomainAuthRepositoryInterface, AuthRepositoryInt
     public function updateLastLogin(int $userId): bool
     {
         return $this->database->execute(
-            "UPDATE users SET last_login_at = NOW(), updated_at = NOW() WHERE id = ?",
+            "UPDATE users SET last_login_at = CURRENT_TIMESTAMP, updated_at = CURRENT_TIMESTAMP WHERE id = ?",
             [$userId]
         );
     }
@@ -71,7 +71,7 @@ class AuthRepository implements DomainAuthRepositoryInterface, AuthRepositoryInt
     public function createEmailVerificationToken(int $userId, string $token, \DateTimeInterface $expiresAt): bool
     {
         return $this->database->execute(
-            "INSERT INTO email_tokens (user_id, token, type, expires_at, created_at) VALUES (?, ?, 'verification', ?, NOW())",
+            "INSERT INTO email_tokens (user_id, token, type, expires_at, created_at) VALUES (?, ?, 'verification', ?, CURRENT_TIMESTAMP)",
             [$userId, $token, $expiresAt->format('Y-m-d H:i:s')]
         );
     }
@@ -86,7 +86,7 @@ class AuthRepository implements DomainAuthRepositoryInterface, AuthRepositoryInt
                 "SELECT et.*, u.* FROM email_tokens et 
                  JOIN users u ON et.user_id = u.id 
                  WHERE et.token = ? AND et.type = 'verification' 
-                 AND et.expires_at > NOW() AND et.used_at IS NULL",
+                 AND et.expires_at > CURRENT_TIMESTAMP AND et.used_at IS NULL",
                 [$token]
             );
 
@@ -97,13 +97,13 @@ class AuthRepository implements DomainAuthRepositoryInterface, AuthRepositoryInt
 
             // Markeer token als gebruikt
             $this->database->execute(
-                "UPDATE email_tokens SET used_at = NOW() WHERE token = ?",
+                "UPDATE email_tokens SET used_at = CURRENT_TIMESTAMP WHERE token = ?",
                 [$token]
             );
 
             // Markeer gebruiker als geverifieerd
             $this->database->execute(
-                "UPDATE users SET email_verified_at = NOW(), updated_at = NOW() WHERE id = ?",
+                "UPDATE users SET email_verified_at = CURRENT_TIMESTAMP, updated_at = CURRENT_TIMESTAMP WHERE id = ?",
                 [$tokenRow['user_id']]
             );
 
@@ -128,12 +128,12 @@ class AuthRepository implements DomainAuthRepositoryInterface, AuthRepositoryInt
 
         // Eerst oude tokens invalideren
         $this->database->execute(
-            "UPDATE email_tokens SET used_at = NOW() WHERE user_id = ? AND type = 'password_reset' AND used_at IS NULL",
+            "UPDATE email_tokens SET used_at = CURRENT_TIMESTAMP WHERE user_id = ? AND type = 'password_reset' AND used_at IS NULL",
             [$userId]
         );
 
         return $this->database->execute(
-            "INSERT INTO email_tokens (user_id, token, type, expires_at, created_at) VALUES (?, ?, 'password_reset', ?, NOW())",
+            "INSERT INTO email_tokens (user_id, token, type, expires_at, created_at) VALUES (?, ?, 'password_reset', ?, CURRENT_TIMESTAMP)",
             [$userId, $token, $expiresAt->format('Y-m-d H:i:s')]
         );
     }
@@ -144,7 +144,7 @@ class AuthRepository implements DomainAuthRepositoryInterface, AuthRepositoryInt
             "SELECT et.*, u.email, u.name FROM email_tokens et 
              JOIN users u ON et.user_id = u.id 
              WHERE et.token = ? AND et.type = 'password_reset' 
-             AND et.expires_at > NOW() AND et.used_at IS NULL",
+             AND et.expires_at > CURRENT_TIMESTAMP AND et.used_at IS NULL",
             [$token]
         );
     }
@@ -152,7 +152,7 @@ class AuthRepository implements DomainAuthRepositoryInterface, AuthRepositoryInt
     public function deleteUsedToken(string $token): bool
     {
         return $this->database->execute(
-            "UPDATE email_tokens SET used_at = NOW() WHERE token = ?",
+            "UPDATE email_tokens SET used_at = CURRENT_TIMESTAMP WHERE token = ?",
             [$token]
         );
     }
@@ -160,7 +160,7 @@ class AuthRepository implements DomainAuthRepositoryInterface, AuthRepositoryInt
     public function updatePassword(int $userId, string $hashedPassword): bool
     {
         return $this->database->execute(
-            "UPDATE users SET password = ?, updated_at = NOW() WHERE id = ?",
+            "UPDATE users SET password = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?",
             [$hashedPassword, $userId]
         );
     }
@@ -168,7 +168,7 @@ class AuthRepository implements DomainAuthRepositoryInterface, AuthRepositoryInt
     public function deleteExpiredTokens(): int
     {
         $stmt = $this->database->query(
-            "DELETE FROM email_tokens WHERE expires_at < NOW() OR used_at IS NOT NULL"
+            "DELETE FROM email_tokens WHERE expires_at < CURRENT_TIMESTAMP OR used_at IS NOT NULL"
         );
 
         return $stmt->rowCount();
@@ -184,9 +184,13 @@ class AuthRepository implements DomainAuthRepositoryInterface, AuthRepositoryInt
 
     public function logLoginAttempt(string $email, bool $success, string $ipAddress): void
     {
+        // Find user_id for this email to maintain consistency
+        $user = $this->findUserByEmail(new Email($email));
+        $userId = $user ? $user->getId() : null;
+
         $this->database->execute(
-            "INSERT INTO login_history (email, success, ip_address, user_agent, created_at) VALUES (?, ?, ?, ?, NOW())",
-            [$email, $success ? 1 : 0, $ipAddress, $_SERVER['HTTP_USER_AGENT'] ?? '']
+            "INSERT INTO login_history (user_id, email, success, ip_address, user_agent, created_at) VALUES (?, ?, ?, ?, ?, CURRENT_TIMESTAMP)",
+            [$userId, $email, $success ? 1 : 0, $ipAddress, $_SERVER['HTTP_USER_AGENT'] ?? '']
         );
     }
 
@@ -197,8 +201,9 @@ class AuthRepository implements DomainAuthRepositoryInterface, AuthRepositoryInt
             $since = new \DateTimeImmutable("@{$since}");
         }
 
+        // Simple datetime comparison - works with both SQLite and MySQL
         $result = $this->database->fetch(
-            "SELECT COUNT(*) as count FROM login_history WHERE email = ? AND success = 0 AND created_at > ?",
+            "SELECT COUNT(*) as count FROM login_history WHERE email = ? AND success = 0 AND created_at >= ?",
             [$email, $since->format('Y-m-d H:i:s')]
         );
 
@@ -271,7 +276,7 @@ class AuthRepository implements DomainAuthRepositoryInterface, AuthRepositoryInt
     public function blacklistToken(string $token): bool
     {
         return $this->database->execute(
-            "INSERT INTO blacklisted_tokens (token, blacklisted_at) VALUES (?, NOW())",
+            "INSERT INTO blacklisted_tokens (token, blacklisted_at) VALUES (?, CURRENT_TIMESTAMP)",
             [$token]
         );
     }
@@ -311,7 +316,7 @@ class AuthRepository implements DomainAuthRepositoryInterface, AuthRepositoryInt
     public function deactivateUser(int $userId): bool
     {
         return $this->database->execute(
-            "UPDATE users SET active = 0, updated_at = NOW() WHERE id = ?",
+            "UPDATE users SET active = 0, updated_at = CURRENT_TIMESTAMP WHERE id = ?",
             [$userId]
         );
     }
@@ -322,7 +327,7 @@ class AuthRepository implements DomainAuthRepositoryInterface, AuthRepositoryInt
     public function activateUser(int $userId): bool
     {
         return $this->database->execute(
-            "UPDATE users SET active = 1, updated_at = NOW() WHERE id = ?",
+            "UPDATE users SET active = 1, updated_at = CURRENT_TIMESTAMP WHERE id = ?",
             [$userId]
         );
     }

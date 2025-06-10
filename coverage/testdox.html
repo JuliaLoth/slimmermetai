@@ -53,46 +53,48 @@
     <body>
         <h2>Auth Repository (Tests\Unit\AuthRepository)</h2>
         <ul>
-            <li class="defect">Find by email with existing user</li>
+            <li class="success">Find by email with existing user</li>
             <li class="success">Find by email with non existent user</li>
-            <li class="defect">Find by id with existing user</li>
-            <li class="defect">Create user</li>
-            <li class="defect">Update password</li>
-            <li class="success">Update password with invalid user</li>
-            <li class="defect">Create password reset token</li>
-            <li class="defect">Validate password reset token</li>
-            <li class="defect">Validate expired password reset token</li>
-            <li class="defect">Delete password reset token</li>
-            <li class="defect">Blacklist token</li>
-            <li class="defect">Is token blacklisted</li>
+            <li class="success">Find user by email with email value object</li>
+            <li class="success">Find by id with existing user</li>
+            <li class="success">Create user</li>
+            <li class="success">Create user with transaction</li>
+            <li class="success">Update password</li>
+            <li class="success">Update last login</li>
+            <li class="success">Create password reset token</li>
+            <li class="success">Find password reset token</li>
+            <li class="success">Validate password reset token</li>
+            <li class="success">Validate expired password reset token</li>
+            <li class="success">Delete password reset token</li>
+            <li class="success">Blacklist token</li>
+            <li class="success">Is token blacklisted</li>
             <li class="success">Is token not blacklisted</li>
-            <li class="defect">Update last login</li>
-            <li class="defect">Get user login history</li>
-            <li class="defect">Record login attempt</li>
-            <li class="defect">Get failed login attempts</li>
-            <li class="defect">Deactivate user</li>
-            <li class="defect">Activate user</li>
-            <li class="defect">Database exception handling</li>
-            <li class="defect">Transaction handling</li>
+            <li class="success">Get user login history</li>
+            <li class="success">Get login history</li>
+            <li class="success">Log login attempt</li>
+            <li class="success">Record login attempt</li>
+            <li class="success">Get failed login attempts</li>
+            <li class="success">Deactivate user</li>
+            <li class="success">Activate user</li>
+            <li class="success">Delete expired tokens</li>
+            <li class="success">Create email verification token</li>
+            <li class="success">Verify email token</li>
         </ul>
         <h2>Auth Service (Tests\Unit\AuthService)</h2>
         <ul>
-            <li class="defect">Successful login</li>
-            <li class="defect">Login with invalid email</li>
-            <li class="defect">Login with wrong password</li>
-            <li class="defect">Login with inactive user</li>
-            <li class="defect">Successful registration</li>
-            <li class="defect">Registration with existing email</li>
-            <li class="defect">Token validation</li>
-            <li class="defect">Token validation with invalid token</li>
-            <li class="defect">Forgot password</li>
-            <li class="defect">Forgot password with invalid email</li>
-            <li class="defect">Reset password</li>
-            <li class="defect">Reset password with invalid token</li>
-            <li class="defect">Get current user</li>
-            <li class="defect">Logout</li>
-            <li class="defect">Password strength validation</li>
-            <li class="defect">Email validation</li>
+            <li class="success">Successful login</li>
+            <li class="success">Login with invalid email</li>
+            <li class="success">Login with wrong password</li>
+            <li class="success">Successful registration</li>
+            <li class="success">Registration with existing email</li>
+            <li class="success">Registration with weak password</li>
+            <li class="success">Token verification</li>
+            <li class="success">Token verification with invalid token</li>
+            <li class="success">Token refresh</li>
+            <li class="success">Token refresh with invalid token</li>
+            <li class="success">Logout</li>
+            <li class="success">Get current user</li>
+            <li class="success">Get current user with missing data</li>
         </ul>
         <h2>Config (Tests\Unit\Config)</h2>
         <ul>
@@ -105,6 +107,84 @@
             <li class="success">Environment values</li>
             <li class="success">Security defaults</li>
             <li class="success">Config with missing method</li>
+        </ul>
+        <h2>Email Value Object (Tests\Unit\Domain\EmailValueObject)</h2>
+        <ul>
+            <li class="success">Valid email creation</li>
+            <li class="success">Invalid email throws exception</li>
+            <li class="success">Email equality</li>
+            <li class="success">Email case insensitivity</li>
+            <li class="success">Email to string</li>
+            <li class="success">Email get value</li>
+            <li class="success">Email serialization</li>
+            <li class="success">Email json serialization</li>
+            <li class="success">Email hashing</li>
+            <li class="defect">Email with international characters</li>
+            <li class="success">Email domain extraction</li>
+            <li class="success">Email local part extraction</li>
+            <li class="success">Email immutability</li>
+            <li class="success">Email with plus addressing</li>
+            <li class="success">Email with dots</li>
+            <li class="success">Email with numbers</li>
+            <li class="success">Email with hyphens</li>
+            <li class="success">Email with underscores</li>
+            <li class="success">Email max length</li>
+            <li class="success">Email cloning</li>
+        </ul>
+        <h2>User Entity (Tests\Unit\Domain\UserEntity)</h2>
+        <ul>
+            <li class="success">User creation with all parameters</li>
+            <li class="success">User creation with defaults</li>
+            <li class="success">Email to string</li>
+            <li class="success">User roles</li>
+            <li class="success">User name handling</li>
+            <li class="success">User id handling</li>
+            <li class="success">Created at defaults to now</li>
+            <li class="success">User equality</li>
+            <li class="success">Password hash storage</li>
+            <li class="success">User serialization</li>
+            <li class="success">User with special characters in name</li>
+            <li class="success">User with empty string name</li>
+            <li class="success">User with numeric string id</li>
+            <li class="success">User created at immutability</li>
+        </ul>
+        <h2>Database (Tests\Unit\Infrastructure\Database)</h2>
+        <ul>
+            <li class="success">Database connection</li>
+            <li class="success">Database query</li>
+            <li class="success">Database query first</li>
+            <li class="success">Database query first returns null for no results</li>
+            <li class="success">Database execute</li>
+            <li class="success">Database insert</li>
+            <li class="success">Database transaction commit</li>
+            <li class="success">Database transaction rollback</li>
+            <li class="success">Database in transaction</li>
+            <li class="success">Database last insert id</li>
+            <li class="success">Database prepare and execute</li>
+            <li class="success">Database query with named parameters</li>
+            <li class="success">Database error handling</li>
+            <li class="success">Database multiple queries</li>
+            <li class="success">Database connection reuse</li>
+            <li class="success">Database configuration types</li>
+            <li class="success">Database batch operations</li>
+            <li class="success">Database connection attributes</li>
+        </ul>
+        <h2>Auth Middleware Integration (Tests\Unit\Middleware\AuthMiddlewareIntegration)</h2>
+        <ul>
+            <li class="success">Valid token passes through</li>
+            <li class="success">Missing authorization header returns unauthorized</li>
+            <li class="success">Invalid authorization format returns unauthorized</li>
+            <li class="success">Invalid token returns unauthorized</li>
+            <li class="success">Expired token returns unauthorized</li>
+            <li class="success">Blacklisted token returns unauthorized</li>
+            <li class="success">Different authorization schemes</li>
+            <li class="success">Case insensitive bearer scheme</li>
+            <li class="success">Token without expiration</li>
+            <li class="success">Response headers</li>
+        </ul>
+        <h2>Auth Middleware (Tests\Unit\Middleware\AuthMiddleware)</h2>
+        <ul>
+            <li class="defect">Disabled because jwt service is final</li>
         </ul>
         <h2>Password Hasher (Tests\Unit\PasswordHasher)</h2>
         <ul>
@@ -133,46 +213,50 @@
         </ul>
         <h2>Stripe Service (Tests\Unit\StripeService)</h2>
         <ul>
-            <li class="defect">Get publishable key in development mode</li>
-            <li class="defect">Get publishable key in production mode</li>
-            <li class="defect">Create checkout session in mock mode</li>
-            <li class="defect">Create checkout session with valid items</li>
-            <li class="defect">Create checkout session with empty items</li>
-            <li class="defect">Create checkout session with invalid total</li>
-            <li class="defect">Create payment intent in mock mode</li>
-            <li class="defect">Create payment intent with invalid amount</li>
-            <li class="defect">Create payment intent with invalid currency</li>
-            <li class="defect">Get session status in mock mode</li>
-            <li class="defect">Get session status with invalid id</li>
-            <li class="defect">Verify webhook signature in mock mode</li>
-            <li class="defect">Process webhook in mock mode</li>
-            <li class="defect">Process webhook with unsupported event</li>
-            <li class="defect">Amount conversion</li>
-            <li class="defect">Currency validation</li>
-            <li class="defect">Item validation</li>
-            <li class="defect">Configuration validation</li>
-            <li class="defect">Configuration validation with missing keys</li>
-            <li class="defect">Error logging</li>
-            <li class="defect">Get allowed currencies</li>
-            <li class="defect">Format amount</li>
-            <li class="defect">Calculate tax amount</li>
-            <li class="defect">Generate unique session id</li>
+            <li class="success">Service has required methods</li>
+            <li class="success">Create checkout session in mock mode</li>
+            <li class="success">Create checkout session with options</li>
+            <li class="success">Create checkout session with empty line items</li>
+            <li class="success">Create payment intent in mock mode</li>
+            <li class="success">Get payment status with mock session</li>
+            <li class="success">Handle webhook without secret</li>
+            <li class="success">Constructor with valid config</li>
+            <li class="success">Constructor with invalid stripe key</li>
+            <li class="success">Static get instance method</li>
+            <li class="success">Development mode detection</li>
+            <li class="success">Production mode with invalid key</li>
+            <li class="success">Create payment intent calls stripe s d k</li>
         </ul>
         <h2>Auth Controller (Tests\Feature\AuthController)</h2>
         <ul>
-            <li class="defect">Login with valid credentials</li>
-            <li class="defect">Login with invalid credentials</li>
-            <li class="defect">Login validation errors</li>
-            <li class="defect">Register with valid data</li>
-            <li class="defect">Register with password mismatch</li>
-            <li class="defect">Register with invalid email</li>
-            <li class="defect">Logout with valid token</li>
-            <li class="defect">Forgot password with valid email</li>
-            <li class="defect">Forgot password with invalid email</li>
-            <li class="defect">Me endpoint with valid token</li>
-            <li class="defect">Me endpoint without token</li>
-            <li class="defect">Cors headers</li>
-            <li class="defect">Rate limiting headers</li>
+            <li class="success">Login with valid credentials</li>
+            <li class="success">Login with invalid credentials</li>
+            <li class="success">Login with missing credentials</li>
+            <li class="defect">RegisterWithValidData SKIP</li>
+            <li class="success">Register with existing email</li>
+            <li class="success">Register with validation errors</li>
+            <li class="success">Me with valid token</li>
+            <li class="success">Me without token</li>
+            <li class="success">Me with invalid token</li>
+            <li class="success">Forgot password with valid email</li>
+            <li class="success">Forgot password with invalid email</li>
+            <li class="success">Logout</li>
+            <li class="success">Invalid endpoint</li>
+            <li class="success">Reset password with valid token</li>
+            <li class="success">Reset password with invalid token</li>
+            <li class="success">Verify email with valid token</li>
+            <li class="success">Refresh token not implemented</li>
+        </ul>
+        <h2>Full User Journey Feature (Tests\Feature\FullUserJourneyFeature)</h2>
+        <ul>
+            <li class="success">Complete user lifecycle from registration to login</li>
+            <li class="success">Password reset complete flow</li>
+            <li class="success">Email verification complete flow</li>
+            <li class="defect">Multiple failed login attempts</li>
+            <li class="defect">Token blacklisting flow</li>
+            <li class="success">User account security</li>
+            <li class="success">Data integrity throughout journey</li>
+            <li class="success">Concurrent user operations</li>
         </ul>
         <h2>Stripe Controller (Tests\Feature\StripeController)</h2>
         <ul>
@@ -182,6 +266,67 @@
             <li class="success">Webhook success</li>
             <li class="success">Webhook exception</li>
             <li class="success">Config success</li>
+        </ul>
+        <h2>User Registration Feature (Tests\Feature\UserRegistrationFeature)</h2>
+        <ul>
+            <li class="success">Complete user registration journey</li>
+            <li class="success">User registration with invalid data</li>
+            <li class="success">Registration with existing email</li>
+            <li class="success">Email verification flow</li>
+            <li class="success">Password reset flow</li>
+            <li class="success">User profile update</li>
+            <li class="success">Account deletion</li>
+            <li class="success">Security features</li>
+            <li class="defect">Data validation and sanitization</li>
+        </ul>
+        <h2>Auth Controller Integration (Tests\Integration\AuthControllerIntegration)</h2>
+        <ul>
+            <li class="success">Complete registration flow</li>
+            <li class="success">Complete login flow</li>
+            <li class="success">Login with invalid credentials</li>
+            <li class="success">Me endpoint with valid token</li>
+            <li class="success">Me endpoint with invalid token</li>
+            <li class="success">Forgot password flow</li>
+            <li class="success">Reset password flow</li>
+            <li class="success">Email verification flow</li>
+            <li class="success">Logout endpoint</li>
+            <li class="success">Registration validation errors</li>
+            <li class="success">Invalid endpoint</li>
+            <li class="defect">Rate limiting on failed logins</li>
+            <li class="success">C o r s headers</li>
+        </ul>
+        <h2>Auth Repository Integration (Tests\Integration\AuthRepositoryIntegration)</h2>
+        <ul>
+            <li class="success">Create user with real database</li>
+            <li class="success">Find user by email with real database</li>
+            <li class="success">Update password with real database</li>
+            <li class="success">Create email verification token</li>
+            <li class="success">Verify email token with real database</li>
+            <li class="success">Create password reset token with real database</li>
+            <li class="success">Log login attempt with real database</li>
+            <li class="success">Get failed login attempts with real database</li>
+            <li class="success">Blacklist token with real database</li>
+            <li class="success">Update last login with real database</li>
+            <li class="success">Delete expired tokens with real database</li>
+            <li class="success">User login history with real database</li>
+            <li class="success">Create user with duplicate email fails</li>
+            <li class="success">Transaction rollback on error</li>
+        </ul>
+        <h2>Auth Service Integration (Tests\Integration\AuthServiceIntegration)</h2>
+        <ul>
+            <li class="success">Full login flow with real services</li>
+            <li class="success">Full registration flow with real services</li>
+            <li class="success">Login with wrong password fails</li>
+            <li class="success">Registration with weak password fails</li>
+            <li class="success">Registration with existing email fails</li>
+            <li class="success">Token verification with real j w t</li>
+            <li class="success">Token refresh with real j w t</li>
+            <li class="success">Logout succeeds</li>
+            <li class="success">Get current user with valid payload</li>
+            <li class="success">Password strength validation</li>
+            <li class="success">Password hashing and verification</li>
+            <li class="success">J w t token generation and verification</li>
+            <li class="success">Complete user lifecycle</li>
         </ul>
         <h2>Database Mock (Tests\Integration\DatabaseMock)</h2>
         <ul>

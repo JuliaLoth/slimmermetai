@@ -2,17 +2,17 @@
 <phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
   <file name="FastRouteRequestHandler.php" path="\Http\Routing">
     <totals>
-      <lines total="96" comments="20" code="76" executable="35" executed="0" percent="0.00"/>
+      <lines total="109" comments="20" code="89" executable="47" executed="0" percent="0.00"/>
       <methods count="3" tested="0" percent="0.00"/>
       <functions count="0" tested="0" percent="0"/>
       <classes count="1" tested="0" percent="0.00"/>
       <traits count="0" tested="0" percent="0"/>
     </totals>
-    <class name="App\Http\Routing\FastRouteRequestHandler" start="20" executable="35" executed="0" crap="182">
+    <class name="App\Http\Routing\FastRouteRequestHandler" start="20" executable="47" executed="0" crap="182">
       <namespace name="App\Http\Routing"/>
       <method name="__construct" signature="__construct(FastRoute\Dispatcher $dispatcher)" start="22" end="24" crap="2" executable="1" executed="0" coverage="0"/>
-      <method name="handle" signature="handle(Psr\Http\Message\ServerRequestInterface $request): Psr\Http\Message\ResponseInterface" start="26" end="57" crap="42" executable="20" executed="0" coverage="0"/>
-      <method name="invokeHandler" signature="invokeHandler($handler, Psr\Http\Message\ServerRequestInterface $request, array $vars): mixed" start="66" end="94" crap="42" executable="14" executed="0" coverage="0"/>
+      <method name="handle" signature="handle(Psr\Http\Message\ServerRequestInterface $request): Psr\Http\Message\ResponseInterface" start="26" end="70" crap="42" executable="32" executed="0" coverage="0"/>
+      <method name="invokeHandler" signature="invokeHandler($handler, Psr\Http\Message\ServerRequestInterface $request, array $vars): mixed" start="79" end="107" crap="42" executable="14" executed="0" coverage="0"/>
     </class>
     <source>
       <line no="1">
@@ -208,9 +208,14 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_STRING">Response</token>
         <token name="T_OPEN_BRACKET">(</token>
+      </line>
+      <line no="32">
+        <token name="T_WHITESPACE">                    </token>
         <token name="T_LNUMBER">404</token>
         <token name="T_COMMA">,</token>
-        <token name="T_WHITESPACE"> </token>
+      </line>
+      <line no="33">
+        <token name="T_WHITESPACE">                    </token>
         <token name="T_OPEN_SQUARE">[</token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'Content-Type'</token>
         <token name="T_WHITESPACE"> </token>
@@ -219,7 +224,9 @@
         <token name="T_CONSTANT_ENCAPSED_STRING">'application/json'</token>
         <token name="T_CLOSE_SQUARE">]</token>
         <token name="T_COMMA">,</token>
-        <token name="T_WHITESPACE"> </token>
+      </line>
+      <line no="34">
+        <token name="T_WHITESPACE">                    </token>
         <token name="T_STRING">json_encode</token>
         <token name="T_OPEN_BRACKET">(</token>
         <token name="T_OPEN_SQUARE">[</token>
@@ -230,10 +237,13 @@
         <token name="T_CONSTANT_ENCAPSED_STRING">'Pagina niet gevonden'</token>
         <token name="T_CLOSE_SQUARE">]</token>
         <token name="T_CLOSE_BRACKET">)</token>
+      </line>
+      <line no="35">
+        <token name="T_WHITESPACE">                </token>
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="32">
+      <line no="36">
         <token name="T_WHITESPACE">            </token>
         <token name="T_CASE">case</token>
         <token name="T_WHITESPACE"> </token>
@@ -242,7 +252,7 @@
         <token name="T_STRING">METHOD_NOT_ALLOWED</token>
         <token name="T_COLON">:</token>
       </line>
-      <line no="33">
+      <line no="37">
         <token name="T_WHITESPACE">                </token>
         <token name="T_RETURN">return</token>
         <token name="T_WHITESPACE"> </token>
@@ -250,9 +260,14 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_STRING">Response</token>
         <token name="T_OPEN_BRACKET">(</token>
+      </line>
+      <line no="38">
+        <token name="T_WHITESPACE">                    </token>
         <token name="T_LNUMBER">405</token>
         <token name="T_COMMA">,</token>
-        <token name="T_WHITESPACE"> </token>
+      </line>
+      <line no="39">
+        <token name="T_WHITESPACE">                    </token>
         <token name="T_OPEN_SQUARE">[</token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'Content-Type'</token>
         <token name="T_WHITESPACE"> </token>
@@ -261,7 +276,9 @@
         <token name="T_CONSTANT_ENCAPSED_STRING">'application/json'</token>
         <token name="T_CLOSE_SQUARE">]</token>
         <token name="T_COMMA">,</token>
-        <token name="T_WHITESPACE"> </token>
+      </line>
+      <line no="40">
+        <token name="T_WHITESPACE">                    </token>
         <token name="T_STRING">json_encode</token>
         <token name="T_OPEN_BRACKET">(</token>
         <token name="T_OPEN_SQUARE">[</token>
@@ -272,10 +289,13 @@
         <token name="T_CONSTANT_ENCAPSED_STRING">'Method Not Allowed'</token>
         <token name="T_CLOSE_SQUARE">]</token>
         <token name="T_CLOSE_BRACKET">)</token>
+      </line>
+      <line no="41">
+        <token name="T_WHITESPACE">                </token>
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="34">
+      <line no="42">
         <token name="T_WHITESPACE">            </token>
         <token name="T_CASE">case</token>
         <token name="T_WHITESPACE"> </token>
@@ -284,8 +304,8 @@
         <token name="T_STRING">FOUND</token>
         <token name="T_COLON">:</token>
       </line>
-      <line no="35">
-        <token name="T_WHITESPACE">                                                                                                                                                                                                             </token>
+      <line no="43">
+        <token name="T_WHITESPACE">                </token>
         <token name="T_VARIABLE">$handler</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_EQUAL">=</token>
@@ -296,10 +316,10 @@
         <token name="T_CLOSE_SQUARE">]</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="36">
+      <line no="44">
         <token name="T_WHITESPACE">                </token>
         <token name="T_VARIABLE">$vars</token>
-        <token name="T_WHITESPACE">    </token>
+        <token name="T_WHITESPACE"> </token>
         <token name="T_EQUAL">=</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_VARIABLE">$routeInfo</token>
@@ -308,18 +328,19 @@
         <token name="T_CLOSE_SQUARE">]</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="37">
-        <token name="T_WHITESPACE">            </token>
+      <line no="45"/>
+      <line no="46">
+        <token name="T_WHITESPACE">                </token>
         <token name="T_COMMENT">// ---- Buffer legacy echo output ----</token>
       </line>
-      <line no="38">
-        <token name="T_WHITESPACE">                        </token>
+      <line no="47">
+        <token name="T_WHITESPACE">                </token>
         <token name="T_STRING">ob_start</token>
         <token name="T_OPEN_BRACKET">(</token>
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="39">
+      <line no="48">
         <token name="T_WHITESPACE">                </token>
         <token name="T_VARIABLE">$result</token>
         <token name="T_WHITESPACE"> </token>
@@ -339,7 +360,7 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="40">
+      <line no="49">
         <token name="T_WHITESPACE">                </token>
         <token name="T_VARIABLE">$buffer</token>
         <token name="T_WHITESPACE"> </token>
@@ -350,7 +371,8 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="41">
+      <line no="50"/>
+      <line no="51">
         <token name="T_WHITESPACE">                </token>
         <token name="T_IF">if</token>
         <token name="T_WHITESPACE"> </token>
@@ -364,19 +386,19 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_OPEN_CURLY">{</token>
       </line>
-      <line no="42">
+      <line no="52">
         <token name="T_WHITESPACE">                    </token>
         <token name="T_RETURN">return</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_VARIABLE">$result</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="43">
+      <line no="53">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="44"/>
-      <line no="45">
+      <line no="54"/>
+      <line no="55">
         <token name="T_WHITESPACE">                </token>
         <token name="T_VARIABLE">$body</token>
         <token name="T_WHITESPACE"> </token>
@@ -385,7 +407,7 @@
         <token name="T_CONSTANT_ENCAPSED_STRING">''</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="46">
+      <line no="56">
         <token name="T_WHITESPACE">                </token>
         <token name="T_IF">if</token>
         <token name="T_WHITESPACE"> </token>
@@ -398,7 +420,7 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_OPEN_CURLY">{</token>
       </line>
-      <line no="47">
+      <line no="57">
         <token name="T_WHITESPACE">                    </token>
         <token name="T_VARIABLE">$body</token>
         <token name="T_WHITESPACE"> </token>
@@ -407,11 +429,11 @@
         <token name="T_VARIABLE">$result</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="48">
+      <line no="58">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="49">
+      <line no="59">
         <token name="T_WHITESPACE">                </token>
         <token name="T_VARIABLE">$body</token>
         <token name="T_WHITESPACE"> </token>
@@ -420,9 +442,8 @@
         <token name="T_VARIABLE">$buffer</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="50"/>
-      <line no="51"/>
-      <line no="52">
+      <line no="60"/>
+      <line no="61">
         <token name="T_WHITESPACE">                </token>
         <token name="T_RETURN">return</token>
         <token name="T_WHITESPACE"> </token>
@@ -430,9 +451,14 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_STRING">Response</token>
         <token name="T_OPEN_BRACKET">(</token>
+      </line>
+      <line no="62">
+        <token name="T_WHITESPACE">                    </token>
         <token name="T_LNUMBER">200</token>
         <token name="T_COMMA">,</token>
-        <token name="T_WHITESPACE"> </token>
+      </line>
+      <line no="63">
+        <token name="T_WHITESPACE">                    </token>
         <token name="T_OPEN_SQUARE">[</token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'Content-Type'</token>
         <token name="T_WHITESPACE"> </token>
@@ -441,21 +467,26 @@
         <token name="T_CONSTANT_ENCAPSED_STRING">'text/html; charset=utf-8'</token>
         <token name="T_CLOSE_SQUARE">]</token>
         <token name="T_COMMA">,</token>
-        <token name="T_WHITESPACE"> </token>
+      </line>
+      <line no="64">
+        <token name="T_WHITESPACE">                    </token>
         <token name="T_VARIABLE">$body</token>
+      </line>
+      <line no="65">
+        <token name="T_WHITESPACE">                </token>
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="53">
+      <line no="66">
         <token name="T_WHITESPACE">        </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="54"/>
-      <line no="55">
+      <line no="67"/>
+      <line no="68">
         <token name="T_WHITESPACE">        </token>
         <token name="T_COMMENT">// Fallback &#x2013; zou theoretisch nooit moeten gebeuren</token>
       </line>
-      <line no="56">
+      <line no="69">
         <token name="T_WHITESPACE">        </token>
         <token name="T_RETURN">return</token>
         <token name="T_WHITESPACE"> </token>
@@ -474,34 +505,34 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="57">
+      <line no="70">
         <token name="T_WHITESPACE">    </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="58"/>
-      <line no="59">
+      <line no="71"/>
+      <line no="72">
         <token name="T_WHITESPACE">    </token>
         <token name="T_DOC_COMMENT">/**</token>
       </line>
-      <line no="60">
+      <line no="73">
         <token name="T_DOC_COMMENT">     * Roept de gevonden handler aan, met ondersteuning voor dependency-injectie</token>
       </line>
-      <line no="61">
+      <line no="74">
         <token name="T_DOC_COMMENT">     * op moderne controllers.</token>
       </line>
-      <line no="62">
+      <line no="75">
         <token name="T_DOC_COMMENT">     *</token>
       </line>
-      <line no="63">
+      <line no="76">
         <token name="T_DOC_COMMENT">     * @param callable|array{class-string, string} $handler</token>
       </line>
-      <line no="64">
+      <line no="77">
         <token name="T_DOC_COMMENT">     * @param array&lt;string,string&gt;                 $vars</token>
       </line>
-      <line no="65">
+      <line no="78">
         <token name="T_DOC_COMMENT">     */</token>
       </line>
-      <line no="66">
+      <line no="79">
         <token name="T_WHITESPACE">    </token>
         <token name="T_PRIVATE">private</token>
         <token name="T_WHITESPACE"> </token>
@@ -525,15 +556,15 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_STRING">mixed</token>
       </line>
-      <line no="67">
+      <line no="80">
         <token name="T_WHITESPACE">    </token>
         <token name="T_OPEN_CURLY">{</token>
       </line>
-      <line no="68">
+      <line no="81">
         <token name="T_WHITESPACE">        </token>
         <token name="T_COMMENT">// Inline callable (closure of function)</token>
       </line>
-      <line no="69">
+      <line no="82">
         <token name="T_WHITESPACE">        </token>
         <token name="T_IF">if</token>
         <token name="T_WHITESPACE"> </token>
@@ -554,7 +585,7 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_OPEN_CURLY">{</token>
       </line>
-      <line no="70">
+      <line no="83">
         <token name="T_WHITESPACE">            </token>
         <token name="T_RETURN">return</token>
         <token name="T_WHITESPACE"> </token>
@@ -567,20 +598,20 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="71">
+      <line no="84">
         <token name="T_WHITESPACE">        </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="72"/>
-      <line no="73">
+      <line no="85"/>
+      <line no="86">
         <token name="T_WHITESPACE">        </token>
         <token name="T_COMMENT">// Controller klas met methode</token>
       </line>
-      <line no="74">
+      <line no="87">
         <token name="T_WHITESPACE">        </token>
         <token name="T_DOC_COMMENT">/** @var class-string $class */</token>
       </line>
-      <line no="75">
+      <line no="88">
         <token name="T_WHITESPACE">        </token>
         <token name="T_OPEN_SQUARE">[</token>
         <token name="T_VARIABLE">$class</token>
@@ -594,7 +625,7 @@
         <token name="T_VARIABLE">$handler</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="76">
+      <line no="89">
         <token name="T_WHITESPACE">        </token>
         <token name="T_VARIABLE">$controller</token>
         <token name="T_WHITESPACE"> </token>
@@ -610,7 +641,7 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="77">
+      <line no="90">
         <token name="T_WHITESPACE">        </token>
         <token name="T_VARIABLE">$reflection</token>
         <token name="T_WHITESPACE"> </token>
@@ -627,7 +658,7 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="78">
+      <line no="91">
         <token name="T_WHITESPACE">        </token>
         <token name="T_VARIABLE">$invokeParams</token>
         <token name="T_WHITESPACE"> </token>
@@ -637,7 +668,7 @@
         <token name="T_CLOSE_SQUARE">]</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="79">
+      <line no="92">
         <token name="T_WHITESPACE">        </token>
         <token name="T_IF">if</token>
         <token name="T_WHITESPACE"> </token>
@@ -655,7 +686,7 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_OPEN_CURLY">{</token>
       </line>
-      <line no="80">
+      <line no="93">
         <token name="T_WHITESPACE">            </token>
         <token name="T_VARIABLE">$first</token>
         <token name="T_WHITESPACE"> </token>
@@ -671,7 +702,7 @@
         <token name="T_CLOSE_SQUARE">]</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="81">
+      <line no="94">
         <token name="T_WHITESPACE">            </token>
         <token name="T_VARIABLE">$type</token>
         <token name="T_WHITESPACE">  </token>
@@ -684,18 +715,18 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="82"/>
-      <line no="83">
+      <line no="95"/>
+      <line no="96">
         <token name="T_WHITESPACE">            </token>
         <token name="T_COMMENT">// PHP 8+ compatible type checking</token>
       </line>
-      <line no="84">
+      <line no="97">
         <token name="T_WHITESPACE">            </token>
         <token name="T_IF">if</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_OPEN_BRACKET">(</token>
       </line>
-      <line no="85">
+      <line no="98">
         <token name="T_WHITESPACE">                </token>
         <token name="T_VARIABLE">$type</token>
         <token name="T_WHITESPACE"> </token>
@@ -705,7 +736,7 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_BOOLEAN_AND">&amp;&amp;</token>
       </line>
-      <line no="86">
+      <line no="99">
         <token name="T_WHITESPACE">                </token>
         <token name="T_STRING">is_a</token>
         <token name="T_OPEN_BRACKET">(</token>
@@ -724,13 +755,13 @@
         <token name="T_STRING">true</token>
         <token name="T_CLOSE_BRACKET">)</token>
       </line>
-      <line no="87">
+      <line no="100">
         <token name="T_WHITESPACE">            </token>
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_OPEN_CURLY">{</token>
       </line>
-      <line no="88">
+      <line no="101">
         <token name="T_WHITESPACE">                </token>
         <token name="T_VARIABLE">$invokeParams</token>
         <token name="T_OPEN_SQUARE">[</token>
@@ -741,16 +772,16 @@
         <token name="T_VARIABLE">$request</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="89">
+      <line no="102">
         <token name="T_WHITESPACE">            </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="90">
+      <line no="103">
         <token name="T_WHITESPACE">        </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="91"/>
-      <line no="92">
+      <line no="104"/>
+      <line no="105">
         <token name="T_WHITESPACE">        </token>
         <token name="T_VARIABLE">$invokeParams</token>
         <token name="T_WHITESPACE"> </token>
@@ -765,7 +796,7 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="93">
+      <line no="106">
         <token name="T_WHITESPACE">        </token>
         <token name="T_RETURN">return</token>
         <token name="T_WHITESPACE"> </token>
@@ -778,14 +809,14 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="94">
+      <line no="107">
         <token name="T_WHITESPACE">    </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="95">
+      <line no="108">
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="96"/>
+      <line no="109"/>
     </source>
   </file>
 </phpunit>

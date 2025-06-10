@@ -84,11 +84,19 @@ final class EmailService
             <div style="background:#f9f9f9;border-radius:10px;padding:20px;margin-bottom:20px;">
                 <h2 style="color:#333;margin-bottom:15px;">$title</h2>
                 <p style="color:#666;line-height:1.5;margin-bottom:20px;">Hallo {$displayName},</p>
-                <p style="color:#666;line-height:1.5;margin-bottom:20px;">Klik op de onderstaande knop om verder te gaan.</p>
+                <p style="color:#666;line-height:1.5;margin-bottom:20px;">
+                    Klik op de onderstaande knop om verder te gaan.
+                </p>
                 <div style="text-align:center;margin:30px 0;">
-                    <a href="$actionUrl" style="background:#5852f2;color:#fff;padding:12px 25px;text-decoration:none;border-radius:5px;font-weight:bold;display:inline-block;">$buttonText</a>
+                    <a href="$actionUrl" 
+                       style="background:#5852f2;color:#fff;padding:12px 25px;text-decoration:none;
+                              border-radius:5px;font-weight:bold;display:inline-block;">
+                        $buttonText
+                    </a>
                 </div>
-                <p style="color:#666;line-height:1.5;margin-bottom:20px;">Als de knop niet werkt, kopieer en plak deze URL in je browser:<br/>$actionUrl</p>
+                <p style="color:#666;line-height:1.5;margin-bottom:20px;">
+                    Als de knop niet werkt, kopieer en plak deze URL in je browser:<br/>$actionUrl
+                </p>
                 <p style="color:#666;line-height:1.5;margin-top:30px;">$note</p>
             </div>
             <div style="text-align:center;color:#999;font-size:12px;">

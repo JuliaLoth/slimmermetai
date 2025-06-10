@@ -923,6 +923,7 @@
         <covered by="Tests\Unit\ConfigTest::testEnvironmentValues"/>
         <covered by="Tests\Unit\ConfigTest::testSecurityDefaults"/>
         <covered by="Tests\Unit\StripeControllerTest::testConfigWithValidKey"/>
+        <covered by="Tests\Unit\StripeServiceTest::testStaticGetInstanceMethod"/>
         <covered by="Tests\Feature\StripeControllerTest::testConfigSuccess"/>
       </line>
       <line nr="136">

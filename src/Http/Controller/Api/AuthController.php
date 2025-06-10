@@ -58,7 +58,7 @@ class AuthController implements RequestHandlerInterface
             // Check if user already exists
             $existingUser = $this->authRepository->findUserByEmail($email);
             if ($existingUser) {
-                return ApiResponse::error('Dit e-mailadres is al in gebruik');
+                return ApiResponse::error('Dit e-mailadres is al in gebruik', 409);
             }
 
             // Hash password
@@ -255,7 +255,7 @@ class AuthController implements RequestHandlerInterface
             $hashedPassword = $this->passwordHasher->hash($data['password']);
 
             // Update password
-            $this->authRepository->updatePassword($tokenData['user_id'], $hashedPassword);
+            $this->authRepository->updatePassword((int)$tokenData['user_id'], $hashedPassword);
 
             // Mark token as used
             $this->authRepository->deleteUsedToken($data['token']);

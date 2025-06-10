@@ -2,13 +2,13 @@
 <phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
   <file name="CourseRepository.php" path="\Infrastructure\Repository">
     <totals>
-      <lines total="813" comments="12" code="801" executable="455" executed="0" percent="0.00"/>
+      <lines total="819" comments="12" code="807" executable="461" executed="0" percent="0.00"/>
       <methods count="56" tested="0" percent="0.00"/>
       <functions count="0" tested="0" percent="0"/>
       <classes count="1" tested="0" percent="0.00"/>
       <traits count="0" tested="0" percent="0"/>
     </totals>
-    <class name="App\Infrastructure\Repository\CourseRepository" start="11" executable="455" executed="0" crap="6162">
+    <class name="App\Infrastructure\Repository\CourseRepository" start="11" executable="461" executed="0" crap="6162">
       <namespace name="App\Infrastructure\Repository"/>
       <method name="__construct" signature="__construct(App\Infrastructure\Database\Database $db, ?App\Infrastructure\Database\DatabasePerformanceMonitor $performanceMonitor)" start="13" end="17" crap="2" executable="1" executed="0" coverage="0"/>
       <method name="findCourseById" signature="findCourseById(int $courseId): ?array" start="19" end="25" crap="2" executable="4" executed="0" coverage="0"/>
@@ -65,7 +65,7 @@
       <method name="saveUserProgress" signature="saveUserProgress(int $userId, string $courseId, array $progressData): bool" start="649" end="668" crap="6" executable="14" executed="0" coverage="0"/>
       <method name="saveQuizResult" signature="saveQuizResult(int $userId, string $courseId, string $lessonId, array $quizData): bool" start="670" end="683" crap="2" executable="10" executed="0" coverage="0"/>
       <method name="issueCertificate" signature="issueCertificate(int $userId, string $courseId): string" start="685" end="688" crap="2" executable="1" executed="0" coverage="0"/>
-      <method name="getHardcodedCourseData" signature="getHardcodedCourseData(string $id): ?array" start="690" end="811" crap="2" executable="118" executed="0" coverage="0"/>
+      <method name="getHardcodedCourseData" signature="getHardcodedCourseData(string $id): ?array" start="690" end="817" crap="2" executable="124" executed="0" coverage="0"/>
     </class>
     <source>
       <line no="1">
@@ -5168,10 +5168,16 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_DOUBLE_ARROW">=&gt;</token>
         <token name="T_WHITESPACE"> </token>
-        <token name="T_CONSTANT_ENCAPSED_STRING">'De perfecte startcursus voor iedereen die AI wil gaan gebruiken in hun werk. Leer de basis van ChatGPT, prompting en praktische toepassingen.'</token>
-        <token name="T_COMMA">,</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'De perfecte startcursus voor iedereen die AI wil gaan gebruiken in hun werk. '</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOT">.</token>
       </line>
       <line no="704">
+        <token name="T_WHITESPACE">                    </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'Leer de basis van ChatGPT, prompting en praktische toepassingen.'</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="705">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'features'</token>
         <token name="T_WHITESPACE"> </token>
@@ -5179,45 +5185,45 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_OPEN_SQUARE">[</token>
       </line>
-      <line no="705">
+      <line no="706">
         <token name="T_WHITESPACE">                    </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'8 praktische lessen'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="706">
+      <line no="707">
         <token name="T_WHITESPACE">                    </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'Hands-on oefeningen'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="707">
+      <line no="708">
         <token name="T_WHITESPACE">                    </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'Certificaat'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="708">
+      <line no="709">
         <token name="T_WHITESPACE">                    </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'Levenslange toegang'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="709">
+      <line no="710">
         <token name="T_WHITESPACE">                    </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'Community access'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="710">
+      <line no="711">
         <token name="T_WHITESPACE">                    </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'E-book inclusief'</token>
       </line>
-      <line no="711">
+      <line no="712">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CLOSE_SQUARE">]</token>
       </line>
-      <line no="712">
+      <line no="713">
         <token name="T_WHITESPACE">            </token>
         <token name="T_CLOSE_SQUARE">]</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="713">
+      <line no="714">
         <token name="T_WHITESPACE">            </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'prompt-engineering'</token>
         <token name="T_WHITESPACE"> </token>
@@ -5225,18 +5231,9 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_OPEN_SQUARE">[</token>
       </line>
-      <line no="714">
-        <token name="T_WHITESPACE">                </token>
-        <token name="T_CONSTANT_ENCAPSED_STRING">'id'</token>
-        <token name="T_WHITESPACE"> </token>
-        <token name="T_DOUBLE_ARROW">=&gt;</token>
-        <token name="T_WHITESPACE"> </token>
-        <token name="T_CONSTANT_ENCAPSED_STRING">'prompt-engineering'</token>
-        <token name="T_COMMA">,</token>
-      </line>
       <line no="715">
         <token name="T_WHITESPACE">                </token>
-        <token name="T_CONSTANT_ENCAPSED_STRING">'slug'</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'id'</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_DOUBLE_ARROW">=&gt;</token>
         <token name="T_WHITESPACE"> </token>
@@ -5245,16 +5242,16 @@
       </line>
       <line no="716">
         <token name="T_WHITESPACE">                </token>
-        <token name="T_CONSTANT_ENCAPSED_STRING">'name'</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'slug'</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_DOUBLE_ARROW">=&gt;</token>
         <token name="T_WHITESPACE"> </token>
-        <token name="T_CONSTANT_ENCAPSED_STRING">'Advanced Prompt Engineering'</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'prompt-engineering'</token>
         <token name="T_COMMA">,</token>
       </line>
       <line no="717">
         <token name="T_WHITESPACE">                </token>
-        <token name="T_CONSTANT_ENCAPSED_STRING">'title'</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'name'</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_DOUBLE_ARROW">=&gt;</token>
         <token name="T_WHITESPACE"> </token>
@@ -5263,6 +5260,15 @@
       </line>
       <line no="718">
         <token name="T_WHITESPACE">                </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'title'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'Advanced Prompt Engineering'</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="719">
+        <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'price'</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_DOUBLE_ARROW">=&gt;</token>
@@ -5270,7 +5276,7 @@
         <token name="T_CONSTANT_ENCAPSED_STRING">'197.00'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="719">
+      <line no="720">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'image'</token>
         <token name="T_WHITESPACE"> </token>
@@ -5279,7 +5285,7 @@
         <token name="T_CONSTANT_ENCAPSED_STRING">'/images/prompt-engineering-course.svg'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="720">
+      <line no="721">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'level'</token>
         <token name="T_WHITESPACE"> </token>
@@ -5288,7 +5294,7 @@
         <token name="T_CONSTANT_ENCAPSED_STRING">'Gevorderd'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="721">
+      <line no="722">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'duration'</token>
         <token name="T_WHITESPACE"> </token>
@@ -5297,16 +5303,22 @@
         <token name="T_CONSTANT_ENCAPSED_STRING">'6 uur'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="722">
+      <line no="723">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'description'</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_DOUBLE_ARROW">=&gt;</token>
         <token name="T_WHITESPACE"> </token>
-        <token name="T_CONSTANT_ENCAPSED_STRING">'Ontdek geavanceerde prompt technieken om maximale resultaten uit AI te halen. Van chain-of-thought tot role-playing prompts.'</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'Ontdek geavanceerde prompt technieken om maximale resultaten uit AI te halen. '</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOT">.</token>
+      </line>
+      <line no="724">
+        <token name="T_WHITESPACE">                    </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'Van chain-of-thought tot role-playing prompts.'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="723">
+      <line no="725">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'features'</token>
         <token name="T_WHITESPACE"> </token>
@@ -5314,45 +5326,45 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_OPEN_SQUARE">[</token>
       </line>
-      <line no="724">
+      <line no="726">
         <token name="T_WHITESPACE">                    </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'12 geavanceerde technieken'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="725">
+      <line no="727">
         <token name="T_WHITESPACE">                    </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'150+ prompt templates'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="726">
+      <line no="728">
         <token name="T_WHITESPACE">                    </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'Real-world cases'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="727">
+      <line no="729">
         <token name="T_WHITESPACE">                    </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'Expert feedback'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="728">
+      <line no="730">
         <token name="T_WHITESPACE">                    </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'Live Q&amp;A sessies'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="729">
+      <line no="731">
         <token name="T_WHITESPACE">                    </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'Bonus prompts library'</token>
       </line>
-      <line no="730">
+      <line no="732">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CLOSE_SQUARE">]</token>
       </line>
-      <line no="731">
+      <line no="733">
         <token name="T_WHITESPACE">            </token>
         <token name="T_CLOSE_SQUARE">]</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="732">
+      <line no="734">
         <token name="T_WHITESPACE">            </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'ai-automation'</token>
         <token name="T_WHITESPACE"> </token>
@@ -5360,7 +5372,7 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_OPEN_SQUARE">[</token>
       </line>
-      <line no="733">
+      <line no="735">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'id'</token>
         <token name="T_WHITESPACE"> </token>
@@ -5369,7 +5381,7 @@
         <token name="T_CONSTANT_ENCAPSED_STRING">'ai-automation'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="734">
+      <line no="736">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'slug'</token>
         <token name="T_WHITESPACE"> </token>
@@ -5378,7 +5390,7 @@
         <token name="T_CONSTANT_ENCAPSED_STRING">'ai-automation'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="735">
+      <line no="737">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'name'</token>
         <token name="T_WHITESPACE"> </token>
@@ -5387,7 +5399,7 @@
         <token name="T_CONSTANT_ENCAPSED_STRING">'AI Workflow Automatisering'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="736">
+      <line no="738">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'title'</token>
         <token name="T_WHITESPACE"> </token>
@@ -5396,7 +5408,7 @@
         <token name="T_CONSTANT_ENCAPSED_STRING">'AI Workflow Automatisering'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="737">
+      <line no="739">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'price'</token>
         <token name="T_WHITESPACE"> </token>
@@ -5405,7 +5417,7 @@
         <token name="T_CONSTANT_ENCAPSED_STRING">'247.00'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="738">
+      <line no="740">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'image'</token>
         <token name="T_WHITESPACE"> </token>
@@ -5414,7 +5426,7 @@
         <token name="T_CONSTANT_ENCAPSED_STRING">'/images/ai-automation-course.svg'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="739">
+      <line no="741">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'level'</token>
         <token name="T_WHITESPACE"> </token>
@@ -5423,7 +5435,7 @@
         <token name="T_CONSTANT_ENCAPSED_STRING">'Gevorderd'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="740">
+      <line no="742">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'duration'</token>
         <token name="T_WHITESPACE"> </token>
@@ -5432,16 +5444,22 @@
         <token name="T_CONSTANT_ENCAPSED_STRING">'8 uur'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="741">
+      <line no="743">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'description'</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_DOUBLE_ARROW">=&gt;</token>
         <token name="T_WHITESPACE"> </token>
-        <token name="T_CONSTANT_ENCAPSED_STRING">'Leer hoe je repetitieve taken automatiseert met AI. Van email management tot rapport generatie - bespaar uren per week.'</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'Leer hoe je repetitieve taken automatiseert met AI. '</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOT">.</token>
+      </line>
+      <line no="744">
+        <token name="T_WHITESPACE">                    </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'Van email management tot rapport generatie - bespaar uren per week.'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="742">
+      <line no="745">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'features'</token>
         <token name="T_WHITESPACE"> </token>
@@ -5449,45 +5467,45 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_OPEN_SQUARE">[</token>
       </line>
-      <line no="743">
+      <line no="746">
         <token name="T_WHITESPACE">                    </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'10 automatisering recepten'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="744">
+      <line no="747">
         <token name="T_WHITESPACE">                    </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'Tool integraties'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="745">
+      <line no="748">
         <token name="T_WHITESPACE">                    </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'ROI calculatie'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="746">
+      <line no="749">
         <token name="T_WHITESPACE">                    </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'Implementatie support'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="747">
+      <line no="750">
         <token name="T_WHITESPACE">                    </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'Zapier &amp; Make.com tutorials'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="748">
+      <line no="751">
         <token name="T_WHITESPACE">                    </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'Custom automation templates'</token>
       </line>
-      <line no="749">
+      <line no="752">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CLOSE_SQUARE">]</token>
       </line>
-      <line no="750">
+      <line no="753">
         <token name="T_WHITESPACE">            </token>
         <token name="T_CLOSE_SQUARE">]</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="751">
+      <line no="754">
         <token name="T_WHITESPACE">            </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'ai-strategy'</token>
         <token name="T_WHITESPACE"> </token>
@@ -5495,7 +5513,7 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_OPEN_SQUARE">[</token>
       </line>
-      <line no="752">
+      <line no="755">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'id'</token>
         <token name="T_WHITESPACE"> </token>
@@ -5504,7 +5522,7 @@
         <token name="T_CONSTANT_ENCAPSED_STRING">'ai-strategy'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="753">
+      <line no="756">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'slug'</token>
         <token name="T_WHITESPACE"> </token>
@@ -5513,7 +5531,7 @@
         <token name="T_CONSTANT_ENCAPSED_STRING">'ai-strategy'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="754">
+      <line no="757">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'name'</token>
         <token name="T_WHITESPACE"> </token>
@@ -5522,7 +5540,7 @@
         <token name="T_CONSTANT_ENCAPSED_STRING">'AI Strategie voor Organisaties'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="755">
+      <line no="758">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'title'</token>
         <token name="T_WHITESPACE"> </token>
@@ -5531,7 +5549,7 @@
         <token name="T_CONSTANT_ENCAPSED_STRING">'AI Strategie voor Organisaties'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="756">
+      <line no="759">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'price'</token>
         <token name="T_WHITESPACE"> </token>
@@ -5540,7 +5558,7 @@
         <token name="T_CONSTANT_ENCAPSED_STRING">'497.00'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="757">
+      <line no="760">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'image'</token>
         <token name="T_WHITESPACE"> </token>
@@ -5549,7 +5567,7 @@
         <token name="T_CONSTANT_ENCAPSED_STRING">'/images/ai-strategy-course.svg'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="758">
+      <line no="761">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'level'</token>
         <token name="T_WHITESPACE"> </token>
@@ -5558,7 +5576,7 @@
         <token name="T_CONSTANT_ENCAPSED_STRING">'Expert'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="759">
+      <line no="762">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'duration'</token>
         <token name="T_WHITESPACE"> </token>
@@ -5567,16 +5585,22 @@
         <token name="T_CONSTANT_ENCAPSED_STRING">'12 uur'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="760">
+      <line no="763">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'description'</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_DOUBLE_ARROW">=&gt;</token>
         <token name="T_WHITESPACE"> </token>
-        <token name="T_CONSTANT_ENCAPSED_STRING">'Ontwikkel een complete AI-strategie voor je organisatie. Van risicomanagement tot change management en ROI-optimalisatie.'</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'Ontwikkel een complete AI-strategie voor je organisatie. '</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOT">.</token>
+      </line>
+      <line no="764">
+        <token name="T_WHITESPACE">                    </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'Van risicomanagement tot change management en ROI-optimalisatie.'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="761">
+      <line no="765">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'features'</token>
         <token name="T_WHITESPACE"> </token>
@@ -5584,45 +5608,45 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_OPEN_SQUARE">[</token>
       </line>
-      <line no="762">
+      <line no="766">
         <token name="T_WHITESPACE">                    </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'Strategische frameworks'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="763">
+      <line no="767">
         <token name="T_WHITESPACE">                    </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'Change management'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="764">
+      <line no="768">
         <token name="T_WHITESPACE">                    </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'Risk assessment tools'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="765">
+      <line no="769">
         <token name="T_WHITESPACE">                    </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'1-op-1 consultatie'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="766">
+      <line no="770">
         <token name="T_WHITESPACE">                    </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'Implementatie roadmap'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="767">
+      <line no="771">
         <token name="T_WHITESPACE">                    </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'Executive presentation templates'</token>
       </line>
-      <line no="768">
+      <line no="772">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CLOSE_SQUARE">]</token>
       </line>
-      <line no="769">
+      <line no="773">
         <token name="T_WHITESPACE">            </token>
         <token name="T_CLOSE_SQUARE">]</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="770">
+      <line no="774">
         <token name="T_WHITESPACE">            </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'ai-content'</token>
         <token name="T_WHITESPACE"> </token>
@@ -5630,7 +5654,7 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_OPEN_SQUARE">[</token>
       </line>
-      <line no="771">
+      <line no="775">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'id'</token>
         <token name="T_WHITESPACE"> </token>
@@ -5639,7 +5663,7 @@
         <token name="T_CONSTANT_ENCAPSED_STRING">'ai-content'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="772">
+      <line no="776">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'slug'</token>
         <token name="T_WHITESPACE"> </token>
@@ -5648,7 +5672,7 @@
         <token name="T_CONSTANT_ENCAPSED_STRING">'ai-content'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="773">
+      <line no="777">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'name'</token>
         <token name="T_WHITESPACE"> </token>
@@ -5657,7 +5681,7 @@
         <token name="T_CONSTANT_ENCAPSED_STRING">'Content Creatie met AI'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="774">
+      <line no="778">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'title'</token>
         <token name="T_WHITESPACE"> </token>
@@ -5666,7 +5690,7 @@
         <token name="T_CONSTANT_ENCAPSED_STRING">'Content Creatie met AI'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="775">
+      <line no="779">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'price'</token>
         <token name="T_WHITESPACE"> </token>
@@ -5675,7 +5699,7 @@
         <token name="T_CONSTANT_ENCAPSED_STRING">'147.00'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="776">
+      <line no="780">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'image'</token>
         <token name="T_WHITESPACE"> </token>
@@ -5684,7 +5708,7 @@
         <token name="T_CONSTANT_ENCAPSED_STRING">'/images/ai-content-course.svg'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="777">
+      <line no="781">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'level'</token>
         <token name="T_WHITESPACE"> </token>
@@ -5693,7 +5717,7 @@
         <token name="T_CONSTANT_ENCAPSED_STRING">'Beginner'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="778">
+      <line no="782">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'duration'</token>
         <token name="T_WHITESPACE"> </token>
@@ -5702,16 +5726,22 @@
         <token name="T_CONSTANT_ENCAPSED_STRING">'5 uur'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="779">
+      <line no="783">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'description'</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_DOUBLE_ARROW">=&gt;</token>
         <token name="T_WHITESPACE"> </token>
-        <token name="T_CONSTANT_ENCAPSED_STRING">'Maak professionele content met AI. Van blog posts tot social media, presentaties en marketing materiaal.'</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'Maak professionele content met AI. '</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOT">.</token>
+      </line>
+      <line no="784">
+        <token name="T_WHITESPACE">                    </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'Van blog posts tot social media, presentaties en marketing materiaal.'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="780">
+      <line no="785">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'features'</token>
         <token name="T_WHITESPACE"> </token>
@@ -5719,45 +5749,45 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_OPEN_SQUARE">[</token>
       </line>
-      <line no="781">
+      <line no="786">
         <token name="T_WHITESPACE">                    </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'Content templates'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="782">
+      <line no="787">
         <token name="T_WHITESPACE">                    </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'Brand consistency'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="783">
+      <line no="788">
         <token name="T_WHITESPACE">                    </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'SEO optimalisatie'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="784">
+      <line no="789">
         <token name="T_WHITESPACE">                    </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'Multi-platform publishing'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="785">
+      <line no="790">
         <token name="T_WHITESPACE">                    </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'Visual content creation'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="786">
+      <line no="791">
         <token name="T_WHITESPACE">                    </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'Content calendar templates'</token>
       </line>
-      <line no="787">
+      <line no="792">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CLOSE_SQUARE">]</token>
       </line>
-      <line no="788">
+      <line no="793">
         <token name="T_WHITESPACE">            </token>
         <token name="T_CLOSE_SQUARE">]</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="789">
+      <line no="794">
         <token name="T_WHITESPACE">            </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'ai-data'</token>
         <token name="T_WHITESPACE"> </token>
@@ -5765,7 +5795,7 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_OPEN_SQUARE">[</token>
       </line>
-      <line no="790">
+      <line no="795">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'id'</token>
         <token name="T_WHITESPACE"> </token>
@@ -5774,7 +5804,7 @@
         <token name="T_CONSTANT_ENCAPSED_STRING">'ai-data'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="791">
+      <line no="796">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'slug'</token>
         <token name="T_WHITESPACE"> </token>
@@ -5783,7 +5813,7 @@
         <token name="T_CONSTANT_ENCAPSED_STRING">'ai-data'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="792">
+      <line no="797">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'name'</token>
         <token name="T_WHITESPACE"> </token>
@@ -5792,7 +5822,7 @@
         <token name="T_CONSTANT_ENCAPSED_STRING">'Data Analyse met AI'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="793">
+      <line no="798">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'title'</token>
         <token name="T_WHITESPACE"> </token>
@@ -5801,7 +5831,7 @@
         <token name="T_CONSTANT_ENCAPSED_STRING">'Data Analyse met AI'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="794">
+      <line no="799">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'price'</token>
         <token name="T_WHITESPACE"> </token>
@@ -5810,7 +5840,7 @@
         <token name="T_CONSTANT_ENCAPSED_STRING">'197.00'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="795">
+      <line no="800">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'image'</token>
         <token name="T_WHITESPACE"> </token>
@@ -5819,7 +5849,7 @@
         <token name="T_CONSTANT_ENCAPSED_STRING">'/images/ai-data-course.svg'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="796">
+      <line no="801">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'level'</token>
         <token name="T_WHITESPACE"> </token>
@@ -5828,7 +5858,7 @@
         <token name="T_CONSTANT_ENCAPSED_STRING">'Gevorderd'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="797">
+      <line no="802">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'duration'</token>
         <token name="T_WHITESPACE"> </token>
@@ -5837,16 +5867,22 @@
         <token name="T_CONSTANT_ENCAPSED_STRING">'7 uur'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="798">
+      <line no="803">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'description'</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_DOUBLE_ARROW">=&gt;</token>
         <token name="T_WHITESPACE"> </token>
-        <token name="T_CONSTANT_ENCAPSED_STRING">'Transformeer ruwe data naar actionable insights met AI. Leer data visualisatie, trend analyse en predictive modelling.'</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'Transformeer ruwe data naar actionable insights met AI. '</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOT">.</token>
+      </line>
+      <line no="804">
+        <token name="T_WHITESPACE">                    </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'Leer data visualisatie, trend analyse en predictive modelling.'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="799">
+      <line no="805">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'features'</token>
         <token name="T_WHITESPACE"> </token>
@@ -5854,50 +5890,50 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_OPEN_SQUARE">[</token>
       </line>
-      <line no="800">
+      <line no="806">
         <token name="T_WHITESPACE">                    </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'Data cleaning technieken'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="801">
+      <line no="807">
         <token name="T_WHITESPACE">                    </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'Visualisatie tools'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="802">
+      <line no="808">
         <token name="T_WHITESPACE">                    </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'Predictive analytics'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="803">
+      <line no="809">
         <token name="T_WHITESPACE">                    </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'Dashboard creatie'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="804">
+      <line no="810">
         <token name="T_WHITESPACE">                    </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'SQL query automation'</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="805">
+      <line no="811">
         <token name="T_WHITESPACE">                    </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'Business intelligence integratie'</token>
       </line>
-      <line no="806">
+      <line no="812">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CLOSE_SQUARE">]</token>
       </line>
-      <line no="807">
+      <line no="813">
         <token name="T_WHITESPACE">            </token>
         <token name="T_CLOSE_SQUARE">]</token>
       </line>
-      <line no="808">
+      <line no="814">
         <token name="T_WHITESPACE">        </token>
         <token name="T_CLOSE_SQUARE">]</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="809"/>
-      <line no="810">
+      <line no="815"/>
+      <line no="816">
         <token name="T_WHITESPACE">        </token>
         <token name="T_RETURN">return</token>
         <token name="T_WHITESPACE"> </token>
@@ -5911,14 +5947,14 @@
         <token name="T_STRING">null</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="811">
+      <line no="817">
         <token name="T_WHITESPACE">    </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="812">
+      <line no="818">
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="813"/>
+      <line no="819"/>
     </source>
   </file>
 </phpunit>
