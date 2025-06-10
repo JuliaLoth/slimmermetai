@@ -10,7 +10,7 @@
     </totals>
     <class name="App\Application\Service\GoogleAuthService" start="15" executable="173" executed="0" crap="1482">
       <namespace name="App\Application\Service"/>
-      <method name="__construct" signature="__construct(App\Infrastructure\Database\DatabaseInterface $database, App\Infrastructure\Config\Config $config, App\Application\Service\JwtService $jwtService, App\Application\Service\TokenService $tokenService)" start="25" end="44" crap="12" executable="9" executed="0" coverage="0"/>
+      <method name="__construct" signature="__construct(App\Infrastructure\Database\DatabaseInterface $database, App\Infrastructure\Config\Config $config, App\Domain\Security\JwtServiceInterface $jwtService, App\Application\Service\TokenService $tokenService)" start="25" end="44" crap="12" executable="9" executed="0" coverage="0"/>
       <method name="generateAuthUrl" signature="generateAuthUrl(string $redirectAfterLogin, array $scopes): string" start="49" end="91" crap="20" executable="25" executed="0" coverage="0"/>
       <method name="handleCallback" signature="handleCallback(string $code, string $state): array" start="96" end="156" crap="72" executable="32" executed="0" coverage="0"/>
       <method name="exchangeCodeForToken" signature="exchangeCodeForToken(string $code, string $codeVerifier): array" start="161" end="199" crap="20" executable="26" executed="0" coverage="0"/>
@@ -49,7 +49,7 @@
       <line no="7">
         <token name="T_USE">use</token>
         <token name="T_WHITESPACE"> </token>
-        <token name="T_NAME_QUALIFIED">App\Application\Service\JwtService</token>
+        <token name="T_NAME_QUALIFIED">App\Domain\Security\JwtServiceInterface</token>
         <token name="T_SEMICOLON">;</token>
       </line>
       <line no="8">
@@ -107,7 +107,7 @@
         <token name="T_WHITESPACE">    </token>
         <token name="T_PRIVATE">private</token>
         <token name="T_WHITESPACE"> </token>
-        <token name="T_STRING">JwtService</token>
+        <token name="T_STRING">JwtServiceInterface</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_VARIABLE">$jwtService</token>
         <token name="T_SEMICOLON">;</token>
@@ -174,7 +174,7 @@
       </line>
       <line no="28">
         <token name="T_WHITESPACE">        </token>
-        <token name="T_STRING">JwtService</token>
+        <token name="T_STRING">JwtServiceInterface</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_VARIABLE">$jwtService</token>
         <token name="T_COMMA">,</token>

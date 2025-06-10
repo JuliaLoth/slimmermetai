@@ -2,22 +2,22 @@
 <phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
   <file name="JwtService.php" path="\Infrastructure\Security">
     <totals>
-      <lines total="102" comments="14" code="88" executable="34" executed="32" percent="94.12"/>
+      <lines total="106" comments="14" code="92" executable="38" executed="35" percent="92.11"/>
       <methods count="8" tested="7" percent="87.50"/>
       <functions count="0" tested="0" percent="0"/>
       <classes count="1" tested="0" percent="0.00"/>
       <traits count="0" tested="0" percent="0"/>
     </totals>
-    <class name="App\Infrastructure\Security\JwtService" start="8" executable="34" executed="32" crap="16.05">
+    <class name="App\Infrastructure\Security\JwtService" start="8" executable="38" executed="35" crap="16.13">
       <namespace name="App\Infrastructure\Security"/>
       <method name="__construct" signature="__construct(App\Infrastructure\Config\Config $config, ?string $secret, ?int $expiration)" start="19" end="23" crap="1" executable="2" executed="2" coverage="100"/>
-      <method name="generate" signature="generate(array $payload, ?int $exp): string" start="25" end="45" crap="2" executable="12" executed="12" coverage="100"/>
-      <method name="generateToken" signature="generateToken(array $payload, ?int $exp): string" start="50" end="53" crap="1" executable="1" executed="1" coverage="100"/>
-      <method name="verify" signature="verify(string $token): ?array" start="55" end="77" crap="8.15" executable="15" executed="13" coverage="86.666666666667"/>
-      <method name="validateToken" signature="validateToken(string $token): ?array" start="82" end="85" crap="1" executable="1" executed="1" coverage="100"/>
-      <method name="sign" signature="sign(string $data): string" start="87" end="90" crap="1" executable="1" executed="1" coverage="100"/>
-      <method name="base64url" signature="base64url(string $data): string" start="92" end="95" crap="1" executable="1" executed="1" coverage="100"/>
-      <method name="base64urlDecode" signature="base64urlDecode(string $data): string" start="97" end="100" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="generate" signature="generate(array $payload): string" start="25" end="45" crap="2" executable="12" executed="12" coverage="100"/>
+      <method name="generateToken" signature="generateToken(array $user): string" start="50" end="57" crap="1" executable="5" executed="5" coverage="100"/>
+      <method name="verify" signature="verify(string $token): ?array" start="59" end="81" crap="8.51" executable="15" executed="12" coverage="80"/>
+      <method name="validateToken" signature="validateToken(string $token): bool" start="86" end="89" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="sign" signature="sign(string $data): string" start="91" end="94" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="base64url" signature="base64url(string $data): string" start="96" end="99" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="base64urlDecode" signature="base64urlDecode(string $data): string" start="101" end="104" crap="1" executable="1" executed="1" coverage="100"/>
     </class>
     <coverage>
       <line nr="21">
@@ -469,58 +469,62 @@
         <covered by="Tests\Integration\JwtServiceIntegrationTest::testMultipleTokensWithDifferentPayloads"/>
         <covered by="Tests\Integration\JwtServiceIntegrationTest::testRefreshTokenFlow"/>
       </line>
-      <line nr="57">
-        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testValidTokenPassesThrough"/>
-        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testInvalidTokenReturnsUnauthorized"/>
-        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testExpiredTokenReturnsUnauthorized"/>
-        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testBlacklistedTokenReturnsUnauthorized"/>
-        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testCaseInsensitiveBearerScheme"/>
-        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testTokenWithoutExpiration"/>
+      <line nr="53">
         <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
         <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testUserAccountSecurity"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testConcurrentUserOperations"/>
         <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testRegistrationWithExistingEmail"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testEmailVerificationFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testPasswordResetFlow"/>
         <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
         <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
-        <covered by="Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithInvalidToken"/>
-        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
-        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenVerificationWithRealJWT"/>
-        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
-        <covered by="Tests\Integration\AuthServiceIntegrationTest::testJWTTokenGenerationAndVerification"/>
-        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testSecurityFeatures"/>
         <covered by="Tests\Integration\JwtServiceIntegrationTest::testJwtTokenGenerationAndValidationFlow"/>
         <covered by="Tests\Integration\JwtServiceIntegrationTest::testExpiredTokenDetection"/>
-        <covered by="Tests\Integration\JwtServiceIntegrationTest::testInvalidTokenHandling"/>
         <covered by="Tests\Integration\JwtServiceIntegrationTest::testTokenTamperingDetection"/>
         <covered by="Tests\Integration\JwtServiceIntegrationTest::testMultipleTokensWithDifferentPayloads"/>
         <covered by="Tests\Integration\JwtServiceIntegrationTest::testRefreshTokenFlow"/>
       </line>
-      <line nr="58">
-        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testValidTokenPassesThrough"/>
-        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testInvalidTokenReturnsUnauthorized"/>
-        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testExpiredTokenReturnsUnauthorized"/>
-        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testBlacklistedTokenReturnsUnauthorized"/>
-        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testCaseInsensitiveBearerScheme"/>
-        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testTokenWithoutExpiration"/>
+      <line nr="54">
         <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
         <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testUserAccountSecurity"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testConcurrentUserOperations"/>
         <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testRegistrationWithExistingEmail"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testEmailVerificationFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testPasswordResetFlow"/>
         <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
         <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
-        <covered by="Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithInvalidToken"/>
-        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
-        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenVerificationWithRealJWT"/>
-        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
-        <covered by="Tests\Integration\AuthServiceIntegrationTest::testJWTTokenGenerationAndVerification"/>
-        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testSecurityFeatures"/>
         <covered by="Tests\Integration\JwtServiceIntegrationTest::testJwtTokenGenerationAndValidationFlow"/>
         <covered by="Tests\Integration\JwtServiceIntegrationTest::testExpiredTokenDetection"/>
-        <covered by="Tests\Integration\JwtServiceIntegrationTest::testInvalidTokenHandling"/>
         <covered by="Tests\Integration\JwtServiceIntegrationTest::testTokenTamperingDetection"/>
         <covered by="Tests\Integration\JwtServiceIntegrationTest::testMultipleTokensWithDifferentPayloads"/>
         <covered by="Tests\Integration\JwtServiceIntegrationTest::testRefreshTokenFlow"/>
       </line>
-      <line nr="59">
-        <covered by="Tests\Integration\JwtServiceIntegrationTest::testInvalidTokenHandling"/>
+      <line nr="56">
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testUserAccountSecurity"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testConcurrentUserOperations"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testRegistrationWithExistingEmail"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testEmailVerificationFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testPasswordResetFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testSecurityFeatures"/>
+        <covered by="Tests\Integration\JwtServiceIntegrationTest::testJwtTokenGenerationAndValidationFlow"/>
+        <covered by="Tests\Integration\JwtServiceIntegrationTest::testExpiredTokenDetection"/>
+        <covered by="Tests\Integration\JwtServiceIntegrationTest::testTokenTamperingDetection"/>
+        <covered by="Tests\Integration\JwtServiceIntegrationTest::testMultipleTokensWithDifferentPayloads"/>
+        <covered by="Tests\Integration\JwtServiceIntegrationTest::testRefreshTokenFlow"/>
       </line>
       <line nr="61">
         <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testValidTokenPassesThrough"/>
@@ -572,7 +576,7 @@
         <covered by="Tests\Integration\JwtServiceIntegrationTest::testMultipleTokensWithDifferentPayloads"/>
         <covered by="Tests\Integration\JwtServiceIntegrationTest::testRefreshTokenFlow"/>
       </line>
-      <line nr="63">
+      <line nr="65">
         <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testValidTokenPassesThrough"/>
         <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testInvalidTokenReturnsUnauthorized"/>
         <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testExpiredTokenReturnsUnauthorized"/>
@@ -597,14 +601,9 @@
         <covered by="Tests\Integration\JwtServiceIntegrationTest::testMultipleTokensWithDifferentPayloads"/>
         <covered by="Tests\Integration\JwtServiceIntegrationTest::testRefreshTokenFlow"/>
       </line>
-      <line nr="64">
-        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testInvalidTokenReturnsUnauthorized"/>
-        <covered by="Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithInvalidToken"/>
-        <covered by="Tests\Integration\JwtServiceIntegrationTest::testInvalidTokenHandling"/>
-        <covered by="Tests\Integration\JwtServiceIntegrationTest::testTokenTamperingDetection"/>
-      </line>
       <line nr="66">
         <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testValidTokenPassesThrough"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testInvalidTokenReturnsUnauthorized"/>
         <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testExpiredTokenReturnsUnauthorized"/>
         <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testBlacklistedTokenReturnsUnauthorized"/>
         <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testCaseInsensitiveBearerScheme"/>
@@ -614,6 +613,7 @@
         <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
         <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
         <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithInvalidToken"/>
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenVerificationWithRealJWT"/>
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
@@ -621,11 +621,14 @@
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
         <covered by="Tests\Integration\JwtServiceIntegrationTest::testJwtTokenGenerationAndValidationFlow"/>
         <covered by="Tests\Integration\JwtServiceIntegrationTest::testExpiredTokenDetection"/>
+        <covered by="Tests\Integration\JwtServiceIntegrationTest::testInvalidTokenHandling"/>
+        <covered by="Tests\Integration\JwtServiceIntegrationTest::testTokenTamperingDetection"/>
         <covered by="Tests\Integration\JwtServiceIntegrationTest::testMultipleTokensWithDifferentPayloads"/>
         <covered by="Tests\Integration\JwtServiceIntegrationTest::testRefreshTokenFlow"/>
       </line>
       <line nr="67">
         <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testValidTokenPassesThrough"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testInvalidTokenReturnsUnauthorized"/>
         <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testExpiredTokenReturnsUnauthorized"/>
         <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testBlacklistedTokenReturnsUnauthorized"/>
         <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testCaseInsensitiveBearerScheme"/>
@@ -635,6 +638,7 @@
         <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
         <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
         <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithInvalidToken"/>
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenVerificationWithRealJWT"/>
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
@@ -642,8 +646,16 @@
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
         <covered by="Tests\Integration\JwtServiceIntegrationTest::testJwtTokenGenerationAndValidationFlow"/>
         <covered by="Tests\Integration\JwtServiceIntegrationTest::testExpiredTokenDetection"/>
+        <covered by="Tests\Integration\JwtServiceIntegrationTest::testInvalidTokenHandling"/>
+        <covered by="Tests\Integration\JwtServiceIntegrationTest::testTokenTamperingDetection"/>
         <covered by="Tests\Integration\JwtServiceIntegrationTest::testMultipleTokensWithDifferentPayloads"/>
         <covered by="Tests\Integration\JwtServiceIntegrationTest::testRefreshTokenFlow"/>
+      </line>
+      <line nr="68">
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testInvalidTokenReturnsUnauthorized"/>
+        <covered by="Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithInvalidToken"/>
+        <covered by="Tests\Integration\JwtServiceIntegrationTest::testInvalidTokenHandling"/>
+        <covered by="Tests\Integration\JwtServiceIntegrationTest::testTokenTamperingDetection"/>
       </line>
       <line nr="70">
         <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testValidTokenPassesThrough"/>
@@ -667,9 +679,51 @@
         <covered by="Tests\Integration\JwtServiceIntegrationTest::testRefreshTokenFlow"/>
       </line>
       <line nr="71">
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testValidTokenPassesThrough"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testExpiredTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testBlacklistedTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testCaseInsensitiveBearerScheme"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testTokenWithoutExpiration"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenVerificationWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testJWTTokenGenerationAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+        <covered by="Tests\Integration\JwtServiceIntegrationTest::testJwtTokenGenerationAndValidationFlow"/>
+        <covered by="Tests\Integration\JwtServiceIntegrationTest::testExpiredTokenDetection"/>
+        <covered by="Tests\Integration\JwtServiceIntegrationTest::testMultipleTokensWithDifferentPayloads"/>
+        <covered by="Tests\Integration\JwtServiceIntegrationTest::testRefreshTokenFlow"/>
+      </line>
+      <line nr="74">
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testValidTokenPassesThrough"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testExpiredTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testBlacklistedTokenReturnsUnauthorized"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testCaseInsensitiveBearerScheme"/>
+        <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testTokenWithoutExpiration"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenVerificationWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testJWTTokenGenerationAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+        <covered by="Tests\Integration\JwtServiceIntegrationTest::testJwtTokenGenerationAndValidationFlow"/>
+        <covered by="Tests\Integration\JwtServiceIntegrationTest::testExpiredTokenDetection"/>
+        <covered by="Tests\Integration\JwtServiceIntegrationTest::testMultipleTokensWithDifferentPayloads"/>
+        <covered by="Tests\Integration\JwtServiceIntegrationTest::testRefreshTokenFlow"/>
+      </line>
+      <line nr="75">
         <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testExpiredTokenReturnsUnauthorized"/>
       </line>
-      <line nr="73">
+      <line nr="77">
         <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testValidTokenPassesThrough"/>
         <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testBlacklistedTokenReturnsUnauthorized"/>
         <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testCaseInsensitiveBearerScheme"/>
@@ -689,7 +743,7 @@
         <covered by="Tests\Integration\JwtServiceIntegrationTest::testMultipleTokensWithDifferentPayloads"/>
         <covered by="Tests\Integration\JwtServiceIntegrationTest::testRefreshTokenFlow"/>
       </line>
-      <line nr="76">
+      <line nr="80">
         <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testValidTokenPassesThrough"/>
         <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testBlacklistedTokenReturnsUnauthorized"/>
         <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testCaseInsensitiveBearerScheme"/>
@@ -709,16 +763,15 @@
         <covered by="Tests\Integration\JwtServiceIntegrationTest::testMultipleTokensWithDifferentPayloads"/>
         <covered by="Tests\Integration\JwtServiceIntegrationTest::testRefreshTokenFlow"/>
       </line>
-      <line nr="84">
+      <line nr="88">
         <covered by="Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithInvalidToken"/>
         <covered by="Tests\Integration\JwtServiceIntegrationTest::testJwtTokenGenerationAndValidationFlow"/>
         <covered by="Tests\Integration\JwtServiceIntegrationTest::testExpiredTokenDetection"/>
         <covered by="Tests\Integration\JwtServiceIntegrationTest::testInvalidTokenHandling"/>
         <covered by="Tests\Integration\JwtServiceIntegrationTest::testTokenTamperingDetection"/>
-        <covered by="Tests\Integration\JwtServiceIntegrationTest::testMultipleTokensWithDifferentPayloads"/>
         <covered by="Tests\Integration\JwtServiceIntegrationTest::testRefreshTokenFlow"/>
       </line>
-      <line nr="89">
+      <line nr="93">
         <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testValidTokenPassesThrough"/>
         <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testInvalidTokenReturnsUnauthorized"/>
         <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testExpiredTokenReturnsUnauthorized"/>
@@ -751,7 +804,7 @@
         <covered by="Tests\Integration\JwtServiceIntegrationTest::testMultipleTokensWithDifferentPayloads"/>
         <covered by="Tests\Integration\JwtServiceIntegrationTest::testRefreshTokenFlow"/>
       </line>
-      <line nr="94">
+      <line nr="98">
         <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testValidTokenPassesThrough"/>
         <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testInvalidTokenReturnsUnauthorized"/>
         <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testExpiredTokenReturnsUnauthorized"/>
@@ -784,7 +837,7 @@
         <covered by="Tests\Integration\JwtServiceIntegrationTest::testMultipleTokensWithDifferentPayloads"/>
         <covered by="Tests\Integration\JwtServiceIntegrationTest::testRefreshTokenFlow"/>
       </line>
-      <line nr="99">
+      <line nr="103">
         <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testValidTokenPassesThrough"/>
         <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testExpiredTokenReturnsUnauthorized"/>
         <covered by="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest::testBlacklistedTokenReturnsUnauthorized"/>
@@ -829,6 +882,25 @@
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testJWTTokenGenerationAndVerification"/>
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+        <covered by="Tests\Integration\JwtServiceIntegrationTest::testJwtTokenGenerationAndValidationFlow"/>
+        <covered by="Tests\Integration\JwtServiceIntegrationTest::testExpiredTokenDetection"/>
+        <covered by="Tests\Integration\JwtServiceIntegrationTest::testTokenTamperingDetection"/>
+        <covered by="Tests\Integration\JwtServiceIntegrationTest::testMultipleTokensWithDifferentPayloads"/>
+        <covered by="Tests\Integration\JwtServiceIntegrationTest::testRefreshTokenFlow"/>
+      </line>
+      <line nr="55">
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testUserAccountSecurity"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testConcurrentUserOperations"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testRegistrationWithExistingEmail"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testEmailVerificationFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testPasswordResetFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testSecurityFeatures"/>
         <covered by="Tests\Integration\JwtServiceIntegrationTest::testJwtTokenGenerationAndValidationFlow"/>
         <covered by="Tests\Integration\JwtServiceIntegrationTest::testExpiredTokenDetection"/>
         <covered by="Tests\Integration\JwtServiceIntegrationTest::testTokenTamperingDetection"/>
@@ -1022,16 +1094,6 @@
         <token name="T_ARRAY">array</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_VARIABLE">$payload</token>
-        <token name="T_COMMA">,</token>
-        <token name="T_WHITESPACE"> </token>
-        <token name="T_QUESTION_MARK">?</token>
-        <token name="T_STRING">int</token>
-        <token name="T_WHITESPACE"> </token>
-        <token name="T_VARIABLE">$exp</token>
-        <token name="T_WHITESPACE"> </token>
-        <token name="T_EQUAL">=</token>
-        <token name="T_WHITESPACE"> </token>
-        <token name="T_STRING">null</token>
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_COLON">:</token>
         <token name="T_WHITESPACE"> </token>
@@ -1107,15 +1169,9 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_PLUS">+</token>
         <token name="T_WHITESPACE"> </token>
-        <token name="T_OPEN_BRACKET">(</token>
-        <token name="T_VARIABLE">$exp</token>
-        <token name="T_WHITESPACE"> </token>
-        <token name="T_COALESCE">??</token>
-        <token name="T_WHITESPACE"> </token>
         <token name="T_VARIABLE">$this</token>
         <token name="T_OBJECT_OPERATOR">-&gt;</token>
         <token name="T_STRING">expiration</token>
-        <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_SEMICOLON">;</token>
       </line>
       <line no="32">
@@ -1256,7 +1312,7 @@
         <token name="T_DOC_COMMENT">/**</token>
       </line>
       <line no="48">
-        <token name="T_DOC_COMMENT">     * Alias for generate() method for compatibility</token>
+        <token name="T_DOC_COMMENT">     * Genereer een JWT token voor een gebruiker</token>
       </line>
       <line no="49">
         <token name="T_DOC_COMMENT">     */</token>
@@ -1271,17 +1327,7 @@
         <token name="T_OPEN_BRACKET">(</token>
         <token name="T_ARRAY">array</token>
         <token name="T_WHITESPACE"> </token>
-        <token name="T_VARIABLE">$payload</token>
-        <token name="T_COMMA">,</token>
-        <token name="T_WHITESPACE"> </token>
-        <token name="T_QUESTION_MARK">?</token>
-        <token name="T_STRING">int</token>
-        <token name="T_WHITESPACE"> </token>
-        <token name="T_VARIABLE">$exp</token>
-        <token name="T_WHITESPACE"> </token>
-        <token name="T_EQUAL">=</token>
-        <token name="T_WHITESPACE"> </token>
-        <token name="T_STRING">null</token>
+        <token name="T_VARIABLE">$user</token>
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_COLON">:</token>
         <token name="T_WHITESPACE"> </token>
@@ -1293,6 +1339,57 @@
       </line>
       <line no="52">
         <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$payload</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_SQUARE">[</token>
+      </line>
+      <line no="53">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'user_id'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$user</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'id'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_COALESCE">??</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$user</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'user_id'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_COALESCE">??</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">null</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="54">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'email'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$user</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'email'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_COALESCE">??</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">null</token>
+      </line>
+      <line no="55">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="56">
+        <token name="T_WHITESPACE">        </token>
         <token name="T_RETURN">return</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_VARIABLE">$this</token>
@@ -1300,18 +1397,15 @@
         <token name="T_STRING">generate</token>
         <token name="T_OPEN_BRACKET">(</token>
         <token name="T_VARIABLE">$payload</token>
-        <token name="T_COMMA">,</token>
-        <token name="T_WHITESPACE"> </token>
-        <token name="T_VARIABLE">$exp</token>
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="53">
+      <line no="57">
         <token name="T_WHITESPACE">    </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="54"/>
-      <line no="55">
+      <line no="58"/>
+      <line no="59">
         <token name="T_WHITESPACE">    </token>
         <token name="T_PUBLIC">public</token>
         <token name="T_WHITESPACE"> </token>
@@ -1328,11 +1422,11 @@
         <token name="T_QUESTION_MARK">?</token>
         <token name="T_ARRAY">array</token>
       </line>
-      <line no="56">
+      <line no="60">
         <token name="T_WHITESPACE">    </token>
         <token name="T_OPEN_CURLY">{</token>
       </line>
-      <line no="57">
+      <line no="61">
         <token name="T_WHITESPACE">        </token>
         <token name="T_VARIABLE">$parts</token>
         <token name="T_WHITESPACE"> </token>
@@ -1347,7 +1441,7 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="58">
+      <line no="62">
         <token name="T_WHITESPACE">        </token>
         <token name="T_IF">if</token>
         <token name="T_WHITESPACE"> </token>
@@ -1364,18 +1458,18 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_OPEN_CURLY">{</token>
       </line>
-      <line no="59">
+      <line no="63">
         <token name="T_WHITESPACE">            </token>
         <token name="T_RETURN">return</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_STRING">null</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="60">
+      <line no="64">
         <token name="T_WHITESPACE">        </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="61">
+      <line no="65">
         <token name="T_WHITESPACE">        </token>
         <token name="T_OPEN_SQUARE">[</token>
         <token name="T_VARIABLE">$h</token>
@@ -1392,7 +1486,7 @@
         <token name="T_VARIABLE">$parts</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="62">
+      <line no="66">
         <token name="T_WHITESPACE">        </token>
         <token name="T_VARIABLE">$calcSig</token>
         <token name="T_WHITESPACE"> </token>
@@ -1410,7 +1504,7 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="63">
+      <line no="67">
         <token name="T_WHITESPACE">        </token>
         <token name="T_IF">if</token>
         <token name="T_WHITESPACE"> </token>
@@ -1427,18 +1521,18 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_OPEN_CURLY">{</token>
       </line>
-      <line no="64">
+      <line no="68">
         <token name="T_WHITESPACE">            </token>
         <token name="T_RETURN">return</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_STRING">null</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="65">
+      <line no="69">
         <token name="T_WHITESPACE">        </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="66">
+      <line no="70">
         <token name="T_WHITESPACE">        </token>
         <token name="T_VARIABLE">$payload</token>
         <token name="T_WHITESPACE"> </token>
@@ -1458,7 +1552,7 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="67">
+      <line no="71">
         <token name="T_WHITESPACE">        </token>
         <token name="T_IF">if</token>
         <token name="T_WHITESPACE"> </token>
@@ -1469,18 +1563,18 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_OPEN_CURLY">{</token>
       </line>
-      <line no="68">
+      <line no="72">
         <token name="T_WHITESPACE">            </token>
         <token name="T_RETURN">return</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_STRING">null</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="69">
+      <line no="73">
         <token name="T_WHITESPACE">        </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="70">
+      <line no="74">
         <token name="T_WHITESPACE">        </token>
         <token name="T_IF">if</token>
         <token name="T_WHITESPACE"> </token>
@@ -1509,18 +1603,18 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_OPEN_CURLY">{</token>
       </line>
-      <line no="71">
+      <line no="75">
         <token name="T_WHITESPACE">            </token>
         <token name="T_RETURN">return</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_STRING">null</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="72">
+      <line no="76">
         <token name="T_WHITESPACE">        </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="73">
+      <line no="77">
         <token name="T_WHITESPACE">        </token>
         <token name="T_IF">if</token>
         <token name="T_WHITESPACE"> </token>
@@ -1549,40 +1643,40 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_OPEN_CURLY">{</token>
       </line>
-      <line no="74">
+      <line no="78">
         <token name="T_WHITESPACE">            </token>
         <token name="T_RETURN">return</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_STRING">null</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="75">
+      <line no="79">
         <token name="T_WHITESPACE">        </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="76">
+      <line no="80">
         <token name="T_WHITESPACE">        </token>
         <token name="T_RETURN">return</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_VARIABLE">$payload</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="77">
+      <line no="81">
         <token name="T_WHITESPACE">    </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="78"/>
-      <line no="79">
+      <line no="82"/>
+      <line no="83">
         <token name="T_WHITESPACE">    </token>
         <token name="T_DOC_COMMENT">/**</token>
       </line>
-      <line no="80">
+      <line no="84">
         <token name="T_DOC_COMMENT">     * Alias for verify() method for compatibility with UserController</token>
       </line>
-      <line no="81">
+      <line no="85">
         <token name="T_DOC_COMMENT">     */</token>
       </line>
-      <line no="82">
+      <line no="86">
         <token name="T_WHITESPACE">    </token>
         <token name="T_PUBLIC">public</token>
         <token name="T_WHITESPACE"> </token>
@@ -1596,14 +1690,13 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_COLON">:</token>
         <token name="T_WHITESPACE"> </token>
-        <token name="T_QUESTION_MARK">?</token>
-        <token name="T_ARRAY">array</token>
+        <token name="T_STRING">bool</token>
       </line>
-      <line no="83">
+      <line no="87">
         <token name="T_WHITESPACE">    </token>
         <token name="T_OPEN_CURLY">{</token>
       </line>
-      <line no="84">
+      <line no="88">
         <token name="T_WHITESPACE">        </token>
         <token name="T_RETURN">return</token>
         <token name="T_WHITESPACE"> </token>
@@ -1613,14 +1706,18 @@
         <token name="T_OPEN_BRACKET">(</token>
         <token name="T_VARIABLE">$token</token>
         <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_IS_NOT_IDENTICAL">!==</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">null</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="85">
+      <line no="89">
         <token name="T_WHITESPACE">    </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="86"/>
-      <line no="87">
+      <line no="90"/>
+      <line no="91">
         <token name="T_WHITESPACE">    </token>
         <token name="T_PRIVATE">private</token>
         <token name="T_WHITESPACE"> </token>
@@ -1636,11 +1733,11 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_STRING">string</token>
       </line>
-      <line no="88">
+      <line no="92">
         <token name="T_WHITESPACE">    </token>
         <token name="T_OPEN_CURLY">{</token>
       </line>
-      <line no="89">
+      <line no="93">
         <token name="T_WHITESPACE">        </token>
         <token name="T_RETURN">return</token>
         <token name="T_WHITESPACE"> </token>
@@ -1666,12 +1763,12 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="90">
+      <line no="94">
         <token name="T_WHITESPACE">    </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="91"/>
-      <line no="92">
+      <line no="95"/>
+      <line no="96">
         <token name="T_WHITESPACE">    </token>
         <token name="T_PRIVATE">private</token>
         <token name="T_WHITESPACE"> </token>
@@ -1687,11 +1784,11 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_STRING">string</token>
       </line>
-      <line no="93">
+      <line no="97">
         <token name="T_WHITESPACE">    </token>
         <token name="T_OPEN_CURLY">{</token>
       </line>
-      <line no="94">
+      <line no="98">
         <token name="T_WHITESPACE">        </token>
         <token name="T_RETURN">return</token>
         <token name="T_WHITESPACE"> </token>
@@ -1716,12 +1813,12 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="95">
+      <line no="99">
         <token name="T_WHITESPACE">    </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="96"/>
-      <line no="97">
+      <line no="100"/>
+      <line no="101">
         <token name="T_WHITESPACE">    </token>
         <token name="T_PRIVATE">private</token>
         <token name="T_WHITESPACE"> </token>
@@ -1737,11 +1834,11 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_STRING">string</token>
       </line>
-      <line no="98">
+      <line no="102">
         <token name="T_WHITESPACE">    </token>
         <token name="T_OPEN_CURLY">{</token>
       </line>
-      <line no="99">
+      <line no="103">
         <token name="T_WHITESPACE">        </token>
         <token name="T_RETURN">return</token>
         <token name="T_WHITESPACE"> </token>
@@ -1760,14 +1857,14 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="100">
+      <line no="104">
         <token name="T_WHITESPACE">    </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="101">
+      <line no="105">
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="102"/>
+      <line no="106"/>
     </source>
   </file>
 </phpunit>

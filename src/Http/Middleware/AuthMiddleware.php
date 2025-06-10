@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Http\Middleware;
 
-use App\Infrastructure\Security\JwtService;
-use App\Infrastructure\Repository\AuthRepository;
+use App\Domain\Security\JwtServiceInterface;
+use App\Domain\Repository\AuthRepositoryInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -21,8 +21,8 @@ use GuzzleHttp\Psr7\Response;
 class AuthMiddleware implements MiddlewareInterface
 {
     public function __construct(
-        private JwtService $jwtService,
-        private AuthRepository $authRepository
+        private JwtServiceInterface $jwtService,
+        private AuthRepositoryInterface $authRepository
     ) {
     }
 

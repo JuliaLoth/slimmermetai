@@ -1,3 +1,406 @@
+Auth Repository (Tests\Unit\AuthRepository)
+ [x] Find by email with existing user
+ [x] Find by email with non existent user
+ [x] Find user by email with email value object
+ [x] Find by id with existing user
+ [x] Create user
+ [x] Create user with transaction
+ [x] Update password
+ [x] Update last login
+ [x] Create password reset token
+ [x] Find password reset token
+ [x] Validate password reset token
+ [x] Validate expired password reset token
+ [x] Delete password reset token
+ [ ] Blacklist token
+ [x] Is token blacklisted
+ [x] Is token not blacklisted
+ [x] Get user login history
+ [x] Get login history
+ [x] Log login attempt
+ [x] Record login attempt
+ [x] Get failed login attempts
+ [x] Deactivate user
+ [x] Activate user
+ [x] Delete expired tokens
+ [x] Create email verification token
+ [x] Verify email token
+
+Auth Service (Tests\Unit\AuthService)
+ [x] Successful login
+ [x] Login with invalid email
+ [x] Login with wrong password
+ [x] Successful registration
+ [x] Registration with existing email
+ [x] Registration with weak password
+ [x] Token verification
+ [x] Token verification with invalid token
+ [x] Token refresh
+ [x] Token refresh with invalid token
+ [x] Logout
+ [x] Get current user
+ [x] Get current user with missing data
+
+Config (Tests\Unit\Config)
+ [x] Config can get values
+ [x] Config can get default values
+ [x] Config can set values
+ [x] Config can check if key exists
+ [x] Config can get all values
+ [x] Config can get typed values
+ [x] Environment values
+ [x] Security defaults
+ [x] Config with missing method
+
+Email Value Object (Tests\Unit\Domain\EmailValueObject)
+ [x] Valid email creation
+ [x] Invalid email throws exception
+ [x] Email equality
+ [x] Email case insensitivity
+ [x] Email to string
+ [x] Email get value
+ [x] Email serialization
+ [x] Email json serialization
+ [x] Email hashing
+ [ ] Email with international characters
+ [x] Email domain extraction
+ [x] Email local part extraction
+ [x] Email immutability
+ [x] Email with plus addressing
+ [x] Email with dots
+ [x] Email with numbers
+ [x] Email with hyphens
+ [x] Email with underscores
+ [x] Email max length
+ [x] Email cloning
+
+User Entity (Tests\Unit\Domain\UserEntity)
+ [x] User creation with all parameters
+ [x] User creation with defaults
+ [x] Email to string
+ [x] User roles
+ [x] User name handling
+ [x] User id handling
+ [x] Created at defaults to now
+ [x] User equality
+ [x] Password hash storage
+ [x] User serialization
+ [x] User with special characters in name
+ [x] User with empty string name
+ [x] User with numeric string id
+ [x] User created at immutability
+
+Database (Tests\Unit\Infrastructure\Database)
+ [x] Database connection
+ [x] Database query
+ [x] Database query first
+ [x] Database query first returns null for no results
+ [x] Database execute
+ [x] Database insert
+ [x] Database transaction commit
+ [x] Database transaction rollback
+ [x] Database in transaction
+ [x] Database last insert id
+ [x] Database prepare and execute
+ [x] Database query with named parameters
+ [x] Database error handling
+ [x] Database multiple queries
+ [x] Database connection reuse
+ [x] Database configuration types
+ [x] Database batch operations
+ [x] Database connection attributes
+
+Auth Middleware Integration (Tests\Unit\Middleware\AuthMiddlewareIntegration)
+ [x] Valid token passes through
+ [x] Missing authorization header returns unauthorized
+ [x] Invalid authorization format returns unauthorized
+ [x] Invalid token returns unauthorized
+ [x] Expired token returns unauthorized
+ [x] Blacklisted token returns unauthorized
+ [x] Different authorization schemes
+ [x] Case insensitive bearer scheme
+ [x] Token without expiration
+ [x] Response headers
+
+Auth Middleware (Tests\Unit\Middleware\AuthMiddleware)
+ [ ] Disabled because jwt service is final
+
+Password Hasher (Tests\Unit\PasswordHasher)
+ [x] Implements interface
+ [x] Can hash password
+ [x] Can verify password
+ [x] Needs rehash
+ [x] Password strength validation
+ [x] Custom minimum length
+ [x] Different cost factors
+ [x] Empty password handling
+
+Stripe Controller (Tests\Unit\StripeController)
+ [x] Create session success
+ [x] Create session exception
+ [x] Status success
+ [x] Status exception
+ [x] Webhook success
+ [x] Webhook exception
+ [x] Config with valid key
+ [x] Create session with different data with data set "empty_data"
+ [x] Create session with different data with data set "with_line_items"
+ [x] Create session with different data with data set "with_metadata"
+ [x] Controller constructor with dependency
+
+Stripe Service (Tests\Unit\StripeService)
+ [x] Service has required methods
+ [x] Create checkout session in mock mode
+ [x] Create checkout session with options
+ [x] Create checkout session with empty line items
+ [x] Create payment intent in mock mode
+ [x] Get payment status with mock session
+ [x] Handle webhook without secret
+ [x] Constructor with valid config
+ [x] Constructor with invalid stripe key
+ [x] Static get instance method
+ [x] Development mode detection
+ [x] Production mode with invalid key
+ [x] Create payment intent calls stripe s d k
+
+Auth Controller (Tests\Feature\AuthController)
+ [ ] Login with valid credentials
+ [ ] Login with invalid credentials
+ [ ] Login with missing credentials
+ [ ] RegisterWithValidData SKIP
+ [ ] Register with existing email
+ [ ] Register with validation errors
+ [ ] Me with valid token
+ [ ] Me without token
+ [ ] Me with invalid token
+ [ ] Forgot password with valid email
+ [ ] Forgot password with invalid email
+ [ ] Logout
+ [ ] Invalid endpoint
+ [ ] Reset password with valid token
+ [ ] Reset password with invalid token
+ [ ] Verify email with valid token
+ [ ] Refresh token not implemented
+
+Full User Journey Feature (Tests\Feature\FullUserJourneyFeature)
+ [ ] Complete user lifecycle from registration to login
+ [ ] Password reset complete flow
+ [x] Email verification complete flow
+ [ ] Multiple failed login attempts
+ [ ] Token blacklisting flow
+ [x] User account security
+ [ ] Data integrity throughout journey
+ [ ] Concurrent user operations
+
+Stripe Controller (Tests\Feature\StripeController)
+ [x] Create checkout session with valid items
+ [x] Create checkout session with exception
+ [x] Status success
+ [x] Webhook success
+ [x] Webhook exception
+ [x] Config success
+
+User Registration Feature (Tests\Feature\UserRegistrationFeature)
+ [ ] Complete user registration journey
+ [x] User registration with invalid data
+ [x] Registration with existing email
+ [x] Email verification flow
+ [ ] Password reset flow
+ [ ] User profile update
+ [ ] Account deletion
+ [x] Security features
+ [ ] Data validation and sanitization
+
+Auth Controller Integration (Tests\Integration\AuthControllerIntegration)
+ [ ] Complete registration flow
+ [ ] Complete login flow
+ [x] Login with invalid credentials
+ [ ] Me endpoint with valid token
+ [x] Me endpoint with invalid token
+ [ ] Forgot password flow
+ [ ] Reset password flow
+ [ ] Email verification flow
+ [x] Logout endpoint
+ [x] Registration validation errors
+ [x] Invalid endpoint
+ [ ] Rate limiting on failed logins
+ [x] C o r s headers
+
+Auth Repository Integration (Tests\Integration\AuthRepositoryIntegration)
+ [x] Create user with real database
+ [x] Find user by email with real database
+ [x] Update password with real database
+ [x] Create email verification token
+ [x] Verify email token with real database
+ [x] Create password reset token with real database
+ [ ] Log login attempt with real database
+ [ ] Get failed login attempts with real database
+ [ ] Blacklist token with real database
+ [x] Update last login with real database
+ [x] Delete expired tokens with real database
+ [ ] User login history with real database
+ [x] Create user with duplicate email fails
+ [x] Transaction rollback on error
+
+Auth Service Integration (Tests\Integration\AuthServiceIntegration)
+ [x] Full login flow with real services
+ [x] Full registration flow with real services
+ [x] Login with wrong password fails
+ [x] Registration with weak password fails
+ [x] Registration with existing email fails
+ [x] Token verification with real j w t
+ [x] Token refresh with real j w t
+ [x] Logout succeeds
+ [x] Get current user with valid payload
+ [x] Password strength validation
+ [x] Password hashing and verification
+ [x] J w t token generation and verification
+ [x] Complete user lifecycle
+
+Body Parsing Middleware Integration (Tests\Integration\BodyParsingMiddlewareIntegration)
+ [x] Json body parsing success
+ [x] Json body parsing with charset
+ [x] Invalid json returns bad request
+ [x] Empty json body is valid
+ [x] Form urlencoded body parsing
+ [x] Form urlencoded with charset
+ [x] Get request ignored
+ [x] Unsupported content type ignored
+ [x] Complex json data structures
+ [x] Null json value
+ [x] All supported http methods
+
+Controller Integration (Tests\Integration\ControllerIntegration)
+ [ ] Public homepage request
+ [x] Api login request
+ [x] Database controller integration
+ [x] Jwt token integration
+ [ ] Service availability
+ [x] User authentication flow
+ [x] Configuration integration
+
+Database Mock (Tests\Integration\DatabaseMock)
+ [x] Mock database implements interface
+ [x] Mock database can add and retrieve data
+ [x] Transaction methods
+ [x] Query execution
+ [x] Performance statistics
+ [x] Slow queries
+ [x] Mock statement functionality
+ [x] Container integration
+ [x] Mock database does not connect to real database
+ [x] Multiple data types
+ [x] Incremental ids
+
+Email Service Integration (Tests\Integration\EmailServiceIntegration)
+ [x] Password reset email sending
+ [x] Welcome email sending
+ [x] Email template rendering
+ [x] Bulk email sending
+ [x] Email sending failure handling
+ [x] Email validation
+ [x] Email queue functionality
+
+Error Handling Middleware Integration (Tests\Integration\ErrorHandlingMiddlewareIntegration)
+ [x] Successful request passes through
+ [x] Exception logs error
+ [x] Json response for api endpoints
+ [x] Json response for accept header
+ [x] Json response for content type header
+ [x] Html response for web endpoints
+ [x] Display errors shows exception in json
+ [x] Display errors shows exception in html
+ [x] Different exception types
+ [x] Content type detection with mixed case
+ [x] Api path detection
+ [x] Error response structure
+ [x] Html error structure
+ [x] Nested exception handling
+
 Google Auth Service Integration (Tests\Integration\GoogleAuthServiceIntegration)
  [ ] Google o auth url generation
+ [ ] O auth token exchange
+ [ ] Fetch user data from google
+ [ ] Pkce code generation and verification
+ [ ] O auth error handling
+ [ ] User creation or update flow
+ [ ] Existing user update
+ [ ] State parameter validation
+
+Jwt Service Integration (Tests\Integration\JwtServiceIntegration)
+ [ ] Jwt token generation and validation flow
+ [ ] Expired token detection
+ [ ] Invalid token handling
+ [ ] Token tampering detection
+ [ ] Multiple tokens with different payloads
+ [ ] Refresh token flow
+
+Middleware Stack Integration (Tests\Integration\MiddlewareStackIntegration)
+ [ ] Complete middleware stack for successful api request
+ [x] Middleware stack with exception handling
+ [ ] Rate limiting in middleware stack
+ [x] Json body parsing in stack
+ [x] Invalid json handling in stack
+ [ ] Cors middleware in stack
+ [ ] Preflight request in stack
+ [ ] Complex middleware interaction
+ [x] Middleware order matters
+ [x] Empty middleware stack
+ [ ] Final handler usage
+ [ ] Middleware stack performance
+
+Rate Limit Middleware Integration (Tests\Integration\RateLimitMiddlewareIntegration)
+ [ ] Request under limit passes through
+ [ ] Rate limit exceeded returns 429
+ [ ] Exempt paths bypass rate limit
+ [ ] Non api paths bypass rate limit
+ [ ] X forwarded for ip extraction
+ [ ] X real ip header priority
+ [ ] Different ips have separate limits
+ [ ] Sliding window behavior
+ [ ] Rate limit headers are correct
+ [x] Default config values
+ [ ] Fallback ip when no headers
+
+Stripe Service Integration (Tests\Integration\StripeServiceIntegration)
+ [ ] Create checkout session in test mode
+ [ ] Create payment intent in test mode
+ [ ] Get payment status
+ [ ] Webhook handling
+ [ ] Error handling with invalid data
+ [ ] Session repository integration
+ [ ] Refund functionality
+ [ ] Customer management
+
+Tool Repository Integration (Tests\Integration\ToolRepositoryIntegration)
+ [ ] Find tool by id
+ [ ] Find inactive tool returns null
+ [ ] Get all tools
+ [ ] Get active tools
+ [ ] Get tools by category
+ [ ] Search tools
+ [ ] Get featured tools
+ [ ] Grant user tool access
+ [ ] Grant user tool access with expiry
+ [ ] Revoke user tool access
+ [ ] Get user tools
+ [ ] Get user active tools
+ [ ] Record tool usage
+ [ ] Get user tool usage
+ [ ] Set user tool limit
+ [ ] Check usage limit
+ [ ] Get current usage count
+ [ ] Generate tool api key
+ [ ] Get user tool api keys
+ [ ] Revoke tool api key
+ [ ] Get tool usage stats
+ [ ] Get popular tools
+ [ ] Get user daily usage
+ [ ] Duplicate api key handling
+ [ ] Tool access business rules
+
+Basic E2E (Tests\E2E\BasicE2E)
+ [x] Application can boot
+ [x] E 2 e environment setup
+ [x] Required extensions available
 

@@ -1,12 +1,1068 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="Tests\Integration\GoogleAuthServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\GoogleAuthServiceIntegrationTest.php" tests="1" assertions="0" errors="1" warnings="0" failures="0" skipped="0" time="0.071074">
-    <testcase name="testGoogleOAuthUrlGeneration" class="Tests\Integration\GoogleAuthServiceIntegrationTest" classname="Tests.Integration.GoogleAuthServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\GoogleAuthServiceIntegrationTest.php" line="55" assertions="0" time="0.071074">
-      <error type="Exception">Tests\Integration\GoogleAuthServiceIntegrationTest::testGoogleOAuthUrlGeneration
+  <testsuite name="" tests="346" assertions="866" errors="74" warnings="0" failures="32" skipped="2" time="29.359716">
+    <testsuite name="Unit" tests="143" assertions="331" errors="1" warnings="0" failures="0" skipped="2" time="5.275314">
+      <testsuite name="Tests\Unit\AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" tests="26" assertions="35" errors="1" warnings="0" failures="0" skipped="0" time="0.064882">
+        <testcase name="testFindByEmailWithExistingUser" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="27" assertions="3" time="0.031972"/>
+        <testcase name="testFindByEmailWithNonExistentUser" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="52" assertions="1" time="0.001957"/>
+        <testcase name="testFindUserByEmailWithEmailValueObject" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="66" assertions="2" time="0.001347"/>
+        <testcase name="testFindByIdWithExistingUser" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="89" assertions="2" time="0.001085"/>
+        <testcase name="testCreateUser" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="111" assertions="3" time="0.005948"/>
+        <testcase name="testCreateUserWithTransaction" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="157" assertions="1" time="0.001455"/>
+        <testcase name="testUpdatePassword" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="193" assertions="1" time="0.001099"/>
+        <testcase name="testUpdateLastLogin" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="207" assertions="1" time="0.000838"/>
+        <testcase name="testCreatePasswordResetToken" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="220" assertions="1" time="0.000903"/>
+        <testcase name="testFindPasswordResetToken" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="233" assertions="2" time="0.000843"/>
+        <testcase name="testValidatePasswordResetToken" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="255" assertions="1" time="0.001187"/>
+        <testcase name="testValidateExpiredPasswordResetToken" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="274" assertions="1" time="0.001701"/>
+        <testcase name="testDeletePasswordResetToken" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="288" assertions="1" time="0.001111"/>
+        <testcase name="testBlacklistToken" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="301" assertions="0" time="0.003775">
+          <error type="TypeError">Tests\Unit\AuthRepositoryTest::testBlacklistToken
+TypeError: App\Infrastructure\Repository\AuthRepository::blacklistToken(): Argument #3 ($expiresAt) must be of type DateTimeInterface, int given, called in C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php on line 322
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Infrastructure\Repository\AuthRepository.php:287
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php:322</error>
+        </testcase>
+        <testcase name="testIsTokenBlacklisted" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="327" assertions="1" time="0.000762"/>
+        <testcase name="testIsTokenNotBlacklisted" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="340" assertions="1" time="0.000772"/>
+        <testcase name="testGetUserLoginHistory" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="353" assertions="2" time="0.001267"/>
+        <testcase name="testGetLoginHistory" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="385" assertions="2" time="0.000683"/>
+        <testcase name="testLogLoginAttempt" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="410" assertions="1" time="0.000619"/>
+        <testcase name="testRecordLoginAttempt" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="425" assertions="1" time="0.000800"/>
+        <testcase name="testGetFailedLoginAttempts" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="440" assertions="1" time="0.000705"/>
+        <testcase name="testDeactivateUser" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="454" assertions="1" time="0.000642"/>
+        <testcase name="testActivateUser" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="467" assertions="1" time="0.000612"/>
+        <testcase name="testDeleteExpiredTokens" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="480" assertions="1" time="0.000853"/>
+        <testcase name="testCreateEmailVerificationToken" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="496" assertions="1" time="0.000632"/>
+        <testcase name="testVerifyEmailToken" class="Tests\Unit\AuthRepositoryTest" classname="Tests.Unit.AuthRepositoryTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthRepositoryTest.php" line="511" assertions="2" time="0.001313"/>
+      </testsuite>
+      <testsuite name="Tests\Unit\AuthServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php" tests="13" assertions="28" errors="0" warnings="0" failures="0" skipped="0" time="0.021390">
+        <testcase name="testSuccessfulLogin" class="Tests\Unit\AuthServiceTest" classname="Tests.Unit.AuthServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php" line="41" assertions="4" time="0.010354"/>
+        <testcase name="testLoginWithInvalidEmail" class="Tests\Unit\AuthServiceTest" classname="Tests.Unit.AuthServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php" line="82" assertions="2" time="0.000934"/>
+        <testcase name="testLoginWithWrongPassword" class="Tests\Unit\AuthServiceTest" classname="Tests.Unit.AuthServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php" line="98" assertions="2" time="0.001900"/>
+        <testcase name="testSuccessfulRegistration" class="Tests\Unit\AuthServiceTest" classname="Tests.Unit.AuthServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php" line="123" assertions="4" time="0.001383"/>
+        <testcase name="testRegistrationWithExistingEmail" class="Tests\Unit\AuthServiceTest" classname="Tests.Unit.AuthServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php" line="163" assertions="2" time="0.000930"/>
+        <testcase name="testRegistrationWithWeakPassword" class="Tests\Unit\AuthServiceTest" classname="Tests.Unit.AuthServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php" line="187" assertions="2" time="0.000885"/>
+        <testcase name="testTokenVerification" class="Tests\Unit\AuthServiceTest" classname="Tests.Unit.AuthServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php" line="209" assertions="1" time="0.000824"/>
+        <testcase name="testTokenVerificationWithInvalidToken" class="Tests\Unit\AuthServiceTest" classname="Tests.Unit.AuthServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php" line="229" assertions="1" time="0.000751"/>
+        <testcase name="testTokenRefresh" class="Tests\Unit\AuthServiceTest" classname="Tests.Unit.AuthServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php" line="244" assertions="3" time="0.000847"/>
+        <testcase name="testTokenRefreshWithInvalidToken" class="Tests\Unit\AuthServiceTest" classname="Tests.Unit.AuthServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php" line="269" assertions="2" time="0.000684"/>
+        <testcase name="testLogout" class="Tests\Unit\AuthServiceTest" classname="Tests.Unit.AuthServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php" line="284" assertions="1" time="0.000634"/>
+        <testcase name="testGetCurrentUser" class="Tests\Unit\AuthServiceTest" classname="Tests.Unit.AuthServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php" line="291" assertions="2" time="0.000655"/>
+        <testcase name="testGetCurrentUserWithMissingData" class="Tests\Unit\AuthServiceTest" classname="Tests.Unit.AuthServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\AuthServiceTest.php" line="304" assertions="2" time="0.000608"/>
+      </testsuite>
+      <testsuite name="Tests\Unit\ConfigTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\ConfigTest.php" tests="9" assertions="21" errors="0" warnings="0" failures="0" skipped="0" time="0.011799">
+        <testcase name="testConfigCanGetValues" class="Tests\Unit\ConfigTest" classname="Tests.Unit.ConfigTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\ConfigTest.php" line="38" assertions="2" time="0.001526"/>
+        <testcase name="testConfigCanGetDefaultValues" class="Tests\Unit\ConfigTest" classname="Tests.Unit.ConfigTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\ConfigTest.php" line="51" assertions="1" time="0.001027"/>
+        <testcase name="testConfigCanSetValues" class="Tests\Unit\ConfigTest" classname="Tests.Unit.ConfigTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\ConfigTest.php" line="58" assertions="1" time="0.000976"/>
+        <testcase name="testConfigCanCheckIfKeyExists" class="Tests\Unit\ConfigTest" classname="Tests.Unit.ConfigTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\ConfigTest.php" line="67" assertions="2" time="0.000997"/>
+        <testcase name="testConfigCanGetAllValues" class="Tests\Unit\ConfigTest" classname="Tests.Unit.ConfigTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\ConfigTest.php" line="74" assertions="2" time="0.000951"/>
+        <testcase name="testConfigCanGetTypedValues" class="Tests\Unit\ConfigTest" classname="Tests.Unit.ConfigTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\ConfigTest.php" line="87" assertions="6" time="0.001280"/>
+        <testcase name="testEnvironmentValues" class="Tests\Unit\ConfigTest" classname="Tests.Unit.ConfigTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\ConfigTest.php" line="108" assertions="1" time="0.001070"/>
+        <testcase name="testSecurityDefaults" class="Tests\Unit\ConfigTest" classname="Tests.Unit.ConfigTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\ConfigTest.php" line="115" assertions="5" time="0.002808"/>
+        <testcase name="testConfigWithMissingMethod" class="Tests\Unit\ConfigTest" classname="Tests.Unit.ConfigTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\ConfigTest.php" line="132" assertions="1" time="0.001165"/>
+      </testsuite>
+      <testsuite name="Tests\Unit\Domain\EmailValueObjectTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Domain\EmailValueObjectTest.php" tests="20" assertions="52" errors="0" warnings="0" failures="0" skipped="1" time="0.011808">
+        <testcase name="testValidEmailCreation" class="Tests\Unit\Domain\EmailValueObjectTest" classname="Tests.Unit.Domain.EmailValueObjectTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Domain\EmailValueObjectTest.php" line="11" assertions="20" time="0.000633"/>
+        <testcase name="testInvalidEmailThrowsException" class="Tests\Unit\Domain\EmailValueObjectTest" classname="Tests.Unit.Domain.EmailValueObjectTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Domain\EmailValueObjectTest.php" line="33" assertions="2" time="0.001265"/>
+        <testcase name="testEmailEquality" class="Tests\Unit\Domain\EmailValueObjectTest" classname="Tests.Unit.Domain.EmailValueObjectTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Domain\EmailValueObjectTest.php" line="59" assertions="4" time="0.001468"/>
+        <testcase name="testEmailCaseInsensitivity" class="Tests\Unit\Domain\EmailValueObjectTest" classname="Tests.Unit.Domain.EmailValueObjectTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Domain\EmailValueObjectTest.php" line="71" assertions="3" time="0.000516"/>
+        <testcase name="testEmailToString" class="Tests\Unit\Domain\EmailValueObjectTest" classname="Tests.Unit.Domain.EmailValueObjectTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Domain\EmailValueObjectTest.php" line="82" assertions="2" time="0.000370"/>
+        <testcase name="testEmailGetValue" class="Tests\Unit\Domain\EmailValueObjectTest" classname="Tests.Unit.Domain.EmailValueObjectTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Domain\EmailValueObjectTest.php" line="92" assertions="1" time="0.000482"/>
+        <testcase name="testEmailSerialization" class="Tests\Unit\Domain\EmailValueObjectTest" classname="Tests.Unit.Domain.EmailValueObjectTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Domain\EmailValueObjectTest.php" line="101" assertions="2" time="0.000495"/>
+        <testcase name="testEmailJsonSerialization" class="Tests\Unit\Domain\EmailValueObjectTest" classname="Tests.Unit.Domain.EmailValueObjectTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Domain\EmailValueObjectTest.php" line="113" assertions="1" time="0.000363"/>
+        <testcase name="testEmailHashing" class="Tests\Unit\Domain\EmailValueObjectTest" classname="Tests.Unit.Domain.EmailValueObjectTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Domain\EmailValueObjectTest.php" line="125" assertions="3" time="0.000548"/>
+        <testcase name="testEmailWithInternationalCharacters" class="Tests\Unit\Domain\EmailValueObjectTest" classname="Tests.Unit.Domain.EmailValueObjectTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Domain\EmailValueObjectTest.php" line="141" assertions="0" time="0.001211">
+          <skipped/>
+        </testcase>
+        <testcase name="testEmailDomainExtraction" class="Tests\Unit\Domain\EmailValueObjectTest" classname="Tests.Unit.Domain.EmailValueObjectTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Domain\EmailValueObjectTest.php" line="147" assertions="1" time="0.000405"/>
+        <testcase name="testEmailLocalPartExtraction" class="Tests\Unit\Domain\EmailValueObjectTest" classname="Tests.Unit.Domain.EmailValueObjectTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Domain\EmailValueObjectTest.php" line="162" assertions="1" time="0.000357"/>
+        <testcase name="testEmailImmutability" class="Tests\Unit\Domain\EmailValueObjectTest" classname="Tests.Unit.Domain.EmailValueObjectTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Domain\EmailValueObjectTest.php" line="177" assertions="3" time="0.000387"/>
+        <testcase name="testEmailWithPlusAddressing" class="Tests\Unit\Domain\EmailValueObjectTest" classname="Tests.Unit.Domain.EmailValueObjectTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Domain\EmailValueObjectTest.php" line="190" assertions="1" time="0.000391"/>
+        <testcase name="testEmailWithDots" class="Tests\Unit\Domain\EmailValueObjectTest" classname="Tests.Unit.Domain.EmailValueObjectTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Domain\EmailValueObjectTest.php" line="196" assertions="1" time="0.000397"/>
+        <testcase name="testEmailWithNumbers" class="Tests\Unit\Domain\EmailValueObjectTest" classname="Tests.Unit.Domain.EmailValueObjectTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Domain\EmailValueObjectTest.php" line="202" assertions="1" time="0.000342"/>
+        <testcase name="testEmailWithHyphens" class="Tests\Unit\Domain\EmailValueObjectTest" classname="Tests.Unit.Domain.EmailValueObjectTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Domain\EmailValueObjectTest.php" line="208" assertions="1" time="0.000355"/>
+        <testcase name="testEmailWithUnderscores" class="Tests\Unit\Domain\EmailValueObjectTest" classname="Tests.Unit.Domain.EmailValueObjectTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Domain\EmailValueObjectTest.php" line="214" assertions="1" time="0.000494"/>
+        <testcase name="testEmailMaxLength" class="Tests\Unit\Domain\EmailValueObjectTest" classname="Tests.Unit.Domain.EmailValueObjectTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Domain\EmailValueObjectTest.php" line="220" assertions="1" time="0.000389"/>
+        <testcase name="testEmailCloning" class="Tests\Unit\Domain\EmailValueObjectTest" classname="Tests.Unit.Domain.EmailValueObjectTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Domain\EmailValueObjectTest.php" line="236" assertions="3" time="0.000941"/>
+      </testsuite>
+      <testsuite name="Tests\Unit\Domain\UserEntityTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Domain\UserEntityTest.php" tests="14" assertions="40" errors="0" warnings="0" failures="0" skipped="0" time="0.114284">
+        <testcase name="testUserCreationWithAllParameters" class="Tests\Unit\Domain\UserEntityTest" classname="Tests.Unit.Domain.UserEntityTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Domain\UserEntityTest.php" line="11" assertions="6" time="0.000407"/>
+        <testcase name="testUserCreationWithDefaults" class="Tests\Unit\Domain\UserEntityTest" classname="Tests.Unit.Domain.UserEntityTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Domain\UserEntityTest.php" line="30" assertions="6" time="0.000389"/>
+        <testcase name="testEmailToString" class="Tests\Unit\Domain\UserEntityTest" classname="Tests.Unit.Domain.UserEntityTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Domain\UserEntityTest.php" line="45" assertions="1" time="0.000338"/>
+        <testcase name="testUserRoles" class="Tests\Unit\Domain\UserEntityTest" classname="Tests.Unit.Domain.UserEntityTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Domain\UserEntityTest.php" line="54" assertions="3" time="0.000352"/>
+        <testcase name="testUserNameHandling" class="Tests\Unit\Domain\UserEntityTest" classname="Tests.Unit.Domain.UserEntityTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Domain\UserEntityTest.php" line="67" assertions="2" time="0.000334"/>
+        <testcase name="testUserIdHandling" class="Tests\Unit\Domain\UserEntityTest" classname="Tests.Unit.Domain.UserEntityTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Domain\UserEntityTest.php" line="78" assertions="2" time="0.000340"/>
+        <testcase name="testCreatedAtDefaultsToNow" class="Tests\Unit\Domain\UserEntityTest" classname="Tests.Unit.Domain.UserEntityTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Domain\UserEntityTest.php" line="89" assertions="4" time="0.000964"/>
+        <testcase name="testUserEquality" class="Tests\Unit\Domain\UserEntityTest" classname="Tests.Unit.Domain.UserEntityTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Domain\UserEntityTest.php" line="102" assertions="3" time="0.000490"/>
+        <testcase name="testPasswordHashStorage" class="Tests\Unit\Domain\UserEntityTest" classname="Tests.Unit.Domain.UserEntityTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Domain\UserEntityTest.php" line="118" assertions="3" time="0.108557"/>
+        <testcase name="testUserSerialization" class="Tests\Unit\Domain\UserEntityTest" classname="Tests.Unit.Domain.UserEntityTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Domain\UserEntityTest.php" line="131" assertions="4" time="0.000653"/>
+        <testcase name="testUserWithSpecialCharactersInName" class="Tests\Unit\Domain\UserEntityTest" classname="Tests.Unit.Domain.UserEntityTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Domain\UserEntityTest.php" line="145" assertions="1" time="0.000392"/>
+        <testcase name="testUserWithEmptyStringName" class="Tests\Unit\Domain\UserEntityTest" classname="Tests.Unit.Domain.UserEntityTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Domain\UserEntityTest.php" line="155" assertions="1" time="0.000351"/>
+        <testcase name="testUserWithNumericStringId" class="Tests\Unit\Domain\UserEntityTest" classname="Tests.Unit.Domain.UserEntityTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Domain\UserEntityTest.php" line="163" assertions="2" time="0.000375"/>
+        <testcase name="testUserCreatedAtImmutability" class="Tests\Unit\Domain\UserEntityTest" classname="Tests.Unit.Domain.UserEntityTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Domain\UserEntityTest.php" line="174" assertions="2" time="0.000341"/>
+      </testsuite>
+      <testsuite name="Tests\Unit\Infrastructure\DatabaseTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Infrastructure\DatabaseTest.php" tests="18" assertions="50" errors="0" warnings="0" failures="0" skipped="0" time="0.012820">
+        <testcase name="testDatabaseConnection" class="Tests\Unit\Infrastructure\DatabaseTest" classname="Tests.Unit.Infrastructure.DatabaseTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Infrastructure\DatabaseTest.php" line="36" assertions="2" time="0.001658"/>
+        <testcase name="testDatabaseQuery" class="Tests\Unit\Infrastructure\DatabaseTest" classname="Tests.Unit.Infrastructure.DatabaseTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Infrastructure\DatabaseTest.php" line="44" assertions="4" time="0.000923"/>
+        <testcase name="testDatabaseQueryFirst" class="Tests\Unit\Infrastructure\DatabaseTest" classname="Tests.Unit.Infrastructure.DatabaseTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Infrastructure\DatabaseTest.php" line="62" assertions="3" time="0.000740"/>
+        <testcase name="testDatabaseQueryFirstReturnsNullForNoResults" class="Tests\Unit\Infrastructure\DatabaseTest" classname="Tests.Unit.Infrastructure.DatabaseTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Infrastructure\DatabaseTest.php" line="75" assertions="1" time="0.000572"/>
+        <testcase name="testDatabaseExecute" class="Tests\Unit\Infrastructure\DatabaseTest" classname="Tests.Unit.Infrastructure.DatabaseTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Infrastructure\DatabaseTest.php" line="84" assertions="2" time="0.000554"/>
+        <testcase name="testDatabaseInsert" class="Tests\Unit\Infrastructure\DatabaseTest" classname="Tests.Unit.Infrastructure.DatabaseTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Infrastructure\DatabaseTest.php" line="100" assertions="3" time="0.000857"/>
+        <testcase name="testDatabaseTransactionCommit" class="Tests\Unit\Infrastructure\DatabaseTest" classname="Tests.Unit.Infrastructure.DatabaseTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Infrastructure\DatabaseTest.php" line="117" assertions="2" time="0.000625"/>
+        <testcase name="testDatabaseTransactionRollback" class="Tests\Unit\Infrastructure\DatabaseTest" classname="Tests.Unit.Infrastructure.DatabaseTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Infrastructure\DatabaseTest.php" line="136" assertions="3" time="0.000632"/>
+        <testcase name="testDatabaseInTransaction" class="Tests\Unit\Infrastructure\DatabaseTest" classname="Tests.Unit.Infrastructure.DatabaseTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Infrastructure\DatabaseTest.php" line="158" assertions="3" time="0.000469"/>
+        <testcase name="testDatabaseLastInsertId" class="Tests\Unit\Infrastructure\DatabaseTest" classname="Tests.Unit.Infrastructure.DatabaseTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Infrastructure\DatabaseTest.php" line="169" assertions="2" time="0.000502"/>
+        <testcase name="testDatabasePrepareAndExecute" class="Tests\Unit\Infrastructure\DatabaseTest" classname="Tests.Unit.Infrastructure.DatabaseTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Infrastructure\DatabaseTest.php" line="181" assertions="3" time="0.000624"/>
+        <testcase name="testDatabaseQueryWithNamedParameters" class="Tests\Unit\Infrastructure\DatabaseTest" classname="Tests.Unit.Infrastructure.DatabaseTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Infrastructure\DatabaseTest.php" line="197" assertions="2" time="0.000536"/>
+        <testcase name="testDatabaseErrorHandling" class="Tests\Unit\Infrastructure\DatabaseTest" classname="Tests.Unit.Infrastructure.DatabaseTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Infrastructure\DatabaseTest.php" line="212" assertions="1" time="0.000463"/>
+        <testcase name="testDatabaseMultipleQueries" class="Tests\Unit\Infrastructure\DatabaseTest" classname="Tests.Unit.Infrastructure.DatabaseTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Infrastructure\DatabaseTest.php" line="220" assertions="11" time="0.000764"/>
+        <testcase name="testDatabaseConnectionReuse" class="Tests\Unit\Infrastructure\DatabaseTest" classname="Tests.Unit.Infrastructure.DatabaseTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Infrastructure\DatabaseTest.php" line="241" assertions="1" time="0.000449"/>
+        <testcase name="testDatabaseConfigurationTypes" class="Tests\Unit\Infrastructure\DatabaseTest" classname="Tests.Unit.Infrastructure.DatabaseTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Infrastructure\DatabaseTest.php" line="250" assertions="4" time="0.000504"/>
+        <testcase name="testDatabaseBatchOperations" class="Tests\Unit\Infrastructure\DatabaseTest" classname="Tests.Unit.Infrastructure.DatabaseTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Infrastructure\DatabaseTest.php" line="271" assertions="1" time="0.001475"/>
+        <testcase name="testDatabaseConnectionAttributes" class="Tests\Unit\Infrastructure\DatabaseTest" classname="Tests.Unit.Infrastructure.DatabaseTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Infrastructure\DatabaseTest.php" line="293" assertions="2" time="0.000472"/>
+      </testsuite>
+      <testsuite name="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Middleware\AuthMiddlewareIntegrationTest.php" tests="10" assertions="31" errors="0" warnings="0" failures="0" skipped="0" time="0.028625">
+        <testcase name="testValidTokenPassesThrough" class="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest" classname="Tests.Unit.Middleware.AuthMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Middleware\AuthMiddlewareIntegrationTest.php" line="114" assertions="2" time="0.011661"/>
+        <testcase name="testMissingAuthorizationHeaderReturnsUnauthorized" class="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest" classname="Tests.Unit.Middleware.AuthMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Middleware\AuthMiddlewareIntegrationTest.php" line="138" assertions="5" time="0.002275"/>
+        <testcase name="testInvalidAuthorizationFormatReturnsUnauthorized" class="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest" classname="Tests.Unit.Middleware.AuthMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Middleware\AuthMiddlewareIntegrationTest.php" line="156" assertions="2" time="0.001456"/>
+        <testcase name="testInvalidTokenReturnsUnauthorized" class="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest" classname="Tests.Unit.Middleware.AuthMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Middleware\AuthMiddlewareIntegrationTest.php" line="169" assertions="2" time="0.001659"/>
+        <testcase name="testExpiredTokenReturnsUnauthorized" class="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest" classname="Tests.Unit.Middleware.AuthMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Middleware\AuthMiddlewareIntegrationTest.php" line="183" assertions="2" time="0.001756"/>
+        <testcase name="testBlacklistedTokenReturnsUnauthorized" class="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest" classname="Tests.Unit.Middleware.AuthMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Middleware\AuthMiddlewareIntegrationTest.php" line="204" assertions="2" time="0.001899"/>
+        <testcase name="testDifferentAuthorizationSchemes" class="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest" classname="Tests.Unit.Middleware.AuthMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Middleware\AuthMiddlewareIntegrationTest.php" line="230" assertions="8" time="0.001901"/>
+        <testcase name="testCaseInsensitiveBearerScheme" class="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest" classname="Tests.Unit.Middleware.AuthMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Middleware\AuthMiddlewareIntegrationTest.php" line="252" assertions="4" time="0.002450"/>
+        <testcase name="testTokenWithoutExpiration" class="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest" classname="Tests.Unit.Middleware.AuthMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Middleware\AuthMiddlewareIntegrationTest.php" line="284" assertions="2" time="0.001607"/>
+        <testcase name="testResponseHeaders" class="Tests\Unit\Middleware\AuthMiddlewareIntegrationTest" classname="Tests.Unit.Middleware.AuthMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Middleware\AuthMiddlewareIntegrationTest.php" line="308" assertions="2" time="0.001962"/>
+      </testsuite>
+      <testsuite name="Tests\Unit\Middleware\AuthMiddlewareTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Middleware\AuthMiddlewareTest.php" tests="1" assertions="0" errors="0" warnings="0" failures="0" skipped="1" time="0.000548">
+        <testcase name="testDisabledBecauseJwtServiceIsFinal" class="Tests\Unit\Middleware\AuthMiddlewareTest" classname="Tests.Unit.Middleware.AuthMiddlewareTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\Middleware\AuthMiddlewareTest.php" line="11" assertions="0" time="0.000548">
+          <skipped/>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Unit\PasswordHasherTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\PasswordHasherTest.php" tests="8" assertions="22" errors="0" warnings="0" failures="0" skipped="0" time="4.868682">
+        <testcase name="testImplementsInterface" class="Tests\Unit\PasswordHasherTest" classname="Tests.Unit.PasswordHasherTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\PasswordHasherTest.php" line="25" assertions="1" time="0.001036"/>
+        <testcase name="testCanHashPassword" class="Tests\Unit\PasswordHasherTest" classname="Tests.Unit.PasswordHasherTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\PasswordHasherTest.php" line="30" assertions="3" time="0.452895"/>
+        <testcase name="testCanVerifyPassword" class="Tests\Unit\PasswordHasherTest" classname="Tests.Unit.PasswordHasherTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\PasswordHasherTest.php" line="40" assertions="2" time="0.703126"/>
+        <testcase name="testNeedsRehash" class="Tests\Unit\PasswordHasherTest" classname="Tests.Unit.PasswordHasherTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\PasswordHasherTest.php" line="49" assertions="2" time="0.232190"/>
+        <testcase name="testPasswordStrengthValidation" class="Tests\Unit\PasswordHasherTest" classname="Tests.Unit.PasswordHasherTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\PasswordHasherTest.php" line="63" assertions="6" time="0.000583"/>
+        <testcase name="testCustomMinimumLength" class="Tests\Unit\PasswordHasherTest" classname="Tests.Unit.PasswordHasherTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\PasswordHasherTest.php" line="76" assertions="2" time="0.000375"/>
+        <testcase name="testDifferentCostFactors" class="Tests\Unit\PasswordHasherTest" classname="Tests.Unit.PasswordHasherTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\PasswordHasherTest.php" line="82" assertions="3" time="2.728920"/>
+        <testcase name="testEmptyPasswordHandling" class="Tests\Unit\PasswordHasherTest" classname="Tests.Unit.PasswordHasherTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\PasswordHasherTest.php" line="99" assertions="3" time="0.749557"/>
+      </testsuite>
+      <testsuite name="Tests\Unit\StripeControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeControllerTest.php" tests="11" assertions="26" errors="0" warnings="0" failures="0" skipped="0" time="0.045235">
+        <testcase name="testCreateSessionSuccess" class="Tests\Unit\StripeControllerTest" classname="Tests.Unit.StripeControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeControllerTest.php" line="30" assertions="3" time="0.015596"/>
+        <testcase name="testCreateSessionException" class="Tests\Unit\StripeControllerTest" classname="Tests.Unit.StripeControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeControllerTest.php" line="52" assertions="3" time="0.006470"/>
+        <testcase name="testStatusSuccess" class="Tests\Unit\StripeControllerTest" classname="Tests.Unit.StripeControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeControllerTest.php" line="66" assertions="3" time="0.002325"/>
+        <testcase name="testStatusException" class="Tests\Unit\StripeControllerTest" classname="Tests.Unit.StripeControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeControllerTest.php" line="83" assertions="3" time="0.002620"/>
+        <testcase name="testWebhookSuccess" class="Tests\Unit\StripeControllerTest" classname="Tests.Unit.StripeControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeControllerTest.php" line="99" assertions="3" time="0.002065"/>
+        <testcase name="testWebhookException" class="Tests\Unit\StripeControllerTest" classname="Tests.Unit.StripeControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeControllerTest.php" line="115" assertions="3" time="0.001337"/>
+        <testcase name="testConfigWithValidKey" class="Tests\Unit\StripeControllerTest" classname="Tests.Unit.StripeControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeControllerTest.php" line="128" assertions="1" time="0.005084"/>
+        <testsuite name="Tests\Unit\StripeControllerTest::testCreateSessionWithDifferentData" tests="3" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="0.008765">
+          <testcase name="testCreateSessionWithDifferentData with data set &quot;empty_data&quot;" class="Tests\Unit\StripeControllerTest" classname="Tests.Unit.StripeControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeControllerTest.php" line="161" assertions="2" time="0.005700"/>
+          <testcase name="testCreateSessionWithDifferentData with data set &quot;with_line_items&quot;" class="Tests\Unit\StripeControllerTest" classname="Tests.Unit.StripeControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeControllerTest.php" line="161" assertions="2" time="0.001600"/>
+          <testcase name="testCreateSessionWithDifferentData with data set &quot;with_metadata&quot;" class="Tests\Unit\StripeControllerTest" classname="Tests.Unit.StripeControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeControllerTest.php" line="161" assertions="2" time="0.001465"/>
+        </testsuite>
+        <testcase name="testControllerConstructorWithDependency" class="Tests\Unit\StripeControllerTest" classname="Tests.Unit.StripeControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeControllerTest.php" line="173" assertions="1" time="0.000973"/>
+      </testsuite>
+      <testsuite name="Tests\Unit\StripeServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php" tests="13" assertions="26" errors="0" warnings="0" failures="0" skipped="0" time="0.095241">
+        <testcase name="testServiceHasRequiredMethods" class="Tests\Unit\StripeServiceTest" classname="Tests.Unit.StripeServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php" line="44" assertions="4" time="0.015758"/>
+        <testcase name="testCreateCheckoutSessionInMockMode" class="Tests\Unit\StripeServiceTest" classname="Tests.Unit.StripeServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php" line="53" assertions="4" time="0.003314"/>
+        <testcase name="testCreateCheckoutSessionWithOptions" class="Tests\Unit\StripeServiceTest" classname="Tests.Unit.StripeServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php" line="82" assertions="3" time="0.002408"/>
+        <testcase name="testCreateCheckoutSessionWithEmptyLineItems" class="Tests\Unit\StripeServiceTest" classname="Tests.Unit.StripeServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php" line="115" assertions="2" time="0.003532"/>
+        <testcase name="testCreatePaymentIntentInMockMode" class="Tests\Unit\StripeServiceTest" classname="Tests.Unit.StripeServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php" line="130" assertions="1" time="0.028548"/>
+        <testcase name="testGetPaymentStatusWithMockSession" class="Tests\Unit\StripeServiceTest" classname="Tests.Unit.StripeServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php" line="155" assertions="1" time="0.011430"/>
+        <testcase name="testHandleWebhookWithoutSecret" class="Tests\Unit\StripeServiceTest" classname="Tests.Unit.StripeServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php" line="166" assertions="2" time="0.001883"/>
+        <testcase name="testConstructorWithValidConfig" class="Tests\Unit\StripeServiceTest" classname="Tests.Unit.StripeServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php" line="185" assertions="1" time="0.002001"/>
+        <testcase name="testConstructorWithInvalidStripeKey" class="Tests\Unit\StripeServiceTest" classname="Tests.Unit.StripeServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php" line="205" assertions="2" time="0.002410"/>
+        <testcase name="testStaticGetInstanceMethod" class="Tests\Unit\StripeServiceTest" classname="Tests.Unit.StripeServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php" line="230" assertions="1" time="0.012126"/>
+        <testcase name="testDevelopmentModeDetection" class="Tests\Unit\StripeServiceTest" classname="Tests.Unit.StripeServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php" line="243" assertions="2" time="0.002652"/>
+        <testcase name="testProductionModeWithInvalidKey" class="Tests\Unit\StripeServiceTest" classname="Tests.Unit.StripeServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php" line="270" assertions="2" time="0.005967"/>
+        <testcase name="testCreatePaymentIntentCallsStripeSDK" class="Tests\Unit\StripeServiceTest" classname="Tests.Unit.StripeServiceTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Unit\StripeServiceTest.php" line="310" assertions="1" time="0.003211"/>
+      </testsuite>
+    </testsuite>
+    <testsuite name="Feature" tests="40" assertions="155" errors="17" warnings="0" failures="11" skipped="0" time="11.653848">
+      <testsuite name="Tests\Feature\AuthControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php" tests="17" assertions="0" errors="17" warnings="0" failures="0" skipped="0" time="0.096868">
+        <testcase name="testLoginWithValidCredentials" class="Tests\Feature\AuthControllerTest" classname="Tests.Feature.AuthControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php" line="53" assertions="0" time="0.009088">
+          <error type="PHPUnit\Framework\MockObject\IncompatibleReturnValueException">Tests\Feature\AuthControllerTest::testLoginWithValidCredentials
+PHPUnit\Framework\MockObject\IncompatibleReturnValueException: Method logLoginAttempt may not return value of type boolean, its declared return type is "void"
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php:41</error>
+        </testcase>
+        <testcase name="testLoginWithInvalidCredentials" class="Tests\Feature\AuthControllerTest" classname="Tests.Feature.AuthControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php" line="121" assertions="0" time="0.005011">
+          <error type="PHPUnit\Framework\MockObject\IncompatibleReturnValueException">Tests\Feature\AuthControllerTest::testLoginWithInvalidCredentials
+PHPUnit\Framework\MockObject\IncompatibleReturnValueException: Method logLoginAttempt may not return value of type boolean, its declared return type is "void"
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php:41</error>
+        </testcase>
+        <testcase name="testLoginWithMissingCredentials" class="Tests\Feature\AuthControllerTest" classname="Tests.Feature.AuthControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php" line="151" assertions="0" time="0.004194">
+          <error type="PHPUnit\Framework\MockObject\IncompatibleReturnValueException">Tests\Feature\AuthControllerTest::testLoginWithMissingCredentials
+PHPUnit\Framework\MockObject\IncompatibleReturnValueException: Method logLoginAttempt may not return value of type boolean, its declared return type is "void"
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php:41</error>
+        </testcase>
+        <testcase name="testRegisterWithValidData_SKIP" class="Tests\Feature\AuthControllerTest" classname="Tests.Feature.AuthControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php" line="167" assertions="0" time="0.007863">
+          <error type="PHPUnit\Framework\MockObject\IncompatibleReturnValueException">Tests\Feature\AuthControllerTest::testRegisterWithValidData_SKIP
+PHPUnit\Framework\MockObject\IncompatibleReturnValueException: Method logLoginAttempt may not return value of type boolean, its declared return type is "void"
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php:41</error>
+        </testcase>
+        <testcase name="testRegisterWithExistingEmail" class="Tests\Feature\AuthControllerTest" classname="Tests.Feature.AuthControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php" line="239" assertions="0" time="0.003229">
+          <error type="PHPUnit\Framework\MockObject\IncompatibleReturnValueException">Tests\Feature\AuthControllerTest::testRegisterWithExistingEmail
+PHPUnit\Framework\MockObject\IncompatibleReturnValueException: Method logLoginAttempt may not return value of type boolean, its declared return type is "void"
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php:41</error>
+        </testcase>
+        <testcase name="testRegisterWithValidationErrors" class="Tests\Feature\AuthControllerTest" classname="Tests.Feature.AuthControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php" line="269" assertions="0" time="0.017619">
+          <error type="PHPUnit\Framework\MockObject\IncompatibleReturnValueException">Tests\Feature\AuthControllerTest::testRegisterWithValidationErrors
+PHPUnit\Framework\MockObject\IncompatibleReturnValueException: Method logLoginAttempt may not return value of type boolean, its declared return type is "void"
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php:41</error>
+        </testcase>
+        <testcase name="testMeWithValidToken" class="Tests\Feature\AuthControllerTest" classname="Tests.Feature.AuthControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php" line="288" assertions="0" time="0.006547">
+          <error type="PHPUnit\Framework\MockObject\IncompatibleReturnValueException">Tests\Feature\AuthControllerTest::testMeWithValidToken
+PHPUnit\Framework\MockObject\IncompatibleReturnValueException: Method logLoginAttempt may not return value of type boolean, its declared return type is "void"
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php:41</error>
+        </testcase>
+        <testcase name="testMeWithoutToken" class="Tests\Feature\AuthControllerTest" classname="Tests.Feature.AuthControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php" line="327" assertions="0" time="0.003483">
+          <error type="PHPUnit\Framework\MockObject\IncompatibleReturnValueException">Tests\Feature\AuthControllerTest::testMeWithoutToken
+PHPUnit\Framework\MockObject\IncompatibleReturnValueException: Method logLoginAttempt may not return value of type boolean, its declared return type is "void"
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php:41</error>
+        </testcase>
+        <testcase name="testMeWithInvalidToken" class="Tests\Feature\AuthControllerTest" classname="Tests.Feature.AuthControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php" line="341" assertions="0" time="0.003192">
+          <error type="PHPUnit\Framework\MockObject\IncompatibleReturnValueException">Tests\Feature\AuthControllerTest::testMeWithInvalidToken
+PHPUnit\Framework\MockObject\IncompatibleReturnValueException: Method logLoginAttempt may not return value of type boolean, its declared return type is "void"
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php:41</error>
+        </testcase>
+        <testcase name="testForgotPasswordWithValidEmail" class="Tests\Feature\AuthControllerTest" classname="Tests.Feature.AuthControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php" line="360" assertions="0" time="0.004550">
+          <error type="PHPUnit\Framework\MockObject\IncompatibleReturnValueException">Tests\Feature\AuthControllerTest::testForgotPasswordWithValidEmail
+PHPUnit\Framework\MockObject\IncompatibleReturnValueException: Method logLoginAttempt may not return value of type boolean, its declared return type is "void"
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php:41</error>
+        </testcase>
+        <testcase name="testForgotPasswordWithInvalidEmail" class="Tests\Feature\AuthControllerTest" classname="Tests.Feature.AuthControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php" line="392" assertions="0" time="0.004916">
+          <error type="PHPUnit\Framework\MockObject\IncompatibleReturnValueException">Tests\Feature\AuthControllerTest::testForgotPasswordWithInvalidEmail
+PHPUnit\Framework\MockObject\IncompatibleReturnValueException: Method logLoginAttempt may not return value of type boolean, its declared return type is "void"
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php:41</error>
+        </testcase>
+        <testcase name="testLogout" class="Tests\Feature\AuthControllerTest" classname="Tests.Feature.AuthControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php" line="408" assertions="0" time="0.004094">
+          <error type="PHPUnit\Framework\MockObject\IncompatibleReturnValueException">Tests\Feature\AuthControllerTest::testLogout
+PHPUnit\Framework\MockObject\IncompatibleReturnValueException: Method logLoginAttempt may not return value of type boolean, its declared return type is "void"
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php:41</error>
+        </testcase>
+        <testcase name="testInvalidEndpoint" class="Tests\Feature\AuthControllerTest" classname="Tests.Feature.AuthControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php" line="421" assertions="0" time="0.003295">
+          <error type="PHPUnit\Framework\MockObject\IncompatibleReturnValueException">Tests\Feature\AuthControllerTest::testInvalidEndpoint
+PHPUnit\Framework\MockObject\IncompatibleReturnValueException: Method logLoginAttempt may not return value of type boolean, its declared return type is "void"
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php:41</error>
+        </testcase>
+        <testcase name="testResetPasswordWithValidToken" class="Tests\Feature\AuthControllerTest" classname="Tests.Feature.AuthControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php" line="434" assertions="0" time="0.010941">
+          <error type="PHPUnit\Framework\MockObject\IncompatibleReturnValueException">Tests\Feature\AuthControllerTest::testResetPasswordWithValidToken
+PHPUnit\Framework\MockObject\IncompatibleReturnValueException: Method logLoginAttempt may not return value of type boolean, its declared return type is "void"
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php:41</error>
+        </testcase>
+        <testcase name="testResetPasswordWithInvalidToken" class="Tests\Feature\AuthControllerTest" classname="Tests.Feature.AuthControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php" line="478" assertions="0" time="0.002700">
+          <error type="PHPUnit\Framework\MockObject\IncompatibleReturnValueException">Tests\Feature\AuthControllerTest::testResetPasswordWithInvalidToken
+PHPUnit\Framework\MockObject\IncompatibleReturnValueException: Method logLoginAttempt may not return value of type boolean, its declared return type is "void"
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php:41</error>
+        </testcase>
+        <testcase name="testVerifyEmailWithValidToken" class="Tests\Feature\AuthControllerTest" classname="Tests.Feature.AuthControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php" line="500" assertions="0" time="0.002725">
+          <error type="PHPUnit\Framework\MockObject\IncompatibleReturnValueException">Tests\Feature\AuthControllerTest::testVerifyEmailWithValidToken
+PHPUnit\Framework\MockObject\IncompatibleReturnValueException: Method logLoginAttempt may not return value of type boolean, its declared return type is "void"
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php:41</error>
+        </testcase>
+        <testcase name="testRefreshTokenNotImplemented" class="Tests\Feature\AuthControllerTest" classname="Tests.Feature.AuthControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php" line="530" assertions="0" time="0.003423">
+          <error type="PHPUnit\Framework\MockObject\IncompatibleReturnValueException">Tests\Feature\AuthControllerTest::testRefreshTokenNotImplemented
+PHPUnit\Framework\MockObject\IncompatibleReturnValueException: Method logLoginAttempt may not return value of type boolean, its declared return type is "void"
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\AuthControllerTest.php:41</error>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Feature\FullUserJourneyFeatureTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\FullUserJourneyFeatureTest.php" tests="8" assertions="59" errors="0" warnings="0" failures="6" skipped="0" time="7.746838">
+        <testcase name="testCompleteUserLifecycleFromRegistrationToLogin" class="Tests\Feature\FullUserJourneyFeatureTest" classname="Tests.Feature.FullUserJourneyFeatureTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\FullUserJourneyFeatureTest.php" line="40" assertions="11" time="0.697290">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin
+Failed asserting that 500 matches expected 200.
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\FullUserJourneyFeatureTest.php:84</failure>
+        </testcase>
+        <testcase name="testPasswordResetCompleteFlow" class="Tests\Feature\FullUserJourneyFeatureTest" classname="Tests.Feature.FullUserJourneyFeatureTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\FullUserJourneyFeatureTest.php" line="115" assertions="4" time="0.840634">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Feature\FullUserJourneyFeatureTest::testPasswordResetCompleteFlow
+Failed asserting that 500 matches expected 401.
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\FullUserJourneyFeatureTest.php:159</failure>
+        </testcase>
+        <testcase name="testEmailVerificationCompleteFlow" class="Tests\Feature\FullUserJourneyFeatureTest" classname="Tests.Feature.FullUserJourneyFeatureTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\FullUserJourneyFeatureTest.php" line="172" assertions="4" time="0.002968"/>
+        <testcase name="testMultipleFailedLoginAttempts" class="Tests\Feature\FullUserJourneyFeatureTest" classname="Tests.Feature.FullUserJourneyFeatureTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\FullUserJourneyFeatureTest.php" line="208" assertions="1" time="0.495344">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Feature\FullUserJourneyFeatureTest::testMultipleFailedLoginAttempts
+Failed asserting that 500 matches expected 401.
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\FullUserJourneyFeatureTest.php:226</failure>
+        </testcase>
+        <testcase name="testTokenBlacklistingFlow" class="Tests\Feature\FullUserJourneyFeatureTest" classname="Tests.Feature.FullUserJourneyFeatureTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\FullUserJourneyFeatureTest.php" line="244" assertions="11" time="0.552534">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow
+Failed asserting that 500 matches expected 200.
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\FullUserJourneyFeatureTest.php:84
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\FullUserJourneyFeatureTest.php:247</failure>
+        </testcase>
+        <testcase name="testUserAccountSecurity" class="Tests\Feature\FullUserJourneyFeatureTest" classname="Tests.Feature.FullUserJourneyFeatureTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\FullUserJourneyFeatureTest.php" line="272" assertions="11" time="1.090357"/>
+        <testcase name="testDataIntegrityThroughoutJourney" class="Tests\Feature\FullUserJourneyFeatureTest" classname="Tests.Feature.FullUserJourneyFeatureTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\FullUserJourneyFeatureTest.php" line="315" assertions="4" time="0.791353">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney
+Failed asserting that null matches expected 'integrity.test@example.com'.
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\FullUserJourneyFeatureTest.php:349</failure>
+        </testcase>
+        <testcase name="testConcurrentUserOperations" class="Tests\Feature\FullUserJourneyFeatureTest" classname="Tests.Feature.FullUserJourneyFeatureTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\FullUserJourneyFeatureTest.php" line="354" assertions="13" time="3.276359">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Feature\FullUserJourneyFeatureTest::testConcurrentUserOperations
+Failed asserting that 500 matches expected 200.
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\FullUserJourneyFeatureTest.php:392</failure>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Feature\StripeControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\StripeControllerTest.php" tests="6" assertions="27" errors="0" warnings="0" failures="0" skipped="0" time="0.010885">
+        <testcase name="testCreateCheckoutSessionWithValidItems" class="Tests\Feature\StripeControllerTest" classname="Tests.Feature.StripeControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\StripeControllerTest.php" line="28" assertions="5" time="0.001224"/>
+        <testcase name="testCreateCheckoutSessionWithException" class="Tests\Feature\StripeControllerTest" classname="Tests.Feature.StripeControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\StripeControllerTest.php" line="49" assertions="3" time="0.002107"/>
+        <testcase name="testStatusSuccess" class="Tests\Feature\StripeControllerTest" classname="Tests.Feature.StripeControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\StripeControllerTest.php" line="65" assertions="5" time="0.001495"/>
+        <testcase name="testWebhookSuccess" class="Tests\Feature\StripeControllerTest" classname="Tests.Feature.StripeControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\StripeControllerTest.php" line="86" assertions="5" time="0.001332"/>
+        <testcase name="testWebhookException" class="Tests\Feature\StripeControllerTest" classname="Tests.Feature.StripeControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\StripeControllerTest.php" line="105" assertions="3" time="0.001433"/>
+        <testcase name="testConfigSuccess" class="Tests\Feature\StripeControllerTest" classname="Tests.Feature.StripeControllerTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\StripeControllerTest.php" line="120" assertions="6" time="0.003295"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\UserRegistrationFeatureTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\UserRegistrationFeatureTest.php" tests="9" assertions="69" errors="0" warnings="0" failures="5" skipped="0" time="3.799257">
+        <testcase name="testCompleteUserRegistrationJourney" class="Tests\Feature\UserRegistrationFeatureTest" classname="Tests.Feature.UserRegistrationFeatureTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\UserRegistrationFeatureTest.php" line="41" assertions="11" time="0.534141">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney
+Failed asserting that 500 matches expected 200.
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\UserRegistrationFeatureTest.php:86</failure>
+        </testcase>
+        <testcase name="testUserRegistrationWithInvalidData" class="Tests\Feature\UserRegistrationFeatureTest" classname="Tests.Feature.UserRegistrationFeatureTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\UserRegistrationFeatureTest.php" line="132" assertions="16" time="0.003114"/>
+        <testcase name="testRegistrationWithExistingEmail" class="Tests\Feature\UserRegistrationFeatureTest" classname="Tests.Feature.UserRegistrationFeatureTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\UserRegistrationFeatureTest.php" line="183" assertions="4" time="0.248797"/>
+        <testcase name="testEmailVerificationFlow" class="Tests\Feature\UserRegistrationFeatureTest" classname="Tests.Feature.UserRegistrationFeatureTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\UserRegistrationFeatureTest.php" line="213" assertions="4" time="0.293585"/>
+        <testcase name="testPasswordResetFlow" class="Tests\Feature\UserRegistrationFeatureTest" classname="Tests.Feature.UserRegistrationFeatureTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\UserRegistrationFeatureTest.php" line="255" assertions="8" time="0.809785">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Feature\UserRegistrationFeatureTest::testPasswordResetFlow
+Failed asserting that 500 matches expected 200.
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\UserRegistrationFeatureTest.php:316</failure>
+        </testcase>
+        <testcase name="testUserProfileUpdate" class="Tests\Feature\UserRegistrationFeatureTest" classname="Tests.Feature.UserRegistrationFeatureTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\UserRegistrationFeatureTest.php" line="329" assertions="11" time="0.537732">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate
+Failed asserting that 500 matches expected 200.
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\UserRegistrationFeatureTest.php:86
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\UserRegistrationFeatureTest.php:332</failure>
+        </testcase>
+        <testcase name="testAccountDeletion" class="Tests\Feature\UserRegistrationFeatureTest" classname="Tests.Feature.UserRegistrationFeatureTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\UserRegistrationFeatureTest.php" line="353" assertions="11" time="0.573562">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion
+Failed asserting that 500 matches expected 200.
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\UserRegistrationFeatureTest.php:86
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\UserRegistrationFeatureTest.php:356</failure>
+        </testcase>
+        <testcase name="testSecurityFeatures" class="Tests\Feature\UserRegistrationFeatureTest" classname="Tests.Feature.UserRegistrationFeatureTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\UserRegistrationFeatureTest.php" line="374" assertions="3" time="0.794321"/>
+        <testcase name="testDataValidationAndSanitization" class="Tests\Feature\UserRegistrationFeatureTest" classname="Tests.Feature.UserRegistrationFeatureTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\UserRegistrationFeatureTest.php" line="399" assertions="1" time="0.004220">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Feature\UserRegistrationFeatureTest::testDataValidationAndSanitization
+Failed asserting that an array contains 409.
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Feature\UserRegistrationFeatureTest.php:416</failure>
+        </testcase>
+      </testsuite>
+    </testsuite>
+    <testsuite name="Integration" tests="160" assertions="374" errors="56" warnings="0" failures="21" skipped="0" time="12.428385">
+      <testsuite name="Tests\Integration\AuthControllerIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthControllerIntegrationTest.php" tests="13" assertions="27" errors="6" warnings="0" failures="1" skipped="0" time="2.660256">
+        <testcase name="testCompleteRegistrationFlow" class="Tests\Integration\AuthControllerIntegrationTest" classname="Tests.Integration.AuthControllerIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthControllerIntegrationTest.php" line="160" assertions="2" time="0.347032">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Integration\AuthControllerIntegrationTest::testCompleteRegistrationFlow
+Failed asserting that 500 matches expected 200.
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthControllerIntegrationTest.php:177</failure>
+        </testcase>
+        <testcase name="testCompleteLoginFlow" class="Tests\Integration\AuthControllerIntegrationTest" classname="Tests.Integration.AuthControllerIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthControllerIntegrationTest.php" line="198" assertions="0" time="0.326368">
+          <error type="PDOException">Tests\Integration\AuthControllerIntegrationTest::testCompleteLoginFlow
+PDOException: SQLSTATE[HY000]: General error: 1 table users has no column named password
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthControllerIntegrationTest.php:46
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Infrastructure\Repository\AuthRepository.php:49
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Infrastructure\Repository\AuthRepository.php:246
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthControllerIntegrationTest.php:211</error>
+        </testcase>
+        <testcase name="testLoginWithInvalidCredentials" class="Tests\Integration\AuthControllerIntegrationTest" classname="Tests.Integration.AuthControllerIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthControllerIntegrationTest.php" line="244" assertions="5" time="0.066943"/>
+        <testcase name="testMeEndpointWithValidToken" class="Tests\Integration\AuthControllerIntegrationTest" classname="Tests.Integration.AuthControllerIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthControllerIntegrationTest.php" line="268" assertions="0" time="0.306735">
+          <error type="PDOException">Tests\Integration\AuthControllerIntegrationTest::testMeEndpointWithValidToken
+PDOException: SQLSTATE[HY000]: General error: 1 table users has no column named password
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthControllerIntegrationTest.php:46
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Infrastructure\Repository\AuthRepository.php:49
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Infrastructure\Repository\AuthRepository.php:246
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthControllerIntegrationTest.php:506
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthControllerIntegrationTest.php:272</error>
+        </testcase>
+        <testcase name="testMeEndpointWithInvalidToken" class="Tests\Integration\AuthControllerIntegrationTest" classname="Tests.Integration.AuthControllerIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthControllerIntegrationTest.php" line="293" assertions="3" time="0.064552"/>
+        <testcase name="testForgotPasswordFlow" class="Tests\Integration\AuthControllerIntegrationTest" classname="Tests.Integration.AuthControllerIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthControllerIntegrationTest.php" line="307" assertions="0" time="0.325731">
+          <error type="PDOException">Tests\Integration\AuthControllerIntegrationTest::testForgotPasswordFlow
+PDOException: SQLSTATE[HY000]: General error: 1 table users has no column named password
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthControllerIntegrationTest.php:46
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Infrastructure\Repository\AuthRepository.php:49
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Infrastructure\Repository\AuthRepository.php:246
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthControllerIntegrationTest.php:506
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthControllerIntegrationTest.php:310</error>
+        </testcase>
+        <testcase name="testResetPasswordFlow" class="Tests\Integration\AuthControllerIntegrationTest" classname="Tests.Integration.AuthControllerIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthControllerIntegrationTest.php" line="333" assertions="0" time="0.301433">
+          <error type="PDOException">Tests\Integration\AuthControllerIntegrationTest::testResetPasswordFlow
+PDOException: SQLSTATE[HY000]: General error: 1 table users has no column named password
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthControllerIntegrationTest.php:46
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Infrastructure\Repository\AuthRepository.php:49
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Infrastructure\Repository\AuthRepository.php:246
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthControllerIntegrationTest.php:506
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthControllerIntegrationTest.php:336</error>
+        </testcase>
+        <testcase name="testEmailVerificationFlow" class="Tests\Integration\AuthControllerIntegrationTest" classname="Tests.Integration.AuthControllerIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthControllerIntegrationTest.php" line="369" assertions="0" time="0.310664">
+          <error type="PDOException">Tests\Integration\AuthControllerIntegrationTest::testEmailVerificationFlow
+PDOException: SQLSTATE[HY000]: General error: 1 table users has no column named password
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthControllerIntegrationTest.php:46
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Infrastructure\Repository\AuthRepository.php:49
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Infrastructure\Repository\AuthRepository.php:246
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthControllerIntegrationTest.php:506
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthControllerIntegrationTest.php:372</error>
+        </testcase>
+        <testcase name="testLogoutEndpoint" class="Tests\Integration\AuthControllerIntegrationTest" classname="Tests.Integration.AuthControllerIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthControllerIntegrationTest.php" line="399" assertions="3" time="0.064366"/>
+        <testcase name="testRegistrationValidationErrors" class="Tests\Integration\AuthControllerIntegrationTest" classname="Tests.Integration.AuthControllerIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthControllerIntegrationTest.php" line="412" assertions="7" time="0.063858"/>
+        <testcase name="testInvalidEndpoint" class="Tests\Integration\AuthControllerIntegrationTest" classname="Tests.Integration.AuthControllerIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthControllerIntegrationTest.php" line="434" assertions="3" time="0.062536"/>
+        <testcase name="testRateLimitingOnFailedLogins" class="Tests\Integration\AuthControllerIntegrationTest" classname="Tests.Integration.AuthControllerIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthControllerIntegrationTest.php" line="447" assertions="0" time="0.312973">
+          <error type="PDOException">Tests\Integration\AuthControllerIntegrationTest::testRateLimitingOnFailedLogins
+PDOException: SQLSTATE[HY000]: General error: 1 table users has no column named password
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthControllerIntegrationTest.php:46
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Infrastructure\Repository\AuthRepository.php:49
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Infrastructure\Repository\AuthRepository.php:246
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthControllerIntegrationTest.php:506
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthControllerIntegrationTest.php:450</error>
+        </testcase>
+        <testcase name="testCORSHeaders" class="Tests\Integration\AuthControllerIntegrationTest" classname="Tests.Integration.AuthControllerIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthControllerIntegrationTest.php" line="473" assertions="4" time="0.107063"/>
+      </testsuite>
+      <testsuite name="Tests\Integration\AuthRepositoryIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthRepositoryIntegrationTest.php" tests="14" assertions="27" errors="4" warnings="0" failures="0" skipped="0" time="0.030577">
+        <testcase name="testCreateUserWithRealDatabase" class="Tests\Integration\AuthRepositoryIntegrationTest" classname="Tests.Integration.AuthRepositoryIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthRepositoryIntegrationTest.php" line="21" assertions="5" time="0.002758"/>
+        <testcase name="testFindUserByEmailWithRealDatabase" class="Tests\Integration\AuthRepositoryIntegrationTest" classname="Tests.Integration.AuthRepositoryIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthRepositoryIntegrationTest.php" line="39" assertions="3" time="0.002379"/>
+        <testcase name="testUpdatePasswordWithRealDatabase" class="Tests\Integration\AuthRepositoryIntegrationTest" classname="Tests.Integration.AuthRepositoryIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthRepositoryIntegrationTest.php" line="50" assertions="2" time="0.002725"/>
+        <testcase name="testCreateEmailVerificationToken" class="Tests\Integration\AuthRepositoryIntegrationTest" classname="Tests.Integration.AuthRepositoryIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthRepositoryIntegrationTest.php" line="66" assertions="4" time="0.002299"/>
+        <testcase name="testVerifyEmailTokenWithRealDatabase" class="Tests\Integration\AuthRepositoryIntegrationTest" classname="Tests.Integration.AuthRepositoryIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthRepositoryIntegrationTest.php" line="86" assertions="3" time="0.002287"/>
+        <testcase name="testCreatePasswordResetTokenWithRealDatabase" class="Tests\Integration\AuthRepositoryIntegrationTest" classname="Tests.Integration.AuthRepositoryIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthRepositoryIntegrationTest.php" line="108" assertions="3" time="0.002372"/>
+        <testcase name="testLogLoginAttemptWithRealDatabase" class="Tests\Integration\AuthRepositoryIntegrationTest" classname="Tests.Integration.AuthRepositoryIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthRepositoryIntegrationTest.php" line="124" assertions="0" time="0.002459">
+          <error type="PDOException">Tests\Integration\AuthRepositoryIntegrationTest::testLogLoginAttemptWithRealDatabase
+PDOException: SQLSTATE[HY000]: General error: 1 table login_history has no column named reason
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Support\TestDatabase.php:42
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Support\TestDatabase.php:59
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Infrastructure\Repository\AuthRepository.php:193
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthRepositoryIntegrationTest.php:130</error>
+        </testcase>
+        <testcase name="testGetFailedLoginAttemptsWithRealDatabase" class="Tests\Integration\AuthRepositoryIntegrationTest" classname="Tests.Integration.AuthRepositoryIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthRepositoryIntegrationTest.php" line="143" assertions="0" time="0.002030">
+          <error type="PDOException">Tests\Integration\AuthRepositoryIntegrationTest::testGetFailedLoginAttemptsWithRealDatabase
+PDOException: SQLSTATE[HY000]: General error: 1 table login_history has no column named reason
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Support\TestDatabase.php:42
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Support\TestDatabase.php:59
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Infrastructure\Repository\AuthRepository.php:193
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthRepositoryIntegrationTest.php:149</error>
+        </testcase>
+        <testcase name="testBlacklistTokenWithRealDatabase" class="Tests\Integration\AuthRepositoryIntegrationTest" classname="Tests.Integration.AuthRepositoryIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthRepositoryIntegrationTest.php" line="159" assertions="0" time="0.001879">
+          <error type="Error">Tests\Integration\AuthRepositoryIntegrationTest::testBlacklistTokenWithRealDatabase
+Error: Call to undefined method Tests\Integration\AuthRepositoryIntegrationTest::getTestFixture()
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthRepositoryIntegrationTest.php:162</error>
+        </testcase>
+        <testcase name="testUpdateLastLoginWithRealDatabase" class="Tests\Integration\AuthRepositoryIntegrationTest" classname="Tests.Integration.AuthRepositoryIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthRepositoryIntegrationTest.php" line="174" assertions="2" time="0.001738"/>
+        <testcase name="testDeleteExpiredTokensWithRealDatabase" class="Tests\Integration\AuthRepositoryIntegrationTest" classname="Tests.Integration.AuthRepositoryIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthRepositoryIntegrationTest.php" line="190" assertions="3" time="0.001845"/>
+        <testcase name="testUserLoginHistoryWithRealDatabase" class="Tests\Integration\AuthRepositoryIntegrationTest" classname="Tests.Integration.AuthRepositoryIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthRepositoryIntegrationTest.php" line="214" assertions="0" time="0.002498">
+          <error type="PDOException">Tests\Integration\AuthRepositoryIntegrationTest::testUserLoginHistoryWithRealDatabase
+PDOException: SQLSTATE[HY000]: General error: 1 table login_history has no column named reason
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Support\TestDatabase.php:42
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Support\TestDatabase.php:59
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Infrastructure\Repository\AuthRepository.php:193
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthRepositoryIntegrationTest.php:221</error>
+        </testcase>
+        <testcase name="testCreateUserWithDuplicateEmailFails" class="Tests\Integration\AuthRepositoryIntegrationTest" classname="Tests.Integration.AuthRepositoryIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthRepositoryIntegrationTest.php" line="231" assertions="1" time="0.001417"/>
+        <testcase name="testTransactionRollbackOnError" class="Tests\Integration\AuthRepositoryIntegrationTest" classname="Tests.Integration.AuthRepositoryIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthRepositoryIntegrationTest.php" line="242" assertions="1" time="0.001891"/>
+      </testsuite>
+      <testsuite name="Tests\Integration\AuthServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthServiceIntegrationTest.php" tests="13" assertions="53" errors="0" warnings="0" failures="0" skipped="0" time="2.426015">
+        <testcase name="testFullLoginFlowWithRealServices" class="Tests\Integration\AuthServiceIntegrationTest" classname="Tests.Integration.AuthServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthServiceIntegrationTest.php" line="37" assertions="8" time="0.771857"/>
+        <testcase name="testFullRegistrationFlowWithRealServices" class="Tests\Integration\AuthServiceIntegrationTest" classname="Tests.Integration.AuthServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthServiceIntegrationTest.php" line="71" assertions="7" time="0.480576"/>
+        <testcase name="testLoginWithWrongPasswordFails" class="Tests\Integration\AuthServiceIntegrationTest" classname="Tests.Integration.AuthServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthServiceIntegrationTest.php" line="93" assertions="2" time="0.002826"/>
+        <testcase name="testRegistrationWithWeakPasswordFails" class="Tests\Integration\AuthServiceIntegrationTest" classname="Tests.Integration.AuthServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthServiceIntegrationTest.php" line="104" assertions="2" time="0.002273"/>
+        <testcase name="testRegistrationWithExistingEmailFails" class="Tests\Integration\AuthServiceIntegrationTest" classname="Tests.Integration.AuthServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthServiceIntegrationTest.php" line="115" assertions="2" time="0.002726"/>
+        <testcase name="testTokenVerificationWithRealJWT" class="Tests\Integration\AuthServiceIntegrationTest" classname="Tests.Integration.AuthServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthServiceIntegrationTest.php" line="126" assertions="3" time="0.002012"/>
+        <testcase name="testTokenRefreshWithRealJWT" class="Tests\Integration\AuthServiceIntegrationTest" classname="Tests.Integration.AuthServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthServiceIntegrationTest.php" line="146" assertions="4" time="0.002805"/>
+        <testcase name="testLogoutSucceeds" class="Tests\Integration\AuthServiceIntegrationTest" classname="Tests.Integration.AuthServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthServiceIntegrationTest.php" line="169" assertions="1" time="0.001665"/>
+        <testcase name="testGetCurrentUserWithValidPayload" class="Tests\Integration\AuthServiceIntegrationTest" classname="Tests.Integration.AuthServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthServiceIntegrationTest.php" line="176" assertions="2" time="0.001622"/>
+        <testcase name="testPasswordStrengthValidation" class="Tests\Integration\AuthServiceIntegrationTest" classname="Tests.Integration.AuthServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthServiceIntegrationTest.php" line="189" assertions="7" time="0.002054"/>
+        <testcase name="testPasswordHashingAndVerification" class="Tests\Integration\AuthServiceIntegrationTest" classname="Tests.Integration.AuthServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthServiceIntegrationTest.php" line="205" assertions="3" time="0.682225"/>
+        <testcase name="testJWTTokenGenerationAndVerification" class="Tests\Integration\AuthServiceIntegrationTest" classname="Tests.Integration.AuthServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthServiceIntegrationTest.php" line="217" assertions="5" time="0.002745"/>
+        <testcase name="testCompleteUserLifecycle" class="Tests\Integration\AuthServiceIntegrationTest" classname="Tests.Integration.AuthServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\AuthServiceIntegrationTest.php" line="238" assertions="7" time="0.470629"/>
+      </testsuite>
+      <testsuite name="Tests\Integration\BodyParsingMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\BodyParsingMiddlewareIntegrationTest.php" tests="11" assertions="30" errors="0" warnings="0" failures="0" skipped="0" time="0.691152">
+        <testcase name="testJsonBodyParsingSuccess" class="Tests\Integration\BodyParsingMiddlewareIntegrationTest" classname="Tests.Integration.BodyParsingMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\BodyParsingMiddlewareIntegrationTest.php" line="31" assertions="2" time="0.062372"/>
+        <testcase name="testJsonBodyParsingWithCharset" class="Tests\Integration\BodyParsingMiddlewareIntegrationTest" classname="Tests.Integration.BodyParsingMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\BodyParsingMiddlewareIntegrationTest.php" line="55" assertions="2" time="0.061586"/>
+        <testcase name="testInvalidJsonReturnsBadRequest" class="Tests\Integration\BodyParsingMiddlewareIntegrationTest" classname="Tests.Integration.BodyParsingMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\BodyParsingMiddlewareIntegrationTest.php" line="76" assertions="4" time="0.061555"/>
+        <testcase name="testEmptyJsonBodyIsValid" class="Tests\Integration\BodyParsingMiddlewareIntegrationTest" classname="Tests.Integration.BodyParsingMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\BodyParsingMiddlewareIntegrationTest.php" line="98" assertions="2" time="0.061371"/>
+        <testcase name="testFormUrlencodedBodyParsing" class="Tests\Integration\BodyParsingMiddlewareIntegrationTest" classname="Tests.Integration.BodyParsingMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\BodyParsingMiddlewareIntegrationTest.php" line="117" assertions="2" time="0.060126"/>
+        <testcase name="testFormUrlencodedWithCharset" class="Tests\Integration\BodyParsingMiddlewareIntegrationTest" classname="Tests.Integration.BodyParsingMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\BodyParsingMiddlewareIntegrationTest.php" line="144" assertions="2" time="0.058849"/>
+        <testcase name="testGetRequestIgnored" class="Tests\Integration\BodyParsingMiddlewareIntegrationTest" classname="Tests.Integration.BodyParsingMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\BodyParsingMiddlewareIntegrationTest.php" line="166" assertions="2" time="0.064494"/>
+        <testcase name="testUnsupportedContentTypeIgnored" class="Tests\Integration\BodyParsingMiddlewareIntegrationTest" classname="Tests.Integration.BodyParsingMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\BodyParsingMiddlewareIntegrationTest.php" line="185" assertions="2" time="0.064831"/>
+        <testcase name="testComplexJsonDataStructures" class="Tests\Integration\BodyParsingMiddlewareIntegrationTest" classname="Tests.Integration.BodyParsingMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\BodyParsingMiddlewareIntegrationTest.php" line="204" assertions="2" time="0.063606"/>
+        <testcase name="testNullJsonValue" class="Tests\Integration\BodyParsingMiddlewareIntegrationTest" classname="Tests.Integration.BodyParsingMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\BodyParsingMiddlewareIntegrationTest.php" line="243" assertions="2" time="0.067430"/>
+        <testcase name="testAllSupportedHttpMethods" class="Tests\Integration\BodyParsingMiddlewareIntegrationTest" classname="Tests.Integration.BodyParsingMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\BodyParsingMiddlewareIntegrationTest.php" line="262" assertions="8" time="0.064931"/>
+      </testsuite>
+      <testsuite name="Tests\Integration\ControllerIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ControllerIntegrationTest.php" tests="7" assertions="21" errors="0" warnings="0" failures="2" skipped="0" time="0.404145">
+        <testcase name="testPublicHomepageRequest" class="Tests\Integration\ControllerIntegrationTest" classname="Tests.Integration.ControllerIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ControllerIntegrationTest.php" line="29" assertions="2" time="0.060018">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Integration\ControllerIntegrationTest::testPublicHomepageRequest
+Failed asserting that 'Mock response for GET /' contains "SlimmerMetAI".
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ControllerIntegrationTest.php:39</failure>
+        </testcase>
+        <testcase name="testApiLoginRequest" class="Tests\Integration\ControllerIntegrationTest" classname="Tests.Integration.ControllerIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ControllerIntegrationTest.php" line="45" assertions="2" time="0.056965"/>
+        <testcase name="testDatabaseControllerIntegration" class="Tests\Integration\ControllerIntegrationTest" classname="Tests.Integration.ControllerIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ControllerIntegrationTest.php" line="64" assertions="4" time="0.056768"/>
+        <testcase name="testJwtTokenIntegration" class="Tests\Integration\ControllerIntegrationTest" classname="Tests.Integration.ControllerIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ControllerIntegrationTest.php" line="82" assertions="3" time="0.058062"/>
+        <testcase name="testServiceAvailability" class="Tests\Integration\ControllerIntegrationTest" classname="Tests.Integration.ControllerIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ControllerIntegrationTest.php" line="104" assertions="3" time="0.057315">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Integration\ControllerIntegrationTest::testServiceAvailability
+JwtService should exist at App\Application\Service\JwtService
+Failed asserting that false is true.
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ControllerIntegrationTest.php:120</failure>
+        </testcase>
+        <testcase name="testUserAuthenticationFlow" class="Tests\Integration\ControllerIntegrationTest" classname="Tests.Integration.ControllerIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ControllerIntegrationTest.php" line="127" assertions="5" time="0.057213"/>
+        <testcase name="testConfigurationIntegration" class="Tests\Integration\ControllerIntegrationTest" classname="Tests.Integration.ControllerIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ControllerIntegrationTest.php" line="151" assertions="2" time="0.057804"/>
+      </testsuite>
+      <testsuite name="Tests\Integration\DatabaseMockTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\DatabaseMockTest.php" tests="11" assertions="30" errors="0" warnings="0" failures="0" skipped="0" time="0.064506">
+        <testcase name="testMockDatabaseImplementsInterface" class="Tests\Integration\DatabaseMockTest" classname="Tests.Integration.DatabaseMockTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\DatabaseMockTest.php" line="25" assertions="1" time="0.002148"/>
+        <testcase name="testMockDatabaseCanAddAndRetrieveData" class="Tests\Integration\DatabaseMockTest" classname="Tests.Integration.DatabaseMockTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\DatabaseMockTest.php" line="30" assertions="5" time="0.056663"/>
+        <testcase name="testTransactionMethods" class="Tests\Integration\DatabaseMockTest" classname="Tests.Integration.DatabaseMockTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\DatabaseMockTest.php" line="58" assertions="3" time="0.000647"/>
+        <testcase name="testQueryExecution" class="Tests\Integration\DatabaseMockTest" classname="Tests.Integration.DatabaseMockTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\DatabaseMockTest.php" line="65" assertions="2" time="0.000466"/>
+        <testcase name="testPerformanceStatistics" class="Tests\Integration\DatabaseMockTest" classname="Tests.Integration.DatabaseMockTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\DatabaseMockTest.php" line="71" assertions="4" time="0.000555"/>
+        <testcase name="testSlowQueries" class="Tests\Integration\DatabaseMockTest" classname="Tests.Integration.DatabaseMockTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\DatabaseMockTest.php" line="81" assertions="1" time="0.000493"/>
+        <testcase name="testMockStatementFunctionality" class="Tests\Integration\DatabaseMockTest" classname="Tests.Integration.DatabaseMockTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\DatabaseMockTest.php" line="87" assertions="5" time="0.000584"/>
+        <testcase name="testContainerIntegration" class="Tests\Integration\DatabaseMockTest" classname="Tests.Integration.DatabaseMockTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\DatabaseMockTest.php" line="98" assertions="2" time="0.000513"/>
+        <testcase name="testMockDatabaseDoesNotConnectToRealDatabase" class="Tests\Integration\DatabaseMockTest" classname="Tests.Integration.DatabaseMockTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\DatabaseMockTest.php" line="111" assertions="2" time="0.000495"/>
+        <testcase name="testMultipleDataTypes" class="Tests\Integration\DatabaseMockTest" classname="Tests.Integration.DatabaseMockTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\DatabaseMockTest.php" line="119" assertions="2" time="0.001367"/>
+        <testcase name="testIncrementalIds" class="Tests\Integration\DatabaseMockTest" classname="Tests.Integration.DatabaseMockTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\DatabaseMockTest.php" line="145" assertions="3" time="0.000573"/>
+      </testsuite>
+      <testsuite name="Tests\Integration\EmailServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\EmailServiceIntegrationTest.php" tests="7" assertions="50" errors="0" warnings="0" failures="0" skipped="0" time="0.411691">
+        <testcase name="testPasswordResetEmailSending" class="Tests\Integration\EmailServiceIntegrationTest" classname="Tests.Integration.EmailServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\EmailServiceIntegrationTest.php" line="32" assertions="7" time="0.057621"/>
+        <testcase name="testWelcomeEmailSending" class="Tests\Integration\EmailServiceIntegrationTest" classname="Tests.Integration.EmailServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\EmailServiceIntegrationTest.php" line="61" assertions="6" time="0.056769"/>
+        <testcase name="testEmailTemplateRendering" class="Tests\Integration\EmailServiceIntegrationTest" classname="Tests.Integration.EmailServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\EmailServiceIntegrationTest.php" line="88" assertions="9" time="0.057807"/>
+        <testcase name="testBulkEmailSending" class="Tests\Integration\EmailServiceIntegrationTest" classname="Tests.Integration.EmailServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\EmailServiceIntegrationTest.php" line="118" assertions="14" time="0.060346"/>
+        <testcase name="testEmailSendingFailureHandling" class="Tests\Integration\EmailServiceIntegrationTest" classname="Tests.Integration.EmailServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\EmailServiceIntegrationTest.php" line="154" assertions="2" time="0.058729"/>
+        <testcase name="testEmailValidation" class="Tests\Integration\EmailServiceIntegrationTest" classname="Tests.Integration.EmailServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\EmailServiceIntegrationTest.php" line="176" assertions="8" time="0.061573"/>
+        <testcase name="testEmailQueueFunctionality" class="Tests\Integration\EmailServiceIntegrationTest" classname="Tests.Integration.EmailServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\EmailServiceIntegrationTest.php" line="209" assertions="4" time="0.058845"/>
+      </testsuite>
+      <testsuite name="Tests\Integration\ErrorHandlingMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ErrorHandlingMiddlewareIntegrationTest.php" tests="14" assertions="77" errors="0" warnings="0" failures="0" skipped="0" time="0.840823">
+        <testcase name="testSuccessfulRequestPassesThrough" class="Tests\Integration\ErrorHandlingMiddlewareIntegrationTest" classname="Tests.Integration.ErrorHandlingMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ErrorHandlingMiddlewareIntegrationTest.php" line="35" assertions="3" time="0.058940"/>
+        <testcase name="testExceptionLogsError" class="Tests\Integration\ErrorHandlingMiddlewareIntegrationTest" classname="Tests.Integration.ErrorHandlingMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ErrorHandlingMiddlewareIntegrationTest.php" line="57" assertions="3" time="0.058430"/>
+        <testcase name="testJsonResponseForApiEndpoints" class="Tests\Integration\ErrorHandlingMiddlewareIntegrationTest" classname="Tests.Integration.ErrorHandlingMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ErrorHandlingMiddlewareIntegrationTest.php" line="81" assertions="4" time="0.058860"/>
+        <testcase name="testJsonResponseForAcceptHeader" class="Tests\Integration\ErrorHandlingMiddlewareIntegrationTest" classname="Tests.Integration.ErrorHandlingMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ErrorHandlingMiddlewareIntegrationTest.php" line="101" assertions="4" time="0.057842"/>
+        <testcase name="testJsonResponseForContentTypeHeader" class="Tests\Integration\ErrorHandlingMiddlewareIntegrationTest" classname="Tests.Integration.ErrorHandlingMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ErrorHandlingMiddlewareIntegrationTest.php" line="122" assertions="2" time="0.058970"/>
+        <testcase name="testHtmlResponseForWebEndpoints" class="Tests\Integration\ErrorHandlingMiddlewareIntegrationTest" classname="Tests.Integration.ErrorHandlingMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ErrorHandlingMiddlewareIntegrationTest.php" line="139" assertions="4" time="0.056815"/>
+        <testcase name="testDisplayErrorsShowsExceptionInJson" class="Tests\Integration\ErrorHandlingMiddlewareIntegrationTest" classname="Tests.Integration.ErrorHandlingMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ErrorHandlingMiddlewareIntegrationTest.php" line="159" assertions="4" time="0.058320"/>
+        <testcase name="testDisplayErrorsShowsExceptionInHtml" class="Tests\Integration\ErrorHandlingMiddlewareIntegrationTest" classname="Tests.Integration.ErrorHandlingMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ErrorHandlingMiddlewareIntegrationTest.php" line="179" assertions="5" time="0.060330"/>
+        <testcase name="testDifferentExceptionTypes" class="Tests\Integration\ErrorHandlingMiddlewareIntegrationTest" classname="Tests.Integration.ErrorHandlingMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ErrorHandlingMiddlewareIntegrationTest.php" line="200" assertions="16" time="0.064425"/>
+        <testcase name="testContentTypeDetectionWithMixedCase" class="Tests\Integration\ErrorHandlingMiddlewareIntegrationTest" classname="Tests.Integration.ErrorHandlingMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ErrorHandlingMiddlewareIntegrationTest.php" line="230" assertions="8" time="0.064612"/>
+        <testcase name="testApiPathDetection" class="Tests\Integration\ErrorHandlingMiddlewareIntegrationTest" classname="Tests.Integration.ErrorHandlingMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ErrorHandlingMiddlewareIntegrationTest.php" line="259" assertions="9" time="0.062141"/>
+        <testcase name="testErrorResponseStructure" class="Tests\Integration\ErrorHandlingMiddlewareIntegrationTest" classname="Tests.Integration.ErrorHandlingMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ErrorHandlingMiddlewareIntegrationTest.php" line="293" assertions="8" time="0.058622"/>
+        <testcase name="testHtmlErrorStructure" class="Tests\Integration\ErrorHandlingMiddlewareIntegrationTest" classname="Tests.Integration.ErrorHandlingMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ErrorHandlingMiddlewareIntegrationTest.php" line="320" assertions="4" time="0.061783"/>
+        <testcase name="testNestedExceptionHandling" class="Tests\Integration\ErrorHandlingMiddlewareIntegrationTest" classname="Tests.Integration.ErrorHandlingMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ErrorHandlingMiddlewareIntegrationTest.php" line="343" assertions="3" time="0.060735"/>
+      </testsuite>
+      <testsuite name="Tests\Integration\GoogleAuthServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\GoogleAuthServiceIntegrationTest.php" tests="8" assertions="0" errors="8" warnings="0" failures="0" skipped="0" time="0.496425">
+        <testcase name="testGoogleOAuthUrlGeneration" class="Tests\Integration\GoogleAuthServiceIntegrationTest" classname="Tests.Integration.GoogleAuthServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\GoogleAuthServiceIntegrationTest.php" line="55" assertions="0" time="0.063052">
+          <error type="Exception">Tests\Integration\GoogleAuthServiceIntegrationTest::testGoogleOAuthUrlGeneration
 Exception: Google OAuth configuratie niet compleet
 
 C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Application\Service\GoogleAuthService.php:42
 C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\GoogleAuthServiceIntegrationTest.php:39</error>
-    </testcase>
+        </testcase>
+        <testcase name="testOAuthTokenExchange" class="Tests\Integration\GoogleAuthServiceIntegrationTest" classname="Tests.Integration.GoogleAuthServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\GoogleAuthServiceIntegrationTest.php" line="82" assertions="0" time="0.059300">
+          <error type="Exception">Tests\Integration\GoogleAuthServiceIntegrationTest::testOAuthTokenExchange
+Exception: Google OAuth configuratie niet compleet
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Application\Service\GoogleAuthService.php:42
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\GoogleAuthServiceIntegrationTest.php:39</error>
+        </testcase>
+        <testcase name="testFetchUserDataFromGoogle" class="Tests\Integration\GoogleAuthServiceIntegrationTest" classname="Tests.Integration.GoogleAuthServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\GoogleAuthServiceIntegrationTest.php" line="118" assertions="0" time="0.060774">
+          <error type="Exception">Tests\Integration\GoogleAuthServiceIntegrationTest::testFetchUserDataFromGoogle
+Exception: Google OAuth configuratie niet compleet
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Application\Service\GoogleAuthService.php:42
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\GoogleAuthServiceIntegrationTest.php:39</error>
+        </testcase>
+        <testcase name="testPkceCodeGenerationAndVerification" class="Tests\Integration\GoogleAuthServiceIntegrationTest" classname="Tests.Integration.GoogleAuthServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\GoogleAuthServiceIntegrationTest.php" line="152" assertions="0" time="0.059562">
+          <error type="Exception">Tests\Integration\GoogleAuthServiceIntegrationTest::testPkceCodeGenerationAndVerification
+Exception: Google OAuth configuratie niet compleet
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Application\Service\GoogleAuthService.php:42
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\GoogleAuthServiceIntegrationTest.php:39</error>
+        </testcase>
+        <testcase name="testOAuthErrorHandling" class="Tests\Integration\GoogleAuthServiceIntegrationTest" classname="Tests.Integration.GoogleAuthServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\GoogleAuthServiceIntegrationTest.php" line="183" assertions="0" time="0.061679">
+          <error type="Exception">Tests\Integration\GoogleAuthServiceIntegrationTest::testOAuthErrorHandling
+Exception: Google OAuth configuratie niet compleet
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Application\Service\GoogleAuthService.php:42
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\GoogleAuthServiceIntegrationTest.php:39</error>
+        </testcase>
+        <testcase name="testUserCreationOrUpdateFlow" class="Tests\Integration\GoogleAuthServiceIntegrationTest" classname="Tests.Integration.GoogleAuthServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\GoogleAuthServiceIntegrationTest.php" line="239" assertions="0" time="0.063855">
+          <error type="Exception">Tests\Integration\GoogleAuthServiceIntegrationTest::testUserCreationOrUpdateFlow
+Exception: Google OAuth configuratie niet compleet
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Application\Service\GoogleAuthService.php:42
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\GoogleAuthServiceIntegrationTest.php:39</error>
+        </testcase>
+        <testcase name="testExistingUserUpdate" class="Tests\Integration\GoogleAuthServiceIntegrationTest" classname="Tests.Integration.GoogleAuthServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\GoogleAuthServiceIntegrationTest.php" line="277" assertions="0" time="0.064982">
+          <error type="Exception">Tests\Integration\GoogleAuthServiceIntegrationTest::testExistingUserUpdate
+Exception: Google OAuth configuratie niet compleet
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Application\Service\GoogleAuthService.php:42
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\GoogleAuthServiceIntegrationTest.php:39</error>
+        </testcase>
+        <testcase name="testStateParameterValidation" class="Tests\Integration\GoogleAuthServiceIntegrationTest" classname="Tests.Integration.GoogleAuthServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\GoogleAuthServiceIntegrationTest.php" line="322" assertions="0" time="0.063220">
+          <error type="Exception">Tests\Integration\GoogleAuthServiceIntegrationTest::testStateParameterValidation
+Exception: Google OAuth configuratie niet compleet
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Application\Service\GoogleAuthService.php:42
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\GoogleAuthServiceIntegrationTest.php:39</error>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Integration\JwtServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\JwtServiceIntegrationTest.php" tests="6" assertions="12" errors="0" warnings="0" failures="6" skipped="0" time="0.355687">
+        <testcase name="testJwtTokenGenerationAndValidationFlow" class="Tests\Integration\JwtServiceIntegrationTest" classname="Tests.Integration.JwtServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\JwtServiceIntegrationTest.php" line="32" assertions="4" time="0.062244">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Integration\JwtServiceIntegrationTest::testJwtTokenGenerationAndValidationFlow
+Gegenereerde JWT token moet geldig zijn en array retourneren
+Failed asserting that true is of type "array".
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\JwtServiceIntegrationTest.php:59</failure>
+        </testcase>
+        <testcase name="testExpiredTokenDetection" class="Tests\Integration\JwtServiceIntegrationTest" classname="Tests.Integration.JwtServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\JwtServiceIntegrationTest.php" line="82" assertions="1" time="0.058592">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Integration\JwtServiceIntegrationTest::testExpiredTokenDetection
+Token moet initieel geldig zijn
+Failed asserting that true is of type "array".
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\JwtServiceIntegrationTest.php:98</failure>
+        </testcase>
+        <testcase name="testInvalidTokenHandling" class="Tests\Integration\JwtServiceIntegrationTest" classname="Tests.Integration.JwtServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\JwtServiceIntegrationTest.php" line="116" assertions="1" time="0.057241">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Integration\JwtServiceIntegrationTest::testInvalidTokenHandling
+Token 'invalid.token.format' moet ongeldig zijn
+Failed asserting that false is null.
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\JwtServiceIntegrationTest.php:131</failure>
+        </testcase>
+        <testcase name="testTokenTamperingDetection" class="Tests\Integration\JwtServiceIntegrationTest" classname="Tests.Integration.JwtServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\JwtServiceIntegrationTest.php" line="138" assertions="1" time="0.059648">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Integration\JwtServiceIntegrationTest::testTokenTamperingDetection
+Tampered token moet ongeldig zijn
+Failed asserting that false is null.
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\JwtServiceIntegrationTest.php:157</failure>
+        </testcase>
+        <testcase name="testMultipleTokensWithDifferentPayloads" class="Tests\Integration\JwtServiceIntegrationTest" classname="Tests.Integration.JwtServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\JwtServiceIntegrationTest.php" line="167" assertions="4" time="0.060312">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Integration\JwtServiceIntegrationTest::testMultipleTokensWithDifferentPayloads
+Failed asserting that null matches expected 'user'.
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\JwtServiceIntegrationTest.php:196</failure>
+        </testcase>
+        <testcase name="testRefreshTokenFlow" class="Tests\Integration\JwtServiceIntegrationTest" classname="Tests.Integration.JwtServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\JwtServiceIntegrationTest.php" line="212" assertions="1" time="0.057650">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Integration\JwtServiceIntegrationTest::testRefreshTokenFlow
+Originele token moet geldig zijn
+Failed asserting that true is of type "array".
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\JwtServiceIntegrationTest.php:226</failure>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Integration\MiddlewareStackIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\MiddlewareStackIntegrationTest.php" tests="12" assertions="21" errors="5" warnings="0" failures="2" skipped="0" time="0.830963">
+        <testcase name="testCompleteMiddlewareStackForSuccessfulApiRequest" class="Tests\Integration\MiddlewareStackIntegrationTest" classname="Tests.Integration.MiddlewareStackIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\MiddlewareStackIntegrationTest.php" line="53" assertions="0" time="0.064836">
+          <error type="TypeError">Tests\Integration\MiddlewareStackIntegrationTest::testCompleteMiddlewareStackForSuccessfulApiRequest
+TypeError: App\Http\Middleware\CorsMiddleware::__construct(): Argument #1 ($allowOrigin) must be of type ?string, App\Infrastructure\Config\Config given, called in C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\MiddlewareStackIntegrationTest.php on line 58
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Http\Middleware\CorsMiddleware.php:19
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\MiddlewareStackIntegrationTest.php:58</error>
+        </testcase>
+        <testcase name="testMiddlewareStackWithExceptionHandling" class="Tests\Integration\MiddlewareStackIntegrationTest" classname="Tests.Integration.MiddlewareStackIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\MiddlewareStackIntegrationTest.php" line="100" assertions="5" time="0.065118"/>
+        <testcase name="testRateLimitingInMiddlewareStack" class="Tests\Integration\MiddlewareStackIntegrationTest" classname="Tests.Integration.MiddlewareStackIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\MiddlewareStackIntegrationTest.php" line="134" assertions="3" time="0.063976">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Integration\MiddlewareStackIntegrationTest::testRateLimitingInMiddlewareStack
+Failed asserting that 200 matches expected 429.
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\MiddlewareStackIntegrationTest.php:165</failure>
+        </testcase>
+        <testcase name="testJsonBodyParsingInStack" class="Tests\Integration\MiddlewareStackIntegrationTest" classname="Tests.Integration.MiddlewareStackIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\MiddlewareStackIntegrationTest.php" line="171" assertions="2" time="0.059334"/>
+        <testcase name="testInvalidJsonHandlingInStack" class="Tests\Integration\MiddlewareStackIntegrationTest" classname="Tests.Integration.MiddlewareStackIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\MiddlewareStackIntegrationTest.php" line="200" assertions="2" time="0.062860"/>
+        <testcase name="testCorsMiddlewareInStack" class="Tests\Integration\MiddlewareStackIntegrationTest" classname="Tests.Integration.MiddlewareStackIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\MiddlewareStackIntegrationTest.php" line="228" assertions="0" time="0.063797">
+          <error type="TypeError">Tests\Integration\MiddlewareStackIntegrationTest::testCorsMiddlewareInStack
+TypeError: App\Http\Middleware\CorsMiddleware::__construct(): Argument #1 ($allowOrigin) must be of type ?string, App\Infrastructure\Config\Config given, called in C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\MiddlewareStackIntegrationTest.php on line 238
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Http\Middleware\CorsMiddleware.php:19
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\MiddlewareStackIntegrationTest.php:238</error>
+        </testcase>
+        <testcase name="testPreflightRequestInStack" class="Tests\Integration\MiddlewareStackIntegrationTest" classname="Tests.Integration.MiddlewareStackIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\MiddlewareStackIntegrationTest.php" line="260" assertions="0" time="0.067732">
+          <error type="TypeError">Tests\Integration\MiddlewareStackIntegrationTest::testPreflightRequestInStack
+TypeError: App\Http\Middleware\CorsMiddleware::__construct(): Argument #1 ($allowOrigin) must be of type ?string, App\Infrastructure\Config\Config given, called in C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\MiddlewareStackIntegrationTest.php on line 269
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Http\Middleware\CorsMiddleware.php:19
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\MiddlewareStackIntegrationTest.php:269</error>
+        </testcase>
+        <testcase name="testComplexMiddlewareInteraction" class="Tests\Integration\MiddlewareStackIntegrationTest" classname="Tests.Integration.MiddlewareStackIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\MiddlewareStackIntegrationTest.php" line="294" assertions="0" time="0.069067">
+          <error type="TypeError">Tests\Integration\MiddlewareStackIntegrationTest::testComplexMiddlewareInteraction
+TypeError: App\Http\Middleware\CorsMiddleware::__construct(): Argument #1 ($allowOrigin) must be of type ?string, App\Infrastructure\Config\Config given, called in C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\MiddlewareStackIntegrationTest.php on line 304
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Http\Middleware\CorsMiddleware.php:19
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\MiddlewareStackIntegrationTest.php:304</error>
+        </testcase>
+        <testcase name="testMiddlewareOrderMatters" class="Tests\Integration\MiddlewareStackIntegrationTest" classname="Tests.Integration.MiddlewareStackIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\MiddlewareStackIntegrationTest.php" line="345" assertions="4" time="0.071646"/>
+        <testcase name="testEmptyMiddlewareStack" class="Tests\Integration\MiddlewareStackIntegrationTest" classname="Tests.Integration.MiddlewareStackIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\MiddlewareStackIntegrationTest.php" line="384" assertions="2" time="0.072336"/>
+        <testcase name="testFinalHandlerUsage" class="Tests\Integration\MiddlewareStackIntegrationTest" classname="Tests.Integration.MiddlewareStackIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\MiddlewareStackIntegrationTest.php" line="402" assertions="3" time="0.104871">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Integration\MiddlewareStackIntegrationTest::testFinalHandlerUsage
+Failed asserting that null is false.
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\MiddlewareStackIntegrationTest.php:414</failure>
+        </testcase>
+        <testcase name="testMiddlewareStackPerformance" class="Tests\Integration\MiddlewareStackIntegrationTest" classname="Tests.Integration.MiddlewareStackIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\MiddlewareStackIntegrationTest.php" line="418" assertions="0" time="0.065390">
+          <error type="TypeError">Tests\Integration\MiddlewareStackIntegrationTest::testMiddlewareStackPerformance
+TypeError: App\Http\Middleware\CorsMiddleware::__construct(): Argument #1 ($allowOrigin) must be of type ?string, App\Infrastructure\Config\Config given, called in C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\MiddlewareStackIntegrationTest.php on line 423
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Http\Middleware\CorsMiddleware.php:19
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\MiddlewareStackIntegrationTest.php:423</error>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Integration\RateLimitMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\RateLimitMiddlewareIntegrationTest.php" tests="11" assertions="26" errors="0" warnings="0" failures="10" skipped="0" time="0.923677">
+        <testcase name="testRequestUnderLimitPassesThrough" class="Tests\Integration\RateLimitMiddlewareIntegrationTest" classname="Tests.Integration.RateLimitMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\RateLimitMiddlewareIntegrationTest.php" line="31" assertions="2" time="0.071234">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Integration\RateLimitMiddlewareIntegrationTest::testRequestUnderLimitPassesThrough
+Failed asserting that two strings are equal.
+--- Expected
++++ Actual
+@@ @@
+-'5'
++'100'
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\RateLimitMiddlewareIntegrationTest.php:51</failure>
+        </testcase>
+        <testcase name="testRateLimitExceededReturns429" class="Tests\Integration\RateLimitMiddlewareIntegrationTest" classname="Tests.Integration.RateLimitMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\RateLimitMiddlewareIntegrationTest.php" line="56" assertions="3" time="0.080283">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitExceededReturns429
+Failed asserting that 200 matches expected 429.
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\RateLimitMiddlewareIntegrationTest.php:78</failure>
+        </testcase>
+        <testcase name="testExemptPathsBypassRateLimit" class="Tests\Integration\RateLimitMiddlewareIntegrationTest" classname="Tests.Integration.RateLimitMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\RateLimitMiddlewareIntegrationTest.php" line="91" assertions="2" time="0.084784">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Integration\RateLimitMiddlewareIntegrationTest::testExemptPathsBypassRateLimit
+Failed asserting that 200 matches expected 429.
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\RateLimitMiddlewareIntegrationTest.php:110</failure>
+        </testcase>
+        <testcase name="testNonApiPathsBypassRateLimit" class="Tests\Integration\RateLimitMiddlewareIntegrationTest" classname="Tests.Integration.RateLimitMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\RateLimitMiddlewareIntegrationTest.php" line="121" assertions="2" time="0.082865">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Integration\RateLimitMiddlewareIntegrationTest::testNonApiPathsBypassRateLimit
+Failed asserting that 200 matches expected 429.
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\RateLimitMiddlewareIntegrationTest.php:140</failure>
+        </testcase>
+        <testcase name="testXForwardedForIpExtraction" class="Tests\Integration\RateLimitMiddlewareIntegrationTest" classname="Tests.Integration.RateLimitMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\RateLimitMiddlewareIntegrationTest.php" line="151" assertions="2" time="0.135741">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Integration\RateLimitMiddlewareIntegrationTest::testXForwardedForIpExtraction
+Failed asserting that two strings are equal.
+--- Expected
++++ Actual
+@@ @@
+-'1'
++'99'
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\RateLimitMiddlewareIntegrationTest.php:169</failure>
+        </testcase>
+        <testcase name="testXRealIpHeaderPriority" class="Tests\Integration\RateLimitMiddlewareIntegrationTest" classname="Tests.Integration.RateLimitMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\RateLimitMiddlewareIntegrationTest.php" line="182" assertions="2" time="0.075187">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Integration\RateLimitMiddlewareIntegrationTest::testXRealIpHeaderPriority
+Failed asserting that two strings are equal.
+--- Expected
++++ Actual
+@@ @@
+-'0'
++'99'
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\RateLimitMiddlewareIntegrationTest.php:199</failure>
+        </testcase>
+        <testcase name="testDifferentIpsHaveSeparateLimits" class="Tests\Integration\RateLimitMiddlewareIntegrationTest" classname="Tests.Integration.RateLimitMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\RateLimitMiddlewareIntegrationTest.php" line="211" assertions="2" time="0.074263">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Integration\RateLimitMiddlewareIntegrationTest::testDifferentIpsHaveSeparateLimits
+Failed asserting that 200 matches expected 429.
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\RateLimitMiddlewareIntegrationTest.php:228</failure>
+        </testcase>
+        <testcase name="testSlidingWindowBehavior" class="Tests\Integration\RateLimitMiddlewareIntegrationTest" classname="Tests.Integration.RateLimitMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\RateLimitMiddlewareIntegrationTest.php" line="237" assertions="4" time="0.078118">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Integration\RateLimitMiddlewareIntegrationTest::testSlidingWindowBehavior
+Failed asserting that 200 matches expected 429.
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\RateLimitMiddlewareIntegrationTest.php:258</failure>
+        </testcase>
+        <testcase name="testRateLimitHeadersAreCorrect" class="Tests\Integration\RateLimitMiddlewareIntegrationTest" classname="Tests.Integration.RateLimitMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\RateLimitMiddlewareIntegrationTest.php" line="270" assertions="2" time="0.077027">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitHeadersAreCorrect
+Failed asserting that two strings are equal.
+--- Expected
++++ Actual
+@@ @@
+-'10'
++'100'
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\RateLimitMiddlewareIntegrationTest.php:289</failure>
+        </testcase>
+        <testcase name="testDefaultConfigValues" class="Tests\Integration\RateLimitMiddlewareIntegrationTest" classname="Tests.Integration.RateLimitMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\RateLimitMiddlewareIntegrationTest.php" line="298" assertions="3" time="0.087220"/>
+        <testcase name="testFallbackIpWhenNoHeaders" class="Tests\Integration\RateLimitMiddlewareIntegrationTest" classname="Tests.Integration.RateLimitMiddlewareIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\RateLimitMiddlewareIntegrationTest.php" line="312" assertions="2" time="0.076955">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Integration\RateLimitMiddlewareIntegrationTest::testFallbackIpWhenNoHeaders
+Failed asserting that two strings are equal.
+--- Expected
++++ Actual
+@@ @@
+-'0'
++'99'
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\RateLimitMiddlewareIntegrationTest.php:327</failure>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Integration\StripeServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\StripeServiceIntegrationTest.php" tests="8" assertions="0" errors="8" warnings="0" failures="0" skipped="0" time="0.520073">
+        <testcase name="testCreateCheckoutSessionInTestMode" class="Tests\Integration\StripeServiceIntegrationTest" classname="Tests.Integration.StripeServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\StripeServiceIntegrationTest.php" line="48" assertions="0" time="0.066832">
+          <error type="TypeError">Tests\Integration\StripeServiceIntegrationTest::testCreateCheckoutSessionInTestMode
+TypeError: App\Application\Service\StripeService::__construct(): Argument #2 ($logger) must be of type App\Domain\Logging\ErrorLoggerInterface, App\Infrastructure\Repository\StripeSessionRepository given, called in C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\StripeServiceIntegrationTest.php on line 42
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Application\Service\StripeService.php:32
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\StripeServiceIntegrationTest.php:42</error>
+        </testcase>
+        <testcase name="testCreatePaymentIntentInTestMode" class="Tests\Integration\StripeServiceIntegrationTest" classname="Tests.Integration.StripeServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\StripeServiceIntegrationTest.php" line="88" assertions="0" time="0.068740">
+          <error type="TypeError">Tests\Integration\StripeServiceIntegrationTest::testCreatePaymentIntentInTestMode
+TypeError: App\Application\Service\StripeService::__construct(): Argument #2 ($logger) must be of type App\Domain\Logging\ErrorLoggerInterface, App\Infrastructure\Repository\StripeSessionRepository given, called in C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\StripeServiceIntegrationTest.php on line 42
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Application\Service\StripeService.php:32
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\StripeServiceIntegrationTest.php:42</error>
+        </testcase>
+        <testcase name="testGetPaymentStatus" class="Tests\Integration\StripeServiceIntegrationTest" classname="Tests.Integration.StripeServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\StripeServiceIntegrationTest.php" line="117" assertions="0" time="0.066611">
+          <error type="TypeError">Tests\Integration\StripeServiceIntegrationTest::testGetPaymentStatus
+TypeError: App\Application\Service\StripeService::__construct(): Argument #2 ($logger) must be of type App\Domain\Logging\ErrorLoggerInterface, App\Infrastructure\Repository\StripeSessionRepository given, called in C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\StripeServiceIntegrationTest.php on line 42
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Application\Service\StripeService.php:32
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\StripeServiceIntegrationTest.php:42</error>
+        </testcase>
+        <testcase name="testWebhookHandling" class="Tests\Integration\StripeServiceIntegrationTest" classname="Tests.Integration.StripeServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\StripeServiceIntegrationTest.php" line="138" assertions="0" time="0.068538">
+          <error type="TypeError">Tests\Integration\StripeServiceIntegrationTest::testWebhookHandling
+TypeError: App\Application\Service\StripeService::__construct(): Argument #2 ($logger) must be of type App\Domain\Logging\ErrorLoggerInterface, App\Infrastructure\Repository\StripeSessionRepository given, called in C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\StripeServiceIntegrationTest.php on line 42
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Application\Service\StripeService.php:32
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\StripeServiceIntegrationTest.php:42</error>
+        </testcase>
+        <testcase name="testErrorHandlingWithInvalidData" class="Tests\Integration\StripeServiceIntegrationTest" classname="Tests.Integration.StripeServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\StripeServiceIntegrationTest.php" line="174" assertions="0" time="0.067979">
+          <error type="TypeError">Tests\Integration\StripeServiceIntegrationTest::testErrorHandlingWithInvalidData
+TypeError: App\Application\Service\StripeService::__construct(): Argument #2 ($logger) must be of type App\Domain\Logging\ErrorLoggerInterface, App\Infrastructure\Repository\StripeSessionRepository given, called in C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\StripeServiceIntegrationTest.php on line 42
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Application\Service\StripeService.php:32
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\StripeServiceIntegrationTest.php:42</error>
+        </testcase>
+        <testcase name="testSessionRepositoryIntegration" class="Tests\Integration\StripeServiceIntegrationTest" classname="Tests.Integration.StripeServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\StripeServiceIntegrationTest.php" line="218" assertions="0" time="0.061663">
+          <error type="TypeError">Tests\Integration\StripeServiceIntegrationTest::testSessionRepositoryIntegration
+TypeError: App\Application\Service\StripeService::__construct(): Argument #2 ($logger) must be of type App\Domain\Logging\ErrorLoggerInterface, App\Infrastructure\Repository\StripeSessionRepository given, called in C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\StripeServiceIntegrationTest.php on line 42
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Application\Service\StripeService.php:32
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\StripeServiceIntegrationTest.php:42</error>
+        </testcase>
+        <testcase name="testRefundFunctionality" class="Tests\Integration\StripeServiceIntegrationTest" classname="Tests.Integration.StripeServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\StripeServiceIntegrationTest.php" line="261" assertions="0" time="0.059495">
+          <error type="TypeError">Tests\Integration\StripeServiceIntegrationTest::testRefundFunctionality
+TypeError: App\Application\Service\StripeService::__construct(): Argument #2 ($logger) must be of type App\Domain\Logging\ErrorLoggerInterface, App\Infrastructure\Repository\StripeSessionRepository given, called in C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\StripeServiceIntegrationTest.php on line 42
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Application\Service\StripeService.php:32
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\StripeServiceIntegrationTest.php:42</error>
+        </testcase>
+        <testcase name="testCustomerManagement" class="Tests\Integration\StripeServiceIntegrationTest" classname="Tests.Integration.StripeServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\StripeServiceIntegrationTest.php" line="289" assertions="0" time="0.060215">
+          <error type="TypeError">Tests\Integration\StripeServiceIntegrationTest::testCustomerManagement
+TypeError: App\Application\Service\StripeService::__construct(): Argument #2 ($logger) must be of type App\Domain\Logging\ErrorLoggerInterface, App\Infrastructure\Repository\StripeSessionRepository given, called in C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\StripeServiceIntegrationTest.php on line 42
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Application\Service\StripeService.php:32
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\StripeServiceIntegrationTest.php:42</error>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Integration\ToolRepositoryIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php" tests="25" assertions="0" errors="25" warnings="0" failures="0" skipped="0" time="1.772396">
+        <testcase name="testFindToolById" class="Tests\Integration\ToolRepositoryIntegrationTest" classname="Tests.Integration.ToolRepositoryIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php" line="117" assertions="0" time="0.060348">
+          <error type="TypeError">Tests\Integration\ToolRepositoryIntegrationTest::testFindToolById
+TypeError: App\Infrastructure\Database\Database::__construct(): Argument #1 ($logger) must be of type App\Domain\Logging\ErrorLoggerInterface, PDO given, called in C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php on line 24
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Infrastructure\Database\Database.php:21
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php:24</error>
+        </testcase>
+        <testcase name="testFindInactiveToolReturnsNull" class="Tests\Integration\ToolRepositoryIntegrationTest" classname="Tests.Integration.ToolRepositoryIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php" line="128" assertions="0" time="0.057649">
+          <error type="TypeError">Tests\Integration\ToolRepositoryIntegrationTest::testFindInactiveToolReturnsNull
+TypeError: App\Infrastructure\Database\Database::__construct(): Argument #1 ($logger) must be of type App\Domain\Logging\ErrorLoggerInterface, PDO given, called in C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php on line 24
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Infrastructure\Database\Database.php:21
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php:24</error>
+        </testcase>
+        <testcase name="testGetAllTools" class="Tests\Integration\ToolRepositoryIntegrationTest" classname="Tests.Integration.ToolRepositoryIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php" line="136" assertions="0" time="0.055819">
+          <error type="TypeError">Tests\Integration\ToolRepositoryIntegrationTest::testGetAllTools
+TypeError: App\Infrastructure\Database\Database::__construct(): Argument #1 ($logger) must be of type App\Domain\Logging\ErrorLoggerInterface, PDO given, called in C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php on line 24
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Infrastructure\Database\Database.php:21
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php:24</error>
+        </testcase>
+        <testcase name="testGetActiveTools" class="Tests\Integration\ToolRepositoryIntegrationTest" classname="Tests.Integration.ToolRepositoryIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php" line="149" assertions="0" time="0.063127">
+          <error type="TypeError">Tests\Integration\ToolRepositoryIntegrationTest::testGetActiveTools
+TypeError: App\Infrastructure\Database\Database::__construct(): Argument #1 ($logger) must be of type App\Domain\Logging\ErrorLoggerInterface, PDO given, called in C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php on line 24
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Infrastructure\Database\Database.php:21
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php:24</error>
+        </testcase>
+        <testcase name="testGetToolsByCategory" class="Tests\Integration\ToolRepositoryIntegrationTest" classname="Tests.Integration.ToolRepositoryIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php" line="160" assertions="0" time="0.064843">
+          <error type="TypeError">Tests\Integration\ToolRepositoryIntegrationTest::testGetToolsByCategory
+TypeError: App\Infrastructure\Database\Database::__construct(): Argument #1 ($logger) must be of type App\Domain\Logging\ErrorLoggerInterface, PDO given, called in C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php on line 24
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Infrastructure\Database\Database.php:21
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php:24</error>
+        </testcase>
+        <testcase name="testSearchTools" class="Tests\Integration\ToolRepositoryIntegrationTest" classname="Tests.Integration.ToolRepositoryIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php" line="174" assertions="0" time="0.064265">
+          <error type="TypeError">Tests\Integration\ToolRepositoryIntegrationTest::testSearchTools
+TypeError: App\Infrastructure\Database\Database::__construct(): Argument #1 ($logger) must be of type App\Domain\Logging\ErrorLoggerInterface, PDO given, called in C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php on line 24
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Infrastructure\Database\Database.php:21
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php:24</error>
+        </testcase>
+        <testcase name="testGetFeaturedTools" class="Tests\Integration\ToolRepositoryIntegrationTest" classname="Tests.Integration.ToolRepositoryIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php" line="195" assertions="0" time="0.063353">
+          <error type="TypeError">Tests\Integration\ToolRepositoryIntegrationTest::testGetFeaturedTools
+TypeError: App\Infrastructure\Database\Database::__construct(): Argument #1 ($logger) must be of type App\Domain\Logging\ErrorLoggerInterface, PDO given, called in C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php on line 24
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Infrastructure\Database\Database.php:21
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php:24</error>
+        </testcase>
+        <testcase name="testGrantUserToolAccess" class="Tests\Integration\ToolRepositoryIntegrationTest" classname="Tests.Integration.ToolRepositoryIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php" line="207" assertions="0" time="0.066191">
+          <error type="TypeError">Tests\Integration\ToolRepositoryIntegrationTest::testGrantUserToolAccess
+TypeError: App\Infrastructure\Database\Database::__construct(): Argument #1 ($logger) must be of type App\Domain\Logging\ErrorLoggerInterface, PDO given, called in C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php on line 24
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Infrastructure\Database\Database.php:21
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php:24</error>
+        </testcase>
+        <testcase name="testGrantUserToolAccessWithExpiry" class="Tests\Integration\ToolRepositoryIntegrationTest" classname="Tests.Integration.ToolRepositoryIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php" line="220" assertions="0" time="0.066638">
+          <error type="TypeError">Tests\Integration\ToolRepositoryIntegrationTest::testGrantUserToolAccessWithExpiry
+TypeError: App\Infrastructure\Database\Database::__construct(): Argument #1 ($logger) must be of type App\Domain\Logging\ErrorLoggerInterface, PDO given, called in C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php on line 24
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Infrastructure\Database\Database.php:21
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php:24</error>
+        </testcase>
+        <testcase name="testRevokeUserToolAccess" class="Tests\Integration\ToolRepositoryIntegrationTest" classname="Tests.Integration.ToolRepositoryIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php" line="239" assertions="0" time="0.062842">
+          <error type="TypeError">Tests\Integration\ToolRepositoryIntegrationTest::testRevokeUserToolAccess
+TypeError: App\Infrastructure\Database\Database::__construct(): Argument #1 ($logger) must be of type App\Domain\Logging\ErrorLoggerInterface, PDO given, called in C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php on line 24
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Infrastructure\Database\Database.php:21
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php:24</error>
+        </testcase>
+        <testcase name="testGetUserTools" class="Tests\Integration\ToolRepositoryIntegrationTest" classname="Tests.Integration.ToolRepositoryIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php" line="257" assertions="0" time="0.065341">
+          <error type="TypeError">Tests\Integration\ToolRepositoryIntegrationTest::testGetUserTools
+TypeError: App\Infrastructure\Database\Database::__construct(): Argument #1 ($logger) must be of type App\Domain\Logging\ErrorLoggerInterface, PDO given, called in C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php on line 24
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Infrastructure\Database\Database.php:21
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php:24</error>
+        </testcase>
+        <testcase name="testGetUserActiveTools" class="Tests\Integration\ToolRepositoryIntegrationTest" classname="Tests.Integration.ToolRepositoryIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php" line="276" assertions="0" time="0.064847">
+          <error type="TypeError">Tests\Integration\ToolRepositoryIntegrationTest::testGetUserActiveTools
+TypeError: App\Infrastructure\Database\Database::__construct(): Argument #1 ($logger) must be of type App\Domain\Logging\ErrorLoggerInterface, PDO given, called in C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php on line 24
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Infrastructure\Database\Database.php:21
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php:24</error>
+        </testcase>
+        <testcase name="testRecordToolUsage" class="Tests\Integration\ToolRepositoryIntegrationTest" classname="Tests.Integration.ToolRepositoryIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php" line="295" assertions="0" time="0.089295">
+          <error type="TypeError">Tests\Integration\ToolRepositoryIntegrationTest::testRecordToolUsage
+TypeError: App\Infrastructure\Database\Database::__construct(): Argument #1 ($logger) must be of type App\Domain\Logging\ErrorLoggerInterface, PDO given, called in C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php on line 24
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Infrastructure\Database\Database.php:21
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php:24</error>
+        </testcase>
+        <testcase name="testGetUserToolUsage" class="Tests\Integration\ToolRepositoryIntegrationTest" classname="Tests.Integration.ToolRepositoryIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php" line="317" assertions="0" time="0.090421">
+          <error type="TypeError">Tests\Integration\ToolRepositoryIntegrationTest::testGetUserToolUsage
+TypeError: App\Infrastructure\Database\Database::__construct(): Argument #1 ($logger) must be of type App\Domain\Logging\ErrorLoggerInterface, PDO given, called in C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php on line 24
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Infrastructure\Database\Database.php:21
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php:24</error>
+        </testcase>
+        <testcase name="testSetUserToolLimit" class="Tests\Integration\ToolRepositoryIntegrationTest" classname="Tests.Integration.ToolRepositoryIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php" line="334" assertions="0" time="0.077237">
+          <error type="TypeError">Tests\Integration\ToolRepositoryIntegrationTest::testSetUserToolLimit
+TypeError: App\Infrastructure\Database\Database::__construct(): Argument #1 ($logger) must be of type App\Domain\Logging\ErrorLoggerInterface, PDO given, called in C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php on line 24
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Infrastructure\Database\Database.php:21
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php:24</error>
+        </testcase>
+        <testcase name="testCheckUsageLimit" class="Tests\Integration\ToolRepositoryIntegrationTest" classname="Tests.Integration.ToolRepositoryIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php" line="350" assertions="0" time="0.090261">
+          <error type="TypeError">Tests\Integration\ToolRepositoryIntegrationTest::testCheckUsageLimit
+TypeError: App\Infrastructure\Database\Database::__construct(): Argument #1 ($logger) must be of type App\Domain\Logging\ErrorLoggerInterface, PDO given, called in C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php on line 24
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Infrastructure\Database\Database.php:21
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php:24</error>
+        </testcase>
+        <testcase name="testGetCurrentUsageCount" class="Tests\Integration\ToolRepositoryIntegrationTest" classname="Tests.Integration.ToolRepositoryIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php" line="374" assertions="0" time="0.079672">
+          <error type="TypeError">Tests\Integration\ToolRepositoryIntegrationTest::testGetCurrentUsageCount
+TypeError: App\Infrastructure\Database\Database::__construct(): Argument #1 ($logger) must be of type App\Domain\Logging\ErrorLoggerInterface, PDO given, called in C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php on line 24
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Infrastructure\Database\Database.php:21
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php:24</error>
+        </testcase>
+        <testcase name="testGenerateToolApiKey" class="Tests\Integration\ToolRepositoryIntegrationTest" classname="Tests.Integration.ToolRepositoryIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php" line="391" assertions="0" time="0.104839">
+          <error type="TypeError">Tests\Integration\ToolRepositoryIntegrationTest::testGenerateToolApiKey
+TypeError: App\Infrastructure\Database\Database::__construct(): Argument #1 ($logger) must be of type App\Domain\Logging\ErrorLoggerInterface, PDO given, called in C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php on line 24
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Infrastructure\Database\Database.php:21
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php:24</error>
+        </testcase>
+        <testcase name="testGetUserToolApiKeys" class="Tests\Integration\ToolRepositoryIntegrationTest" classname="Tests.Integration.ToolRepositoryIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php" line="413" assertions="0" time="0.069457">
+          <error type="TypeError">Tests\Integration\ToolRepositoryIntegrationTest::testGetUserToolApiKeys
+TypeError: App\Infrastructure\Database\Database::__construct(): Argument #1 ($logger) must be of type App\Domain\Logging\ErrorLoggerInterface, PDO given, called in C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php on line 24
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Infrastructure\Database\Database.php:21
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php:24</error>
+        </testcase>
+        <testcase name="testRevokeToolApiKey" class="Tests\Integration\ToolRepositoryIntegrationTest" classname="Tests.Integration.ToolRepositoryIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php" line="430" assertions="0" time="0.065812">
+          <error type="TypeError">Tests\Integration\ToolRepositoryIntegrationTest::testRevokeToolApiKey
+TypeError: App\Infrastructure\Database\Database::__construct(): Argument #1 ($logger) must be of type App\Domain\Logging\ErrorLoggerInterface, PDO given, called in C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php on line 24
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Infrastructure\Database\Database.php:21
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php:24</error>
+        </testcase>
+        <testcase name="testGetToolUsageStats" class="Tests\Integration\ToolRepositoryIntegrationTest" classname="Tests.Integration.ToolRepositoryIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php" line="455" assertions="0" time="0.070602">
+          <error type="TypeError">Tests\Integration\ToolRepositoryIntegrationTest::testGetToolUsageStats
+TypeError: App\Infrastructure\Database\Database::__construct(): Argument #1 ($logger) must be of type App\Domain\Logging\ErrorLoggerInterface, PDO given, called in C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php on line 24
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Infrastructure\Database\Database.php:21
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php:24</error>
+        </testcase>
+        <testcase name="testGetPopularTools" class="Tests\Integration\ToolRepositoryIntegrationTest" classname="Tests.Integration.ToolRepositoryIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php" line="472" assertions="0" time="0.071211">
+          <error type="TypeError">Tests\Integration\ToolRepositoryIntegrationTest::testGetPopularTools
+TypeError: App\Infrastructure\Database\Database::__construct(): Argument #1 ($logger) must be of type App\Domain\Logging\ErrorLoggerInterface, PDO given, called in C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php on line 24
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Infrastructure\Database\Database.php:21
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php:24</error>
+        </testcase>
+        <testcase name="testGetUserDailyUsage" class="Tests\Integration\ToolRepositoryIntegrationTest" classname="Tests.Integration.ToolRepositoryIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php" line="496" assertions="0" time="0.069782">
+          <error type="TypeError">Tests\Integration\ToolRepositoryIntegrationTest::testGetUserDailyUsage
+TypeError: App\Infrastructure\Database\Database::__construct(): Argument #1 ($logger) must be of type App\Domain\Logging\ErrorLoggerInterface, PDO given, called in C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php on line 24
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Infrastructure\Database\Database.php:21
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php:24</error>
+        </testcase>
+        <testcase name="testDuplicateApiKeyHandling" class="Tests\Integration\ToolRepositoryIntegrationTest" classname="Tests.Integration.ToolRepositoryIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php" line="520" assertions="0" time="0.069505">
+          <error type="TypeError">Tests\Integration\ToolRepositoryIntegrationTest::testDuplicateApiKeyHandling
+TypeError: App\Infrastructure\Database\Database::__construct(): Argument #1 ($logger) must be of type App\Domain\Logging\ErrorLoggerInterface, PDO given, called in C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php on line 24
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Infrastructure\Database\Database.php:21
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php:24</error>
+        </testcase>
+        <testcase name="testToolAccessBusinessRules" class="Tests\Integration\ToolRepositoryIntegrationTest" classname="Tests.Integration.ToolRepositoryIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php" line="536" assertions="0" time="0.069040">
+          <error type="TypeError">Tests\Integration\ToolRepositoryIntegrationTest::testToolAccessBusinessRules
+TypeError: App\Infrastructure\Database\Database::__construct(): Argument #1 ($logger) must be of type App\Domain\Logging\ErrorLoggerInterface, PDO given, called in C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php on line 24
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Infrastructure\Database\Database.php:21
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\ToolRepositoryIntegrationTest.php:24</error>
+        </testcase>
+      </testsuite>
+    </testsuite>
+    <testsuite name="E2E" tests="3" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="0.002169">
+      <testsuite name="Tests\E2E\BasicE2ETest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\E2E\BasicE2ETest.php" tests="3" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="0.002169">
+        <testcase name="testApplicationCanBoot" class="Tests\E2E\BasicE2ETest" classname="Tests.E2E.BasicE2ETest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\E2E\BasicE2ETest.php" line="15" assertions="1" time="0.000755"/>
+        <testcase name="testE2EEnvironmentSetup" class="Tests\E2E\BasicE2ETest" classname="Tests.E2E.BasicE2ETest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\E2E\BasicE2ETest.php" line="24" assertions="2" time="0.000751"/>
+        <testcase name="testRequiredExtensionsAvailable" class="Tests\E2E\BasicE2ETest" classname="Tests.E2E.BasicE2ETest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\E2E\BasicE2ETest.php" line="33" assertions="3" time="0.000662"/>
+      </testsuite>
+    </testsuite>
   </testsuite>
 </testsuites>

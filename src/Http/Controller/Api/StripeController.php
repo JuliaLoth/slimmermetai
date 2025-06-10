@@ -2,13 +2,13 @@
 
 namespace App\Http\Controller\Api;
 
-use App\Application\Service\StripeService;
+use App\Domain\Service\StripeServiceInterface;
 use App\Http\Response\ApiResponse;
 use Psr\Http\Message\ResponseInterface;
 
 class StripeController
 {
-    public function __construct(private StripeService $stripe)
+    public function __construct(private StripeServiceInterface $stripe)
     {
     }
 

@@ -8,8 +8,9 @@ use App\Domain\Entity\User;
 use App\Domain\ValueObject\Email;
 use App\Domain\Logging\ErrorLoggerInterface;
 use App\Domain\Service\PasswordHasherInterface;
+use App\Domain\Service\AuthServiceInterface;
 
-class AuthService
+class AuthService implements AuthServiceInterface
 {
     public function __construct(
         private UserRepositoryInterface $users,

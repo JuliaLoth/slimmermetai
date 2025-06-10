@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Application\Service\AuthService;
+use App\Domain\Service\AuthServiceInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -22,7 +22,7 @@ class AuthenticationMiddleware implements MiddlewareInterface
     private array $publicPaths = [];
     private string $loginRoute;
 /** @param array<int,string> $publicPaths  Paden (prefix) die geen auth vereisen */
-    public function __construct(private AuthService $authService, ?array $publicPaths = null)
+    public function __construct(private AuthServiceInterface $authService, ?array $publicPaths = null)
     {
         $cfg = Config::getInstance();
         $this->publicPaths = $publicPaths ?? $cfg->getTyped('auth_public_paths', 'array', [

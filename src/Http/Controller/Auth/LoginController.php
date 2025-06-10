@@ -2,7 +2,7 @@
 
 namespace App\Http\Controller\Auth;
 
-use App\Application\Service\AuthService;
+use App\Domain\Service\AuthServiceInterface;
 use App\Http\Response\ApiResponse;
 use App\Infrastructure\Security\Validator;
 use Psr\Http\Message\ServerRequestInterface;
@@ -11,7 +11,7 @@ use GuzzleHttp\Psr7\Response;
 
 final class LoginController
 {
-    public function __construct(private AuthService $auth)
+    public function __construct(private AuthServiceInterface $auth)
     {
     }
 

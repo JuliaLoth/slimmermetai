@@ -5,6 +5,7 @@ namespace App\Application\Service;
 use App\Infrastructure\Config\Config;
 use App\Domain\Logging\ErrorLoggerInterface;
 use App\Domain\Repository\StripeSessionRepositoryInterface;
+use App\Domain\Service\StripeServiceInterface;
 use Stripe\Stripe;
 use Stripe\Checkout\Session as StripeSession;
 use Stripe\PaymentIntent;
@@ -18,7 +19,7 @@ use function container;
  *
  * Verzorgt de communicatie met de Stripe SDK en centraliseert Stripe-gerelateerde logica.
  */
-class StripeService
+class StripeService implements StripeServiceInterface
 {
     /** legacy helper */
     public static function getInstance(): self
