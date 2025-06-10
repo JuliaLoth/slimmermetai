@@ -1,4 +1,11 @@
 name: CI/CD Pipeline
+# 
+# Docker Registry Authentication Configuration:
+# This pipeline uses GHCR_PAT (Personal Access Token) instead of GITHUB_TOKEN 
+# for Docker registry authentication to resolve permission issues with GitHub Container Registry.
+# 
+# Required secret: GHCR_PAT (with write:packages and read:packages permissions)
+#
 
 on:
   push:
@@ -261,7 +268,7 @@ jobs:
       with:
         registry: ghcr.io
         username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
+        password: ${{ secrets.GHCR_PAT }}
 
     - name: Extract metadata
       id: meta
@@ -376,7 +383,7 @@ jobs:
       with:
         registry: ghcr.io
         username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
+        password: ${{ secrets.GHCR_PAT }}
 
     - name: Deploy to staging environment
       run: |
@@ -411,7 +418,7 @@ jobs:
       with:
         registry: ghcr.io
         username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
+        password: ${{ secrets.GHCR_PAT }}
 
     - name: Deploy to production
       run: |

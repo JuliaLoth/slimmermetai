@@ -2,11 +2,11 @@
 
 namespace App\Application\Service;
 
-use App\Infrastructure\Mail\Mailer;
+use App\Infrastructure\Mail\MailerInterface;
 
 final class EmailService
 {
-    public function __construct(private Mailer $mailer)
+    public function __construct(private MailerInterface $mailer)
     {
     }
 
@@ -63,6 +63,69 @@ final class EmailService
             'Deze link is 1 uur geldig.'
         );
         return $this->send($to, 'Wachtwoord resetten - SlimmerMetAI', $html);
+    }
+
+    /* ---------------- Test Support Methods ---------------- */
+
+    public function validateEmailAddress(?string $email): bool
+    {
+        if ($email === null || $email === '') {
+            return false;
+        }
+        return filter_var($email, FILTER_VALIDATE_EMAIL) !== false;
+    }
+
+    public function renderTemplate(string $templateName, array $vars): string
+    {
+        // For test purposes - basic template rendering
+        $html = "<html><body>";
+        $html .= "<h1>Template: {$templateName}</h1>";
+        foreach ($vars as $key => $value) {
+            $html .= "<p>{$key}: {$value}</p>";
+        }
+        $html .= "</body></html>";
+        return $html;
+    }
+
+    private array $emailQueue = [];
+
+    public function queueEmail(string $to, string $subject, string $template, array $vars = []): void
+    {
+        $this->emailQueue[] = [
+            'to' => $to,
+            'subject' => $subject,
+            'template' => $template,
+            'vars' => $vars
+        ];
+    }
+
+    public function getQueueSize(): int
+    {
+        return count($this->emailQueue);
+    }
+
+    public function processEmailQueue(): int
+    {
+        $processed = 0;
+        foreach ($this->emailQueue as $email) {
+            $html = $this->renderTemplate($email['template'], $email['vars']);
+            if ($this->send($email['to'], $email['subject'], $html)) {
+                $processed++;
+            }
+        }
+        $this->emailQueue = [];
+        return $processed;
+    }
+
+    public function sendBulkEmails(array $recipients, string $subject, string $template): array
+    {
+        $results = [];
+        foreach ($recipients as $recipient) {
+            $html = $this->renderTemplate($template, ['name' => $recipient['name']]);
+            $success = $this->send($recipient['email'], $subject, $html);
+            $results[] = ['success' => $success, 'email' => $recipient['email']];
+        }
+        return $results;
     }
 
     /* ---------------- Helper ---------------- */

@@ -12,6 +12,8 @@ class User
     private Email $email;
     private string $passwordHash;
     private \DateTimeImmutable $createdAt;
+    private bool $emailVerified;
+    private ?\DateTimeImmutable $lastLogin;
 
     public function __construct(Email $email, string $passwordHash, ?int $id = null, string $name = '', string $role = 'user', ?\DateTimeImmutable $createdAt = null)
     {
@@ -21,6 +23,8 @@ class User
         $this->email = $email;
         $this->passwordHash = $passwordHash;
         $this->createdAt = $createdAt ?? new \DateTimeImmutable();
+        $this->emailVerified = false;
+        $this->lastLogin = null;
     }
 
     public function getId(): ?int
@@ -51,5 +55,25 @@ class User
     public function getCreatedAt(): \DateTimeImmutable
     {
         return $this->createdAt;
+    }
+
+    public function isEmailVerified(): bool
+    {
+        return $this->emailVerified;
+    }
+
+    public function getLastLogin(): ?\DateTimeImmutable
+    {
+        return $this->lastLogin;
+    }
+
+    public function setEmailVerified(bool $verified): void
+    {
+        $this->emailVerified = $verified;
+    }
+
+    public function setLastLogin(\DateTimeImmutable $lastLogin): void
+    {
+        $this->lastLogin = $lastLogin;
     }
 }

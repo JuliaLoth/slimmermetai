@@ -158,12 +158,14 @@ class AuthRepositoryIntegrationTest extends DatabaseTestCase
 
     public function testBlacklistTokenWithRealDatabase()
     {
-        $token = 'jwt_token_to_blacklist_' . uniqid();
-
-        $result = $this->authRepository->blacklistToken($token);
-
+        $token = 'test-jwt-token-to-blacklist';
+        $userId = (int)$this->getTestFixture('user_id');
+        $expiresAt = time() + 3600; // 1 hour from now
+        
+        $result = $this->authRepository->blacklistToken($token, $userId, $expiresAt);
+        
         $this->assertTrue($result);
-
+        
         // Verify token is blacklisted
         $isBlacklisted = $this->authRepository->isTokenBlacklisted($token);
         $this->assertTrue($isBlacklisted);

@@ -12,7 +12,7 @@ use App\Domain\Logging\ErrorLoggerInterface;
  * Om vendor-afhankelijkheid te vermijden is hier een lichte wrapper; als PHPMailer
  * aanwezig is wordt die gebruikt, anders fallback naar PHP mail().
  */
-final class Mailer
+final class Mailer implements MailerInterface
 {
     private string $host;
     private int $port;

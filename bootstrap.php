@@ -63,6 +63,7 @@ $containerBuilder->addDefinitions([
 
     // --------- Service Interfaces ---------
     App\Domain\Service\PasswordHasherInterface::class => DI\get(App\Application\Service\PasswordHasher::class),
+    App\Infrastructure\Mail\MailerInterface::class => DI\get(App\Infrastructure\Mail\Mailer::class),
     
     App\Infrastructure\Security\PasswordHasher::class => DI\autowire(),
 

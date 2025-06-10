@@ -33,7 +33,17 @@ interface AuthRepositoryInterface
 
     public function getUserLoginHistory(int $userId, int $limit = 10): array;
 
-    public function logLoginAttempt(string $email, bool $success, string $ipAddress): void;
+    public function logLoginAttempt(string $email, bool $success, string $ipAddress, string $reason = ''): void;
 
     public function getFailedLoginAttempts(string $email, \DateTimeInterface $since): int;
+
+    public function resetFailedLoginAttempts(string $email): bool;
+
+    public function blacklistToken(string $token, int $userId, \DateTimeInterface $expiresAt): bool;
+
+    public function isTokenBlacklisted(string $token): bool;
+
+    public function logUserAction(int $userId, string $action, array $details = []): bool;
+
+    public function updateLastActivity(int $userId): bool;
 }

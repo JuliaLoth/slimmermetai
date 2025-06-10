@@ -300,14 +300,27 @@ class AuthRepositoryTest extends TestCase
 
     public function testBlacklistToken()
     {
-        $token = 'jwt_token_to_blacklist';
-
+        $token = 'test-jwt-token';
+        $userId = 123;
+        $expiresAt = time() + 3600; // 1 hour from now
+        
         $this->mockDatabase
+            ->expects($this->once())
             ->method('execute')
+            ->with(
+                $this->callback(function($sql) {
+                    return strpos($sql, 'INSERT INTO blacklisted_tokens') !== false;
+                }),
+                $this->callback(function($params) use ($userId, $expiresAt) {
+                    return count($params) === 3 && 
+                           $params[1] === $userId && 
+                           $params[2] === date('Y-m-d H:i:s', $expiresAt);
+                })
+            )
             ->willReturn(true);
 
-        $result = $this->authRepository->blacklistToken($token);
-
+        $result = $this->authRepository->blacklistToken($token, $userId, $expiresAt);
+        
         $this->assertTrue($result);
     }
 

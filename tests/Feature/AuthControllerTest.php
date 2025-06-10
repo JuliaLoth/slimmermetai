@@ -31,6 +31,16 @@ class AuthControllerTest extends TestCase
         $this->mockJwtService = $this->createMock(JwtServiceInterface::class);
         $this->mockDatabase = $this->createMock(DatabaseInterface::class);
         
+        // Configure default mock behaviors for commonly used methods
+        $this->mockAuthRepository->method('resetFailedLoginAttempts')->willReturn(true);
+        $this->mockAuthRepository->method('isTokenBlacklisted')->willReturn(false);
+        $this->mockAuthRepository->method('updateLastActivity')->willReturn(true);
+        $this->mockAuthRepository->method('logUserAction')->willReturn(true);
+        $this->mockAuthRepository->method('blacklistToken')->willReturn(true);
+        $this->mockAuthRepository->method('getFailedLoginAttempts')->willReturn(0);
+        $this->mockAuthRepository->method('logLoginAttempt')->willReturn(true);
+        $this->mockAuthRepository->method('updateLastLogin')->willReturn(true);
+        
         // Create controller with all required mocked dependencies
         $this->controller = new AuthController(
             $this->mockAuthRepository,

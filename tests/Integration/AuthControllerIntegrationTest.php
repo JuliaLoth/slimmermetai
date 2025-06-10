@@ -8,26 +8,146 @@ use App\Application\Service\PasswordHasher;
 use App\Infrastructure\Security\JwtService;
 use App\Infrastructure\Logging\ErrorLogger;
 use App\Infrastructure\Config\Config;
+use App\Infrastructure\Database\DatabaseInterface;
 use App\Domain\ValueObject\Email;
 use GuzzleHttp\Psr7\ServerRequest;
 use Psr\Http\Message\ResponseInterface;
+use PDO;
 
-class AuthControllerIntegrationTest extends DatabaseTestCase
+/**
+ * Test Database Implementation for integration tests
+ * This adapter allows using PDO directly with DatabaseInterface
+ */
+class TestDatabase implements DatabaseInterface
+{
+    private bool $transactionActive = false;
+    
+    public function __construct(private PDO $pdo)
+    {
+    }
+
+    public function getConnection(): PDO
+    {
+        return $this->pdo;
+    }
+
+    public function connect(): bool
+    {
+        return true; // Already connected in test
+    }
+
+    public function disconnect(): void
+    {
+        // No-op for test
+    }
+
+    public function query(string $sql, array $params = []): \PDOStatement
+    {
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute($params);
+        return $stmt;
+    }
+
+    public function fetch(string $sql, array $params = []): ?array
+    {
+        $result = $this->query($sql, $params)->fetch();
+        return $result ?: null;
+    }
+
+    public function fetchAll(string $sql, array $params = []): array
+    {
+        return $this->query($sql, $params)->fetchAll();
+    }
+
+    public function execute(string $sql, array $params = []): bool
+    {
+        $stmt = $this->query($sql, $params);
+        return $stmt->rowCount() > 0;
+    }
+
+    public function lastInsertId(): string
+    {
+        return $this->pdo->lastInsertId();
+    }
+
+    public function beginTransaction(): bool
+    {
+        // Prevent nested transactions
+        if ($this->transactionActive || $this->pdo->inTransaction()) {
+            return true; // Already in transaction
+        }
+        
+        $result = $this->pdo->beginTransaction();
+        if ($result) {
+            $this->transactionActive = true;
+        }
+        return $result;
+    }
+
+    public function commit(): bool
+    {
+        if (!$this->transactionActive && !$this->pdo->inTransaction()) {
+            return true; // No transaction to commit
+        }
+        
+        $result = $this->pdo->commit();
+        if ($result) {
+            $this->transactionActive = false;
+        }
+        return $result;
+    }
+
+    public function rollBack(): bool
+    {
+        if (!$this->transactionActive && !$this->pdo->inTransaction()) {
+            return true; // No transaction to rollback
+        }
+        
+        $result = $this->pdo->rollBack();
+        if ($result) {
+            $this->transactionActive = false;
+        }
+        return $result;
+    }
+    
+    public function inTransaction(): bool
+    {
+        return $this->transactionActive || $this->pdo->inTransaction();
+    }
+
+    public function getPerformanceStatistics(): array
+    {
+        return ['test_mode' => true];
+    }
+
+    public function getSlowQueries(): array
+    {
+        return [];
+    }
+
+    public function resetPerformanceMonitoring(): void
+    {
+        // No-op for test
+    }
+}
+
+class AuthControllerIntegrationTest extends BaseIntegrationTest
 {
     private AuthController $controller;
     private AuthRepository $authRepository;
     private PasswordHasher $passwordHasher;
     private JwtService $jwtService;
+    private TestDatabase $database;
 
     protected function setUp(): void
     {
         parent::setUp();
         
+        // Use test database adapter
+        $this->database = new TestDatabase($this->getTestDatabase());
         $this->authRepository = new AuthRepository($this->database);
         $this->passwordHasher = new PasswordHasher();
-        $config = $this->createMockConfig('test-secret-key');
-        $this->jwtService = new JwtService($config);
-        $errorLogger = new ErrorLogger();
+        $this->jwtService = new JwtService($this->getMockConfig());
         
         $this->controller = new AuthController(
             $this->authRepository,
@@ -82,7 +202,14 @@ class AuthControllerIntegrationTest extends DatabaseTestCase
         $password = 'LoginTest123!';
         $hashedPassword = $this->passwordHasher->hash($password);
         
-        $userId = $this->authRepository->createUser('Login Test', new Email($email), $hashedPassword);
+        // Use create method instead of createUser for consistent interface
+        $userData = [
+            'name' => 'Login Test',
+            'email' => $email,
+            'password' => $hashedPassword
+        ];
+        $user = $this->authRepository->create($userData);
+        $userId = $user->getId();
 
         // Now test login
         $request = new ServerRequest('POST', '/api/auth/login', [], null, '1.1', ['REMOTE_ADDR' => '127.0.0.1']);
@@ -101,14 +228,14 @@ class AuthControllerIntegrationTest extends DatabaseTestCase
         $this->assertEquals($email, $body['data']['user']['email']);
 
         // Verify login was logged in database
-        $stmt = $this->pdo->prepare('SELECT * FROM login_history WHERE email = ? AND success = 1 ORDER BY created_at DESC LIMIT 1');
+        $stmt = $this->getTestDatabase()->prepare('SELECT * FROM login_history WHERE email = ? AND success = 1 ORDER BY created_at DESC LIMIT 1');
         $stmt->execute([$email]);
         $loginLog = $stmt->fetch();
         $this->assertNotFalse($loginLog);
         $this->assertEquals('127.0.0.1', $loginLog['ip_address']);
 
-        // Verify last_login_at was updated
-        $stmt = $this->pdo->prepare('SELECT last_login_at FROM users WHERE id = ?');
+        // Verify last_login was updated
+        $stmt = $this->getTestDatabase()->prepare('SELECT last_login FROM users WHERE id = ?');
         $stmt->execute([$userId]);
         $lastLogin = $stmt->fetchColumn();
         $this->assertNotNull($lastLogin);
@@ -131,10 +258,11 @@ class AuthControllerIntegrationTest extends DatabaseTestCase
         $this->assertEquals('Ongeldige inloggegevens', $body['message']);
 
         // Verify failed login was logged
-        $stmt = $this->pdo->prepare('SELECT * FROM login_history WHERE email = ? AND success = 0 ORDER BY created_at DESC LIMIT 1');
+        $stmt = $this->getTestDatabase()->prepare('SELECT * FROM login_history WHERE email = ? AND success = 0 ORDER BY created_at DESC LIMIT 1');
         $stmt->execute(['nonexistent@example.com']);
         $failedLog = $stmt->fetch();
         $this->assertNotFalse($failedLog);
+        $this->assertEquals('invalid_credentials', $failedLog['reason']);
     }
 
     public function testMeEndpointWithValidToken()
@@ -143,7 +271,7 @@ class AuthControllerIntegrationTest extends DatabaseTestCase
         $email = 'me@example.com';
         $userId = $this->createUser(['email' => $email, 'name' => 'Me Test User']);
         
-        $token = $this->jwtService->generate([
+        $token = $this->jwtService->generateToken([
             'user_id' => $userId,
             'email' => $email,
             'role' => 'user'
@@ -195,7 +323,7 @@ class AuthControllerIntegrationTest extends DatabaseTestCase
         $this->assertStringContainsString('herstellink verstuurd', $body['data']['message']);
 
         // Verify password reset token was created
-        $stmt = $this->pdo->prepare('SELECT * FROM email_tokens WHERE user_id = ? AND type = "password_reset" ORDER BY created_at DESC LIMIT 1');
+        $stmt = $this->getTestDatabase()->prepare('SELECT * FROM email_tokens WHERE user_id = ? AND type = "password_reset" ORDER BY created_at DESC LIMIT 1');
         $stmt->execute([$userId]);
         $resetToken = $stmt->fetch();
         $this->assertNotFalse($resetToken);
@@ -232,7 +360,7 @@ class AuthControllerIntegrationTest extends DatabaseTestCase
         $this->assertTrue($this->passwordHasher->verify($newPassword, $user->getPasswordHash()));
 
         // Verify token was marked as used
-        $stmt = $this->pdo->prepare('SELECT used_at FROM email_tokens WHERE token = ?');
+        $stmt = $this->getTestDatabase()->prepare('SELECT used_at FROM email_tokens WHERE token = ?');
         $stmt->execute([$resetToken]);
         $usedAt = $stmt->fetchColumn();
         $this->assertNotNull($usedAt);
@@ -262,7 +390,7 @@ class AuthControllerIntegrationTest extends DatabaseTestCase
         $this->assertEquals('E-mailadres succesvol geverifieerd', $body['data']['message']);
 
         // Verify email was marked as verified
-        $stmt = $this->pdo->prepare('SELECT email_verified_at FROM users WHERE id = ?');
+        $stmt = $this->getTestDatabase()->prepare('SELECT email_verified_at FROM users WHERE id = ?');
         $stmt->execute([$userId]);
         $verifiedAt = $stmt->fetchColumn();
         $this->assertNotNull($verifiedAt);
@@ -323,7 +451,7 @@ class AuthControllerIntegrationTest extends DatabaseTestCase
 
         // Simulate 5 failed login attempts
         for ($i = 0; $i < 5; $i++) {
-            $this->authRepository->logLoginAttempt($email, false, '127.0.0.1');
+            $this->authRepository->logLoginAttempt($email, false, '127.0.0.1', 'invalid_credentials');
         }
 
         // 6th attempt should be rate limited
@@ -359,16 +487,23 @@ class AuthControllerIntegrationTest extends DatabaseTestCase
         $this->assertEquals('application/json; charset=UTF-8', $response->getHeaderLine('Content-Type'));
     }
 
-    private function createMockConfig(string $jwtSecret): Config
+    /**
+     * Helper method to create a user for testing
+     */
+    private function createUser(array $userData): int
     {
-        $config = $this->createMock(Config::class);
-        $config->method('get')->willReturnCallback(function ($key, $default = null) use ($jwtSecret) {
-            return match($key) {
-                'jwt_secret' => $jwtSecret,
-                'jwt_expiration' => 3600,
-                default => $default
-            };
-        });
-        return $config;
+        $name = $userData['name'] ?? 'Test User';
+        $email = $userData['email'];
+        $password = $userData['password'] ?? 'TestPassword123!';
+        $hashedPassword = $this->passwordHasher->hash($password);
+        
+        $userCreationData = [
+            'name' => $name,
+            'email' => $email,
+            'password' => $hashedPassword
+        ];
+        
+        $user = $this->authRepository->create($userCreationData);
+        return $user->getId();
     }
 } 

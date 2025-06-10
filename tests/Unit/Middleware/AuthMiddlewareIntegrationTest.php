@@ -46,29 +46,67 @@ class AuthMiddlewareIntegrationTest extends TestCase
 
     private function setupTestTables(): void
     {
-        // Users table
+        // Users table - match BaseIntegrationTest schema
         $this->pdo->exec('
             CREATE TABLE users (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                name VARCHAR(255) NOT NULL,
-                email VARCHAR(255) UNIQUE NOT NULL,
-                password VARCHAR(255) NOT NULL,
-                role VARCHAR(50) DEFAULT "user",
+                email TEXT UNIQUE NOT NULL,
+                password_hash TEXT NOT NULL,
+                name TEXT NOT NULL,
+                google_id TEXT,
+                role TEXT DEFAULT "user",
+                failed_login_attempts INTEGER DEFAULT 0,
+                last_failed_login DATETIME,
+                login_count INTEGER DEFAULT 0,
+                last_login DATETIME,
+                last_activity_at DATETIME,
+                email_verified BOOLEAN DEFAULT 0,
+                email_verified_at DATETIME,
                 active BOOLEAN DEFAULT 1,
-                email_verified_at DATETIME NULL,
-                last_login_at DATETIME NULL,
                 created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
                 updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
                 deleted_at DATETIME NULL
             )
         ');
         
-        // Blacklisted tokens table
+        // Blacklisted tokens table - match expected schema with token_hash column
         $this->pdo->exec('
             CREATE TABLE blacklisted_tokens (
-                id INTEGER PRIMARY KEY,
-                token TEXT NOT NULL,
-                blacklisted_at DATETIME DEFAULT CURRENT_TIMESTAMP
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                token_hash TEXT NOT NULL UNIQUE,
+                user_id INTEGER,
+                expires_at DATETIME,
+                blacklisted_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (user_id) REFERENCES users(id)
+            )
+        ');
+        
+        // Login history table for tracking
+        $this->pdo->exec('
+            CREATE TABLE login_history (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id INTEGER,
+                email TEXT NOT NULL,
+                success BOOLEAN NOT NULL,
+                ip_address TEXT,
+                user_agent TEXT,
+                reason TEXT,
+                created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (user_id) REFERENCES users(id)
+            )
+        ');
+        
+        // User actions table for audit
+        $this->pdo->exec('
+            CREATE TABLE user_actions (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id INTEGER NOT NULL,
+                action TEXT NOT NULL,
+                metadata TEXT,
+                ip_address TEXT,
+                user_agent TEXT,
+                created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (user_id) REFERENCES users(id)
             )
         ');
     }
@@ -173,9 +211,10 @@ class AuthMiddlewareIntegrationTest extends TestCase
         
         $token = $this->jwtService->generate($payload);
         
-        // Blacklist the token
-        $this->pdo->prepare('INSERT INTO blacklisted_tokens (token) VALUES (?)')
-            ->execute([$token]);
+        // Blacklist the token using hash like AuthRepository does
+        $tokenHash = hash('sha256', $token);
+        $this->pdo->prepare('INSERT INTO blacklisted_tokens (token_hash, user_id, expires_at) VALUES (?, ?, ?)')
+            ->execute([$tokenHash, 1, date('Y-m-d H:i:s', time() + 3600)]);
 
         $request = new ServerRequest('GET', '/protected');
         $request = $request->withHeader('Authorization', 'Bearer ' . $token);

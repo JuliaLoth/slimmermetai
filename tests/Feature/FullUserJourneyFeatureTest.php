@@ -253,8 +253,13 @@ class FullUserJourneyFeatureTest extends DatabaseTestCase
         $meResponse = $this->authController->handle($meRequest);
         $this->assertEquals(200, $meResponse->getStatusCode());
 
+        // Get user ID from token payload for blacklisting
+        $tokenPayload = $this->jwtService->verify($token);
+        $userId = (int)$tokenPayload['user_id'];
+        $expiresAt = $tokenPayload['exp']; // Use token's expiration time
+
         // Blacklist the token
-        $this->authRepository->blacklistToken($token);
+        $this->authRepository->blacklistToken($token, $userId, $expiresAt);
 
         // Verify token no longer works
         $blacklistedRequest = new ServerRequest('GET', '/api/auth/me');

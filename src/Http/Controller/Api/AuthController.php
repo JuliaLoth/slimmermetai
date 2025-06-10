@@ -112,6 +112,26 @@ class AuthController implements RequestHandlerInterface
             }
 
             $email = new Email($data['email']);
+
+            // Check for too many failed attempts BEFORE validating credentials
+            // This prevents brute force attacks
+            $failedAttempts = $this->authRepository->getFailedLoginAttempts(
+                (string)$email,
+                new \DateTimeImmutable('-1 hour')
+            );
+
+            if ($failedAttempts >= 5) {
+                // Log the rate-limited attempt
+                $this->authRepository->logLoginAttempt(
+                    (string)$email,
+                    false,
+                    $request->getServerParams()['REMOTE_ADDR'] ?? '',
+                    'rate_limited'
+                );
+
+                return ApiResponse::error('Te veel mislukte inlogpogingen. Probeer het over een uur opnieuw.', 429);
+            }
+
             $user = $this->authRepository->findUserByEmail($email);
 
             if (!$user || !$this->passwordHasher->verify($data['password'], $user->getPasswordHash())) {
@@ -119,37 +139,31 @@ class AuthController implements RequestHandlerInterface
                 $this->authRepository->logLoginAttempt(
                     (string)$email,
                     false,
-                    $request->getServerParams()['REMOTE_ADDR'] ?? ''
+                    $request->getServerParams()['REMOTE_ADDR'] ?? '',
+                    'invalid_credentials'
                 );
 
                 return ApiResponse::error('Ongeldige inloggegevens', 401);
-            }
-
-            // Check for too many failed attempts
-            $failedAttempts = $this->authRepository->getFailedLoginAttempts(
-                (string)$email,
-                new \DateTimeImmutable('-1 hour')
-            );
-
-            if ($failedAttempts >= 5) {
-                return ApiResponse::error('Te veel mislukte inlogpogingen. Probeer het over een uur opnieuw.', 429);
             }
 
             // Log successful login
             $this->authRepository->logLoginAttempt(
                 (string)$email,
                 true,
-                $request->getServerParams()['REMOTE_ADDR'] ?? ''
+                $request->getServerParams()['REMOTE_ADDR'] ?? '',
+                'success'
             );
 
-            // Update last login
+            // Update last login and reset failed attempts
             $this->authRepository->updateLastLogin($user->getId());
+            $this->authRepository->resetFailedLoginAttempts((string)$email);
 
             // Generate JWT
             $jwtToken = $this->jwtService->generateToken([
                 'user_id' => $user->getId(),
                 'email' => (string)$user->getEmail(),
-                'role' => $user->getRole()
+                'role' => $user->getRole(),
+                'login_time' => time() // Add login timestamp for token validation
             ]);
 
             return ApiResponse::success([
@@ -274,10 +288,44 @@ class AuthController implements RequestHandlerInterface
         return ApiResponse::error('Refresh token functionaliteit nog niet geïmplementeerd', 501);
     }
 
+    private function logout(ServerRequestInterface $request): ResponseInterface
+    {
+        try {
+            // Extract token from Authorization header
+            $authHeader = $request->getHeaderLine('Authorization');
+
+            if (empty($authHeader) || !str_starts_with($authHeader, 'Bearer ')) {
+                // Allow logout without token (client-side cleanup)
+                return ApiResponse::success(['message' => 'Succesvol uitgelogd']);
+            }
+
+            $token = substr($authHeader, 7);
+
+            // Validate token format and get payload
+            $payload = $this->jwtService->validateToken($token);
+
+            if ($payload && isset($payload['user_id'])) {
+                // Add token to blacklist to prevent reuse
+                $this->authRepository->blacklistToken($token, $payload['user_id'], $payload['exp'] ?? time() + 3600);
+
+                // Log successful logout
+                $this->authRepository->logUserAction($payload['user_id'], 'logout', [
+                    'ip_address' => $request->getServerParams()['REMOTE_ADDR'] ?? '',
+                    'user_agent' => $request->getHeaderLine('User-Agent')
+                ]);
+            }
+
+            return ApiResponse::success(['message' => 'Succesvol uitgelogd']);
+        } catch (\Exception $e) {
+            // Even if token processing fails, allow logout for UX
+            return ApiResponse::success(['message' => 'Succesvol uitgelogd']);
+        }
+    }
+
     private function me(ServerRequestInterface $request): ResponseInterface
     {
         try {
-            // TODO: Extract user from JWT token in Authorization header
+            // Extract token from Authorization header
             $authHeader = $request->getHeaderLine('Authorization');
 
             if (empty($authHeader) || !str_starts_with($authHeader, 'Bearer ')) {
@@ -285,6 +333,12 @@ class AuthController implements RequestHandlerInterface
             }
 
             $token = substr($authHeader, 7);
+
+            // Check if token is blacklisted
+            if ($this->authRepository->isTokenBlacklisted($token)) {
+                return ApiResponse::error('Token is ongeldig gemaakt', 401);
+            }
+
             $payload = $this->jwtService->validateToken($token);
 
             if (!$payload) {
@@ -297,24 +351,22 @@ class AuthController implements RequestHandlerInterface
                 return ApiResponse::error('Gebruiker niet gevonden', 404);
             }
 
+            // Update last activity timestamp
+            $this->authRepository->updateLastActivity($user->getId());
+
             return ApiResponse::success([
                 'user' => [
                     'id' => $user->getId(),
                     'name' => $user->getName(),
                     'email' => (string)$user->getEmail(),
-                    'role' => $user->getRole()
+                    'role' => $user->getRole(),
+                    'email_verified' => $user->isEmailVerified(),
+                    'last_login' => $user->getLastLogin()?->format('c')
                 ]
             ]);
         } catch (\Exception $e) {
             return ApiResponse::error('Er is een fout opgetreden', 500);
         }
-    }
-
-    private function logout(ServerRequestInterface $request): ResponseInterface
-    {
-        // For JWT, logout is typically handled client-side by removing the token
-        // But we can implement token blacklisting if needed
-        return ApiResponse::success(['message' => 'Succesvol uitgelogd']);
     }
 
     private function validateRegistration(array $data): array

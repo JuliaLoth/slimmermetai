@@ -19,8 +19,14 @@ interface AuthRepositoryInterface extends \App\Domain\Repository\AuthRepositoryI
     public function create(array $userData): User;
     public function validatePasswordResetToken(string $token): bool;
     public function deletePasswordResetToken(string $token): bool;
-    public function blacklistToken(string $token): bool;
+
+    // Updated method signatures for enhanced security features
+    public function blacklistToken(string $token, int $userId, \DateTimeInterface $expiresAt): bool;
     public function isTokenBlacklisted(string $token): bool;
+    public function resetFailedLoginAttempts(string $email): bool;
+    public function logUserAction(int $userId, string $action, array $metadata = []): bool;
+    public function updateLastActivity(int $userId): bool;
+
     public function getLoginHistory(int $userId, int $limit = 10): array;
     public function recordLoginAttempt(string $email, bool $success, string $ipAddress): void;
     public function deactivateUser(int $userId): bool;
