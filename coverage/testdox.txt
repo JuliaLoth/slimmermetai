@@ -270,3 +270,8 @@ Database Mock (Tests\Integration\DatabaseMock)
  [x] Multiple data types
  [x] Incremental ids
 
+Basic E2E (Tests\E2E\BasicE2E)
+ [x] Application can boot
+ [x] E 2 e environment setup
+ [x] Required extensions available
+

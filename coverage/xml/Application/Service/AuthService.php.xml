@@ -2,7 +2,7 @@
 <phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
   <file name="AuthService.php" path="\Application\Service">
     <totals>
-      <lines total="95" comments="8" code="87" executable="42" executed="42" percent="100.00"/>
+      <lines total="99" comments="8" code="91" executable="42" executed="42" percent="100.00"/>
       <methods count="7" tested="7" percent="100.00"/>
       <functions count="0" tested="0" percent="0"/>
       <classes count="1" tested="1" percent="100.00"/>
@@ -10,16 +10,16 @@
     </totals>
     <class name="App\Application\Service\AuthService" start="12" executable="42" executed="42" crap="12">
       <namespace name="App\Application\Service"/>
-      <method name="__construct" signature="__construct(App\Domain\Repository\UserRepositoryInterface $users, App\Domain\Service\PasswordHasherInterface $hasher, App\Domain\Security\JwtServiceInterface $jwt, App\Domain\Logging\ErrorLoggerInterface $logger)" start="14" end="16" crap="1" executable="1" executed="1" coverage="100"/>
-      <method name="login" signature="login(string $email, string $password): array" start="21" end="37" crap="3" executable="13" executed="13" coverage="100"/>
-      <method name="register" signature="register(string $email, string $password): array" start="42" end="62" crap="3" executable="16" executed="16" coverage="100"/>
-      <method name="verifyToken" signature="verifyToken(string $token): ?array" start="64" end="67" crap="1" executable="1" executed="1" coverage="100"/>
-      <method name="refresh" signature="refresh(string $token): array" start="69" end="82" crap="2" executable="9" executed="9" coverage="100"/>
-      <method name="logout" signature="logout(): array" start="84" end="88" crap="1" executable="1" executed="1" coverage="100"/>
-      <method name="getCurrentUser" signature="getCurrentUser(array $payload): array" start="90" end="93" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="__construct" signature="__construct(App\Domain\Repository\UserRepositoryInterface $users, App\Domain\Service\PasswordHasherInterface $hasher, App\Domain\Security\JwtServiceInterface $jwt, App\Domain\Logging\ErrorLoggerInterface $logger)" start="14" end="20" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="login" signature="login(string $email, string $password): array" start="25" end="41" crap="3" executable="13" executed="13" coverage="100"/>
+      <method name="register" signature="register(string $email, string $password): array" start="46" end="66" crap="3" executable="16" executed="16" coverage="100"/>
+      <method name="verifyToken" signature="verifyToken(string $token): ?array" start="68" end="71" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="refresh" signature="refresh(string $token): array" start="73" end="86" crap="2" executable="9" executed="9" coverage="100"/>
+      <method name="logout" signature="logout(): array" start="88" end="92" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="getCurrentUser" signature="getCurrentUser(array $payload): array" start="94" end="97" crap="1" executable="1" executed="1" coverage="100"/>
     </class>
     <coverage>
-      <line nr="16">
+      <line nr="20">
         <covered by="Tests\Unit\AuthServiceTest::testSuccessfulLogin"/>
         <covered by="Tests\Unit\AuthServiceTest::testLoginWithInvalidEmail"/>
         <covered by="Tests\Unit\AuthServiceTest::testLoginWithWrongPassword"/>
@@ -47,36 +47,26 @@
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testJWTTokenGenerationAndVerification"/>
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
       </line>
-      <line nr="23">
-        <covered by="Tests\Unit\AuthServiceTest::testSuccessfulLogin"/>
-        <covered by="Tests\Unit\AuthServiceTest::testLoginWithInvalidEmail"/>
-        <covered by="Tests\Unit\AuthServiceTest::testLoginWithWrongPassword"/>
-        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
-        <covered by="Tests\Integration\AuthServiceIntegrationTest::testLoginWithWrongPasswordFails"/>
-        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
-      </line>
-      <line nr="24">
-        <covered by="Tests\Unit\AuthServiceTest::testSuccessfulLogin"/>
-        <covered by="Tests\Unit\AuthServiceTest::testLoginWithInvalidEmail"/>
-        <covered by="Tests\Unit\AuthServiceTest::testLoginWithWrongPassword"/>
-        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
-        <covered by="Tests\Integration\AuthServiceIntegrationTest::testLoginWithWrongPasswordFails"/>
-        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
-      </line>
-      <line nr="25">
-        <covered by="Tests\Unit\AuthServiceTest::testLoginWithInvalidEmail"/>
-        <covered by="Tests\Unit\AuthServiceTest::testLoginWithWrongPassword"/>
-        <covered by="Tests\Integration\AuthServiceIntegrationTest::testLoginWithWrongPasswordFails"/>
-      </line>
       <line nr="27">
         <covered by="Tests\Unit\AuthServiceTest::testSuccessfulLogin"/>
+        <covered by="Tests\Unit\AuthServiceTest::testLoginWithInvalidEmail"/>
+        <covered by="Tests\Unit\AuthServiceTest::testLoginWithWrongPassword"/>
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testLoginWithWrongPasswordFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="28">
+        <covered by="Tests\Unit\AuthServiceTest::testSuccessfulLogin"/>
+        <covered by="Tests\Unit\AuthServiceTest::testLoginWithInvalidEmail"/>
+        <covered by="Tests\Unit\AuthServiceTest::testLoginWithWrongPassword"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testLoginWithWrongPasswordFails"/>
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
       </line>
       <line nr="29">
-        <covered by="Tests\Unit\AuthServiceTest::testSuccessfulLogin"/>
-        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
-        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+        <covered by="Tests\Unit\AuthServiceTest::testLoginWithInvalidEmail"/>
+        <covered by="Tests\Unit\AuthServiceTest::testLoginWithWrongPassword"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testLoginWithWrongPasswordFails"/>
       </line>
       <line nr="31">
         <covered by="Tests\Unit\AuthServiceTest::testSuccessfulLogin"/>
@@ -93,46 +83,46 @@
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
       </line>
-      <line nr="44">
-        <covered by="Tests\Unit\AuthServiceTest::testSuccessfulRegistration"/>
-        <covered by="Tests\Unit\AuthServiceTest::testRegistrationWithExistingEmail"/>
-        <covered by="Tests\Unit\AuthServiceTest::testRegistrationWithWeakPassword"/>
-        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
-        <covered by="Tests\Integration\AuthServiceIntegrationTest::testRegistrationWithWeakPasswordFails"/>
-        <covered by="Tests\Integration\AuthServiceIntegrationTest::testRegistrationWithExistingEmailFails"/>
+      <line nr="37">
+        <covered by="Tests\Unit\AuthServiceTest::testSuccessfulLogin"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
       </line>
-      <line nr="45">
-        <covered by="Tests\Unit\AuthServiceTest::testRegistrationWithWeakPassword"/>
-        <covered by="Tests\Integration\AuthServiceIntegrationTest::testRegistrationWithWeakPasswordFails"/>
-      </line>
-      <line nr="47">
-        <covered by="Tests\Unit\AuthServiceTest::testSuccessfulRegistration"/>
-        <covered by="Tests\Unit\AuthServiceTest::testRegistrationWithExistingEmail"/>
-        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
-        <covered by="Tests\Integration\AuthServiceIntegrationTest::testRegistrationWithExistingEmailFails"/>
+      <line nr="39">
+        <covered by="Tests\Unit\AuthServiceTest::testSuccessfulLogin"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
       </line>
       <line nr="48">
-        <covered by="Tests\Unit\AuthServiceTest::testRegistrationWithExistingEmail"/>
-        <covered by="Tests\Integration\AuthServiceIntegrationTest::testRegistrationWithExistingEmailFails"/>
-      </line>
-      <line nr="50">
         <covered by="Tests\Unit\AuthServiceTest::testSuccessfulRegistration"/>
+        <covered by="Tests\Unit\AuthServiceTest::testRegistrationWithExistingEmail"/>
+        <covered by="Tests\Unit\AuthServiceTest::testRegistrationWithWeakPassword"/>
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testRegistrationWithWeakPasswordFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testRegistrationWithExistingEmailFails"/>
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="49">
+        <covered by="Tests\Unit\AuthServiceTest::testRegistrationWithWeakPassword"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testRegistrationWithWeakPasswordFails"/>
       </line>
       <line nr="51">
         <covered by="Tests\Unit\AuthServiceTest::testSuccessfulRegistration"/>
+        <covered by="Tests\Unit\AuthServiceTest::testRegistrationWithExistingEmail"/>
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testRegistrationWithExistingEmailFails"/>
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
       </line>
       <line nr="52">
+        <covered by="Tests\Unit\AuthServiceTest::testRegistrationWithExistingEmail"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testRegistrationWithExistingEmailFails"/>
+      </line>
+      <line nr="54">
         <covered by="Tests\Unit\AuthServiceTest::testSuccessfulRegistration"/>
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
       </line>
-      <line nr="54">
+      <line nr="55">
         <covered by="Tests\Unit\AuthServiceTest::testSuccessfulRegistration"/>
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
@@ -152,7 +142,17 @@
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
       </line>
-      <line nr="66">
+      <line nr="62">
+        <covered by="Tests\Unit\AuthServiceTest::testSuccessfulRegistration"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="64">
+        <covered by="Tests\Unit\AuthServiceTest::testSuccessfulRegistration"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="70">
         <covered by="Tests\Unit\AuthServiceTest::testTokenVerification"/>
         <covered by="Tests\Unit\AuthServiceTest::testTokenVerificationWithInvalidToken"/>
         <covered by="Tests\Unit\AuthServiceTest::testTokenRefresh"/>
@@ -161,60 +161,50 @@
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
       </line>
-      <line nr="71">
+      <line nr="75">
         <covered by="Tests\Unit\AuthServiceTest::testTokenRefresh"/>
         <covered by="Tests\Unit\AuthServiceTest::testTokenRefreshWithInvalidToken"/>
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
-      </line>
-      <line nr="72">
-        <covered by="Tests\Unit\AuthServiceTest::testTokenRefresh"/>
-        <covered by="Tests\Unit\AuthServiceTest::testTokenRefreshWithInvalidToken"/>
-        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
-        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
-      </line>
-      <line nr="73">
-        <covered by="Tests\Unit\AuthServiceTest::testTokenRefreshWithInvalidToken"/>
       </line>
       <line nr="76">
         <covered by="Tests\Unit\AuthServiceTest::testTokenRefresh"/>
+        <covered by="Tests\Unit\AuthServiceTest::testTokenRefreshWithInvalidToken"/>
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
       </line>
-      <line nr="78">
-        <covered by="Tests\Unit\AuthServiceTest::testTokenRefresh"/>
-        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
-        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
-      </line>
-      <line nr="79">
-        <covered by="Tests\Unit\AuthServiceTest::testTokenRefresh"/>
-        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
-        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      <line nr="77">
+        <covered by="Tests\Unit\AuthServiceTest::testTokenRefreshWithInvalidToken"/>
       </line>
       <line nr="80">
         <covered by="Tests\Unit\AuthServiceTest::testTokenRefresh"/>
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
       </line>
-      <line nr="87">
+      <line nr="82">
+        <covered by="Tests\Unit\AuthServiceTest::testTokenRefresh"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="83">
+        <covered by="Tests\Unit\AuthServiceTest::testTokenRefresh"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="84">
+        <covered by="Tests\Unit\AuthServiceTest::testTokenRefresh"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="91">
         <covered by="Tests\Unit\AuthServiceTest::testLogout"/>
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testLogoutSucceeds"/>
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
       </line>
-      <line nr="92">
+      <line nr="96">
         <covered by="Tests\Unit\AuthServiceTest::testGetCurrentUser"/>
         <covered by="Tests\Unit\AuthServiceTest::testGetCurrentUserWithMissingData"/>
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testGetCurrentUserWithValidPayload"/>
-        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
-      </line>
-      <line nr="28">
-        <covered by="Tests\Unit\AuthServiceTest::testSuccessfulLogin"/>
-        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
-        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
-      </line>
-      <line nr="30">
-        <covered by="Tests\Unit\AuthServiceTest::testSuccessfulLogin"/>
-        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
       </line>
       <line nr="32">
@@ -232,14 +222,14 @@
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
       </line>
-      <line nr="53">
-        <covered by="Tests\Unit\AuthServiceTest::testSuccessfulRegistration"/>
-        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+      <line nr="38">
+        <covered by="Tests\Unit\AuthServiceTest::testSuccessfulLogin"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
       </line>
-      <line nr="55">
-        <covered by="Tests\Unit\AuthServiceTest::testSuccessfulRegistration"/>
-        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+      <line nr="40">
+        <covered by="Tests\Unit\AuthServiceTest::testSuccessfulLogin"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
       </line>
       <line nr="57">
@@ -257,12 +247,22 @@
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
       </line>
-      <line nr="77">
+      <line nr="63">
+        <covered by="Tests\Unit\AuthServiceTest::testSuccessfulRegistration"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="65">
+        <covered by="Tests\Unit\AuthServiceTest::testSuccessfulRegistration"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="81">
         <covered by="Tests\Unit\AuthServiceTest::testTokenRefresh"/>
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
       </line>
-      <line nr="81">
+      <line nr="85">
         <covered by="Tests\Unit\AuthServiceTest::testTokenRefresh"/>
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
         <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
@@ -333,54 +333,64 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_STRING">__construct</token>
         <token name="T_OPEN_BRACKET">(</token>
+      </line>
+      <line no="15">
+        <token name="T_WHITESPACE">        </token>
         <token name="T_PRIVATE">private</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_STRING">UserRepositoryInterface</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_VARIABLE">$users</token>
         <token name="T_COMMA">,</token>
-        <token name="T_WHITESPACE"> </token>
+      </line>
+      <line no="16">
+        <token name="T_WHITESPACE">        </token>
         <token name="T_PRIVATE">private</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_STRING">PasswordHasherInterface</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_VARIABLE">$hasher</token>
         <token name="T_COMMA">,</token>
-        <token name="T_WHITESPACE"> </token>
+      </line>
+      <line no="17">
+        <token name="T_WHITESPACE">        </token>
         <token name="T_PRIVATE">private</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_STRING">JwtServiceInterface</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_VARIABLE">$jwt</token>
         <token name="T_COMMA">,</token>
-        <token name="T_WHITESPACE"> </token>
+      </line>
+      <line no="18">
+        <token name="T_WHITESPACE">        </token>
         <token name="T_PRIVATE">private</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_STRING">ErrorLoggerInterface</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_VARIABLE">$logger</token>
-        <token name="T_CLOSE_BRACKET">)</token>
       </line>
-      <line no="15">
+      <line no="19">
         <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
         <token name="T_OPEN_CURLY">{</token>
       </line>
-      <line no="16">
+      <line no="20">
         <token name="T_WHITESPACE">    </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="17"/>
-      <line no="18">
+      <line no="21"/>
+      <line no="22">
         <token name="T_WHITESPACE">    </token>
         <token name="T_DOC_COMMENT">/**</token>
       </line>
-      <line no="19">
+      <line no="23">
         <token name="T_DOC_COMMENT">     * Login met e-mail en wachtwoord</token>
       </line>
-      <line no="20">
+      <line no="24">
         <token name="T_DOC_COMMENT">     */</token>
       </line>
-      <line no="21">
+      <line no="25">
         <token name="T_WHITESPACE">    </token>
         <token name="T_PUBLIC">public</token>
         <token name="T_WHITESPACE"> </token>
@@ -401,11 +411,11 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_ARRAY">array</token>
       </line>
-      <line no="22">
+      <line no="26">
         <token name="T_WHITESPACE">    </token>
         <token name="T_OPEN_CURLY">{</token>
       </line>
-      <line no="23">
+      <line no="27">
         <token name="T_WHITESPACE">        </token>
         <token name="T_VARIABLE">$user</token>
         <token name="T_WHITESPACE"> </token>
@@ -426,7 +436,7 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="24">
+      <line no="28">
         <token name="T_WHITESPACE">        </token>
         <token name="T_IF">if</token>
         <token name="T_WHITESPACE"> </token>
@@ -456,7 +466,7 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_OPEN_CURLY">{</token>
       </line>
-      <line no="25">
+      <line no="29">
         <token name="T_WHITESPACE">            </token>
         <token name="T_RETURN">return</token>
         <token name="T_WHITESPACE"> </token>
@@ -476,11 +486,11 @@
         <token name="T_CLOSE_SQUARE">]</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="26">
+      <line no="30">
         <token name="T_WHITESPACE">        </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="27">
+      <line no="31">
         <token name="T_WHITESPACE">        </token>
         <token name="T_VARIABLE">$access</token>
         <token name="T_WHITESPACE"> </token>
@@ -518,13 +528,13 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="28">
+      <line no="32">
         <token name="T_WHITESPACE">        </token>
         <token name="T_RETURN">return</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_OPEN_SQUARE">[</token>
       </line>
-      <line no="29">
+      <line no="33">
         <token name="T_WHITESPACE">            </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'success'</token>
         <token name="T_WHITESPACE"> </token>
@@ -533,7 +543,7 @@
         <token name="T_STRING">true</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="30">
+      <line no="34">
         <token name="T_WHITESPACE">            </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'tokens'</token>
         <token name="T_WHITESPACE">  </token>
@@ -541,7 +551,7 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_OPEN_SQUARE">[</token>
       </line>
-      <line no="31">
+      <line no="35">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'access_token'</token>
         <token name="T_WHITESPACE">  </token>
@@ -550,7 +560,7 @@
         <token name="T_VARIABLE">$access</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="32">
+      <line no="36">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'refresh_token'</token>
         <token name="T_WHITESPACE"> </token>
@@ -559,7 +569,7 @@
         <token name="T_STRING">null</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="33">
+      <line no="37">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'expires_at'</token>
         <token name="T_WHITESPACE">    </token>
@@ -574,12 +584,12 @@
         <token name="T_LNUMBER">3600</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="34">
+      <line no="38">
         <token name="T_WHITESPACE">            </token>
         <token name="T_CLOSE_SQUARE">]</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="35">
+      <line no="39">
         <token name="T_WHITESPACE">            </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'user'</token>
         <token name="T_WHITESPACE">    </token>
@@ -610,27 +620,27 @@
         <token name="T_CLOSE_SQUARE">]</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="36">
+      <line no="40">
         <token name="T_WHITESPACE">        </token>
         <token name="T_CLOSE_SQUARE">]</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="37">
+      <line no="41">
         <token name="T_WHITESPACE">    </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="38"/>
-      <line no="39">
+      <line no="42"/>
+      <line no="43">
         <token name="T_WHITESPACE">    </token>
         <token name="T_DOC_COMMENT">/**</token>
       </line>
-      <line no="40">
+      <line no="44">
         <token name="T_DOC_COMMENT">     * Registreer een gebruiker</token>
       </line>
-      <line no="41">
+      <line no="45">
         <token name="T_DOC_COMMENT">     */</token>
       </line>
-      <line no="42">
+      <line no="46">
         <token name="T_WHITESPACE">    </token>
         <token name="T_PUBLIC">public</token>
         <token name="T_WHITESPACE"> </token>
@@ -651,11 +661,11 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_ARRAY">array</token>
       </line>
-      <line no="43">
+      <line no="47">
         <token name="T_WHITESPACE">    </token>
         <token name="T_OPEN_CURLY">{</token>
       </line>
-      <line no="44">
+      <line no="48">
         <token name="T_WHITESPACE">        </token>
         <token name="T_IF">if</token>
         <token name="T_WHITESPACE"> </token>
@@ -673,7 +683,7 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_OPEN_CURLY">{</token>
       </line>
-      <line no="45">
+      <line no="49">
         <token name="T_WHITESPACE">            </token>
         <token name="T_RETURN">return</token>
         <token name="T_WHITESPACE"> </token>
@@ -693,11 +703,11 @@
         <token name="T_CLOSE_SQUARE">]</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="46">
+      <line no="50">
         <token name="T_WHITESPACE">        </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="47">
+      <line no="51">
         <token name="T_WHITESPACE">        </token>
         <token name="T_IF">if</token>
         <token name="T_WHITESPACE"> </token>
@@ -719,7 +729,7 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_OPEN_CURLY">{</token>
       </line>
-      <line no="48">
+      <line no="52">
         <token name="T_WHITESPACE">            </token>
         <token name="T_RETURN">return</token>
         <token name="T_WHITESPACE"> </token>
@@ -739,11 +749,11 @@
         <token name="T_CLOSE_SQUARE">]</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="49">
+      <line no="53">
         <token name="T_WHITESPACE">        </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="50">
+      <line no="54">
         <token name="T_WHITESPACE">        </token>
         <token name="T_VARIABLE">$user</token>
         <token name="T_WHITESPACE"> </token>
@@ -772,7 +782,7 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="51">
+      <line no="55">
         <token name="T_WHITESPACE">        </token>
         <token name="T_VARIABLE">$this</token>
         <token name="T_OBJECT_OPERATOR">-&gt;</token>
@@ -784,7 +794,7 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="52">
+      <line no="56">
         <token name="T_WHITESPACE">        </token>
         <token name="T_VARIABLE">$access</token>
         <token name="T_WHITESPACE"> </token>
@@ -822,13 +832,13 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="53">
+      <line no="57">
         <token name="T_WHITESPACE">        </token>
         <token name="T_RETURN">return</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_OPEN_SQUARE">[</token>
       </line>
-      <line no="54">
+      <line no="58">
         <token name="T_WHITESPACE">            </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'success'</token>
         <token name="T_WHITESPACE"> </token>
@@ -837,7 +847,7 @@
         <token name="T_STRING">true</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="55">
+      <line no="59">
         <token name="T_WHITESPACE">            </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'tokens'</token>
         <token name="T_WHITESPACE">  </token>
@@ -845,7 +855,7 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_OPEN_SQUARE">[</token>
       </line>
-      <line no="56">
+      <line no="60">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'access_token'</token>
         <token name="T_WHITESPACE">  </token>
@@ -854,7 +864,7 @@
         <token name="T_VARIABLE">$access</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="57">
+      <line no="61">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'refresh_token'</token>
         <token name="T_WHITESPACE"> </token>
@@ -863,7 +873,7 @@
         <token name="T_STRING">null</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="58">
+      <line no="62">
         <token name="T_WHITESPACE">                </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'expires_at'</token>
         <token name="T_WHITESPACE">    </token>
@@ -878,12 +888,12 @@
         <token name="T_LNUMBER">3600</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="59">
+      <line no="63">
         <token name="T_WHITESPACE">            </token>
         <token name="T_CLOSE_SQUARE">]</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="60">
+      <line no="64">
         <token name="T_WHITESPACE">            </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'user'</token>
         <token name="T_WHITESPACE">    </token>
@@ -914,17 +924,17 @@
         <token name="T_CLOSE_SQUARE">]</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="61">
+      <line no="65">
         <token name="T_WHITESPACE">        </token>
         <token name="T_CLOSE_SQUARE">]</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="62">
+      <line no="66">
         <token name="T_WHITESPACE">    </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="63"/>
-      <line no="64">
+      <line no="67"/>
+      <line no="68">
         <token name="T_WHITESPACE">    </token>
         <token name="T_PUBLIC">public</token>
         <token name="T_WHITESPACE"> </token>
@@ -941,11 +951,11 @@
         <token name="T_QUESTION_MARK">?</token>
         <token name="T_ARRAY">array</token>
       </line>
-      <line no="65">
+      <line no="69">
         <token name="T_WHITESPACE">    </token>
         <token name="T_OPEN_CURLY">{</token>
       </line>
-      <line no="66">
+      <line no="70">
         <token name="T_WHITESPACE">        </token>
         <token name="T_RETURN">return</token>
         <token name="T_WHITESPACE"> </token>
@@ -959,12 +969,12 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="67">
+      <line no="71">
         <token name="T_WHITESPACE">    </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="68"/>
-      <line no="69">
+      <line no="72"/>
+      <line no="73">
         <token name="T_WHITESPACE">    </token>
         <token name="T_PUBLIC">public</token>
         <token name="T_WHITESPACE"> </token>
@@ -980,11 +990,11 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_ARRAY">array</token>
       </line>
-      <line no="70">
+      <line no="74">
         <token name="T_WHITESPACE">    </token>
         <token name="T_OPEN_CURLY">{</token>
       </line>
-      <line no="71">
+      <line no="75">
         <token name="T_WHITESPACE">        </token>
         <token name="T_VARIABLE">$payload</token>
         <token name="T_WHITESPACE"> </token>
@@ -998,7 +1008,7 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="72">
+      <line no="76">
         <token name="T_WHITESPACE">        </token>
         <token name="T_IF">if</token>
         <token name="T_WHITESPACE"> </token>
@@ -1009,7 +1019,7 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_OPEN_CURLY">{</token>
       </line>
-      <line no="73">
+      <line no="77">
         <token name="T_WHITESPACE">            </token>
         <token name="T_RETURN">return</token>
         <token name="T_WHITESPACE"> </token>
@@ -1029,15 +1039,15 @@
         <token name="T_CLOSE_SQUARE">]</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="74">
+      <line no="78">
         <token name="T_WHITESPACE">        </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="75">
+      <line no="79">
         <token name="T_WHITESPACE">        </token>
         <token name="T_COMMENT">// Simple refresh: issue new access token</token>
       </line>
-      <line no="76">
+      <line no="80">
         <token name="T_WHITESPACE">        </token>
         <token name="T_VARIABLE">$access</token>
         <token name="T_WHITESPACE"> </token>
@@ -1076,13 +1086,13 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="77">
+      <line no="81">
         <token name="T_WHITESPACE">        </token>
         <token name="T_RETURN">return</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_OPEN_SQUARE">[</token>
       </line>
-      <line no="78">
+      <line no="82">
         <token name="T_WHITESPACE">            </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'success'</token>
         <token name="T_WHITESPACE"> </token>
@@ -1091,7 +1101,7 @@
         <token name="T_STRING">true</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="79">
+      <line no="83">
         <token name="T_WHITESPACE">            </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'access_token'</token>
         <token name="T_WHITESPACE"> </token>
@@ -1100,7 +1110,7 @@
         <token name="T_VARIABLE">$access</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="80">
+      <line no="84">
         <token name="T_WHITESPACE">            </token>
         <token name="T_CONSTANT_ENCAPSED_STRING">'expires_at'</token>
         <token name="T_WHITESPACE"> </token>
@@ -1115,17 +1125,17 @@
         <token name="T_LNUMBER">3600</token>
         <token name="T_COMMA">,</token>
       </line>
-      <line no="81">
+      <line no="85">
         <token name="T_WHITESPACE">        </token>
         <token name="T_CLOSE_SQUARE">]</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="82">
+      <line no="86">
         <token name="T_WHITESPACE">    </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="83"/>
-      <line no="84">
+      <line no="87"/>
+      <line no="88">
         <token name="T_WHITESPACE">    </token>
         <token name="T_PUBLIC">public</token>
         <token name="T_WHITESPACE"> </token>
@@ -1138,15 +1148,15 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_ARRAY">array</token>
       </line>
-      <line no="85">
+      <line no="89">
         <token name="T_WHITESPACE">    </token>
         <token name="T_OPEN_CURLY">{</token>
       </line>
-      <line no="86">
+      <line no="90">
         <token name="T_WHITESPACE">        </token>
         <token name="T_COMMENT">// Here you would blacklist token / remove refresh token, etc.</token>
       </line>
-      <line no="87">
+      <line no="91">
         <token name="T_WHITESPACE">        </token>
         <token name="T_RETURN">return</token>
         <token name="T_WHITESPACE"> </token>
@@ -1159,12 +1169,12 @@
         <token name="T_CLOSE_SQUARE">]</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="88">
+      <line no="92">
         <token name="T_WHITESPACE">    </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="89"/>
-      <line no="90">
+      <line no="93"/>
+      <line no="94">
         <token name="T_WHITESPACE">    </token>
         <token name="T_PUBLIC">public</token>
         <token name="T_WHITESPACE"> </token>
@@ -1180,11 +1190,11 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_ARRAY">array</token>
       </line>
-      <line no="91">
+      <line no="95">
         <token name="T_WHITESPACE">    </token>
         <token name="T_OPEN_CURLY">{</token>
       </line>
-      <line no="92">
+      <line no="96">
         <token name="T_WHITESPACE">        </token>
         <token name="T_RETURN">return</token>
         <token name="T_WHITESPACE"> </token>
@@ -1218,14 +1228,14 @@
         <token name="T_CLOSE_SQUARE">]</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="93">
+      <line no="97">
         <token name="T_WHITESPACE">    </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="94">
+      <line no="98">
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="95"/>
+      <line no="99"/>
     </source>
   </file>
 </phpunit>

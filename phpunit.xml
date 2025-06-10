@@ -4,7 +4,7 @@
          bootstrap="bootstrap.php"
          colors="true"
          verbose="true"
-         cacheDirectory=".phpunit.cache"
+
          failOnEmptyTestSuite="false"
          beStrictAboutOutputDuringTests="true"
          beStrictAboutTodoAnnotatedTests="true"
@@ -26,17 +26,7 @@
         </testsuite>
     </testsuites>
 
-    <!-- Source directories for coverage -->
-    <source>
-        <include>
-            <directory suffix=".php">src</directory>
-        </include>
-        <exclude>
-            <directory>src/Domain/Entity</directory>
-            <directory>src/Domain/ValueObject</directory>
-            <file>src/Infrastructure/Config/constants.php</file>
-        </exclude>
-    </source>
+    <!-- Coverage configuration is defined in the <coverage> section below -->
 
     <!-- Coverage reporting configuration -->
     <coverage processUncoveredFiles="true"
@@ -86,7 +76,7 @@
         <!-- Testing Configuration -->
         <ini name="assert.active" value="1"/>
         <ini name="assert.exception" value="1"/>
-        <ini name="zend.assertions" value="1"/>
+        <!-- zend.assertions removed - must be set in php.ini -->
     </php>
 
     <!-- Extensions -->
@@ -101,8 +91,5 @@
         <testdoxText outputFile="coverage/testdox.txt"/>
     </logging>
     
-    <!-- Listeners for enhanced testing -->
-    <listeners>
-        <!-- Add custom listeners here if needed -->
-    </listeners>
+    <!-- Listeners for enhanced testing - removed empty element to prevent warnings -->
 </phpunit> 

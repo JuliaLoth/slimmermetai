@@ -3019,9 +3019,7 @@
         <token name="T_STRING">null</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="190">
-        <token name="T_WHITESPACE">        </token>
-      </line>
+      <line no="190"/>
       <line no="191">
         <token name="T_WHITESPACE">        </token>
         <token name="T_VARIABLE">$this</token>

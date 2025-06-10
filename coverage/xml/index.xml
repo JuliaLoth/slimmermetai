@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
-  <build time="Tue Jun 10 10:17:38 CEST 2025" phpunit="9.6.23" coverage="9.2.32">
+  <build time="Tue Jun 10 11:10:16 CEST 2025" phpunit="9.6.23" coverage="9.2.32">
     <runtime name="PHP" version="8.0.30" url="https://secure.php.net/"/>
     <driver name="xdebug" version="3.4.3"/>
   </build>
@@ -179,7 +179,7 @@
     </tests>
     <directory name="/">
       <totals>
-        <lines total="11228" comments="851" code="10377" executable="4607" executed="637" percent="13.83"/>
+        <lines total="11246" comments="851" code="10395" executable="4609" executed="637" percent="13.82"/>
         <methods count="685" tested="75" percent="10.95"/>
         <functions count="0" tested="0" percent="0"/>
         <classes count="131" tested="3" percent="2.29"/>
@@ -187,7 +187,7 @@
       </totals>
       <directory name="Application">
         <totals>
-          <lines total="1644" comments="252" code="1392" executable="729" executed="101" percent="13.85"/>
+          <lines total="1660" comments="252" code="1408" executable="730" executed="101" percent="13.84"/>
           <methods count="64" tested="14" percent="21.88"/>
           <functions count="0" tested="0" percent="0"/>
           <classes count="10" tested="2" percent="20.00"/>
@@ -213,7 +213,7 @@
         </directory>
         <directory name="Service">
           <totals>
-            <lines total="1633" comments="252" code="1381" executable="729" executed="101" percent="13.85"/>
+            <lines total="1649" comments="252" code="1397" executable="730" executed="101" percent="13.84"/>
             <methods count="64" tested="14" percent="21.88"/>
             <functions count="0" tested="0" percent="0"/>
             <classes count="10" tested="2" percent="20.00"/>
@@ -221,7 +221,7 @@
           </totals>
           <file name="AuthService.php" href="Application/Service/AuthService.php.xml">
             <totals>
-              <lines total="95" comments="8" code="87" executable="42" executed="42" percent="100.00"/>
+              <lines total="99" comments="8" code="91" executable="42" executed="42" percent="100.00"/>
               <methods count="7" tested="7" percent="100.00"/>
               <functions count="0" tested="0" percent="0"/>
               <classes count="1" tested="1" percent="100.00"/>
@@ -230,7 +230,7 @@
           </file>
           <file name="EmailService.php" href="Application/Service/EmailService.php.xml">
             <totals>
-              <lines total="101" comments="5" code="96" executable="48" executed="0" percent="0.00"/>
+              <lines total="109" comments="5" code="104" executable="49" executed="0" percent="0.00"/>
               <methods count="6" tested="0" percent="0.00"/>
               <functions count="0" tested="0" percent="0"/>
               <classes count="1" tested="0" percent="0.00"/>
@@ -275,7 +275,7 @@
           </file>
           <file name="StripeService.php" href="Application/Service/StripeService.php.xml">
             <totals>
-              <lines total="259" comments="55" code="204" executable="122" executed="54" percent="44.26"/>
+              <lines total="263" comments="55" code="208" executable="122" executed="54" percent="44.26"/>
               <methods count="7" tested="2" percent="28.57"/>
               <functions count="0" tested="0" percent="0"/>
               <classes count="1" tested="0" percent="0.00"/>
@@ -313,7 +313,7 @@
       </directory>
       <directory name="Http">
         <totals>
-          <lines total="4630" comments="346" code="4284" executable="1662" executed="243" percent="14.62"/>
+          <lines total="4632" comments="346" code="4286" executable="1663" executed="243" percent="14.61"/>
           <methods count="223" tested="15" percent="6.73"/>
           <functions count="0" tested="0" percent="0"/>
           <classes count="98" tested="1" percent="1.02"/>
@@ -321,7 +321,7 @@
         </totals>
         <directory name="Controller">
           <totals>
-            <lines total="3781" comments="217" code="3564" executable="1358" executed="182" percent="13.40"/>
+            <lines total="3782" comments="217" code="3565" executable="1359" executed="182" percent="13.39"/>
             <methods count="184" tested="9" percent="4.89"/>
             <functions count="0" tested="0" percent="0"/>
             <classes count="87" tested="1" percent="1.15"/>
@@ -437,7 +437,7 @@
           </directory>
           <directory name="Auth">
             <totals>
-              <lines total="391" comments="27" code="364" executable="135" executed="0" percent="0.00"/>
+              <lines total="392" comments="27" code="365" executable="136" executed="0" percent="0.00"/>
               <methods count="17" tested="0" percent="0.00"/>
               <functions count="0" tested="0" percent="0"/>
               <classes count="10" tested="0" percent="0.00"/>
@@ -445,7 +445,7 @@
             </totals>
             <file name="ForgotPasswordController.php" href="Http/Controller/Auth/ForgotPasswordController.php.xml">
               <totals>
-                <lines total="58" comments="8" code="50" executable="22" executed="0" percent="0.00"/>
+                <lines total="59" comments="8" code="51" executable="23" executed="0" percent="0.00"/>
                 <methods count="1" tested="0" percent="0.00"/>
                 <functions count="0" tested="0" percent="0"/>
                 <classes count="1" tested="0" percent="0.00"/>
@@ -1140,7 +1140,7 @@
         </directory>
         <directory name="Middleware">
           <totals>
-            <lines total="605" comments="79" code="526" executable="215" executed="36" percent="16.74"/>
+            <lines total="606" comments="79" code="527" executable="215" executed="36" percent="16.74"/>
             <methods count="26" tested="3" percent="11.54"/>
             <functions count="0" tested="0" percent="0"/>
             <classes count="9" tested="0" percent="0.00"/>
@@ -1148,7 +1148,7 @@
           </totals>
           <file name="AuthMiddleware.php" href="Http/Middleware/AuthMiddleware.php.xml">
             <totals>
-              <lines total="102" comments="12" code="90" executable="39" executed="36" percent="92.31"/>
+              <lines total="103" comments="12" code="91" executable="39" executed="36" percent="92.31"/>
               <methods count="4" tested="3" percent="75.00"/>
               <functions count="0" tested="0" percent="0"/>
               <classes count="1" tested="0" percent="0.00"/>

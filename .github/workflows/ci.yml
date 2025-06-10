@@ -178,6 +178,11 @@ jobs:
     - name: Run full code style check for reporting (warnings allowed to fail)
       run: composer run cs:check || echo "⚠️ Code style warnings detected but not blocking CI"
 
+    - name: Configure PHP for testing
+      run: |
+        echo 'zend.assertions=1' >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+        echo 'assert.active=1' >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+
     - name: Run static analysis
       run: composer run analyse
 

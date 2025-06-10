@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1749543455">
-  <project timestamp="1749543455">
+<coverage generated="1749546615">
+  <project timestamp="1749546615">
     <file name="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Application\DTO\UserDTO.php">
       <class name="App\Application\DTO\UserDTO" namespace="global">
         <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
@@ -12,30 +12,26 @@
         <metrics complexity="12" methods="7" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="42" coveredstatements="42" elements="49" coveredelements="49"/>
       </class>
       <line num="14" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="26"/>
-      <line num="16" type="stmt" count="26"/>
-      <line num="21" type="method" name="login" visibility="public" complexity="3" crap="3" count="6"/>
-      <line num="23" type="stmt" count="6"/>
-      <line num="24" type="stmt" count="6"/>
-      <line num="25" type="stmt" count="3"/>
-      <line num="27" type="stmt" count="3"/>
-      <line num="28" type="stmt" count="3"/>
+      <line num="20" type="stmt" count="26"/>
+      <line num="25" type="method" name="login" visibility="public" complexity="3" crap="3" count="6"/>
+      <line num="27" type="stmt" count="6"/>
+      <line num="28" type="stmt" count="6"/>
       <line num="29" type="stmt" count="3"/>
-      <line num="30" type="stmt" count="3"/>
       <line num="31" type="stmt" count="3"/>
       <line num="32" type="stmt" count="3"/>
       <line num="33" type="stmt" count="3"/>
       <line num="34" type="stmt" count="3"/>
       <line num="35" type="stmt" count="3"/>
       <line num="36" type="stmt" count="3"/>
-      <line num="42" type="method" name="register" visibility="public" complexity="3" crap="3" count="7"/>
-      <line num="44" type="stmt" count="7"/>
-      <line num="45" type="stmt" count="2"/>
-      <line num="47" type="stmt" count="5"/>
-      <line num="48" type="stmt" count="2"/>
-      <line num="50" type="stmt" count="3"/>
-      <line num="51" type="stmt" count="3"/>
-      <line num="52" type="stmt" count="3"/>
-      <line num="53" type="stmt" count="3"/>
+      <line num="37" type="stmt" count="3"/>
+      <line num="38" type="stmt" count="3"/>
+      <line num="39" type="stmt" count="3"/>
+      <line num="40" type="stmt" count="3"/>
+      <line num="46" type="method" name="register" visibility="public" complexity="3" crap="3" count="7"/>
+      <line num="48" type="stmt" count="7"/>
+      <line num="49" type="stmt" count="2"/>
+      <line num="51" type="stmt" count="5"/>
+      <line num="52" type="stmt" count="2"/>
       <line num="54" type="stmt" count="3"/>
       <line num="55" type="stmt" count="3"/>
       <line num="56" type="stmt" count="3"/>
@@ -44,27 +40,31 @@
       <line num="59" type="stmt" count="3"/>
       <line num="60" type="stmt" count="3"/>
       <line num="61" type="stmt" count="3"/>
-      <line num="64" type="method" name="verifyToken" visibility="public" complexity="1" crap="1" count="7"/>
-      <line num="66" type="stmt" count="7"/>
-      <line num="69" type="method" name="refresh" visibility="public" complexity="2" crap="2" count="4"/>
-      <line num="71" type="stmt" count="4"/>
-      <line num="72" type="stmt" count="4"/>
-      <line num="73" type="stmt" count="1"/>
-      <line num="76" type="stmt" count="3"/>
-      <line num="77" type="stmt" count="3"/>
-      <line num="78" type="stmt" count="3"/>
-      <line num="79" type="stmt" count="3"/>
+      <line num="62" type="stmt" count="3"/>
+      <line num="63" type="stmt" count="3"/>
+      <line num="64" type="stmt" count="3"/>
+      <line num="65" type="stmt" count="3"/>
+      <line num="68" type="method" name="verifyToken" visibility="public" complexity="1" crap="1" count="7"/>
+      <line num="70" type="stmt" count="7"/>
+      <line num="73" type="method" name="refresh" visibility="public" complexity="2" crap="2" count="4"/>
+      <line num="75" type="stmt" count="4"/>
+      <line num="76" type="stmt" count="4"/>
+      <line num="77" type="stmt" count="1"/>
       <line num="80" type="stmt" count="3"/>
       <line num="81" type="stmt" count="3"/>
-      <line num="84" type="method" name="logout" visibility="public" complexity="1" crap="1" count="3"/>
-      <line num="87" type="stmt" count="3"/>
-      <line num="90" type="method" name="getCurrentUser" visibility="public" complexity="1" crap="1" count="4"/>
-      <line num="92" type="stmt" count="4"/>
-      <metrics loc="95" ncloc="87" classes="1" methods="7" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="42" coveredstatements="42" elements="49" coveredelements="49"/>
+      <line num="82" type="stmt" count="3"/>
+      <line num="83" type="stmt" count="3"/>
+      <line num="84" type="stmt" count="3"/>
+      <line num="85" type="stmt" count="3"/>
+      <line num="88" type="method" name="logout" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="91" type="stmt" count="3"/>
+      <line num="94" type="method" name="getCurrentUser" visibility="public" complexity="1" crap="1" count="4"/>
+      <line num="96" type="stmt" count="4"/>
+      <metrics loc="99" ncloc="91" classes="1" methods="7" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="42" coveredstatements="42" elements="49" coveredelements="49"/>
     </file>
     <file name="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Application\Service\EmailService.php">
       <class name="App\Application\Service\EmailService" namespace="global">
-        <metrics complexity="11" methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="48" coveredstatements="0" elements="54" coveredelements="0"/>
+        <metrics complexity="11" methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="49" coveredstatements="0" elements="55" coveredelements="0"/>
       </class>
       <line num="9" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="11" type="stmt" count="0"/>
@@ -115,12 +115,13 @@
       <line num="82" type="stmt" count="0"/>
       <line num="85" type="stmt" count="0"/>
       <line num="86" type="stmt" count="0"/>
-      <line num="89" type="stmt" count="0"/>
       <line num="91" type="stmt" count="0"/>
-      <line num="92" type="stmt" count="0"/>
-      <line num="95" type="stmt" count="0"/>
+      <line num="94" type="stmt" count="0"/>
       <line num="98" type="stmt" count="0"/>
-      <metrics loc="101" ncloc="96" classes="1" methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="48" coveredstatements="0" elements="54" coveredelements="0"/>
+      <line num="100" type="stmt" count="0"/>
+      <line num="103" type="stmt" count="0"/>
+      <line num="106" type="stmt" count="0"/>
+      <metrics loc="109" ncloc="104" classes="1" methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="49" coveredstatements="0" elements="55" coveredelements="0"/>
     </file>
     <file name="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Application\Service\GoogleAuthService.php">
       <class name="App\Application\Service\GoogleAuthService" namespace="global">
@@ -514,70 +515,66 @@
       <line num="48" type="stmt" count="0"/>
       <line num="50" type="stmt" count="13"/>
       <line num="63" type="method" name="createCheckoutSession" visibility="public" complexity="11" crap="19.65" count="5"/>
-      <line num="66" type="stmt" count="5"/>
-      <line num="67" type="stmt" count="5"/>
-      <line num="68" type="stmt" count="5"/>
       <line num="70" type="stmt" count="5"/>
-      <line num="71" type="stmt" count="4"/>
-      <line num="72" type="stmt" count="4"/>
-      <line num="73" type="stmt" count="4"/>
+      <line num="71" type="stmt" count="5"/>
+      <line num="72" type="stmt" count="5"/>
+      <line num="74" type="stmt" count="5"/>
       <line num="75" type="stmt" count="4"/>
       <line num="76" type="stmt" count="4"/>
-      <line num="77" type="stmt" count="3"/>
-      <line num="78" type="stmt" count="3"/>
-      <line num="79" type="stmt" count="3"/>
-      <line num="82" type="stmt" count="4"/>
-      <line num="84" type="stmt" count="4"/>
-      <line num="85" type="stmt" count="4"/>
-      <line num="86" type="stmt" count="3"/>
+      <line num="77" type="stmt" count="4"/>
+      <line num="79" type="stmt" count="4"/>
+      <line num="80" type="stmt" count="4"/>
+      <line num="81" type="stmt" count="3"/>
+      <line num="82" type="stmt" count="3"/>
+      <line num="83" type="stmt" count="3"/>
+      <line num="86" type="stmt" count="4"/>
+      <line num="88" type="stmt" count="4"/>
       <line num="89" type="stmt" count="4"/>
-      <line num="90" type="stmt" count="4"/>
-      <line num="91" type="stmt" count="4"/>
-      <line num="92" type="stmt" count="4"/>
+      <line num="90" type="stmt" count="3"/>
       <line num="93" type="stmt" count="4"/>
       <line num="94" type="stmt" count="4"/>
       <line num="95" type="stmt" count="4"/>
+      <line num="96" type="stmt" count="4"/>
       <line num="97" type="stmt" count="4"/>
       <line num="98" type="stmt" count="4"/>
       <line num="99" type="stmt" count="4"/>
-      <line num="100" type="stmt" count="4"/>
       <line num="101" type="stmt" count="4"/>
-      <line num="105" type="stmt" count="1"/>
-      <line num="106" type="stmt" count="1"/>
-      <line num="107" type="stmt" count="1"/>
-      <line num="111" type="stmt" count="0"/>
-      <line num="112" type="stmt" count="0"/>
-      <line num="113" type="stmt" count="0"/>
-      <line num="114" type="stmt" count="0"/>
+      <line num="102" type="stmt" count="4"/>
+      <line num="103" type="stmt" count="4"/>
+      <line num="104" type="stmt" count="4"/>
+      <line num="105" type="stmt" count="4"/>
+      <line num="109" type="stmt" count="1"/>
+      <line num="110" type="stmt" count="1"/>
+      <line num="111" type="stmt" count="1"/>
       <line num="115" type="stmt" count="0"/>
       <line num="116" type="stmt" count="0"/>
       <line num="117" type="stmt" count="0"/>
       <line num="118" type="stmt" count="0"/>
       <line num="119" type="stmt" count="0"/>
+      <line num="120" type="stmt" count="0"/>
       <line num="121" type="stmt" count="0"/>
       <line num="122" type="stmt" count="0"/>
       <line num="123" type="stmt" count="0"/>
-      <line num="124" type="stmt" count="0"/>
+      <line num="125" type="stmt" count="0"/>
       <line num="126" type="stmt" count="0"/>
       <line num="127" type="stmt" count="0"/>
       <line num="128" type="stmt" count="0"/>
-      <line num="129" type="stmt" count="0"/>
       <line num="130" type="stmt" count="0"/>
       <line num="131" type="stmt" count="0"/>
       <line num="132" type="stmt" count="0"/>
       <line num="133" type="stmt" count="0"/>
+      <line num="134" type="stmt" count="0"/>
       <line num="135" type="stmt" count="0"/>
-      <line num="142" type="method" name="isValidStripeKey" visibility="private" complexity="1" crap="1" count="6"/>
-      <line num="144" type="stmt" count="6"/>
-      <line num="153" type="method" name="getPaymentStatus" visibility="public" complexity="4" crap="11.87" count="1"/>
-      <line num="156" type="stmt" count="1"/>
-      <line num="159" type="stmt" count="0"/>
-      <line num="160" type="stmt" count="0"/>
-      <line num="161" type="stmt" count="0"/>
+      <line num="136" type="stmt" count="0"/>
+      <line num="137" type="stmt" count="0"/>
+      <line num="139" type="stmt" count="0"/>
+      <line num="146" type="method" name="isValidStripeKey" visibility="private" complexity="1" crap="1" count="6"/>
+      <line num="148" type="stmt" count="6"/>
+      <line num="157" type="method" name="getPaymentStatus" visibility="public" complexity="4" crap="11.87" count="1"/>
+      <line num="160" type="stmt" count="1"/>
+      <line num="163" type="stmt" count="0"/>
       <line num="164" type="stmt" count="0"/>
       <line num="165" type="stmt" count="0"/>
-      <line num="166" type="stmt" count="0"/>
-      <line num="167" type="stmt" count="0"/>
       <line num="168" type="stmt" count="0"/>
       <line num="169" type="stmt" count="0"/>
       <line num="170" type="stmt" count="0"/>
@@ -586,24 +583,25 @@
       <line num="173" type="stmt" count="0"/>
       <line num="174" type="stmt" count="0"/>
       <line num="175" type="stmt" count="0"/>
-      <line num="176" type="stmt" count="1"/>
-      <line num="177" type="stmt" count="1"/>
-      <line num="178" type="stmt" count="1"/>
-      <line num="186" type="method" name="handleWebhook" visibility="public" complexity="10" crap="90.07" count="1"/>
-      <line num="188" type="stmt" count="1"/>
-      <line num="189" type="stmt" count="1"/>
-      <line num="192" type="stmt" count="0"/>
-      <line num="193" type="stmt" count="0"/>
-      <line num="195" type="stmt" count="0"/>
+      <line num="176" type="stmt" count="0"/>
+      <line num="177" type="stmt" count="0"/>
+      <line num="178" type="stmt" count="0"/>
+      <line num="179" type="stmt" count="0"/>
+      <line num="180" type="stmt" count="1"/>
+      <line num="181" type="stmt" count="1"/>
+      <line num="182" type="stmt" count="1"/>
+      <line num="190" type="method" name="handleWebhook" visibility="public" complexity="10" crap="90.07" count="1"/>
+      <line num="192" type="stmt" count="1"/>
+      <line num="193" type="stmt" count="1"/>
       <line num="196" type="stmt" count="0"/>
       <line num="197" type="stmt" count="0"/>
       <line num="199" type="stmt" count="0"/>
       <line num="200" type="stmt" count="0"/>
+      <line num="201" type="stmt" count="0"/>
+      <line num="203" type="stmt" count="0"/>
       <line num="204" type="stmt" count="0"/>
-      <line num="205" type="stmt" count="0"/>
-      <line num="206" type="stmt" count="0"/>
-      <line num="207" type="stmt" count="0"/>
       <line num="208" type="stmt" count="0"/>
+      <line num="209" type="stmt" count="0"/>
       <line num="210" type="stmt" count="0"/>
       <line num="211" type="stmt" count="0"/>
       <line num="212" type="stmt" count="0"/>
@@ -613,23 +611,26 @@
       <line num="218" type="stmt" count="0"/>
       <line num="219" type="stmt" count="0"/>
       <line num="220" type="stmt" count="0"/>
-      <line num="221" type="stmt" count="0"/>
       <line num="222" type="stmt" count="0"/>
+      <line num="223" type="stmt" count="0"/>
       <line num="224" type="stmt" count="0"/>
-      <line num="227" type="stmt" count="0"/>
-      <line num="230" type="stmt" count="0"/>
-      <line num="242" type="method" name="createPaymentIntent" visibility="public" complexity="3" crap="3.01" count="1"/>
-      <line num="246" type="stmt" count="1"/>
-      <line num="247" type="stmt" count="1"/>
-      <line num="248" type="stmt" count="1"/>
-      <line num="249" type="stmt" count="1"/>
+      <line num="225" type="stmt" count="0"/>
+      <line num="226" type="stmt" count="0"/>
+      <line num="228" type="stmt" count="0"/>
+      <line num="231" type="stmt" count="0"/>
+      <line num="234" type="stmt" count="0"/>
+      <line num="246" type="method" name="createPaymentIntent" visibility="public" complexity="3" crap="3.01" count="1"/>
       <line num="250" type="stmt" count="1"/>
       <line num="251" type="stmt" count="1"/>
-      <line num="252" type="stmt" count="0"/>
+      <line num="252" type="stmt" count="1"/>
       <line num="253" type="stmt" count="1"/>
       <line num="254" type="stmt" count="1"/>
       <line num="255" type="stmt" count="1"/>
-      <metrics loc="259" ncloc="204" classes="1" methods="7" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="122" coveredstatements="54" elements="129" coveredelements="56"/>
+      <line num="256" type="stmt" count="0"/>
+      <line num="257" type="stmt" count="1"/>
+      <line num="258" type="stmt" count="1"/>
+      <line num="259" type="stmt" count="1"/>
+      <metrics loc="263" ncloc="208" classes="1" methods="7" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="122" coveredstatements="54" elements="129" coveredelements="56"/>
     </file>
     <file name="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Application\Service\TokenService.php">
       <class name="App\Application\Service\TokenService" namespace="global">
@@ -1889,7 +1890,7 @@
     </file>
     <file name="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Http\Controller\Auth\ForgotPasswordController.php">
       <class name="App\Http\Controller\Auth\ForgotPasswordController" namespace="global">
-        <metrics complexity="7" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="22" coveredstatements="0" elements="23" coveredelements="0"/>
+        <metrics complexity="7" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="23" coveredstatements="0" elements="24" coveredelements="0"/>
       </class>
       <line num="13" type="method" name="handle" visibility="public" complexity="7" crap="56" count="0"/>
       <line num="16" type="stmt" count="0"/>
@@ -1908,13 +1909,14 @@
       <line num="38" type="stmt" count="0"/>
       <line num="39" type="stmt" count="0"/>
       <line num="44" type="stmt" count="0"/>
-      <line num="47" type="stmt" count="0"/>
+      <line num="45" type="stmt" count="0"/>
       <line num="48" type="stmt" count="0"/>
       <line num="49" type="stmt" count="0"/>
-      <line num="52" type="stmt" count="0"/>
+      <line num="50" type="stmt" count="0"/>
       <line num="53" type="stmt" count="0"/>
       <line num="54" type="stmt" count="0"/>
-      <metrics loc="58" ncloc="50" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="22" coveredstatements="0" elements="23" coveredelements="0"/>
+      <line num="55" type="stmt" count="0"/>
+      <metrics loc="59" ncloc="51" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="23" coveredstatements="0" elements="24" coveredelements="0"/>
     </file>
     <file name="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Http\Controller\Auth\ForgotPasswordPageController.php">
       <class name="App\Http\Controller\Auth\ForgotPasswordPageController" namespace="global">
@@ -2971,7 +2973,7 @@
       <line num="97" type="stmt" count="2"/>
       <line num="98" type="stmt" count="0"/>
       <line num="99" type="stmt" count="0"/>
-      <metrics loc="102" ncloc="90" classes="1" methods="4" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="39" coveredstatements="36" elements="43" coveredelements="39"/>
+      <metrics loc="103" ncloc="91" classes="1" methods="4" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="39" coveredstatements="36" elements="43" coveredelements="39"/>
     </file>
     <file name="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Http\Middleware\AuthenticationMiddleware.php">
       <class name="App\Http\Middleware\AuthenticationMiddleware" namespace="global">
@@ -6085,6 +6087,6 @@
       <line num="64" type="stmt" count="0"/>
       <metrics loc="67" ncloc="57" classes="1" methods="5" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="23" coveredstatements="0" elements="28" coveredelements="0"/>
     </file>
-    <metrics files="132" loc="11228" ncloc="10377" classes="131" methods="685" coveredmethods="75" conditionals="0" coveredconditionals="0" statements="4607" coveredstatements="637" elements="5292" coveredelements="712"/>
+    <metrics files="132" loc="11246" ncloc="10395" classes="131" methods="685" coveredmethods="75" conditionals="0" coveredconditionals="0" statements="4609" coveredstatements="637" elements="5294" coveredelements="712"/>
   </project>
 </coverage>

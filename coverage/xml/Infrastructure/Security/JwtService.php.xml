@@ -1018,9 +1018,7 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="28">
-        <token name="T_WHITESPACE">        </token>
-      </line>
+      <line no="28"/>
       <line no="29">
         <token name="T_WHITESPACE">        </token>
         <token name="T_COMMENT">// Only set expiration if not already present in payload</token>
@@ -1081,9 +1079,7 @@
         <token name="T_WHITESPACE">        </token>
         <token name="T_CLOSE_CURLY">}</token>
       </line>
-      <line no="34">
-        <token name="T_WHITESPACE">        </token>
-      </line>
+      <line no="34"/>
       <line no="35">
         <token name="T_WHITESPACE">        </token>
         <token name="T_COMMENT">// Set other standard claims if not present</token>
@@ -1146,9 +1142,7 @@
         <token name="T_WHITESPACE"> </token>
         <token name="T_COMMENT">// Payload values take precedence</token>
       </line>
-      <line no="41">
-        <token name="T_WHITESPACE">        </token>
-      </line>
+      <line no="41"/>
       <line no="42">
         <token name="T_WHITESPACE">        </token>
         <token name="T_VARIABLE">$payloadEnc</token>

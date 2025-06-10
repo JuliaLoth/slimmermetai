@@ -2,7 +2,7 @@
 <phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
   <file name="AuthMiddleware.php" path="\Http\Middleware">
     <totals>
-      <lines total="102" comments="12" code="90" executable="39" executed="36" percent="92.31"/>
+      <lines total="103" comments="12" code="91" executable="39" executed="36" percent="92.31"/>
       <methods count="4" tested="3" percent="75.00"/>
       <functions count="0" tested="0" percent="0"/>
       <classes count="1" tested="0" percent="0.00"/>
@@ -352,7 +352,7 @@
         <token name="T_DOC_COMMENT"> * AuthMiddleware - JWT Authentication Middleware</token>
       </line>
       <line no="17">
-        <token name="T_DOC_COMMENT"> * </token>
+        <token name="T_DOC_COMMENT"> *</token>
       </line>
       <line no="18">
         <token name="T_DOC_COMMENT"> * Validates JWT tokens and checks blacklist status.</token>
@@ -451,9 +451,7 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="32">
-        <token name="T_WHITESPACE">        </token>
-      </line>
+      <line no="32"/>
       <line no="33">
         <token name="T_WHITESPACE">        </token>
         <token name="T_COMMENT">// Check for authorization header</token>
@@ -967,9 +965,7 @@
         <token name="T_CLOSE_BRACKET">)</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="96">
-        <token name="T_WHITESPACE">            </token>
-      </line>
+      <line no="96"/>
       <line no="97">
         <token name="T_WHITESPACE">            </token>
         <token name="T_RETURN">return</token>
@@ -1027,8 +1023,8 @@
       </line>
       <line no="102">
         <token name="T_CLOSE_CURLY">}</token>
-        <token name="T_WHITESPACE"> </token>
       </line>
+      <line no="103"/>
     </source>
   </file>
 </phpunit>
