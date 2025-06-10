@@ -6,6 +6,12 @@ name: CI/CD Pipeline
 # 
 # Required secret: GHCR_PAT (with write:packages and read:packages permissions)
 #
+# CI/CD Pipeline Fixes (June 10, 2025):
+# - Fixed phpenv configuration issues by using setup-php ini-values directly
+# - Enhanced code style checks with better PHPCBF auto-fixing
+# - Added PHP environment validation steps
+# - Improved error handling and reporting
+#
 
 on:
   push:
@@ -127,6 +133,10 @@ jobs:
         php-version: ${{ matrix.php-version }}
         extensions: mbstring, xml, ctype, iconv, intl, pdo, pdo_mysql, dom, filter, gd, json
         coverage: xdebug
+        ini-values: |
+          zend.assertions=1
+          assert.active=1
+          memory_limit=512M
 
     - name: Validate composer.json
       run: composer validate --strict
@@ -176,19 +186,41 @@ jobs:
         chmod +x ./vendor/bin/phpstan
         chmod +x ./vendor/bin/phpunit
 
-    - name: Auto-fix code style issues
-      run: composer run cs:fix || true
-
-    - name: Run code style check (errors only - warnings allowed)
-      run: composer run cs:check-errors-only
-
-    - name: Run full code style check for reporting (warnings allowed to fail)
-      run: composer run cs:check || echo "⚠️ Code style warnings detected but not blocking CI"
-
-    - name: Configure PHP for testing
+    - name: Auto-fix code style issues with PHPCBF
       run: |
-        echo 'zend.assertions=1' >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
-        echo 'assert.active=1' >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+        echo "🔧 Auto-fixing code style issues..."
+        ./vendor/bin/phpcbf --standard=PSR12 src/ tests/ || echo "PHPCBF completed with fixes"
+        composer run cs:fix || echo "Additional CS fixes completed"
+
+    - name: Check for remaining code style issues
+      run: |
+        echo "🔍 Checking remaining code style issues..."
+        if ! composer run cs:check-errors-only; then
+          echo "❌ Critical code style errors found!"
+          exit 1
+        fi
+        echo "✅ No critical code style errors"
+
+    - name: Run full code style check for reporting (warnings allowed)
+      run: |
+        echo "📋 Running full code style check for reporting..."
+        if composer run cs:check; then
+          echo "✅ Code fully compliant with PSR12"
+        else
+          echo "⚠️ Some PSR12 warnings detected (not blocking CI)"
+        fi
+
+    - name: Validate PHP setup
+      run: |
+        php -v
+        php -m
+        echo "PHP configuration file: $(php --ini)"
+
+    - name: Verify PHP configuration
+      run: |
+        echo "🔧 Verifying PHP test configuration..."
+        php -i | grep -E "(memory_limit|assert\.active|zend\.assertions)"
+        echo "✅ PHP configuration verified"
 
     - name: Run static analysis
       run: composer run analyse
