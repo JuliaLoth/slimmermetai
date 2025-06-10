@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Application</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../_css/bootstrap.min.css?v=9.2.32" rel="stylesheet" type="text/css">
+  <link href="../_css/nv.d3.min.css?v=9.2.32" rel="stylesheet" type="text/css">
+  <link href="../_css/style.css?v=9.2.32" rel="stylesheet" type="text/css">
+  <link href="../_css/custom.css" rel="stylesheet" type="text/css">
+ </head>
+ <body>
+  <header>
+   <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12">
+      <nav aria-label="breadcrumb">
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="../index.html">C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src</a></li>
+         <li class="breadcrumb-item"><a href="index.html">Application</a></li>
+         <li class="breadcrumb-item active">(Dashboard)</li>
+
+       </ol>
+      </nav>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Service/GoogleAuthService.php.html#15">App\Application\Service\GoogleAuthService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/JwtService.php.html#7">App\Application\Service\JwtService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/PresentationConvertService.php.html#23">App\Application\Service\PresentationConvertService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/TokenService.php.html#9">App\Application\Service\TokenService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/UploadService.php.html#13">App\Application\Service\UploadService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/UserService.php.html#10">App\Application\Service\UserService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/StripeService.php.html#21">App\Application\Service\StripeService</a></td><td class="text-right">44%</td></tr>
+       <tr><td><a href="Service/EmailService.php.html#7">App\Application\Service\EmailService</a></td><td class="text-right">84%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Service/GoogleAuthService.php.html#15">App\Application\Service\GoogleAuthService</a></td><td class="text-right">1482</td></tr>
+       <tr><td><a href="Service/UploadService.php.html#13">App\Application\Service\UploadService</a></td><td class="text-right">1406</td></tr>
+       <tr><td><a href="Service/PresentationConvertService.php.html#23">App\Application\Service\PresentationConvertService</a></td><td class="text-right">462</td></tr>
+       <tr><td><a href="Service/StripeService.php.html#21">App\Application\Service\StripeService</a></td><td class="text-right">234</td></tr>
+       <tr><td><a href="Service/JwtService.php.html#7">App\Application\Service\JwtService</a></td><td class="text-right">110</td></tr>
+       <tr><td><a href="Service/UserService.php.html#10">App\Application\Service\UserService</a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Service/EmailService.php.html#7">App\Application\Service\EmailService</a></td><td class="text-right">24</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Service/EmailService.php.html#23"><abbr title="App\Application\Service\EmailService::sendVerificationEmail">sendVerificationEmail</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/GoogleAuthService.php.html#25"><abbr title="App\Application\Service\GoogleAuthService::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/GoogleAuthService.php.html#49"><abbr title="App\Application\Service\GoogleAuthService::generateAuthUrl">generateAuthUrl</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/GoogleAuthService.php.html#96"><abbr title="App\Application\Service\GoogleAuthService::handleCallback">handleCallback</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/GoogleAuthService.php.html#161"><abbr title="App\Application\Service\GoogleAuthService::exchangeCodeForToken">exchangeCodeForToken</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/GoogleAuthService.php.html#204"><abbr title="App\Application\Service\GoogleAuthService::fetchUserInfo">fetchUserInfo</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/GoogleAuthService.php.html#241"><abbr title="App\Application\Service\GoogleAuthService::findOrCreateUser">findOrCreateUser</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/GoogleAuthService.php.html#279"><abbr title="App\Application\Service\GoogleAuthService::extractUserName">extractUserName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/GoogleAuthService.php.html#299"><abbr title="App\Application\Service\GoogleAuthService::saveGoogleToken">saveGoogleToken</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/GoogleAuthService.php.html#340"><abbr title="App\Application\Service\GoogleAuthService::createOAuthTokensTable">createOAuthTokensTable</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/GoogleAuthService.php.html#361"><abbr title="App\Application\Service\GoogleAuthService::logLoginAttempt">logLoginAttempt</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/GoogleAuthService.php.html#385"><abbr title="App\Application\Service\GoogleAuthService::createLoginAttemptsTable">createLoginAttemptsTable</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/JwtService.php.html#11"><abbr title="App\Application\Service\JwtService::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/JwtService.php.html#19"><abbr title="App\Application\Service\JwtService::generateToken">generateToken</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/JwtService.php.html#46"><abbr title="App\Application\Service\JwtService::verify">verify</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/JwtService.php.html#54"><abbr title="App\Application\Service\JwtService::validateToken">validateToken</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/PresentationConvertService.php.html#25"><abbr title="App\Application\Service\PresentationConvertService::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/PresentationConvertService.php.html#36"><abbr title="App\Application\Service\PresentationConvertService::convert">convert</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/PresentationConvertService.php.html#53"><abbr title="App\Application\Service\PresentationConvertService::askClaudeForStructure">askClaudeForStructure</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/PresentationConvertService.php.html#107"><abbr title="App\Application\Service\PresentationConvertService::generatePptx">generatePptx</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/TokenService.php.html#13"><abbr title="App\Application\Service\TokenService::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/TokenService.php.html#21"><abbr title="App\Application\Service\TokenService::generateRefreshToken">generateRefreshToken</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/TokenService.php.html#42"><abbr title="App\Application\Service\TokenService::validateRefreshToken">validateRefreshToken</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/TokenService.php.html#54"><abbr title="App\Application\Service\TokenService::revokeRefreshToken">revokeRefreshToken</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/TokenService.php.html#62"><abbr title="App\Application\Service\TokenService::revokeAllRefreshTokens">revokeAllRefreshTokens</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/UploadService.php.html#20"><abbr title="App\Application\Service\UploadService::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/UploadService.php.html#29"><abbr title="App\Application\Service\UploadService::initializeConfiguration">initializeConfiguration</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/UploadService.php.html#64"><abbr title="App\Application\Service\UploadService::uploadFile">uploadFile</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/UploadService.php.html#159"><abbr title="App\Application\Service\UploadService::deleteUploadedFile">deleteUploadedFile</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/UploadService.php.html#190"><abbr title="App\Application\Service\UploadService::getUploadUrl">getUploadUrl</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/UploadService.php.html#203"><abbr title="App\Application\Service\UploadService::generateSafeFilename">generateSafeFilename</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/UploadService.php.html#220"><abbr title="App\Application\Service\UploadService::ensureDirectoryExists">ensureDirectoryExists</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/UploadService.php.html#231"><abbr title="App\Application\Service\UploadService::optimizeImage">optimizeImage</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/UploadService.php.html#285"><abbr title="App\Application\Service\UploadService::resizeImage">resizeImage</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/UploadService.php.html#316"><abbr title="App\Application\Service\UploadService::getUploadErrorMessage">getUploadErrorMessage</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/UploadService.php.html#333"><abbr title="App\Application\Service\UploadService::formatFileSize">formatFileSize</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/UserService.php.html#12"><abbr title="App\Application\Service\UserService::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/UserService.php.html#16"><abbr title="App\Application\Service\UserService::register">register</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/UserService.php.html#25"><abbr title="App\Application\Service\UserService::findById">findById</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/UserService.php.html#31"><abbr title="App\Application\Service\UserService::toDto">toDto</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/StripeService.php.html#190"><abbr title="App\Application\Service\StripeService::handleWebhook">handleWebhook</abbr></a></td><td class="text-right">7%</td></tr>
+       <tr><td><a href="Service/StripeService.php.html#157"><abbr title="App\Application\Service\StripeService::getPaymentStatus">getPaymentStatus</abbr></a></td><td class="text-right">21%</td></tr>
+       <tr><td><a href="Service/StripeService.php.html#63"><abbr title="App\Application\Service\StripeService::createCheckoutSession">createCheckoutSession</abbr></a></td><td class="text-right">58%</td></tr>
+       <tr><td><a href="Service/StripeService.php.html#32"><abbr title="App\Application\Service\StripeService::__construct">__construct</abbr></a></td><td class="text-right">60%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Service/PresentationConvertService.php.html#107"><abbr title="App\Application\Service\PresentationConvertService::generatePptx">generatePptx</abbr></a></td><td class="text-right">182</td></tr>
+       <tr><td><a href="Service/UploadService.php.html#64"><abbr title="App\Application\Service\UploadService::uploadFile">uploadFile</abbr></a></td><td class="text-right">132</td></tr>
+       <tr><td><a href="Service/StripeService.php.html#190"><abbr title="App\Application\Service\StripeService::handleWebhook">handleWebhook</abbr></a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="Service/GoogleAuthService.php.html#96"><abbr title="App\Application\Service\GoogleAuthService::handleCallback">handleCallback</abbr></a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="Service/GoogleAuthService.php.html#204"><abbr title="App\Application\Service\GoogleAuthService::fetchUserInfo">fetchUserInfo</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Service/JwtService.php.html#54"><abbr title="App\Application\Service\JwtService::validateToken">validateToken</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Service/UploadService.php.html#159"><abbr title="App\Application\Service\UploadService::deleteUploadedFile">deleteUploadedFile</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Service/UploadService.php.html#231"><abbr title="App\Application\Service\UploadService::optimizeImage">optimizeImage</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Service/PresentationConvertService.php.html#53"><abbr title="App\Application\Service\PresentationConvertService::askClaudeForStructure">askClaudeForStructure</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Service/GoogleAuthService.php.html#49"><abbr title="App\Application\Service\GoogleAuthService::generateAuthUrl">generateAuthUrl</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Service/GoogleAuthService.php.html#161"><abbr title="App\Application\Service\GoogleAuthService::exchangeCodeForToken">exchangeCodeForToken</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Service/StripeService.php.html#63"><abbr title="App\Application\Service\StripeService::createCheckoutSession">createCheckoutSession</abbr></a></td><td class="text-right">19</td></tr>
+       <tr><td><a href="Service/GoogleAuthService.php.html#25"><abbr title="App\Application\Service\GoogleAuthService::__construct">__construct</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Service/GoogleAuthService.php.html#279"><abbr title="App\Application\Service\GoogleAuthService::extractUserName">extractUserName</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Service/GoogleAuthService.php.html#299"><abbr title="App\Application\Service\GoogleAuthService::saveGoogleToken">saveGoogleToken</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Service/GoogleAuthService.php.html#361"><abbr title="App\Application\Service\GoogleAuthService::logLoginAttempt">logLoginAttempt</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Service/UploadService.php.html#285"><abbr title="App\Application\Service\UploadService::resizeImage">resizeImage</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Service/StripeService.php.html#157"><abbr title="App\Application\Service\StripeService::getPaymentStatus">getPaymentStatus</abbr></a></td><td class="text-right">11</td></tr>
+       <tr><td><a href="Service/EmailService.php.html#23"><abbr title="App\Application\Service\EmailService::sendVerificationEmail">sendVerificationEmail</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Service/GoogleAuthService.php.html#241"><abbr title="App\Application\Service\GoogleAuthService::findOrCreateUser">findOrCreateUser</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Service/JwtService.php.html#19"><abbr title="App\Application\Service\JwtService::generateToken">generateToken</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Service/PresentationConvertService.php.html#36"><abbr title="App\Application\Service\PresentationConvertService::convert">convert</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Service/UploadService.php.html#190"><abbr title="App\Application\Service\UploadService::getUploadUrl">getUploadUrl</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Service/UploadService.php.html#203"><abbr title="App\Application\Service\UploadService::generateSafeFilename">generateSafeFilename</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Service/UploadService.php.html#220"><abbr title="App\Application\Service\UploadService::ensureDirectoryExists">ensureDirectoryExists</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Service/UploadService.php.html#333"><abbr title="App\Application\Service\UploadService::formatFileSize">formatFileSize</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Service/UserService.php.html#25"><abbr title="App\Application\Service\UserService::findById">findById</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Service/StripeService.php.html#32"><abbr title="App\Application\Service\StripeService::__construct">__construct</abbr></a></td><td class="text-right">5</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 9.2.32</a> using <a href="https://secure.php.net/" target="_top">PHP 8.0.30</a> and <a href="https://phpunit.de/">PHPUnit 9.6.23</a> at Tue Jun 10 15:56:46 CEST 2025.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="../_js/jquery.min.js?v=9.2.32" type="text/javascript"></script>
+  <script src="../_js/d3.min.js?v=9.2.32" type="text/javascript"></script>
+  <script src="../_js/nv.d3.min.js?v=9.2.32" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([6,0,0,0,0,1,0,0,0,1,0,3], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([40,1,0,1,0,0,1,1,0,0,1,25], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[100,0,"<a href=\"DTO\/UserDTO.php.html#5\">App\\Application\\DTO\\UserDTO<\/a>"],[100,12,"<a href=\"Service\/AuthService.php.html#12\">App\\Application\\Service\\AuthService<\/a>"],[84.61538461538461,23,"<a href=\"Service\/EmailService.php.html#7\">App\\Application\\Service\\EmailService<\/a>"],[0,38,"<a href=\"Service\/GoogleAuthService.php.html#15\">App\\Application\\Service\\GoogleAuthService<\/a>"],[0,10,"<a href=\"Service\/JwtService.php.html#7\">App\\Application\\Service\\JwtService<\/a>"],[100,8,"<a href=\"Service\/PasswordHasher.php.html#7\">App\\Application\\Service\\PasswordHasher<\/a>"],[0,21,"<a href=\"Service\/PresentationConvertService.php.html#23\">App\\Application\\Service\\PresentationConvertService<\/a>"],[44.26229508196721,34,"<a href=\"Service\/StripeService.php.html#21\">App\\Application\\Service\\StripeService<\/a>"],[0,5,"<a href=\"Service\/TokenService.php.html#9\">App\\Application\\Service\\TokenService<\/a>"],[0,37,"<a href=\"Service\/UploadService.php.html#13\">App\\Application\\Service\\UploadService<\/a>"],[0,5,"<a href=\"Service\/UserService.php.html#10\">App\\Application\\Service\\UserService<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[100,1,"<a href=\"Service\/AuthService.php.html#14\">App\\Application\\Service\\AuthService::__construct<\/a>"],[100,3,"<a href=\"Service\/AuthService.php.html#25\">App\\Application\\Service\\AuthService::login<\/a>"],[100,3,"<a href=\"Service\/AuthService.php.html#46\">App\\Application\\Service\\AuthService::register<\/a>"],[100,1,"<a href=\"Service\/AuthService.php.html#68\">App\\Application\\Service\\AuthService::verifyToken<\/a>"],[100,2,"<a href=\"Service\/AuthService.php.html#73\">App\\Application\\Service\\AuthService::refresh<\/a>"],[100,1,"<a href=\"Service\/AuthService.php.html#88\">App\\Application\\Service\\AuthService::logout<\/a>"],[100,1,"<a href=\"Service\/AuthService.php.html#94\">App\\Application\\Service\\AuthService::getCurrentUser<\/a>"],[100,1,"<a href=\"Service\/EmailService.php.html#9\">App\\Application\\Service\\EmailService::__construct<\/a>"],[100,1,"<a href=\"Service\/EmailService.php.html#16\">App\\Application\\Service\\EmailService::send<\/a>"],[0,2,"<a href=\"Service\/EmailService.php.html#23\">App\\Application\\Service\\EmailService::sendVerificationEmail<\/a>"],[100,2,"<a href=\"Service\/EmailService.php.html#39\">App\\Application\\Service\\EmailService::sendWelcomeEmail<\/a>"],[100,2,"<a href=\"Service\/EmailService.php.html#51\">App\\Application\\Service\\EmailService::sendPasswordResetEmail<\/a>"],[100,3,"<a href=\"Service\/EmailService.php.html#70\">App\\Application\\Service\\EmailService::validateEmailAddress<\/a>"],[100,2,"<a href=\"Service\/EmailService.php.html#78\">App\\Application\\Service\\EmailService::renderTemplate<\/a>"],[100,1,"<a href=\"Service\/EmailService.php.html#92\">App\\Application\\Service\\EmailService::queueEmail<\/a>"],[100,1,"<a href=\"Service\/EmailService.php.html#102\">App\\Application\\Service\\EmailService::getQueueSize<\/a>"],[100,3,"<a href=\"Service\/EmailService.php.html#107\">App\\Application\\Service\\EmailService::processEmailQueue<\/a>"],[100,2,"<a href=\"Service\/EmailService.php.html#120\">App\\Application\\Service\\EmailService::sendBulkEmails<\/a>"],[100,3,"<a href=\"Service\/EmailService.php.html#132\">App\\Application\\Service\\EmailService::buildTemplate<\/a>"],[0,3,"<a href=\"Service\/GoogleAuthService.php.html#25\">App\\Application\\Service\\GoogleAuthService::__construct<\/a>"],[0,4,"<a href=\"Service\/GoogleAuthService.php.html#49\">App\\Application\\Service\\GoogleAuthService::generateAuthUrl<\/a>"],[0,8,"<a href=\"Service\/GoogleAuthService.php.html#96\">App\\Application\\Service\\GoogleAuthService::handleCallback<\/a>"],[0,4,"<a href=\"Service\/GoogleAuthService.php.html#161\">App\\Application\\Service\\GoogleAuthService::exchangeCodeForToken<\/a>"],[0,6,"<a href=\"Service\/GoogleAuthService.php.html#204\">App\\Application\\Service\\GoogleAuthService::fetchUserInfo<\/a>"],[0,2,"<a href=\"Service\/GoogleAuthService.php.html#241\">App\\Application\\Service\\GoogleAuthService::findOrCreateUser<\/a>"],[0,3,"<a href=\"Service\/GoogleAuthService.php.html#279\">App\\Application\\Service\\GoogleAuthService::extractUserName<\/a>"],[0,3,"<a href=\"Service\/GoogleAuthService.php.html#299\">App\\Application\\Service\\GoogleAuthService::saveGoogleToken<\/a>"],[0,1,"<a href=\"Service\/GoogleAuthService.php.html#340\">App\\Application\\Service\\GoogleAuthService::createOAuthTokensTable<\/a>"],[0,3,"<a href=\"Service\/GoogleAuthService.php.html#361\">App\\Application\\Service\\GoogleAuthService::logLoginAttempt<\/a>"],[0,1,"<a href=\"Service\/GoogleAuthService.php.html#385\">App\\Application\\Service\\GoogleAuthService::createLoginAttemptsTable<\/a>"],[0,1,"<a href=\"Service\/JwtService.php.html#11\">App\\Application\\Service\\JwtService::__construct<\/a>"],[0,2,"<a href=\"Service\/JwtService.php.html#19\">App\\Application\\Service\\JwtService::generateToken<\/a>"],[0,1,"<a href=\"Service\/JwtService.php.html#46\">App\\Application\\Service\\JwtService::verify<\/a>"],[0,6,"<a href=\"Service\/JwtService.php.html#54\">App\\Application\\Service\\JwtService::validateToken<\/a>"],[100,1,"<a href=\"Service\/PasswordHasher.php.html#11\">App\\Application\\Service\\PasswordHasher::__construct<\/a>"],[100,1,"<a href=\"Service\/PasswordHasher.php.html#16\">App\\Application\\Service\\PasswordHasher::hash<\/a>"],[100,1,"<a href=\"Service\/PasswordHasher.php.html#21\">App\\Application\\Service\\PasswordHasher::verify<\/a>"],[100,1,"<a href=\"Service\/PasswordHasher.php.html#26\">App\\Application\\Service\\PasswordHasher::needsRehash<\/a>"],[100,4,"<a href=\"Service\/PasswordHasher.php.html#31\">App\\Application\\Service\\PasswordHasher::isStrong<\/a>"],[0,1,"<a href=\"Service\/PresentationConvertService.php.html#25\">App\\Application\\Service\\PresentationConvertService::__construct<\/a>"],[0,2,"<a href=\"Service\/PresentationConvertService.php.html#36\">App\\Application\\Service\\PresentationConvertService::convert<\/a>"],[0,5,"<a href=\"Service\/PresentationConvertService.php.html#53\">App\\Application\\Service\\PresentationConvertService::askClaudeForStructure<\/a>"],[0,13,"<a href=\"Service\/PresentationConvertService.php.html#107\">App\\Application\\Service\\PresentationConvertService::generatePptx<\/a>"],[100,1,"<a href=\"Service\/StripeService.php.html#24\">App\\Application\\Service\\StripeService::getInstance<\/a>"],[60,4,"<a href=\"Service\/StripeService.php.html#32\">App\\Application\\Service\\StripeService::__construct<\/a>"],[58.490566037735846,11,"<a href=\"Service\/StripeService.php.html#63\">App\\Application\\Service\\StripeService::createCheckoutSession<\/a>"],[100,1,"<a href=\"Service\/StripeService.php.html#146\">App\\Application\\Service\\StripeService::isValidStripeKey<\/a>"],[21.052631578947366,4,"<a href=\"Service\/StripeService.php.html#157\">App\\Application\\Service\\StripeService::getPaymentStatus<\/a>"],[7.142857142857142,10,"<a href=\"Service\/StripeService.php.html#190\">App\\Application\\Service\\StripeService::handleWebhook<\/a>"],[90,3,"<a href=\"Service\/StripeService.php.html#246\">App\\Application\\Service\\StripeService::createPaymentIntent<\/a>"],[0,1,"<a href=\"Service\/TokenService.php.html#13\">App\\Application\\Service\\TokenService::__construct<\/a>"],[0,1,"<a href=\"Service\/TokenService.php.html#21\">App\\Application\\Service\\TokenService::generateRefreshToken<\/a>"],[0,1,"<a href=\"Service\/TokenService.php.html#42\">App\\Application\\Service\\TokenService::validateRefreshToken<\/a>"],[0,1,"<a href=\"Service\/TokenService.php.html#54\">App\\Application\\Service\\TokenService::revokeRefreshToken<\/a>"],[0,1,"<a href=\"Service\/TokenService.php.html#62\">App\\Application\\Service\\TokenService::revokeAllRefreshTokens<\/a>"],[0,1,"<a href=\"Service\/UploadService.php.html#20\">App\\Application\\Service\\UploadService::__construct<\/a>"],[0,1,"<a href=\"Service\/UploadService.php.html#29\">App\\Application\\Service\\UploadService::initializeConfiguration<\/a>"],[0,11,"<a href=\"Service\/UploadService.php.html#64\">App\\Application\\Service\\UploadService::uploadFile<\/a>"],[0,6,"<a href=\"Service\/UploadService.php.html#159\">App\\Application\\Service\\UploadService::deleteUploadedFile<\/a>"],[0,2,"<a href=\"Service\/UploadService.php.html#190\">App\\Application\\Service\\UploadService::getUploadUrl<\/a>"],[0,2,"<a href=\"Service\/UploadService.php.html#203\">App\\Application\\Service\\UploadService::generateSafeFilename<\/a>"],[0,2,"<a href=\"Service\/UploadService.php.html#220\">App\\Application\\Service\\UploadService::ensureDirectoryExists<\/a>"],[0,6,"<a href=\"Service\/UploadService.php.html#231\">App\\Application\\Service\\UploadService::optimizeImage<\/a>"],[0,3,"<a href=\"Service\/UploadService.php.html#285\">App\\Application\\Service\\UploadService::resizeImage<\/a>"],[0,1,"<a href=\"Service\/UploadService.php.html#316\">App\\Application\\Service\\UploadService::getUploadErrorMessage<\/a>"],[0,2,"<a href=\"Service\/UploadService.php.html#333\">App\\Application\\Service\\UploadService::formatFileSize<\/a>"],[0,1,"<a href=\"Service\/UserService.php.html#12\">App\\Application\\Service\\UserService::__construct<\/a>"],[0,1,"<a href=\"Service\/UserService.php.html#16\">App\\Application\\Service\\UserService::register<\/a>"],[0,2,"<a href=\"Service\/UserService.php.html#25\">App\\Application\\Service\\UserService::findById<\/a>"],[0,1,"<a href=\"Service\/UserService.php.html#31\">App\\Application\\Service\\UserService::toDto<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>

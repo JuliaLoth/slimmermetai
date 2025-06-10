@@ -55,13 +55,13 @@ $containerBuilder->addDefinitions([
     App\Application\Service\StripeService::class => DI\autowire(),
     App\Application\Service\EmailService::class => DI\autowire(),
     App\Application\Service\PresentationConvertService::class => DI\autowire(),
-    App\Application\Service\JwtService::class => DI\autowire(),
     App\Application\Service\TokenService::class => DI\autowire(),
     App\Application\Service\GoogleAuthService::class => DI\autowire(),
     App\Application\Service\UploadService::class => DI\autowire(),
     App\Application\Service\PasswordHasher::class => DI\autowire(),
 
     // --------- Service Interfaces ---------
+    App\Domain\Security\JwtServiceInterface::class => DI\get(App\Infrastructure\Security\JwtService::class),
     App\Domain\Service\PasswordHasherInterface::class => DI\get(App\Application\Service\PasswordHasher::class),
     App\Infrastructure\Mail\MailerInterface::class => DI\get(App\Infrastructure\Mail\Mailer::class),
     

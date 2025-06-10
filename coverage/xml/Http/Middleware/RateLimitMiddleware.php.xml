@@ -1,0 +1,1820 @@
+<?xml version="1.0"?>
+<phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
+  <file name="RateLimitMiddleware.php" path="\Http\Middleware">
+    <totals>
+      <lines total="139" comments="13" code="126" executable="59" executed="43" percent="72.88"/>
+      <methods count="8" tested="6" percent="75.00"/>
+      <functions count="0" tested="0" percent="0"/>
+      <classes count="1" tested="0" percent="0.00"/>
+      <traits count="0" tested="0" percent="0"/>
+    </totals>
+    <class name="App\Http\Middleware\RateLimitMiddleware" start="18" executable="59" executed="43" crap="24.46">
+      <namespace name="App\Http\Middleware"/>
+      <method name="__construct" signature="__construct(?App\Infrastructure\Config\Config $config)" start="24" end="34" crap="1" executable="8" executed="8" coverage="100"/>
+      <method name="process" signature="process(Psr\Http\Message\ServerRequestInterface $request, Psr\Http\Server\RequestHandlerInterface $handler): Psr\Http\Message\ResponseInterface" start="36" end="65" crap="5.25" executable="14" executed="11" coverage="78.571428571429"/>
+      <method name="getClientIp" signature="getClientIp(Psr\Http\Message\ServerRequestInterface $request): string" start="67" end="81" crap="3" executable="7" executed="7" coverage="100"/>
+      <method name="cleanOldRequests" signature="cleanOldRequests(string $clientIp, int $now): void" start="83" end="91" crap="2" executable="4" executed="4" coverage="100"/>
+      <method name="isRateLimited" signature="isRateLimited(string $clientIp, int $now): bool" start="93" end="100" crap="2" executable="3" executed="3" coverage="100"/>
+      <method name="recordRequest" signature="recordRequest(string $clientIp, int $now): void" start="102" end="109" crap="2" executable="3" executed="3" coverage="100"/>
+      <method name="createRateLimitResponse" signature="createRateLimitResponse(): Psr\Http\Message\ResponseInterface" start="111" end="126" crap="2" executable="13" executed="0" coverage="0"/>
+      <method name="addRateLimitHeaders" signature="addRateLimitHeaders(Psr\Http\Message\ResponseInterface $response, string $clientIp, int $now): Psr\Http\Message\ResponseInterface" start="128" end="137" crap="2" executable="7" executed="7" coverage="100"/>
+    </class>
+    <coverage>
+      <line nr="26">
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testRateLimitingInMiddlewareStack"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRequestUnderLimitPassesThrough"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitExceededReturns429"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testExemptPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testNonApiPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXForwardedForIpExtraction"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXRealIpHeaderPriority"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDifferentIpsHaveSeparateLimits"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testSlidingWindowBehavior"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitHeadersAreCorrect"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDefaultConfigValues"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testFallbackIpWhenNoHeaders"/>
+      </line>
+      <line nr="27">
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testRateLimitingInMiddlewareStack"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRequestUnderLimitPassesThrough"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitExceededReturns429"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testExemptPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testNonApiPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXForwardedForIpExtraction"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXRealIpHeaderPriority"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDifferentIpsHaveSeparateLimits"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testSlidingWindowBehavior"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitHeadersAreCorrect"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDefaultConfigValues"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testFallbackIpWhenNoHeaders"/>
+      </line>
+      <line nr="28">
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testRateLimitingInMiddlewareStack"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRequestUnderLimitPassesThrough"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitExceededReturns429"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testExemptPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testNonApiPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXForwardedForIpExtraction"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXRealIpHeaderPriority"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDifferentIpsHaveSeparateLimits"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testSlidingWindowBehavior"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitHeadersAreCorrect"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDefaultConfigValues"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testFallbackIpWhenNoHeaders"/>
+      </line>
+      <line nr="29">
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testRateLimitingInMiddlewareStack"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRequestUnderLimitPassesThrough"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitExceededReturns429"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testExemptPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testNonApiPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXForwardedForIpExtraction"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXRealIpHeaderPriority"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDifferentIpsHaveSeparateLimits"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testSlidingWindowBehavior"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitHeadersAreCorrect"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDefaultConfigValues"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testFallbackIpWhenNoHeaders"/>
+      </line>
+      <line nr="30">
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testRateLimitingInMiddlewareStack"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRequestUnderLimitPassesThrough"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitExceededReturns429"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testExemptPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testNonApiPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXForwardedForIpExtraction"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXRealIpHeaderPriority"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDifferentIpsHaveSeparateLimits"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testSlidingWindowBehavior"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitHeadersAreCorrect"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDefaultConfigValues"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testFallbackIpWhenNoHeaders"/>
+      </line>
+      <line nr="38">
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testRateLimitingInMiddlewareStack"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRequestUnderLimitPassesThrough"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitExceededReturns429"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testExemptPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testNonApiPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXForwardedForIpExtraction"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXRealIpHeaderPriority"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDifferentIpsHaveSeparateLimits"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testSlidingWindowBehavior"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitHeadersAreCorrect"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDefaultConfigValues"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testFallbackIpWhenNoHeaders"/>
+      </line>
+      <line nr="40">
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testRateLimitingInMiddlewareStack"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRequestUnderLimitPassesThrough"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitExceededReturns429"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testExemptPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testNonApiPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXForwardedForIpExtraction"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXRealIpHeaderPriority"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDifferentIpsHaveSeparateLimits"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testSlidingWindowBehavior"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitHeadersAreCorrect"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDefaultConfigValues"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testFallbackIpWhenNoHeaders"/>
+      </line>
+      <line nr="41">
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testRateLimitingInMiddlewareStack"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRequestUnderLimitPassesThrough"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitExceededReturns429"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testExemptPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testNonApiPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXForwardedForIpExtraction"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXRealIpHeaderPriority"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDifferentIpsHaveSeparateLimits"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testSlidingWindowBehavior"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitHeadersAreCorrect"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDefaultConfigValues"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testFallbackIpWhenNoHeaders"/>
+      </line>
+      <line nr="47">
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testRateLimitingInMiddlewareStack"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRequestUnderLimitPassesThrough"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitExceededReturns429"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testExemptPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testNonApiPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXForwardedForIpExtraction"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXRealIpHeaderPriority"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDifferentIpsHaveSeparateLimits"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testSlidingWindowBehavior"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitHeadersAreCorrect"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDefaultConfigValues"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testFallbackIpWhenNoHeaders"/>
+      </line>
+      <line nr="51">
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testRateLimitingInMiddlewareStack"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRequestUnderLimitPassesThrough"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitExceededReturns429"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testExemptPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testNonApiPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXForwardedForIpExtraction"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXRealIpHeaderPriority"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDifferentIpsHaveSeparateLimits"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testSlidingWindowBehavior"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitHeadersAreCorrect"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDefaultConfigValues"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testFallbackIpWhenNoHeaders"/>
+      </line>
+      <line nr="52">
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testRateLimitingInMiddlewareStack"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRequestUnderLimitPassesThrough"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitExceededReturns429"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testExemptPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testNonApiPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXForwardedForIpExtraction"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXRealIpHeaderPriority"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDifferentIpsHaveSeparateLimits"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testSlidingWindowBehavior"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitHeadersAreCorrect"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDefaultConfigValues"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testFallbackIpWhenNoHeaders"/>
+      </line>
+      <line nr="54">
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testRateLimitingInMiddlewareStack"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRequestUnderLimitPassesThrough"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitExceededReturns429"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testExemptPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testNonApiPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXForwardedForIpExtraction"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXRealIpHeaderPriority"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDifferentIpsHaveSeparateLimits"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testSlidingWindowBehavior"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitHeadersAreCorrect"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDefaultConfigValues"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testFallbackIpWhenNoHeaders"/>
+      </line>
+      <line nr="56">
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testRateLimitingInMiddlewareStack"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRequestUnderLimitPassesThrough"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitExceededReturns429"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testExemptPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testNonApiPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXForwardedForIpExtraction"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXRealIpHeaderPriority"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDifferentIpsHaveSeparateLimits"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testSlidingWindowBehavior"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitHeadersAreCorrect"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDefaultConfigValues"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testFallbackIpWhenNoHeaders"/>
+      </line>
+      <line nr="61">
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testRateLimitingInMiddlewareStack"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRequestUnderLimitPassesThrough"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitExceededReturns429"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testExemptPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testNonApiPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXForwardedForIpExtraction"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXRealIpHeaderPriority"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDifferentIpsHaveSeparateLimits"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testSlidingWindowBehavior"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitHeadersAreCorrect"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDefaultConfigValues"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testFallbackIpWhenNoHeaders"/>
+      </line>
+      <line nr="63">
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testRateLimitingInMiddlewareStack"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRequestUnderLimitPassesThrough"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitExceededReturns429"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testExemptPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testNonApiPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXForwardedForIpExtraction"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXRealIpHeaderPriority"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDifferentIpsHaveSeparateLimits"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testSlidingWindowBehavior"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitHeadersAreCorrect"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDefaultConfigValues"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testFallbackIpWhenNoHeaders"/>
+      </line>
+      <line nr="64">
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testRateLimitingInMiddlewareStack"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRequestUnderLimitPassesThrough"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitExceededReturns429"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testExemptPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testNonApiPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXForwardedForIpExtraction"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXRealIpHeaderPriority"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDifferentIpsHaveSeparateLimits"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testSlidingWindowBehavior"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitHeadersAreCorrect"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDefaultConfigValues"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testFallbackIpWhenNoHeaders"/>
+      </line>
+      <line nr="69">
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testRateLimitingInMiddlewareStack"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRequestUnderLimitPassesThrough"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitExceededReturns429"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testExemptPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testNonApiPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXForwardedForIpExtraction"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXRealIpHeaderPriority"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDifferentIpsHaveSeparateLimits"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testSlidingWindowBehavior"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitHeadersAreCorrect"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDefaultConfigValues"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testFallbackIpWhenNoHeaders"/>
+      </line>
+      <line nr="71">
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testRateLimitingInMiddlewareStack"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRequestUnderLimitPassesThrough"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitExceededReturns429"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testExemptPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testNonApiPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXForwardedForIpExtraction"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXRealIpHeaderPriority"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDifferentIpsHaveSeparateLimits"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testSlidingWindowBehavior"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitHeadersAreCorrect"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDefaultConfigValues"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testFallbackIpWhenNoHeaders"/>
+      </line>
+      <line nr="72">
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXForwardedForIpExtraction"/>
+      </line>
+      <line nr="73">
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXForwardedForIpExtraction"/>
+      </line>
+      <line nr="76">
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testRateLimitingInMiddlewareStack"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRequestUnderLimitPassesThrough"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitExceededReturns429"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testExemptPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testNonApiPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXRealIpHeaderPriority"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDifferentIpsHaveSeparateLimits"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testSlidingWindowBehavior"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitHeadersAreCorrect"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDefaultConfigValues"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testFallbackIpWhenNoHeaders"/>
+      </line>
+      <line nr="77">
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXRealIpHeaderPriority"/>
+      </line>
+      <line nr="80">
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testRateLimitingInMiddlewareStack"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRequestUnderLimitPassesThrough"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitExceededReturns429"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testExemptPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testNonApiPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDifferentIpsHaveSeparateLimits"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testSlidingWindowBehavior"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitHeadersAreCorrect"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDefaultConfigValues"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testFallbackIpWhenNoHeaders"/>
+      </line>
+      <line nr="85">
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testRateLimitingInMiddlewareStack"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRequestUnderLimitPassesThrough"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitExceededReturns429"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testExemptPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testNonApiPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXForwardedForIpExtraction"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXRealIpHeaderPriority"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDifferentIpsHaveSeparateLimits"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testSlidingWindowBehavior"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitHeadersAreCorrect"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDefaultConfigValues"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testFallbackIpWhenNoHeaders"/>
+      </line>
+      <line nr="86">
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testRateLimitingInMiddlewareStack"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRequestUnderLimitPassesThrough"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitExceededReturns429"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testExemptPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testNonApiPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXForwardedForIpExtraction"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXRealIpHeaderPriority"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDifferentIpsHaveSeparateLimits"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testSlidingWindowBehavior"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitHeadersAreCorrect"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDefaultConfigValues"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testFallbackIpWhenNoHeaders"/>
+      </line>
+      <line nr="89">
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitExceededReturns429"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testExemptPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testNonApiPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDifferentIpsHaveSeparateLimits"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testSlidingWindowBehavior"/>
+      </line>
+      <line nr="90">
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitExceededReturns429"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testExemptPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testNonApiPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDifferentIpsHaveSeparateLimits"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testSlidingWindowBehavior"/>
+      </line>
+      <line nr="95">
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testRateLimitingInMiddlewareStack"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRequestUnderLimitPassesThrough"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitExceededReturns429"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testExemptPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testNonApiPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXForwardedForIpExtraction"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXRealIpHeaderPriority"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDifferentIpsHaveSeparateLimits"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testSlidingWindowBehavior"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitHeadersAreCorrect"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDefaultConfigValues"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testFallbackIpWhenNoHeaders"/>
+      </line>
+      <line nr="96">
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testRateLimitingInMiddlewareStack"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRequestUnderLimitPassesThrough"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitExceededReturns429"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testExemptPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testNonApiPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXForwardedForIpExtraction"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXRealIpHeaderPriority"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDifferentIpsHaveSeparateLimits"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testSlidingWindowBehavior"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitHeadersAreCorrect"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDefaultConfigValues"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testFallbackIpWhenNoHeaders"/>
+      </line>
+      <line nr="99">
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitExceededReturns429"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testExemptPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testNonApiPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDifferentIpsHaveSeparateLimits"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testSlidingWindowBehavior"/>
+      </line>
+      <line nr="104">
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testRateLimitingInMiddlewareStack"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRequestUnderLimitPassesThrough"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitExceededReturns429"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testExemptPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testNonApiPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXForwardedForIpExtraction"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXRealIpHeaderPriority"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDifferentIpsHaveSeparateLimits"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testSlidingWindowBehavior"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitHeadersAreCorrect"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDefaultConfigValues"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testFallbackIpWhenNoHeaders"/>
+      </line>
+      <line nr="105">
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testRateLimitingInMiddlewareStack"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRequestUnderLimitPassesThrough"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitExceededReturns429"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testExemptPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testNonApiPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXForwardedForIpExtraction"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXRealIpHeaderPriority"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDifferentIpsHaveSeparateLimits"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testSlidingWindowBehavior"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitHeadersAreCorrect"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDefaultConfigValues"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testFallbackIpWhenNoHeaders"/>
+      </line>
+      <line nr="108">
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testRateLimitingInMiddlewareStack"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRequestUnderLimitPassesThrough"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitExceededReturns429"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testExemptPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testNonApiPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXForwardedForIpExtraction"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXRealIpHeaderPriority"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDifferentIpsHaveSeparateLimits"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testSlidingWindowBehavior"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitHeadersAreCorrect"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDefaultConfigValues"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testFallbackIpWhenNoHeaders"/>
+      </line>
+      <line nr="130">
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testRateLimitingInMiddlewareStack"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRequestUnderLimitPassesThrough"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitExceededReturns429"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testExemptPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testNonApiPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXForwardedForIpExtraction"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXRealIpHeaderPriority"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDifferentIpsHaveSeparateLimits"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testSlidingWindowBehavior"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitHeadersAreCorrect"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDefaultConfigValues"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testFallbackIpWhenNoHeaders"/>
+      </line>
+      <line nr="131">
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testRateLimitingInMiddlewareStack"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRequestUnderLimitPassesThrough"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitExceededReturns429"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testExemptPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testNonApiPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXForwardedForIpExtraction"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXRealIpHeaderPriority"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDifferentIpsHaveSeparateLimits"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testSlidingWindowBehavior"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitHeadersAreCorrect"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDefaultConfigValues"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testFallbackIpWhenNoHeaders"/>
+      </line>
+      <line nr="132">
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testRateLimitingInMiddlewareStack"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRequestUnderLimitPassesThrough"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitExceededReturns429"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testExemptPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testNonApiPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXForwardedForIpExtraction"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXRealIpHeaderPriority"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDifferentIpsHaveSeparateLimits"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testSlidingWindowBehavior"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitHeadersAreCorrect"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDefaultConfigValues"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testFallbackIpWhenNoHeaders"/>
+      </line>
+      <line nr="134">
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testRateLimitingInMiddlewareStack"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRequestUnderLimitPassesThrough"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitExceededReturns429"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testExemptPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testNonApiPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXForwardedForIpExtraction"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXRealIpHeaderPriority"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDifferentIpsHaveSeparateLimits"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testSlidingWindowBehavior"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitHeadersAreCorrect"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDefaultConfigValues"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testFallbackIpWhenNoHeaders"/>
+      </line>
+      <line nr="135">
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testRateLimitingInMiddlewareStack"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRequestUnderLimitPassesThrough"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitExceededReturns429"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testExemptPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testNonApiPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXForwardedForIpExtraction"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXRealIpHeaderPriority"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDifferentIpsHaveSeparateLimits"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testSlidingWindowBehavior"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitHeadersAreCorrect"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDefaultConfigValues"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testFallbackIpWhenNoHeaders"/>
+      </line>
+      <line nr="136">
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testRateLimitingInMiddlewareStack"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRequestUnderLimitPassesThrough"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitExceededReturns429"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testExemptPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testNonApiPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXForwardedForIpExtraction"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXRealIpHeaderPriority"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDifferentIpsHaveSeparateLimits"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testSlidingWindowBehavior"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitHeadersAreCorrect"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDefaultConfigValues"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testFallbackIpWhenNoHeaders"/>
+      </line>
+      <line nr="31">
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testRateLimitingInMiddlewareStack"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRequestUnderLimitPassesThrough"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitExceededReturns429"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testExemptPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testNonApiPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXForwardedForIpExtraction"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXRealIpHeaderPriority"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDifferentIpsHaveSeparateLimits"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testSlidingWindowBehavior"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitHeadersAreCorrect"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDefaultConfigValues"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testFallbackIpWhenNoHeaders"/>
+      </line>
+      <line nr="32">
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testRateLimitingInMiddlewareStack"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRequestUnderLimitPassesThrough"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitExceededReturns429"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testExemptPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testNonApiPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXForwardedForIpExtraction"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXRealIpHeaderPriority"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDifferentIpsHaveSeparateLimits"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testSlidingWindowBehavior"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitHeadersAreCorrect"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDefaultConfigValues"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testFallbackIpWhenNoHeaders"/>
+      </line>
+      <line nr="33">
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testRateLimitingInMiddlewareStack"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRequestUnderLimitPassesThrough"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitExceededReturns429"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testExemptPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testNonApiPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXForwardedForIpExtraction"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXRealIpHeaderPriority"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDifferentIpsHaveSeparateLimits"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testSlidingWindowBehavior"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitHeadersAreCorrect"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDefaultConfigValues"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testFallbackIpWhenNoHeaders"/>
+      </line>
+      <line nr="133">
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testRateLimitingInMiddlewareStack"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRequestUnderLimitPassesThrough"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitExceededReturns429"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testExemptPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testNonApiPathsBypassRateLimit"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXForwardedForIpExtraction"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testXRealIpHeaderPriority"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDifferentIpsHaveSeparateLimits"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testSlidingWindowBehavior"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testRateLimitHeadersAreCorrect"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testDefaultConfigValues"/>
+        <covered by="Tests\Integration\RateLimitMiddlewareIntegrationTest::testFallbackIpWhenNoHeaders"/>
+      </line>
+    </coverage>
+    <source>
+      <line no="1">
+        <token name="T_OPEN_TAG">&lt;?php</token>
+      </line>
+      <line no="2"/>
+      <line no="3">
+        <token name="T_NAMESPACE">namespace</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">App\Http\Middleware</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="4"/>
+      <line no="5">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Psr\Http\Message\ServerRequestInterface</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="6">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Psr\Http\Message\ResponseInterface</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="7">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Psr\Http\Server\MiddlewareInterface</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="8">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Psr\Http\Server\RequestHandlerInterface</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="9">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">GuzzleHttp\Psr7\Response</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="10">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">App\Infrastructure\Config\Config</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="11"/>
+      <line no="12">
+        <token name="T_DOC_COMMENT">/**</token>
+      </line>
+      <line no="13">
+        <token name="T_DOC_COMMENT"> * RateLimitMiddleware</token>
+      </line>
+      <line no="14">
+        <token name="T_DOC_COMMENT"> *</token>
+      </line>
+      <line no="15">
+        <token name="T_DOC_COMMENT"> * Implementeert rate limiting voor API endpoints om misbruik te voorkomen.</token>
+      </line>
+      <line no="16">
+        <token name="T_DOC_COMMENT"> * Gebruikt sliding window algoritme met in-memory storage.</token>
+      </line>
+      <line no="17">
+        <token name="T_DOC_COMMENT"> */</token>
+      </line>
+      <line no="18">
+        <token name="T_CLASS">class</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">RateLimitMiddleware</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_IMPLEMENTS">implements</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">MiddlewareInterface</token>
+      </line>
+      <line no="19">
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="20">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_ARRAY">array</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$requests</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="21">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">int</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$maxRequests</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="22">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">int</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$windowSeconds</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="23">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_ARRAY">array</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$exemptPaths</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="24">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">__construct</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_STRING">Config</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$config</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">null</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+      </line>
+      <line no="25">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="26">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$config</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$config</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_COALESCE">??</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">Config</token>
+        <token name="T_DOUBLE_COLON">::</token>
+        <token name="T_STRING">getInstance</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="27">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">maxRequests</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$config</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">get</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'rate_limit_max_requests'</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_LNUMBER">100</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="28">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">windowSeconds</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$config</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">get</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'rate_limit_window_seconds'</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_LNUMBER">3600</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="29">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">exemptPaths</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$config</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">get</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'rate_limit_exempt_paths'</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_SQUARE">[</token>
+      </line>
+      <line no="30">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'/api/stripe/webhook'</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="31">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'/api/health'</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="32">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'/api/status'</token>
+      </line>
+      <line no="33">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="34">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="35"/>
+      <line no="36">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">process</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">ServerRequestInterface</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$request</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">RequestHandlerInterface</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$handler</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">ResponseInterface</token>
+      </line>
+      <line no="37">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="38">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$path</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$request</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">getUri</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">getPath</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="39">
+        <token name="T_COMMENT">// Skip rate limiting for exempt paths</token>
+      </line>
+      <line no="40">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_FOREACH">foreach</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">exemptPaths</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_AS">as</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$exemptPath</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="41">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_IF">if</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">str_starts_with</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$path</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$exemptPath</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="42">
+        <token name="T_WHITESPACE">                </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$handler</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">handle</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$request</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="43">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="44">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="45"/>
+      <line no="46">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_COMMENT">// Only apply rate limiting to API endpoints</token>
+      </line>
+      <line no="47">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_IF">if</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_EXCLAMATION_MARK">!</token>
+        <token name="T_STRING">str_starts_with</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$path</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'/api/'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="48">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$handler</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">handle</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$request</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="49">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="50"/>
+      <line no="51">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$clientIp</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">getClientIp</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$request</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="52">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$now</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">time</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="53">
+        <token name="T_COMMENT">// Clean old requests outside the window</token>
+      </line>
+      <line no="54">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">cleanOldRequests</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$clientIp</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$now</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="55">
+        <token name="T_COMMENT">// Check if client has exceeded rate limit</token>
+      </line>
+      <line no="56">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_IF">if</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">isRateLimited</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$clientIp</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$now</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="57">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">createRateLimitResponse</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="58">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="59"/>
+      <line no="60">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_COMMENT">// Record this request</token>
+      </line>
+      <line no="61">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">recordRequest</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$clientIp</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$now</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="62">
+        <token name="T_COMMENT">// Add rate limit headers to response</token>
+      </line>
+      <line no="63">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$response</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$handler</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">handle</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$request</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="64">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">addRateLimitHeaders</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$response</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$clientIp</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$now</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="65">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="66"/>
+      <line no="67">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getClientIp</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">ServerRequestInterface</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$request</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">string</token>
+      </line>
+      <line no="68">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="69">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$serverParams</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$request</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">getServerParams</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="70">
+        <token name="T_COMMENT">// Check for forwarded IP (useful behind proxies like Cloudflare)</token>
+      </line>
+      <line no="71">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_IF">if</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_EXCLAMATION_MARK">!</token>
+        <token name="T_EMPTY">empty</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$serverParams</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'HTTP_X_FORWARDED_FOR'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="72">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$ips</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">explode</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">','</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$serverParams</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'HTTP_X_FORWARDED_FOR'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="73">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">trim</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$ips</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_LNUMBER">0</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="74">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="75"/>
+      <line no="76">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_IF">if</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_EXCLAMATION_MARK">!</token>
+        <token name="T_EMPTY">empty</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$serverParams</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'HTTP_X_REAL_IP'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="77">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$serverParams</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'HTTP_X_REAL_IP'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="78">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="79"/>
+      <line no="80">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$serverParams</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'REMOTE_ADDR'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_COALESCE">??</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'127.0.0.1'</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="81">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="82"/>
+      <line no="83">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">cleanOldRequests</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">string</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$clientIp</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">int</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$now</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">void</token>
+      </line>
+      <line no="84">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="85">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_IF">if</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_EXCLAMATION_MARK">!</token>
+        <token name="T_ISSET">isset</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">requests</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_VARIABLE">$clientIp</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="86">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="87">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="88"/>
+      <line no="89">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$cutoff</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$now</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_MINUS">-</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">windowSeconds</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="90">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">requests</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_VARIABLE">$clientIp</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">array_filter</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">requests</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_VARIABLE">$clientIp</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FN">fn</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$timestamp</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$timestamp</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_IS_GREATER_OR_EQUAL">&gt;=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$cutoff</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="91">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="92"/>
+      <line no="93">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">isRateLimited</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">string</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$clientIp</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">int</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$now</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">bool</token>
+      </line>
+      <line no="94">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="95">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_IF">if</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_EXCLAMATION_MARK">!</token>
+        <token name="T_ISSET">isset</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">requests</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_VARIABLE">$clientIp</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="96">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">false</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="97">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="98"/>
+      <line no="99">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">count</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">requests</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_VARIABLE">$clientIp</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_IS_GREATER_OR_EQUAL">&gt;=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">maxRequests</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="100">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="101"/>
+      <line no="102">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">recordRequest</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">string</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$clientIp</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">int</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$now</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">void</token>
+      </line>
+      <line no="103">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="104">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_IF">if</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_EXCLAMATION_MARK">!</token>
+        <token name="T_ISSET">isset</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">requests</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_VARIABLE">$clientIp</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="105">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">requests</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_VARIABLE">$clientIp</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="106">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="107"/>
+      <line no="108">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">requests</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_VARIABLE">$clientIp</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$now</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="109">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="110"/>
+      <line no="111">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">createRateLimitResponse</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">ResponseInterface</token>
+      </line>
+      <line no="112">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="113">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$resetTime</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">time</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_PLUS">+</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">windowSeconds</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="114">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NEW">new</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">Response</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_LNUMBER">429</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_SQUARE">[</token>
+      </line>
+      <line no="115">
+        <token name="T_WHITESPACE">                </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'Content-Type'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'application/json'</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="116">
+        <token name="T_WHITESPACE">                </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'Retry-After'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING_CAST">(string)</token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">windowSeconds</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="117">
+        <token name="T_WHITESPACE">                </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'X-RateLimit-Limit'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING_CAST">(string)</token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">maxRequests</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="118">
+        <token name="T_WHITESPACE">                </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'X-RateLimit-Remaining'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'0'</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="119">
+        <token name="T_WHITESPACE">                </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'X-RateLimit-Reset'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING_CAST">(string)</token>
+        <token name="T_VARIABLE">$resetTime</token>
+      </line>
+      <line no="120">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">json_encode</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_OPEN_SQUARE">[</token>
+      </line>
+      <line no="121">
+        <token name="T_WHITESPACE">                </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'error'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'Rate limit exceeded'</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="122">
+        <token name="T_WHITESPACE">                </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'message'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_QUOTES">"</token>
+        <token name="T_ENCAPSED_AND_WHITESPACE">Maximum </token>
+        <token name="T_CURLY_OPEN">{</token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">maxRequests</token>
+        <token name="T_CLOSE_CURLY">}</token>
+        <token name="T_ENCAPSED_AND_WHITESPACE"> requests per </token>
+        <token name="T_CURLY_OPEN">{</token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">windowSeconds</token>
+        <token name="T_CLOSE_CURLY">}</token>
+        <token name="T_ENCAPSED_AND_WHITESPACE"> seconds allowed</token>
+        <token name="T_DOUBLE_QUOTES">"</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="123">
+        <token name="T_WHITESPACE">                </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'retry_after'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">windowSeconds</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="124">
+        <token name="T_WHITESPACE">                </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'reset_time'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$resetTime</token>
+      </line>
+      <line no="125">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="126">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="127"/>
+      <line no="128">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">addRateLimitHeaders</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">ResponseInterface</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$response</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">string</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$clientIp</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">int</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$now</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">ResponseInterface</token>
+      </line>
+      <line no="129">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="130">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$requestCount</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_ISSET">isset</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">requests</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_VARIABLE">$clientIp</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">count</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">requests</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_VARIABLE">$clientIp</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_LNUMBER">0</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="131">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$remaining</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">max</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_LNUMBER">0</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">maxRequests</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_MINUS">-</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$requestCount</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="132">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$resetTime</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$now</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_PLUS">+</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">windowSeconds</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="133">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$response</token>
+      </line>
+      <line no="134">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">withHeader</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'X-RateLimit-Limit'</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING_CAST">(string)</token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">maxRequests</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+      </line>
+      <line no="135">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">withHeader</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'X-RateLimit-Remaining'</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING_CAST">(string)</token>
+        <token name="T_VARIABLE">$remaining</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+      </line>
+      <line no="136">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">withHeader</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'X-RateLimit-Reset'</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING_CAST">(string)</token>
+        <token name="T_VARIABLE">$resetTime</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="137">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="138">
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="139"/>
+    </source>
+  </file>
+</phpunit>

@@ -1,0 +1,2484 @@
+<?xml version="1.0"?>
+<phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
+  <file name="ErrorHandler.php" path="\Infrastructure\Logging">
+    <totals>
+      <lines total="182" comments="5" code="177" executable="78" executed="40" percent="51.28"/>
+      <methods count="16" tested="4" percent="25.00"/>
+      <functions count="0" tested="0" percent="0"/>
+      <classes count="1" tested="0" percent="0.00"/>
+      <traits count="0" tested="0" percent="0"/>
+    </totals>
+    <class name="App\Infrastructure\Logging\ErrorHandler" start="13" executable="78" executed="40" crap="150.4">
+      <namespace name="App\Infrastructure\Logging"/>
+      <method name="getInstance" signature="getInstance(): self" start="22" end="25" crap="2" executable="1" executed="0" coverage="0"/>
+      <method name="__construct" signature="__construct()" start="27" end="38" crap="4.37" executable="7" executed="5" coverage="71.428571428571"/>
+      <method name="logError" signature="logError(string $m, array $c, string $s): void" start="40" end="43" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="logWarning" signature="logWarning(string $m, array $c): void" start="45" end="48" crap="2" executable="1" executed="0" coverage="0"/>
+      <method name="logInfo" signature="logInfo(string $m, array $c): void" start="50" end="53" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="log" signature="log(string $sev, string $m, array $ctx): void" start="55" end="68" crap="2.15" executable="9" executed="6" coverage="66.666666666667"/>
+      <method name="initLogger" signature="initLogger(): void" start="70" end="89" crap="3.43" executable="11" executed="7" coverage="63.636363636364"/>
+      <method name="mapSeverityToLevel" signature="mapSeverityToLevel(string $s): mixed" start="91" end="101" crap="1" executable="8" executed="8" coverage="100"/>
+      <method name="registerGlobalHandlers" signature="registerGlobalHandlers(): void" start="103" end="108" crap="2" executable="3" executed="0" coverage="0"/>
+      <method name="handleError" signature="handleError(int $no, string $str, string $file, int $line): bool" start="110" end="118" crap="2.03" executable="5" executed="4" coverage="80"/>
+      <method name="handleException" signature="handleException(Throwable $ex): void" start="120" end="124" crap="2" executable="2" executed="0" coverage="0"/>
+      <method name="handleShutdown" signature="handleShutdown(): void" start="126" end="133" crap="12" executable="4" executed="0" coverage="0"/>
+      <method name="getErrorSeverity" signature="getErrorSeverity(int $e): string" start="135" end="145" crap="1" executable="8" executed="8" coverage="100"/>
+      <method name="showErrorPage" signature="showErrorPage(): void" start="147" end="150" crap="2" executable="1" executed="0" coverage="0"/>
+      <method name="respondError" signature="respondError(string $msg): void" start="152" end="170" crap="56" executable="11" executed="0" coverage="0"/>
+      <method name="isApiRequest" signature="isApiRequest(): bool" start="172" end="180" crap="6" executable="5" executed="0" coverage="0"/>
+    </class>
+    <coverage>
+      <line nr="29">
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testPasswordResetCompleteFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testEmailVerificationCompleteFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testMultipleFailedLoginAttempts"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testUserAccountSecurity"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testConcurrentUserOperations"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserRegistrationWithInvalidData"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testRegistrationWithExistingEmail"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testEmailVerificationFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testPasswordResetFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testSecurityFeatures"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testDataValidationAndSanitization"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testLoginWithWrongPasswordFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testRegistrationWithWeakPasswordFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testRegistrationWithExistingEmailFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenVerificationWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testLogoutSucceeds"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testGetCurrentUserWithValidPayload"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testPasswordStrengthValidation"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testPasswordHashingAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testJWTTokenGenerationAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="30">
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testPasswordResetCompleteFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testEmailVerificationCompleteFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testMultipleFailedLoginAttempts"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testUserAccountSecurity"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testConcurrentUserOperations"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserRegistrationWithInvalidData"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testRegistrationWithExistingEmail"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testEmailVerificationFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testPasswordResetFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testSecurityFeatures"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testDataValidationAndSanitization"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testLoginWithWrongPasswordFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testRegistrationWithWeakPasswordFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testRegistrationWithExistingEmailFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenVerificationWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testLogoutSucceeds"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testGetCurrentUserWithValidPayload"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testPasswordStrengthValidation"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testPasswordHashingAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testJWTTokenGenerationAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="33">
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testPasswordResetCompleteFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testEmailVerificationCompleteFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testMultipleFailedLoginAttempts"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testUserAccountSecurity"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testConcurrentUserOperations"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserRegistrationWithInvalidData"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testRegistrationWithExistingEmail"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testEmailVerificationFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testPasswordResetFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testSecurityFeatures"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testDataValidationAndSanitization"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testLoginWithWrongPasswordFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testRegistrationWithWeakPasswordFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testRegistrationWithExistingEmailFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenVerificationWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testLogoutSucceeds"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testGetCurrentUserWithValidPayload"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testPasswordStrengthValidation"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testPasswordHashingAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testJWTTokenGenerationAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="34">
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testPasswordResetCompleteFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testEmailVerificationCompleteFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testMultipleFailedLoginAttempts"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testUserAccountSecurity"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testConcurrentUserOperations"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserRegistrationWithInvalidData"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testRegistrationWithExistingEmail"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testEmailVerificationFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testPasswordResetFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testSecurityFeatures"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testDataValidationAndSanitization"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testLoginWithWrongPasswordFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testRegistrationWithWeakPasswordFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testRegistrationWithExistingEmailFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenVerificationWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testLogoutSucceeds"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testGetCurrentUserWithValidPayload"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testPasswordStrengthValidation"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testPasswordHashingAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testJWTTokenGenerationAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="37">
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testPasswordResetCompleteFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testEmailVerificationCompleteFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testMultipleFailedLoginAttempts"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testUserAccountSecurity"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testConcurrentUserOperations"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserRegistrationWithInvalidData"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testRegistrationWithExistingEmail"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testEmailVerificationFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testPasswordResetFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testSecurityFeatures"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testDataValidationAndSanitization"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testLoginWithWrongPasswordFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testRegistrationWithWeakPasswordFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testRegistrationWithExistingEmailFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenVerificationWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testLogoutSucceeds"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testGetCurrentUserWithValidPayload"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testPasswordStrengthValidation"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testPasswordHashingAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testJWTTokenGenerationAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="42">
+        <covered by="Tests\Unit\StripeControllerTest::testCreateSessionException"/>
+        <covered by="Tests\Unit\StripeControllerTest::testStatusException"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithException"/>
+        <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testFinalHandlerUsage"/>
+      </line>
+      <line nr="52">
+        <covered by="Tests\Unit\StripeServiceTest::testStaticGetInstanceMethod"/>
+      </line>
+      <line nr="57">
+        <covered by="Tests\Unit\StripeControllerTest::testCreateSessionException"/>
+        <covered by="Tests\Unit\StripeControllerTest::testStatusException"/>
+        <covered by="Tests\Unit\StripeServiceTest::testStaticGetInstanceMethod"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithException"/>
+        <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testFinalHandlerUsage"/>
+      </line>
+      <line nr="58">
+        <covered by="Tests\Unit\StripeControllerTest::testCreateSessionException"/>
+        <covered by="Tests\Unit\StripeControllerTest::testStatusException"/>
+        <covered by="Tests\Unit\StripeServiceTest::testStaticGetInstanceMethod"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithException"/>
+        <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testFinalHandlerUsage"/>
+      </line>
+      <line nr="59">
+        <covered by="Tests\Unit\StripeControllerTest::testCreateSessionException"/>
+        <covered by="Tests\Unit\StripeControllerTest::testStatusException"/>
+        <covered by="Tests\Unit\StripeServiceTest::testStaticGetInstanceMethod"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithException"/>
+        <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testFinalHandlerUsage"/>
+      </line>
+      <line nr="60">
+        <covered by="Tests\Unit\StripeControllerTest::testCreateSessionException"/>
+        <covered by="Tests\Unit\StripeControllerTest::testStatusException"/>
+        <covered by="Tests\Unit\StripeServiceTest::testStaticGetInstanceMethod"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithException"/>
+        <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testFinalHandlerUsage"/>
+      </line>
+      <line nr="61">
+        <covered by="Tests\Unit\StripeControllerTest::testCreateSessionException"/>
+        <covered by="Tests\Unit\StripeControllerTest::testStatusException"/>
+        <covered by="Tests\Unit\StripeServiceTest::testStaticGetInstanceMethod"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithException"/>
+        <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testFinalHandlerUsage"/>
+      </line>
+      <line nr="62">
+        <covered by="Tests\Unit\StripeControllerTest::testCreateSessionException"/>
+        <covered by="Tests\Unit\StripeControllerTest::testStatusException"/>
+        <covered by="Tests\Unit\StripeServiceTest::testStaticGetInstanceMethod"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithException"/>
+        <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testFinalHandlerUsage"/>
+      </line>
+      <line nr="72">
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testPasswordResetCompleteFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testEmailVerificationCompleteFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testMultipleFailedLoginAttempts"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testUserAccountSecurity"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testConcurrentUserOperations"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserRegistrationWithInvalidData"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testRegistrationWithExistingEmail"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testEmailVerificationFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testPasswordResetFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testSecurityFeatures"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testDataValidationAndSanitization"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testLoginWithWrongPasswordFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testRegistrationWithWeakPasswordFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testRegistrationWithExistingEmailFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenVerificationWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testLogoutSucceeds"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testGetCurrentUserWithValidPayload"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testPasswordStrengthValidation"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testPasswordHashingAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testJWTTokenGenerationAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="73">
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testPasswordResetCompleteFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testEmailVerificationCompleteFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testMultipleFailedLoginAttempts"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testUserAccountSecurity"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testConcurrentUserOperations"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserRegistrationWithInvalidData"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testRegistrationWithExistingEmail"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testEmailVerificationFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testPasswordResetFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testSecurityFeatures"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testDataValidationAndSanitization"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testLoginWithWrongPasswordFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testRegistrationWithWeakPasswordFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testRegistrationWithExistingEmailFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenVerificationWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testLogoutSucceeds"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testGetCurrentUserWithValidPayload"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testPasswordStrengthValidation"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testPasswordHashingAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testJWTTokenGenerationAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="74">
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testPasswordResetCompleteFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testEmailVerificationCompleteFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testMultipleFailedLoginAttempts"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testUserAccountSecurity"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testConcurrentUserOperations"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserRegistrationWithInvalidData"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testRegistrationWithExistingEmail"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testEmailVerificationFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testPasswordResetFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testSecurityFeatures"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testDataValidationAndSanitization"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testLoginWithWrongPasswordFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testRegistrationWithWeakPasswordFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testRegistrationWithExistingEmailFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenVerificationWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testLogoutSucceeds"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testGetCurrentUserWithValidPayload"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testPasswordStrengthValidation"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testPasswordHashingAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testJWTTokenGenerationAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="75">
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testPasswordResetCompleteFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testEmailVerificationCompleteFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testMultipleFailedLoginAttempts"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testUserAccountSecurity"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testConcurrentUserOperations"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserRegistrationWithInvalidData"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testRegistrationWithExistingEmail"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testEmailVerificationFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testPasswordResetFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testSecurityFeatures"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testDataValidationAndSanitization"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testLoginWithWrongPasswordFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testRegistrationWithWeakPasswordFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testRegistrationWithExistingEmailFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenVerificationWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testLogoutSucceeds"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testGetCurrentUserWithValidPayload"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testPasswordStrengthValidation"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testPasswordHashingAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testJWTTokenGenerationAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="76">
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testPasswordResetCompleteFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testEmailVerificationCompleteFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testMultipleFailedLoginAttempts"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testUserAccountSecurity"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testConcurrentUserOperations"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserRegistrationWithInvalidData"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testRegistrationWithExistingEmail"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testEmailVerificationFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testPasswordResetFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testSecurityFeatures"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testDataValidationAndSanitization"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testLoginWithWrongPasswordFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testRegistrationWithWeakPasswordFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testRegistrationWithExistingEmailFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenVerificationWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testLogoutSucceeds"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testGetCurrentUserWithValidPayload"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testPasswordStrengthValidation"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testPasswordHashingAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testJWTTokenGenerationAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="78">
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testPasswordResetCompleteFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testEmailVerificationCompleteFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testMultipleFailedLoginAttempts"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testUserAccountSecurity"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testConcurrentUserOperations"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserRegistrationWithInvalidData"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testRegistrationWithExistingEmail"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testEmailVerificationFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testPasswordResetFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testSecurityFeatures"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testDataValidationAndSanitization"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testLoginWithWrongPasswordFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testRegistrationWithWeakPasswordFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testRegistrationWithExistingEmailFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenVerificationWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testLogoutSucceeds"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testGetCurrentUserWithValidPayload"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testPasswordStrengthValidation"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testPasswordHashingAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testJWTTokenGenerationAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="79">
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testCompleteUserLifecycleFromRegistrationToLogin"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testPasswordResetCompleteFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testEmailVerificationCompleteFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testMultipleFailedLoginAttempts"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testTokenBlacklistingFlow"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testUserAccountSecurity"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testConcurrentUserOperations"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testCompleteUserRegistrationJourney"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserRegistrationWithInvalidData"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testRegistrationWithExistingEmail"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testEmailVerificationFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testPasswordResetFlow"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testUserProfileUpdate"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testAccountDeletion"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testSecurityFeatures"/>
+        <covered by="Tests\Feature\UserRegistrationFeatureTest::testDataValidationAndSanitization"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullLoginFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testFullRegistrationFlowWithRealServices"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testLoginWithWrongPasswordFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testRegistrationWithWeakPasswordFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testRegistrationWithExistingEmailFails"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenVerificationWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testTokenRefreshWithRealJWT"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testLogoutSucceeds"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testGetCurrentUserWithValidPayload"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testPasswordStrengthValidation"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testPasswordHashingAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testJWTTokenGenerationAndVerification"/>
+        <covered by="Tests\Integration\AuthServiceIntegrationTest::testCompleteUserLifecycle"/>
+      </line>
+      <line nr="93">
+        <covered by="Tests\Unit\StripeControllerTest::testCreateSessionException"/>
+        <covered by="Tests\Unit\StripeControllerTest::testStatusException"/>
+        <covered by="Tests\Unit\StripeServiceTest::testStaticGetInstanceMethod"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithException"/>
+        <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testFinalHandlerUsage"/>
+      </line>
+      <line nr="94">
+        <covered by="Tests\Unit\StripeControllerTest::testCreateSessionException"/>
+        <covered by="Tests\Unit\StripeControllerTest::testStatusException"/>
+        <covered by="Tests\Unit\StripeServiceTest::testStaticGetInstanceMethod"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithException"/>
+        <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testFinalHandlerUsage"/>
+      </line>
+      <line nr="95">
+        <covered by="Tests\Unit\StripeControllerTest::testCreateSessionException"/>
+        <covered by="Tests\Unit\StripeControllerTest::testStatusException"/>
+        <covered by="Tests\Unit\StripeServiceTest::testStaticGetInstanceMethod"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithException"/>
+        <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testFinalHandlerUsage"/>
+      </line>
+      <line nr="96">
+        <covered by="Tests\Unit\StripeControllerTest::testCreateSessionException"/>
+        <covered by="Tests\Unit\StripeControllerTest::testStatusException"/>
+        <covered by="Tests\Unit\StripeServiceTest::testStaticGetInstanceMethod"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithException"/>
+        <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testFinalHandlerUsage"/>
+      </line>
+      <line nr="97">
+        <covered by="Tests\Unit\StripeControllerTest::testCreateSessionException"/>
+        <covered by="Tests\Unit\StripeControllerTest::testStatusException"/>
+        <covered by="Tests\Unit\StripeServiceTest::testStaticGetInstanceMethod"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithException"/>
+        <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testFinalHandlerUsage"/>
+      </line>
+      <line nr="98">
+        <covered by="Tests\Unit\StripeControllerTest::testCreateSessionException"/>
+        <covered by="Tests\Unit\StripeControllerTest::testStatusException"/>
+        <covered by="Tests\Unit\StripeServiceTest::testStaticGetInstanceMethod"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithException"/>
+        <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testFinalHandlerUsage"/>
+      </line>
+      <line nr="99">
+        <covered by="Tests\Unit\StripeControllerTest::testCreateSessionException"/>
+        <covered by="Tests\Unit\StripeControllerTest::testStatusException"/>
+        <covered by="Tests\Unit\StripeServiceTest::testStaticGetInstanceMethod"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithException"/>
+        <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testFinalHandlerUsage"/>
+      </line>
+      <line nr="112">
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testFinalHandlerUsage"/>
+      </line>
+      <line nr="113">
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testFinalHandlerUsage"/>
+      </line>
+      <line nr="114">
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testFinalHandlerUsage"/>
+      </line>
+      <line nr="117">
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testFinalHandlerUsage"/>
+      </line>
+      <line nr="138">
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testFinalHandlerUsage"/>
+      </line>
+      <line nr="139">
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testFinalHandlerUsage"/>
+      </line>
+      <line nr="140">
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testFinalHandlerUsage"/>
+      </line>
+      <line nr="141">
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testFinalHandlerUsage"/>
+      </line>
+      <line nr="142">
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testFinalHandlerUsage"/>
+      </line>
+      <line nr="143">
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testFinalHandlerUsage"/>
+      </line>
+      <line nr="100">
+        <covered by="Tests\Unit\StripeControllerTest::testCreateSessionException"/>
+        <covered by="Tests\Unit\StripeControllerTest::testStatusException"/>
+        <covered by="Tests\Unit\StripeServiceTest::testStaticGetInstanceMethod"/>
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Feature\StripeControllerTest::testCreateCheckoutSessionWithException"/>
+        <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testFinalHandlerUsage"/>
+      </line>
+      <line nr="137">
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testFinalHandlerUsage"/>
+      </line>
+      <line nr="144">
+        <covered by="Tests\Feature\FullUserJourneyFeatureTest::testDataIntegrityThroughoutJourney"/>
+        <covered by="Tests\Integration\DatabaseMockTest::testMultipleDataTypes"/>
+        <covered by="Tests\Integration\MiddlewareStackIntegrationTest::testFinalHandlerUsage"/>
+      </line>
+    </coverage>
+    <source>
+      <line no="1">
+        <token name="T_OPEN_TAG">&lt;?php</token>
+      </line>
+      <line no="2"/>
+      <line no="3">
+        <token name="T_NAMESPACE">namespace</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">App\Infrastructure\Logging</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="4"/>
+      <line no="5">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">App\Domain\Logging\ErrorLoggerInterface</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="6">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Monolog\Logger</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="7">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Monolog\Handler\StreamHandler</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="8">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Monolog\Handler\SlackWebhookHandler</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="9">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Monolog\Formatter\LineFormatter</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="10"/>
+      <line no="11">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">container</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="12"/>
+      <line no="13">
+        <token name="T_CLASS">class</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">ErrorHandler</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_IMPLEMENTS">implements</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">ErrorLoggerInterface</token>
+      </line>
+      <line no="14">
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="15">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">string</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$logPath</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="16">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_STRING">Logger</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$logger</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">null</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="17">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">string</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$requestId</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="18"/>
+      <line no="19">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_DOC_COMMENT">/**</token>
+      </line>
+      <line no="20">
+        <token name="T_DOC_COMMENT">     * Legacy helper die een instantie uit de container haalt.</token>
+      </line>
+      <line no="21">
+        <token name="T_DOC_COMMENT">     */</token>
+      </line>
+      <line no="22">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STATIC">static</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getInstance</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">self</token>
+      </line>
+      <line no="23">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="24">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">container</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">get</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">self</token>
+        <token name="T_DOUBLE_COLON">::</token>
+        <token name="T_CLASS">class</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="25">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="26"/>
+      <line no="27">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">__construct</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+      </line>
+      <line no="28">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="29">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">logPath</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">defined</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'SITE_ROOT'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">SITE_ROOT</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOT">.</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'/logs/'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">dirname</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">dirname</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">dirname</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_DIR">__DIR__</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOT">.</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'/logs/'</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="30">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_IF">if</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_EXCLAMATION_MARK">!</token>
+        <token name="T_STRING">is_dir</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">logPath</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="31">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_STRING">mkdir</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">logPath</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_LNUMBER">0755</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">true</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="32">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="33">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">requestId</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">bin2hex</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">random_bytes</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_LNUMBER">8</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="34">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_IF">if</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_EXCLAMATION_MARK">!</token>
+        <token name="T_STRING">headers_sent</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="35">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_STRING">header</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'X-Request-Id: '</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOT">.</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">requestId</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="36">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="37">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">initLogger</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="38">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="39"/>
+      <line no="40">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">logError</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">string</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$m</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_ARRAY">array</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$c</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">string</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$s</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'ERROR'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">void</token>
+      </line>
+      <line no="41">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="42">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">log</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$s</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$m</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$c</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="43">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="44"/>
+      <line no="45">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">logWarning</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">string</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$m</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_ARRAY">array</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$c</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">void</token>
+      </line>
+      <line no="46">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="47">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">log</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'WARNING'</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$m</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$c</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="48">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="49"/>
+      <line no="50">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">logInfo</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">string</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$m</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_ARRAY">array</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$c</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">void</token>
+      </line>
+      <line no="51">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="52">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">log</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'INFO'</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$m</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$c</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="53">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="54"/>
+      <line no="55">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">log</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">string</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$sev</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">string</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$m</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_ARRAY">array</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$ctx</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">void</token>
+      </line>
+      <line no="56">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="57">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$ip</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$_SERVER</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'REMOTE_ADDR'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_COALESCE">??</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'CLI'</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="58">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$url</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$_SERVER</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'REQUEST_URI'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_COALESCE">??</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'N/A'</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="59">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$ctx</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">array_merge</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'ip'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$ip</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'url'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$url</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'request_id'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">requestId</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$ctx</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="60">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_IF">if</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">logger</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="61">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$level</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">mapSeverityToLevel</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$sev</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="62">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">logger</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">log</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$level</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$m</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$ctx</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="63">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_ELSE">else</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="64">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$logFile</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">logPath</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOT">.</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">strtolower</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$sev</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOT">.</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'.log'</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="65">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$ts</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">date</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'Y-m-d H:i:s'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="66">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_STRING">file_put_contents</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$logFile</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_QUOTES">"</token>
+        <token name="T_ENCAPSED_AND_WHITESPACE">[</token>
+        <token name="T_VARIABLE">$ts</token>
+        <token name="T_ENCAPSED_AND_WHITESPACE">][</token>
+        <token name="T_VARIABLE">$sev</token>
+        <token name="T_ENCAPSED_AND_WHITESPACE">][</token>
+        <token name="T_VARIABLE">$ip</token>
+        <token name="T_ENCAPSED_AND_WHITESPACE">][</token>
+        <token name="T_VARIABLE">$url</token>
+        <token name="T_ENCAPSED_AND_WHITESPACE">] </token>
+        <token name="T_VARIABLE">$m</token>
+        <token name="T_ENCAPSED_AND_WHITESPACE"> </token>
+        <token name="T_DOUBLE_QUOTES">"</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOT">.</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">json_encode</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$ctx</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOT">.</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">PHP_EOL</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">FILE_APPEND</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="67">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="68">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="69"/>
+      <line no="70">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">initLogger</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">void</token>
+      </line>
+      <line no="71">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="72">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">logger</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NEW">new</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">Logger</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'app'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="73">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$file</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">logPath</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOT">.</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'app-'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOT">.</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">date</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'Y-m-d'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOT">.</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'.log'</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="74">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$fh</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NEW">new</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">StreamHandler</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$file</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">Logger</token>
+        <token name="T_DOUBLE_COLON">::</token>
+        <token name="T_STRING">DEBUG</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="75">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$fh</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">setFormatter</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_NEW">new</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">LineFormatter</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">null</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">null</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">true</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">true</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="76">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">logger</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">pushHandler</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$fh</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="77"/>
+      <line no="78">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$wh</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getenv</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'SLACK_WEBHOOK_URL'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="79">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_IF">if</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$wh</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="80">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_COMMENT">// Simplified SlackWebhookHandler to avoid parameter type issues</token>
+      </line>
+      <line no="81">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_TRY">try</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="82">
+        <token name="T_WHITESPACE">                </token>
+        <token name="T_VARIABLE">$sh</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NEW">new</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">SlackWebhookHandler</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$wh</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="83">
+        <token name="T_WHITESPACE">                </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">logger</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">pushHandler</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$sh</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="84">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CLOSE_CURLY">}</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CATCH">catch</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_NAME_FULLY_QUALIFIED">\Throwable</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$e</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="85">
+        <token name="T_WHITESPACE">                </token>
+        <token name="T_COMMENT">// Fallback: continue without Slack logging if there are issues</token>
+      </line>
+      <line no="86">
+        <token name="T_WHITESPACE">                </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">logError</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'Failed to initialize Slack webhook handler: '</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOT">.</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$e</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">getMessage</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="87">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="88">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="89">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="90"/>
+      <line no="91">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">mapSeverityToLevel</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">string</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$s</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">mixed</token>
+      </line>
+      <line no="92">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="93">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_MATCH">match</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">strtoupper</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$s</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="94">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'DEBUG'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">Logger</token>
+        <token name="T_DOUBLE_COLON">::</token>
+        <token name="T_STRING">DEBUG</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="95">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'INFO'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">Logger</token>
+        <token name="T_DOUBLE_COLON">::</token>
+        <token name="T_STRING">INFO</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="96">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'WARNING'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">Logger</token>
+        <token name="T_DOUBLE_COLON">::</token>
+        <token name="T_STRING">WARNING</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="97">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'ERROR'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">Logger</token>
+        <token name="T_DOUBLE_COLON">::</token>
+        <token name="T_STRING">ERROR</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="98">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'CRITICAL'</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'FATAL'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">Logger</token>
+        <token name="T_DOUBLE_COLON">::</token>
+        <token name="T_STRING">CRITICAL</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="99">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_DEFAULT">default</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">Logger</token>
+        <token name="T_DOUBLE_COLON">::</token>
+        <token name="T_STRING">ERROR</token>
+      </line>
+      <line no="100">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="101">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="102"/>
+      <line no="103">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">registerGlobalHandlers</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">void</token>
+      </line>
+      <line no="104">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="105">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_STRING">set_error_handler</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'handleError'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="106">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_STRING">set_exception_handler</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'handleException'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="107">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_STRING">register_shutdown_function</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'handleShutdown'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="108">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="109"/>
+      <line no="110">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">handleError</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">int</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$no</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">string</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$str</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">string</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$file</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">int</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$line</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">bool</token>
+      </line>
+      <line no="111">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="112">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$sev</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">getErrorSeverity</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$no</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="113">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">logError</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$str</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'file'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$file</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'line'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$line</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'type'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$sev</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="114">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_IF">if</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">in_array</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$no</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_STRING">E_ERROR</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_STRING">E_PARSE</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_STRING">E_CORE_ERROR</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_STRING">E_COMPILE_ERROR</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_STRING">E_USER_ERROR</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="115">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">showErrorPage</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="116">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="117">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">true</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="118">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="119"/>
+      <line no="120">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">handleException</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_NAME_FULLY_QUALIFIED">\Throwable</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$ex</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">void</token>
+      </line>
+      <line no="121">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="122">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">logError</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$ex</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">getMessage</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'file'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$ex</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">getFile</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'line'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$ex</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">getLine</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'trace'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$ex</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">getTraceAsString</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="123">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">respondError</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$ex</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">getMessage</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="124">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="125"/>
+      <line no="126">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">handleShutdown</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">void</token>
+      </line>
+      <line no="127">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="128">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$err</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">error_get_last</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="129">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_IF">if</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$err</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_BOOLEAN_AND">&amp;&amp;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">in_array</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$err</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'type'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_STRING">E_ERROR</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_STRING">E_PARSE</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_STRING">E_CORE_ERROR</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_STRING">E_COMPILE_ERROR</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="130">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">logError</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$err</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'message'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'file'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$err</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'file'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'line'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$err</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'line'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'type'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">getErrorSeverity</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$err</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'type'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="131">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">respondError</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$err</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'message'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="132">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="133">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="134"/>
+      <line no="135">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getErrorSeverity</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">int</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$e</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">string</token>
+      </line>
+      <line no="136">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="137">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_MATCH">match</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$e</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="138">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_STRING">E_ERROR</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_STRING">E_CORE_ERROR</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_STRING">E_COMPILE_ERROR</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_STRING">E_USER_ERROR</token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'FATAL'</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="139">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_STRING">E_WARNING</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_STRING">E_CORE_WARNING</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_STRING">E_COMPILE_WARNING</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_STRING">E_USER_WARNING</token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'WARNING'</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="140">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_STRING">E_NOTICE</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_STRING">E_USER_NOTICE</token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'NOTICE'</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="141">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_STRING">E_STRICT</token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'STRICT'</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="142">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_STRING">E_DEPRECATED</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_STRING">E_USER_DEPRECATED</token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'DEPRECATED'</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="143">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_DEFAULT">default</token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'UNKNOWN'</token>
+      </line>
+      <line no="144">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="145">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="146"/>
+      <line no="147">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">showErrorPage</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">void</token>
+      </line>
+      <line no="148">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="149">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">respondError</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="150">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="151"/>
+      <line no="152">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">respondError</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">string</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$msg</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'Interne serverfout'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">void</token>
+      </line>
+      <line no="153">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="154">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_IF">if</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">isApiRequest</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="155">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_IF">if</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_EXCLAMATION_MARK">!</token>
+        <token name="T_STRING">headers_sent</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="156">
+        <token name="T_WHITESPACE">                </token>
+        <token name="T_STRING">header</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'Content-Type: application/json'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="157">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="158">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_ECHO">echo</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">json_encode</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'error'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">true</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'message'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$msg</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'request_id'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">requestId</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="159">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_EXIT">exit</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="160">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="161">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_IF">if</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_EXCLAMATION_MARK">!</token>
+        <token name="T_STRING">headers_sent</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="162">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_STRING">header</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'HTTP/1.1 500 Internal Server Error'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="163">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_IF">if</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">defined</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'DEBUG_MODE'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_BOOLEAN_AND">&amp;&amp;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">DEBUG_MODE</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="164">
+        <token name="T_WHITESPACE">                </token>
+        <token name="T_ECHO">echo</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'&lt;h1&gt;Er is een fout opgetreden&lt;/h1&gt;&lt;p&gt;De applicatie heeft een onverwachte fout ondervonden. Deze fout is gelogd.&lt;/p&gt;'</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="165">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CLOSE_CURLY">}</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_ELSE">else</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="166">
+        <token name="T_WHITESPACE">                </token>
+        <token name="T_STRING">header</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'Location: '</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOT">.</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">defined</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'SITE_URL'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">SITE_URL</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">''</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOT">.</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'/500.php'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="167">
+        <token name="T_WHITESPACE">                </token>
+        <token name="T_EXIT">exit</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="168">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="169">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="170">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="171"/>
+      <line no="172">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">isApiRequest</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">bool</token>
+      </line>
+      <line no="173">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="174">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$uri</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$_SERVER</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'REQUEST_URI'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_COALESCE">??</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">''</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="175">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_IF">if</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">strpos</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$uri</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'/api/'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_IS_IDENTICAL">===</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_LNUMBER">0</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="176">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">true</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="177">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="178">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$acc</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$_SERVER</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'HTTP_ACCEPT'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_COALESCE">??</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">''</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="179">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">strpos</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$acc</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'application/json'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_IS_NOT_IDENTICAL">!==</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">false</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="180">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="181">
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="182"/>
+    </source>
+  </file>
+</phpunit>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Infrastructure\Logging</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../../_css/bootstrap.min.css?v=9.2.32" rel="stylesheet" type="text/css">
+  <link href="../../_css/nv.d3.min.css?v=9.2.32" rel="stylesheet" type="text/css">
+  <link href="../../_css/style.css?v=9.2.32" rel="stylesheet" type="text/css">
+  <link href="../../_css/custom.css" rel="stylesheet" type="text/css">
+ </head>
+ <body>
+  <header>
+   <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12">
+      <nav aria-label="breadcrumb">
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="../../index.html">C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src</a></li>
+         <li class="breadcrumb-item"><a href="../index.html">Infrastructure</a></li>
+         <li class="breadcrumb-item"><a href="index.html">Logging</a></li>
+         <li class="breadcrumb-item active">(Dashboard)</li>
+
+       </ol>
+      </nav>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="ErrorLogger.php.html#10">App\Infrastructure\Logging\ErrorLogger</a></td><td class="text-right">20%</td></tr>
+       <tr><td><a href="ErrorHandler.php.html#13">App\Infrastructure\Logging\ErrorHandler</a></td><td class="text-right">51%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="ErrorHandler.php.html#13">App\Infrastructure\Logging\ErrorHandler</a></td><td class="text-right">150</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="ErrorHandler.php.html#22"><abbr title="App\Infrastructure\Logging\ErrorHandler::getInstance">getInstance</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ErrorHandler.php.html#45"><abbr title="App\Infrastructure\Logging\ErrorHandler::logWarning">logWarning</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ErrorHandler.php.html#103"><abbr title="App\Infrastructure\Logging\ErrorHandler::registerGlobalHandlers">registerGlobalHandlers</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ErrorHandler.php.html#120"><abbr title="App\Infrastructure\Logging\ErrorHandler::handleException">handleException</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ErrorHandler.php.html#126"><abbr title="App\Infrastructure\Logging\ErrorHandler::handleShutdown">handleShutdown</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ErrorHandler.php.html#147"><abbr title="App\Infrastructure\Logging\ErrorHandler::showErrorPage">showErrorPage</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ErrorHandler.php.html#152"><abbr title="App\Infrastructure\Logging\ErrorHandler::respondError">respondError</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ErrorHandler.php.html#172"><abbr title="App\Infrastructure\Logging\ErrorHandler::isApiRequest">isApiRequest</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ErrorLogger.php.html#19"><abbr title="App\Infrastructure\Logging\ErrorLogger::logError">logError</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ErrorLogger.php.html#24"><abbr title="App\Infrastructure\Logging\ErrorLogger::logWarning">logWarning</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ErrorLogger.php.html#29"><abbr title="App\Infrastructure\Logging\ErrorLogger::logInfo">logInfo</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ErrorLogger.php.html#34"><abbr title="App\Infrastructure\Logging\ErrorLogger::registerGlobalHandlers">registerGlobalHandlers</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ErrorHandler.php.html#70"><abbr title="App\Infrastructure\Logging\ErrorHandler::initLogger">initLogger</abbr></a></td><td class="text-right">63%</td></tr>
+       <tr><td><a href="ErrorHandler.php.html#55"><abbr title="App\Infrastructure\Logging\ErrorHandler::log">log</abbr></a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="ErrorHandler.php.html#27"><abbr title="App\Infrastructure\Logging\ErrorHandler::__construct">__construct</abbr></a></td><td class="text-right">71%</td></tr>
+       <tr><td><a href="ErrorHandler.php.html#110"><abbr title="App\Infrastructure\Logging\ErrorHandler::handleError">handleError</abbr></a></td><td class="text-right">80%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="ErrorHandler.php.html#152"><abbr title="App\Infrastructure\Logging\ErrorHandler::respondError">respondError</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="ErrorHandler.php.html#126"><abbr title="App\Infrastructure\Logging\ErrorHandler::handleShutdown">handleShutdown</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="ErrorHandler.php.html#172"><abbr title="App\Infrastructure\Logging\ErrorHandler::isApiRequest">isApiRequest</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ErrorHandler.php.html#27"><abbr title="App\Infrastructure\Logging\ErrorHandler::__construct">__construct</abbr></a></td><td class="text-right">4</td></tr>
+       <tr><td><a href="ErrorHandler.php.html#70"><abbr title="App\Infrastructure\Logging\ErrorHandler::initLogger">initLogger</abbr></a></td><td class="text-right">3</td></tr>
+       <tr><td><a href="ErrorHandler.php.html#55"><abbr title="App\Infrastructure\Logging\ErrorHandler::log">log</abbr></a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="ErrorHandler.php.html#110"><abbr title="App\Infrastructure\Logging\ErrorHandler::handleError">handleError</abbr></a></td><td class="text-right">2</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 9.2.32</a> using <a href="https://secure.php.net/" target="_top">PHP 8.0.30</a> and <a href="https://phpunit.de/">PHPUnit 9.6.23</a> at Tue Jun 10 15:56:46 CEST 2025.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="../../_js/jquery.min.js?v=9.2.32" type="text/javascript"></script>
+  <script src="../../_js/d3.min.js?v=9.2.32" type="text/javascript"></script>
+  <script src="../../_js/nv.d3.min.js?v=9.2.32" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([0,0,0,1,0,0,1,0,0,0,0,0], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([12,0,0,0,0,0,0,2,1,1,0,5], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[51.28205128205128,32,"<a href=\"ErrorHandler.php.html#13\">App\\Infrastructure\\Logging\\ErrorHandler<\/a>"],[20,5,"<a href=\"ErrorLogger.php.html#10\">App\\Infrastructure\\Logging\\ErrorLogger<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[0,1,"<a href=\"ErrorHandler.php.html#22\">App\\Infrastructure\\Logging\\ErrorHandler::getInstance<\/a>"],[71.42857142857143,4,"<a href=\"ErrorHandler.php.html#27\">App\\Infrastructure\\Logging\\ErrorHandler::__construct<\/a>"],[100,1,"<a href=\"ErrorHandler.php.html#40\">App\\Infrastructure\\Logging\\ErrorHandler::logError<\/a>"],[0,1,"<a href=\"ErrorHandler.php.html#45\">App\\Infrastructure\\Logging\\ErrorHandler::logWarning<\/a>"],[100,1,"<a href=\"ErrorHandler.php.html#50\">App\\Infrastructure\\Logging\\ErrorHandler::logInfo<\/a>"],[66.66666666666666,2,"<a href=\"ErrorHandler.php.html#55\">App\\Infrastructure\\Logging\\ErrorHandler::log<\/a>"],[63.63636363636363,3,"<a href=\"ErrorHandler.php.html#70\">App\\Infrastructure\\Logging\\ErrorHandler::initLogger<\/a>"],[100,1,"<a href=\"ErrorHandler.php.html#91\">App\\Infrastructure\\Logging\\ErrorHandler::mapSeverityToLevel<\/a>"],[0,1,"<a href=\"ErrorHandler.php.html#103\">App\\Infrastructure\\Logging\\ErrorHandler::registerGlobalHandlers<\/a>"],[80,2,"<a href=\"ErrorHandler.php.html#110\">App\\Infrastructure\\Logging\\ErrorHandler::handleError<\/a>"],[0,1,"<a href=\"ErrorHandler.php.html#120\">App\\Infrastructure\\Logging\\ErrorHandler::handleException<\/a>"],[0,3,"<a href=\"ErrorHandler.php.html#126\">App\\Infrastructure\\Logging\\ErrorHandler::handleShutdown<\/a>"],[100,1,"<a href=\"ErrorHandler.php.html#135\">App\\Infrastructure\\Logging\\ErrorHandler::getErrorSeverity<\/a>"],[0,1,"<a href=\"ErrorHandler.php.html#147\">App\\Infrastructure\\Logging\\ErrorHandler::showErrorPage<\/a>"],[0,7,"<a href=\"ErrorHandler.php.html#152\">App\\Infrastructure\\Logging\\ErrorHandler::respondError<\/a>"],[0,2,"<a href=\"ErrorHandler.php.html#172\">App\\Infrastructure\\Logging\\ErrorHandler::isApiRequest<\/a>"],[100,1,"<a href=\"ErrorLogger.php.html#14\">App\\Infrastructure\\Logging\\ErrorLogger::__construct<\/a>"],[0,1,"<a href=\"ErrorLogger.php.html#19\">App\\Infrastructure\\Logging\\ErrorLogger::logError<\/a>"],[0,1,"<a href=\"ErrorLogger.php.html#24\">App\\Infrastructure\\Logging\\ErrorLogger::logWarning<\/a>"],[0,1,"<a href=\"ErrorLogger.php.html#29\">App\\Infrastructure\\Logging\\ErrorLogger::logInfo<\/a>"],[0,1,"<a href=\"ErrorLogger.php.html#34\">App\\Infrastructure\\Logging\\ErrorLogger::registerGlobalHandlers<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>

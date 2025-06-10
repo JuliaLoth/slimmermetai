@@ -22,13 +22,13 @@ final class JwtService implements JwtServiceInterface
         $this->expiration = $expiration ?? $config->get('jwt_expiration', 3600);
     }
 
-    public function generate(array $payload, ?int $exp = null): string
+    public function generate(array $payload): string
     {
         $header = $this->base64url(json_encode(['typ' => 'JWT', 'alg' => $this->algo]));
 
         // Only set expiration if not already present in payload
         if (!isset($payload['exp'])) {
-            $expTime = time() + ($exp ?? $this->expiration);
+            $expTime = time() + $this->expiration;
             $payload['exp'] = $expTime;
         }
 
@@ -45,11 +45,15 @@ final class JwtService implements JwtServiceInterface
     }
 
     /**
-     * Alias for generate() method for compatibility
+     * Genereer een JWT token voor een gebruiker
      */
-    public function generateToken(array $payload, ?int $exp = null): string
+    public function generateToken(array $user): string
     {
-        return $this->generate($payload, $exp);
+        $payload = [
+            'user_id' => $user['id'] ?? $user['user_id'] ?? null,
+            'email' => $user['email'] ?? null
+        ];
+        return $this->generate($payload);
     }
 
     public function verify(string $token): ?array
@@ -79,9 +83,9 @@ final class JwtService implements JwtServiceInterface
     /**
      * Alias for verify() method for compatibility with UserController
      */
-    public function validateToken(string $token): ?array
+    public function validateToken(string $token): bool
     {
-        return $this->verify($token);
+        return $this->verify($token) !== null;
     }
 
     private function sign(string $data): string

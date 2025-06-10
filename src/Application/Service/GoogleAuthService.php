@@ -4,7 +4,7 @@ namespace App\Application\Service;
 
 use App\Infrastructure\Database\DatabaseInterface;
 use App\Infrastructure\Config\Config;
-use App\Application\Service\JwtService;
+use App\Domain\Security\JwtServiceInterface;
 use App\Application\Service\TokenService;
 use Exception;
 
@@ -16,7 +16,7 @@ class GoogleAuthService
 {
     private DatabaseInterface $database;
     private Config $config;
-    private JwtService $jwtService;
+    private JwtServiceInterface $jwtService;
     private TokenService $tokenService;
     private string $clientId;
     private string $clientSecret;
@@ -25,7 +25,7 @@ class GoogleAuthService
     public function __construct(
         DatabaseInterface $database,
         Config $config,
-        JwtService $jwtService,
+        JwtServiceInterface $jwtService,
         TokenService $tokenService
     ) {
         $this->database = $database;

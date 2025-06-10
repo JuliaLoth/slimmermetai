@@ -1,0 +1,274 @@
+
+
+Code Coverage Report:       
+  2025-06-10 15:56:47       
+                            
+ Summary:                   
+  Classes:  4.58% (6/131)   
+  Methods: 13.69% (95/694)  
+  Lines:   16.39% (768/4686)
+
+App\Application\DTO\UserDTO
+  Methods:  ( 0/ 0)   Lines:  (  0/  0)
+App\Application\Service\AuthService
+  Methods: 100.00% ( 7/ 7)   Lines: 100.00% ( 42/ 42)
+App\Application\Service\EmailService
+  Methods:  91.67% (11/12)   Lines:  84.62% ( 66/ 78)
+App\Application\Service\GoogleAuthService
+  Methods:   0.00% ( 0/11)   Lines:   0.00% (  0/173)
+App\Application\Service\JwtService
+  Methods:   0.00% ( 0/ 4)   Lines:   0.00% (  0/ 32)
+App\Application\Service\PasswordHasher
+  Methods: 100.00% ( 5/ 5)   Lines: 100.00% (  5/  5)
+App\Application\Service\PresentationConvertService
+  Methods:   0.00% ( 0/ 4)   Lines:   0.00% (  0/114)
+App\Application\Service\StripeService
+  Methods:  28.57% ( 2/ 7)   Lines:  44.26% ( 54/122)
+App\Application\Service\TokenService
+  Methods:   0.00% ( 0/ 5)   Lines:   0.00% (  0/ 18)
+App\Application\Service\UploadService
+  Methods:   0.00% ( 0/11)   Lines:   0.00% (  0/160)
+App\Application\Service\UserService
+  Methods:   0.00% ( 0/ 4)   Lines:   0.00% (  0/ 13)
+App\Http\Controller\AccountPageController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  4)
+App\Http\Controller\Api\AuthController
+  Methods:  25.00% ( 3/12)   Lines:  62.79% (135/215)
+App\Http\Controller\Api\GoogleAuthController
+  Methods:   0.00% ( 0/ 2)   Lines:   0.00% (  0/ 21)
+App\Http\Controller\Api\HealthController
+  Methods:   0.00% ( 0/22)   Lines:   0.00% (  0/179)
+App\Http\Controller\Api\IndexController
+  Methods:   0.00% ( 0/ 2)   Lines:   0.00% (  0/ 23)
+App\Http\Controller\Api\PaymentController
+  Methods:   0.00% ( 0/ 8)   Lines:   0.00% (  0/ 98)
+App\Http\Controller\Api\PresentationConvertController
+  Methods:   0.00% ( 0/ 2)   Lines:   0.00% (  0/ 12)
+App\Http\Controller\Api\ProxyController
+  Methods:   0.00% ( 0/ 2)   Lines:   0.00% (  0/ 29)
+App\Http\Controller\Api\SessionController
+  Methods:   0.00% ( 0/ 8)   Lines:   0.00% (  0/ 73)
+App\Http\Controller\Api\StripeController
+  Methods: 100.00% ( 5/ 5)   Lines: 100.00% ( 27/ 27)
+App\Http\Controller\Api\StripePaymentIntentController
+  Methods:   0.00% ( 0/ 2)   Lines:   0.00% (  0/ 21)
+App\Http\Controller\Api\UserController
+  Methods:   0.00% ( 0/14)   Lines:   0.00% (  0/161)
+App\Http\Controller\AuthController
+  Methods:   0.00% ( 0/ 6)   Lines:   0.00% (  0/ 28)
+App\Http\Controller\Auth\ForgotPasswordController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/ 23)
+App\Http\Controller\Auth\ForgotPasswordPageController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  4)
+App\Http\Controller\Auth\LoginController
+  Methods:   0.00% ( 0/ 2)   Lines:   0.00% (  0/ 30)
+App\Http\Controller\Auth\LoginPageController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  4)
+App\Http\Controller\Auth\LoginSuccessPageController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  4)
+App\Http\Controller\Auth\LogoutController
+  Methods:   0.00% ( 0/ 2)   Lines:   0.00% (  0/ 11)
+App\Http\Controller\Auth\MeController
+  Methods:   0.00% ( 0/ 3)   Lines:   0.00% (  0/ 13)
+App\Http\Controller\Auth\RefreshTokenController
+  Methods:   0.00% ( 0/ 3)   Lines:   0.00% (  0/ 12)
+App\Http\Controller\Auth\RegisterController
+  Methods:   0.00% ( 0/ 2)   Lines:   0.00% (  0/ 31)
+App\Http\Controller\Auth\RegisterPageController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  4)
+App\Http\Controller\BetalenController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  4)
+App\Http\Controller\CartController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  4)
+App\Http\Controller\CourseDetailController
+  Methods:   0.00% ( 0/ 8)   Lines:   0.00% (  0/ 19)
+App\Http\Controller\CourseImagesGeneratorController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  2)
+App\Http\Controller\CourseViewerController
+  Methods:   0.00% ( 0/ 2)   Lines:   0.00% (  0/ 34)
+App\Http\Controller\DashboardController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  7)
+App\Http\Controller\ElearningDashboardController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/ 10)
+App\Http\Controller\ElearningsController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  4)
+App\Http\Controller\HomeController
+  Methods:   0.00% ( 0/ 2)   Lines:   0.00% (  0/ 23)
+App\Http\Controller\LegacyPageController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  7)
+App\Http\Controller\Legacy\AccountController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  2)
+App\Http\Controller\Legacy\ApiAuthLoginController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  2)
+App\Http\Controller\Legacy\ApiAuthRegisterController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  2)
+App\Http\Controller\Legacy\ApiCreatePaymentIntentController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  2)
+App\Http\Controller\Legacy\ApiEnvDumpController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  2)
+App\Http\Controller\Legacy\ApiGoogleAuthController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  2)
+App\Http\Controller\Legacy\ApiProxyController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  2)
+App\Http\Controller\Legacy\ApiSlimmerPresenterenConvertController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  2)
+App\Http\Controller\Legacy\ApiUsersRegisterController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  2)
+App\Http\Controller\Legacy\BetalenController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  2)
+App\Http\Controller\Legacy\BetalingSuccesController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  2)
+App\Http\Controller\Legacy\BetalingVoltooidController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  2)
+App\Http\Controller\Legacy\ComponentsFooterController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  2)
+App\Http\Controller\Legacy\ComponentsHeadController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  2)
+App\Http\Controller\Legacy\ComponentsHeaderController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  2)
+App\Http\Controller\Legacy\ComponentsMetaTagsController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  2)
+App\Http\Controller\Legacy\CourseImagesGeneratorController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  2)
+App\Http\Controller\Legacy\DashboardController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  2)
+App\Http\Controller\Legacy\ELearningsController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  2)
+App\Http\Controller\Legacy\Error403Controller
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  2)
+App\Http\Controller\Legacy\Error404Controller
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  2)
+App\Http\Controller\Legacy\Error500Controller
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  2)
+App\Http\Controller\Legacy\ForgotPasswordController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  2)
+App\Http\Controller\Legacy\ImageFixController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  2)
+App\Http\Controller\Legacy\ImagesCoursesProfilePlaceholderController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  2)
+App\Http\Controller\Legacy\ImagesProfilePlaceholderController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  2)
+App\Http\Controller\Legacy\IncludesHeadController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  2)
+App\Http\Controller\Legacy\IncludesHeaderController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  2)
+App\Http\Controller\Legacy\LoginController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  2)
+App\Http\Controller\Legacy\LoginSuccessController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  2)
+App\Http\Controller\Legacy\MijnCursussenController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  2)
+App\Http\Controller\Legacy\MijnToolsController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  2)
+App\Http\Controller\Legacy\NieuwsController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  2)
+App\Http\Controller\Legacy\OverMijController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  2)
+App\Http\Controller\Legacy\ProfielController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  2)
+App\Http\Controller\Legacy\RegisterController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  2)
+App\Http\Controller\Legacy\SlimmerPresenterenToolController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  2)
+App\Http\Controller\Legacy\StripeApiConfigController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  2)
+App\Http\Controller\Legacy\StripeCheckoutSessionController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  2)
+App\Http\Controller\Legacy\StripeConfigController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  2)
+App\Http\Controller\Legacy\StripeWebhookController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  2)
+App\Http\Controller\Legacy\ToolsController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  2)
+App\Http\Controller\Legacy\WinkelwagenController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  2)
+App\Http\Controller\MyCoursesController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  4)
+App\Http\Controller\MyToolsController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  4)
+App\Http\Controller\NieuwsController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  4)
+App\Http\Controller\OverMijController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  4)
+App\Http\Controller\PaymentCompletedController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  4)
+App\Http\Controller\PaymentSuccessController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  4)
+App\Http\Controller\ProfileController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  4)
+App\Http\Controller\StripeController
+  Methods:   0.00% ( 0/ 5)   Lines:   0.00% (  0/ 27)
+App\Http\Controller\ToolDetailController
+  Methods:   0.00% ( 0/ 4)   Lines:   0.00% (  0/ 95)
+App\Http\Controller\ToolsController
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  4)
+App\Http\Controller\UserController
+  Methods:   0.00% ( 0/ 2)   Lines:   0.00% (  0/  4)
+App\Http\Middleware\AuthMiddleware
+  Methods:  75.00% ( 3/ 4)   Lines:  92.31% ( 36/ 39)
+App\Http\Middleware\AuthenticationMiddleware
+  Methods:   0.00% ( 0/ 3)   Lines:   0.00% (  0/ 42)
+App\Http\Middleware\BodyParsingMiddleware
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% ( 14/ 14)
+App\Http\Middleware\CorsMiddleware
+  Methods:   0.00% ( 0/ 3)   Lines:   0.00% (  0/ 12)
+App\Http\Middleware\CsrfMiddleware
+  Methods:   0.00% ( 0/ 2)   Lines:   0.00% (  0/ 19)
+App\Http\Middleware\ErrorHandlingMiddleware
+  Methods:  50.00% ( 1/ 2)   Lines:  95.65% ( 22/ 23)
+App\Http\Middleware\FinalHandler
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+App\Http\Middleware\MiddlewareDispatcher
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  6/  6)
+App\Http\Middleware\RateLimitMiddleware
+  Methods:  75.00% ( 6/ 8)   Lines:  72.88% ( 43/ 59)
+App\Http\Response\ApiResponse
+  Methods:  30.00% ( 3/10)   Lines:  59.52% ( 25/ 42)
+App\Http\Routing\FastRouteRequestHandler
+  Methods:   0.00% ( 0/ 3)   Lines:   0.00% (  0/ 47)
+App\Infrastructure\Config\Config
+  Methods:  72.73% ( 8/11)   Lines:  92.13% ( 82/ 89)
+App\Infrastructure\Database\Database
+  Methods:   0.00% ( 0/24)   Lines:   1.00% (  1/100)
+App\Infrastructure\Database\DatabasePerformanceMonitor
+  Methods:   6.67% ( 1/15)   Lines:   0.88% (  1/114)
+App\Infrastructure\Database\Migration
+  Methods:   0.00% ( 0/19)   Lines:   0.00% (  0/111)
+App\Infrastructure\Http\JsonResponse
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  4)
+App\Infrastructure\Http\ResponseEmitter
+  Methods:   0.00% ( 0/ 1)   Lines:   0.00% (  0/  6)
+App\Infrastructure\Logging\ErrorHandler
+  Methods:  25.00% ( 4/16)   Lines:  51.28% ( 40/ 78)
+App\Infrastructure\Logging\ErrorLogger
+  Methods:  20.00% ( 1/ 5)   Lines:  20.00% (  1/  5)
+App\Infrastructure\Mail\Mailer
+  Methods:   0.00% ( 0/ 3)   Lines:   0.00% (  0/ 38)
+App\Infrastructure\Repository\AuthRepository
+  Methods:  74.19% (23/31)   Lines:  79.29% (134/169)
+App\Infrastructure\Repository\CourseRepository
+  Methods:   0.00% ( 0/56)   Lines:   0.00% (  0/461)
+App\Infrastructure\Repository\JsonCourseRepository
+  Methods:   0.00% ( 0/54)   Lines:   0.00% (  0/ 90)
+App\Infrastructure\Repository\PaymentRepository
+  Methods:   0.00% ( 0/20)   Lines:   0.00% (  0/196)
+App\Infrastructure\Repository\StripeSessionRepository
+  Methods:  20.00% ( 1/ 5)   Lines:   3.33% (  1/ 30)
+App\Infrastructure\Repository\ToolRepository
+  Methods:   0.00% ( 0/54)   Lines:   0.00% (  0/323)
+App\Infrastructure\Repository\UserRepository
+  Methods:   0.00% ( 0/18)   Lines:   0.00% (  0/117)
+App\Infrastructure\Security\CsrfProtection
+  Methods:   0.00% ( 0/13)   Lines:   0.00% (  0/ 67)
+App\Infrastructure\Security\JwtService
+  Methods:  87.50% ( 7/ 8)   Lines:  94.12% ( 32/ 34)
+App\Infrastructure\Security\Validator
+  Methods:   0.00% ( 0/30)   Lines:   0.00% (  0/116)
+App\Infrastructure\Utils\Asset
+  Methods:   0.00% ( 0/ 4)   Lines:   0.00% (  0/ 53)
+App\Infrastructure\Utils\FileValidator
+  Methods:   0.00% ( 0/ 4)   Lines:   0.00% (  0/  7)
+App\Infrastructure\Utils\Format
+  Methods:   0.00% ( 0/ 4)   Lines:   0.00% (  0/  5)
+App\Infrastructure\View\View
+  Methods:   0.00% ( 0/ 5)   Lines:   0.00% (  0/ 23)

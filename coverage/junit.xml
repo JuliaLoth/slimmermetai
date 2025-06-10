@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="Tests\Integration\GoogleAuthServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\GoogleAuthServiceIntegrationTest.php" tests="1" assertions="0" errors="1" warnings="0" failures="0" skipped="0" time="0.071074">
+    <testcase name="testGoogleOAuthUrlGeneration" class="Tests\Integration\GoogleAuthServiceIntegrationTest" classname="Tests.Integration.GoogleAuthServiceIntegrationTest" file="C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\GoogleAuthServiceIntegrationTest.php" line="55" assertions="0" time="0.071074">
+      <error type="Exception">Tests\Integration\GoogleAuthServiceIntegrationTest::testGoogleOAuthUrlGeneration
+Exception: Google OAuth configuratie niet compleet
+
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\src\Application\Service\GoogleAuthService.php:42
+C:\Users\julia.DPIMEDIA\AIdoc\slimmermetai-site\tests\Integration\GoogleAuthServiceIntegrationTest.php:39</error>
+    </testcase>
+  </testsuite>
+</testsuites>
