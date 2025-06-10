@@ -160,7 +160,7 @@ class AuthRepositoryIntegrationTest extends DatabaseTestCase
     {
         $token = 'test-jwt-token-to-blacklist';
         $userId = (int)$this->getTestFixture('user_id');
-        $expiresAt = time() + 3600; // 1 hour from now
+        $expiresAt = new \DateTimeImmutable('+1 hour'); // Use DateTimeInterface instead of int
         
         $result = $this->authRepository->blacklistToken($token, $userId, $expiresAt);
         
@@ -179,12 +179,12 @@ class AuthRepositoryIntegrationTest extends DatabaseTestCase
 
         $this->assertTrue($result);
 
-        // Verify last_login_at was updated
-        $stmt = $this->pdo->prepare('SELECT last_login_at FROM users WHERE id = ?');
+        // Verify last_login was updated
+        $stmt = $this->pdo->prepare('SELECT last_login FROM users WHERE id = ?');
         $stmt->execute([$userId]);
-        $lastLoginAt = $stmt->fetchColumn();
+        $lastLogin = $stmt->fetchColumn();
 
-        $this->assertNotNull($lastLoginAt);
+        $this->assertNotNull($lastLogin);
     }
 
     public function testDeleteExpiredTokensWithRealDatabase()
